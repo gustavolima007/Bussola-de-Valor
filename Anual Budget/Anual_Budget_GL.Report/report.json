@@ -1,0 +1,105 @@
+{
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.57\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU08",
+            "path": "BaseThemes/CY24SU08.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "6e70c974975bbd5e56e6",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"17727eb7ee51a0e80ebe\",\"layouts\":[{\"id\":0,\"position\":{\"x\":354.6268656716418,\"y\":374.3283582089552,\"z\":2000,\"width\":925.0746268656716,\"height\":345.67164179104475,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Sem_investimentos.Valor)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Data e hora\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"Data e hora Mês\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0},\"Name\":\"Sum(Sem_investimentos.Valor)\",\"NativeReferenceName\":\"Soma de Valor\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 345.67,
+          "width": 925.07,
+          "x": 354.63,
+          "y": 374.33,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"7aba9edf0e6838728e6a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":354.6268656716418,\"y\":0,\"z\":5000,\"width\":264.17910447761193,\"height\":226.56716417910448,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Sem_investimentos.Transação\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Transação\"},\"Name\":\"Sem_investimentos.Transação\",\"NativeReferenceName\":\"Transação\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 226.57,
+          "width": 264.18,
+          "x": 354.63,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"93f22101478ca9bb4a53\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":523.8805970149253,\"z\":1000,\"width\":354.6268656716418,\"height\":189.8507462686567,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(Sem_investimentos.Valor)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0},\"Name\":\"Sum(Sem_investimentos.Valor)\",\"NativeReferenceName\":\"Soma de Valor\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Valor feito 2024'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 189.85,
+          "width": 354.63,
+          "x": 0.00,
+          "y": 523.88,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"941217dd195318c3280a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":4000,\"width\":171.04477611940297,\"height\":226.56716417910448,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Data e hora\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"Data e hora Mês\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 226.57,
+          "width": 171.04,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"98a889024c6aa1bda62b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":171.04477611940297,\"y\":0,\"z\":3000,\"width\":183.5820895522388,\"height\":226.56716417910448,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Sem_investimentos.Categoria\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Categoria\"},\"Name\":\"Sem_investimentos.Categoria\",\"NativeReferenceName\":\"Categoria\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Categoria\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Alimentação'\"}}],[{\"Literal\":{\"Value\":\"'Compras'\"}}],[{\"Literal\":{\"Value\":\"'Contas'\"}}],[{\"Literal\":{\"Value\":\"'Crédito e Financiamento'\"}}],[{\"Literal\":{\"Value\":\"'Cuidados Pessoais'\"}}],[{\"Literal\":{\"Value\":\"'Educação'\"}}],[{\"Literal\":{\"Value\":\"'Impostos e Tributos'\"}}],[{\"Literal\":{\"Value\":\"'Outra Categoria'\"}}],[{\"Literal\":{\"Value\":\"'Saúde'\"}}],[{\"Literal\":{\"Value\":\"'Seguro'\"}}],[{\"Literal\":{\"Value\":\"'Viagem'\"}}],[{\"Literal\":{\"Value\":\"'Transporte'\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 226.57,
+          "width": 183.58,
+          "x": 171.04,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"bc663e480612c556be25\",\"layouts\":[{\"id\":0,\"position\":{\"x\":618.8059701492538,\"y\":0,\"z\":0,\"width\":660.8955223880597,\"height\":374.3283582089552,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Sem_investimentos.Categoria\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Sem_investimentos.Valor)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Categoria\"},\"Name\":\"Sem_investimentos.Categoria\",\"NativeReferenceName\":\"Categoria\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0},\"Name\":\"Sum(Sem_investimentos.Valor)\",\"NativeReferenceName\":\"Soma de Valor\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 374.33,
+          "width": 660.90,
+          "x": 618.81,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"dcf5ccd060983902a3e0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":226.56716417910448,\"z\":7000,\"width\":618.8059701492538,\"height\":147.76119402985074,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\"},{\"queryRef\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Dia\"},{\"queryRef\":\"Sem_investimentos.Categoria\"},{\"queryRef\":\"Sem_investimentos.Transação\"},{\"queryRef\":\"Sem_investimentos.Descrição\"},{\"queryRef\":\"Sum(Sem_investimentos.Valor)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Descrição\"},\"Name\":\"Sem_investimentos.Descrição\",\"NativeReferenceName\":\"Descrição\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Transação\"},\"Name\":\"Sem_investimentos.Transação\",\"NativeReferenceName\":\"Transação\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Categoria\"},\"Name\":\"Sem_investimentos.Categoria\",\"NativeReferenceName\":\"Categoria\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":0},\"Name\":\"Sum(Sem_investimentos.Valor)\",\"NativeReferenceName\":\"Soma de Valor\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Data e hora\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Mês\"},\"Name\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Mês\",\"NativeReferenceName\":\"Data e hora Mês\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"PropertyVariationSource\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Name\":\"Variation\",\"Property\":\"Data e hora\"}},\"Hierarchy\":\"Hierarquia de datas\"}},\"Level\":\"Dia\"},\"Name\":\"Sem_investimentos.Data e hora.Variation.Hierarquia de datas.Dia\",\"NativeReferenceName\":\"Data e hora Dia\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"219.00000352634487D\"}}}},\"selector\":{\"metadata\":\"Sem_investimentos.Descrição\"}},{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"87.94029483637789D\"}}}},\"selector\":{\"metadata\":\"Sum(Sem_investimentos.Valor)\"}}]}}}",
+          "filters": "[]",
+          "height": 147.76,
+          "width": 618.81,
+          "x": 0.00,
+          "y": 226.57,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"ea6907c89ac174ac0306\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":374.3283582089552,\"z\":6000,\"width\":354.6268656716418,\"height\":149.55223880597015,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(Sem_investimentos.Valor)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Sem_investimentos\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":1},\"Name\":\"Sum(Sem_investimentos.Valor)\",\"NativeReferenceName\":\"Média de Valor\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Valor\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 149.55,
+          "width": 354.63,
+          "x": 0.00,
+          "y": 374.33,
+          "z": 6000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

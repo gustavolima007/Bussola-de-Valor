@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Anual_Budget_GL.SemanticModel"
+    },
+    "byConnection": null
+  }
+}
