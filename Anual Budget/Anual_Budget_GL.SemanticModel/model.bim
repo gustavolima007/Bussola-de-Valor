@@ -364,7 +364,7 @@
             "mode": "import",
             "source": {
               "expression": [
-                "let Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\admgu\\Downloads\\Extrato_2024-01-01_a_2024-12-08_LIMPO.xlsx\"), null, true), Planilha1_Sheet = Fonte{[Item=\"Planilha1\",Kind=\"Sheet\"]}[Data], #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]), #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"Data e hora\", type datetime}, {\"Categoria\", type text}, {\"Transação\", type text}, {\"Descrição\", type text}, {\"Valor\", type number}}), #\"Linhas Filtradas\" = Table.SelectRows(#\"Tipo Alterado\", each true),",
+                "let Fonte = Excel.Workbook(File.Contents(\"E:\\Github\\Finance-Budget_GL\\Anual Budget\\Datasets\\Extrato_2024-01-01_a_2024-12-08_LIMPO.xlsx\"), null, true), Planilha1_Sheet = Fonte{[Item=\"Planilha1\",Kind=\"Sheet\"]}[Data], #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]), #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"Data e hora\", type datetime}, {\"Categoria\", type text}, {\"Transação\", type text}, {\"Descrição\", type text}, {\"Valor\", type number}}), #\"Linhas Filtradas\" = Table.SelectRows(#\"Tipo Alterado\", each true),",
                 "    #\"Linhas Classificadas\" = Table.Sort(#\"Linhas Filtradas\",{{\"Data e hora\", Order.Ascending}}),",
                 "    #\"Linhas Filtradas1\" = Table.SelectRows(#\"Linhas Classificadas\", each true) in #\"Linhas Filtradas1\""
               ],
@@ -677,7 +677,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\admgu\\Downloads\\Extrato_2024-01-01_a_2024-12-08_LIMPO.xlsx\"), null, true),",
+                "    Fonte = Excel.Workbook(File.Contents(\"E:\\Github\\Finance-Budget_GL\\Anual Budget\\Datasets\\Extrato_2024-01-01_a_2024-12-08_LIMPO.xlsx\"), null, true),",
                 "    Planilha1_Sheet = Fonte{[Item=\"Planilha1\",Kind=\"Sheet\"]}[Data],",
                 "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Planilha1_Sheet, [PromoteAllScalars=true]),",
                 "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"Data e hora\", type datetime}, {\"Categoria\", type text}, {\"Transação\", type text}, {\"Descrição\", type text}, {\"Valor\", type number}}),",
