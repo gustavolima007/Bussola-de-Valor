@@ -1,8 +1,11 @@
-📊 Finance-Budget_GL
-Este repositório contém dashboards e soluções criadas com Power BI, focadas em:
+# 📊 **Finance-Manager**
 
-💰 Orçamento Financeiro: Análise detalhada de receitas, despesas e metas financeiras.
-📈 Gestão de Investimentos: Acompanhamento de ativos, rentabilidade e estratégias de investimentos.
+Este repositório contém dashboards e soluções interativas criadas com Power BI, focadas em fornecer uma visão clara e detalhada da sua saúde financeira.
 
-🔧 Objetivo:
-Ajudar a criar um panorama financeiro claro e inteligente para o gerenciamento eficaz do orçamento e dos investimentos.
+## Funcionalidades:
+
+💰 **Orçamento Financeiro**: Análise abrangente de receitas, despesas e metas financeiras para um controle eficaz do seu orçamento mensal e anual.
+
+📈 **Gestão de Investimentos**: Monitoramento de ativos, rentabilidade e performance de suas estratégias de investimento, com insights detalhados para ajudar a otimizar seus investimentos.
+
+🔧 **Objetivo**: Capacitar os usuários a tomar decisões financeiras informadas, melhorando o gerenciamento do orçamento e dos investimentos através de visualizações claras e intuitivas.
