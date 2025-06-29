@@ -48,21 +48,21 @@ except FileNotFoundError:
 # Adicionar coluna Ticker e remover .SA
 df['Ticker'] = df.index.str.replace('.SA', '')
 
-# Mapeamento de setores para português brasileiro
+# Mapeamento de setores para português brasileiro com primeira letra maiúscula
 setores_traducao = {
     'Finance': 'Financeiro',
-    'Utilities': 'Serviços Públicos',
+    'Utilities': 'Serviços públicos',
     'Communications': 'Comunicações',
-    'Industrial Services': 'Serviços Industriais',
+    'Industrial Services': 'Serviços industriais',
 }
-df['Setor (brapi)'] = df['Setor (brapi)'].map(setores_traducao).fillna(df['Setor (brapi)'])
+df['Setor (brapi)'] = df['Setor (brapi)'].map(setores_traducao).fillna(df['Setor (brapi)']).str.capitalize()
 
-# Mapeamento de Tipo para português com maiúsculas
+# Mapeamento de Tipo para português com primeira letra maiúscula
 tipo_traducao = {
-    'stock': 'AÇÕES',
-    'fund': 'FUNDOS'
+    'stock': 'Ações',
+    'fund': 'Fundos'
 }
-df['Tipo'] = df['Tipo'].map(tipo_traducao).fillna(df['Tipo'].str.upper())
+df['Tipo'] = df['Tipo'].map(tipo_traducao).fillna(df['Tipo'].str.capitalize())
 
 # Função para converter valores monetários (ex.: "R$ 98.50 Bi" -> 98500000000.0)
 def parse_currency(value):
@@ -182,7 +182,7 @@ def calcular_score(row):
         detalhes.append("P/VP > 4: -5")
     
     # Dívida Total e Dívida/EBITDA (exceto bancos)
-    if 'FINANCEIRO' not in str(row['Setor (brapi)']).upper():
+    if 'Financeiro' not in str(row['Setor (brapi)']).lower():
         divida = row['Dívida Total']
         market_cap = row['Market Cap (R$)']
         if divida > 0 and market_cap > 0:
@@ -237,23 +237,23 @@ df_filtrado = df[
 ].sort_values(by=coluna_ordenacao, ascending=ascending)
 
 # Abas para organização
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Resumo", "Ranking de Ações", "Gráficos", "Regras de Investimento", "Detalhamento do Score"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Ranking", "Ranking Detalhado", "Gráficos", "Regras de Investimento", "Detalhamento do Score"])
 
 with tab1:
-    st.header("Resumo")
+    st.header("Ranking")
     st.markdown("Tabela resumida com as principais métricas das ações ranqueadas com base nos critérios de Barsi e Bazin.")
 
-    # Cabeçalho da tabela Resumo
-    colunas_resumo = ['Logo', 'Ticker', 'Empresa', 'Preço Atual', 'DY 12 Meses (%)', 'DY 5 Anos (%)', 
-                      'Payout Ratio (%)', 'ROE (%)', 'Market Cap (R$)', 'Score']
-    cols = st.columns([1, 1, 2, 1, 1, 1, 1, 1, 1.5, 1])
-    for i, col_name in enumerate(colunas_resumo):
+    # Cabeçalho da tabela Ranking
+    colunas_ranking = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Preço Atual', 'DY 12 Meses (%)', 'DY 5 Anos (%)', 
+                       'Market Cap (R$)', 'Score']
+    cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1.5, 1])
+    for i, col_name in enumerate(colunas_ranking):
         with cols[i]:
             st.markdown(f"**{col_name}**")
 
-    # Tabela Resumo
+    # Tabela Ranking
     for _, row in df_filtrado.iterrows():
-        cols = st.columns([1, 1, 2, 1, 1, 1, 1, 1, 1.5, 1])
+        cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1.5, 1])
         with cols[0]:
             if row['Logo'] != 'N/A' and isinstance(row['Logo'], str):
                 try:
@@ -267,34 +267,32 @@ with tab1:
         with cols[2]:
             st.write(row['Empresa'])
         with cols[3]:
-            st.write(f"R$ {row['Preço Atual']:.2f}")
+            st.write(row['Setor (brapi)'])
         with cols[4]:
-            st.write(f"{row['DY (Taxa 12m, %)']:.2f}%")
+            st.write(f"R$ {row['Preço Atual']:.2f}")
         with cols[5]:
-            st.write(f"{row['DY 5 Anos Média (%)']:.2f}%")
+            st.write(f"{row['DY (Taxa 12m, %)']:.2f}%")
         with cols[6]:
-            st.write(f"{row['Payout Ratio (%)']:.2f}%")
+            st.write(f"{row['DY 5 Anos Média (%)']:.2f}%")
         with cols[7]:
-            st.write(f"{row['ROE (%)']:.2f}%")
-        with cols[8]:
             st.write(f"R$ {row['Market Cap (R$)'] / 1_000_000_000:.2f} Bi")
-        with cols[9]:
+        with cols[8]:
             st.write(f"{row['Score']:.0f}")
 
 with tab2:
-    st.header("Ranking de Ações")
+    st.header("Ranking Detalhado")
     st.markdown("A tabela abaixo mostra as ações ranqueadas com base nos critérios de Barsi e Bazin. Clique nos logotipos para mais detalhes.")
 
-    # Cabeçalho da tabela Ranking
-    colunas_ranking = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Tipo', 'Preço Atual', 'P/L', 'P/VP', 'ROE (%)', 
+    # Cabeçalho da tabela Ranking Detalhado
+    colunas_ranking_detalhado = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Tipo', 'Preço Atual', 'P/L', 'P/VP', 'ROE (%)', 
                        'DY 12 Meses (%)', 'DY 5 Anos (%)', 'Último Dividendo (R$)', 'Data Últ. Div.', 'Data Ex-Div.', 
                        'Payout Ratio (%)', 'Dívida Total', 'Dívida/EBITDA', 'Market Cap (R$)', 'Score']
     cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5, 1])
-    for i, col_name in enumerate(colunas_ranking):
+    for i, col_name in enumerate(colunas_ranking_detalhado):
         with cols[i]:
             st.markdown(f"**{col_name}**")
 
-    # Tabela Ranking
+    # Tabela Ranking Detalhado
     for _, row in df_filtrado.iterrows():
         cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5, 1])
         with cols[0]:
@@ -379,6 +377,30 @@ with tab3:
         labels={'Payout Ratio (%)': 'Payout Ratio (%)'}
     )
     st.plotly_chart(fig3, use_container_width=True)
+    
+    # Gráfico 4: DY 12 Meses por Empresa
+    fig4 = px.bar(
+        df_filtrado,
+        x='Empresa',
+        y='DY (Taxa 12m, %)',
+        color='Setor (brapi)',
+        title="DY 12 Meses por Empresa",
+        text='DY (Taxa 12m, %)'
+    )
+    fig4.update_traces(textposition='auto')
+    st.plotly_chart(fig4, use_container_width=True)
+    
+    # Gráfico 5: Último Dividendo por Empresa
+    fig5 = px.bar(
+        df_filtrado,
+        x='Empresa',
+        y='Último Dividendo (R$)',
+        color='Setor (brapi)',
+        title="Último Dividendo por Empresa",
+        text='Último Dividendo (R$)'
+    )
+    fig5.update_traces(textposition='auto')
+    st.plotly_chart(fig5, use_container_width=True)
 
 with tab4:
     st.header("Regras de Investimento")
