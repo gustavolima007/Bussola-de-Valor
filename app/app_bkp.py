@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
@@ -343,43 +344,66 @@ with tab2:
 with tab3:
     st.header("Gráficos Interativos")
     
-    # Gráfico 1: DY 5 Anos vs. P/L
-    fig1 = px.scatter(
+    # Seletor de ação para análise individual
+    acao_selecionada = st.selectbox("Selecione uma ação para análise individual", df_filtrado['Ticker'].tolist())
+    df_acao = df_filtrado[df_filtrado['Ticker'] == acao_selecionada].iloc[0]
+    
+    # Gráfico 1: Evolução do Score (simulado, pois dados históricos não estão disponíveis)
+    st.subheader("Evolução do Score (Simulação)")
+    # Nota: Para dados reais, integre com yfinance ou adicione uma coluna 'Data' no dataset
+    fig1 = px.line(
         df_filtrado,
-        x='P/L',
-        y='DY 5 Anos Média (%)',
+        x=df_filtrado.index,  # Usando índice como proxy para tempo
+        y='Score',
         color='Setor (brapi)',
-        size='Score',
-        hover_data=['Empresa', 'ROE (%)', 'Payout Ratio (%)'],
-        title="DY 5 Anos Média vs. P/L",
-        labels={'P/L': 'Preço/Lucro', 'DY 5 Anos Média (%)': 'DY Médio 5 Anos (%)'}
+        title="Evolução do Score",
+        labels={'index': 'Ações', 'Score': 'Score'}
     )
     st.plotly_chart(fig1, use_container_width=True)
     
-    # Gráfico 2: Score por Empresa
-    fig2 = px.bar(
-        df_filtrado,
-        x='Empresa',
-        y='Score',
-        color='Setor (brapi)',
-        title="Score por Empresa",
-        text='Score'
+    # Gráfico 2: Análise Individual de Ação
+    st.subheader(f"Análise Individual de {acao_selecionada}")
+    fig2 = go.Figure()
+    fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['DY (Taxa 12m, %)']], mode='lines+markers', name='DY 12m (%)'))
+    fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['P/L']], mode='lines+markers', name='P/L'))
+    fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['ROE (%)']], mode='lines+markers', name='ROE (%)'))
+    fig2.update_layout(
+        title=f"Métricas de {acao_selecionada}",
+        xaxis_title="Período",
+        yaxis_title="Valor",
+        legend_title="Métricas"
     )
-    fig2.update_traces(textposition='auto')
     st.plotly_chart(fig2, use_container_width=True)
     
-    # Gráfico 3: Distribuição do Payout Ratio
-    fig3 = px.histogram(
-        df_filtrado,
-        x='Payout Ratio (%)',
-        nbins=20,
-        title="Distribuição do Payout Ratio",
-        labels={'Payout Ratio (%)': 'Payout Ratio (%)'}
-    )
+    # Gráfico 3: Candlestick Simulado (baseado em Preço Atual)
+    st.subheader("Candlestick Simulado (Baseado em Preço Atual)")
+    # Nota: Para dados reais, integre com yfinance para OHLC
+    fig3 = go.Figure(data=[go.Candlestick(
+        x=df_filtrado['Ticker'],
+        open=[df_acao['Preço Atual']] * len(df_filtrado),
+        high=[df_acao['Preço Atual'] * 1.05] * len(df_filtrado),
+        low=[df_acao['Preço Atual'] * 0.95] * len(df_filtrado),
+        close=[df_acao['Preço Atual']] * len(df_filtrado)
+    )])
+    fig3.update_layout(title="Candlestick Simulado", xaxis_title="Ações", yaxis_title="Preço (R$)")
     st.plotly_chart(fig3, use_container_width=True)
     
-    # Gráfico 4: DY 12 Meses por Empresa
-    fig4 = px.bar(
+    # Gráfico 4: Correlação P/L vs. DY 12m
+    st.subheader("Correlação P/L vs. DY 12m")
+    fig4 = px.scatter(
+        df_filtrado,
+        x='P/L',
+        y='DY (Taxa 12m, %)',
+        color='Setor (brapi)',
+        trendline="ols",
+        title="Correlação entre P/L e DY 12m",
+        labels={'P/L': 'Preço/Lucro', 'DY (Taxa 12m, %)': 'DY 12 Meses (%)'}
+    )
+    st.plotly_chart(fig4, use_container_width=True)
+    
+    # Gráfico 5: DY 12 Meses por Empresa
+    st.subheader("DY 12 Meses por Empresa")
+    fig5 = px.bar(
         df_filtrado,
         x='Empresa',
         y='DY (Taxa 12m, %)',
@@ -387,11 +411,12 @@ with tab3:
         title="DY 12 Meses por Empresa",
         text='DY (Taxa 12m, %)'
     )
-    fig4.update_traces(textposition='auto')
-    st.plotly_chart(fig4, use_container_width=True)
+    fig5.update_traces(textposition='auto')
+    st.plotly_chart(fig5, use_container_width=True)
     
-    # Gráfico 5: Último Dividendo por Empresa
-    fig5 = px.bar(
+    # Gráfico 6: Último Dividendo por Empresa
+    st.subheader("Último Dividendo por Empresa")
+    fig6 = px.bar(
         df_filtrado,
         x='Empresa',
         y='Último Dividendo (R$)',
@@ -399,8 +424,8 @@ with tab3:
         title="Último Dividendo por Empresa",
         text='Último Dividendo (R$)'
     )
-    fig5.update_traces(textposition='auto')
-    st.plotly_chart(fig5, use_container_width=True)
+    fig6.update_traces(textposition='auto')
+    st.plotly_chart(fig6, use_container_width=True)
 
 with tab4:
     st.header("Regras de Investimento")
