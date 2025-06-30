@@ -4,6 +4,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import requests
+from io import StringIO
+import base64
 
 # Configuração da página
 st.set_page_config(page_title="Investidor Inteligente - Bazin & Barsi", layout="wide", page_icon="📈")
@@ -39,13 +42,13 @@ Priorizamos empresas com **Dividend Yield (DY)** consistente e fundamentos sóli
 Use os filtros abaixo para personalizar o ranking, explorar gráficos interativos e conhecer as regras de investimento!
 """)
 
-# Carregar dados do Excel
+# Carregar dados do CSV
 try:
-    df = pd.read_excel(r"E:\Github\finance-manager\data\relatorio_analise_b3.xlsx", index_col=0)
+    df = pd.read_csv(r"E:\Github\finance-manager\data\relatorio_analise_b3.csv", index_col=0)
 except FileNotFoundError:
-    st.error("Arquivo 'relatorio_analise_b3.xlsx' não encontrado. Execute o script de coleta de dados primeiro.")
+    st.error("Arquivo 'relatorio_analise_b3.csv' não encontrado. Execute o script de coleta de dados primeiro.")
     st.stop()
-
+    
 # Adicionar coluna Ticker e remover .SA
 df['Ticker'] = df.index.str.replace('.SA', '')
 
@@ -344,16 +347,15 @@ with tab2:
 with tab3:
     st.header("Gráficos Interativos")
     
-    # Seletor de ação para análise individual
-    acao_selecionada = st.selectbox("Selecione uma ação para análise individual", df_filtrado['Ticker'].tolist())
+    # Seletor de ação para análise individual e mapa de dividendos
+    acao_selecionada = st.selectbox("Selecione uma ação para análise individual e mapa de dividendos", df_filtrado['Ticker'].tolist())
     df_acao = df_filtrado[df_filtrado['Ticker'] == acao_selecionada].iloc[0]
     
-    # Gráfico 1: Evolução do Score (simulado, pois dados históricos não estão disponíveis)
+    # Gráfico 1: Evolução do Score (simulado)
     st.subheader("Evolução do Score (Simulação)")
-    # Nota: Para dados reais, integre com yfinance ou adicione uma coluna 'Data' no dataset
     fig1 = px.line(
         df_filtrado,
-        x=df_filtrado.index,  # Usando índice como proxy para tempo
+        x=df_filtrado.index,
         y='Score',
         color='Setor (brapi)',
         title="Evolução do Score",
@@ -375,9 +377,8 @@ with tab3:
     )
     st.plotly_chart(fig2, use_container_width=True)
     
-    # Gráfico 3: Candlestick Simulado (baseado em Preço Atual)
+    # Gráfico 3: Candlestick Simulado
     st.subheader("Candlestick Simulado (Baseado em Preço Atual)")
-    # Nota: Para dados reais, integre com yfinance para OHLC
     fig3 = go.Figure(data=[go.Candlestick(
         x=df_filtrado['Ticker'],
         open=[df_acao['Preço Atual']] * len(df_filtrado),
@@ -426,6 +427,43 @@ with tab3:
     )
     fig6.update_traces(textposition='auto')
     st.plotly_chart(fig6, use_container_width=True)
+    
+    # Gráfico 7: Mapa de Dividendos Passado e Futuros
+    st.subheader("Mapa de Dividendos Passado e Futuros")
+    df_acao_div = df_filtrado[df_filtrado['Ticker'] == acao_selecionada]
+    ultima_data_div = df_acao['Data Últ. Div.']
+    ultimo_dividendo = df_acao['Último Dividendo (R$)']
+    dy_12m = df_acao['DY (Taxa 12m, %)']
+    preco_atual = df_acao['Preço Atual']
+    
+    # Passado: Baseado em Data Últ. Div. e Último Dividendo
+    datas_passado = [ultima_data_div] if pd.notna(ultima_data_div) else []
+    valores_passado = [ultimo_dividendo] if pd.notna(ultimo_dividendo) else []
+    
+    # Futuro: Estimativa baseada em DY 12m e frequência anual simplificada
+    if pd.notna(ultima_data_div) and pd.notna(dy_12m) and pd.notna(preco_atual) and preco_atual > 0:
+        dividendo_estimado = (dy_12m / 100) * preco_atual
+        datas_futuro = [ultima_data_div + relativedelta(months=6), ultima_data_div + relativedelta(months=12)]
+        valores_futuro = [dividendo_estimado] * 2  # Simulação de dois próximos dividendos
+    else:
+        datas_futuro = []
+        valores_futuro = []
+    
+    fig7 = go.Figure()
+    if datas_passado and valores_passado:
+        fig7.add_trace(go.Scatter(x=datas_passado, y=valores_passado, mode='lines+markers', name='Dividendos Passados'))
+    if datas_futuro and valores_futuro:
+        fig7.add_trace(go.Scatter(x=datas_futuro, y=valores_futuro, mode='markers', name='Dividendos Futuros (Estimados)'))
+    
+    fig7.update_layout(
+        title=f"Mapa de Dividendos de {acao_selecionada}",
+        xaxis_title="Data",
+        yaxis_title="Valor do Dividendo (R$)",
+        legend_title="Tipo",
+        xaxis=dict(range=[(ultima_data_div - relativedelta(months=6)).date() if pd.notna(ultima_data_div) else datetime(2024, 1, 1).date(), 
+                          (ultima_data_div + relativedelta(months=18)).date() if pd.notna(ultima_data_div) else datetime(2026, 1, 1).date()])
+    )
+    st.plotly_chart(fig7, use_container_width=True)
 
 with tab4:
     st.header("Regras de Investimento")
