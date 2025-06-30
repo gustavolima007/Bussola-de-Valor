@@ -1,11 +1,37 @@
-1. Receber dados das 5 ações pelo Grok IA.
 
-2. Tratar em python
-
-3. Criar dashboard de ações
-
-4. Criar modelo de Machine Learning para previsão de ações.
-
-
-Setores Besst:
+### Setores Besst:
 Bancos, Energia Saneamento, seguros e Telecom
+
+######################################
+
+* Pendencias:
+
+- Alterar para CSV
+- Incluir NOVAS colunas para novo calculo.
+
+* Graficos:
+
+Criar um mapa de calor para mostrar o dividendo passado e o dividendo no futuro
+
+- Indicador gráfico e também pontuação para recomendações.
+
+import yfinance as yf
+ticker = yf.Ticker("PETR4.SA")
+recommendations = ticker.recommendations
+print(recommendations)
+
+* Machine Learning:
+
+Número 1 criar modelos de machine learning para prever o valor futuro da ação criar outro modelo de Machine learn para prever os dividendos
+
+* Banco de dados:
+
+Conectar tudo no superbase tanto as extrações csv como os dados inseridos
+Modelar banco de dados para as tabelas e depois adicionar no super Bass
+
+Tabelas:
+- Empresas_setores defensivos 
+- relatório_b3
+- carteira_b3
+- renda_fixa
+- dividendos_recebidos
