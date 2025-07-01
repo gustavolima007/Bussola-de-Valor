@@ -7,7 +7,8 @@ Bancos, Energia Saneamento, seguros e Telecom
 * Pendencias:
 
 - Alterar para CSV
-- Incluir NOVAS colunas para novo calculo.
+- Incluir NOVAS colunas para novo calculo
+- Incluir novo filtro de DY 5 anos. igual DY12M
 
 * Graficos:
 
