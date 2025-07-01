@@ -2,16 +2,14 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import yfinance as yf
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import requests
-from io import StringIO
-import base64
 
 # Configuração da página
-st.set_page_config(page_title="Investidor Inteligente - Bazin & Barsi", layout="wide", page_icon="📈")
+st.set_page_config(page_title="Investidor Inteligente - Análise de Investimentos", layout="wide", page_icon="📈")
 
-# CSS para responsividade
+# CSS para responsividade e estilo
 st.markdown("""
 <style>
     .main .block-container {
@@ -31,231 +29,158 @@ st.markdown("""
             width: 40px !important;
         }
     }
+    .stSidebar .stButton {
+        width: 100%;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # Título e descrição
-st.title("Investidor Inteligente - Bazin & Barsi")
+st.title("Investidor Inteligente - Análise de Investimentos")
 st.markdown("""
-Bem-vindo ao **Investidor Inteligente**, um aplicativo para ranquear ações com base nas filosofias de **Luiz Barsi** e **Décio Bazin**. 
-Priorizamos empresas com **Dividend Yield (DY)** consistente e fundamentos sólidos.
-Use os filtros abaixo para personalizar o ranking, explorar gráficos interativos e conhecer as regras de investimento!
+Bem-vindo ao **Investidor Inteligente**, um aplicativo para ranquear ações e fundos com base em fundamentos sólidos, dividendos consistentes e valor intrínseco, combinando o melhor das filosofias de Luiz Barsi, Décio Bazin, Warren Buffett, Peter Lynch e Benjamin Graham. Use os filtros abaixo para personalizar o ranking e explore gráficos interativos!
 """)
 
 # Carregar dados do CSV
-try:
-    df = pd.read_csv(r"E:\Github\finance-manager\data\relatorio_analise_b3.csv", index_col=0)
-except FileNotFoundError:
-    st.error("Arquivo 'relatorio_analise_b3.csv' não encontrado. Execute o script de coleta de dados primeiro.")
-    st.stop()
-    
-# Adicionar coluna Ticker e remover .SA
-df['Ticker'] = df.index.str.replace('.SA', '')
+@st.cache_data
+def load_data():
+    try:
+        df = pd.read_csv(r"C:\Users\01701805\Desktop\Projetos GL\finance-manager\data\relatorio_analise_b3.csv", index_col=0)
+        # Converter colunas
+        colunas_percentual = ["DY (Taxa 12m, %)", "DY 5 Anos Média (%)", "ROE (%)", "Payout Ratio (%)", "Crescimento Preço (%)"]
+        for col in colunas_percentual:
+            df[col] = df[col].apply(lambda x: float(str(x).replace('%', '')) if '%' in str(x) else float(str(x)) if str(x) != 'N/A' else 0.0)
+        colunas_numericas = ["Preço Atual", "P/L", "P/VP", "Market Cap (R$)", "Último Dividendo (R$)", "Dívida Total"]
+        for col in colunas_numericas:
+            df[col] = df[col].apply(lambda x: float(str(x).replace('R$', '').replace(' Bi', '').strip()) * 1_000_000_000 if isinstance(x, str) and 'Bi' in x else float(str(x).replace('R$', '').strip()) if isinstance(x, str) else float(x) if pd.notna(x) else 0.0)
+        df["Dívida/EBITDA"] = pd.to_numeric(df["Dívida/EBITDA"], errors='coerce').fillna(0)
+        colunas_data = ["Data Últ. Div.", "Data Ex-Div."]
+        for col in colunas_data:
+            df[col] = pd.to_datetime(df[col], format='%d-%m-%Y', errors='coerce')
+        df['Ticker'] = df.index.str.replace('.SA', '')
+        return df
+    except FileNotFoundError:
+        st.error("Arquivo 'relatorio_analise_b3.csv' não encontrado. Execute o script de coleta de dados primeiro.")
+        st.stop()
 
-# Mapeamento de setores para português brasileiro com primeira letra maiúscula
-setores_traducao = {
-    'Finance': 'Financeiro',
-    'Utilities': 'Serviços públicos',
-    'Communications': 'Comunicações',
-    'Industrial Services': 'Serviços industriais',
-}
+df = load_data()
+
+# Mapeamento de setores e tipos
+setores_traducao = {'Finance': 'Financeiro', 'Utilities': 'Serviços públicos', 'Communications': 'Comunicações', 'Industrial Services': 'Serviços industriais'}
 df['Setor (brapi)'] = df['Setor (brapi)'].map(setores_traducao).fillna(df['Setor (brapi)']).str.capitalize()
+tipo_traducao = {'stock': 'Ações', 'fund': 'Fundos'}
+df['Tipo'] = df['Tipo'].map(tipo_traducao).fillna(df['Tipo']).str.capitalize()
 
-# Mapeamento de Tipo para português com primeira letra maiúscula
-tipo_traducao = {
-    'stock': 'Ações',
-    'fund': 'Fundos'
-}
-df['Tipo'] = df['Tipo'].map(tipo_traducao).fillna(df['Tipo'].str.capitalize())
-
-# Função para converter valores monetários (ex.: "R$ 98.50 Bi" -> 98500000000.0)
-def parse_currency(value):
-    if isinstance(value, str):
-        try:
-            cleaned_value = value.replace('R$', '').replace('Bi', '').strip()
-            multiplier = 1_000_000_000 if 'Bi' in value else 1
-            return float(cleaned_value) * multiplier
-        except:
-            return 0.0
-    return float(value) if pd.notna(value) else 0.0
-
-# Função para converter percentuais (ex.: "6.50%" -> 6.50)
-def parse_percent(value):
-    if isinstance(value, str) and '%' in value:
-        try:
-            return float(value.replace('%', ''))
-        except:
-            return 0.0
-    return float(value) if pd.notna(value) else 0.0
-
-# Converter colunas para numérico
-colunas_percentual = ["DY (Taxa 12m, %)", "DY 5 Anos Média (%)", "ROE (%)", "Payout Ratio (%)"]
-for col in colunas_percentual:
-    if col in df.columns:
-        df[col] = df[col].apply(parse_percent)
-
-colunas_numericas = ["Preço Atual", "P/L", "P/VP", "Market Cap (R$)", "Último Dividendo (R$)", "Dívida Total"]
-for col in colunas_numericas:
-    if col in df.columns:
-        df[col] = df[col].apply(parse_currency)
-
-if "Dívida/EBITDA" in df.columns:
-    df["Dívida/EBITDA"] = pd.to_numeric(df["Dívida/EBITDA"], errors='coerce').fillna(0)
-
-# Converter colunas de data
-colunas_data = ["Data Últ. Div.", "Data Ex-Div."]
-for col in colunas_data:
-    if col in df.columns:
-        df[col] = pd.to_datetime(df[col], format='%d-%m-%Y', errors='coerce')
-
-# Função para calcular o score (Bazin & Barsi) e retornar detalhes
-def calcular_score(row):
+# Função para calcular o Score Total
+def calculate_total_score(row):
     score = 0
-    detalhes = []
-    
-    # DY 5 Anos Média (%)
-    dy_5_anos = row['DY 5 Anos Média (%)']
-    if dy_5_anos > 8:
-        score += 40
-        detalhes.append("DY 5 Anos Média > 8%: +40")
-    elif dy_5_anos > 6:
-        score += 30
-        detalhes.append("DY 5 Anos Média > 6%: +30")
-    elif dy_5_anos > 4:
-        score += 10
-        detalhes.append("DY 5 Anos Média > 4%: +10")
-    
-    # DY 12 meses (%)
+    setor = row['Setor (brapi)'].lower()
+
+    # Dividend Yield (12 meses e 5 anos)
     dy_12m = row['DY (Taxa 12m, %)']
-    if dy_12m > 5:
-        score += 15
-        detalhes.append("DY 12 Meses > 5%: +15")
-    elif dy_12m > 3.5:
-        score += 10
-        detalhes.append("DY 12 Meses > 3.5%: +10")
-    elif dy_12m > 2:
-        score += 5
-        detalhes.append("DY 12 Meses > 2%: +5")
-    elif dy_12m < 2:
-        score -= 5
-        detalhes.append("DY 12 Meses < 2%: -5")
-    
-    # Payout Ratio (%)
+    if dy_12m > 5: score += 20
+    elif dy_12m > 3.5: score += 15
+    elif dy_12m > 2: score += 10
+    elif dy_12m < 2: score -= 5
+
+    dy_5y = row['DY 5 Anos Média (%)']
+    if dy_5y > 8: score += 25
+    elif dy_5y > 6: score += 20
+    elif dy_5y > 4: score += 10
+
+    # Payout Ratio
     payout = row['Payout Ratio (%)']
-    if 30 <= payout <= 60:
-        score += 15
-        detalhes.append("Payout Ratio 30-60%: +15")
-    elif 60 < payout <= 80:
-        score += 5
-        detalhes.append("Payout Ratio 60-80%: +5")
-    elif payout > 80 or payout < 20:
-        score -= 10
-        detalhes.append("Payout Ratio <20% ou >80%: -10")
-    
-    # ROE (%)
+    if 30 <= payout <= 60: score += 10
+    elif 60 < payout <= 80: score += 5
+    elif payout < 20 or payout > 80: score -= 5
+
+    # ROE (ajuste para Financeiro)
     roe = row['ROE (%)']
-    if roe > 12:
-        score += 15
-        detalhes.append("ROE > 12%: +15")
-    elif roe > 8:
-        score += 5
-        detalhes.append("ROE > 8%: +5")
-    
-    # P/L
+    if setor == 'financeiro':
+        if roe > 15: score += 25
+        elif roe > 12: score += 20
+        elif roe > 8: score += 10
+    else:
+        if roe > 12: score += 15
+        elif roe > 8: score += 5
+
+    # P/L e P/VP
     pl = row['P/L']
-    if pl > 0 and pl < 12:
-        score += 15
-        detalhes.append("P/L < 12: +15")
-    elif pl < 18:
-        score += 5
-        detalhes.append("P/L < 18: +5")
-    elif pl > 25:
-        score -= 5
-        detalhes.append("P/L > 25: -5")
-    
-    # P/VP
+    if pl > 0 and pl < 12: score += 15
+    elif pl < 18: score += 10
+    elif pl > 25: score -= 5
+
     pvp = row['P/VP']
-    if pvp > 0 and pvp < 1.5:
-        score += 10
-        detalhes.append("P/VP < 1.5: +10")
-    elif pvp < 2.5:
-        score += 5
-        detalhes.append("P/VP < 2.5: +5")
-    elif pvp > 4:
-        score -= 5
-        detalhes.append("P/VP > 4: -5")
-    
-    # Dívida Total e Dívida/EBITDA (exceto bancos)
-    if 'Financeiro' not in str(row['Setor (brapi)']).lower():
-        divida = row['Dívida Total']
-        market_cap = row['Market Cap (R$)']
-        if divida > 0 and market_cap > 0:
-            debt_ratio = divida / market_cap
-            if debt_ratio < 0.5:
-                score += 15
-                detalhes.append("Dívida/Market Cap < 0.5: +15")
-            elif debt_ratio < 1.0:
-                score += 5
-                detalhes.append("Dívida/Market Cap < 1.0: +5")
-            elif debt_ratio > 2.0:
-                score -= 5
-                detalhes.append("Dívida/Market Cap > 2.0: -5")
-        
-        # Dívida/EBITDA
-        if 'Dívida/EBITDA' in row:
-            divida_ebitda = row['Dívida/EBITDA']
-            if divida_ebitda > 0 and divida_ebitda < 2:
-                score += 10
-                detalhes.append("Dívida/EBITDA < 2: +10")
-            elif divida_ebitda < 4:
-                score += 5
-                detalhes.append("Dívida/EBITDA < 4: +5")
-            elif divida_ebitda > 6:
-                score -= 5
-                detalhes.append("Dívida/EBITDA > 6: -5")
-    
-    return score, detalhes
+    if pvp < 0.66: score += 20
+    elif pvp < 1.5: score += 10
+    elif pvp < 2.5: score += 5
+    elif pvp > 4: score -= 5
 
-# Aplicar o score e armazenar detalhes
-df[['Score', 'Detalhes Score']] = df.apply(calcular_score, axis=1, result_type='expand')
+    # Dívida (exceto Financeiro)
+    if setor != 'financeiro':
+        debt_mc = row['Dívida Total'] / row['Market Cap (R$)'] if row['Market Cap (R$)'] > 0 else 0
+        if debt_mc < 0.5: score += 10
+        elif debt_mc < 1.0: score += 5
+        elif debt_mc > 2.0: score -= 5
 
-# Filtros interativos
+        div_ebitda = row['Dívida/EBITDA']
+        if div_ebitda < 1: score += 10
+        elif div_ebitda < 2: score += 5
+        elif div_ebitda > 6: score -= 5
+
+    # Crescimento
+    cagr = row['Crescimento Preço (%)']
+    if cagr > 15: score += 15
+    elif cagr > 10: score += 10
+    elif cagr > 5: score += 5
+    elif cagr < 0: score -= 5
+
+    # Sentimento do Mercado (0-100)
+    ticker_yf = yf.Ticker(f"{row['Ticker']}.SA")
+    recommendations = ticker_yf.recommendations
+    sentiment = 0
+    if not recommendations.empty and 'To Grade' in recommendations.columns:
+        sentiment = (recommendations['To Grade'].value_counts().reindex(['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'], fill_value=0) * [2, 1, 0, -1, -2]).sum() / len(recommendations) if len(recommendations) > 0 else 0
+    sentiment_score = max(0, min(10, (sentiment * 50 + 50) / 10))  # Normalizado de 0-10
+    score += sentiment_score
+
+    return max(0, min(200, score))
+
+df['Score Total'] = df.apply(calculate_total_score, axis=1)
+
+# Filtros interativos no sidebar
 st.sidebar.header("Filtros")
 setores_disponiveis = sorted(df['Setor (brapi)'].unique().tolist())
 setor_filtro = st.sidebar.multiselect("Selecione Setores", setores_disponiveis, default=setores_disponiveis)
-dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 20.0, 3.5, step=0.1)
-score_min = st.sidebar.slider("Score Mínimo", 0, 135, 70, step=1)
+dy_12m_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 20.0, 3.5, step=0.1)
+dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, step=0.1)  # Padrão 6%
+score_min = st.sidebar.slider("Score Mínimo", 0, 200, 100, step=1)
 
-# Filtro de ordenação
+# Ordenação
 st.sidebar.header("Ordenação")
-colunas_ordenacao = ['Score', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'ROE (%)', 'Payout Ratio (%)']
+colunas_ordenacao = ['Score Total', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'ROE (%)', 'Payout Ratio (%)']
 coluna_ordenacao = st.sidebar.selectbox("Ordenar por", colunas_ordenacao)
 ordem = st.sidebar.radio("Ordem", ["Decrescente (⬇)", "Crescente (⬆)"], index=0)
 ascending = True if ordem == "Crescente (⬆)" else False
 
 # Aplicar filtros
 df_filtrado = df[
-    (df['Setor (brapi)'].isin(setor_filtro)) & 
-    (df['DY (Taxa 12m, %)'] >= dy_min) & 
-    (df['Score'] >= score_min)
+    (df['Setor (brapi)'].isin(setor_filtro)) &
+    (df['DY (Taxa 12m, %)'] >= dy_12m_min) &
+    (df['DY 5 Anos Média (%)'] >= dy_5y_min) &
+    (df['Score Total'] >= score_min)
 ].sort_values(by=coluna_ordenacao, ascending=ascending)
 
 # Abas para organização
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Ranking", "Ranking Detalhado", "Gráficos", "Regras de Investimento", "Detalhamento do Score"])
+tab1, tab2, tab3, tab4 = st.tabs(["Ranking", "Ranking Detalhado", "Gráficos", "Detalhamento dos Scores"])
 
 with tab1:
     st.header("Ranking")
-    st.markdown("Tabela resumida com as principais métricas das ações ranqueadas com base nos critérios de Barsi e Bazin.")
-
-    # Cabeçalho da tabela Ranking
-    colunas_ranking = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Preço Atual', 'DY 12 Meses (%)', 'DY 5 Anos (%)', 
-                       'Market Cap (R$)', 'Score']
+    st.markdown("Tabela resumida com as principais métricas das ações ranqueadas.")
     cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1.5, 1])
-    for i, col_name in enumerate(colunas_ranking):
+    for i, col_name in enumerate(['Logo', 'Ticker', 'Empresa', 'Setor', 'Preço Atual', 'DY 12 Meses (%)', 'DY 5 Anos (%)', 'Market Cap (R$)', 'Score Total']):
         with cols[i]:
             st.markdown(f"**{col_name}**")
-
-    # Tabela Ranking
     for _, row in df_filtrado.iterrows():
         cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1.5, 1])
         with cols[0]:
@@ -281,24 +206,19 @@ with tab1:
         with cols[7]:
             st.write(f"R$ {row['Market Cap (R$)'] / 1_000_000_000:.2f} Bi")
         with cols[8]:
-            st.write(f"{row['Score']:.0f}")
+            st.write(f"{row['Score Total']:.0f}")
 
 with tab2:
     st.header("Ranking Detalhado")
-    st.markdown("A tabela abaixo mostra as ações ranqueadas com base nos critérios de Barsi e Bazin. Clique nos logotipos para mais detalhes.")
-
-    # Cabeçalho da tabela Ranking Detalhado
-    colunas_ranking_detalhado = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Tipo', 'Preço Atual', 'P/L', 'P/VP', 'ROE (%)', 
-                       'DY 12 Meses (%)', 'DY 5 Anos (%)', 'Último Dividendo (R$)', 'Data Últ. Div.', 'Data Ex-Div.', 
-                       'Payout Ratio (%)', 'Dívida Total', 'Dívida/EBITDA', 'Market Cap (R$)', 'Score']
-    cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5, 1])
-    for i, col_name in enumerate(colunas_ranking_detalhado):
+    st.markdown("Tabela detalhada com todos os indicadores das ações ranqueadas.")
+    cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5])
+    for i, col_name in enumerate(['Logo', 'Ticker', 'Empresa', 'Setor', 'Tipo', 'Preço Atual', 'P/L', 'P/VP', 'ROE (%)', 
+                                 'DY 12 Meses (%)', 'DY 5 Anos (%)', 'Último Dividendo (R$)', 'Data Últ. Div.', 'Data Ex-Div.', 
+                                 'Payout Ratio (%)', 'Dívida Total', 'Dívida/EBITDA', 'Market Cap (R$)']):
         with cols[i]:
             st.markdown(f"**{col_name}**")
-
-    # Tabela Ranking Detalhado
     for _, row in df_filtrado.iterrows():
-        cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5, 1])
+        cols = st.columns([1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1, 1.5])
         with cols[0]:
             if row['Logo'] != 'N/A' and isinstance(row['Logo'], str):
                 try:
@@ -341,55 +261,50 @@ with tab2:
             st.write(f"{row['Dívida/EBITDA']:.2f}" if pd.notna(row['Dívida/EBITDA']) else "N/A")
         with cols[17]:
             st.write(f"R$ {row['Market Cap (R$)'] / 1_000_000_000:.2f} Bi")
-        with cols[18]:
-            st.write(f"{row['Score']:.0f}")
 
 with tab3:
     st.header("Gráficos Interativos")
+    st.markdown("Explore visualizações detalhadas das ações ranqueadas.")
     
-    # Seletor de ação para análise individual e mapa de dividendos
-    acao_selecionada = st.selectbox("Selecione uma ação para análise individual e mapa de dividendos", df_filtrado['Ticker'].tolist())
+    acao_selecionada = st.selectbox("Selecione uma ação para análise detalhada", df_filtrado['Ticker'].tolist())
     df_acao = df_filtrado[df_filtrado['Ticker'] == acao_selecionada].iloc[0]
-    
-    # Gráfico 1: Evolução do Score (simulado)
-    st.subheader("Evolução do Score (Simulação)")
-    fig1 = px.line(
+    ticker_yf = yf.Ticker(f"{acao_selecionada}.SA")
+
+    # Gráfico 1: Score Total por Setor
+    st.subheader("Score Total por Setor")
+    fig1 = px.bar(
         df_filtrado,
-        x=df_filtrado.index,
-        y='Score',
+        x='Setor (brapi)',
+        y='Score Total',
         color='Setor (brapi)',
-        title="Evolução do Score",
-        labels={'index': 'Ações', 'Score': 'Score'}
+        title="Score Total por Setor",
+        text='Score Total'
     )
+    fig1.update_traces(textposition='auto')
     st.plotly_chart(fig1, use_container_width=True)
-    
-    # Gráfico 2: Análise Individual de Ação
-    st.subheader(f"Análise Individual de {acao_selecionada}")
+
+    # Gráfico 2: Análise Individual
+    st.subheader(f"Análise de {acao_selecionada}")
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['DY (Taxa 12m, %)']], mode='lines+markers', name='DY 12m (%)'))
-    fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['P/L']], mode='lines+markers', name='P/L'))
+    fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['DY 5 Anos Média (%)']], mode='lines+markers', name='DY 5 Anos (%)'))
     fig2.add_trace(go.Scatter(x=['Atual'], y=[df_acao['ROE (%)']], mode='lines+markers', name='ROE (%)'))
-    fig2.update_layout(
-        title=f"Métricas de {acao_selecionada}",
-        xaxis_title="Período",
-        yaxis_title="Valor",
-        legend_title="Métricas"
-    )
+    fig2.update_layout(title=f"Métricas de {acao_selecionada}", xaxis_title="Período", yaxis_title="Valor", legend_title="Métricas")
     st.plotly_chart(fig2, use_container_width=True)
-    
+
     # Gráfico 3: Candlestick Simulado
-    st.subheader("Candlestick Simulado (Baseado em Preço Atual)")
+    st.subheader("Candlestick Simulado")
     fig3 = go.Figure(data=[go.Candlestick(
-        x=df_filtrado['Ticker'],
-        open=[df_acao['Preço Atual']] * len(df_filtrado),
-        high=[df_acao['Preço Atual'] * 1.05] * len(df_filtrado),
-        low=[df_acao['Preço Atual'] * 0.95] * len(df_filtrado),
-        close=[df_acao['Preço Atual']] * len(df_filtrado)
+        x=[acao_selecionada],
+        open=[df_acao['Preço Atual']],
+        high=[df_acao['Preço Atual'] * 1.05],
+        low=[df_acao['Preço Atual'] * 0.95],
+        close=[df_acao['Preço Atual']]
     )])
-    fig3.update_layout(title="Candlestick Simulado", xaxis_title="Ações", yaxis_title="Preço (R$)")
+    fig3.update_layout(title="Candlestick Simulado", xaxis_title="Ação", yaxis_title="Preço (R$)")
     st.plotly_chart(fig3, use_container_width=True)
-    
-    # Gráfico 4: Correlação P/L vs. DY 12m
+
+    # Gráfico 4: Correlação P/L vs. DY
     st.subheader("Correlação P/L vs. DY 12m")
     fig4 = px.scatter(
         df_filtrado,
@@ -397,141 +312,95 @@ with tab3:
         y='DY (Taxa 12m, %)',
         color='Setor (brapi)',
         trendline="ols",
-        title="Correlação entre P/L e DY 12m",
-        labels={'P/L': 'Preço/Lucro', 'DY (Taxa 12m, %)': 'DY 12 Meses (%)'}
+        title="Correlação entre P/L e DY 12m"
     )
     st.plotly_chart(fig4, use_container_width=True)
-    
-    # Gráfico 5: DY 12 Meses por Empresa
-    st.subheader("DY 12 Meses por Empresa")
-    fig5 = px.bar(
-        df_filtrado,
-        x='Empresa',
-        y='DY (Taxa 12m, %)',
-        color='Setor (brapi)',
-        title="DY 12 Meses por Empresa",
-        text='DY (Taxa 12m, %)'
-    )
-    fig5.update_traces(textposition='auto')
-    st.plotly_chart(fig5, use_container_width=True)
-    
-    # Gráfico 6: Último Dividendo por Empresa
-    st.subheader("Último Dividendo por Empresa")
-    fig6 = px.bar(
-        df_filtrado,
-        x='Empresa',
-        y='Último Dividendo (R$)',
-        color='Setor (brapi)',
-        title="Último Dividendo por Empresa",
-        text='Último Dividendo (R$)'
-    )
-    fig6.update_traces(textposition='auto')
-    st.plotly_chart(fig6, use_container_width=True)
-    
-    # Gráfico 7: Mapa de Dividendos Passado e Futuros
-    st.subheader("Mapa de Dividendos Passado e Futuros")
-    df_acao_div = df_filtrado[df_filtrado['Ticker'] == acao_selecionada]
+
+    # Gráfico 5: Mapa de Dividendos
+    st.subheader("Mapa de Dividendos")
     ultima_data_div = df_acao['Data Últ. Div.']
     ultimo_dividendo = df_acao['Último Dividendo (R$)']
     dy_12m = df_acao['DY (Taxa 12m, %)']
     preco_atual = df_acao['Preço Atual']
     
-    # Passado: Baseado em Data Últ. Div. e Último Dividendo
-    datas_passado = [ultima_data_div] if pd.notna(ultima_data_div) else []
-    valores_passado = [ultimo_dividendo] if pd.notna(ultimo_dividendo) else []
-    
-    # Futuro: Estimativa baseada em DY 12m e frequência anual simplificada
+    fig5 = go.Figure()
+    if pd.notna(ultima_data_div) and pd.notna(ultimo_dividendo):
+        fig5.add_trace(go.Scatter(x=[ultima_data_div], y=[ultimo_dividendo], mode='markers', name='Passado'))
     if pd.notna(ultima_data_div) and pd.notna(dy_12m) and pd.notna(preco_atual) and preco_atual > 0:
         dividendo_estimado = (dy_12m / 100) * preco_atual
         datas_futuro = [ultima_data_div + relativedelta(months=6), ultima_data_div + relativedelta(months=12)]
-        valores_futuro = [dividendo_estimado] * 2  # Simulação de dois próximos dividendos
-    else:
-        datas_futuro = []
-        valores_futuro = []
-    
-    fig7 = go.Figure()
-    if datas_passado and valores_passado:
-        fig7.add_trace(go.Scatter(x=datas_passado, y=valores_passado, mode='lines+markers', name='Dividendos Passados'))
-    if datas_futuro and valores_futuro:
-        fig7.add_trace(go.Scatter(x=datas_futuro, y=valores_futuro, mode='markers', name='Dividendos Futuros (Estimados)'))
-    
-    fig7.update_layout(
-        title=f"Mapa de Dividendos de {acao_selecionada}",
-        xaxis_title="Data",
-        yaxis_title="Valor do Dividendo (R$)",
-        legend_title="Tipo",
-        xaxis=dict(range=[(ultima_data_div - relativedelta(months=6)).date() if pd.notna(ultima_data_div) else datetime(2024, 1, 1).date(), 
-                          (ultima_data_div + relativedelta(months=18)).date() if pd.notna(ultima_data_div) else datetime(2026, 1, 1).date()])
-    )
-    st.plotly_chart(fig7, use_container_width=True)
+        fig5.add_trace(go.Scatter(x=datas_futuro, y=[dividendo_estimado] * 2, mode='markers', name='Futuro (Estimado)'))
+    fig5.update_layout(title=f"Mapa de Dividendos de {acao_selecionada}", xaxis_title="Data", yaxis_title="Valor (R$)")
+    st.plotly_chart(fig5, use_container_width=True)
+
+    # Gráfico 6: Velocímetro de Sentimento
+    st.subheader("Velocímetro de Sentimento")
+    sentiment = df_acao['Sentimento Gauge'] if 'Sentimento Gauge' in df_acao else 50
+    fig6 = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=sentiment,
+        domain={'x': [0, 1], 'y': [0, 1]},
+        gauge={'axis': {'range': [0, 100]},
+               'steps': [{'range': [0, 20], 'color': 'red'}, {'range': [20, 40], 'color': 'orange'},
+                         {'range': [40, 60], 'color': 'yellow'}, {'range': [60, 80], 'color': 'lightgreen'},
+                         {'range': [80, 100], 'color': 'green'}],
+               'bar': {'color': "gray"}}
+    ))
+    st.plotly_chart(fig6, use_container_width=True)
 
 with tab4:
-    st.header("Regras de Investimento")
-    st.markdown("""
-    Este aplicativo utiliza as filosofias de **Luiz Barsi** e **Décio Bazin** para ranquear ações, focando em empresas com dividendos consistentes e fundamentos sólidos. Abaixo estão os critérios usados para calcular o **Score** de cada ação:
-
-    ### Critérios de Pontuação
-    - **Dividend Yield Médio de 5 Anos (DY 5 Anos Média)**:
-        - **> 8%**: +40 pontos
-        - **> 6%**: +30 pontos
-        - **> 4%**: +10 pontos
-    - **Dividend Yield dos Últimos 12 Meses (DY 12m)**:
-        - **> 5%**: +15 pontos
-        - **> 3.5%**: +10 pontos
-        - **> 2%**: +5 pontos
-        - **< 2%**: -5 pontos
-    - **Payout Ratio** (Percentual do lucro distribuído como dividendos):
-        - **30% a 60%**: +15 pontos (ideal para sustentabilidade)
-        - **60% a 80%**: +5 pontos
-        - **< 20% ou > 80%**: -10 pontos (insustentável ou retenção excessiva)
-    - **ROE (Retorno sobre o Patrimônio Líquido)**:
-        - **> 12%**: +15 pontos
-        - **> 8%**: +5 pontos
-    - **P/L (Preço/Lucro)**:
-        - **< 12**: +15 pontos (ação subvalorizada)
-        - **< 18**: +5 pontos
-        - **> 25**: -5 pontos (ação potencialmente sobrevalorizada)
-    - **P/VP (Preço/Valor Patrimonial)**:
-        - **< 1.5**: +10 pontos (ação barata em relação ao patrimônio)
-        - **< 2.5**: +5 pontos
-        - **> 4**: -5 pontos (ação cara)
-    - **Último Dividendo**:
-        - **Pago nos últimos 6 meses**: +5 pontos (indica consistência recente)
-    - **Dívida Total / Market Cap** (exceto setor Financeiro):
-        - **< 0.5**: +15 pontos (endividamento baixo)
-        - **< 1.0**: +5 pontos
-        - **> 2.0**: -5 pontos (endividamento alto)
-    - **Dívida/EBITDA** (exceto setor Financeiro):
-        - **< 2**: +10 pontos (endividamento saudável)
-        - **< 4**: +5 pontos
-        - **> 6**: -5 pontos (endividamento arriscado)
-
-    ### Filosofia por Trás
-    - **Décio Bazin**: Foco em empresas com **Dividend Yield** alto e consistente, que pagam dividendos regularmente, indicando saúde financeira e retorno ao acionista.
-    - **Luiz Barsi**: Prioriza empresas com fundamentos sólidos (baixo P/L, P/VP, alto ROE) e dividendos sustentáveis (Payout Ratio equilibrado).
-    - **Exceção para o Setor Financeiro**: Dívida Total e Dívida/EBITDA não são considerados para bancos e instituições financeiras, pois o endividamento é parte do modelo de negócios.
-
-    ### Como Usar
-    - Use os filtros no sidebar para ajustar setores, DY mínimo (12 meses) e Score mínimo.
-    - Ordene a tabela por colunas como Score, DY, P/L, etc., em ordem crescente (⬆) ou decrescente (⬇).
-    - Explore os gráficos para visualizar padrões, como DY vs. P/L ou distribuição do Payout Ratio.
-    - Consulte a aba "Detalhamento do Score" para ver como o Score de cada empresa foi calculado.
-    """)
-
-with tab5:
-    st.header("Detalhamento do Score")
-    st.markdown("Clique no nome da empresa para ver como o Score foi calculado com base nos critérios de Barsi e Bazin.")
-    
+    st.header("Detalhamento dos Scores")
+    st.markdown("Clique no nome da empresa para ver como o Score Total foi calculado.")
     for _, row in df_filtrado.iterrows():
-        with st.expander(f"{row['Ticker']} - {row['Empresa']} (Score: {row['Score']})"):
-            st.markdown(f"### Detalhamento do Score para {row['Ticker']} - {row['Empresa']}")
-            for detalhe in row['Detalhes Score']:
-                st.write(f"- {detalhe}")
-            st.markdown(f"**Score Total: {row['Score']}**")
+        with st.expander(f"{row['Ticker']} - {row['Empresa']}"):
+            st.markdown(f"### Detalhamento do Score Total: {row['Score Total']:.0f}")
+            detalhes = []
+            if row['DY (Taxa 12m, %)'] > 5: detalhes.append("DY 12m > 5%: +20")
+            elif row['DY (Taxa 12m, %)'] > 3.5: detalhes.append("DY 12m > 3.5%: +15")
+            elif row['DY (Taxa 12m, %)'] > 2: detalhes.append("DY 12m > 2%: +10")
+            elif row['DY (Taxa 12m, %)'] < 2: detalhes.append("DY 12m < 2%: -5")
+            if row['DY 5 Anos Média (%)'] > 8: detalhes.append("DY 5y > 8%: +25")
+            elif row['DY 5 Anos Média (%)'] > 6: detalhes.append("DY 5y > 6%: +20")
+            elif row['DY 5 Anos Média (%)'] > 4: detalhes.append("DY 5y > 4%: +10")
+            if 30 <= row['Payout Ratio (%)'] <= 60: detalhes.append("Payout 30-60%: +10")
+            elif 60 < row['Payout Ratio (%)'] <= 80: detalhes.append("Payout 60-80%: +5")
+            elif row['Payout Ratio (%)'] < 20 or row['Payout Ratio (%)'] > 80: detalhes.append("Payout <20% ou >80%: -5")
+            if row['Setor (brapi)'].lower() == 'financeiro':
+                if row['ROE (%)'] > 15: detalhes.append("ROE > 15% (Financeiro): +25")
+                elif row['ROE (%)'] > 12: detalhes.append("ROE > 12% (Financeiro): +20")
+                elif row['ROE (%)'] > 8: detalhes.append("ROE > 8% (Financeiro): +10")
+            else:
+                if row['ROE (%)'] > 12: detalhes.append("ROE > 12%: +15")
+                elif row['ROE (%)'] > 8: detalhes.append("ROE > 8%: +5")
+            if row['P/L'] > 0 and row['P/L'] < 12: detalhes.append("P/L < 12: +15")
+            elif row['P/L'] < 18: detalhes.append("P/L < 18: +10")
+            elif row['P/L'] > 25: detalhes.append("P/L > 25: -5")
+            if row['P/VP'] < 0.66: detalhes.append("P/VP < 0.66: +20")
+            elif row['P/VP'] < 1.5: detalhes.append("P/VP < 1.5: +10")
+            elif row['P/VP'] < 2.5: detalhes.append("P/VP < 2.5: +5")
+            elif row['P/VP'] > 4: detalhes.append("P/VP > 4: -5")
+            if row['Setor (brapi)'].lower() != 'financeiro':
+                debt_mc = row['Dívida Total'] / row['Market Cap (R$)'] if row['Market Cap (R$)'] > 0 else 0
+                if debt_mc < 0.5: detalhes.append("Dívida/Market Cap < 0.5: +10")
+                elif debt_mc < 1.0: detalhes.append("Dívida/Market Cap < 1.0: +5")
+                elif debt_mc > 2.0: detalhes.append("Dívida/Market Cap > 2.0: -5")
+                if row['Dívida/EBITDA'] < 1: detalhes.append("Dívida/EBITDA < 1: +10")
+                elif row['Dívida/EBITDA'] < 2: detalhes.append("Dívida/EBITDA < 2: +5")
+                elif row['Dívida/EBITDA'] > 6: detalhes.append("Dívida/EBITDA > 6: -5")
+            if row['Crescimento Preço (%)'] > 15: detalhes.append("Crescimento Preço > 15%: +15")
+            elif row['Crescimento Preço (%)'] > 10: detalhes.append("Crescimento Preço > 10%: +10")
+            elif row['Crescimento Preço (%)'] > 5: detalhes.append("Crescimento Preço > 5%: +5")
+            elif row['Crescimento Preço (%)'] < 0: detalhes.append("Crescimento Preço < 0%: -5")
+            sentiment_score = (row['Sentimento Gauge'] - 50) / 5 if 'Sentimento Gauge' in row else 0
+            if sentiment_score > 0: detalhes.append(f"Sentimento > 50: +{sentiment_score}")
+            elif sentiment_score < 0: detalhes.append(f"Sentimento < 50: {sentiment_score}")
+            for detalhe in detalhes:
+                st.write(detalhe)
 
-# Rodapé com crédito
+# Rodapé estilizado
 st.markdown("""
 ---
-**Desenvolvido por Gustavo Lima.**  
-**Baseado nas filosofias de Luiz Barsi e Décio Bazin.**
-""")
+<div style="text-align: center; font-size: 0.9rem; color: #666;">
+    **Desenvolvido por Gustavo Lima** | Baseado nas melhores práticas de Luiz Barsi, Décio Bazin, Warren Buffett, Peter Lynch e Benjamin Graham | © 2025
+</div>
+""", unsafe_allow_html=True)

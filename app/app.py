@@ -41,12 +41,11 @@ st.markdown("""
 Bem-vindo ao **Investidor Inteligente**, um aplicativo para ranquear ações e fundos com base em fundamentos sólidos, dividendos consistentes e valor intrínseco, combinando o melhor das filosofias de Luiz Barsi, Décio Bazin, Warren Buffett, Peter Lynch e Benjamin Graham. Use os filtros abaixo para personalizar o ranking e explore gráficos interativos!
 """)
 
-# Carregar dados do CSV
+# Carregar dados do CSV com cache
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv(r"C:\Users\01701805\Desktop\Projetos GL\finance-manager\data\relatorio_analise_b3.csv", index_col=0)
-        # Converter colunas
+        df = pd.read_csv(r"E:\finance-manager\data\relatorio_analise_b3.csv", index_col=0)
         colunas_percentual = ["DY (Taxa 12m, %)", "DY 5 Anos Média (%)", "ROE (%)", "Payout Ratio (%)", "Crescimento Preço (%)"]
         for col in colunas_percentual:
             df[col] = df[col].apply(lambda x: float(str(x).replace('%', '')) if '%' in str(x) else float(str(x)) if str(x) != 'N/A' else 0.0)
@@ -71,7 +70,20 @@ df['Setor (brapi)'] = df['Setor (brapi)'].map(setores_traducao).fillna(df['Setor
 tipo_traducao = {'stock': 'Ações', 'fund': 'Fundos'}
 df['Tipo'] = df['Tipo'].map(tipo_traducao).fillna(df['Tipo']).str.capitalize()
 
-# Função para calcular o Score Total
+# Cache para recomendações de mercado
+@st.cache_data
+def get_sentiment_cache(ticker):
+    try:
+        ticker_yf = yf.Ticker(f"{ticker}.SA")
+        recommendations = ticker_yf.recommendations
+        if not recommendations.empty and 'To Grade' in recommendations.columns:
+            sentiment = (recommendations['To Grade'].value_counts().reindex(['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'], fill_value=0) * [2, 1, 0, -1, -2]).sum() / len(recommendations) if len(recommendations) > 0 else 0
+            return max(0, min(10, (sentiment * 50 + 50) / 10))  # Normalizado de 0-10
+        return 0
+    except Exception:
+        return 0
+
+# Função para calcular o Score Total com cache de sentimento
 def calculate_total_score(row):
     score = 0
     setor = row['Setor (brapi)'].lower()
@@ -135,13 +147,8 @@ def calculate_total_score(row):
     elif cagr > 5: score += 5
     elif cagr < 0: score -= 5
 
-    # Sentimento do Mercado (0-100)
-    ticker_yf = yf.Ticker(f"{row['Ticker']}.SA")
-    recommendations = ticker_yf.recommendations
-    sentiment = 0
-    if not recommendations.empty and 'To Grade' in recommendations.columns:
-        sentiment = (recommendations['To Grade'].value_counts().reindex(['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'], fill_value=0) * [2, 1, 0, -1, -2]).sum() / len(recommendations) if len(recommendations) > 0 else 0
-    sentiment_score = max(0, min(10, (sentiment * 50 + 50) / 10))  # Normalizado de 0-10
+    # Sentimento do Mercado (usando cache)
+    sentiment_score = get_sentiment_cache(row['Ticker'])
     score += sentiment_score
 
     return max(0, min(200, score))
@@ -335,10 +342,10 @@ with tab3:
 
     # Gráfico 6: Velocímetro de Sentimento
     st.subheader("Velocímetro de Sentimento")
-    sentiment = df_acao['Sentimento Gauge'] if 'Sentimento Gauge' in df_acao else 50
+    sentiment = get_sentiment_cache(acao_selecionada)
     fig6 = go.Figure(go.Indicator(
         mode="gauge+number",
-        value=sentiment,
+        value=sentiment * 10,  # Convertido de 0-10 para 0-100 para o gauge
         domain={'x': [0, 1], 'y': [0, 1]},
         gauge={'axis': {'range': [0, 100]},
                'steps': [{'range': [0, 20], 'color': 'red'}, {'range': [20, 40], 'color': 'orange'},
@@ -391,7 +398,7 @@ with tab4:
             elif row['Crescimento Preço (%)'] > 10: detalhes.append("Crescimento Preço > 10%: +10")
             elif row['Crescimento Preço (%)'] > 5: detalhes.append("Crescimento Preço > 5%: +5")
             elif row['Crescimento Preço (%)'] < 0: detalhes.append("Crescimento Preço < 0%: -5")
-            sentiment_score = (row['Sentimento Gauge'] - 50) / 5 if 'Sentimento Gauge' in row else 0
+            sentiment_score = get_sentiment_cache(row['Ticker'])
             if sentiment_score > 0: detalhes.append(f"Sentimento > 50: +{sentiment_score}")
             elif sentiment_score < 0: detalhes.append(f"Sentimento < 50: {sentiment_score}")
             for detalhe in detalhes:
