@@ -1,0 +1,31 @@
+
+incluir: Crescimento (CAGR + ROIC): 0→ 25
+Pensei em fazer assim:
+ticker = yf.Ticker("PETR4.SA")
+hist = ticker.history(period="5y")
+inicio = hist["Close"].iloc[0]
+fim = hist["Close"].iloc[-1]
+anos = 5
+cagr = ((fim / inicio) ** (1 / anos)) - 1
+print(f"CAGR: {cagr:.2%}")
+
+Fazer calculo com yfinance exempl cagr = (lucro_ano_atual / lucro_ano_inicial) ** (1/5) - 1, estaria certo o calculo ?
+
+Sentimento: ajustar para maximo de 15
+
+Desta forma, ajuste para ter no maximo 200 pontos.
+
+
+Dividend Yield Médio de 5 Anos: > 8%: +40, > 6%: +30, > 4%: +10 (Barsi)
+Dividend Yield 12 Meses: > 5%: +15, > 3.5%: +10, > 2%: +5, < 2%: -5 (Barsi)
+Payout Ratio: 30-60%: +15, 60-80%: +5, <20% ou >80%: -10 (Barsi)
+ROE: > 12%: +15, > 8%: +5 (Barsi)
+P/L: < 12: +15, < 18: +5, > 25: -5 (Barsi, Buffett < 15 já incluso)
+P/VP: < 0.66: +20 (Graham), < 1.5: +10 (Buffett/Barsi), < 2.5: +5, > 4: -5 (Barsi)
+Dívida/Market Cap (exceto Financeiro): < 0.5: +15, < 1.0: +5, > 2.0: -5 (Barsi)
+Dívida/EBITDA (exceto Financeiro): < 1: +10 (Graham), < 2: +10, < 4: +5, > 6: -5 (Barsi)
+Market Cap: > 10B: +5 (Buffett)
+Crescimento Preço: > 15%: +10 (Lynch)
+PEG: < 1: +10 (Lynch)
+Sentimento: 0-20: -5, 20-40: -2, 40-60: 0, 60-80: +2, 80-100: +5 (novo, ajustado para máximo +5)
+Máximo Teórico: 135 (Barsi) + 5 (Buffett Market Cap) + 20 (Lynch) + 10 (Graham Dívida/EBITDA < 1) + 5 (Sentimento) = 175 pontos.
