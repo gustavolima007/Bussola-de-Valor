@@ -6,9 +6,21 @@ Bancos, Energia Saneamento, seguros e Telecom
 
 * Pendencias:
 
-- Alterar para CSV
-- Incluir NOVAS colunas para novo calculo
-- Incluir novo filtro de DY 5 anos. igual DY12M
+- Inclua uma coluna no ranking e ranling detalhado, informando se a ação é Small Cap ou Large Cap, mid cap etc. 
+Depois inclua um filtro tambem para filtrar por Small Cap etc.
+
+Tem como fazer essa classificação ? e incluir no ranking e ranking detalhado?
+Blue Chips	Empresas mais negociadas e sólidas	Petrobras, Itaú, Ambev
+Penny Stocks	Ações com valor abaixo de R$ 1	Alta volatilidade, risco elevado.
+Growth Stocks	Foco em crescimento de receita	Empresas de tecnologia ou expansão acelerada.
+Value Stocks	Ações "baratas" em relação aos fundamentos	Comuns em estratégias como a do Luiz Barsi.
+Dividend Stocks	Foco em distribuição de lucros	Banco do Brasil, Taesa, Copel.
+
+
+
+
+
+
 
 * Graficos:
 
