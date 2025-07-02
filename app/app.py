@@ -1,4 +1,4 @@
-# app.py (Versão com Filtro DY 5 Anos)
+# app.py (Versão com Filtro de Perfil da Ação)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -123,6 +123,10 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
 df = load_data(r"E:\Github\finance-manager\data\relatorio_analise_b3.csv")
 
 if not df.empty:
+    # Garante que a coluna 'Perfil da Ação' exista, mesmo que o CSV seja antigo
+    if 'Perfil da Ação' not in df.columns:
+        df['Perfil da Ação'] = 'N/A'
+        
     score_results = df.apply(calculate_score_and_details, axis=1)
     df['Score Total'] = score_results.apply(lambda x: x[0])
     df['Score Details'] = score_results.apply(lambda x: x[1])
@@ -135,20 +139,23 @@ if not df.empty:
     setores_disponiveis = sorted(df['Setor (brapi)'].dropna().unique().tolist())
     setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
     
+    # ### MUDANÇA 1: Adiciona o filtro de Perfil da Ação ###
+    perfis_disponiveis = sorted(df['Perfil da Ação'].dropna().unique().tolist())
+    perfil_filtro = st.sidebar.multiselect("Perfil da Ação", perfis_disponiveis, default=perfis_disponiveis)
+    
     score_min_val = int(df['Score Total'].min())
-    score_range = st.sidebar.slider("Faixa de Score", min_value=score_min_val, max_value=200, value=(100, 200))
+    score_range = st.sidebar.slider("Faixa de Score", min_value=0, max_value=200, value=(100, 200))
     
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 3.5, 0.1)
-    
-    # ### MUDANÇA: Filtro de P/VP trocado por DY 5 Anos ###
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 4.0, 0.1)
 
     # --- FILTRAGEM E ORDENAÇÃO ---
     df_filtrado = df[
         (df['Setor (brapi)'].isin(setor_filtro)) &
+        (df['Perfil da Ação'].isin(perfil_filtro)) & # Adiciona o novo filtro à lógica
         (df['Score Total'].between(score_range[0], score_range[1])) &
         (df['DY (Taxa 12m, %)'] >= dy_min) &
-        (df['DY 5 Anos Média (%)'] >= dy_5y_min) # Lógica de filtro atualizada
+        (df['DY 5 Anos Média (%)'] >= dy_5y_min)
     ].copy()
     
     st.sidebar.header("Ordenação")
@@ -161,10 +168,12 @@ if not df.empty:
 
     with tab1:
         st.header(f"Ranking de Ações ({len(df_filtrado)} encontradas)")
-        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Preço Atual', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'Score Total']]
+        # ### MUDANÇA 2: Adiciona a coluna 'Perfil da Ação' ao DataFrame de exibição ###
+        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação', 'Preço Atual', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'Score Total']]
         st.dataframe(df_display, column_config={
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),
             "Empresa": st.column_config.TextColumn("Empresa"), "Setor (brapi)": st.column_config.TextColumn("Setor"),
+            "Perfil da Ação": st.column_config.TextColumn("Perfil"), # Configuração para a nova coluna
             "Preço Atual": st.column_config.NumberColumn("Preço", format="R$ %.2f"),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%%"),
@@ -179,11 +188,13 @@ if not df.empty:
                 format_func=lambda t: f"{t} - {df_filtrado.loc[df_filtrado['Ticker'] == t, 'Empresa'].iloc[0]}")
             if ticker_selecionado:
                 acao = df_filtrado[df_filtrado['Ticker'] == ticker_selecionado].iloc[0]
-                c1, c2, c3, c4 = st.columns(4)
+                # ### MUDANÇA 3: Adiciona a métrica de 'Perfil da Ação' ###
+                c1, c2, c3, c4, c5 = st.columns(5)
                 c1.metric("Preço Atual", f"R$ {acao['Preço Atual']:.2f}")
                 c2.metric("P/L", f"{acao['P/L']:.2f}")
                 c3.metric("P/VP", f"{acao['P/VP']:.2f}")
                 c4.metric("DY 12m", f"{acao['DY (Taxa 12m, %)']:.2f}%")
+                c5.metric("Perfil", acao['Perfil da Ação'])
 
                 c1, c2 = st.columns([1, 1])
                 with c1:
