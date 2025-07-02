@@ -106,7 +106,7 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     return max(0, min(200, score)), details
 
 # --- CARREGAMENTO E PROCESSAMENTO DOS DADOS ---
-df = load_data(r"C:\Users\01701805\Desktop\Projetos GL\finance-manager\data\relatorio_analise_b3.csv")
+df = load_data(r"E:\Github\finance-manager\data\relatorio_analise_b3.csv")
 
 if not df.empty:
     if 'Perfil da Ação' not in df.columns:
