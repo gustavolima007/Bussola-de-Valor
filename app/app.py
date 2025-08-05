@@ -1,18 +1,22 @@
-# app.py (Versão com Guia do Investidor Completo)
+# app.py (Versão Corrigida e Estruturada)
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import os
+from dotenv import load_dotenv
 
-# --- CONFIGURAÇÃO DA PÁGINA ---
-st.set_page_config(page_title="Investidor Inteligente - Análise de Ações", layout="wide", page_icon="📈")
+# --- 1. DEFINIÇÕES DE FUNÇÕES ---
+# Colocamos todas as definições de funções aqui no início.
 
-# --- FUNÇÕES CORE ---
 @st.cache_data
 def load_data(path: str) -> pd.DataFrame:
     """
-    Carrega os dados do CSV e força a conversão de todas as colunas numéricas.
+    Carrega os dados do CSV, trata erros e converte tipos de dados.
     """
+    if not os.path.exists(path):
+        st.error(f"Arquivo de dados não encontrado em '{path}'. Verifique o caminho no seu arquivo .env e se o script de transformação foi executado.")
+        return pd.DataFrame()
     try:
         df = pd.read_csv(path, index_col=0)
         numeric_cols = [
@@ -29,14 +33,15 @@ def load_data(path: str) -> pd.DataFrame:
                 df[col] = pd.to_datetime(df[col], errors='coerce')
         df['Ticker'] = df.index.str.replace('.SA', '')
         return df
-    except FileNotFoundError:
-        st.error(f"Arquivo '{path}' não encontrado. Por favor, execute o script 'transform.py' primeiro.")
+    except Exception as e:
+        st.error(f"Ocorreu um erro ao carregar ou processar o arquivo CSV: {e}")
         return pd.DataFrame()
 
 def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     """
     Função centralizada que calcula o Score e retorna as justificativas.
     """
+    # ... (seu código de cálculo de score continua aqui, sem alterações) ...
     score = 0
     details = []
     # Critério: Dividend Yield (12 meses)
@@ -105,16 +110,36 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     score += sentiment_score
     return max(0, min(200, score)), details
 
-# --- CARREGAMENTO E PROCESSAMENTO DOS DADOS ---
-df = load_data(r"E:\Github\Unicamp\finance-manager\data\relatorio_analise_b3.csv")
 
-if not df.empty:
+# --- 2. EXECUÇÃO PRINCIPAL ---
+# Esta função 'main' conterá a lógica principal da sua aplicação.
+def main():
+    # --- CONFIGURAÇÃO DA PÁGINA ---
+    st.set_page_config(page_title="Investidor Inteligente - Análise de Ações", layout="wide", page_icon="📈")
+    
+    # --- CARREGAMENTO DOS DADOS ---
+    load_dotenv()
+    data_path = os.getenv('B3_REPORT_PATH')
+    
+    if not data_path:
+        st.error("A variável de ambiente 'B3_REPORT_PATH' não foi encontrada. Verifique seu arquivo .env")
+        st.stop() # Interrompe a execução do app se o caminho não for encontrado
+
+    df = load_data(data_path) # Agora a função 'load_data' já foi definida
+    
+    # Se o dataframe estiver vazio (devido a um erro no carregamento), interrompa.
+    if df.empty:
+        st.warning("O DataFrame está vazio. A aplicação não pode continuar.")
+        st.stop()
+        
+    # --- PROCESSAMENTO E LÓGICA DA APLICAÇÃO ---
     if 'Perfil da Ação' not in df.columns:
         df['Perfil da Ação'] = 'N/A'
     score_results = df.apply(calculate_score_and_details, axis=1)
     df['Score Total'] = score_results.apply(lambda x: x[0])
     df['Score Details'] = score_results.apply(lambda x: x[1])
 
+    # ... (todo o resto do seu código da UI do Streamlit vai aqui, sem alterações) ...
     # --- UI: TÍTULO E SIDEBAR ---
     st.title("📈 Investidor Inteligente")
     st.markdown("Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
@@ -141,6 +166,7 @@ if not df.empty:
     df_filtrado.sort_values(by=col_ordem, ascending=asc, inplace=True)
 
     # --- UI: ABAS DE EXIBIÇÃO ---
+    # ... (todo o código das suas abas, que já estava correto) ...
     tab1, tab2, tab3, tab4 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia do Investidor"])
 
     with tab1:
@@ -219,7 +245,7 @@ if not df.empty:
 
     with tab4:
         st.header("Guia do Investidor Inteligente")
-        
+        # ... (seu código do Guia do Investidor, que já estava correto) ...
         st.markdown("---")
         st.subheader("Critérios de Pontuação (Score)")
         st.markdown("""
@@ -312,5 +338,8 @@ if not df.empty:
             - **Vantagens:** Serviço considerado essencial na era digital. Receitas recorrentes através de assinaturas e grande barreira de entrada devido ao alto custo da infraestrutura.
             - **Desvantagens:** Setor altamente competitivo, necessidade constante de investimentos em novas tecnologias (como 5G) e sujeito a forte regulação.
             """)
-else:
-    st.warning("Não foi possível carregar os dados. Execute o script `transform.py` e atualize a página.")
+
+# Esta linha garante que o código principal só será executado quando
+# você rodar o script diretamente (ex: 'streamlit run app.py').
+if __name__ == "__main__":
+    main()
