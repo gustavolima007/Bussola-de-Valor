@@ -3,6 +3,12 @@
 
 Bancos, Energia Saneamento, seguros e Telecom
 
+* Criar tela de dividendos:
+
+Com detalhes de dividendos dos ultimos 7 anos.
+
+
+
 
 * Pendencias:
 
