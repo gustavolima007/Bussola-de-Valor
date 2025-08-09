@@ -1,4 +1,4 @@
-# 📈 Finance Manager: Análise de Ações e Carteira de Dividendos
+# 📈 Bússola de Valor – Investidor Fundamentalista
 
 Dashboard interativo em **Python + Streamlit** para análise fundamentalista de ações da B3, focado na construção de uma carteira de investimentos voltada para o recebimento de dividendos.
 
@@ -6,40 +6,16 @@ Dashboard interativo em **Python + Streamlit** para análise fundamentalista de 
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Tecnologias Utilizadas
 
-### 1. Pré-requisitos
-- Python 3.8 ou superior
-- Acesso a dados de mercado (ex.: via [yfinance](https://github.com/ranaroussi/yfinance) ou arquivo CSV)
-- Vontade de construir uma carteira de dividendos que te faça sorrir todo mês! 😄
+Este projeto utiliza um stack tecnológico moderno e integrado para coleta, armazenamento, análise e visualização de dados financeiros:
 
-### 2. Instale as Dependências
-Crie um arquivo `requirements.txt` com:
-```
-streamlit
-pandas
-yfinance
-plotly
-```
-Instale os pacotes:
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Execute o Dashboard
-Rode o script principal:
-```bash
-streamlit run app.py
-```
-> **Dica:** Use o script `transform.py` para gerar um arquivo CSV com os dados mais recentes da B3, base para o dashboard.
-
----
-
-## 🌟 Evolução do Projeto
-
-- **Fase 1:** Dashboards iniciais em Power BI para controle de orçamento e investimentos.
-- **Fase 2:** Migração para Python/Streamlit para análises em tempo real de ações e fundos.
-- **Próximos Passos:** Modo "Big Dividend Hunter", integração com APIs premium e otimização dos modelos de scoring. Fique ligado!
+- **Python**: Linguagem principal para extração, transformação e análise de dados financeiros, utilizando bibliotecas como `pandas` para manipulação de dados e `plotly` para visualizações interativas.
+- **yfinance e brapi**: APIs para obtenção de dados de mercado em tempo real e históricos da B3, incluindo preços de ações, dividendos e indicadores fundamentalistas.
+- **Supabase**: Banco de dados relacional SQL (baseado em PostgreSQL) para armazenamento estruturado de dados de ações, métricas financeiras e resultados de scoring.
+- **Streamlit**: Framework Python para criação do dashboard interativo, hospedado no **Streamlit Community Cloud** para acesso público via link.
+- **GitHub Repository**: Repositório para versionamento do código-fonte, garantindo controle e colaboração no desenvolvimento.
+- **GitHub Projects**: Ferramenta de Kanban para gerenciamento do projeto, organizando tarefas como coleta de dados, modelagem do banco e desenvolvimento do dashboard.
 
 ---
 
@@ -74,15 +50,15 @@ A pontuação de cada ação soma critérios fundamentalistas, totalizando até 
 ## 📊 Guia de Perfil da Ação
 
 Classificação por porte e preço:
-- **Blue Chip:** Valor de Mercado > R$ 50 bi
-- **Mid Cap:** R$ 10 bi – R$ 50 bi
-- **Small Cap:** R$ 2 bi – R$ 10 bi
-- **Micro Cap:** < R$ 2 bi
-- **Penny Stock:** Preço < R$ 1,00
+- **Blue Chip**: Valor de Mercado > R$ 50 bi
+- **Mid Cap**: R$ 10 bi – R$ 50 bi
+- **Small Cap**: R$ 2 bi – R$ 10 bi
+- **Micro Cap**: < R$ 2 bi
+- **Penny Stock**: Preço < R$ 1,00
 
 ---
 
-## 🏛️ Análise Setorial (Foco em Dividendos)
+## 🏛️ Setores perenes (Foco em Dividendos)
 
 **Bancos & Seguros**
 - ✔️ Essenciais, lucrativos, pagadores consistentes
@@ -99,3 +75,15 @@ Classificação por porte e preço:
 **Telecomunicações**
 - ✔️ Essencial na era digital, receitas recorrentes
 - ❌ Competição acirrada, investimentos constantes, regulação forte
+
+---
+
+## 🛠️ Gerenciamento do Projeto
+
+- **GitHub Projects**: Utilizado para organizar o desenvolvimento em um quadro Kanban, com tarefas divididas em fases como coleta de dados, modelagem do banco e desenvolvimento do dashboard.
+- **Exemplo de uso**:
+  - Crie um projeto no GitHub Projects com colunas: `To Do`, `In Progress`, `Done`.
+  - Adicione tarefas como:
+    - "Configurar Supabase e criar tabelas".
+    - "Implementar extração de dados com yfinance e brapi".
+    - "Desenvolver gráficos de scores no Streamlit com Plotly".
