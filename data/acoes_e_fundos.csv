@@ -1,0 +1,151 @@
+ticker,empresa,setor_brapi,subsetor_yfinance,pais,tipo,market_cap,logo
+VIVT3.SA,Telefônica Brasil S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 106.22 Bi,https://icons.brapi.dev/icons/VIVT3.svg
+TIMS3.SA,TIM S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 54.08 Bi,https://icons.brapi.dev/icons/TIMS3.svg
+FIQE3.SA,Unifique Telecomunicações S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 1.38 Bi,https://icons.brapi.dev/icons/FIQE3.svg
+BRST3.SA,N/A,Comunicações,Telecom Services,Brazil,stock,R$ 1.14 Bi,https://icons.brapi.dev/icons/BRST3.svg
+TELB4.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Telecom Services,Brazil,stock,R$ 1.02 Bi,https://icons.brapi.dev/icons/TELB4.svg
+TELB3.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Telecom Services,Brazil,stock,R$ 1.02 Bi,https://icons.brapi.dev/icons/TELB3.svg
+DESK3.SA,Desktop S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 0.91 Bi,https://icons.brapi.dev/icons/DESK3.svg
+OIBR4.SA,Oi S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 0.18 Bi,https://icons.brapi.dev/icons/OIBR4.svg
+OIBR3.SA,Oi S.A.,Comunicações,Telecom Services,Brazil,stock,R$ 0.18 Bi,https://icons.brapi.dev/icons/OIBR3.svg
+ITUB4.SA,Itaú Unibanco Holding S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 377.62 Bi,https://icons.brapi.dev/icons/ITUB4.svg
+ITUB3.SA,Itaú Unibanco Holding S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 377.62 Bi,https://icons.brapi.dev/icons/ITUB3.svg
+BPAC3.SA,Banco BTG Pactual S.A.,Financeiro,Capital Markets,Brazil,stock,R$ 216.50 Bi,https://icons.brapi.dev/icons/BPAC3.svg
+BPAC5.SA,Banco BTG Pactual S.A.,Financeiro,Capital Markets,Brazil,stock,R$ 216.50 Bi,https://icons.brapi.dev/icons/BPAC5.svg
+BBDC4.SA,Banco Bradesco S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 156.89 Bi,https://icons.brapi.dev/icons/BBDC4.svg
+BBDC3.SA,Banco Bradesco S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 156.89 Bi,https://icons.brapi.dev/icons/BBDC3.svg
+SANB11.SA,Banco Santander (Brasil) S.A.,Financeiro,Banks - Regional,Brazil,fund,R$ 137.88 Bi,https://icons.brapi.dev/icons/SANB11.svg
+BPAC11.SA,Banco BTG Pactual S.A.,Financeiro,Capital Markets,Brazil,fund,R$ 136.22 Bi,https://icons.brapi.dev/icons/BPAC11.svg
+ITSA3.SA,Itaúsa S.A.,Financeiro,Conglomerates,Brazil,stock,R$ 119.84 Bi,https://icons.brapi.dev/icons/ITSA3.svg
+ITSA4.SA,Itaúsa S.A.,Financeiro,Conglomerates,Brazil,stock,R$ 119.84 Bi,https://icons.brapi.dev/icons/ITSA4.svg
+BBAS3.SA,Banco do Brasil S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 108.06 Bi,https://icons.brapi.dev/icons/BBAS3.svg
+SANB3.SA,Banco Santander (Brasil) S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 99.65 Bi,https://icons.brapi.dev/icons/SANB3.svg
+SANB4.SA,Banco Santander (Brasil) S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 99.65 Bi,https://icons.brapi.dev/icons/SANB4.svg
+B3SA3.SA,"B3 S.A. - Brasil, Bolsa, Balcão",Financeiro,Financial Data & Stock Exchanges,Brazil,stock,R$ 66.94 Bi,https://icons.brapi.dev/icons/B3SA3.svg
+BBSE3.SA,BB Seguridade Participações S.A.,Financeiro,Insurance - Diversified,Brazil,stock,R$ 66.91 Bi,https://icons.brapi.dev/icons/BBSE3.svg
+CXSE3.SA,Caixa Seguridade Participações S.A.,Financeiro,Insurance - Diversified,Brazil,stock,R$ 40.20 Bi,https://icons.brapi.dev/icons/CXSE3.svg
+RENT3.SA,Localiza Rent a Car S.A.,Financeiro,Rental & Leasing Services,Brazil,stock,R$ 37.33 Bi,https://icons.brapi.dev/icons/RENT3.svg
+PSSA3.SA,Porto Seguro S.A.,Financeiro,Insurance - Diversified,Brazil,stock,R$ 34.35 Bi,https://icons.brapi.dev/icons/PSSA3.svg
+DIRR3.SA,Direcional Engenharia S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 21.32 Bi,https://icons.brapi.dev/icons/DIRR3.svg
+MULT3.SA,Multiplan Empreendimentos Imobiliários S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 12.67 Bi,https://icons.brapi.dev/icons/MULT3.svg
+ALOS3.SA,Allos S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 11.18 Bi,https://icons.brapi.dev/icons/ALOS3.svg
+CURY3.SA,Cury Construtora e Incorporadora S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 9.34 Bi,https://icons.brapi.dev/icons/CURY3.svg
+BPAN4.SA,Banco Pan S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 9.32 Bi,https://icons.brapi.dev/icons/BPAN4.svg
+CYRE3.SA,Cyrela Brazil Realty S.A. Empreendimentos e Participações,Financeiro,Residential Construction,Brazil,stock,R$ 9.20 Bi,https://icons.brapi.dev/icons/CYRE3.svg
+IGTI3.SA,Iguatemi S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 6.33 Bi,https://icons.brapi.dev/icons/IGTI3.svg
+BRAP4.SA,Bradespar S.A.,Financeiro,Asset Management,Brazil,stock,R$ 6.13 Bi,https://icons.brapi.dev/icons/BRAP4.svg
+BRAP3.SA,Bradespar S.A.,Financeiro,Asset Management,Brazil,stock,R$ 6.13 Bi,https://icons.brapi.dev/icons/BRAP3.svg
+ABCB4.SA,Banco ABC Brasil S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 5.19 Bi,https://icons.brapi.dev/icons/ABCB4.svg
+BRSR3.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 4.57 Bi,https://icons.brapi.dev/icons/BRSR3.svg
+BRSR6.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 4.57 Bi,https://icons.brapi.dev/icons/BRSR6.svg
+VAMO3.SA,"Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",Financeiro,Rental & Leasing Services,Brazil,stock,R$ 4.41 Bi,https://icons.brapi.dev/icons/VAMO3.svg
+BSLI3.SA,BRB - Banco de Brasília S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 4.40 Bi,https://icons.brapi.dev/icons/BSLI3.svg
+BSLI4.SA,BRB - Banco de Brasília S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 4.40 Bi,https://icons.brapi.dev/icons/BSLI4.svg
+BAZA3.SA,Banco da Amazônia S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 4.15 Bi,https://icons.brapi.dev/icons/BAZA3.svg
+BMEB4.SA,Banco Mercantil do Brasil S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 3.86 Bi,https://icons.brapi.dev/icons/BMEB4.svg
+BMEB3.SA,Banco Mercantil do Brasil S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 3.86 Bi,https://icons.brapi.dev/icons/BMEB3.svg
+IRBR3.SA,IRB-Brasil Resseguros S.A.,Financeiro,Insurance - Reinsurance,Brazil,stock,R$ 3.80 Bi,https://icons.brapi.dev/icons/IRBR3.svg
+JHSF3.SA,JHSF Participações S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 3.58 Bi,https://icons.brapi.dev/icons/JHSF3.svg
+EZTC3.SA,EZTEC Empreendimentos e Participações S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 3.19 Bi,https://icons.brapi.dev/icons/EZTC3.svg
+BEES4.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Banks - Regional,Brazil,stock,R$ 2.95 Bi,https://icons.brapi.dev/icons/BEES4.svg
+BEES3.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Banks - Regional,Brazil,stock,R$ 2.95 Bi,https://icons.brapi.dev/icons/BEES3.svg
+MILS3.SA,"Mills Locação, Serviços e Logística S.A.",Financeiro,Rental & Leasing Services,Brazil,stock,R$ 2.77 Bi,https://icons.brapi.dev/icons/MILS3.svg
+PLPL3.SA,Plano & Plano Desenvolvimento Imobiliário S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 2.75 Bi,https://icons.brapi.dev/icons/PLPL3.svg
+TEND3.SA,Construtora Tenda S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 2.64 Bi,https://icons.brapi.dev/icons/TEND3.svg
+MOVI3.SA,Movida Participações S.A.,Financeiro,Rental & Leasing Services,Brazil,stock,R$ 2.58 Bi,https://icons.brapi.dev/icons/MOVI3.svg
+LAVV3.SA,Lavvi Empreendimentos Imobiliários S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 2.43 Bi,https://icons.brapi.dev/icons/LAVV3.svg
+AGRO3.SA,BrasilAgro - Companhia Brasileira de Propriedades Agrícolas,Financeiro,Farm Products,Brazil,stock,R$ 2.03 Bi,https://icons.brapi.dev/icons/AGRO3.svg
+MDNE3.SA,Moura Dubeux Engenharia S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 1.95 Bi,https://icons.brapi.dev/icons/MDNE3.svg
+BMGB4.SA,Banco BMG S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 1.79 Bi,https://icons.brapi.dev/icons/BMGB4.svg
+MOAR3.SA,Monteiro Aranha S.A.,Financeiro,Conglomerates,Brazil,stock,R$ 1.59 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+EVEN3.SA,Even Construtora e Incorporadora S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 1.37 Bi,https://icons.brapi.dev/icons/EVEN3.svg
+WIZC3.SA,Wiz Co Participações e Corretagem de Seguros S.A.,Financeiro,Insurance Brokers,Brazil,stock,R$ 1.32 Bi,https://icons.brapi.dev/icons/WIZC3.svg
+PINE3.SA,Banco Pine S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 1.30 Bi,https://icons.brapi.dev/icons/PINE3.svg
+PINE4.SA,Banco Pine S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 1.30 Bi,https://icons.brapi.dev/icons/PINE4.svg
+ARML3.SA,"Armac Locação, Logística e Serviços S.A.",Financeiro,Rental & Leasing Services,Brazil,stock,R$ 1.27 Bi,https://icons.brapi.dev/icons/ARML3.svg
+SYNE3.SA,Syn Prop & Tech S.A.,Financeiro,Real Estate - Diversified,Brazil,stock,R$ 1.05 Bi,https://icons.brapi.dev/icons/SYNE3.svg
+SCAR3.SA,São Carlos Empreendimentos e Participações S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 1.04 Bi,https://icons.brapi.dev/icons/SCAR3.svg
+LAND3.SA,Terra Santa Propriedades Agrícolas S.A.,Financeiro,Farm Products,Brazil,stock,R$ 1.00 Bi,https://icons.brapi.dev/icons/LAND3.svg
+BGIP4.SA,Banco do Estado de Sergipe S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 0.68 Bi,https://icons.brapi.dev/icons/BGIP4.svg
+ADMF3.SA,CIABRASF - Cia. Brasileira de Serviços Financeiros S/A,Financeiro,Asset Management,Brazil,stock,R$ 0.67 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+MTRE3.SA,Mitre Realty Empreendimentos e Participações S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.37 Bi,https://icons.brapi.dev/icons/MTRE3.svg
+HBRE3.SA,HBR Realty Empreendimentos Imobiliários S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 0.37 Bi,https://icons.brapi.dev/icons/HBRE3.svg
+SNCI11.SA,Suno Recebiveis Imobiliarios Fundo De Investimento Imobiliario,Financeiro,Consulting Services,Brazil,fund,R$ 0.36 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+AVLL3.SA,Alphaville S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.34 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+IRIM11.SA,Iridium Fundo De Investimento Imobiliario,Financeiro,REIT - Diversified,Brazil,fund,R$ 0.13 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+TCSA3.SA,Tecnisa S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.13 Bi,https://icons.brapi.dev/icons/TCSA3.svg
+BMIN3.SA,Banco Mercantil de Investimentos S.A.,Financeiro,Banks - Regional,Brazil,stock,R$ 0.11 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+GFSA3.SA,Gafisa S.A.,Financeiro,Residential Construction,Brazil,stock,R$ 0.10 Bi,https://icons.brapi.dev/icons/GFSA3.svg
+RDNI3.SA,RNI Negócios Imobiliários S.A.,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.09 Bi,https://icons.brapi.dev/icons/RDNI3.svg
+PPLA11.SA,PPLA Participations Ltd.,Financeiro,Asset Management,Brazil,fund,R$ 0.04 Bi,https://icons.brapi.dev/icons/PPLA11.svg
+FIEI3.SA,Fica Empreendimentos Imobiliarios S.A,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.03 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+RENV11.SA,Cpv Energia Fundo De Investimento Imobiliario Responsabilidade Limitada,Financeiro,REIT - Diversified,Brazil,fund,R$ 0.01 Bi,https://icons.brapi.dev/icons/RENV11.svg
+NEXP3.SA,Nexpe Participações S.A.,Financeiro,Real Estate Services,Brazil,stock,R$ 0.01 Bi,https://icons.brapi.dev/icons/NEXP3.svg
+PDGR3.SA,PDG Realty S.A. Empreendimentos e Participações,Financeiro,Real Estate - Development,Brazil,stock,R$ 0.01 Bi,https://icons.brapi.dev/icons/PDGR3.svg
+EGYR11.SA,Energy Resort Fundo De Investimento Imobiliario,Financeiro,REIT - Diversified,Brazil,fund,R$ 0.00 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+IGTI11.SA,Iguatemi S.A.,Financeiro,Real Estate Services,Brazil,fund,N/A,https://icons.brapi.dev/icons/IGTI11.svg
+BRBI11.SA,BRBI BR Partners S.A.,Financeiro,Capital Markets,Brazil,fund,N/A,https://icons.brapi.dev/icons/BRBI11.svg
+FSPE11.SA,Fiset Pesca Fiset Fspe,Financeiro,,Brazil,fund,N/A,https://icons.brapi.dev/icons/BRAPI.svg
+RBIF11.SA,Rio Bravo Esg FICFI Em Infraestrutura Renda Fixa Credito Privado,Financeiro,,Brazil,fund,N/A,https://icons.brapi.dev/icons/BRAPI.svg
+TAEE11.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilities - Regulated Electric,Brazil,fund,R$ 11.57 Bi,https://icons.brapi.dev/icons/TAEE11.svg
+TAEE3.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilities - Regulated Electric,Brazil,stock,R$ 11.54 Bi,https://icons.brapi.dev/icons/TAEE3.svg
+TAEE4.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilities - Regulated Electric,Brazil,stock,R$ 11.54 Bi,https://icons.brapi.dev/icons/TAEE4.svg
+LOGG3.SA,LOG Commercial Properties e Participações S.A.,Serviços Industriais,Real Estate Services,Brazil,stock,R$ 1.76 Bi,https://icons.brapi.dev/icons/LOGG3.svg
+PRNR3.SA,Priner Serviços Industriais S.A.,Serviços Industriais,Engineering & Construction,Brazil,stock,R$ 0.72 Bi,https://icons.brapi.dev/icons/PRNR3.svg
+MELK3.SA,Melnick Desenvolvimento Imobiliário S.A.,Serviços Industriais,Real Estate Services,Brazil,stock,R$ 0.69 Bi,https://icons.brapi.dev/icons/MELK3.svg
+AZEV4.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engineering & Construction,Brazil,stock,R$ 0.33 Bi,https://icons.brapi.dev/icons/AZEV4.svg
+AZEV3.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engineering & Construction,Brazil,stock,R$ 0.33 Bi,https://icons.brapi.dev/icons/AZEV3.svg
+AZTE3.SA,Azevedo & Travassos Energia S.A.,Serviços Industriais,Oil & Gas E&P,Brazil,stock,R$ 0.11 Bi,https://icons.brapi.dev/icons/AZTE3.svg
+SOND6.SA,Sondotécnica Engenharia de Solos S.A.,Serviços Industriais,Engineering & Construction,Brazil,stock,R$ 0.08 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+SOND5.SA,Sondotécnica Engenharia de Solos S.A.,Serviços Industriais,Engineering & Construction,Brazil,stock,R$ 0.08 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+INEP4.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Specialty Industrial Machinery,Brazil,stock,R$ 0.08 Bi,https://icons.brapi.dev/icons/INEP4.svg
+INEP3.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Specialty Industrial Machinery,Brazil,stock,R$ 0.08 Bi,https://icons.brapi.dev/icons/INEP3.svg
+OSXB3.SA,OSX Brasil S.A.,Serviços Industriais,Oil & Gas Equipment & Services,Brazil,stock,R$ 0.01 Bi,https://icons.brapi.dev/icons/OSXB3.svg
+ELET6.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 100.47 Bi,https://icons.brapi.dev/icons/ELET6.svg
+ELET3.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 100.47 Bi,https://icons.brapi.dev/icons/ELET3.svg
+SBSP3.SA,Companhia de Saneamento Básico do Estado de São Paulo - SABESP,Utilidade Pública,Utilities - Regulated Water,Brazil,stock,R$ 76.27 Bi,https://icons.brapi.dev/icons/SBSP3.svg
+CPFE3.SA,CPFL Energia S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 46.02 Bi,https://icons.brapi.dev/icons/CPFE3.svg
+EQTL3.SA,Equatorial S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 44.58 Bi,https://icons.brapi.dev/icons/EQTL3.svg
+CPLE5.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 35.49 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+CPLE3.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 35.49 Bi,https://icons.brapi.dev/icons/CPLE3.svg
+CPLE6.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 35.49 Bi,https://icons.brapi.dev/icons/CPLE6.svg
+CMIG4.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilities - Diversified,Brazil,stock,R$ 34.51 Bi,https://icons.brapi.dev/icons/CMIG4.svg
+CMIG3.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilities - Diversified,Brazil,stock,R$ 34.51 Bi,https://icons.brapi.dev/icons/CMIG3.svg
+EGIE3.SA,Engie Brasil Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 33.05 Bi,https://icons.brapi.dev/icons/EGIE3.svg
+NEOE3.SA,Neoenergia S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 32.55 Bi,https://icons.brapi.dev/icons/NEOE3.svg
+ENEV3.SA,Eneva S.A.,Utilidade Pública,Utilities - Diversified,Brazil,stock,R$ 27.01 Bi,https://icons.brapi.dev/icons/ENEV3.svg
+ENGI4.SA,Energisa S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 23.53 Bi,https://icons.brapi.dev/icons/ENGI4.svg
+ENGI3.SA,Energisa S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 23.53 Bi,https://icons.brapi.dev/icons/ENGI3.svg
+ENGI11.SA,Energisa S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,fund,R$ 21.96 Bi,https://icons.brapi.dev/icons/ENGI11.svg
+ISAE4.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilities - Independent Power Producers,Brazil,stock,R$ 16.71 Bi,https://icons.brapi.dev/icons/ISAE4.svg
+ISAE3.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilities - Independent Power Producers,Brazil,stock,R$ 16.71 Bi,https://icons.brapi.dev/icons/ISAE3.svg
+CGAS5.SA,Companhia de Gás de São Paulo - COMGÁS,Utilidade Pública,Utilities - Regulated Gas,Brazil,stock,R$ 16.23 Bi,https://icons.brapi.dev/icons/CGAS5.svg
+ALUP4.SA,Alupar Investimento S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 15.60 Bi,https://icons.brapi.dev/icons/ALUP4.svg
+ALUP3.SA,Alupar Investimento S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 15.60 Bi,https://icons.brapi.dev/icons/ALUP3.svg
+ALUP11.SA,Alupar Investimento S.A.,Utilidade Pública,Utilities - Renewable,Brazil,fund,R$ 14.48 Bi,https://icons.brapi.dev/icons/ALUP11.svg
+REDE3.SA,Rede Energia Participações S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 13.91 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+ENMT4.SA,Energisa Mato Grosso - Distribuidora de Energia S/A,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 12.92 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+ENMT3.SA,Energisa Mato Grosso - Distribuidora de Energia S/A,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 12.92 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+EQPA3.SA,Equatorial Pará Distribuidora de Energia S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 12.73 Bi,https://icons.brapi.dev/icons/EQPA3.svg
+CSAN3.SA,Cosan S.A.,Utilidade Pública,Oil & Gas Refining & Marketing,Brazil,stock,R$ 10.78 Bi,https://icons.brapi.dev/icons/CSAN3.svg
+SAPR4.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilities - Regulated Water,Brazil,stock,R$ 10.26 Bi,https://icons.brapi.dev/icons/SAPR4.svg
+SAPR3.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilities - Regulated Water,Brazil,stock,R$ 10.26 Bi,https://icons.brapi.dev/icons/SAPR3.svg
+AURE3.SA,Auren Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 10.18 Bi,https://icons.brapi.dev/icons/AURE3.svg
+SAPR11.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilities - Regulated Water,Brazil,fund,R$ 10.04 Bi,https://icons.brapi.dev/icons/SAPR11.svg
+CEEB3.SA,Companhia de Eletricidade do Estado da Bahia - COELBA,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 9.69 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+CSMG3.SA,Companhia de Saneamento de Minas Gerais,Utilidade Pública,Utilities - Regulated Water,Brazil,stock,R$ 9.56 Bi,https://icons.brapi.dev/icons/CSMG3.svg
+EKTR4.SA,Elektro Redes S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 8.93 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+SRNA3.SA,Serena Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 7.42 Bi,https://icons.brapi.dev/icons/SRNA3.svg
+ORVR3.SA,Orizon Valorização de Resíduos S.A.,Utilidade Pública,Waste Management,Brazil,stock,R$ 4.63 Bi,https://icons.brapi.dev/icons/ORVR3.svg
+CLSC4.SA,Centrais Elétricas de Santa Catarina S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 3.94 Bi,https://icons.brapi.dev/icons/CLSC4.svg
+LIGT3.SA,Light S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 3.38 Bi,https://icons.brapi.dev/icons/LIGT3.svg
+GEPA3.SA,Rio Paranapanema Energia S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 3.35 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+GEPA4.SA,Rio Paranapanema Energia S.A.,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 3.35 Bi,https://icons.brapi.dev/icons/BRAPI.svg
+EMAE4.SA,Empresa Metropolitana de Águas e Energia S.A.,Utilidade Pública,Utilities - Diversified,Brazil,stock,R$ 2.85 Bi,https://icons.brapi.dev/icons/EMAE4.svg
+COCE5.SA,Companhia Energética do Ceará - COELCE,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 2.85 Bi,https://icons.brapi.dev/icons/COCE5.svg
+CEBR3.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 1.42 Bi,https://icons.brapi.dev/icons/CEBR3.svg
+CEBR5.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 1.42 Bi,https://icons.brapi.dev/icons/CEBR5.svg
+CEBR6.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilities - Regulated Electric,Brazil,stock,R$ 1.42 Bi,https://icons.brapi.dev/icons/CEBR6.svg
+RNEW11.SA,Renova Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,fund,R$ 0.48 Bi,https://icons.brapi.dev/icons/RNEW11.svg
+RNEW4.SA,Renova Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 0.38 Bi,https://icons.brapi.dev/icons/RNEW4.svg
+RNEW3.SA,Renova Energia S.A.,Utilidade Pública,Utilities - Renewable,Brazil,stock,R$ 0.38 Bi,https://icons.brapi.dev/icons/RNEW3.svg

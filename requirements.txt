@@ -3,9 +3,11 @@ fundamentus
 SQLAlchemy
 pandas
 python-dotenv
-os
 datetime
-
+streamlit
+numpy
+plotly
+deep-translator
 
 #sudo apt update
 #sudo apt install build-essential libsqlite3-dev zlib1g-dev libbz2-dev libssl-dev libreadline-dev libffi-dev
