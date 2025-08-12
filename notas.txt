@@ -1,4 +1,15 @@
 
+
+Incluir coluna de dividndo: =SUM(100/6)
+
+Depois 
+
+
+
+
+
+
+
 * Setores Besst:
 
 Bancos, Energia Saneamento, seguros e Telecom
