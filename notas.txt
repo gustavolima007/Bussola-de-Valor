@@ -1,24 +1,14 @@
+* Incluir todos os setores?
+
+Criar grupos de perfis: Exemplo, setores perenes
 
 
-Incluir coluna de dividndo: =SUM(100/6)
-
-Depois 
-
-
-
-
-
-
-
-* Setores Besst:
-
-Bancos, Energia Saneamento, seguros e Telecom
+# Setores Besst:
+# Bancos, Energia Saneamento, seguros e Telecom
 
 * Criar tela de dividendos:
 
 Com detalhes de dividendos dos ultimos 7 anos.
-
-
 
 
 * Pendencias:
@@ -33,30 +23,6 @@ Criada por Benjamin Graham, considera lucratividade e solidez patrimonial
 Criar um mapa de calor para mostrar o dividendo passado e o dividendo no futuro
 
 - Indicador gráfico e também pontuação para recomendações.
-
-import yfinance as yf
-ticker = yf.Ticker("PETR4.SA")
-recommendations = ticker.recommendations
-print(recommendations)
-
-* Machine Learning:
-
-1. Criar modelos de machine learning para prever o valor futuro da ação criar 
-
-2. Criar modelo de Machine learning para prever os dividendos
-
-* Banco de dados:
-
-Conectar tudo no superbase tanto as extrações csv como os dados inseridos
-Modelar banco de dados para as tabelas e depois adicionar no super Base
-
-Tabelas:
-- Empresas_setores_defensivos 
-- relatório_b3
-- carteira_b3
-- renda_fixa
-- dividendos_recebidos
-
 
 
 * Detalhes do Score:

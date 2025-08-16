@@ -2,17 +2,20 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 import os
 from dotenv import load_dotenv
 
-# --- 1. DEFINIÇÕES DE FUNÇÕES ---
-# Colocamos todas as definições de funções aqui no início.
+# Cache de leitura de CSVs para acelerar recarregamentos do app
+@st.cache_data
+def read_csv_cached(path, **kwargs):
+    return pd.read_csv(path, **kwargs)
+
+# --- Funções utilitárias e cálculo de score ---
 
 @st.cache_data
 def load_data(path: str) -> pd.DataFrame:
     """
-    Carrega os dados do CSV, trata erros e converte tipos de dados.
+    Carrega dataset consolidado via caminho (.env B3_REPORT_PATH), tratando tipos numéricos e datas.
     """
     if not os.path.exists(path):
         st.error(f"Arquivo de dados não encontrado em '{path}'. Verifique o caminho no seu arquivo .env e se o script de transformação foi executado.")
@@ -39,9 +42,8 @@ def load_data(path: str) -> pd.DataFrame:
 
 def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     """
-    Função centralizada que calcula o Score e retorna as justificativas.
+    Calcula o Score Total (0 a 200) e retorna as justificativas por critério para exibição.
     """
-    # ... (seu código de cálculo de score continua aqui, sem alterações) ...
     score = 0
     details = []
     # Critério: Dividend Yield (12 meses)
@@ -111,10 +113,11 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     return max(0, min(200, score)), details
 
 
-# --- Funções auxiliares: CSS e carregamento de scores ---
+# --- Estilos e datasets auxiliares ---
 from pathlib import Path
 
 def apply_external_css():
+    """Injeta CSS externo (app/styles/styles.css). Silencia se o arquivo não existir."""
     css_path = Path(__file__).resolve().parent / 'styles' / 'styles.css'
     try:
         with open(css_path, 'r', encoding='utf-8') as f:
@@ -123,12 +126,13 @@ def apply_external_css():
         pass
 
 def load_scores_df() -> pd.DataFrame:
+    """Carrega scores.csv se existir; retorna DataFrame vazio em caso de ausência/erro."""
     scores_path = Path(__file__).resolve().parent.parent / 'data' / 'scores.csv'
     if not scores_path.exists():
         st.warning(f"scores.csv não encontrado em {scores_path}")
         return pd.DataFrame()
     try:
-        return pd.read_csv(scores_path)
+        return read_csv_cached(scores_path)
     except Exception as e:
         st.error(f"Erro ao carregar scores.csv: {e}")
         return pd.DataFrame()
@@ -154,15 +158,13 @@ def build_score_details_from_row(row: pd.Series) -> list[str]:
             details.append(f"{label}: **{sign}{val:.1f}**")
     return details
 
-# --- 2. EXECUÇÃO PRINCIPAL ---
-# Esta função 'main' conterá a lógica principal da sua aplicação.
+# --- Execução principal ---
 def main():
-    # --- CONFIGURAÇÃO DA PÁGINA ---
-    st.set_page_config(page_title="Investidor Inteligente - Análise de Ações", layout="wide", page_icon="📈")
-    # Aplica CSS externo
+    # Configura layout e ícone da página
+    st.set_page_config(page_title="Bússula de valor - Análise de Ações", layout="wide", page_icon="📈")
     apply_external_css()
 
-    # --- CARREGAMENTO DOS DADOS ---
+    # Carregamento dos dados (prioriza .env; fallback para data/)
     load_dotenv()
     data_path = os.getenv('B3_REPORT_PATH')
 
@@ -170,16 +172,16 @@ def main():
     if data_path:
         df = load_data(data_path)
     else:
-        st.info("Usando fontes em data/ por falta de B3_REPORT_PATH.")
         from pathlib import Path
         base = Path(__file__).resolve().parent.parent / 'data'
         try:
-            indic = pd.read_csv(base / 'indicadores.csv')
-            dy = pd.read_csv(base / 'dividend_yield.csv')
+            # Base local mínima para exibição quando .env não está definido
+            indic = read_csv_cached(base / 'indicadores.csv')
+            dy = read_csv_cached(base / 'dividend_yield.csv')
             indic['ticker_base'] = indic['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
             dy['ticker_base'] = dy['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
             df = indic.merge(dy[['ticker_base','DY12M','DY5anos']], on='ticker_base', how='left')
-            # Renomeia mínimas para compatibilidade de exibição
+            # Harmoniza nomes para compatibilidade com exibição/filters
             df.rename(columns={
                 'empresa':'Empresa','setor_brapi':'Setor (brapi)','logo':'Logo','perfil_acao':'Perfil da Ação',
                 'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
@@ -221,10 +223,35 @@ def main():
         df['Score Total'] = score_results.apply(lambda x: x[0])
         df['Score Details'] = score_results.apply(lambda x: x[1])
 
-    # ... (todo o resto do seu código da UI do Streamlit vai aqui, sem alterações) ...
-    # --- UI: TÍTULO E SIDEBAR ---
-    st.title("📈 Investidor Inteligente")
+    # --- Merge de datasets de apoio (preço teto e preço atual) ---
+    base = Path(__file__).resolve().parent.parent / 'data'
+    # Preço Teto (csv gerado na etapa de transformação)
+    try:
+        pt = read_csv_cached(base / 'preco_teto.csv')
+        pt['ticker_base'] = pt['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
+        df = df.merge(pt[['ticker_base', 'preco_teto_5anos', 'diferenca_percentual']], left_on='Ticker', right_on='ticker_base', how='left')
+        df.rename(columns={'preco_teto_5anos': 'Preço Teto 5A', 'diferenca_percentual': 'Alvo'}, inplace=True)
+        if 'ticker_base' in df.columns:
+            df.drop(columns=['ticker_base'], inplace=True, errors='ignore')
+    except Exception as e:
+        st.info(f"Não foi possível carregar preco_teto.csv: {e}")
+
+    # Preço Atual (cotação diária)
+    try:
+        pa = read_csv_cached(base / 'precos_acoes.csv')
+        pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
+        df = df.merge(pa[['ticker_base', 'fechamento_atual']], left_on='Ticker', right_on='ticker_base', how='left')
+        df.rename(columns={'fechamento_atual': 'Preco Atual'}, inplace=True)
+        if 'ticker_base' in df.columns:
+            df.drop(columns=['ticker_base'], inplace=True, errors='ignore')
+    except Exception as e:
+        st.info(f"Não foi possível carregar precos_acoes.csv: {e}")
+
+    # --- UI: título, filtros e ordenação ---
+    st.title("📈 Bússula de valor")
     st.markdown("Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
+
+    # Filtros principais (Setor, Perfil, Score e DY)
     st.sidebar.header("Filtros de Análise")
     setores_disponiveis = sorted(df['Setor (brapi)'].dropna().unique().tolist())
     setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
@@ -241,11 +268,12 @@ def main():
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
     perfil_filtro = st.sidebar.multiselect("Perfil da Ação", perfis_disponiveis, default=perfis_disponiveis)
 
+    # Faixas padrão pedidas: DY 12m = 0%, DY 5 anos = 6%
     score_range = st.sidebar.slider("Faixa de Score", min_value=0, max_value=200, value=(100, 200))
-    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 3.5, 0.1)
-    dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 4.0, 0.1)
+    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 0.0, 0.1)
+    dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
-    # --- FILTRAGEM E ORDENAÇÃO ---
+    # Filtragem + ordenação segura (sem SettingWithCopyWarning)
     df_filtrado = df[
         (df['Setor (brapi)'].isin(setor_filtro)) &
         (df['Perfil da Ação'].isin(perfil_filtro)) &
@@ -253,29 +281,34 @@ def main():
         (df['DY (Taxa 12m, %)'] >= dy_min) &
         (df['DY 5 Anos Média (%)'] >= dy_5y_min)
     ].copy()
-    st.sidebar.header("Ordenação")
-    col_ordem = st.sidebar.selectbox("Ordenar por", ['Score Total', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP'], index=0)
-    asc = st.sidebar.radio("Ordem", ["Crescente", "Decrescente"], index=1) == "Crescente"
-    df_filtrado.sort_values(by=col_ordem, ascending=asc, inplace=True)
 
-    # --- UI: ABAS DE EXIBIÇÃO ---
-    # ... (todo o código das suas abas, que já estava correto) ...
-    tab1, tab2, tab3, tab4 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia do Investidor"])
+    st.sidebar.header("Ordenação")
+    col_ordem = st.sidebar.selectbox("Ordenar por", ['Score Total', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'Alvo', 'Preço Teto 5A', 'Preco Atual'], index=0)
+    asc = st.sidebar.radio("Ordem", ["Crescente", "Decrescente"], index=1) == "Crescente"
+    df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
+
+    # Abas de exibição
+    tab1, tab2, tab3, tab4 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor"])
 
     with tab1:
         st.header(f"Ranking Geral ({len(df_filtrado)} ações encontradas)")
-        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação', 'Score Total']]
+        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação', 'Preco Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']]
         st.dataframe(df_display, column_config={
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),
             "Empresa": st.column_config.TextColumn("Empresa"), "Setor (brapi)": st.column_config.TextColumn("Setor"),
             "Perfil da Ação": st.column_config.TextColumn("Perfil"),
+            "Preco Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
+            "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
+            "Alvo": st.column_config.NumberColumn("Alvo", format="%.2f%%"),
+            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos Média (%)", format="%.2f%%"),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200)},
             use_container_width=True, hide_index=True)
 
     with tab2:
         st.header(f"Ranking Detalhado ({len(df_filtrado)} ações encontradas)")
         cols_detalhado = [
-            'Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação', 'Preço Atual',
+            'Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação',
+            'Preco Atual', 'Preço Teto 5A', 'Alvo',
             'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
             'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
         ]
@@ -284,7 +317,9 @@ def main():
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),
             "Empresa": st.column_config.TextColumn("Empresa"), "Setor (brapi)": st.column_config.TextColumn("Setor"),
             "Perfil da Ação": st.column_config.TextColumn("Perfil"),
-            "Preço Atual": st.column_config.NumberColumn("Preço", format="R$ %.2f"),
+            "Preco Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
+            "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
+            "Alvo": st.column_config.NumberColumn("Alvo", format="%.2f%%"),
             "P/L": st.column_config.NumberColumn("P/L", format="%.2f"),
             "P/VP": st.column_config.NumberColumn("P/VP", format="%.2f"),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
@@ -305,7 +340,9 @@ def main():
             if ticker_selecionado:
                 acao = df_filtrado[df_filtrado['Ticker'] == ticker_selecionado].iloc[0]
                 c1, c2, c3, c4, c5 = st.columns(5)
-                c1.metric("Preço Atual", f"R$ {acao['Preço Atual']:.2f}")
+                # Coluna de preço pode vir como 'Preco Atual' (merge) ou 'Preço Atual' (dados .env)
+                preco_col = 'Preco Atual' if 'Preco Atual' in acao.index else 'Preço Atual'
+                c1.metric("Preço Atual", f"R$ {acao[preco_col]:.2f}")
                 c2.metric("P/L", f"{acao['P/L']:.2f}")
                 c3.metric("P/VP", f"{acao['P/VP']:.2f}")
                 c4.metric("DY 12m", f"{acao['DY (Taxa 12m, %)']:.2f}%")
@@ -337,7 +374,7 @@ def main():
             st.info("Nenhuma ação encontrada com os filtros atuais.")
 
     with tab4:
-        st.header("Guia do Investidor Inteligente")
+        st.header("Guia da Bússula de valor")
         # ... (seu código do Guia do Investidor, que já estava correto) ...
         st.markdown("---")
         st.subheader("Critérios de Pontuação (Score)")
