@@ -111,33 +111,115 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
     return max(0, min(200, score)), details
 
 
+# --- Funções auxiliares: CSS e carregamento de scores ---
+from pathlib import Path
+
+def apply_external_css():
+    css_path = Path(__file__).resolve().parent / 'styles' / 'styles.css'
+    try:
+        with open(css_path, 'r', encoding='utf-8') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except Exception:
+        pass
+
+def load_scores_df() -> pd.DataFrame:
+    scores_path = Path(__file__).resolve().parent.parent / 'data' / 'scores.csv'
+    if not scores_path.exists():
+        st.warning(f"scores.csv não encontrado em {scores_path}")
+        return pd.DataFrame()
+    try:
+        return pd.read_csv(scores_path)
+    except Exception as e:
+        st.error(f"Erro ao carregar scores.csv: {e}")
+        return pd.DataFrame()
+
+def build_score_details_from_row(row: pd.Series) -> list[str]:
+    details = []
+    mapping = [
+        ('score_dy_12m', 'DY 12m'),
+        ('score_dy_5anos', 'DY 5 Anos'),
+        ('score_payout', 'Payout'),
+        ('score_roe', 'ROE'),
+        ('score_pl', 'P/L'),
+        ('score_pvp', 'P/VP'),
+        ('score_divida_marketcap', 'Dívida/Market Cap'),
+        ('score_divida_ebitda', 'Dívida/EBITDA'),
+        ('score_crescimento', 'Crescimento 5A'),
+        ('score_sentimento', 'Sentimento'),
+    ]
+    for col, label in mapping:
+        if col in row.index and pd.notna(row[col]):
+            val = row[col]
+            sign = '+' if val > 0 else ''
+            details.append(f"{label}: **{sign}{val:.1f}**")
+    return details
+
 # --- 2. EXECUÇÃO PRINCIPAL ---
 # Esta função 'main' conterá a lógica principal da sua aplicação.
 def main():
     # --- CONFIGURAÇÃO DA PÁGINA ---
     st.set_page_config(page_title="Investidor Inteligente - Análise de Ações", layout="wide", page_icon="📈")
-    
+    # Aplica CSS externo
+    apply_external_css()
+
     # --- CARREGAMENTO DOS DADOS ---
     load_dotenv()
     data_path = os.getenv('B3_REPORT_PATH')
-    
-    if not data_path:
-        st.error("A variável de ambiente 'B3_REPORT_PATH' não foi encontrada. Verifique seu arquivo .env")
-        st.stop() # Interrompe a execução do app se o caminho não for encontrado
 
-    df = load_data(data_path) # Agora a função 'load_data' já foi definida
-    
+    # Carrega dados base (se .env não definido, tenta indicadores.csv como fallback)
+    if data_path:
+        df = load_data(data_path)
+    else:
+        st.info("Usando fontes em data/ por falta de B3_REPORT_PATH.")
+        from pathlib import Path
+        base = Path(__file__).resolve().parent.parent / 'data'
+        try:
+            indic = pd.read_csv(base / 'indicadores.csv')
+            dy = pd.read_csv(base / 'dividend_yield.csv')
+            indic['ticker_base'] = indic['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+            dy['ticker_base'] = dy['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+            df = indic.merge(dy[['ticker_base','DY12M','DY5anos']], on='ticker_base', how='left')
+            # Renomeia mínimas para compatibilidade de exibição
+            df.rename(columns={
+                'empresa':'Empresa','setor_brapi':'Setor (brapi)','logo':'Logo','perfil_acao':'Perfil da Ação',
+                'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
+                'payout_ratio':'Payout Ratio (%)','crescimento_preco':'Crescimento Preço (%)','roe':'ROE (%)',
+                'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
+                'DY12M':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)'
+            }, inplace=True)
+            # Define Ticker (sem .SA)
+            df['Ticker'] = df['ticker_base']
+        except Exception as e:
+            st.error(f"Falha ao montar dados base de ../data: {e}")
+            df = pd.DataFrame()
+
     # Se o dataframe estiver vazio (devido a um erro no carregamento), interrompa.
     if df.empty:
         st.warning("O DataFrame está vazio. A aplicação não pode continuar.")
         st.stop()
-        
-    # --- PROCESSAMENTO E LÓGICA DA APLICAÇÃO ---
-    if 'Perfil da Ação' not in df.columns:
-        df['Perfil da Ação'] = 'N/A'
-    score_results = df.apply(calculate_score_and_details, axis=1)
-    df['Score Total'] = score_results.apply(lambda x: x[0])
-    df['Score Details'] = score_results.apply(lambda x: x[1])
+
+    # --- MERGE SCORE EXTERNO ---
+    scores_df = load_scores_df()
+    if not scores_df.empty:
+        # Esperado: scores_df tem 'ticker_base' e colunas score_*
+        merge_left = 'Ticker' if 'Ticker' in df.columns else df.index.name
+        if merge_left is None:
+            # Se vier com índice como ticker .SA, cria Ticker
+            if 'Ticker' not in df.columns and df.index.size > 0:
+                df['Ticker'] = df.index.astype(str).str.replace('.SA','', regex=False)
+            merge_left = 'Ticker'
+        df = df.merge(scores_df, left_on=merge_left, right_on='ticker_base', how='left')
+        # Score Total e Detalhes
+        if 'score_total' in df.columns:
+            df['Score Total'] = pd.to_numeric(df['score_total'], errors='coerce').fillna(0)
+        else:
+            df['Score Total'] = 0
+        df['Score Details'] = df.apply(build_score_details_from_row, axis=1)
+    else:
+        # Fallback: mantém cálculo interno, se necessário
+        score_results = df.apply(calculate_score_and_details, axis=1)
+        df['Score Total'] = score_results.apply(lambda x: x[0])
+        df['Score Details'] = score_results.apply(lambda x: x[1])
 
     # ... (todo o resto do seu código da UI do Streamlit vai aqui, sem alterações) ...
     # --- UI: TÍTULO E SIDEBAR ---
@@ -146,8 +228,19 @@ def main():
     st.sidebar.header("Filtros de Análise")
     setores_disponiveis = sorted(df['Setor (brapi)'].dropna().unique().tolist())
     setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
-    perfis_disponiveis = sorted(df['Perfil da Ação'].dropna().unique().tolist())
+
+    # Ordena Perfil da Ação do menor para o maior porte
+    perfil_ordem = {
+        'Penny Stock': 0,
+        'Micro Cap': 1,
+        'Small Cap': 2,
+        'Mid Cap': 3,
+        'Blue Chip': 4,
+    }
+    perfis_raw = [p for p in df['Perfil da Ação'].dropna().unique().tolist()]
+    perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
     perfil_filtro = st.sidebar.multiselect("Perfil da Ação", perfis_disponiveis, default=perfis_disponiveis)
+
     score_range = st.sidebar.slider("Faixa de Score", min_value=0, max_value=200, value=(100, 200))
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 3.5, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 4.0, 0.1)
@@ -305,12 +398,12 @@ def main():
         """)
         with st.expander("Como o Perfil é Calculado?"):
             st.markdown("""
-            A classificação é feita com base no **Valor de Mercado (Market Cap)** da empresa e no seu **Preço por Ação**:
+            A classificação é feita com base no **Valor de Mercado (Market Cap)** da empresa e no seu **Preço por Ação** (do menor para o maior porte):
             - **Penny Stock:** Se o Preço da Ação for **menor que R$ 1,00**.
-            - **Blue Chip:** Se o Valor de Mercado for **maior que R$ 50 bilhões**.
-            - **Mid Cap:** Se o Valor de Mercado estiver **entre R$ 10 bilhões e R$ 50 bilhões**.
-            - **Small Cap:** Se o Valor de Mercado estiver **entre R$ 2 bilhões e R$ 10 bilhões**.
             - **Micro Cap:** Se o Valor de Mercado for **menor que R$ 2 bilhões**.
+            - **Small Cap:** Se o Valor de Mercado estiver **entre R$ 2 bilhões e R$ 10 bilhões**.
+            - **Mid Cap:** Se o Valor de Mercado estiver **entre R$ 10 bilhões e R$ 50 bilhões**.
+            - **Blue Chip:** Se o Valor de Mercado for **maior que R$ 50 bilhões**.
             """)
         
         st.markdown("---")
