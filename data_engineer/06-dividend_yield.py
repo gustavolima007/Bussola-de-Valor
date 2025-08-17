@@ -5,9 +5,12 @@ import os
 # de dividendos (dividendos_ano_resumo.csv); normaliza tickers, computa percentuais
 # e salva ../data/dividend_yield.csv com as colunas ticker, DY5anos e DY12M.
 
+from pathlib import Path
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
 # Carregar os arquivos CSV
-precos = pd.read_csv("../data/precos_acoes.csv")
-div = pd.read_csv("../data/dividendos_ano_resumo.csv")
+precos = pd.read_csv(BASE / "precos_acoes.csv")
+div = pd.read_csv(BASE / "dividendos_ano_resumo.csv")
 
 # Normalizar tickers para merge
 precos["ticker_base"] = (
@@ -38,6 +41,6 @@ df_final = df[["ticker", "DY5anos", "DY12M"]]
 print(df_final.head(5))
 
 # Salvar no caminho solicitado
-os.makedirs("../data", exist_ok=True)
-df_final.to_csv("../data/dividend_yield.csv", index=False)
-print("Arquivo salvo em: ../data/dividend_yield.csv")
+(BASE).mkdir(parents=True, exist_ok=True)
+df_final.to_csv(BASE / "dividend_yield.csv", index=False)
+print(f"Arquivo salvo em: {BASE / 'dividend_yield.csv'}")

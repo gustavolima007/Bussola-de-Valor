@@ -8,8 +8,11 @@ import yfinance as yf
 
 # O código lê a lista de tickers do arquivo ../data/acoes_e_fundos.csv, remove o sufixo .SA, busca informações de cada ativo no Yahoo Finance, calcula o perfil da ação (Penny Stock, Micro Cap, Small Cap, Mid Cap ou Blue Chip), extrai indicadores como preço atual, P/L, P/VP, ROE, payout ratio, crescimento do preço em 5 anos, dívida total, EBITDA, relação dívida/EBITDA e sentimento de mercado baseado em recomendações de analistas. Todos os dados são organizados em colunas padronizadas em letras minúsculas, sem acentos e com underscores, e o resultado é salvo em ../data/indicadores.csv.
 
-CAMINHO_ARQUIVO = "../data/acoes_e_fundos.csv"
-SAIDA_ARQUIVO = "../data/indicadores.csv"
+from pathlib import Path
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
+CAMINHO_ARQUIVO = BASE / "acoes_e_fundos.csv"
+SAIDA_ARQUIVO = BASE / "indicadores.csv"
 
 def normalize_ticker_base(t):
     if pd.isna(t):

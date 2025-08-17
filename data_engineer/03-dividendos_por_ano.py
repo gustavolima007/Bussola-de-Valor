@@ -3,8 +3,13 @@ import pandas as pd
 # padronizando colunas e salvando o total anual por ativo em ../data/dividendos_ano.csv.
 
 
+from pathlib import Path
+
+# Caminho relativo ao script
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
 # Ler o arquivo CSV
-df = pd.read_csv('../data/todos_dividendos.csv')
+df = pd.read_csv(BASE / 'todos_dividendos.csv')
 
 # Converter a coluna 'Data' para datetime e extrair o ano
 df['Data'] = pd.to_datetime(df['Data'])

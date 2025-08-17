@@ -3,8 +3,12 @@ import pandas as pd
 # a partir de ../data/dividendos_ano.csv, e salva em ../data/dividendos_ano_resumo.csv.
 
 
+from pathlib import Path
+
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
 # Carregar os dividendos por ano e ticker
-df = pd.read_csv('../data/dividendos_ano.csv')
+df = pd.read_csv(BASE / 'dividendos_ano.csv')
 
 # Descobrir o último ano disponível
 ultimo_ano = df['ano'].max()

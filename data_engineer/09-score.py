@@ -9,7 +9,7 @@ import csv  # solicitado
 
 # Caminhos dos arquivos de entrada/saída (relativos ao script)
 SCRIPT_DIR = Path(__file__).resolve().parent
-BASE = (SCRIPT_DIR.parent / "data").resolve()
+BASE = SCRIPT_DIR.parent / "data"
 FN_INDICADORES = BASE / "indicadores.csv"
 FN_DY = BASE / "dividend_yield.csv"
 FN_PRECO_TETO = BASE / "preco_teto.csv"

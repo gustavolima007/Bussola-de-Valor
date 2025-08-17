@@ -7,9 +7,12 @@ import pandas as pd
 # Definir a porcentagem de dividendo para cálculo do preço teto
 dividendo_porcentagem = 100 / 6
 
+from pathlib import Path
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
 # Carregar os dados dos CSVs
-resumo = pd.read_csv("../data/dividendos_ano_resumo.csv")
-preco_acoes = pd.read_csv("../data/precos_acoes.csv")
+resumo = pd.read_csv(BASE / "dividendos_ano_resumo.csv")
+preco_acoes = pd.read_csv(BASE / "precos_acoes.csv")
 
 # Adicionar o sufixo .SA aos tickers de dividendos_ano_resumo.csv
 resumo['ticker'] = resumo['ticker'] + '.SA'
@@ -34,7 +37,7 @@ dados['diferenca_percentual'] = dados.apply(
 resultado = dados[['ticker', 'preco_teto_5anos', 'diferenca_percentual']]
 
 # Salvar o resultado em um novo CSV
-resultado.to_csv('../data/preco_teto.csv', index=False)
+resultado.to_csv(BASE / 'preco_teto.csv', index=False)
 print("Arquivo 'preco_teto.csv' gerado com sucesso!")
 
 # Mostrar as 5 primeiras linhas do resultado
