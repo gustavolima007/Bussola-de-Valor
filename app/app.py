@@ -247,6 +247,40 @@ def main():
     except Exception as e:
         st.info(f"Não foi possível carregar precos_acoes.csv: {e}")
 
+    # --- Datasets de dividendos (opcionais) ---
+    dividendos_ano = pd.DataFrame(); dividendos_ano_resumo = pd.DataFrame(); todos_dividendos = pd.DataFrame()
+    dividend_yield_extra = pd.DataFrame(); precos_dividendos = pd.DataFrame()
+    try:
+        dividendos_ano = read_csv_cached(base / 'dividendos_ano.csv')
+    except Exception as e:
+        st.info(f"Não foi possível carregar dividendos_ano.csv: {e}")
+    try:
+        dividendos_ano_resumo = read_csv_cached(base / 'dividendos_ano_resumo.csv')
+    except Exception as e:
+        st.info(f"Não foi possível carregar dividendos_ano_resumo.csv: {e}")
+    try:
+        todos_dividendos = read_csv_cached(base / 'todos_dividendos.csv')
+        if 'Data' in todos_dividendos.columns:
+            todos_dividendos['Data'] = pd.to_datetime(todos_dividendos['Data'], errors='coerce')
+        if 'Ticker' in todos_dividendos.columns:
+            todos_dividendos['ticker_base'] = todos_dividendos['Ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+    except Exception as e:
+        st.info(f"Não foi possível carregar todos_dividendos.csv: {e}")
+    try:
+        dividend_yield_extra = read_csv_cached(base / 'dividend_yield.csv')
+        if 'ticker' in dividend_yield_extra.columns:
+            dividend_yield_extra['ticker_base'] = dividend_yield_extra['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+    except Exception as e:
+        st.info(f"Não foi possível carregar dividend_yield.csv: {e}")
+    try:
+        precos_dividendos = read_csv_cached(base / 'precos_dividendos.csv')
+        if 'Date' in precos_dividendos.columns:
+            precos_dividendos['Date'] = pd.to_datetime(precos_dividendos['Date'], errors='coerce')
+        if 'Ticker' in precos_dividendos.columns:
+            precos_dividendos['ticker_base'] = precos_dividendos['Ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+    except Exception as e:
+        st.info(f"Não foi possível carregar precos_dividendos.csv: {e}")
+
     # --- UI: título, filtros e ordenação ---
     st.title("📈 Bússula de valor")
     st.markdown("Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
@@ -268,6 +302,12 @@ def main():
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
     perfil_filtro = st.sidebar.multiselect("Perfil da Ação", perfis_disponiveis, default=perfis_disponiveis)
 
+    # Ticker foco (aplica em todas as abas)
+    tickers_disponiveis = sorted(df['Ticker'].dropna().unique().tolist())
+    ticker_foco_opt = ["— Todos —"] + tickers_disponiveis
+    ticker_foco = st.sidebar.selectbox("Ticker foco (opcional)", ticker_foco_opt, index=0)
+    ticker_foco = None if ticker_foco == "— Todos —" else ticker_foco
+
     # Faixas padrão pedidas: DY 12m = 0%, DY 5 anos = 6%
     score_range = st.sidebar.slider("Faixa de Score", min_value=0, max_value=200, value=(100, 200))
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 0.0, 0.1)
@@ -281,6 +321,9 @@ def main():
         (df['DY (Taxa 12m, %)'] >= dy_min) &
         (df['DY 5 Anos Média (%)'] >= dy_5y_min)
     ].copy()
+    # Aplica foco de ticker, se selecionado
+    if ticker_foco:
+        df_filtrado = df_filtrado[df_filtrado['Ticker'] == ticker_foco]
 
     st.sidebar.header("Ordenação")
     col_ordem = st.sidebar.selectbox("Ordenar por", ['Score Total', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'P/L', 'P/VP', 'Alvo', 'Preço Teto 5A', 'Preco Atual'], index=0)
@@ -288,7 +331,7 @@ def main():
     df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
 
     # Abas de exibição
-    tab1, tab2, tab3, tab4 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor", "📈 Gráficos"]) 
 
     with tab1:
         st.header(f"Ranking Geral ({len(df_filtrado)} ações encontradas)")
@@ -335,10 +378,16 @@ def main():
     with tab3:
         st.header("Análise Individual e Composição do Score")
         if not df_filtrado.empty:
-            ticker_selecionado = st.selectbox("Selecione a Ação", df_filtrado['Ticker'].tolist(),
-                format_func=lambda t: f"{t} - {df_filtrado.loc[df_filtrado['Ticker'] == t, 'Empresa'].iloc[0]}")
+            # Usa ticker foco se definido; senão, permite seleção local
+            ticker_base_lista = df_filtrado['Ticker'].tolist()
+            ticker_selecionado = ticker_foco if ticker_foco in ticker_base_lista else st.selectbox(
+                "Selecione a Ação", ticker_base_lista,
+                format_func=lambda t: f"{t} - {df_filtrado.loc[df_filtrado['Ticker'] == t, 'Empresa'].iloc[0]}"
+            )
             if ticker_selecionado:
                 acao = df_filtrado[df_filtrado['Ticker'] == ticker_selecionado].iloc[0]
+                # Identificação clara do ativo em análise
+                st.subheader(f"{acao['Empresa']} ({ticker_selecionado})")
                 c1, c2, c3, c4, c5 = st.columns(5)
                 # Coluna de preço pode vir como 'Preco Atual' (merge) ou 'Preço Atual' (dados .env)
                 preco_col = 'Preco Atual' if 'Preco Atual' in acao.index else 'Preço Atual'
@@ -373,9 +422,108 @@ def main():
         else:
             st.info("Nenhuma ação encontrada com os filtros atuais.")
 
+    # --- Aba de gráficos (exploração visual) ---
+    with tab5:
+        st.header("Exploração Visual")
+        st.markdown("Visualize relações e distribuições dos indicadores para apoiar análises.")
+        if df_filtrado.empty:
+            st.info("Nenhum dado para exibir com os filtros atuais.")
+        else:
+            c1, c2 = st.columns(2)
+            with c1:
+                st.subheader("DY 12m vs. P/L")
+                fig = px.scatter(
+                    df_filtrado,
+                    x='P/L', y='DY (Taxa 12m, %)', color='Setor (brapi)', hover_data=['Ticker','Empresa'],
+                    title='Relação entre P/L e DY 12m'
+                )
+                st.plotly_chart(fig, use_container_width=True)
+            with c2:
+                st.subheader("DY 5 anos vs. P/VP")
+                fig = px.scatter(
+                    df_filtrado,
+                    x='P/VP', y='DY 5 Anos Média (%)', color='Setor (brapi)', hover_data=['Ticker','Empresa'],
+                    title='Relação entre P/VP e DY 5 anos'
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+            st.subheader("Top 15 por Score")
+            top = df_filtrado.nlargest(15, 'Score Total')
+            fig_bar = px.bar(
+                top.sort_values('Score Total'),
+                x='Score Total', y='Ticker', orientation='h', color='Setor (brapi)',
+                hover_data=['Empresa'], title='Maiores Scores'
+            )
+            st.plotly_chart(fig_bar, use_container_width=True)
+
+            c3, c4 = st.columns(2)
+            with c3:
+                st.subheader("Distribuição de P/L (Histograma)")
+                fig_hist = px.histogram(df_filtrado, x='P/L', nbins=30, title='Distribuição de P/L')
+                st.plotly_chart(fig_hist, use_container_width=True)
+            with c4:
+                st.subheader("Score por Setor (Boxplot)")
+                fig_box = px.box(df_filtrado, x='Setor (brapi)', y='Score Total', title='Score por Setor')
+                fig_box.update_layout(xaxis={'categoryorder':'total descending'})
+                st.plotly_chart(fig_box, use_container_width=True)
+
+            # --- Gráficos de dividendos ---
+            st.markdown("---")
+            st.subheader("Dividendos: Séries, Acúmulos e Relações")
+
+            # 1) Série temporal de dividendos por Ticker (todos_dividendos)
+            if not todos_dividendos.empty:
+                tickers_opt = sorted(todos_dividendos['ticker_base'].dropna().unique().tolist())
+                idx_sel = tickers_opt.index(ticker_foco) if ticker_foco in tickers_opt else 0
+                t_sel = st.selectbox("Série de dividendos - selecione um ticker", tickers_opt, index=idx_sel)
+                serie = todos_dividendos[(todos_dividendos['ticker_base'] == t_sel) & (todos_dividendos['Data'].notna())]
+                if not serie.empty:
+                    fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {t_sel}")
+                    st.plotly_chart(fig_div, use_container_width=True)
+                else:
+                    st.info("Sem dados de série para este ticker.")
+
+            # 2) Barras de dividendos por ano (dividendos_ano)
+            if not dividendos_ano.empty:
+                c5, c6 = st.columns(2)
+                with c5:
+                    st.subheader("Dividendos por Ano - Ticker")
+                    tickers_ano = sorted(dividendos_ano['ticker'].dropna().unique().tolist())
+                    idx2 = tickers_ano.index(ticker_foco) if ticker_foco in tickers_ano else 0
+                    t2 = st.selectbox("Selecione o ticker (por ano)", tickers_ano, index=idx2)
+                    dfa = dividendos_ano[dividendos_ano['ticker'] == t2]
+                    fig_ano = px.bar(dfa.sort_values('ano'), x='ano', y='dividendo', title=f"Dividendos por Ano - {t2}")
+                    st.plotly_chart(fig_ano, use_container_width=True)
+                with c6:
+                    st.subheader("Ranking 12m por Dividendos (Top 20)")
+                    if not dividendos_ano_resumo.empty:
+                        top12 = dividendos_ano_resumo.nlargest(20, 'valor_12m')
+                        fig12 = px.bar(top12.sort_values('valor_12m'), x='valor_12m', y='ticker', orientation='h', title='Top 20: Dividendos 12m')
+                        st.plotly_chart(fig12, use_container_width=True)
+
+            # 3) Dividendos vs Preço (precos_dividendos) - por ticker e ano
+            if not precos_dividendos.empty:
+                st.subheader("Dividendos vs Preço (por ano)")
+                tickers_pd = sorted(precos_dividendos['ticker_base'].dropna().unique().tolist())
+                idx3 = tickers_pd.index(ticker_foco) if ticker_foco in tickers_pd else 0
+                t3 = st.selectbox("Selecione o ticker (preço x dividendos)", tickers_pd, index=idx3)
+                dfp = precos_dividendos[precos_dividendos['ticker_base'] == t3]
+                dfp = dfp[dfp['Ano'].notna()]
+                fig_sc = px.scatter(dfp, x='Fechamento', y='Dividendos', color='Ano', title=f"Preço (Fech.) vs Dividendos por Ano - {t3}", hover_data=['Ano'])
+                st.plotly_chart(fig_sc, use_container_width=True)
+
+            # 4) DY12M vs DY5anos do CSV de DY (dividend_yield.csv)
+            if not dividend_yield_extra.empty:
+                st.subheader("DY 12m vs DY 5 anos (CSV de DY)")
+                dyy = dividend_yield_extra.dropna(subset=['DY12M', 'DY5anos'])
+                dyy['DY12M'] = pd.to_numeric(dyy['DY12M'], errors='coerce')
+                dyy['DY5anos'] = pd.to_numeric(dyy['DY5anos'], errors='coerce')
+                dyy = dyy.dropna(subset=['DY12M','DY5anos'])
+                fig_dy = px.scatter(dyy, x='DY12M', y='DY5anos', hover_data=['ticker'], title='Relação DY 12m x DY 5 anos (por ticker)')
+                st.plotly_chart(fig_dy, use_container_width=True)
+
     with tab4:
         st.header("Guia da Bússula de valor")
-        # ... (seu código do Guia do Investidor, que já estava correto) ...
         st.markdown("---")
         st.subheader("Critérios de Pontuação (Score)")
         st.markdown("""

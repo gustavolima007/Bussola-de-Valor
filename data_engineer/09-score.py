@@ -3,6 +3,10 @@ import pandas as pd
 import numpy as np
 import csv  # solicitado
 
+# Gera pontuações (score_total e componentes) por ticker combinando indicadores,
+# DY e preço teto: normaliza, faz merges e aplica regras de pontuação equivalentes
+# às do app, salvando ../data/scores.csv para uso direto na interface.
+
 # Caminhos dos arquivos de entrada/saída (relativos ao script)
 SCRIPT_DIR = Path(__file__).resolve().parent
 BASE = (SCRIPT_DIR.parent / "data").resolve()

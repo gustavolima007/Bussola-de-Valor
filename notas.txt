@@ -1,3 +1,6 @@
+* Melhorar visual das cores, UX Designer
+
+
 * Incluir todos os setores?
 
 Criar grupos de perfis: Exemplo, setores perenes
