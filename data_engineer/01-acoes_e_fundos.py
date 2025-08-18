@@ -3,6 +3,7 @@ import yfinance as yf
 import pandas as pd
 import warnings
 from deep_translator import GoogleTranslator
+from tqdm.auto import tqdm
 
 # Este script consulta a lista de ativos na BRAPI, filtra por tipos (ação/fundo) e setores-alvo,
 # valida e enriquece com metadados via yfinance (país, nome, market cap), traduz subsetores
@@ -49,6 +50,9 @@ def coletar_dados_ativos(setores):
     except Exception as e:
         print(f"❌ Erro ao buscar ativos: {e}")
         return pd.DataFrame()
+    lista = list(lista)
+    lista = [item for item in lista if isinstance(item, dict)]
+    lista_iter = tqdm(lista, desc="Filtrando lista BRAPI")
 
     ativos = {
         f"{item['stock']}.SA": {
@@ -56,12 +60,12 @@ def coletar_dados_ativos(setores):
             "tipo": item["type"],
             "logo": item.get("logo")
         }
-        for item in lista
-        if item["sector"] in setores and item["type"] in {"stock", "fund"} and not item["stock"].endswith("F")
+        for item in lista_iter
+        if item.get("sector") in setores and item.get("type") in {"stock", "fund"} and not str(item.get("stock", "")).endswith("F")
     }
 
     registros = []
-    for i, (ticker, dados) in enumerate(ativos.items(), 1):
+    for ticker, dados in tqdm(ativos.items(), desc="Coletando metadados (yfinance)"):
         try:
             info = yf.Ticker(ticker).info
             if info.get("country") != "Brazil":
@@ -80,11 +84,20 @@ def coletar_dados_ativos(setores):
                 "market_cap": info.get("marketCap"),
                 "logo": dados["logo"]
             })
-            print(f"✅ [{i}] {ticker} incluído")
         except Exception:
             continue
 
     return pd.DataFrame(registros)
 
 # 💾 Execução e salvamento
+from pathlib import Path
+BASE = Path(__file__).resolve().parent.parent / 'data'
+
 df = coletar_dados_ativos(SETORES_ALVO)
+if not df.empty:
+    BASE.mkdir(parents=True, exist_ok=True)
+    out_path = BASE / 'acoes_e_fundos.csv'
+    df.to_csv(out_path, index=False)
+    print(f"✅ Arquivo salvo em: {out_path}")
+else:
+    print("⚠️ Nenhum dado coletado para salvar.")

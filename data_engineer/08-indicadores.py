@@ -4,6 +4,7 @@
 import os
 import pandas as pd
 import yfinance as yf
+from tqdm.auto import tqdm
 
 
 # O código lê a lista de tickers do arquivo ../data/acoes_e_fundos.csv, remove o sufixo .SA, busca informações de cada ativo no Yahoo Finance, calcula o perfil da ação (Penny Stock, Micro Cap, Small Cap, Mid Cap ou Blue Chip), extrai indicadores como preço atual, P/L, P/VP, ROE, payout ratio, crescimento do preço em 5 anos, dívida total, EBITDA, relação dívida/EBITDA e sentimento de mercado baseado em recomendações de analistas. Todos os dados são organizados em colunas padronizadas em letras minúsculas, sem acentos e com underscores, e o resultado é salvo em ../data/indicadores.csv.
@@ -132,7 +133,7 @@ def main():
     meta_map = df_in.groupby("ticker_norm", as_index=True).first().to_dict(orient="index")
 
     resultados = []
-    for ticker_base, meta in meta_map.items():
+    for ticker_base, meta in tqdm(meta_map.items(), total=len(meta_map), desc="Coletando indicadores"):
         ticker_yf = f"{ticker_base}.SA"
         print(f"Processando: {ticker_yf}...", end="")
         try:

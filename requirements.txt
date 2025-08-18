@@ -9,6 +9,7 @@ numpy
 plotly
 deep-translator
 unidecode
+    tqdm
 
 #sudo apt update
 #sudo apt install build-essential libsqlite3-dev zlib1g-dev libbz2-dev libssl-dev libreadline-dev libffi-dev

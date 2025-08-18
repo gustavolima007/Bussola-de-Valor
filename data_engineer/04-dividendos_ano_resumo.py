@@ -1,4 +1,5 @@
 import pandas as pd
+from tqdm.auto import tqdm
 # Consolida dividendos por ticker em duas janelas: soma dos últimos 5 anos e dos últimos 12 meses,
 # a partir de ../data/dividendos_ano.csv, e salva em ../data/dividendos_ano_resumo.csv.
 
@@ -29,7 +30,7 @@ resumo = pd.merge(soma_5anos, soma_12m, on='ticker', how='outer').fillna(0)
 resumo = resumo[['ticker', 'valor_5anos', 'valor_12m']]
 
 # Salvar resultado
-resumo.to_csv('../data/dividendos_ano_resumo.csv', index=False)
-print("Arquivo 'dividendos_ano_resumo.csv' gerado com sucesso!")
+resumo.to_csv(BASE / 'dividendos_ano_resumo.csv', index=False)
+print(f"Arquivo 'dividendos_ano_resumo.csv' gerado com sucesso em: {BASE / 'dividendos_ano_resumo.csv'}")
 print(resumo.head())
 print(resumo.shape)

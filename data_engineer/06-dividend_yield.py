@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+from tqdm.auto import tqdm
 
 # Calcula DY 5 anos e DY 12 meses juntando preços atuais (precos_acoes.csv) e somas
 # de dividendos (dividendos_ano_resumo.csv); normaliza tickers, computa percentuais

@@ -1,4 +1,5 @@
 import pandas as pd
+from tqdm.auto import tqdm
 
 # Calcula o Preço Teto a partir de dividendos dos últimos 5 anos (Bazin):
 # junta dividendos_ano_resumo.csv com precos_acoes.csv, calcula preco_teto_5anos

@@ -1,151 +1,143 @@
 ticker,empresa,setor_brapi,subsetor_yfinance,pais,tipo,market_cap,logo
-VIVT3.SA,Telefônica Brasil S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/VIVT3.svg
-TIMS3.SA,TIM S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TIMS3.svg
-FIQE3.SA,Unifique Telecomunicações S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/FIQE3.svg
-BRST3.SA,N/A,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRST3.svg
-TELB4.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TELB4.svg
-TELB3.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TELB3.svg
-DESK3.SA,Desktop S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/DESK3.svg
-OIBR4.SA,Oi S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/OIBR4.svg
-OIBR3.SA,Oi S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,N/A,https://icons.brapi.dev/icons/OIBR3.svg
-ITUB4.SA,Itaú Unibanco Holding S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ITUB4.svg
-ITUB3.SA,Itaú Unibanco Holding S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ITUB3.svg
-BPAC3.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BPAC3.svg
-BPAC5.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BPAC5.svg
-BBDC4.SA,Banco Bradesco S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BBDC4.svg
-BBDC3.SA,Banco Bradesco S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BBDC3.svg
-SANB11.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/SANB11.svg
-BPAC11.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BPAC11.svg
-ITSA3.SA,Itaúsa S.A.,Financeiro,Conglomerados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ITSA3.svg
-ITSA4.SA,Itaúsa S.A.,Financeiro,Conglomerados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ITSA4.svg
-BBAS3.SA,Banco do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BBAS3.svg
-SANB3.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SANB3.svg
-SANB4.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SANB4.svg
-B3SA3.SA,"B3 S.A. - Brasil, Bolsa, Balcão",Financeiro,Dados financeiros e bolsas de valores,Brazil,Ação,N/A,https://icons.brapi.dev/icons/B3SA3.svg
-BBSE3.SA,BB Seguridade Participações S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BBSE3.svg
-CXSE3.SA,Caixa Seguridade Participações S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CXSE3.svg
-RENT3.SA,Localiza Rent a Car S.A.,Financeiro,Serviços de aluguel e leasing,Brazil,Ação,N/A,https://icons.brapi.dev/icons/RENT3.svg
-PSSA3.SA,Porto Seguro S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PSSA3.svg
-MULT3.SA,Multiplan Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MULT3.svg
-ALOS3.SA,Allos S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ALOS3.svg
-CURY3.SA,Cury Construtora e Incorporadora S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CURY3.svg
-BPAN4.SA,Banco Pan S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BPAN4.svg
-CYRE3.SA,Cyrela Brazil Realty S.A. Empreendimentos e Participações,Financeiro,Construção residencial,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CYRE3.svg
-DIRR3.SA,Direcional Engenharia S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/DIRR3.svg
-IGTI3.SA,Iguatemi S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/IGTI3.svg
-BRAP4.SA,Bradespar S.A.,Financeiro,Gestão de ativos,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAP4.svg
-BRAP3.SA,Bradespar S.A.,Financeiro,Gestão de ativos,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAP3.svg
-ABCB4.SA,Banco ABC Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ABCB4.svg
-BRSR3.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRSR3.svg
-BRSR6.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRSR6.svg
-VAMO3.SA,"Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,N/A,https://icons.brapi.dev/icons/VAMO3.svg
-BSLI3.SA,BRB - Banco de Brasília S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BSLI3.svg
-BSLI4.SA,BRB - Banco de Brasília S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BSLI4.svg
-BAZA3.SA,Banco da Amazônia S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BAZA3.svg
-BMEB4.SA,Banco Mercantil do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BMEB4.svg
-BMEB3.SA,Banco Mercantil do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BMEB3.svg
-IRBR3.SA,IRB-Brasil Resseguros S.A.,Financeiro,Seguro - resseguro,Brazil,Ação,N/A,https://icons.brapi.dev/icons/IRBR3.svg
-JHSF3.SA,JHSF Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/JHSF3.svg
-EZTC3.SA,EZTEC Empreendimentos e Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EZTC3.svg
-BEES4.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BEES4.svg
-BEES3.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BEES3.svg
-MILS3.SA,"Mills Locação, Serviços e Logística S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MILS3.svg
-PLPL3.SA,Plano & Plano Desenvolvimento Imobiliário S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PLPL3.svg
-TEND3.SA,Construtora Tenda S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TEND3.svg
-MOVI3.SA,Movida Participações S.A.,Financeiro,Serviços de aluguel e leasing,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MOVI3.svg
-LAVV3.SA,Lavvi Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/LAVV3.svg
-AGRO3.SA,BrasilAgro - Companhia Brasileira de Propriedades Agrícolas,Financeiro,Produtos agrícolas,Brazil,Ação,N/A,https://icons.brapi.dev/icons/AGRO3.svg
-MDNE3.SA,Moura Dubeux Engenharia S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MDNE3.svg
-BMGB4.SA,Banco BMG S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BMGB4.svg
-MOAR3.SA,Monteiro Aranha S.A.,Financeiro,Conglomerados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-EVEN3.SA,Even Construtora e Incorporadora S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EVEN3.svg
-WIZC3.SA,Wiz Co Participações e Corretagem de Seguros S.A.,Financeiro,Corretores de seguros,Brazil,Ação,N/A,https://icons.brapi.dev/icons/WIZC3.svg
-PINE3.SA,Banco Pine S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PINE3.svg
-PINE4.SA,Banco Pine S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PINE4.svg
-ARML3.SA,"Armac Locação, Logística e Serviços S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ARML3.svg
-SYNE3.SA,Syn Prop & Tech S.A.,Financeiro,Imóvel - diversificado,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SYNE3.svg
-SCAR3.SA,São Carlos Empreendimentos e Participações S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SCAR3.svg
-LAND3.SA,Terra Santa Propriedades Agrícolas S.A.,Financeiro,Produtos agrícolas,Brazil,Ação,N/A,https://icons.brapi.dev/icons/LAND3.svg
-BGIP4.SA,Banco do Estado de Sergipe S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BGIP4.svg
-ADMF3.SA,CIABRASF - Cia. Brasileira de Serviços Financeiros S/A,Financeiro,Gestão de ativos,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-MTRE3.SA,Mitre Realty Empreendimentos e Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MTRE3.svg
-HBRE3.SA,HBR Realty Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/HBRE3.svg
-SNCI11.SA,Suno Recebiveis Imobiliarios Fundo De Investimento Imobiliario,Financeiro,Serviços de consultoria,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-AVLL3.SA,Alphaville S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-IRIM11.SA,Iridium Fundo De Investimento Imobiliario,Financeiro,REIT - diversificado,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-TCSA3.SA,Tecnisa S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TCSA3.svg
-BMIN3.SA,Banco Mercantil de Investimentos S.A.,Financeiro,Bancos - Regional,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-GFSA3.SA,Gafisa S.A.,Financeiro,Construção residencial,Brazil,Ação,N/A,https://icons.brapi.dev/icons/GFSA3.svg
-RDNI3.SA,RNI Negócios Imobiliários S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/RDNI3.svg
-PPLA11.SA,PPLA Participations Ltd.,Financeiro,Gestão de ativos,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/PPLA11.svg
-FIEI3.SA,Fica Empreendimentos Imobiliarios S.A,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-RENV11.SA,Cpv Energia Fundo De Investimento Imobiliario Responsabilidade Limitada,Financeiro,REIT - diversificado,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/RENV11.svg
-NEXP3.SA,Nexpe Participações S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/NEXP3.svg
-PDGR3.SA,PDG Realty S.A. Empreendimentos e Participações,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PDGR3.svg
-EGYR11.SA,Energy Resort Fundo De Investimento Imobiliario,Financeiro,REIT - diversificado,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-IGTI11.SA,Iguatemi S.A.,Financeiro,Serviços imobiliários,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/IGTI11.svg
-BRBI11.SA,BRBI BR Partners S.A.,Financeiro,Mercados de capitais,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRBI11.svg
-FSPE11.SA,Fiset Pesca Fiset Fspe,Financeiro,N/A,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-RBIF11.SA,Rio Bravo Esg FICFI Em Infraestrutura Renda Fixa Credito Privado,Financeiro,N/A,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-TAEE11.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/TAEE11.svg
-TAEE3.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TAEE3.svg
-TAEE4.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/TAEE4.svg
-LOGG3.SA,LOG Commercial Properties e Participações S.A.,Serviços Industriais,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/LOGG3.svg
-PRNR3.SA,Priner Serviços Industriais S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,N/A,https://icons.brapi.dev/icons/PRNR3.svg
-MELK3.SA,Melnick Desenvolvimento Imobiliário S.A.,Serviços Industriais,Serviços imobiliários,Brazil,Ação,N/A,https://icons.brapi.dev/icons/MELK3.svg
-AZEV4.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,N/A,https://icons.brapi.dev/icons/AZEV4.svg
-AZEV3.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,N/A,https://icons.brapi.dev/icons/AZEV3.svg
-AZTE3.SA,Azevedo & Travassos Energia S.A.,Serviços Industriais,Petróleo e gás E&P,Brazil,Ação,N/A,https://icons.brapi.dev/icons/AZTE3.svg
-SOND6.SA,Sondotécnica Engenharia de Solos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-SOND5.SA,Sondotécnica Engenharia de Solos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-INEP4.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Máquinas industriais especiais,Brazil,Ação,N/A,https://icons.brapi.dev/icons/INEP4.svg
-INEP3.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Máquinas industriais especiais,Brazil,Ação,N/A,https://icons.brapi.dev/icons/INEP3.svg
-OSXB3.SA,OSX Brasil S.A.,Serviços Industriais,Equipamentos e serviços de petróleo e gás,Brazil,Ação,N/A,https://icons.brapi.dev/icons/OSXB3.svg
-ELET6.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ELET6.svg
-ELET3.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ELET3.svg
-SBSP3.SA,Companhia de Saneamento Básico do Estado de São Paulo - SABESP,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SBSP3.svg
-CPFE3.SA,CPFL Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CPFE3.svg
-EQTL3.SA,Equatorial S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EQTL3.svg
-CPLE5.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-CPLE3.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CPLE3.svg
-CPLE6.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CPLE6.svg
-CMIG4.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CMIG4.svg
-CMIG3.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CMIG3.svg
-EGIE3.SA,Engie Brasil Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EGIE3.svg
-NEOE3.SA,Neoenergia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/NEOE3.svg
-ENEV3.SA,Eneva S.A.,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ENEV3.svg
-ENGI4.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ENGI4.svg
-ENGI3.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ENGI3.svg
-ENGI11.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/ENGI11.svg
-ISAE4.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilitários - produtores de energia independentes,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ISAE4.svg
-ISAE3.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilitários - produtores de energia independentes,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ISAE3.svg
-CGAS5.SA,Companhia de Gás de São Paulo - COMGÁS,Utilidade Pública,Utilitários - gás regulado,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CGAS5.svg
-ALUP4.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ALUP4.svg
-ALUP3.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ALUP3.svg
-ALUP11.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/ALUP11.svg
-REDE3.SA,Rede Energia Participações S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-ENMT4.SA,Energisa Mato Grosso - Distribuidora de Energia S/A,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-ENMT3.SA,Energisa Mato Grosso - Distribuidora de Energia S/A,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-EQPA3.SA,Equatorial Pará Distribuidora de Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EQPA3.svg
-CSAN3.SA,Cosan S.A.,Utilidade Pública,Reino e marketing de petróleo e gás,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CSAN3.svg
-SAPR4.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SAPR4.svg
-SAPR3.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SAPR3.svg
-AURE3.SA,Auren Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/AURE3.svg
-SAPR11.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/SAPR11.svg
-CEEB3.SA,Companhia de Eletricidade do Estado da Bahia - COELBA,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-CSMG3.SA,Companhia de Saneamento de Minas Gerais,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CSMG3.svg
-EKTR4.SA,Elektro Redes S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-SRNA3.SA,Serena Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/SRNA3.svg
-ORVR3.SA,Orizon Valorização de Resíduos S.A.,Utilidade Pública,Gerenciamento de resíduos,Brazil,Ação,N/A,https://icons.brapi.dev/icons/ORVR3.svg
-CLSC4.SA,Centrais Elétricas de Santa Catarina S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CLSC4.svg
-LIGT3.SA,Light S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/LIGT3.svg
-GEPA3.SA,Rio Paranapanema Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-GEPA4.SA,Rio Paranapanema Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/BRAPI.svg
-EMAE4.SA,Empresa Metropolitana de Águas e Energia S.A.,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,N/A,https://icons.brapi.dev/icons/EMAE4.svg
-COCE5.SA,Companhia Energética do Ceará - COELCE,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/COCE5.svg
-CEBR3.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CEBR3.svg
-CEBR5.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CEBR5.svg
-CEBR6.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,N/A,https://icons.brapi.dev/icons/CEBR6.svg
-RNEW11.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Fundo,N/A,https://icons.brapi.dev/icons/RNEW11.svg
-RNEW4.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/RNEW4.svg
-RNEW3.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,N/A,https://icons.brapi.dev/icons/RNEW3.svg
+BBAS3.SA,Banco do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,117878251520.0,https://icons.brapi.dev/icons/BBAS3.svg
+ITSA4.SA,Itaúsa S.A.,Financeiro,Conglomerados,Brazil,Ação,121010126848.0,https://icons.brapi.dev/icons/ITSA4.svg
+B3SA3.SA,"B3 S.A. - Brasil, Bolsa, Balcão",Financeiro,Dados financeiros e bolsas de valores,Brazil,Ação,68341202944.0,https://icons.brapi.dev/icons/B3SA3.svg
+BBDC4.SA,Banco Bradesco S.A.,Financeiro,Bancos - Regional,Brazil,Ação,157685661696.0,https://icons.brapi.dev/icons/BBDC4.svg
+ITUB4.SA,Itaú Unibanco Holding S.A.,Financeiro,Bancos - Regional,Brazil,Ação,382529208320.0,https://icons.brapi.dev/icons/ITUB4.svg
+CMIG4.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,34521616384.0,https://icons.brapi.dev/icons/CMIG4.svg
+CSAN3.SA,Cosan S.A.,Utilidade Pública,Reino e marketing de petróleo e gás,Brazil,Ação,10185567232.0,https://icons.brapi.dev/icons/CSAN3.svg
+CPLE6.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,34812882944.0,https://icons.brapi.dev/icons/CPLE6.svg
+VAMO3.SA,"Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,4083124480.0,https://icons.brapi.dev/icons/VAMO3.svg
+AZTE3.SA,Azevedo & Travassos Energia S.A.,Serviços Industriais,Petróleo e gás E&P,Brazil,Ação,106695368.0,https://icons.brapi.dev/icons/AZTE3.svg
+RENT3.SA,Localiza Rent a Car S.A.,Financeiro,Serviços de aluguel e leasing,Brazil,Ação,36087386112.0,https://icons.brapi.dev/icons/RENT3.svg
+BBSE3.SA,BB Seguridade Participações S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,63652278272.0,https://icons.brapi.dev/icons/BBSE3.svg
+CYRE3.SA,Cyrela Brazil Realty S.A. Empreendimentos e Participações,Financeiro,Construção residencial,Brazil,Ação,9450823680.0,https://icons.brapi.dev/icons/CYRE3.svg
+AURE3.SA,Auren Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,10397550592.0,https://icons.brapi.dev/icons/AURE3.svg
+BPAC11.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Fundo,148556349440.0,https://icons.brapi.dev/icons/BPAC11.svg
+BBDC3.SA,Banco Bradesco S.A.,Financeiro,Bancos - Regional,Brazil,Ação,157685891072.0,https://icons.brapi.dev/icons/BBDC3.svg
+ENEV3.SA,Eneva S.A.,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,26973759488.0,https://icons.brapi.dev/icons/ENEV3.svg
+EQTL3.SA,Equatorial S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,44956856320.0,https://icons.brapi.dev/icons/EQTL3.svg
+ELET3.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilitários - renovável,Brazil,Ação,100491313152.0,https://icons.brapi.dev/icons/ELET3.svg
+MOVI3.SA,Movida Participações S.A.,Financeiro,Serviços de aluguel e leasing,Brazil,Ação,2471417344.0,https://icons.brapi.dev/icons/MOVI3.svg
+VIVT3.SA,Telefônica Brasil S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,107863564288.0,https://icons.brapi.dev/icons/VIVT3.svg
+JHSF3.SA,JHSF Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,3643673600.0,https://icons.brapi.dev/icons/JHSF3.svg
+CXSE3.SA,Caixa Seguridade Participações S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,40860000256.0,https://icons.brapi.dev/icons/CXSE3.svg
+CPLE3.SA,Companhia Paranaense de Energia - COPEL,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,34812940288.0,https://icons.brapi.dev/icons/CPLE3.svg
+TIMS3.SA,TIM S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,53920059392.0,https://icons.brapi.dev/icons/TIMS3.svg
+AZEV4.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,337738048.0,https://icons.brapi.dev/icons/AZEV4.svg
+LIGT3.SA,Light S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,3076370176.0,https://icons.brapi.dev/icons/LIGT3.svg
+BRSR6.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Bancos - Regional,Brazil,Ação,4917710848.0,https://icons.brapi.dev/icons/BRSR6.svg
+MULT3.SA,Multiplan Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,13001699328.0,https://icons.brapi.dev/icons/MULT3.svg
+AZEV3.SA,Azevedo & Travassos S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,337737952.0,https://icons.brapi.dev/icons/AZEV3.svg
+TAEE11.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Fundo,11654402048.0,https://icons.brapi.dev/icons/TAEE11.svg
+SRNA3.SA,Serena Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,7515844096.0,https://icons.brapi.dev/icons/SRNA3.svg
+ALOS3.SA,Allos S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,11421130752.0,https://icons.brapi.dev/icons/ALOS3.svg
+OIBR3.SA,Oi S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,191760240.0,https://icons.brapi.dev/icons/OIBR3.svg
+EZTC3.SA,EZTEC Empreendimentos e Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,3127926784.0,https://icons.brapi.dev/icons/EZTC3.svg
+IRBR3.SA,IRB-Brasil Resseguros S.A.,Financeiro,Seguro - resseguro,Brazil,Ação,3849071360.0,https://icons.brapi.dev/icons/IRBR3.svg
+DIRR3.SA,Direcional Engenharia S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,7399784448.0,https://icons.brapi.dev/icons/DIRR3.svg
+BRAP4.SA,Bradespar S.A.,Financeiro,Gestão de ativos,Brazil,Ação,6051814400.0,https://icons.brapi.dev/icons/BRAP4.svg
+CURY3.SA,Cury Construtora e Incorporadora S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,9340000256.0,https://icons.brapi.dev/icons/CURY3.svg
+CSMG3.SA,Companhia de Saneamento de Minas Gerais,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,10135507968.0,https://icons.brapi.dev/icons/CSMG3.svg
+SBSP3.SA,Companhia de Saneamento Básico do Estado de São Paulo - SABESP,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,79594741760.0,https://icons.brapi.dev/icons/SBSP3.svg
+PDGR3.SA,PDG Realty S.A. Empreendimentos e Participações,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,5344362.0,https://icons.brapi.dev/icons/PDGR3.svg
+ENGI11.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Fundo,21366255616.0,https://icons.brapi.dev/icons/ENGI11.svg
+ELET6.SA,Centrais Elétricas Brasileiras S.A. - Eletrobrás,Utilidade Pública,Utilitários - renovável,Brazil,Ação,100491329536.0,https://icons.brapi.dev/icons/ELET6.svg
+ISAE4.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilitários - produtores de energia independentes,Brazil,Ação,16760664064.0,https://icons.brapi.dev/icons/ISAE4.svg
+BPAN4.SA,Banco Pan S.A.,Financeiro,Bancos - Regional,Brazil,Ação,10317202432.0,https://icons.brapi.dev/icons/BPAN4.svg
+PSSA3.SA,Porto Seguro S.A.,Financeiro,Seguro - diversificado,Brazil,Ação,33700886528.0,https://icons.brapi.dev/icons/PSSA3.svg
+CPFE3.SA,CPFL Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,45490827264.0,https://icons.brapi.dev/icons/CPFE3.svg
+SANB11.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Fundo,137883484160.0,https://icons.brapi.dev/icons/SANB11.svg
+ORVR3.SA,Orizon Valorização de Resíduos S.A.,Utilidade Pública,Gerenciamento de resíduos,Brazil,Ação,4988024320.0,https://icons.brapi.dev/icons/ORVR3.svg
+IGTI11.SA,Iguatemi S.A.,Financeiro,Serviços imobiliários,Brazil,Fundo,,https://icons.brapi.dev/icons/IGTI11.svg
+MTRE3.SA,Mitre Realty Empreendimentos e Participações S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,362808256.0,https://icons.brapi.dev/icons/MTRE3.svg
+ARML3.SA,"Armac Locação, Logística e Serviços S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,1326092160.0,https://icons.brapi.dev/icons/ARML3.svg
+SAPR11.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Fundo,10327574528.0,https://icons.brapi.dev/icons/SAPR11.svg
+EGIE3.SA,Engie Brasil Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,32106766336.0,https://icons.brapi.dev/icons/EGIE3.svg
+TEND3.SA,Construtora Tenda S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,2623169280.0,https://icons.brapi.dev/icons/TEND3.svg
+MELK3.SA,Melnick Desenvolvimento Imobiliário S.A.,Serviços Industriais,Serviços imobiliários,Brazil,Ação,770677504.0,https://icons.brapi.dev/icons/MELK3.svg
+ALUP11.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Fundo,14478958592.0,https://icons.brapi.dev/icons/ALUP11.svg
+NEOE3.SA,Neoenergia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,32408459264.0,https://icons.brapi.dev/icons/NEOE3.svg
+SAPR4.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,10568359936.0,https://icons.brapi.dev/icons/SAPR4.svg
+PLPL3.SA,Plano & Plano Desenvolvimento Imobiliário S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,2629713664.0,https://icons.brapi.dev/icons/PLPL3.svg
+SYNE3.SA,Syn Prop & Tech S.A.,Financeiro,Imóvel - diversificado,Brazil,Ação,1063928640.0,https://icons.brapi.dev/icons/SYNE3.svg
+MDNE3.SA,Moura Dubeux Engenharia S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,1988546304.0,https://icons.brapi.dev/icons/MDNE3.svg
+MILS3.SA,"Mills Locação, Serviços e Logística S.A.",Financeiro,Serviços de aluguel e leasing,Brazil,Ação,2763180288.0,https://icons.brapi.dev/icons/MILS3.svg
+ITUB3.SA,Itaú Unibanco Holding S.A.,Financeiro,Bancos - Regional,Brazil,Ação,382529798144.0,https://icons.brapi.dev/icons/ITUB3.svg
+FIQE3.SA,Unifique Telecomunicações S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,1408888960.0,https://icons.brapi.dev/icons/FIQE3.svg
+LAVV3.SA,Lavvi Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,2368659968.0,https://icons.brapi.dev/icons/LAVV3.svg
+WIZC3.SA,Wiz Co Participações e Corretagem de Seguros S.A.,Financeiro,Corretores de seguros,Brazil,Ação,1264864384.0,https://icons.brapi.dev/icons/WIZC3.svg
+EVEN3.SA,Even Construtora e Incorporadora S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,1416708352.0,https://icons.brapi.dev/icons/EVEN3.svg
+BMGB4.SA,Banco BMG S.A.,Financeiro,Bancos - Regional,Brazil,Ação,1812874624.0,https://icons.brapi.dev/icons/BMGB4.svg
+ABCB4.SA,Banco ABC Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,5272980992.0,https://icons.brapi.dev/icons/ABCB4.svg
+GFSA3.SA,Gafisa S.A.,Financeiro,Construção residencial,Brazil,Ação,154016288.0,https://icons.brapi.dev/icons/GFSA3.svg
+BRST3.SA,N/A,Comunicações,Serviços de telecomunicações,Brazil,Ação,1178241536.0,https://icons.brapi.dev/icons/BRST3.svg
+PINE4.SA,Banco Pine S.A.,Financeiro,Bancos - Regional,Brazil,Ação,1364600832.0,https://icons.brapi.dev/icons/PINE4.svg
+BRBI11.SA,BRBI BR Partners S.A.,Financeiro,Mercados de capitais,Brazil,Fundo,,https://icons.brapi.dev/icons/BRBI11.svg
+LOGG3.SA,LOG Commercial Properties e Participações S.A.,Serviços Industriais,Serviços imobiliários,Brazil,Ação,1793055488.0,https://icons.brapi.dev/icons/LOGG3.svg
+TAEE4.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Ação,11613575168.0,https://icons.brapi.dev/icons/TAEE4.svg
+PRNR3.SA,Priner Serviços Industriais S.A.,Serviços Industriais,Engenharia e Construção,Brazil,Ação,712252736.0,https://icons.brapi.dev/icons/PRNR3.svg
+SAPR3.SA,Companhia de Saneamento do Paraná - SANEPAR,Utilidade Pública,Utilitários - água regulada,Brazil,Ação,10568340480.0,https://icons.brapi.dev/icons/SAPR3.svg
+ITSA3.SA,Itaúsa S.A.,Financeiro,Conglomerados,Brazil,Ação,121010077696.0,https://icons.brapi.dev/icons/ITSA3.svg
+TAEE3.SA,Transmissora Aliança de Energia Elétrica S.A.,Serviços Industriais,Utilitários - Elétrica regulada,Brazil,Ação,11613541376.0,https://icons.brapi.dev/icons/TAEE3.svg
+HBRE3.SA,HBR Realty Empreendimentos Imobiliários S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,380889120.0,https://icons.brapi.dev/icons/HBRE3.svg
+AGRO3.SA,BrasilAgro - Companhia Brasileira de Propriedades Agrícolas,Financeiro,Produtos agrícolas,Brazil,Ação,2013229184.0,https://icons.brapi.dev/icons/AGRO3.svg
+CMIG3.SA,Companhia Energética de Minas Gerais - CEMIG,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,34521636864.0,https://icons.brapi.dev/icons/CMIG3.svg
+INEP3.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Máquinas industriais especiais,Brazil,Ação,73390256.0,https://icons.brapi.dev/icons/INEP3.svg
+DESK3.SA,Desktop S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,905501248.0,https://icons.brapi.dev/icons/DESK3.svg
+TCSA3.SA,Tecnisa S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,120735488.0,https://icons.brapi.dev/icons/TCSA3.svg
+ENGI4.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,23176026112.0,https://icons.brapi.dev/icons/ENGI4.svg
+IGTI3.SA,Iguatemi S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,6376521728.0,https://icons.brapi.dev/icons/IGTI3.svg
+SANB4.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Ação,100511203328.0,https://icons.brapi.dev/icons/SANB4.svg
+CLSC4.SA,Centrais Elétricas de Santa Catarina S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,3865998080.0,https://icons.brapi.dev/icons/CLSC4.svg
+BRAP3.SA,Bradespar S.A.,Financeiro,Gestão de ativos,Brazil,Ação,6051827200.0,https://icons.brapi.dev/icons/BRAP3.svg
+SANB3.SA,Banco Santander (Brasil) S.A.,Financeiro,Bancos - Regional,Brazil,Ação,100511293440.0,https://icons.brapi.dev/icons/SANB3.svg
+INEP4.SA,Inepar S.A. Indústria e Construções,Serviços Industriais,Máquinas industriais especiais,Brazil,Ação,73390280.0,https://icons.brapi.dev/icons/INEP4.svg
+BMEB4.SA,Banco Mercantil do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,3963044096.0,https://icons.brapi.dev/icons/BMEB4.svg
+RNEW3.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,385200384.0,https://icons.brapi.dev/icons/RNEW3.svg
+ENGI3.SA,Energisa S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,23176038400.0,https://icons.brapi.dev/icons/ENGI3.svg
+AVLL3.SA,Alphaville S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,318387904.0,https://icons.brapi.dev/icons/BRAPI.svg
+RNEW4.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,385199840.0,https://icons.brapi.dev/icons/RNEW4.svg
+CEBR6.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,1637215104.0,https://icons.brapi.dev/icons/CEBR6.svg
+BEES3.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Bancos - Regional,Brazil,Ação,2963952128.0,https://icons.brapi.dev/icons/BEES3.svg
+LAND3.SA,Terra Santa Propriedades Agrícolas S.A.,Financeiro,Produtos agrícolas,Brazil,Ação,971691776.0,https://icons.brapi.dev/icons/LAND3.svg
+FIEI3.SA,Fica Empreendimentos Imobiliarios S.A,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,59342676.0,https://icons.brapi.dev/icons/BRAPI.svg
+SNCI11.SA,Suno Recebiveis Imobiliarios Fundo De Investimento Imobiliario,Financeiro,Serviços de consultoria,Brazil,Fundo,365400000.0,https://icons.brapi.dev/icons/BRAPI.svg
+CEBR3.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,1637215616.0,https://icons.brapi.dev/icons/CEBR3.svg
+BRSR3.SA,Banco do Estado do Rio Grande do Sul S.A.,Financeiro,Bancos - Regional,Brazil,Ação,4917710336.0,https://icons.brapi.dev/icons/BRSR3.svg
+BAZA3.SA,Banco da Amazônia S.A.,Financeiro,Bancos - Regional,Brazil,Ação,4081604608.0,https://icons.brapi.dev/icons/BAZA3.svg
+BEES4.SA,Banestes S.A - Banco do Estado do Espírito Santo,Financeiro,Bancos - Regional,Brazil,Ação,2963950080.0,https://icons.brapi.dev/icons/BEES4.svg
+EQPA3.SA,Equatorial Pará Distribuidora de Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,12617901056.0,https://icons.brapi.dev/icons/EQPA3.svg
+ALUP4.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,15631840256.0,https://icons.brapi.dev/icons/ALUP4.svg
+BPAC5.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Ação,236566478848.0,https://icons.brapi.dev/icons/BPAC5.svg
+NEXP3.SA,Nexpe Participações S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,9848381.0,https://icons.brapi.dev/icons/NEXP3.svg
+EMAE4.SA,Empresa Metropolitana de Águas e Energia S.A.,Utilidade Pública,Utilitários - diversificados,Brazil,Ação,2844655616.0,https://icons.brapi.dev/icons/EMAE4.svg
+RDNI3.SA,RNI Negócios Imobiliários S.A.,Financeiro,Imóveis - desenvolvimento,Brazil,Ação,88626504.0,https://icons.brapi.dev/icons/RDNI3.svg
+CEBR5.SA,Companhia Energética de Brasília - CEB,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,1637214848.0,https://icons.brapi.dev/icons/CEBR5.svg
+OIBR4.SA,Oi S.A.,Comunicações,Serviços de telecomunicações,Brazil,Ação,191760048.0,https://icons.brapi.dev/icons/OIBR4.svg
+GEPA4.SA,Rio Paranapanema Energia S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,3199085056.0,https://icons.brapi.dev/icons/BRAPI.svg
+ALUP3.SA,Alupar Investimento S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Ação,15631898624.0,https://icons.brapi.dev/icons/ALUP3.svg
+SCAR3.SA,São Carlos Empreendimentos e Participações S.A.,Financeiro,Serviços imobiliários,Brazil,Ação,1130690944.0,https://icons.brapi.dev/icons/SCAR3.svg
+CLSC3.SA,Centrais Elétricas de Santa Catarina S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,3865999872.0,https://icons.brapi.dev/icons/BRAPI.svg
+OSXB3.SA,OSX Brasil S.A.,Serviços Industriais,Equipamentos e serviços de petróleo e gás,Brazil,Ação,7901580.0,https://icons.brapi.dev/icons/OSXB3.svg
+PPLA11.SA,PPLA Participations Ltd.,Financeiro,Gestão de ativos,Brazil,Fundo,37998000.0,https://icons.brapi.dev/icons/PPLA11.svg
+ISAE3.SA,ISA Energía Brasil S.A.,Utilidade Pública,Utilitários - produtores de energia independentes,Brazil,Ação,16760653824.0,https://icons.brapi.dev/icons/ISAE3.svg
+PINE3.SA,Banco Pine S.A.,Financeiro,Bancos - Regional,Brazil,Ação,1364601216.0,https://icons.brapi.dev/icons/PINE3.svg
+BPAC3.SA,Banco BTG Pactual S.A.,Financeiro,Mercados de capitais,Brazil,Ação,236566986752.0,https://icons.brapi.dev/icons/BPAC3.svg
+TELB3.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Serviços de telecomunicações,Brazil,Ação,973876544.0,https://icons.brapi.dev/icons/TELB3.svg
+MOAR3.SA,Monteiro Aranha S.A.,Financeiro,Conglomerados,Brazil,Ação,1555902464.0,https://icons.brapi.dev/icons/BRAPI.svg
+IRIM11.SA,Iridium Fundo De Investimento Imobiliario,Financeiro,REIT - diversificado,Brazil,Fundo,128025600.0,https://icons.brapi.dev/icons/BRAPI.svg
+COCE5.SA,Companhia Energética do Ceará - COELCE,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,2870437376.0,https://icons.brapi.dev/icons/COCE5.svg
+TELB4.SA,Telecomunicações Brasileiras S.A. - Telebras,Comunicações,Serviços de telecomunicações,Brazil,Ação,973874752.0,https://icons.brapi.dev/icons/TELB4.svg
+REDE3.SA,Rede Energia Participações S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,13949215744.0,https://icons.brapi.dev/icons/BRAPI.svg
+RENV11.SA,Cpv Energia Fundo De Investimento Imobiliario Responsabilidade Limitada,Financeiro,REIT - diversificado,Brazil,Fundo,5893774.0,https://icons.brapi.dev/icons/RENV11.svg
+RNEW11.SA,Renova Energia S.A.,Utilidade Pública,Utilitários - renovável,Brazil,Fundo,476279872.0,https://icons.brapi.dev/icons/RNEW11.svg
+CGAS5.SA,Companhia de Gás de São Paulo - COMGÁS,Utilidade Pública,Utilitários - gás regulado,Brazil,Ação,16554496000.0,https://icons.brapi.dev/icons/CGAS5.svg
+RBIF11.SA,Rio Bravo Esg FICFI Em Infraestrutura Renda Fixa Credito Privado,Financeiro,N/A,Brazil,Fundo,,https://icons.brapi.dev/icons/BRAPI.svg
+BGIP4.SA,Banco do Estado de Sergipe S.A.,Financeiro,Bancos - Regional,Brazil,Ação,682218240.0,https://icons.brapi.dev/icons/BGIP4.svg
+BNBR3.SA,Banco do Nordeste do Brasil S.A.,Financeiro,Bancos - Regional,Brazil,Ação,9771280384.0,https://icons.brapi.dev/icons/BRAPI.svg
+BSLI3.SA,BRB - Banco de Brasília S.A.,Financeiro,Bancos - Regional,Brazil,Ação,4427386368.0,https://icons.brapi.dev/icons/BSLI3.svg
+AFLT3.SA,Afluente Transmissão de Energia Elétrica S.A.,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,466826784.0,https://icons.brapi.dev/icons/BRAPI.svg
+CEEB3.SA,Companhia de Eletricidade do Estado da Bahia - COELBA,Utilidade Pública,Utilitários - Elétrica regulada,Brazil,Ação,9802488832.0,https://icons.brapi.dev/icons/BRAPI.svg
+GSHP3.SA,General Shopping e Outlets do Brasil S.A.,Financeiro,Imóvel - diversificado,Brazil,Ação,8439030.0,https://icons.brapi.dev/icons/BRAPI.svg
+EGYR11.SA,Energy Resort Fundo De Investimento Imobiliario,Financeiro,REIT - diversificado,Brazil,Fundo,2306151.0,https://icons.brapi.dev/icons/BRAPI.svg

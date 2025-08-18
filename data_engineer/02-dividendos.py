@@ -2,7 +2,7 @@ import os
 import yfinance as yf
 import pandas as pd
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
+from tqdm.auto import tqdm
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
@@ -24,7 +24,7 @@ start_date = end_date - timedelta(days=7*365)
 
 todos_dividendos = []
 
-for ticker in tickers:
+for ticker in tqdm(tickers, desc="Coletando dividendos (7 anos)"):
     try:
         acao = yf.Ticker(ticker)
         dividendos = acao.dividends

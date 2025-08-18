@@ -3,6 +3,7 @@ import yfinance as yf
 from datetime import date
 import warnings
 import os
+from tqdm.auto import tqdm
 # Lê a lista de tickers em ../data/acoes_e_fundos.csv, baixa preços ajustados no yfinance,
 # gera: (1) tabela anual dos últimos 7 anos e (2) tabela resumida com fechamento atual;
 # salva em ../data/precos_acoes_completo.csv e ../data/precos_acoes.csv.
@@ -48,7 +49,7 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
         df_closes = hist['Close']
         lista_completa, lista_resumida = [], []
 
-        for ticker, ticker_sa in zip(lista_tickers, tickers_sa):
+        for ticker, ticker_sa in tqdm(list(zip(lista_tickers, tickers_sa)), desc="Processando preços por ticker"):
             col = df_closes.get(ticker_sa)
             if col is None or col.dropna().empty:
                 print(f"Aviso: Não foram encontrados dados para o ticker {ticker}. Pulando.")

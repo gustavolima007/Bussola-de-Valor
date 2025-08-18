@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 import csv  # solicitado
+from tqdm.auto import tqdm
 
 # Gera pontuações (score_total e componentes) por ticker combinando indicadores,
 # DY e preço teto: normaliza, faz merges e aplica regras de pontuação equivalentes
@@ -226,7 +227,7 @@ def main() -> None:
     df = prepare(indic, dy, preco_teto)
 
     # Calcula scores
-    scores = df.apply(compute_scores, axis=1)
+    scores = tqdm(df.apply(compute_scores, axis=1), total=len(df), desc="Calculando scores")
 
     # Monta saída com identificadores e pontuações
     saida = pd.concat([
