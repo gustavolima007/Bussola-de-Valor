@@ -5,6 +5,7 @@
 
 Criar grupos de perfis: Exemplo, setores perenes
 
+* Extrair apenas empresas, coisas do yfinance fazer depois.
 
 * Novas bibliotecas para melhorar extração
 requests-cache: cacheia chamadas HTTP (brapi/yfinance), reduzindo latência e rate-limits.
