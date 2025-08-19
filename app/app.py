@@ -285,9 +285,36 @@ def main():
     st.title("📈 Bússula de valor")
     st.markdown("Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
 
+    # Padroniza coluna de Setor usando avaliacao_setor.csv (PT) e mapa EN->PT
+    try:
+        base_dir = Path(__file__).resolve().parent.parent
+        av_path = base_dir / 'data' / 'avaliacao_setor.csv'
+        setores_pt = set()
+        if av_path.exists():
+            av = read_csv_cached(av_path)
+            if 'setor' in av.columns:
+                setores_pt = set(av['setor'].dropna().astype(str))
+        mapa_path = base_dir / 'discover' / 'data' / 'setores_b3.csv'
+        dmap = {}
+        if mapa_path.exists():
+            mapa = pd.read_csv(mapa_path)
+            if 'Setor (Inglês)' in mapa.columns and 'Setor (Português)' in mapa.columns:
+                dmap = dict(zip(mapa['Setor (Inglês)'], mapa['Setor (Português)']))
+        if 'Setor (brapi)' in df.columns:
+            df['Setor'] = df['Setor (brapi)'].map(dmap).fillna(df['Setor (brapi)'])
+        else:
+            df['Setor'] = df.get('Setor', '')
+        # Se tivermos a lista oficial de setores PT, mantemos como está; caso contrário, segue mapeado
+        if setores_pt:
+            df['Setor'] = df['Setor'].astype(str)
+    except Exception:
+        # Fallback
+        if 'Setor' not in df.columns and 'Setor (brapi)' in df.columns:
+            df['Setor'] = df['Setor (brapi)']
+
     # Filtros principais (Setor, Perfil, Score e DY)
     st.sidebar.header("Filtros de Análise")
-    setores_disponiveis = sorted(df['Setor (brapi)'].dropna().unique().tolist())
+    setores_disponiveis = sorted(df['Setor'].dropna().unique().tolist())
     setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
 
     # Ordena Perfil da Ação do menor para o maior porte
@@ -315,7 +342,7 @@ def main():
 
     # Filtragem + ordenação segura (sem SettingWithCopyWarning)
     df_filtrado = df[
-        (df['Setor (brapi)'].isin(setor_filtro)) &
+        (df['Setor'].isin(setor_filtro)) &
         (df['Perfil da Ação'].isin(perfil_filtro)) &
         (df['Score Total'].between(score_range[0], score_range[1])) &
         (df['DY (Taxa 12m, %)'] >= dy_min) &
@@ -331,14 +358,14 @@ def main():
     df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
 
     # Abas de exibição
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor", "📈 Gráficos"]) 
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor", "📈 Gráficos", "🏆 Rank Setores"]) 
 
     with tab1:
         st.header(f"Ranking Geral ({len(df_filtrado)} ações encontradas)")
-        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação', 'Preco Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']]
+        df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preco Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']]
         st.dataframe(df_display, column_config={
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),
-            "Empresa": st.column_config.TextColumn("Empresa"), "Setor (brapi)": st.column_config.TextColumn("Setor"),
+            "Empresa": st.column_config.TextColumn("Empresa"), "Setor": st.column_config.TextColumn("Setor"),
             "Perfil da Ação": st.column_config.TextColumn("Perfil"),
             "Preco Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
@@ -350,7 +377,7 @@ def main():
     with tab2:
         st.header(f"Ranking Detalhado ({len(df_filtrado)} ações encontradas)")
         cols_detalhado = [
-            'Logo', 'Ticker', 'Empresa', 'Setor (brapi)', 'Perfil da Ação',
+            'Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação',
             'Preco Atual', 'Preço Teto 5A', 'Alvo',
             'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
             'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
@@ -358,7 +385,7 @@ def main():
         df_display_detalhado = df_filtrado[cols_detalhado]
         st.dataframe(df_display_detalhado, column_config={
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),
-            "Empresa": st.column_config.TextColumn("Empresa"), "Setor (brapi)": st.column_config.TextColumn("Setor"),
+            "Empresa": st.column_config.TextColumn("Empresa"), "Setor": st.column_config.TextColumn("Setor"),
             "Perfil da Ação": st.column_config.TextColumn("Perfil"),
             "Preco Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
@@ -426,6 +453,8 @@ def main():
     with tab5:
         st.header("Exploração Visual")
         st.markdown("Visualize relações e distribuições dos indicadores para apoiar análises.")
+
+
         if df_filtrado.empty:
             st.info("Nenhum dado para exibir com os filtros atuais.")
         else:
@@ -434,7 +463,7 @@ def main():
                 st.subheader("DY 12m vs. P/L")
                 fig = px.scatter(
                     df_filtrado,
-                    x='P/L', y='DY (Taxa 12m, %)', color='Setor (brapi)', hover_data=['Ticker','Empresa'],
+                    x='P/L', y='DY (Taxa 12m, %)', color='Setor', hover_data=['Ticker','Empresa'],
                     title='Relação entre P/L e DY 12m'
                 )
                 st.plotly_chart(fig, use_container_width=True)
@@ -442,7 +471,7 @@ def main():
                 st.subheader("DY 5 anos vs. P/VP")
                 fig = px.scatter(
                     df_filtrado,
-                    x='P/VP', y='DY 5 Anos Média (%)', color='Setor (brapi)', hover_data=['Ticker','Empresa'],
+                    x='P/VP', y='DY 5 Anos Média (%)', color='Setor', hover_data=['Ticker','Empresa'],
                     title='Relação entre P/VP e DY 5 anos'
                 )
                 st.plotly_chart(fig, use_container_width=True)
@@ -451,10 +480,16 @@ def main():
             top = df_filtrado.nlargest(15, 'Score Total')
             fig_bar = px.bar(
                 top.sort_values('Score Total'),
-                x='Score Total', y='Ticker', orientation='h', color='Setor (brapi)',
+                x='Score Total', y='Ticker', orientation='h', color='Setor',
                 hover_data=['Empresa'], title='Maiores Scores'
             )
             st.plotly_chart(fig_bar, use_container_width=True)
+
+            # Botão para abrir Rank Setores
+            st.markdown("---")
+            st.subheader("Ação rápida")
+            if st.button("Ver Rank Setores"):
+                st.session_state['show_rank_setores'] = True
 
             c3, c4 = st.columns(2)
             with c3:
@@ -463,7 +498,7 @@ def main():
                 st.plotly_chart(fig_hist, use_container_width=True)
             with c4:
                 st.subheader("Score por Setor (Boxplot)")
-                fig_box = px.box(df_filtrado, x='Setor (brapi)', y='Score Total', title='Score por Setor')
+                fig_box = px.box(df_filtrado, x='Setor', y='Score Total', title='Score por Setor')
                 fig_box.update_layout(xaxis={'categoryorder':'total descending'})
                 st.plotly_chart(fig_box, use_container_width=True)
 
@@ -616,6 +651,36 @@ def main():
             - **Vantagens:** Serviço considerado essencial na era digital. Receitas recorrentes através de assinaturas e grande barreira de entrada devido ao alto custo da infraestrutura.
             - **Desvantagens:** Setor altamente competitivo, necessidade constante de investimentos em novas tecnologias (como 5G) e sujeito a forte regulação.
             """)
+
+    # --- Conteúdo da aba Rank Setores ---
+    with tab6:
+        st.header("🏆 Rank Setores (Média de Score por Setor)")
+        try:
+            base = Path(__file__).resolve().parent.parent / 'data'
+            av_setor_path = base / 'avaliacao_setor.csv'
+            if av_setor_path.exists():
+                av = read_csv_cached(av_setor_path)
+                # Renomeia colunas se necessário
+                if 'setor' in av.columns and 'pontuacao' in av.columns:
+                    av_display = av.rename(columns={'setor': 'Setor', 'pontuacao': 'Pontuação'})
+                else:
+                    av_display = av
+                st.dataframe(
+                    av_display,
+                    column_config={
+                        'Setor': st.column_config.TextColumn('Setor'),
+                        'Pontuação': st.column_config.NumberColumn('Pontuação', format='%.2f')
+                    },
+                    use_container_width=True,
+                    hide_index=True
+                )
+                if 'Pontuação' in av_display.columns and 'Setor' in av_display.columns:
+                    fig_rank = px.bar(av_display.sort_values('Pontuação'), x='Pontuação', y='Setor', orientation='h', title='Ranking de Setores por Pontuação Média')
+                    st.plotly_chart(fig_rank, use_container_width=True)
+            else:
+                st.info("Arquivo avaliacao_setor.csv não encontrado. Execute o script 10-avaliacao_setor.py para gerar.")
+        except Exception as e:
+            st.error(f"Erro ao carregar ranking de setores: {e}")
 
 # Esta linha garante que o código principal só será executado quando
 # você rodar o script diretamente (ex: 'streamlit run app.py').

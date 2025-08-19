@@ -35,8 +35,25 @@ def main() -> None:
         .sort_values("pontuacao", ascending=False)
     )
 
+    # Tradução dos setores (EN->PT) usando discover/data/setores_b3.csv, se disponível
+    setores_map_path = repo_root / "discover" / "data" / "setores_b3.csv"
+    if setores_map_path.exists():
+        try:
+            mapa = pd.read_csv(setores_map_path, encoding="utf-8")
+            dmap = dict(zip(mapa['Setor (Inglês)'], mapa['Setor (Português)']))
+            setor_perf['setor'] = setor_perf['setor'].map(dmap).fillna(setor_perf['setor'])
+        except Exception:
+            pass
+
     print("Desempenho por setor (média de score_total):")
     print(setor_perf)
+
+    # Salva resultado em CSV na pasta data
+    out_path = data_dir / "avaliacao_setor.csv"
+    # Arredonda a pontuação para 2 casas e salva com ponto decimal
+    setor_perf['pontuacao'] = pd.to_numeric(setor_perf['pontuacao'], errors='coerce').round(2)
+    setor_perf.to_csv(out_path, index=False, encoding="utf-8", float_format='%.2f')
+    print(f"Arquivo salvo em: {out_path}")
 
     if not setor_perf.empty:
         melhor = setor_perf.iloc[0]

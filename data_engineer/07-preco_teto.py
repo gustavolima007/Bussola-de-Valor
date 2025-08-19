@@ -15,10 +15,15 @@ BASE = Path(__file__).resolve().parent.parent / 'data'
 resumo = pd.read_csv(BASE / "dividendos_ano_resumo.csv")
 preco_acoes = pd.read_csv(BASE / "precos_acoes.csv")
 
-# Adicionar o sufixo .SA aos tickers de dividendos_ano_resumo.csv
-resumo['ticker'] = resumo['ticker'] + '.SA'
+# Padronizar tipos numéricos
+resumo['valor_5anos'] = pd.to_numeric(resumo['valor_5anos'], errors='coerce')
+preco_acoes['fechamento_atual'] = pd.to_numeric(preco_acoes['fechamento_atual'], errors='coerce')
 
-# Fazer o merge dos dados com base no ticker
+# Normalizar tickers para garantir o match (remove ".SA", upper e strip)
+resumo['ticker'] = resumo['ticker'].astype(str).str.upper().str.strip().str.replace('.SA', '', regex=False)
+preco_acoes['ticker'] = preco_acoes['ticker'].astype(str).str.upper().str.strip().str.replace('.SA', '', regex=False)
+
+# Fazer o merge dos dados com base no ticker normalizado
 dados = resumo.merge(preco_acoes, on='ticker', how='left')
 
 # Calcular o preço teto

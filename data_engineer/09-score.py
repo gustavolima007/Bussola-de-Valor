@@ -226,8 +226,12 @@ def main() -> None:
     indic, dy, preco_teto = load_inputs()
     df = prepare(indic, dy, preco_teto)
 
-    # Calcula scores
-    scores = tqdm(df.apply(compute_scores, axis=1), total=len(df), desc="Calculando scores")
+    # Calcula scores com barra de progresso
+    tqdm.pandas(desc="Calculando scores")
+    scores = df.progress_apply(compute_scores, axis=1)
+
+    # Arredonda todos os scores para 2 casas decimais
+    scores = scores.astype(float).round(2)
 
     # Monta saída com identificadores e pontuações
     saida = pd.concat([
@@ -238,9 +242,9 @@ def main() -> None:
     # Ordena por score_total desc
     saida = saida.sort_values(by='score_total', ascending=False)
 
-    # Salva CSV de scores
+    # Salva CSV de scores com ponto decimal e 2 casas
     FN_OUT.parent.mkdir(parents=True, exist_ok=True)
-    saida.to_csv(FN_OUT, index=False)
+    saida.to_csv(FN_OUT, index=False, float_format='%.2f')
     print(f'✅ Arquivo salvo em: {FN_OUT}')
 
 
