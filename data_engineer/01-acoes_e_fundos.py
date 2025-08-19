@@ -1,103 +1,109 @@
+# -*- coding: utf-8 -*-
+"""
+Script otimizado para extrair dados de ativos listados na B3 via API Brapi,
+removendo tickers fracionados ('F'), ativos com type 'bdr', o setor 'Miscellaneous',
+tickers com setor ausente/nulo, e as colunas 'change', 'market_cap', 'name' e 'close',
+renomeando todas as colunas para português em letras minúsculas,
+salvando o resultado em um arquivo CSV no diretório 'data'.
+"""
+
 import requests
-import yfinance as yf
 import pandas as pd
-import warnings
-from deep_translator import GoogleTranslator
-from tqdm.auto import tqdm
-
-# Este script consulta a lista de ativos na BRAPI, filtra por tipos (ação/fundo) e setores-alvo,
-# valida e enriquece com metadados via yfinance (país, nome, market cap), traduz subsetores
-# para PT-BR, e retorna um DataFrame padronizado com ticker, empresa, setor (padrão B3),
-# subsetor, tipo e logo, pronto para ser salvo no pipeline.
-
-warnings.simplefilter(action='ignore', category=FutureWarning)
-
-# 🎯 Setores-alvo
-SETORES_ALVO = {
-    "Finance",
-    "Utilities",
-    "Communications",
-    "Industrial Services"
-}
-
-# 🌐 Tradução de setores para padrão B3
-TRADUCAO_SETORES = {
-    "Finance": "Financeiro",
-    "Utilities": "Utilidade Pública",
-    "Communications": "Comunicações",
-    "Industrial Services": "Serviços Industriais"
-}
-
-# 🏷️ Tradução de tipos de ativos
-TRADUCAO_TIPOS = {
-    "stock": "Ação",
-    "fund": "Fundo"
-}
-
-# 🌍 Função para traduzir subsetores
-def traduzir_subsetor(texto):
-    if not texto or texto == "N/A":
-        return "N/A"
-    try:
-        return GoogleTranslator(source='en', target='pt').translate(texto)
-    except Exception:
-        return texto  # fallback para o original se falhar
-
-# 🔍 Função principal
-def coletar_dados_ativos(setores):
-    try:
-        lista = requests.get("https://brapi.dev/api/quote/list").json().get("stocks", [])
-    except Exception as e:
-        print(f"❌ Erro ao buscar ativos: {e}")
-        return pd.DataFrame()
-    lista = list(lista)
-    lista = [item for item in lista if isinstance(item, dict)]
-    lista_iter = tqdm(lista, desc="Filtrando lista BRAPI")
-
-    ativos = {
-        f"{item['stock']}.SA": {
-            "setor_brapi": TRADUCAO_SETORES.get(item["sector"], item["sector"]),
-            "tipo": item["type"],
-            "logo": item.get("logo")
-        }
-        for item in lista_iter
-        if item.get("sector") in setores and item.get("type") in {"stock", "fund"} and not str(item.get("stock", "")).endswith("F")
-    }
-
-    registros = []
-    for ticker, dados in tqdm(ativos.items(), desc="Coletando metadados (yfinance)"):
-        try:
-            info = yf.Ticker(ticker).info
-            if info.get("country") != "Brazil":
-                continue
-
-            subsetor_en = info.get("industry", "N/A")
-            subsetor_pt = traduzir_subsetor(subsetor_en)
-
-            registros.append({
-                "ticker": ticker,
-                "empresa": info.get("longName", "N/A"),
-                "setor_brapi": dados["setor_brapi"],
-                "subsetor_yfinance": subsetor_pt,
-                "pais": info.get("country", "N/A"),
-                "tipo": TRADUCAO_TIPOS.get(dados["tipo"], dados["tipo"]),  # Aplicando tradução aqui
-                "market_cap": info.get("marketCap"),
-                "logo": dados["logo"]
-            })
-        except Exception:
-            continue
-
-    return pd.DataFrame(registros)
-
-# 💾 Execução e salvamento
 from pathlib import Path
-BASE = Path(__file__).resolve().parent.parent / 'data'
+import time
 
-df = coletar_dados_ativos(SETORES_ALVO)
-if not df.empty:
-    BASE.mkdir(parents=True, exist_ok=True)
-    out_path = BASE / 'acoes_e_fundos.csv'
-    df.to_csv(out_path, index=False)
-    print(f"✅ Arquivo salvo em: {out_path}")
-else:
-    print("⚠️ Nenhum dado coletado para salvar.")
+def extrair_dados_brapi():
+    """
+    Extrai dados de ativos da B3 via API Brapi, remove tickers fracionados ('F'),
+    ativos com type 'bdr', o setor 'Miscellaneous', tickers com setor ausente/nulo,
+    colunas 'change', 'market_cap', 'name' e 'close', renomeia todas as colunas
+    para português em letras minúsculas, e salva em um arquivo CSV.
+    
+    Retorna:
+        pandas.DataFrame: DataFrame com os dados filtrados ou None em caso de erro.
+    """
+    api_url = "https://brapi.dev/api/quote/list"
+    csv_output = "acoes_e_fundos.csv"
+    base_dir = Path(__file__).resolve().parent.parent / 'data'
+
+    print("Iniciando extração de dados via Brapi...")
+    start_time = time.time()
+
+    try:
+        # Requisição à API Brapi
+        response = requests.get(api_url, timeout=15)
+        response.raise_for_status()
+        data = response.json()
+        ativos = data.get('stocks', [])
+
+        if not ativos:
+            print("Nenhum ativo encontrado na resposta da API.")
+            return None
+
+        print("Processando dados...")
+        # Criar DataFrame diretamente
+        df_ativos = pd.DataFrame(ativos)
+
+        # Filtrar tickers fracionados ('F') e ativos com type 'bdr'
+        df_ativos = df_ativos[
+            ~df_ativos['stock'].str.endswith('F') & 
+            (df_ativos['type'] != 'bdr')
+        ]
+
+        # Remover setor 'Miscellaneous' e setores ausentes/nulos
+        df_ativos = df_ativos[
+            (df_ativos['sector'] != 'Miscellaneous') & 
+            (df_ativos['sector'].notna()) & 
+            (df_ativos['sector'].str.strip() != '') & 
+            (df_ativos['sector'] != 'N/A')
+        ]
+
+        # Renomear todas as colunas para português em letras minúsculas
+        colunas_renomear = {
+            'stock': 'ticker',
+            'sector': 'setor_brapi',
+            'type': 'tipo',
+            'volume': 'volume',
+            'logo': 'logo',
+            'changePercent': 'percentual_variacao'  # Caso a coluna esteja presente
+        }
+        df_ativos = df_ativos.rename(columns=colunas_renomear)
+
+        # Remover colunas 'change', 'market_cap', 'name' e 'close', se existirem
+        colunas_remover = [col for col in ['change', 'market_cap', 'name', 'close'] if col in df_ativos.columns]
+        if colunas_remover:
+            df_ativos = df_ativos.drop(columns=colunas_remover)
+            print(f"Colunas removidas: {colunas_remover}")
+        else:
+            print("Nenhuma das colunas 'change', 'market_cap', 'name' ou 'close' encontrada no dataset.")
+
+        # Limpar dados: substituir NaN e strings vazias por 'N/A' nas colunas restantes
+        df_ativos = df_ativos.fillna('N/A')
+        df_ativos = df_ativos.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
+        df_ativos = df_ativos.replace('', 'N/A')
+
+        # Criar diretório de saída
+        base_dir.mkdir(parents=True, exist_ok=True)
+
+        # Salvar em CSV
+        csv_path = base_dir / csv_output
+        df_ativos.to_csv(csv_path, index=False, encoding='utf-8-sig')
+        print(f"Arquivo CSV salvo em: {csv_path}")
+
+        elapsed_time = time.time() - start_time
+        print(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos: {len(df_ativos)}")
+        return df_ativos
+
+    except requests.exceptions.RequestException as e:
+        print(f"Erro na requisição à API: {e}")
+        return None
+    except Exception as e:
+        print(f"Erro inesperado: {e}")
+        return None
+
+if __name__ == "__main__":
+    df = extrair_dados_brapi()
+    if df is not None:
+        print("\nAmostra dos primeiros 5 ativos:")
+        print(df.head().to_string(index=False))
+        print(f"\nColunas disponíveis: {list(df.columns)}")

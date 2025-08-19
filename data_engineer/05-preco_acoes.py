@@ -3,6 +3,7 @@ import yfinance as yf
 from datetime import date
 import warnings
 import os
+from pathlib import Path
 from tqdm.auto import tqdm
 # Lê a lista de tickers em ../data/acoes_e_fundos.csv, baixa preços ajustados no yfinance,
 # gera: (1) tabela anual dos últimos 7 anos e (2) tabela resumida com fechamento atual;
@@ -81,13 +82,14 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
 
 # --- BLOCO DE EXECUÇÃO PRINCIPAL ---
 
-csv_path = "../data/acoes_e_fundos.csv"
-output_folder = "../data"
+# Resolve caminhos absolutos baseados neste arquivo
+repo_root = Path(__file__).resolve().parent.parent
+csv_path = repo_root / "data" / "acoes_e_fundos.csv"
+output_folder = repo_root / "data"
 
 if csv_path:
-    csv_path = os.path.normpath(csv_path)
     print(f"Usando arquivo: {csv_path}")
-    ativos_alvo = ler_tickers_do_csv(csv_path)
+    ativos_alvo = ler_tickers_do_csv(str(csv_path))
 
     if ativos_alvo:
         print(f"Processando {len(ativos_alvo)} ativos encontrados no arquivo: {', '.join(ativos_alvo[:5])}...")
@@ -102,15 +104,15 @@ if csv_path:
             )
             print(tabela_exibicao.to_string())
 
-            output_folder = os.path.normpath(output_folder)
-            os.makedirs(output_folder, exist_ok=True)
+            output_folder = Path(output_folder)
+            output_folder.mkdir(parents=True, exist_ok=True)
 
-            output_path_completo = os.path.join(output_folder, "precos_acoes_completo.csv")
+            output_path_completo = output_folder / "precos_acoes_completo.csv"
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
             tabela_completa.to_csv(output_path_completo, index=False)
             print(f"\n✅ Tabela completa salva em: {output_path_completo}")
 
-            output_path_resumido = os.path.join(output_folder, "precos_acoes.csv")
+            output_path_resumido = output_folder / "precos_acoes.csv"
             tabela_resumida.round(2).to_csv(output_path_resumido)
             print(f"✅ Tabela resumida salva em: {output_path_resumido}")
 

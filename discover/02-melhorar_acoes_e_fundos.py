@@ -2,8 +2,8 @@
 """
 Script otimizado para extrair dados de ativos listados na B3 via API Brapi,
 removendo tickers fracionados ('F'), ativos com type 'bdr', o setor 'Miscellaneous',
-tickers com setor ausente/nulo, e as colunas 'change', 'market_cap' e 'name',
-renomeando a coluna 'stock' para 'ticker',
+tickers com setor ausente/nulo, e as colunas 'change', 'market_cap', 'name' e 'close',
+renomeando todas as colunas para português em letras minúsculas,
 salvando o resultado em um arquivo CSV no diretório 'data'.
 """
 
@@ -16,8 +16,8 @@ def extrair_dados_brapi():
     """
     Extrai dados de ativos da B3 via API Brapi, remove tickers fracionados ('F'),
     ativos com type 'bdr', o setor 'Miscellaneous', tickers com setor ausente/nulo,
-    colunas 'change', 'market_cap' e 'name', renomeia 'stock' para 'ticker',
-    e salva em um arquivo CSV.
+    colunas 'change', 'market_cap', 'name' e 'close', renomeia todas as colunas
+    para português em letras minúsculas, e salva em um arquivo CSV.
     
     Retorna:
         pandas.DataFrame: DataFrame com os dados filtrados ou None em caso de erro.
@@ -58,16 +58,24 @@ def extrair_dados_brapi():
             (df_ativos['sector'] != 'N/A')
         ]
 
-        # Renomear coluna 'stock' para 'ticker'
-        df_ativos = df_ativos.rename(columns={'stock': 'ticker'})
+        # Renomear todas as colunas para português em letras minúsculas
+        colunas_renomear = {
+            'stock': 'ticker',
+            'sector': 'setor',
+            'type': 'tipo',
+            'volume': 'volume',
+            'logo': 'logo',
+            'changePercent': 'percentual_variacao'  # Caso a coluna esteja presente
+        }
+        df_ativos = df_ativos.rename(columns=colunas_renomear)
 
-        # Remover colunas 'change', 'market_cap' e 'name', se existirem
-        colunas_remover = [col for col in ['change', 'market_cap', 'name'] if col in df_ativos.columns]
+        # Remover colunas 'change', 'market_cap', 'name' e 'close', se existirem
+        colunas_remover = [col for col in ['change', 'market_cap', 'name', 'close'] if col in df_ativos.columns]
         if colunas_remover:
             df_ativos = df_ativos.drop(columns=colunas_remover)
             print(f"Colunas removidas: {colunas_remover}")
         else:
-            print("Nenhuma das colunas 'change', 'market_cap' ou 'name' encontrada no dataset.")
+            print("Nenhuma das colunas 'change', 'market_cap', 'name' ou 'close' encontrada no dataset.")
 
         # Limpar dados: substituir NaN e strings vazias por 'N/A' nas colunas restantes
         df_ativos = df_ativos.fillna('N/A')

@@ -93,9 +93,12 @@ def fetch_stock_data(ticker_base: str, meta: dict) -> dict | None:
     sentimento = get_market_sentiment(stock)
 
     # monta registro (ticker SEM .SA)
+    # garante empresa e market_cap vindos do yfinance quando disponíveis
+    empresa_yf = info.get("longName") or meta.get("empresa", "N/A")
+
     row = {
         "ticker": ticker_base,
-        "empresa": meta.get("empresa", "N/A"),
+        "empresa": empresa_yf,
         "setor_brapi": meta.get("setor_brapi", "N/A"),
         "tipo": meta.get("tipo", "N/A"),
         "market_cap": market_cap,
@@ -124,6 +127,10 @@ def main():
         return
 
     df_in = pd.read_csv(CAMINHO_ARQUIVO)
+
+    # garante coluna setor_brapi para compatibilidade
+    if "setor" in df_in.columns and "setor_brapi" not in df_in.columns:
+        df_in = df_in.rename(columns={"setor": "setor_brapi"})
 
     # normaliza tickers do CSV para chavear sem .SA e sem espaços
     df_in["ticker_norm"] = df_in["ticker"].apply(normalize_ticker_base)
