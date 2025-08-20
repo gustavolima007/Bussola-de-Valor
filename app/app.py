@@ -294,17 +294,33 @@ def main():
             av = read_csv_cached(av_path)
             if 'setor' in av.columns:
                 setores_pt = set(av['setor'].dropna().astype(str))
-        mapa_path = base_dir / 'discover' / 'data' / 'setores_b3.csv'
-        dmap = {}
-        if mapa_path.exists():
-            mapa = pd.read_csv(mapa_path)
-            if 'Setor (Inglês)' in mapa.columns and 'Setor (Português)' in mapa.columns:
-                dmap = dict(zip(mapa['Setor (Inglês)'], mapa['Setor (Português)']))
+        # Mapeamento fixo EN->PT idêntico ao usado em avaliacao_setor.csv
+        TRADUCAO_SETORES_B3 = {
+            "Energy Minerals": "Petróleo, Gás e Biocombustíveis",
+            "Non-Energy Minerals": "Materiais Básicos – Mineração e Siderurgia",
+            "Process Industries": "Materiais Básicos – Papel, Química e Outros",
+            "Utilities": "Utilidade Pública – Energia Elétrica, Água e Saneamento",
+            "Finance": "Financeiro e Outros – Bancos, Seguros, Serviços Financeiros",
+            "Health Technology": "Saúde – Equipamentos e Tecnologia",
+            "Health Services": "Saúde – Serviços Médicos e Hospitalares",
+            "Producer Manufacturing": "Bens Industriais – Máquinas e Equipamentos",
+            "Industrial Services": "Bens Industriais – Serviços Industriais",
+            "Transportation": "Bens Industriais – Transporte e Logística",
+            "Retail Trade": "Consumo Cíclico – Comércio Varejista",
+            "Consumer Durables": "Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",
+            "Consumer Services": "Consumo Cíclico – Serviços (Educação, Turismo)",
+            "Commercial Services": "Consumo Cíclico – Serviços Comerciais",
+            "Electronic Technology": "Tecnologia da Informação – Hardware e Equipamentos",
+            "Technology Services": "Tecnologia da Informação – Serviços de Software",
+            "Communications": "Comunicações e Telecom – Telefonia, Internet e Mídia",
+            "Consumer Non-Durables": "Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",
+            "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
+        }
         if 'Setor (brapi)' in df.columns:
-            df['Setor'] = df['Setor (brapi)'].map(dmap).fillna(df['Setor (brapi)'])
+            df['Setor'] = df['Setor (brapi)'].map(TRADUCAO_SETORES_B3).fillna(df['Setor (brapi)'])
         else:
             df['Setor'] = df.get('Setor', '')
-        # Se tivermos a lista oficial de setores PT, mantemos como está; caso contrário, segue mapeado
+        # Se tivermos a lista oficial de setores PT, mantemos como string
         if setores_pt:
             df['Setor'] = df['Setor'].astype(str)
     except Exception:
@@ -316,6 +332,9 @@ def main():
     st.sidebar.header("Filtros de Análise")
     setores_disponiveis = sorted(df['Setor'].dropna().unique().tolist())
     setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
+
+    # Filtro adicional por score do setor (0 a 100), padrão 50
+    setor_score_min = st.sidebar.slider("Score mínimo por setor (0–100)", min_value=0, max_value=100, value=50)
 
     # Ordena Perfil da Ação do menor para o maior porte
     perfil_ordem = {
@@ -348,6 +367,19 @@ def main():
         (df['DY (Taxa 12m, %)'] >= dy_min) &
         (df['DY 5 Anos Média (%)'] >= dy_5y_min)
     ].copy()
+
+    # Aplica filtro por score mínimo do setor (avaliacao_setor.csv)
+    try:
+        av = read_csv_cached(av_path)
+        if {'setor','pontuacao'}.issubset(set(av.columns)) and not df_filtrado.empty:
+            av['setor'] = av['setor'].astype(str)
+            # Não normaliza: pontuacao já é 0-100 no CSV gerado
+            df_filtrado = df_filtrado.merge(av[['setor','pontuacao']], left_on='Setor', right_on='setor', how='left')
+            df_filtrado = df_filtrado[df_filtrado['pontuacao'].fillna(0) >= setor_score_min]
+            df_filtrado.drop(columns=['setor','pontuacao'], inplace=True, errors='ignore')
+    except Exception:
+        pass
+
     # Aplica foco de ticker, se selecionado
     if ticker_foco:
         df_filtrado = df_filtrado[df_filtrado['Ticker'] == ticker_foco]
@@ -358,10 +390,10 @@ def main():
     df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
 
     # Abas de exibição
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📊 Ranking Geral", "📈 Ranking Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor", "📈 Gráficos", "🏆 Rank Setores"]) 
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["📊 Rank Geral", "📈 Rank Detalhado", "🔍 Análise Individual", "📜 Guia da Bússula de valor", "📈 Gráficos", "🏆 Rank Setores"]) 
 
     with tab1:
-        st.header(f"Ranking Geral ({len(df_filtrado)} ações encontradas)")
+        st.header(f"Rank Geral ({len(df_filtrado)} ações encontradas)")
         df_display = df_filtrado[['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preco Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']]
         st.dataframe(df_display, column_config={
             "Logo": st.column_config.ImageColumn("Logo"), "Ticker": st.column_config.TextColumn("Ticker"),

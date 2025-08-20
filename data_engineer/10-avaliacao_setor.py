@@ -1,6 +1,46 @@
 from pathlib import Path
 import pandas as pd
 
+# Dicionário fixo para tradução dos setores B3 (EN -> PT)
+TRADUCAO_SETORES_B3 = {
+    # Energia e Commodities
+    "Energy Minerals": "Petróleo, Gás e Biocombustíveis",
+    "Non-Energy Minerals": "Materiais Básicos – Mineração e Siderurgia",
+    "Process Industries": "Materiais Básicos – Papel, Química e Outros",
+
+    # Utilidade Pública
+    "Utilities": "Utilidade Pública – Energia Elétrica, Água e Saneamento",
+
+    # Financeiro
+    "Finance": "Financeiro e Outros – Bancos, Seguros, Serviços Financeiros",
+
+    # Saúde
+    "Health Technology": "Saúde – Equipamentos e Tecnologia",
+    "Health Services": "Saúde – Serviços Médicos e Hospitalares",
+
+    # Industriais
+    "Producer Manufacturing": "Bens Industriais – Máquinas e Equipamentos",
+    "Industrial Services": "Bens Industriais – Serviços Industriais",
+    "Transportation": "Bens Industriais – Transporte e Logística",
+
+    # Consumo Cíclico
+    "Retail Trade": "Consumo Cíclico – Comércio Varejista",
+    "Consumer Durables": "Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",
+    "Consumer Services": "Consumo Cíclico – Serviços (Educação, Turismo)",
+    "Commercial Services": "Consumo Cíclico – Serviços Comerciais",
+
+    # Tecnologia
+    "Electronic Technology": "Tecnologia da Informação – Hardware e Equipamentos",
+    "Technology Services": "Tecnologia da Informação – Serviços de Software",
+
+    # Comunicações
+    "Communications": "Comunicações e Telecom – Telefonia, Internet e Mídia",
+
+    # Consumo não Cíclico
+    "Consumer Non-Durables": "Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",
+    "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
+}
+
 
 def main() -> None:
     # Resolve repo root from this file location: repo_root/data_engineer/this_file.py -> repo_root
@@ -35,15 +75,8 @@ def main() -> None:
         .sort_values("pontuacao", ascending=False)
     )
 
-    # Tradução dos setores (EN->PT) usando discover/data/setores_b3.csv, se disponível
-    setores_map_path = repo_root / "discover" / "data" / "setores_b3.csv"
-    if setores_map_path.exists():
-        try:
-            mapa = pd.read_csv(setores_map_path, encoding="utf-8")
-            dmap = dict(zip(mapa['Setor (Inglês)'], mapa['Setor (Português)']))
-            setor_perf['setor'] = setor_perf['setor'].map(dmap).fillna(setor_perf['setor'])
-        except Exception:
-            pass
+    # Tradução dos setores (EN->PT) usando dicionário fixo
+    setor_perf['setor'] = setor_perf['setor'].map(TRADUCAO_SETORES_B3).fillna(setor_perf['setor'])
 
     print("Desempenho por setor (média de score_total):")
     print(setor_perf)

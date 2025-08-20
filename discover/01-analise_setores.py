@@ -8,7 +8,28 @@ em um arquivo CSV com duas colunas: original e traduzido.
 import requests
 import pandas as pd
 from tqdm import tqdm
-from deep_translator import GoogleTranslator
+# Dicionário fixo para tradução dos setores B3 (EN -> PT)
+TRADUCAO_SETORES_B3 = {
+    "Energy Minerals": "Petróleo, Gás e Biocombustíveis",
+    "Non-Energy Minerals": "Materiais Básicos",
+    "Utilities": "Utilidade Pública",
+    "Finance": "Financeiro e Outros",
+    "Process Industries": "Materiais Básicos",
+    "Health Technology": "Saúde",
+    "Health Services": "Saúde",
+    "Producer Manufacturing": "Bens Industriais",
+    "Industrial Services": "Bens Industriais",
+    "Transportation": "Bens Industriais",
+    "Retail Trade": "Consumo Cíclico",
+    "Consumer Durables": "Consumo Cíclico",
+    "Consumer Services": "Consumo Cíclico",
+    "Electronic Technology": "Tecnologia da Informação",
+    "Technology Services": "Tecnologia da Informação",
+    "Commercial Services": "Consumo Cíclico",
+    "Communications": "Comunicações",
+    "Consumer Non-Durables": "Consumo não Cíclico",
+    "Distribution Services": "Consumo não Cíclico"
+}
 
 def obter_e_salvar_setores_brapi():
     api_url = "https://brapi.dev/api/quote/list"
@@ -37,14 +58,8 @@ def obter_e_salvar_setores_brapi():
 
         lista_ordenada_setores = sorted(list(setores_unicos))
 
-        print("\nTraduzindo nomes dos setores para português...")
-        setores_traduzidos = []
-        for setor in tqdm(lista_ordenada_setores, desc="Traduzindo"):
-            try:
-                traducao = GoogleTranslator(source='auto', target='pt').translate(setor)
-            except Exception:
-                traducao = "Erro na tradução"
-            setores_traduzidos.append(traducao)
+        print("\nConvertendo nomes dos setores para português via dicionário fixo...")
+        setores_traduzidos = [TRADUCAO_SETORES_B3.get(setor, setor) for setor in lista_ordenada_setores]
 
         df_setores = pd.DataFrame({
             "Setor (Inglês)": lista_ordenada_setores,
