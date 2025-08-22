@@ -3,44 +3,49 @@ import pandas as pd
 
 # Dicionário fixo para tradução dos setores B3 (EN -> PT)
 TRADUCAO_SETORES_B3 = {
-    # Energia e Commodities
     "Energy Minerals": "Petróleo, Gás e Biocombustíveis",
     "Non-Energy Minerals": "Materiais Básicos – Mineração e Siderurgia",
     "Process Industries": "Materiais Básicos – Papel, Química e Outros",
-
-    # Utilidade Pública
     "Utilities": "Utilidade Pública – Energia Elétrica, Água e Saneamento",
-
-    # Financeiro
     "Finance": "Financeiro e Outros – Bancos, Seguros, Serviços Financeiros",
-
-    # Saúde
     "Health Technology": "Saúde – Equipamentos e Tecnologia",
     "Health Services": "Saúde – Serviços Médicos e Hospitalares",
-
-    # Industriais
     "Producer Manufacturing": "Bens Industriais – Máquinas e Equipamentos",
     "Industrial Services": "Bens Industriais – Serviços Industriais",
     "Transportation": "Bens Industriais – Transporte e Logística",
-
-    # Consumo Cíclico
     "Retail Trade": "Consumo Cíclico – Comércio Varejista",
     "Consumer Durables": "Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",
     "Consumer Services": "Consumo Cíclico – Serviços (Educação, Turismo)",
     "Commercial Services": "Consumo Cíclico – Serviços Comerciais",
-
-    # Tecnologia
     "Electronic Technology": "Tecnologia da Informação – Hardware e Equipamentos",
     "Technology Services": "Tecnologia da Informação – Serviços de Software",
-
-    # Comunicações
     "Communications": "Comunicações e Telecom – Telefonia, Internet e Mídia",
-
-    # Consumo não Cíclico
     "Consumer Non-Durables": "Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",
     "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
 }
 
+# Dicionário para setores resumidos
+TRADUCAO_SETORES_RESUMIDA = {
+    "Petróleo, Gás e Biocombustíveis": "Petróleo, Gás e Biocombustíveis",
+    "Materiais Básicos – Mineração e Siderurgia": "Mineração e Siderurgia",
+    "Materiais Básicos – Papel, Química e Outros": "Papel, Química e Outros",
+    "Utilidade Pública – Energia Elétrica, Água e Saneamento": "Energia Elétrica e Saneamento",
+    "Financeiro e Outros – Bancos, Seguros, Serviços Financeiros": "Bancos, Seguros e Financeiros",
+    "Saúde – Equipamentos e Tecnologia": "Saúde – Tecnologia e Equipamentos",
+    "Saúde – Serviços Médicos e Hospitalares": "Saúde – Serviços Médicos",
+    "Bens Industriais – Máquinas e Equipamentos": "Máquinas e Equipamentos Industriais",
+    "Bens Industriais – Serviços Industriais": "Serviços Industriais",
+    "Bens Industriais – Transporte e Logística": "Transporte e Logística",
+    "Consumo Cíclico – Comércio Varejista": "Comércio Varejista",
+    "Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)": "Bens Duráveis (Eletro e Autos)",
+    "Consumo Cíclico – Serviços (Educação, Turismo)": "Serviços de Educação e Turismo",
+    "Consumo Cíclico – Serviços Comerciais": "Serviços Comerciais",
+    "Tecnologia da Informação – Hardware e Equipamentos": "Tecnologia – Hardware",
+    "Tecnologia da Informação – Serviços de Software": "Tecnologia – Software",
+    "Comunicações e Telecom – Telefonia, Internet e Mídia": "Telefonia, Internet e Mídia",
+    "Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais": "Alimentos, Bebidas e Higiene",
+    "Consumo não Cíclico – Comércio e Distribuição": "Distribuição e Comércio"
+}
 
 def main() -> None:
     # Resolve repo root from this file location: repo_root/data_engineer/this_file.py -> repo_root
@@ -77,6 +82,9 @@ def main() -> None:
 
     # Tradução dos setores (EN->PT) usando dicionário fixo
     setor_perf['setor'] = setor_perf['setor'].map(TRADUCAO_SETORES_B3).fillna(setor_perf['setor'])
+
+    # Adiciona coluna setor_resumido
+    setor_perf['setor_resumido'] = setor_perf['setor'].map(TRADUCAO_SETORES_RESUMIDA).fillna(setor_perf['setor'])
 
     print("Desempenho por setor (média de score_total):")
     print(setor_perf)

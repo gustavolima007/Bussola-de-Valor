@@ -1,20 +1,20 @@
-setor,pontuacao
-"Petróleo, Gás e Biocombustíveis",75.19
-"Utilidade Pública – Energia Elétrica, Água e Saneamento",68.80
-"Financeiro e Outros – Bancos, Seguros, Serviços Financeiros",66.12
-Materiais Básicos – Mineração e Siderurgia,65.78
-"Materiais Básicos – Papel, Química e Outros",59.38
-Bens Industriais – Máquinas e Equipamentos,50.48
-Bens Industriais – Serviços Industriais,49.36
-"Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",46.60
-Consumo Cíclico – Comércio Varejista,46.51
-Consumo Cíclico – Serviços Comerciais,46.30
-Tecnologia da Informação – Hardware e Equipamentos,45.56
-"Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",42.00
-"Comunicações e Telecom – Telefonia, Internet e Mídia",36.68
-Tecnologia da Informação – Serviços de Software,36.29
-Bens Industriais – Transporte e Logística,32.66
-Saúde – Equipamentos e Tecnologia,30.90
-Consumo não Cíclico – Comércio e Distribuição,29.66
-Saúde – Serviços Médicos e Hospitalares,28.82
-"Consumo Cíclico – Serviços (Educação, Turismo)",13.24
+setor,pontuacao,setor_resumido
+"Petróleo, Gás e Biocombustíveis",74.36,"Petróleo, Gás e Biocombustíveis"
+"Utilidade Pública – Energia Elétrica, Água e Saneamento",69.03,Energia Elétrica e Saneamento
+"Financeiro e Outros – Bancos, Seguros, Serviços Financeiros",65.72,"Bancos, Seguros e Financeiros"
+Materiais Básicos – Mineração e Siderurgia,65.19,Mineração e Siderurgia
+"Materiais Básicos – Papel, Química e Outros",59.38,"Papel, Química e Outros"
+Bens Industriais – Serviços Industriais,49.82,Serviços Industriais
+Bens Industriais – Máquinas e Equipamentos,47.88,Máquinas e Equipamentos Industriais
+Consumo Cíclico – Serviços Comerciais,47.84,Serviços Comerciais
+Consumo Cíclico – Comércio Varejista,47.59,Comércio Varejista
+"Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",46.60,"Alimentos, Bebidas e Higiene"
+Tecnologia da Informação – Hardware e Equipamentos,44.72,Tecnologia – Hardware
+"Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",42.35,Bens Duráveis (Eletro e Autos)
+"Comunicações e Telecom – Telefonia, Internet e Mídia",36.68,"Telefonia, Internet e Mídia"
+Tecnologia da Informação – Serviços de Software,36.29,Tecnologia – Software
+Consumo não Cíclico – Comércio e Distribuição,31.33,Distribuição e Comércio
+Saúde – Equipamentos e Tecnologia,30.90,Saúde – Tecnologia e Equipamentos
+Bens Industriais – Transporte e Logística,30.73,Transporte e Logística
+Saúde – Serviços Médicos e Hospitalares,29.38,Saúde – Serviços Médicos
+"Consumo Cíclico – Serviços (Educação, Turismo)",13.24,Serviços de Educação e Turismo
