@@ -1,63 +1,113 @@
-/* Global styles for the Streamlit app */
+/* app/styles/styles.css */
+
+/* --- Variáveis de Cor e Estilo --- */
 :root {
-  --primary: #0b7285;
-  --accent: #2f9e44;
-  --danger: #e03131;
+    --primary-color: #0d47a1;      /* Azul escuro (títulos, abas ativas) */
+    --secondary-color: #1976d2;    /* Azul médio (métricas, links) */
+    --accent-color: #42a5f5;       /* Azul claro (barras de progresso) */
+    --gold-color: #FFD700;         /* Amarelo Gold para destaque nos filtros */
+    --gold-text-color: #493803;    /* Cor de texto escura para bom contraste com dourado */
+    --background-color: #f0f2f5;   /* Fundo principal (cinza muito claro) */
+    --card-background: #ffffff;    /* Fundo dos cartões (branco) */
+    --text-color: #212529;         /* Texto principal (preto, ALTA PRIORIDADE) */
+    --text-light-color: #6c757d;    /* Texto secundário */
+    --border-color: #dee2e6;       /* Bordas sutis */
+    --font-family: 'Inter', sans-serif;
+    --border-radius: 12px;         /* Bordas mais arredondadas */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
 }
 
-/* Page background and typography */
-html, body, [data-testid="stAppViewContainer"] {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+/* --- Estilos Globais e Correção de Contraste --- */
+body, .stApp {
+    font-family: var(--font-family);
+    color: var(--text-color) !important;
+    background-color: var(--background-color);
 }
 
-/* Title */
-h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
-  color: var(--primary);
+/* --- Títulos e Cabeçalhos --- */
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"] h2, section[data-testid="stSidebar"] h3 {
-  color: var(--primary);
+/* --- Barra Lateral e FILTROS DOURADOS (REFORÇADO) --- */
+[data-testid="stSidebar"] {
+    background-color: var(--card-background);
+    border-right: 1px solid var(--border-color);
 }
 
-/* Dataframe tweaks */
-[data-testid="stDataFrame"] table {
-  font-size: 0.9rem;
+/* Cor DOURADA para o slider */
+[data-testid="stSlider"] .st-d3 {
+    background-color: var(--gold-color);
 }
 
-/* Metrics */
+/* Cor DOURADA para os itens selecionados no multiselect */
+[data-testid="stMultiSelect"] [data-baseweb="tag"] {
+    background-color: var(--gold-color);
+    color: var(--gold-text-color);
+}
+
+/* Cor DOURADA para o radio button selecionado */
+[data-testid="stRadio"] label.st-d3 {
+    background-color: var(--gold-color) !important;
+    border-color: var(--gold-color) !important;
+    color: var(--gold-text-color) !important;
+}
+
+/* Cor DOURADA para o selectbox (quando aberto) */
+[data-testid="stSelectbox"] li[aria-selected="true"] {
+    background-color: var(--gold-color) !important;
+    color: var(--gold-text-color) !important;
+}
+
+
+/* --- Abas (Tabs) --- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 2rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--text-light-color);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+/* CORREÇÃO: Força a cor da borda da aba selecionada para azul */
+.stTabs [data-baseweb="tab--selected"] {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color) !important;
+}
+
+/* --- Estilo de Cartão para componentes --- */
+[data-testid="stMetric"],
+[data-testid="stDataFrame"],
+[data-testid="stExpander"],
+.stPlotlyChart {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* --- Métricas (KPIs) --- */
 [data-testid="stMetricValue"] {
-  font-weight: 700;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
 }
 
-/* Progress column (Score) override */
-/* Note: Streamlit renders progress column as CSS bars; we ensure text contrast */
-[data-testid="stTable"] div[role="progressbar"],
-[data-testid="stDataFrame"] div[role="progressbar"] {
-  color: #111;
+[data-testid="stMetricLabel"] {
+    color: var(--text-light-color);
 }
 
-/* Tabs */
-[data-baseweb="tab"] {
-  font-weight: 600;
-}
-
-/* Custom classes you can use in st.markdown */
-.score-detail {
-  font-size: 0.95rem;
-  line-height: 1.3;
-}
-
-.badge-positive {
-  background: rgba(47, 158, 68, 0.1);
-  color: #2f9e44;
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-
-.badge-negative {
-  background: rgba(224, 49, 49, 0.1);
-  color: #e03131;
-  padding: 2px 6px;
-  border-radius: 6px;
+/* --- Barra de Progresso (Score) --- */
+/* CORREÇÃO: Força a cor da barra de progresso para azul claro */
+[data-testid="stProgress"] > div {
+    background-color: var(--accent-color) !important;
 }

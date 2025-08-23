@@ -87,3 +87,38 @@ Classificação por porte e preço:
     - "Configurar Supabase e criar tabelas".
     - "Implementar extração de dados com yfinance e brapi".
     - "Desenvolver gráficos de scores no Streamlit com Plotly".
+
+## 🛠️ Estrutura de diretorios:
+
+```bash
+/Bussola-de-Valor/
+│
+├── app/
+│   │
+│   ├── components/
+│   │   ├── __init__.py       # Transforma a pasta em um pacote Python.
+│   │   ├── filters.py        # Módulo para criar os componentes de filtro na sidebar.
+│   │   └── tabs_layout.py    # Módulo para renderizar todas as abas e seus conteúdos.
+│   │
+│   ├── styles/
+│   │   └── styles.css        # Arquivo central para toda a estilização visual.
+│   │
+│   ├── data_loader.py        # Módulo para carregar, unificar e pré-processar todos os dados.
+│   ├── scoring.py            # Isola a lógica de cálculo do score de investimento.
+│   └── app.py                # Ponto de entrada: inicializa o app e orquestra os componentes.
+│
+├── data/
+│   ├── indicadores.csv       # Exemplo de arquivo de dados brutos.
+│   └── ...                   # Outros arquivos .csv
+│
+├── data_engineer/
+│   ├── 01_extraction.py      # Scripts para extração de dados de fontes diversas.
+│   └── 02_transformation.py  # Scripts para limpeza, tratamento e engenharia de features.
+│
+├── .gitignore                # Especifica arquivos e pastas a serem ignorados pelo Git.
+│
+├── README.md                 # Documentação do projeto: o que é, como instalar e executar.
+│
+└── requirements.txt          # Lista todas as bibliotecas Python necessárias.
+
+```
