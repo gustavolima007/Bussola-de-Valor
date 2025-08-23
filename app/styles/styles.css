@@ -2,22 +2,22 @@
 
 /* --- Variáveis de Cor e Estilo --- */
 :root {
-    --primary-color: #0d47a1;      /* Azul escuro (títulos, abas ativas) */
-    --secondary-color: #1976d2;    /* Azul médio (métricas, links) */
-    --accent-color: #42a5f5;       /* Azul claro (barras de progresso) */
-    --gold-color: #FFD700;         /* Amarelo Gold para destaque nos filtros */
-    --gold-text-color: #493803;    /* Cor de texto escura para bom contraste com dourado */
-    --background-color: #f0f2f5;   /* Fundo principal (cinza muito claro) */
-    --card-background: #ffffff;    /* Fundo dos cartões (branco) */
-    --text-color: #212529;         /* Texto principal (preto, ALTA PRIORIDADE) */
-    --text-light-color: #6c757d;    /* Texto secundário */
-    --border-color: #dee2e6;       /* Bordas sutis */
+    --primary-color: #2A4B7C;      /* Azul suave para títulos e abas ativas */
+    --secondary-color: #4A7BB8;    /* Azul claro para métricas e links */
+    --accent-color: #7CB1FF;       /* Azul ainda mais claro para barras de progresso */
+    --gold-color: #E8B923;         /* Dourado suave para filtros, evocando prosperidade */
+    --gold-text-color: #3C2F0F;    /* Texto escuro para contraste com dourado */
+    --background-color: #F5F7FA;   /* Fundo claro e suave, quase branco */
+    --card-background: #FFFFFF;    /* Fundo branco puro para cartões */
+    --text-color: #1A252F;         /* Texto principal escuro, alta legibilidade */
+    --text-light-color: #5A6A7A;   /* Texto secundário mais suave */
+    --border-color: #D6DCE5;       /* Bordas sutis e claras */
     --font-family: 'Inter', sans-serif;
-    --border-radius: 12px;         /* Bordas mais arredondadas */
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    --border-radius: 10px;         /* Bordas arredondadas suaves */
+    --box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
 }
 
-/* --- Estilos Globais e Correção de Contraste --- */
+/* --- Estilos Globais --- */
 body, .stApp {
     font-family: var(--font-family);
     color: var(--text-color) !important;
@@ -27,13 +27,14 @@ body, .stApp {
 /* --- Títulos e Cabeçalhos --- */
 h1, h2, h3 {
     color: var(--primary-color);
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* --- Barra Lateral e FILTROS DOURADOS (REFORÇADO) --- */
+/* --- Barra Lateral e FILTROS DOURADOS --- */
 [data-testid="stSidebar"] {
     background-color: var(--card-background);
     border-right: 1px solid var(--border-color);
+    padding: 1rem;
 }
 
 /* Cor DOURADA para o slider */
@@ -60,22 +61,20 @@ h1, h2, h3 {
     color: var(--gold-text-color) !important;
 }
 
-
 /* --- Abas (Tabs) --- */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 2rem;
+    gap: 1.5rem;
     border-bottom: 2px solid var(--border-color);
 }
 
 .stTabs [data-baseweb="tab"] {
-    padding: 1rem;
-    font-weight: 600;
+    padding: 0.8rem;
+    font-weight: 500;
     color: var(--text-light-color);
     border-bottom: 2px solid transparent;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-/* CORREÇÃO: Força a cor da borda da aba selecionada para azul */
 .stTabs [data-baseweb="tab--selected"] {
     color: var(--primary-color);
     border-bottom-color: var(--primary-color) !important;
@@ -89,7 +88,7 @@ h1, h2, h3 {
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1.5rem;
+    padding: 1.2rem;
     box-shadow: var(--box-shadow);
     margin-bottom: 1rem;
     color: var(--text-color);
@@ -97,8 +96,8 @@ h1, h2, h3 {
 
 /* --- Métricas (KPIs) --- */
 [data-testid="stMetricValue"] {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 600;
     color: var(--secondary-color);
 }
 
@@ -107,7 +106,13 @@ h1, h2, h3 {
 }
 
 /* --- Barra de Progresso (Score) --- */
-/* CORREÇÃO: Força a cor da barra de progresso para azul claro */
 [data-testid="stProgress"] > div {
     background-color: var(--accent-color) !important;
+}
+
+/* --- Ajuste para Gráficos Plotly --- */
+.stPlotlyChart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
