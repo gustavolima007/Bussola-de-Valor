@@ -2,19 +2,19 @@
 
 /* --- Variáveis de Cor e Estilo --- */
 :root {
-    --primary-color: #2A4B7C;      /* Azul suave para títulos e abas ativas */
-    --secondary-color: #4A7BB8;    /* Azul claro para métricas e links */
-    --accent-color: #7CB1FF;       /* Azul ainda mais claro para barras de progresso */
-    --gold-color: #E8B923;         /* Dourado suave para filtros, evocando prosperidade */
-    --gold-text-color: #3C2F0F;    /* Texto escuro para contraste com dourado */
-    --background-color: #F5F7FA;   /* Fundo claro e suave, quase branco */
-    --card-background: #FFFFFF;    /* Fundo branco puro para cartões */
-    --text-color: #1A252F;         /* Texto principal escuro, alta legibilidade */
-    --text-light-color: #5A6A7A;   /* Texto secundário mais suave */
-    --border-color: #D6DCE5;       /* Bordas sutis e claras */
+    --primary-color: #3A7CA5;      /* Azul profissional e calmante */
+    --secondary-color: #82A9B1;    /* Azul-acinzentado claro e complementar */
+    --accent-color: #D4AF37;       /* Dourado clássico para destaques */
+    --gold-color: #D4AF37;         /* Dourado para filtros e elementos especiais */
+    --gold-text-color: #FFFFFF;    /* Texto branco para alto contraste em fundos dourados */
+    --background-color: #1F2937;   /* Fundo principal em azul-acinzentado escuro */
+    --card-background: #2D3A4C;    /* Fundo de cartão ligeiramente mais claro */
+    --text-color: #E5E7EB;         /* Cinza claro para texto principal, confortável para os olhos */
+    --text-light-color: #9CA3AF;   /* Cinza mais suave para texto secundário */
+    --border-color: #4B5563;       /* Cor de borda sutil para o tema escuro */
     --font-family: 'Inter', sans-serif;
-    --border-radius: 10px;         /* Bordas arredondadas suaves */
-    --box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    --border-radius: 10px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada para profundidade */
 }
 
 /* --- Estilos Globais --- */
@@ -27,20 +27,62 @@ body, .stApp {
 /* --- Títulos e Cabeçalhos --- */
 h1, h2, h3 {
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700; /* Mais peso para um visual moderno */
 }
 
 /* --- Barra Lateral e FILTROS DOURADOS --- */
 [data-testid="stSidebar"] {
     background-color: var(--card-background);
     border-right: 1px solid var(--border-color);
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
-/* Cor DOURADA para o slider */
-[data-testid="stSlider"] .st-d3 {
-    background-color: var(--gold-color);
+/* Corrigindo a cor do texto na barra lateral para ser legível */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] h5,
+[data-testid="stSidebar"] h6,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] .st-emotion-cache-16txtl3 {
+    color: var(--text-color) !important;
 }
+
+/* --- Barra de Filtro Amarelo Ouro Personalizada --- */
+
+/* The main container of the slider */
+[data-testid="stSlider"] {
+    padding: 15px;
+    background: #FFF9C4;
+    border-radius: 15px;
+    border: 1px solid #FFD700;
+}
+
+/* The track of the slider */
+[data-testid="stSlider"] .st-emotion-cache-1x8cf9e {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: linear-gradient(90deg, #FFD700, #DAA520) !important;
+    height: 5px !important;
+    border-radius: 12px !important;
+    outline: none !important;
+    margin: 15px 0 !important;
+}
+
+/* The thumb of the slider */
+[data-testid="stSlider"] .st-emotion-cache-1340p61 {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+    background: #FFD700 !important;
+    border: 3px solid #B8860B !important;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4) !important;
+    cursor: pointer !important;
+}
+
 
 /* Cor DOURADA para os itens selecionados no multiselect */
 [data-testid="stMultiSelect"] [data-baseweb="tag"] {
@@ -49,11 +91,13 @@ h1, h2, h3 {
 }
 
 /* Cor DOURADA para o radio button selecionado */
+[data-testid="stRadio"] .st-emotion-cache-1c9j6b1:checked + div,
 [data-testid="stRadio"] label.st-d3 {
     background-color: var(--gold-color) !important;
     border-color: var(--gold-color) !important;
     color: var(--gold-text-color) !important;
 }
+
 
 /* Cor DOURADA para o selectbox (quando aberto) */
 [data-testid="stSelectbox"] li[aria-selected="true"] {
@@ -63,13 +107,13 @@ h1, h2, h3 {
 
 /* --- Abas (Tabs) --- */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 1.5rem;
+    gap: 2rem; /* Maior espaçamento para um visual mais limpo */
     border-bottom: 2px solid var(--border-color);
 }
 
 .stTabs [data-baseweb="tab"] {
-    padding: 0.8rem;
-    font-weight: 500;
+    padding: 1rem;
+    font-weight: 600;
     color: var(--text-light-color);
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease-in-out;
@@ -88,16 +132,16 @@ h1, h2, h3 {
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1.2rem;
+    padding: 1.5rem;
     box-shadow: var(--box-shadow);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-color);
 }
 
 /* --- Métricas (KPIs) --- */
 [data-testid="stMetricValue"] {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--secondary-color);
 }
 

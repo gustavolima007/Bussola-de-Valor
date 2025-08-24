@@ -9,9 +9,6 @@ def render_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     st.sidebar.header("🔎 Filtros de Análise")
 
     # --- Filtros Principais ---
-    setores_disponiveis = sorted(df['Setor'].dropna().unique().tolist())
-    setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
-
     perfil_ordem = {'Penny Stock': 0, 'Micro Cap': 1, 'Small Cap': 2, 'Mid Cap': 3, 'Blue Chip': 4}
     perfis_raw = [p for p in df['Perfil da Ação'].dropna().unique().tolist()]
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
@@ -27,6 +24,9 @@ def render_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     setor_score_min = st.sidebar.slider("Score Mínimo do Setor", 0, 100, 50)
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 0.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
+
+    setores_disponiveis = sorted(df['Setor'].dropna().unique().tolist())
+    setor_filtro = st.sidebar.multiselect("Setores", setores_disponiveis, default=setores_disponiveis)
 
     # --- Lógica de Filtragem ---
     df_filtrado = df[

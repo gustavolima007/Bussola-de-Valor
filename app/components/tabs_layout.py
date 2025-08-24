@@ -7,7 +7,7 @@ import plotly.express as px
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]]
     
     st.dataframe(df_display,
@@ -16,6 +16,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%%"),
+            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%%"),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
         },
@@ -81,13 +82,9 @@ def render_tab_analise_individual(df: pd.DataFrame):
         if all(col in acao.index for col in rec_cols) and acao[rec_cols].sum() > 0:
             rec_df = pd.DataFrame(acao[rec_cols]).reset_index()
             rec_df.columns = ['Recomendação', 'Contagem']
-            color_map = {
-                'Strong Buy': '#2f9e44', 'Buy': '#8ce99a', 'Hold': '#E8B923', 
-                'Sell': '#64b5f6', 'Strong Sell': '#1565c0'
-            }
             fig = px.bar(rec_df, x='Contagem', y='Recomendação', orientation='h',
-                         title='Distribuição das Recomendações', text='Contagem', color='Recomendação',
-                         color_discrete_map=color_map)
+                         title='Distribuição das Recomendações', text='Contagem')
+            fig.update_traces(marker_color='#D4AF37') # Cor dourada
             fig.update_layout(showlegend=False, yaxis={'categoryorder':'total ascending'})
             st.plotly_chart(fig, use_container_width=True)
         else:

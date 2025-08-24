@@ -122,7 +122,12 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
         }
         df['Setor'] = df['Setor (brapi)'].map(TRADUCAO_SETORES_B3).fillna(df['Setor (brapi)'])
-        df = df.merge(av[['setor','pontuacao']], left_on='Setor', right_on='setor', how='left')
+        # Merge com os dados de avaliação do setor, incluindo o setor resumido
+        df = df.merge(av[['setor', 'pontuacao', 'setor_resumido']], left_on='Setor', right_on='setor', how='left')
+        # Renomeia a coluna de setor original para manter o detalhe
+        df.rename(columns={'Setor': 'Setor Detalhado'}, inplace=True)
+        # Define a coluna de setor resumido como a principal 'Setor'
+        df.rename(columns={'setor_resumido': 'Setor'}, inplace=True)
     except Exception:
         df['Setor'] = df.get('Setor (brapi)', 'Não categorizado')
 
