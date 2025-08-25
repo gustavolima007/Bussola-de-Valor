@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from .calculadora import render_tab_calculadora
 
 # --- Funções para cada Aba ---
 
@@ -393,13 +394,15 @@ def render_tab_rank_setores(all_data: dict):
 
 # --- Função Principal de Renderização ---
 
-def render_tabs(df_filtrado: pd.DataFrame, all_data: dict):
+from .calculadora import render_tab_calculadora
+
+def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     tab_titles = [
         "🏆 Rank Geral", "📋 Rank Detalhado", "🔬 Análise Individual",
-        "✨ Insights Visuais", "🔍 Análise de Dividendos", "🏗️ Rank Setores", "🧭 Guia da Bússola"
+        "✨ Insights Visuais", "🔍 Análise de Dividendos", "🏗️ Rank Setores", "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
@@ -415,3 +418,5 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict):
         render_tab_rank_setores(all_data)
     with tab7:
         render_tab_guia()
+    with tab8:
+        render_tab_calculadora(all_data, ticker_foco)

@@ -71,11 +71,11 @@ def main():
 
     # --- Renderização da Sidebar e Filtros ---
     # O módulo de filtros cuida de toda a lógica da sidebar
-    df_filtrado = render_sidebar_filters(df)
+    df_filtrado, ticker_foco = render_sidebar_filters(df)
 
     # --- Renderização das Abas de Conteúdo ---
     # O módulo de layout de abas cuida da exibição de todo o conteúdo principal
-    render_tabs(df_filtrado, all_data)
+    render_tabs(df_filtrado, all_data, ticker_foco)
 
 
 if __name__ == "__main__":

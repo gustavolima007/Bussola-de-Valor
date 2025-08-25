@@ -52,4 +52,4 @@ def render_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     
     df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
 
-    return df_filtrado
+    return df_filtrado, ticker_foco
