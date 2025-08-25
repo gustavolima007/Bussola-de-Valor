@@ -135,7 +135,7 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     all_data = {}
     optional_files = [
         'dividendos_ano', 'dividendos_ano_resumo', 'todos_dividendos',
-        'dividend_yield', 'avaliacao_setor'
+        'dividend_yield', 'avaliacao_setor', 'precos_acoes'
     ]
     for filename in optional_files:
         try:

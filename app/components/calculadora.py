@@ -33,6 +33,8 @@ def render_tab_calculadora(all_data: dict, ticker_foco: str = None):
         anos_selecionados = st.multiselect("Selecione os Anos", anos_disponiveis, default=anos_disponiveis)
 
     if ticker_selecionado and quantidade_acoes > 0 and anos_selecionados:
+        precos_acoes = all_data.get('precos_acoes', pd.DataFrame())
+
         # Filtra os dados para o ticker e anos selecionados
         df_ticker = dividendos_ano[
             (dividendos_ano['ticker'] == ticker_selecionado) &
@@ -54,9 +56,22 @@ def render_tab_calculadora(all_data: dict, ticker_foco: str = None):
         # Calcula o valor total a receber
         valor_total = df_ticker['valor_a_receber'].sum()
 
+        # Calcula o valor do investimento
+        preco_atual = 0
+        if not precos_acoes.empty:
+            preco_info = precos_acoes[precos_acoes['ticker'] == ticker_selecionado]
+            if not preco_info.empty:
+                preco_atual = preco_info['fechamento_atual'].iloc[0]
+        
+        valor_investimento = quantidade_acoes * preco_atual
+
         with col1:
             st.subheader(f"Dividendos projetados para {quantidade_acoes} ações de {ticker_selecionado}:")
-            st.metric("Valor Total a Receber (período selecionado)", f"R$ {valor_total:.2f}")
+            st.metric("Valor Total a Receber (período selecionado)", f"R$ {valor_total:,.2f}")
+            if preco_atual > 0:
+                st.metric("Preço da Ação", f"R$ {preco_atual:,.2f}")
+            if valor_investimento > 0:
+                st.metric("Valor deste investimento", f"R$ {valor_investimento:,.2f}")
         
         with col2:
             # Exibe o dataframe com o resultado
