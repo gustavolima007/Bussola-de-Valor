@@ -6,12 +6,28 @@ from .calculadora import render_tab_calculadora
 
 # --- Funções para cada Aba ---
 
+def style_dy(val):
+    """Aplica cor verde para DY >= 6% e vermelho para < 6%."""
+    if pd.isna(val):
+        return ''
+    color = '#3dd56d' if val >= 6 else '#ff4b4b'
+    return f'color: {color}'
+
+def style_alvo(val):
+    """Aplica cor verde para Alvo >= 0 e vermelho para < 0."""
+    if pd.isna(val):
+        return ''
+    color = '#3dd56d' if val >= 0 else '#ff4b4b'
+    return f'color: {color}'
+
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
     cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]]
     
-    st.dataframe(df_display,
+    st.dataframe(
+        df_display.style.applymap(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
+                         .applymap(style_alvo, subset=['Alvo']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
@@ -32,7 +48,9 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
         'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
     ]
     df_display = df[[c for c in cols if c in df.columns]]
-    st.dataframe(df_display,
+    
+    st.dataframe(
+        df_display.style.applymap(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
