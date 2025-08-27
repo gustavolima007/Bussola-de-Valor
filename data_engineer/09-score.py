@@ -1,252 +1,185 @@
+# -*- coding: utf-8 -*-
+"""
+🏆 Script para Geração de Score de Qualidade de Ativos
+
+Este script consolida múltiplos indicadores financeiros para calcular um score
+quantitativo que avalia a "qualidade" de cada ativo. O objetivo é fornecer
+uma métrica única que ajude a comparar diferentes ações e fundos.
+
+Etapas do Processo:
+1.  Carrega os dados de três fontes: indicadores, dividend yield e preço teto.
+2.  Normaliza e junta os dados em um único DataFrame.
+3.  Aplica uma série de funções de pontuação para cada indicador relevante:
+    - Dividend Yield (12 meses e 5 anos)
+    - Payout Ratio
+    - ROE (com diferenciação por setor)
+    - P/L e P/VP
+    - Níveis de endividamento (Dívida/Market Cap e Dívida/EBITDA)
+    - Crescimento do preço
+    - Sentimento do mercado
+4.  Soma as pontuações individuais para gerar um `score_total`.
+5.  Salva o resultado, incluindo os scores parciais e o total, em 'data/scores.csv'.
+"""
+
 from pathlib import Path
 import pandas as pd
-import numpy as np
-import csv  # solicitado
 from tqdm.auto import tqdm
 
-# Gera pontuações (score_total e componentes) por ticker combinando indicadores,
-# DY e preço teto: normaliza, faz merges e aplica regras de pontuação equivalentes
-# às do app, salvando ../data/scores.csv para uso direto na interface.
-
-# Caminhos dos arquivos de entrada/saída (relativos ao script)
-SCRIPT_DIR = Path(__file__).resolve().parent
-BASE = SCRIPT_DIR.parent / "data"
+# --- Configuração de Caminhos ---
+BASE = Path(__file__).resolve().parent.parent / "data"
 FN_INDICADORES = BASE / "indicadores.csv"
 FN_DY = BASE / "dividend_yield.csv"
 FN_PRECO_TETO = BASE / "preco_teto.csv"
 FN_OUT = BASE / "scores.csv"
 
-
-def normalize_ticker_base(s: str) -> str:
-    """Remove sufixo .SA e normaliza ticker para UPPER sem espaços."""
-    s = str(s).strip().upper()
-    if s.endswith('.SA'):
-        s = s[:-3]
-    return s
-
-
-def load_inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    indic = pd.read_csv(FN_INDICADORES)
+# --- Funções de Carregamento e Preparação ---
+def load_and_prepare_data() -> pd.DataFrame:
+    """Carrega, normaliza e junta os arquivos de dados necessários."""
+    print("Carregando e preparando os dados...")
+    indicadores = pd.read_csv(FN_INDICADORES)
     dy = pd.read_csv(FN_DY)
-    try:
-        preco_teto = pd.read_csv(FN_PRECO_TETO)
-    except FileNotFoundError:
-        preco_teto = pd.DataFrame(columns=['ticker', 'preco_teto_5anos', 'diferenca_percentual'])
-    return indic, dy, preco_teto
+    preco_teto = pd.read_csv(FN_PRECO_TETO)
 
+    # Normaliza os tickers para a junção
+    for df in [indicadores, dy, preco_teto]:
+        df['ticker_base'] = df['ticker'].str.strip().str.upper()
 
-def prepare(indic: pd.DataFrame, dy: pd.DataFrame, preco_teto: pd.DataFrame) -> pd.DataFrame:
-    # Normaliza chave de join
-    indic['ticker_base'] = indic['ticker'].apply(normalize_ticker_base)
-    dy['ticker_base'] = dy['ticker'].apply(normalize_ticker_base)
-    preco_teto['ticker_base'] = preco_teto['ticker'].apply(normalize_ticker_base)
+    # Junta os DataFrames
+    df_merged = pd.merge(indicadores, dy, on='ticker_base', how='left', suffixes=('', '_dy'))
+    df_merged = pd.merge(df_merged, preco_teto, on='ticker_base', how='left', suffixes=('', '_teto'))
 
-    # Merge DY
-    df = indic.merge(dy[['ticker_base', 'DY12M', 'DY5anos']], on='ticker_base', how='left')
-
-    # Merge preço teto (não pontua no score atual, apenas informativo)
-    if not preco_teto.empty:
-        df = df.merge(preco_teto[['ticker_base', 'preco_teto_5anos', 'diferenca_percentual']], on='ticker_base', how='left')
-
-    # Converte colunas numéricas necessárias
+    # Converte colunas para numérico, tratando erros
     num_cols = [
-        'preco_atual', 'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco', 'roe',
+        'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe',
         'divida_total', 'market_cap', 'divida_ebitda', 'sentimento_gauge',
-        'strong_buy', 'buy', 'hold', 'sell', 'strong_sell',
         'DY12M', 'DY5anos'
     ]
-    for c in num_cols:
-        if c in df.columns:
-            df[c] = pd.to_numeric(df[c], errors='coerce')
+    for col in num_cols:
+        if col in df_merged.columns:
+            df_merged[col] = pd.to_numeric(df_merged[col], errors='coerce')
+            
+    return df_merged.drop(columns=['ticker_dy', 'ticker_teto'], errors='ignore')
 
-    return df
+# --- Funções de Pontuação (Score) ---
+# Cada função atribui pontos com base em critérios predefinidos para um indicador.
 
+def score_dy(dy_12m, dy_5a):
+    """Pontuação baseada no Dividend Yield."""
+    score = 0
+    if pd.notna(dy_12m):
+        if dy_12m > 5: score += 20
+        elif dy_12m > 3.5: score += 15
+        elif dy_12m > 2: score += 10
+        elif dy_12m < 2 and dy_12m > 0: score -= 5
+    if pd.notna(dy_5a):
+        if dy_5a > 8: score += 25
+        elif dy_5a > 6: score += 20
+        elif dy_5a > 4: score += 10
+    return score
 
-# --- Funções de pontuação (espelham app/app.py) ---
-
-def score_dy_12m(v: float) -> int:
-    if pd.isna(v) or v <= 0:
-        return 0 if (pd.isna(v) or v == 0) else -5
-    if v > 5:
-        return 20
-    if v > 3.5:
-        return 15
-    if v > 2:
-        return 10
-    if v < 2:
-        return -5
+def score_payout(payout):
+    """Pontuação para o Payout Ratio."""
+    if pd.isna(payout): return 0
+    if 30 <= payout <= 60: return 10
+    if 60 < payout <= 80: return 5
+    if (payout > 0 and payout < 20) or payout > 80: return -5
     return 0
 
-
-def score_dy_5anos(v: float) -> int:
-    if pd.isna(v):
-        return 0
-    if v > 8:
-        return 25
-    if v > 6:
-        return 20
-    if v > 4:
-        return 10
-    return 0
-
-
-def score_payout(v: float) -> int:
-    if pd.isna(v):
-        return 0
-    if 30 <= v <= 60:
-        return 10
-    if 60 < v <= 80:
-        return 5
-    if (v > 0 and v < 20) or v > 80:
-        return -5
-    return 0
-
-
-def score_roe(v: float, setor: str) -> int:
-    s = str(setor).lower()
-    if pd.isna(v):
-        return 0
-    if 'finance' in s:
-        if v > 15:
-            return 25
-        if v > 12:
-            return 20
-        if v > 8:
-            return 10
-        return 0
+def score_roe(roe, setor):
+    """Pontuação para o ROE, com lógica diferente para o setor financeiro."""
+    if pd.isna(roe): return 0
+    is_finance = 'finance' in str(setor).lower()
+    if is_finance:
+        if roe > 15: return 25
+        if roe > 12: return 20
+        if roe > 8: return 10
     else:
-        if v > 12:
-            return 15
-        if v > 8:
-            return 5
-        return 0
-
-
-def score_pl(v: float) -> int:
-    if pd.isna(v) or v <= 0:
-        return 0
-    if 0 < v < 12:
-        return 15
-    if 12 <= v < 18:
-        return 10
-    if v > 25:
-        return -5
+        if roe > 12: return 15
+        if roe > 8: return 5
     return 0
 
+def score_pl_pvp(pl, pvp):
+    """Pontuação combinada para P/L e P/VP."""
+    score = 0
+    if pd.notna(pl) and pl > 0:
+        if pl < 12: score += 15
+        elif pl < 18: score += 10
+        elif pl > 25: score -= 5
+    if pd.notna(pvp) and pvp > 0:
+        if pvp < 0.66: score += 20
+        elif pvp < 1.5: score += 10
+        elif pvp < 2.5: score += 5
+        elif pvp > 4: score -= 5
+    return score
 
-def score_pvp(v: float) -> int:
-    if pd.isna(v) or v <= 0:
-        return 0
-    if 0 < v < 0.66:
-        return 20
-    if 0.66 <= v < 1.5:
-        return 10
-    if 1.5 <= v < 2.5:
-        return 5
-    if v > 4:
-        return -5
-    return 0
+def score_divida(div_mc, div_ebitda, setor):
+    """Pontuação para os indicadores de endividamento."""
+    if 'finance' in str(setor).lower(): return 0
+    score = 0
+    if pd.notna(div_mc):
+        if div_mc < 0.5: score += 10
+        elif div_mc < 1.0: score += 5
+        elif div_mc > 2.0: score -= 5
+    if pd.notna(div_ebitda) and div_ebitda > 0:
+        if div_ebitda < 1: score += 10
+        elif div_ebitda < 2: score += 5
+        elif div_ebitda > 6: score -= 5
+    return score
 
+def score_crescimento_sentimento(crescimento, sentimento):
+    """Pontuação para crescimento de preço e sentimento de mercado."""
+    score = 0
+    if pd.notna(crescimento):
+        if crescimento > 15: score += 15
+        elif crescimento > 10: score += 10
+        elif crescimento > 5: score += 5
+        elif crescimento < 0: score -= 5
+    if pd.notna(sentimento):
+        score += ((sentimento - 50) / 50.0) * (10 if sentimento >= 50 else 5)
+    return score
 
-def score_divida_marketcap(div_total: float, mcap: float, setor: str) -> int:
-    s = str(setor).lower()
-    if 'finance' in s:
-        return 0
-    if pd.isna(mcap) or mcap <= 0 or pd.isna(div_total):
-        return 0
-    ratio = div_total / mcap
-    if ratio < 0.5:
-        return 10
-    if ratio < 1.0:
-        return 5
-    if ratio > 2.0:
-        return -5
-    return 0
+# --- Função Principal de Execução ---
+def main():
+    """Orquestra a execução do script: carrega, processa e salva os scores."""
+    df = load_and_prepare_data()
 
+    # Aplica as funções de score
+    tqdm.pandas(desc="Calculando Scores")
+    
+    scores_data = []
+    for _, row in tqdm(df.iterrows(), total=df.shape[0], desc="Calculando Scores"):
+        setor = row.get('setor_brapi', 'N/A')
+        div_mc = row['divida_total'] / row['market_cap'] if pd.notna(row['market_cap']) and row['market_cap'] > 0 else None
 
-def score_divida_ebitda(v: float, setor: str) -> int:
-    s = str(setor).lower()
-    if 'finance' in s:
-        return 0
-    if pd.isna(v) or v <= 0:
-        return 0
-    if v < 1:
-        return 10
-    if v < 2:
-        return 5
-    if v > 6:
-        return -5
-    return 0
+        s_dy = score_dy(row.get('DY12M'), row.get('DY5anos'))
+        s_payout = score_payout(row.get('payout_ratio'))
+        s_roe = score_roe(row.get('roe'), setor)
+        s_pl_pvp = score_pl_pvp(row.get('p_l'), row.get('p_vp'))
+        s_divida = score_divida(div_mc, row.get('divida_ebitda'), setor)
+        s_cresc_sent = score_crescimento_sentimento(row.get('crescimento_preco_5a'), row.get('sentimento_gauge'))
+        
+        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent
+        
+        scores_data.append({
+            'ticker': row['ticker_base'],
+            'score_dy': s_dy,
+            'score_payout': s_payout,
+            'score_roe': s_roe,
+            'score_pl_pvp': s_pl_pvp,
+            'score_divida': s_divida,
+            'score_crescimento_sentimento': s_cresc_sent,
+            'score_total': max(0, min(200, score_total)) # Clamping entre 0 e 200
+        })
 
-
-def score_crescimento(v: float) -> int:
-    if pd.isna(v):
-        return 0
-    if v > 15:
-        return 15
-    if v > 10:
-        return 10
-    if v > 5:
-        return 5
-    if v < 0:
-        return -5
-    return 0
-
-
-def score_sentimento(v: float) -> float:
-    if pd.isna(v):
-        return 0.0
-    if v >= 50:
-        return ((v - 50) / 50.0) * 10.0
-    else:
-        return ((v - 50) / 50.0) * 5.0
-
-
-def compute_scores(row: pd.Series) -> pd.Series:
-    setor = row.get('setor_brapi', 'N/A')
-    out = {}
-    out['score_dy_12m'] = score_dy_12m(row.get('DY12M'))
-    out['score_dy_5anos'] = score_dy_5anos(row.get('DY5anos'))
-    out['score_payout'] = score_payout(row.get('payout_ratio'))
-    out['score_roe'] = score_roe(row.get('roe'), setor)
-    out['score_pl'] = score_pl(row.get('p_l'))
-    out['score_pvp'] = score_pvp(row.get('p_vp'))
-    out['score_divida_marketcap'] = score_divida_marketcap(row.get('divida_total'), row.get('market_cap'), setor)
-    out['score_divida_ebitda'] = score_divida_ebitda(row.get('divida_ebitda'), setor)
-    out['score_crescimento'] = score_crescimento(row.get('crescimento_preco'))
-    out['score_sentimento'] = score_sentimento(row.get('sentimento_gauge'))
-
-    total = sum([v for v in out.values() if not pd.isna(v)])
-    total = max(0, min(200, total))  # clamp 0..200
-    out['score_total'] = total
-    return pd.Series(out)
-
-
-def main() -> None:
-    indic, dy, preco_teto = load_inputs()
-    df = prepare(indic, dy, preco_teto)
-
-    # Calcula scores com barra de progresso
-    tqdm.pandas(desc="Calculando scores")
-    scores = df.progress_apply(compute_scores, axis=1)
-
-    # Arredonda todos os scores para 2 casas decimais
-    scores = scores.astype(float).round(2)
-
-    # Monta saída com identificadores e pontuações
-    saida = pd.concat([
-        df[['ticker_base']].copy(),  # sem .SA
-        scores
-    ], axis=1)
-
-    # Ordena por score_total desc
-    saida = saida.sort_values(by='score_total', ascending=False)
-
-    # Salva CSV de scores com ponto decimal e 2 casas
-    FN_OUT.parent.mkdir(parents=True, exist_ok=True)
-    saida.to_csv(FN_OUT, index=False, float_format='%.2f')
-    print(f'✅ Arquivo salvo em: {FN_OUT}')
-
+    scores_df = pd.DataFrame(scores_data).round(2)
+    
+    # Ordena pelo score total e salva
+    scores_df = scores_df.sort_values(by='score_total', ascending=False)
+    scores_df.to_csv(FN_OUT, index=False, float_format='%.2f')
+    
+    print(f"\n✅ Arquivo de scores salvo com sucesso em: {FN_OUT}")
+    print("\nAmostra dos tickers com maiores scores:")
+    print(scores_df.head())
 
 if __name__ == '__main__':
     main()

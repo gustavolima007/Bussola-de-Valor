@@ -1,7 +1,26 @@
+# -*- coding: utf-8 -*-
+"""
+ sectoral Performance Evaluation Script
+
+This script evaluates the performance of different economic sectors based on the
+average score of the assets that compose them.
+
+Process Steps:
+1.  Loads the scores from 'data/scores.csv' and the asset list from
+    'data/acoes_e_fundos.csv'.
+2.  Merges the two datasets using the ticker as a key.
+3.  Groups the data by sector and calculates the average `score_total` for each.
+4.  Translates the sector names from English to Portuguese using predefined
+    dictionaries for a full and a summarized version.
+5.  Saves the resulting sector performance ranking in
+    'data/avaliacao_setor.csv'.
+"""
+
 from pathlib import Path
 import pandas as pd
 
-# Dicionário fixo para tradução dos setores B3 (EN -> PT)
+# --- Dictionaries for Sector Translation ---
+# Full translation from English (Brapi) to Portuguese
 TRADUCAO_SETORES_B3 = {
     "Energy Minerals": "Petróleo, Gás e Biocombustíveis",
     "Non-Energy Minerals": "Materiais Básicos – Mineração e Siderurgia",
@@ -24,7 +43,7 @@ TRADUCAO_SETORES_B3 = {
     "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
 }
 
-# Dicionário para setores resumidos
+# Summarized translation for easier display
 TRADUCAO_SETORES_RESUMIDA = {
     "Petróleo, Gás e Biocombustíveis": "Petróleo, Gás e Biocombustíveis",
     "Materiais Básicos – Mineração e Siderurgia": "Mineração e Siderurgia",
@@ -48,58 +67,61 @@ TRADUCAO_SETORES_RESUMIDA = {
 }
 
 def main() -> None:
-    # Resolve repo root from this file location: repo_root/data_engineer/this_file.py -> repo_root
-    repo_root = Path(__file__).resolve().parent.parent
-    data_dir = repo_root / "data"
-
+    """Main function to orchestrate the sector evaluation process."""
+    # --- Path Setup ---
+    data_dir = Path(__file__).resolve().parent.parent / "data"
     scores_path = data_dir / "scores.csv"
     acoes_path = data_dir / "acoes_e_fundos.csv"
+    output_path = data_dir / "avaliacao_setor.csv"
 
-    # Read CSVs
-    scores_df = pd.read_csv(scores_path, encoding="utf-8")
-    acoes_df = pd.read_csv(acoes_path, encoding="utf-8")
+    # --- Data Loading ---
+    print(f"Loading scores from: {scores_path}")
+    scores_df = pd.read_csv(scores_path)
+    print(f"Loading asset data from: {acoes_path}")
+    acoes_df = pd.read_csv(acoes_path)
 
-    # Normaliza: ticker da base de acoes vem como BBAS3.SA; convertemos para BBAS3 para casar com ticker_base
-    acoes_df = acoes_df.copy()
-    acoes_df["ticker_base"] = acoes_df["ticker"].str.split(".").str[0]
+    # --- Data Preparation and Merging ---
+    print("Merging scores with sector data...")
+    # Normalize ticker in acoes_df to match scores_df (e.g., 'BBAS3.SA' -> 'BBAS3')
+    acoes_df["ticker_base"] = acoes_df["ticker"].str.upper().str.strip()
+    scores_df["ticker_base"] = scores_df["ticker"].str.upper().str.strip()
 
-    # Seleciona colunas necessárias
-    scores_sel = scores_df[["ticker_base", "score_total"]]
-    acoes_sel = acoes_df[["ticker_base", "setor_brapi"]]
+    # Select necessary columns and merge
+    merged_df = pd.merge(
+        scores_df[["ticker_base", "score_total"]],
+        acoes_df[["ticker_base", "setor_brapi"]],
+        on="ticker_base",
+        how="inner"
+    ).drop_duplicates("ticker_base")
 
-    # Join pelos tickers normalizados
-    merged = (
-        scores_sel.merge(acoes_sel, on="ticker_base", how="inner")
-        .drop_duplicates("ticker_base")  # garante 1 linha por ticker
-    )
-
-    # Agrega: média da pontuação por setor
-    setor_perf = (
-        merged.groupby("setor_brapi", as_index=False)["score_total"].mean()
+    # --- Sector Performance Calculation ---
+    print("Calculating average score per sector...")
+    setor_performance = (
+        merged_df.groupby("setor_brapi")["score_total"]
+        .mean()
+        .reset_index()
         .rename(columns={"setor_brapi": "setor", "score_total": "pontuacao"})
         .sort_values("pontuacao", ascending=False)
     )
 
-    # Tradução dos setores (EN->PT) usando dicionário fixo
-    setor_perf['setor'] = setor_perf['setor'].map(TRADUCAO_SETORES_B3).fillna(setor_perf['setor'])
+    # --- Translation and Formatting ---
+    print("Translating sector names...")
+    # Apply full and summarized translations
+    setor_performance['setor'] = setor_performance['setor'].map(TRADUCAO_SETORES_B3).fillna(setor_performance['setor'])
+    setor_performance['setor_resumido'] = setor_performance['setor'].map(TRADUCAO_SETORES_RESUMIDA).fillna(setor_performance['setor'])
+    setor_performance['pontuacao'] = setor_performance['pontuacao'].round(2)
 
-    # Adiciona coluna setor_resumido
-    setor_perf['setor_resumido'] = setor_perf['setor'].map(TRADUCAO_SETORES_RESUMIDA).fillna(setor_perf['setor'])
+    # --- Saving the Result ---
+    setor_performance.to_csv(output_path, index=False, float_format='%.2f')
+    print(f"\n✅ Sector evaluation file saved successfully at: {output_path}")
 
-    print("Desempenho por setor (média de score_total):")
-    print(setor_perf)
+    # --- Displaying Results ---
+    print("\n--- Sector Performance (Average Score) ---")
+    print(setor_performance)
 
-    # Salva resultado em CSV na pasta data
-    out_path = data_dir / "avaliacao_setor.csv"
-    # Arredonda a pontuação para 2 casas e salva com ponto decimal
-    setor_perf['pontuacao'] = pd.to_numeric(setor_perf['pontuacao'], errors='coerce').round(2)
-    setor_perf.to_csv(out_path, index=False, encoding="utf-8", float_format='%.2f')
-    print(f"Arquivo salvo em: {out_path}")
-
-    if not setor_perf.empty:
-        melhor = setor_perf.iloc[0]
-        print(f"\nMelhor setor: {melhor['setor']} (pontuação média: {melhor['pontuacao']:.2f})")
-
+    if not setor_performance.empty:
+        best_sector = setor_performance.iloc[0]
+        print(f"\n🏆 Best Performing Sector: {best_sector['setor_resumido']} (Average Score: {best_sector['pontuacao']:.2f})")
 
 if __name__ == "__main__":
     main()
