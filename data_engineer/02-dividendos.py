@@ -36,7 +36,6 @@ df = pd.read_csv(csv_path)
 # Extrai, limpa e garante que a lista de tickers não tenha duplicatas
 tickers = df['ticker'].dropna().astype(str).str.strip().str.upper().unique().tolist()
 print(f"Encontrados {len(tickers)} tickers únicos.")
-
 # --- Definição do Período de Busca ---
 # Define o intervalo de 7 anos a partir da data atual
 end_date = datetime.today()
@@ -44,9 +43,10 @@ start_date = end_date - timedelta(days=7*365)
 print(f"Buscando dividendos de {start_date.strftime('%Y-%m-%d')} até {end_date.strftime('%Y-%m-%d')}")
 
 # Lista para armazenar os dataframes de dividendos de cada ativo
+# Lista para armazenar os dataframes de dividendos de cada ativo
 todos_dividendos = []
 
-# --- Coleta de Dados via yfinance ---
+todos_dividendos = []
 # Itera sobre a lista de tickers com uma barra de progresso
 for ticker in tqdm(tickers, desc="Coletando dividendos (7 anos)"):
     try:
@@ -56,21 +56,30 @@ for ticker in tqdm(tickers, desc="Coletando dividendos (7 anos)"):
         
         # Obtém a série temporal de dividendos
         dividendos = acao.dividends
-
+        # Adiciona o sufixo .SA, padrão do Yahoo Finance para ativos da B3
         # Garante que o índice da série seja do tipo DatetimeIndex
         if not isinstance(dividendos.index, pd.DatetimeIndex):
             dividendos.index = pd.to_datetime(dividendos.index, errors='coerce')
-        
+        if not isinstance(dividendos.index, pd.DatetimeIndex):
         # Remove o fuso horário (timezone) para padronizar as datas
         if getattr(dividendos.index, "tz", None) is not None:
             dividendos.index = dividendos.index.tz_localize(None)
-
+        mask_date = dividendos.index >= pd.to_datetime(start_date)
         # Filtra os dividendos para o período de 7 anos definido
         mask_date = dividendos.index >= pd.to_datetime(start_date)
         dividendos_periodo = dividendos[mask_date]
-
+        if not dividendos_periodo.empty:
         # Verifica se existem dividendos no período antes de processar
         if not dividendos_periodo.empty:
+            df_div = dividendos_periodo.reset_index()
+            df_div.columns = ['Data', 'Valor']  # Renomeia as colunas
+            df_div['Ticker'] = ticker  # Adiciona o ticker original (sem .SA)
+            todos_dividendos.append(df_div)
+
+    except Exception as e:
+        # Captura e informa erros durante o processo para um ticker específico
+        print(f"❌ Erro ao processar {ticker_yf}: {e}")
+
             df_div = dividendos_periodo.reset_index()
             df_div.columns = ['Data', 'Valor']  # Renomeia as colunas
             df_div['Ticker'] = ticker  # Adiciona o ticker original (sem .SA)
