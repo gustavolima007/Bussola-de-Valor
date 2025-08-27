@@ -2,14 +2,14 @@
 
 /* --- Variáveis de Cor e Estilo --- */
 :root {
-    --primary-color: #3A7CA5;      /* Azul profissional e calmante */
-    --secondary-color: #82A9B1;    /* Azul-acinzentado claro e complementar */
+    --primary-color: #36b37e;      /* Verde do novo tema (primaryColor) */
+    --secondary-color: #9CA3AF;    /* Cinza claro para métricas, complementando o tema */
     --accent-color: #D4AF37;       /* Dourado clássico para destaques */
     --gold-color: #D4AF37;         /* Dourado para filtros e elementos especiais */
     --gold-text-color: #FFFFFF;    /* Texto branco para alto contraste em fundos dourados */
-    --background-color: #1F2937;   /* Fundo principal em azul-acinzentado escuro */
-    --card-background: #2D3A4C;    /* Fundo de cartão ligeiramente mais claro */
-    --text-color: #E5E7EB;         /* Cinza claro para texto principal, confortável para os olhos */
+    --background-color: #0e1117;   /* Fundo principal do novo tema (backgroundColor) */
+    --card-background: #1b1f2a;    /* Fundo de cartão do novo tema (secondaryBackgroundColor) */
+    --text-color: #ffffff;         /* Cor de texto principal do novo tema (textColor) */
     --text-light-color: #9CA3AF;   /* Cinza mais suave para texto secundário */
     --border-color: #4B5563;       /* Cor de borda sutil para o tema escuro */
     --font-family: 'Inter', sans-serif;

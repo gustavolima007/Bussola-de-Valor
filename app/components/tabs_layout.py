@@ -412,8 +412,6 @@ def render_tab_rank_setores(all_data: dict):
 
 # --- Função Principal de Renderização ---
 
-from .calculadora import render_tab_calculadora
-
 def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     tab_titles = [
