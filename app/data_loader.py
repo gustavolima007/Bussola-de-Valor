@@ -100,7 +100,9 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         pa = read_csv_cached(base_path / 'precos_acoes.csv')
         pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
         df = df.merge(pa[['ticker_base', 'fechamento_atual']], left_on='Ticker', right_on='ticker_base', how='left')
-        df.rename(columns={'fechamento_atual': 'Preço Atual'}, inplace=True)
+        if 'fechamento_atual' in df.columns:
+            df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
+            df.drop(columns=['fechamento_atual'], inplace=True)
     except Exception: pass
 
     # Limpa colunas auxiliares de merge

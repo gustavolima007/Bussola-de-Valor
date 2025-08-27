@@ -161,7 +161,7 @@ def main():
         score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent
         
         scores_data.append({
-            'ticker': row['ticker_base'],
+            'ticker_base': row['ticker_base'],
             'score_dy': s_dy,
             'score_payout': s_payout,
             'score_roe': s_roe,

@@ -84,7 +84,7 @@ def main() -> None:
     print("Merging scores with sector data...")
     # Normalize ticker in acoes_df to match scores_df (e.g., 'BBAS3.SA' -> 'BBAS3')
     acoes_df["ticker_base"] = acoes_df["ticker"].str.upper().str.strip()
-    scores_df["ticker_base"] = scores_df["ticker"].str.upper().str.strip()
+    scores_df["ticker_base"] = scores_df["ticker_base"].str.upper().str.strip()
 
     # Select necessary columns and merge
     merged_df = pd.merge(

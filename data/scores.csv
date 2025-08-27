@@ -1,4 +1,4 @@
-ticker,score_dy,score_payout,score_roe,score_pl_pvp,score_divida,score_crescimento_sentimento,score_total
+ticker_base,score_dy,score_payout,score_roe,score_pl_pvp,score_divida,score_crescimento_sentimento,score_total
 CGRA3,45,10,15,35,15,15.00,135.00
 CGRA4,45,10,15,35,15,15.00,135.00
 TAEE3,45,10,15,35,5,15.00,125.00
