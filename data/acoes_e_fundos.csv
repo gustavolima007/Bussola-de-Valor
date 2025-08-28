@@ -1,359 +1,338 @@
 ﻿ticker,volume,logo,setor_brapi,tipo
-NATU3,132647300,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock
-AZUL4,49857100,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock
-BBDC4,37241300,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock
-BBAS3,35682300,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock
-ABEV3,27024300,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock
-PCAR3,26065600,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock
-PSSA3,23659700,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock
-PETR4,21789700,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock
-ITUB4,21444900,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock
-BEEF3,19537900,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock
-VALE3,18891500,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock
-B3SA3,18756700,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock
-VBBR3,18585000,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock
-CPLE6,16732900,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock
-MGLU3,16124700,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock
-ITSA4,15825100,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock
-HBSA3,15212400,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock
-COGN3,14956500,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock
-RAIZ4,14344000,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock
-GGBR4,14287300,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock
-WEGE3,13465700,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock
-ENEV3,13453200,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock
-CBAV3,13153100,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock
-ASAI3,12430100,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock
-PETR3,11908700,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock
-BBDC3,11257900,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock
-RAIL3,11002900,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock
-CMIG4,10147100,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock
-MRVE3,10023800,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock
-RADL3,9936800,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock
-PRIO3,9700700,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock
-MOTV3,9694400,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock
-CSAN3,8959700,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock
-TIMS3,8833700,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock
-VIVT3,8679600,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock
-TOTS3,8427000,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock
-USIM5,8071600,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock
-EQTL3,7967200,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock
-BRFS3,7708600,https://icons.brapi.dev/icons/BRFS3.svg,Consumer Non-Durables,stock
-DIRR3,7231700,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock
-LREN3,7161100,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock
-VAMO3,7158800,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock
-CSNA3,6634500,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock
-PETZ3,6269000,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock
-ELET3,6064500,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock
-UGPA3,6059500,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock
-CEAB3,5889500,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock
-RENT3,5780500,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock
-POMO4,5767800,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock
-GOAU4,5662600,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock
-BRKM5,5525600,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock
-AURE3,5520800,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock
-ONCO3,5197800,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock
-SIMH3,5015800,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock
-CMIN3,4900600,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock
-KLBN11,4857700,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund
-AZTE3,4670100,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock
-CVCB3,4622100,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock
-BPAC11,4472800,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund
-EMBR3,4009400,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock
-BRAV3,3979000,https://icons.brapi.dev/icons/BRAV3.svg,Energy Minerals,stock
-OIBR3,3936800,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock
-SUZB3,3907200,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock
-PDGR3,3854100,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock
-BBSE3,3853800,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock
-CYRE3,3839700,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock
-CPLE3,3700600,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock
-MRFG3,3616300,https://icons.brapi.dev/icons/MRFG3.svg,Consumer Non-Durables,stock
-BHIA3,3467000,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock
-RDOR3,3401500,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock
-BRAP4,3394100,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock
-CXSE3,3257700,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock
-STBP3,3252400,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock
-HAPV3,3193700,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock
-ALOS3,3179700,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock
-LWSA3,3016900,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock
-ECOR3,2977300,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock
-VIVA3,2862400,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock
-SBSP3,2859100,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock
-MULT3,2634100,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock
-IFCM3,2593000,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock
-CSMG3,2505200,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock
-DASA3,2449200,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock
-EGIE3,2353700,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock
-ENGI11,2277800,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund
-SMFT3,2208000,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock
-INTB3,2135400,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock
-JHSF3,2076900,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock
-SRNA3,2058600,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock
-MOVI3,2053800,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock
-YDUQ3,2006100,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock
-AMER3,1823000,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock
-MLAS3,1809000,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock
-IGTI11,1766000,https://icons.brapi.dev/icons/IGTI11.svg,Finance,fund
-RECV3,1718600,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock
-SLCE3,1712900,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock
-SANB11,1674300,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund
-SMTO3,1667300,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock
-GGPS3,1615100,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock
-BPAN4,1596100,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock
-AZZA3,1579700,https://icons.brapi.dev/icons/AZZA3.svg,Consumer Non-Durables,stock
-CASH3,1539000,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock
-RAPT4,1510200,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock
-TAEE11,1505800,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund
-ISAE4,1501200,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock
-TEND3,1493500,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock
-KLBN4,1483600,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock
-GMAT3,1478000,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock
-CPFE3,1456900,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock
-HYPE3,1420100,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock
-ZAMP3,1410800,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock
-BRSR6,1368000,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock
-ALPA4,1360800,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock
-ELET6,1359700,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock
-VULC3,1317500,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock
-EQPA3,1292700,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock
-SAPR4,1189200,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock
-EZTC3,1161700,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock
-GRND3,1157200,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock
-FLRY3,1105900,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock
-PORT3,1104900,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock
-SAPR11,1097900,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund
-PLPL3,1087400,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock
-CURY3,975500,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock
-SBFG3,970800,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock
-JALL3,967600,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock
-RCSL4,944000,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock
-VVEO3,936300,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock
-ENJU3,888000,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock
-LIGT3,882700,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock
-KEPL3,873900,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock
-FIQE3,866700,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock
-HBOR3,838600,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock
-DXCO3,799400,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock
-ARML3,782800,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock
-ALUP11,779400,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund
-TOKY3,738800,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock
-ODPV3,718300,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock
-LJQQ3,710000,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock
-AZEV3,700400,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock
-MDNE3,649200,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock
-NEOE3,566400,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock
-GUAR3,524800,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock
-IRBR3,502000,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock
-PGMN3,501500,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock
-TUPY3,490500,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock
-ITUB3,468600,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock
-MELK3,454700,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock
-QUAL3,452400,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock
-TTEN3,447400,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock
-MYPK3,440900,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock
-CAML3,439700,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock
-POMO3,438900,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock
-POSI3,434600,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock
-LOGG3,432500,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock
-AMBP3,427200,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock
-FESA4,416800,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock
-ORVR3,402400,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock
-MDIA3,391800,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock
-FRAS3,377300,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock
-LAVV3,374600,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock
-AZEV4,359900,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock
-PNVL3,350700,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock
-TFCO4,350200,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock
-CSED3,335300,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock
-SEER3,322800,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock
-TASA4,309600,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock
-SEQL3,305200,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock
-EVEN3,302800,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock
-OPCT3,302200,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock
-MILS3,301300,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock
-ABCB4,281000,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock
-DESK3,277300,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock
-SYNE3,270500,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock
-ALPK3,269000,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock
-KLBN3,269000,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock
-SHUL4,255700,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock
-HBRE3,249600,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock
-MATD3,248600,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock
-SOJA3,241900,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock
-WIZC3,237800,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock
-MTRE3,237700,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock
-BLAU3,235000,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock
-TRIS3,234200,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock
-RANI3,231200,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock
-SAPR3,229600,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock
-USIM3,224100,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock
-BMGB4,217200,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock
-GFSA3,214400,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock
-JSLG3,206600,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock
-DEXP3,199900,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock
-PINE4,199600,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock
-ITSA3,187000,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock
-AMOB3,181600,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock
-VLID3,168500,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock
-PTBL3,167100,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock
-AMAR3,159500,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock
-MEAL3,156600,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock
-BRBI11,155200,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund
-PMAM3,146000,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock
-TGMA3,142100,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock
-PFRM3,140200,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock
-ESPA3,138100,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock
-PRNR3,137000,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock
-CSUD3,127500,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock
-VTRU3,125900,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock
-TAEE4,123600,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock
-TECN3,121800,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock
-LEVE3,112300,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock
-BMOB3,112100,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock
-ALLD3,97600,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock
-BRST3,96600,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock
-UNIP6,96200,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock
-VITT3,87700,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock
-ROMI3,87100,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock
-ETER3,79600,https://icons.brapi.dev/icons/ETER3.svg,Non-Energy Minerals,stock
-AGRO3,73400,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock
-LVTC3,72100,https://icons.brapi.dev/icons/LVTC3.svg,Distribution Services,stock
-LUPA3,69700,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock
-LPSB3,69600,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock
-DMVF3,65700,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock
-AALR3,64100,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock
-SANB4,55000,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock
-BMEB4,52200,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock
-SANB3,51000,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock
-TCSA3,49800,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock
-TAEE3,49700,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock
-SCAR3,47400,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock
-AGXY3,44400,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock
-VIVR3,43100,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock
-CMIG3,42200,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock
-AERI3,40200,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock
-WEST3,40200,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock
-DOTZ3,33300,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock
-BRKM3,30900,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock
-IGTI3,30000,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock
-SHOW3,29900,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock
-CEBR3,26800,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock
-CEBR6,26400,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock
-INEP3,25800,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock
-EUCA4,25700,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock
-RSID3,25700,https://icons.brapi.dev/icons/RSID3.svg,Consumer Durables,stock
-BIOM3,25600,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock
-ENGI3,24600,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock
-RNEW3,23800,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock
-FICT3,22300,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock
-TRAD3,22100,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock
-CEBR5,22000,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock
-TASA3,20600,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock
-RNEW4,19300,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock
-CAMB3,19200,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock
-BRAP3,17400,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock
-RPMG3,16900,https://icons.brapi.dev/icons/RPMG3.svg,Energy Minerals,stock
-GGBR3,16300,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock
-TPIS3,15400,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock
-EALT4,14800,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock
-BEES3,13300,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock
-AVLL3,13200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-SNCI11,12457,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
-ALPA3,11700,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock
-LAND3,11600,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock
-EPAR3,11000,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock
-GOAU3,10600,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock
-PDTC3,9300,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock
-REAG3,9200,https://icons.brapi.dev/icons/REAG3.svg,Commercial Services,stock
-BEES4,8200,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock
-VSTE3,8000,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock
-UCAS3,7300,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock
-ESTR4,7300,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock
-BOBR4,6600,https://icons.brapi.dev/icons/BOBR4.svg,Consumer Non-Durables,stock
-MNPR3,6000,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock
-OSXB3,6000,https://icons.brapi.dev/icons/OSXB3.svg,Industrial Services,stock
-UNIP3,5800,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock
-NGRD3,5700,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock
-WSEC11,5442,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,fund
-BAZA3,5400,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock
-CGRA4,5200,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock
-LOGN3,4900,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock
-PTNT4,4500,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock
-ENGI4,4400,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock
-ALUP4,4300,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock
-RCSL3,4200,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock
-INEP4,3900,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock
-WHRL3,3700,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock
-DOHL4,3300,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-ALUP3,3300,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock
-FIEI3,3100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-RAPT3,3100,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock
-OIBR4,3100,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock
-HOOT4,3000,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock
-PINE3,3000,https://icons.brapi.dev/icons/PINE3.svg,Finance,stock
-WHRL4,2300,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock
-NUTR3,2300,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock
-ATED3,2300,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock
-BRKM6,2100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-REDE3,2000,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
-BRSR3,1900,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock
-OFSA3,1700,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock
-WLMM4,1600,https://icons.brapi.dev/icons/BRAPI.svg,Distribution Services,stock
-ISAE3,1400,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock
-DEXP4,1300,https://icons.brapi.dev/icons/DEXP4.svg,Process Industries,stock
-PPLA11,1212,https://icons.brapi.dev/icons/PPLA11.svg,Finance,fund
-CGRA3,1200,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock
-GSHP3,1100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-CLSC4,1100,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock
-RBIF11,1016,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
-JFEN3,1000,https://icons.brapi.dev/icons/JFEN3.svg,Consumer Durables,stock
-FSPE11,1000,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
-TELB4,900,https://icons.brapi.dev/icons/TELB4.svg,Communications,stock
-MNDL3,900,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock
-TXRX4,900,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-PATI3,800,https://icons.brapi.dev/icons/PATI3.svg,Producer Manufacturing,stock
-NEXP3,800,https://icons.brapi.dev/icons/NEXP3.svg,Finance,stock
-BALM4,800,https://icons.brapi.dev/icons/BRAPI.svg,Health Technology,stock
-RSUL4,800,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock
-COCE5,700,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock
+RAIZ4,38570400,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock
+MGLU3,22067600,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock
+B3SA3,18228600,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock
+COGN3,15975100,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock
+USIM5,15256300,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock
+BBAS3,13035600,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock
+BBDC4,12454300,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock
+PETR4,11725000,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock
+VAMO3,11385500,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock
+VBBR3,10884400,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock
+ITSA4,9759000,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock
+ASAI3,9541800,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock
+PCAR3,9402200,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock
+LREN3,9162400,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock
+ABEV3,9054100,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock
+ITUB4,8895900,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock
+CSAN3,8542800,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock
+VALE3,7700700,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock
+CBAV3,7139100,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock
+OIBR3,7119400,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock
+CSNA3,6369500,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock
+CVCB3,5851200,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock
+PETZ3,5691200,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock
+SIMH3,5671300,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock
+PDGR3,5290800,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock
+PETR3,5267100,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock
+AZUL4,5077300,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock
+BRAV3,4759300,https://icons.brapi.dev/icons/BRAV3.svg,Energy Minerals,stock
+CMIN3,4541800,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock
+ALOS3,4372100,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock
+UGPA3,4142500,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock
+RAIL3,3897400,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock
+BEEF3,3719300,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock
+CYRE3,3496900,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock
+MRVE3,3428300,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock
+CPLE6,3330000,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock
+BRKM5,3268200,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock
+AZEV4,3232200,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock
+RENT3,3169700,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock
+MULT3,3168500,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock
+NATU3,2871300,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock
+IGTI11,2825100,https://icons.brapi.dev/icons/IGTI11.svg,Finance,fund
+BPAC11,2801600,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund
+CMIG4,2790500,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock
+ECOR3,2740300,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock
+MOTV3,2659500,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock
+BHIA3,2624900,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock
+HBSA3,2599700,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock
+HAPV3,2581200,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock
+RADL3,2502000,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock
+ENEV3,2470800,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock
+ENGI11,2461100,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund
+GGBR4,2390300,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock
+VIVT3,2369400,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock
+BBDC3,2361000,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock
+POMO4,2324400,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock
+WEGE3,2257300,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock
+STBP3,2222300,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock
+AMER3,2114900,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock
+ELET3,2091700,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock
+LWSA3,2069000,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock
+MLAS3,1993300,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock
+MOVI3,1949300,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock
+RAPT4,1936800,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock
+BRFS3,1768400,https://icons.brapi.dev/icons/BRFS3.svg,Consumer Non-Durables,stock
+PRIO3,1749000,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock
+AZTE3,1717200,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock
+EQTL3,1710000,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock
+CEAB3,1708000,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock
+JHSF3,1690700,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock
+RDOR3,1675300,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock
+ONCO3,1619500,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock
+TIMS3,1615500,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock
+AZEV3,1587400,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock
+GRND3,1534600,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock
+GMAT3,1462500,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock
+GOAU4,1318800,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock
+KLBN11,1299400,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund
+CSMG3,1221800,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock
+DIRR3,1186200,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock
+MRFG3,1152400,https://icons.brapi.dev/icons/MRFG3.svg,Consumer Non-Durables,stock
+YDUQ3,1076900,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock
+BBSE3,1048000,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock
+PSSA3,1038900,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock
+CPLE3,1025900,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock
+SMTO3,1013500,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock
+SUZB3,1010800,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock
+VIVA3,1007600,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock
+EMBR3,1000200,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock
+ALUP11,992300,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund
+AURE3,987700,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock
+ALPA4,895500,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock
+INTB3,891500,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock
+LJQQ3,855100,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock
+ISAE4,825300,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock
+GUAR3,820800,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock
+PRNR3,812600,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock
+HBOR3,811900,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock
+VULC3,807000,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock
+CAML3,799000,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock
+CXSE3,795000,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock
+KLBN4,747800,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock
+RECV3,746800,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock
+TEND3,744700,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock
+HYPE3,741300,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock
+POSI3,740100,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock
+BRAP4,740100,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock
+LIGT3,708000,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock
+FLRY3,682100,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock
+SANB11,681400,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund
+SBSP3,668300,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock
+PLPL3,663300,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock
+SMFT3,647600,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock
+KEPL3,619200,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock
+MTRE3,611300,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock
+EZTC3,596200,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock
+SBFG3,585800,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock
+TAEE11,585400,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund
+DASA3,580500,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock
+CASH3,561800,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock
+AZZA3,527200,https://icons.brapi.dev/icons/AZZA3.svg,Consumer Non-Durables,stock
+SAPR4,515600,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock
+TOTS3,506400,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock
+QUAL3,499800,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock
+IFCM3,467100,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock
+SAPR11,459300,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund
+CURY3,437200,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock
+RCSL4,433000,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock
+VVEO3,429200,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock
+DXCO3,415900,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock
+ELET6,395100,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock
+ARML3,388800,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock
+POMO3,373200,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock
+MILS3,373100,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock
+TFCO4,334900,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock
+SLCE3,325500,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock
+BMGB4,321100,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock
+ODPV3,320500,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock
+JALL3,317000,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock
+GGPS3,290400,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock
+BRSR6,289900,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock
+JSLG3,282500,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock
+PTBL3,259600,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock
+IRBR3,259100,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock
+ENJU3,237300,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock
+VTRU3,236700,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock
+TTEN3,231700,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock
+USIM3,230600,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock
+BPAN4,229200,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock
+ABCB4,226500,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock
+ESPA3,207100,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock
+PGMN3,204100,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock
+FESA4,201400,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock
+ITUB3,191900,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock
+SOJA3,188800,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock
+SRNA3,186700,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock
+RANI3,185400,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock
+NEOE3,184800,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock
+EGIE3,177100,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock
+WIZC3,172000,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock
+TASA4,172000,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock
+EVEN3,171300,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock
+MDIA3,169300,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock
+TRIS3,163400,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock
+MDNE3,159200,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock
+PMAM3,157100,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock
+AMBP3,152100,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock
+GFSA3,150900,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock
+CPFE3,147700,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock
+MEAL3,146000,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock
+SHUL4,145300,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock
+ORVR3,145100,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock
+TUPY3,144200,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock
+ALPK3,144200,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock
+ZAMP3,134600,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock
+FIQE3,131300,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock
+MELK3,131000,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock
+SAPR3,127800,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock
+KLBN3,125200,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock
+CSED3,118500,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock
+HBRE3,115900,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock
+SANB4,112200,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock
+SYNE3,109400,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock
+SEER3,108600,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock
+MATD3,104500,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock
+AMAR3,97300,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock
+LAVV3,93200,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock
+PNVL3,90900,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock
+TOKY3,90500,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock
+BRBI11,85700,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund
+DESK3,82300,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock
+MYPK3,81800,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock
+PINE4,80700,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock
+BLAU3,77400,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock
+VIVR3,75700,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock
+AERI3,75600,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock
+VLID3,74500,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock
+BRST3,73000,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock
+LOGG3,72200,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock
+LEVE3,71600,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock
+ETER3,68100,https://icons.brapi.dev/icons/ETER3.svg,Non-Energy Minerals,stock
+TGMA3,65000,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock
+SANB3,64900,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock
+ITSA3,61000,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock
+OPCT3,57800,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock
+REAG3,53000,https://icons.brapi.dev/icons/REAG3.svg,Commercial Services,stock
+DEXP3,51900,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock
+AVLL3,51100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
+FRAS3,49700,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock
+TAEE3,47500,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock
+CMIG3,46800,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock
+SEQL3,46600,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock
+TASA3,46100,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock
+BRAP3,44000,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock
+PFRM3,43200,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock
+PORT3,43000,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock
+AGRO3,42200,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock
+TAEE4,40400,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock
+LPSB3,39900,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock
+TECN3,35100,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock
+ALLD3,34500,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock
+ROMI3,34500,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock
+BRKM3,29500,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock
+BMOB3,26400,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock
+VITT3,26100,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock
+OIBR4,24500,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock
+TRAD3,22400,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock
+SHOW3,22200,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock
+UNIP6,21700,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock
+AMOB3,21500,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock
+AALR3,21200,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock
+GOAU3,20300,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock
+EQPA3,18500,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock
+TPIS3,18500,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock
+LUPA3,18300,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock
+GGBR3,17700,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock
+CEBR5,15000,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock
+BMEB4,14800,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock
+LVTC3,14300,https://icons.brapi.dev/icons/LVTC3.svg,Distribution Services,stock
+IGTI3,14000,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock
+BEES3,13900,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock
+EUCA4,13100,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock
+ALUP4,12700,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock
+RCSL3,11200,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock
+CEBR3,11200,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock
+RAPT3,11000,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock
+HOOT4,10800,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock
+RSID3,9800,https://icons.brapi.dev/icons/RSID3.svg,Consumer Durables,stock
+CAMB3,9600,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock
+AGXY3,9200,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock
+EPAR3,8500,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock
+DMVF3,8000,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock
+FSPE11,7000,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
+RNEW3,6300,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock
+CSUD3,6200,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock
+TCSA3,6200,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock
+ENGI4,6200,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock
+PDTC3,5600,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock
+CEBR6,5400,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock
+INEP4,5300,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock
+WHRL3,4900,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock
+WHRL4,4700,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock
+RNEW4,4700,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock
+ALUP3,4600,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock
+ALPA3,4500,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock
+LAND3,4000,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock
+BAZA3,3700,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock
+ISAE3,3700,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock
+EALT4,3100,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock
+CGRA4,3100,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock
+ENGI3,2900,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock
+BOBR4,2800,https://icons.brapi.dev/icons/BOBR4.svg,Consumer Non-Durables,stock
+TELB4,2600,https://icons.brapi.dev/icons/TELB4.svg,Communications,stock
+NUTR3,2600,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock
+UCAS3,2300,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock
+BIOM3,2100,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock
+ATED3,2100,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock
+SCAR3,2100,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock
+UNIP3,1900,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock
+BEES4,1800,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock
+CRPG5,1800,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock
+INEP3,1700,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock
+FHER3,1600,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock
+SNCI11,1505,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
+CTAX3,1500,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock
+BMEB3,1500,https://icons.brapi.dev/icons/BMEB3.svg,Finance,stock
+RBIF11,1431,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
+DOTZ3,1400,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock
+FICT3,1200,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock
+PPLA11,1136,https://icons.brapi.dev/icons/PPLA11.svg,Finance,fund
+BALM4,1100,https://icons.brapi.dev/icons/BRAPI.svg,Health Technology,stock
+COCE5,1000,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock
+VSTE3,1000,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock
+ENMT4,1000,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+MNDL3,1000,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock
+CLSC4,900,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock
+ESTR4,900,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock
+WSEC11,847,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,fund
+BRSR3,800,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock
+DOHL4,800,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
+NGRD3,800,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock
+HAGA3,800,https://icons.brapi.dev/icons/HAGA3.svg,Consumer Durables,stock
 BPAC3,700,https://icons.brapi.dev/icons/BPAC3.svg,Finance,stock
-MWET4,700,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock
-BPAC5,700,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock
-PTNT3,700,https://icons.brapi.dev/icons/PTNT3.svg,Process Industries,stock
-CTKA4,700,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-FHER3,600,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock
+WLMM4,700,https://icons.brapi.dev/icons/BRAPI.svg,Distribution Services,stock
+PINE3,700,https://icons.brapi.dev/icons/PINE3.svg,Finance,stock
+OFSA3,600,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock
 MTSA4,600,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock
-CGAS5,600,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock
-RDNI3,500,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock
-CTAX3,500,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock
-EKTR4,400,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
-HAGA4,400,https://icons.brapi.dev/icons/HAGA4.svg,Consumer Durables,stock
-RPAD5,400,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-EQMA3B,400,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
-BSLI3,300,https://icons.brapi.dev/icons/BSLI3.svg,Finance,stock
-BMEB3,300,https://icons.brapi.dev/icons/BMEB3.svg,Finance,stock
-IRIM11,220,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
-CRPG5,200,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock
-TKNO4,200,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock
-CTSA4,200,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-RNEW11,200,https://icons.brapi.dev/icons/RNEW11.svg,Utilities,fund
-UNIP5,200,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-MOAR3,200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-BGIP4,200,https://icons.brapi.dev/icons/BGIP4.svg,Finance,stock
-CALI3,200,https://icons.brapi.dev/icons/BRAPI.svg,Industrial Services,stock
-CEEB3,200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
-BNBR3,200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-EMAE4,200,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock
-EUCA3,200,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock
-RENV11,113,https://icons.brapi.dev/icons/RENV11.svg,Finance,fund
-CCTY3,100,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock
-RPAD3,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
+BPAC5,500,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock
+WEST3,500,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock
+GEPA4,500,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+LOGN3,500,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock
+REDE3,400,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+ENMT3,400,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+CGRA3,400,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock
+BSLI4,400,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock
+MNPR3,400,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock
+EMAE4,300,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock
+RDNI3,300,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock
+MGEL4,200,https://icons.brapi.dev/icons/MGEL4.svg,Producer Manufacturing,stock
+CGAS5,200,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock
+CGAS3,200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+TELB3,200,https://icons.brapi.dev/icons/TELB3.svg,Communications,stock
+COCE3,200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+CPLE5,200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+RSUL4,200,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock
+PTNT4,200,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock
+IRIM11,114,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
+RPAD5,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
+CLSC3,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
+EUCA3,100,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock
 BALM3,100,https://icons.brapi.dev/icons/BRAPI.svg,Health Technology,stock
-PEAB3,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock
-SOND5,100,https://icons.brapi.dev/icons/BRAPI.svg,Industrial Services,stock
-TELB3,100,https://icons.brapi.dev/icons/TELB3.svg,Communications,stock
-ENMT3,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock
-BSLI4,100,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock
+UNIP5,100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
 CEDO4,100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-CTSA3,100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock
-EGYR11,71,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
-BMKS3,4,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock
+RNEW11,100,https://icons.brapi.dev/icons/RNEW11.svg,Utilities,fund
+EGYR11,7,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund
+BMKS3,5,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock
+RENV11,5,https://icons.brapi.dev/icons/RENV11.svg,Finance,fund
