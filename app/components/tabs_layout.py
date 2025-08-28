@@ -412,13 +412,32 @@ def render_tab_rank_setores(all_data: dict):
 
 # --- Função Principal de Renderização ---
 
+def render_tab_ciclo_mercado(all_data: dict):
+    st.header("📈 Ciclo de mercado")
+    df_ciclo = all_data.get('ciclo_mercado', pd.DataFrame())
+
+    if df_ciclo.empty:
+        st.warning("Arquivo 'ciclo_mercado.csv' não encontrado ou sem dados. Execute o pipeline ou o script 11-ciclo_mercado.py para gerar os dados.")
+        return
+
+    st.dataframe(
+        df_ciclo,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Score 📈": st.column_config.NumberColumn("Score 📈", format="%d"),
+        }
+    )
+
+
 def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     tab_titles = [
         "🏆 Rank Geral", "📋 Rank Detalhado", "🔬 Análise Individual",
-        "✨ Insights Visuais", "🔍 Análise de Dividendos", "🏗️ Rank Setores", "🧭 Guia da Bússola", "💰 Calculadora"
+        "✨ Insights Visuais", "🔍 Análise de Dividendos", "📈 Ciclo de mercado",
+        "🏗️ Rank Setores", "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
@@ -431,8 +450,10 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = No
     with tab5:
         render_tab_dividendos(all_data)
     with tab6:
-        render_tab_rank_setores(all_data)
+        render_tab_ciclo_mercado(all_data)
     with tab7:
-        render_tab_guia()
+        render_tab_rank_setores(all_data)
     with tab8:
+        render_tab_guia()
+    with tab9:
         render_tab_calculadora(all_data, ticker_foco)
