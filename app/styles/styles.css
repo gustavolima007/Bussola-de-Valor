@@ -4,9 +4,9 @@
 :root {
     --primary-color: #36b37e;      /* Verde do novo tema (primaryColor) */
     --secondary-color: #9CA3AF;    /* Cinza claro para métricas, complementando o tema */
-    --accent-color: #D4AF37;       /* Dourado clássico para destaques */
-    --gold-color: #D4AF37;         /* Dourado para filtros e elementos especiais */
-    --gold-text-color: #FFFFFF;    /* Texto branco para alto contraste em fundos dourados */
+    --accent-color: var(--primary-color);       /* Destaques usam a cor primária */
+    --gold-color: var(--primary-color);         /* Elementos especiais usam a cor primária */
+    --gold-text-color: #FFFFFF;    /* Texto branco para alto contraste */
     --background-color: #0e1117;   /* Fundo principal do novo tema (backgroundColor) */
     --card-background: #1b1f2a;    /* Fundo de cartão do novo tema (secondaryBackgroundColor) */
     --text-color: #ffffff;         /* Cor de texto principal do novo tema (textColor) */
@@ -30,7 +30,7 @@ h1, h2, h3 {
     font-weight: 700; /* Mais peso para um visual moderno */
 }
 
-/* --- Barra Lateral e FILTROS DOURADOS --- */
+/* --- Barra Lateral --- */
 [data-testid="stSidebar"] {
     background-color: var(--card-background);
     border-right: 1px solid var(--border-color);
@@ -49,59 +49,28 @@ h1, h2, h3 {
     color: var(--text-color) !important;
 }
 
-/* --- Barra de Filtro Amarelo Ouro Personalizada --- */
-
-/* The main container of the slider */
-[data-testid="stSlider"] {
-    padding: 15px;
-    background: #FFF9C4;
-    border-radius: 15px;
-    border: 1px solid #FFD700;
-}
-
-/* The track of the slider */
-[data-testid="stSlider"] .st-emotion-cache-1x8cf9e {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    background: linear-gradient(90deg, #FFD700, #DAA520) !important;
-    height: 5px !important;
-    border-radius: 12px !important;
-    outline: none !important;
-    margin: 15px 0 !important;
-}
-
-/* The thumb of the slider */
-[data-testid="stSlider"] .st-emotion-cache-1340p61 {
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    width: 15px !important;
-    height: 15px !important;
-    border-radius: 50% !important;
-    background: #FFD700 !important;
-    border: 3px solid #B8860B !important;
-    box-shadow: 0 0 8px rgba(0,0,0,0.4) !important;
-    cursor: pointer !important;
-}
+/* --- REMOVIDO o fundo amarelo dos sliders para que fiquem "soltos" --- */
+/* O bloco que estilizava [data-testid="stSlider"] foi removido. */
 
 
-/* Cor DOURADA para os itens selecionados no multiselect */
+/* Cor PRIMÁRIA para os itens selecionados no multiselect */
 [data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    background-color: var(--gold-color);
+    background-color: var(--primary-color);
     color: var(--gold-text-color);
 }
 
-/* Cor DOURADA para o radio button selecionado */
+/* Cor PRIMÁRIA para o radio button selecionado */
 [data-testid="stRadio"] .st-emotion-cache-1c9j6b1:checked + div,
 [data-testid="stRadio"] label.st-d3 {
-    background-color: var(--gold-color) !important;
-    border-color: var(--gold-color) !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
     color: var(--gold-text-color) !important;
 }
 
 
-/* Cor DOURADA para o selectbox (quando aberto) */
+/* Cor PRIMÁRIA para o selectbox (quando aberto) */
 [data-testid="stSelectbox"] li[aria-selected="true"] {
-    background-color: var(--gold-color) !important;
+    background-color: var(--primary-color) !important;
     color: var(--gold-text-color) !important;
 }
 
