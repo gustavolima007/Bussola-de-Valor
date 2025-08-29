@@ -100,7 +100,9 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         pa = read_csv_cached(base_path / 'precos_acoes.csv')
         pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
         df = df.merge(pa[['ticker_base', 'fechamento_atual']], left_on='Ticker', right_on='ticker_base', how='left')
-        df.rename(columns={'fechamento_atual': 'Preço Atual'}, inplace=True)
+        if 'fechamento_atual' in df.columns:
+            df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
+            df.drop(columns=['fechamento_atual'], inplace=True)
     except Exception: pass
 
     # Limpa colunas auxiliares de merge
@@ -122,7 +124,12 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
         }
         df['Setor'] = df['Setor (brapi)'].map(TRADUCAO_SETORES_B3).fillna(df['Setor (brapi)'])
-        df = df.merge(av[['setor','pontuacao']], left_on='Setor', right_on='setor', how='left')
+        # Merge com os dados de avaliação do setor, incluindo o setor resumido
+        df = df.merge(av[['setor', 'pontuacao', 'setor_resumido']], left_on='Setor', right_on='setor', how='left')
+        # Renomeia a coluna de setor original para manter o detalhe
+        df.rename(columns={'Setor': 'Setor Detalhado'}, inplace=True)
+        # Define a coluna de setor resumido como a principal 'Setor'
+        df.rename(columns={'setor_resumido': 'Setor'}, inplace=True)
     except Exception:
         df['Setor'] = df.get('Setor (brapi)', 'Não categorizado')
 
@@ -130,7 +137,7 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     all_data = {}
     optional_files = [
         'dividendos_ano', 'dividendos_ano_resumo', 'todos_dividendos',
-        'dividend_yield', 'avaliacao_setor'
+        'dividend_yield', 'avaliacao_setor', 'precos_acoes', 'ciclo_mercado'
     ]
     for filename in optional_files:
         try:

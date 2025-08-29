@@ -1,0 +1,11 @@
+[theme]
+base = "dark"
+primaryColor = "#36b37e"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#1b1f2a"
+textColor = "#ffffff"
+
+[plotly]
+# Configuração para usar um template customizado no Plotly
+# Este template será definido em app.py
+templates = ["dark_custom"]

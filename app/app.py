@@ -32,22 +32,21 @@ def main():
     import plotly.io as pio
     pio.templates["dark_custom"] = {
         "layout": {
-            "paper_bgcolor": "#1A1A1A",
-            "plot_bgcolor": "#1A1A1A",
-            "font": {"color": "#E0E0E0"},
+            "paper_bgcolor": "#1b1f2a",  # Cor de fundo do cartão (secondaryBackgroundColor)
+            "plot_bgcolor": "#1b1f2a",   # Cor de fundo do gráfico
+            "font": {"color": "#ffffff"}, # Cor do texto (textColor)
             "xaxis": {
-                "gridcolor": "#404040",
-                "zerolinecolor": "#404040",
-                "linecolor": "#404040"
+                "gridcolor": "#4B5563",
+                "zerolinecolor": "#4B5563",
+                "linecolor": "#4B5563"
             },
             "yaxis": {
-                "gridcolor": "#404040",
-                "zerolinecolor": "#404040",
-                "linecolor": "#404040"
+                "gridcolor": "#4B5563",
+                "zerolinecolor": "#4B5563",
+                "linecolor": "#4B5563"
             },
-            "colorscale": {
-                "sequential": ["#1E3A8A", "#2D4DA8", "#3C60C6", "#4B73E4", "#5A86FF"]
-            }
+            # Paleta de cores para combinar com o tema
+            "colorway": ["#36b37e", "#D4AF37", "#82A9B1", "#E5E7EB", "#9CA3AF", "#4B5563"],
         }
     }
     pio.templates.default = "dark_custom"
@@ -71,11 +70,11 @@ def main():
 
     # --- Renderização da Sidebar e Filtros ---
     # O módulo de filtros cuida de toda a lógica da sidebar
-    df_filtrado = render_sidebar_filters(df)
+    df_filtrado, ticker_foco = render_sidebar_filters(df)
 
     # --- Renderização das Abas de Conteúdo ---
     # O módulo de layout de abas cuida da exibição de todo o conteúdo principal
-    render_tabs(df_filtrado, all_data)
+    render_tabs(df_filtrado, all_data, ticker_foco)
 
 
 if __name__ == "__main__":

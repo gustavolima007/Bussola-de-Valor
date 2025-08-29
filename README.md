@@ -99,7 +99,8 @@ Classificação por porte e preço:
 │   │   ├── __init__.py       # Transforma a pasta em um pacote Python.
 │   │   ├── filters.py        # Módulo para criar os componentes de filtro na sidebar.
 │   │   └── tabs_layout.py    # Módulo para renderizar todas as abas e seus conteúdos.
-│   │
+│   │       calculadora.py
+│   │       
 │   ├── styles/
 │   │   └── styles.css        # Arquivo central para toda a estilização visual.
 │   │

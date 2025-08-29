@@ -10,3 +10,4 @@ plotly
 deep-translator
 unidecode
 tqdm
+ta

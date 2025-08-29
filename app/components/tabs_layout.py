@@ -5,17 +5,34 @@ import plotly.express as px
 
 # --- Funções para cada Aba ---
 
+def style_dy(val):
+    """Aplica cor verde para DY >= 6% e vermelho para < 6%."""
+    if pd.isna(val):
+        return ''
+    color = '#3dd56d' if val >= 6 else '#ff4b4b'
+    return f'color: {color}'
+
+def style_alvo(val):
+    """Aplica cor verde para Alvo >= 0 e vermelho para < 0."""
+    if pd.isna(val):
+        return ''
+    color = '#3dd56d' if val >= 0 else '#ff4b4b'
+    return f'color: {color}'
+
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY 5 Anos Média (%)', 'Score Total']
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]]
     
-    st.dataframe(df_display,
+    st.dataframe(
+        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
+                         .map(style_alvo, subset=['Alvo']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%%"),
+            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%%"),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
         },
@@ -30,7 +47,9 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
         'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
     ]
     df_display = df[[c for c in cols if c in df.columns]]
-    st.dataframe(df_display,
+    
+    st.dataframe(
+        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
@@ -81,13 +100,9 @@ def render_tab_analise_individual(df: pd.DataFrame):
         if all(col in acao.index for col in rec_cols) and acao[rec_cols].sum() > 0:
             rec_df = pd.DataFrame(acao[rec_cols]).reset_index()
             rec_df.columns = ['Recomendação', 'Contagem']
-            color_map = {
-                'Strong Buy': '#2f9e44', 'Buy': '#8ce99a', 'Hold': '#E8B923', 
-                'Sell': '#64b5f6', 'Strong Sell': '#1565c0'
-            }
             fig = px.bar(rec_df, x='Contagem', y='Recomendação', orientation='h',
-                         title='Distribuição das Recomendações', text='Contagem', color='Recomendação',
-                         color_discrete_map=color_map)
+                         title='Distribuição das Recomendações', text='Contagem')
+            fig.update_traces(marker_color='#D4AF37') # Cor dourada
             fig.update_layout(showlegend=False, yaxis={'categoryorder':'total ascending'})
             st.plotly_chart(fig, use_container_width=True)
         else:
@@ -252,7 +267,7 @@ def render_tab_dividendos(all_data: dict):
             tickers_opt = sorted(todos_dividendos['ticker_base'].dropna().unique().tolist())
             t_sel = st.selectbox("Selecione um ticker", tickers_opt, index=0)
             if t_sel:
-                serie = todos_dividendos[todos_dividendos['ticker_base'] == t_sel]
+                serie = todos_dividendos[todos_dividendos['ticker_base'] == t_sel].copy()
                 serie['Data'] = pd.to_datetime(serie['Data'], errors='coerce')
                 fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {t_sel}")
                 fig_div.update_layout(margin=dict(l=20, r=20, t=50, b=20))
@@ -396,13 +411,33 @@ def render_tab_rank_setores(all_data: dict):
 
 # --- Função Principal de Renderização ---
 
-def render_tabs(df_filtrado: pd.DataFrame, all_data: dict):
+def render_tab_ciclo_mercado(all_data: dict):
+    st.header("📈 Ciclo de mercado")
+    df_ciclo = all_data.get('ciclo_mercado', pd.DataFrame())
+
+    if df_ciclo.empty:
+        st.warning("Arquivo 'ciclo_mercado.csv' não encontrado ou sem dados. Execute o pipeline ou o script 11-ciclo_mercado.py para gerar os dados.")
+        return
+
+    st.dataframe(
+        df_ciclo,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Score 📈": st.column_config.NumberColumn("Score 📈", format="%d"),
+        }
+    )
+
+
+def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
+    from .calculadora import render_tab_calculadora
     tab_titles = [
         "🏆 Rank Geral", "📋 Rank Detalhado", "🔬 Análise Individual",
-        "✨ Insights Visuais", "🔍 Análise de Dividendos", "🏗️ Rank Setores", "🧭 Guia da Bússola"
+        "✨ Insights Visuais", "🔍 Análise de Dividendos", "📈 Ciclo de mercado",
+        "🏗️ Rank Setores", "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
@@ -415,6 +450,10 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict):
     with tab5:
         render_tab_dividendos(all_data)
     with tab6:
-        render_tab_rank_setores(all_data)
+        render_tab_ciclo_mercado(all_data)
     with tab7:
+        render_tab_rank_setores(all_data)
+    with tab8:
         render_tab_guia()
+    with tab9:
+        render_tab_calculadora(all_data, ticker_foco)

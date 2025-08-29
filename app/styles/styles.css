@@ -2,19 +2,19 @@
 
 /* --- Variáveis de Cor e Estilo --- */
 :root {
-    --primary-color: #2A4B7C;      /* Azul suave para títulos e abas ativas */
-    --secondary-color: #4A7BB8;    /* Azul claro para métricas e links */
-    --accent-color: #7CB1FF;       /* Azul ainda mais claro para barras de progresso */
-    --gold-color: #E8B923;         /* Dourado suave para filtros, evocando prosperidade */
-    --gold-text-color: #3C2F0F;    /* Texto escuro para contraste com dourado */
-    --background-color: #F5F7FA;   /* Fundo claro e suave, quase branco */
-    --card-background: #FFFFFF;    /* Fundo branco puro para cartões */
-    --text-color: #1A252F;         /* Texto principal escuro, alta legibilidade */
-    --text-light-color: #5A6A7A;   /* Texto secundário mais suave */
-    --border-color: #D6DCE5;       /* Bordas sutis e claras */
+    --primary-color: #36b37e;      /* Verde do novo tema (primaryColor) */
+    --secondary-color: #9CA3AF;    /* Cinza claro para métricas, complementando o tema */
+    --accent-color: var(--primary-color);       /* Destaques usam a cor primária */
+    --gold-color: var(--primary-color);         /* Elementos especiais usam a cor primária */
+    --gold-text-color: #FFFFFF;    /* Texto branco para alto contraste */
+    --background-color: #0e1117;   /* Fundo principal do novo tema (backgroundColor) */
+    --card-background: #1b1f2a;    /* Fundo de cartão do novo tema (secondaryBackgroundColor) */
+    --text-color: #ffffff;         /* Cor de texto principal do novo tema (textColor) */
+    --text-light-color: #9CA3AF;   /* Cinza mais suave para texto secundário */
+    --border-color: #4B5563;       /* Cor de borda sutil para o tema escuro */
     --font-family: 'Inter', sans-serif;
-    --border-radius: 10px;         /* Bordas arredondadas suaves */
-    --box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    --border-radius: 10px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada para profundidade */
 }
 
 /* --- Estilos Globais --- */
@@ -27,49 +27,62 @@ body, .stApp {
 /* --- Títulos e Cabeçalhos --- */
 h1, h2, h3 {
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 700; /* Mais peso para um visual moderno */
 }
 
-/* --- Barra Lateral e FILTROS DOURADOS --- */
+/* --- Barra Lateral --- */
 [data-testid="stSidebar"] {
     background-color: var(--card-background);
     border-right: 1px solid var(--border-color);
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
-/* Cor DOURADA para o slider */
-[data-testid="stSlider"] .st-d3 {
-    background-color: var(--gold-color);
+/* Corrigindo a cor do texto na barra lateral para ser legível */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] h5,
+[data-testid="stSidebar"] h6,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] .st-emotion-cache-16txtl3 {
+    color: var(--text-color) !important;
 }
 
-/* Cor DOURADA para os itens selecionados no multiselect */
+/* --- REMOVIDO o fundo amarelo dos sliders para que fiquem "soltos" --- */
+/* O bloco que estilizava [data-testid="stSlider"] foi removido. */
+
+
+/* Cor PRIMÁRIA para os itens selecionados no multiselect */
 [data-testid="stMultiSelect"] [data-baseweb="tag"] {
-    background-color: var(--gold-color);
+    background-color: var(--primary-color);
     color: var(--gold-text-color);
 }
 
-/* Cor DOURADA para o radio button selecionado */
+/* Cor PRIMÁRIA para o radio button selecionado */
+[data-testid="stRadio"] .st-emotion-cache-1c9j6b1:checked + div,
 [data-testid="stRadio"] label.st-d3 {
-    background-color: var(--gold-color) !important;
-    border-color: var(--gold-color) !important;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
     color: var(--gold-text-color) !important;
 }
 
-/* Cor DOURADA para o selectbox (quando aberto) */
+
+/* Cor PRIMÁRIA para o selectbox (quando aberto) */
 [data-testid="stSelectbox"] li[aria-selected="true"] {
-    background-color: var(--gold-color) !important;
+    background-color: var(--primary-color) !important;
     color: var(--gold-text-color) !important;
 }
 
 /* --- Abas (Tabs) --- */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 1.5rem;
+    gap: 2rem; /* Maior espaçamento para um visual mais limpo */
     border-bottom: 2px solid var(--border-color);
 }
 
 .stTabs [data-baseweb="tab"] {
-    padding: 0.8rem;
-    font-weight: 500;
+    padding: 1rem;
+    font-weight: 600;
     color: var(--text-light-color);
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease-in-out;
@@ -88,16 +101,16 @@ h1, h2, h3 {
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 1.2rem;
+    padding: 1.5rem;
     box-shadow: var(--box-shadow);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-color);
 }
 
 /* --- Métricas (KPIs) --- */
 [data-testid="stMetricValue"] {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--secondary-color);
 }
 
@@ -115,4 +128,177 @@ h1, h2, h3 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* --- DataFrames --- */
+[data-testid="stDataFrame"] {
+    border: none; /* Remove a borda padrão do dataframe */
+}
+
+/* --- Expander (Guia) --- */
+[data-testid="stExpander"] {
+    border-color: var(--border-color);
+}
+
+[data-testid="stExpander"] summary {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* --- Botões --- */
+.stButton > button {
+    background-color: var(--primary-color);
+    color: var(--gold-text-color);
+    border-radius: var(--border-radius);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.stButton > button:hover {
+    background-color: #2a8c63; /* Um tom mais escuro do verde */
+}
+
+/* --- Cores de texto específicas para DY e Alvo --- */
+.positive-dy {
+    color: #3dd56d; /* Verde para DY positivo */
+}
+
+.negative-dy {
+    color: #ff4b4b; /* Vermelho para DY negativo */
+}
+
+.positive-alvo {
+    color: #3dd56d; /* Verde para Alvo positivo */
+}
+
+.negative-alvo {
+    color: #ff4b4b; /* Vermelho para Alvo negativo */
+}
+
+/* --- Estilo para o container do Ticker em Foco --- */
+.ticker-foco-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.ticker-foco-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.ticker-foco-container p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* --- Estilo para o container de filtros --- */
+.filtros-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filtros-container h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Estilo para o container da calculadora --- */
+.calculadora-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.calculadora-container .stMetric {
+    background-color: transparent; /* Remove o fundo duplicado da métrica */
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* --- Estilo para o container de análise individual --- */
+.analise-individual-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.analise-individual-container .stMetric {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* --- Estilo para o container de insights --- */
+.insights-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* --- Estilo para o container de dividendos --- */
+.dividendos-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* --- Estilo para o container de rank de setores --- */
+.rank-setores-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* --- Estilo para o container do guia --- */
+.guia-container {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-top: 1..5rem;
+}
+
+/* --- Estilos para Gráficos Plotly --- */
+.plotly .main-svg {
+    background-color: var(--card-background) !important;
+}
+
+.plotly .main-svg .legend .bg {
+    fill: var(--card-background) !important;
+}
+
+.plotly .main-svg .xaxislayer-above .xtick text,
+.plotly .main-svg .yaxislayer-above .ytick text {
+    fill: var(--text-light-color) !important;
+}
+
+.plotly .main-svg .grid .zeroline {
+    stroke: var(--border-color) !important;
+}
+
+.plotly .main-svg .grid path {
+    stroke: var(--border-color) !important;
 }
