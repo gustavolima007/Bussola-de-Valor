@@ -124,11 +124,13 @@ h1, h2, h3 {
 }
 
 /* --- Ajuste para Gráficos Plotly --- */
+/*
 .stPlotlyChart {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+*/
 
 /* --- DataFrames --- */
 [data-testid="stDataFrame"] {
@@ -282,6 +284,7 @@ h1, h2, h3 {
 }
 
 /* --- Estilos para Gráficos Plotly --- */
+/*
 .plotly .main-svg {
     background-color: var(--card-background) !important;
 }
@@ -302,3 +305,4 @@ h1, h2, h3 {
 .plotly .main-svg .grid path {
     stroke: var(--border-color) !important;
 }
+*/
