@@ -96,7 +96,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
             for detail in acao.get('Score Details', []):
                 details_html += f"<p style='margin-bottom: 0.5rem;'>• {detail}</p>"
 
-            card_content = f"""
+            card_content = f'''
             <div class="analise-individual-container">
                 <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
                     <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
@@ -104,7 +104,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
                 </div>
                 {details_html}
             </div>
-            """
+            '''
             st.markdown(card_content, unsafe_allow_html=True)
 
     with c2:
@@ -126,12 +126,12 @@ def render_tab_guia():
     st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
 
     st.subheader("Critérios de Pontuação (Score)")
-    st.markdown("""
+    st.markdown('''
     A pontuação de cada ação é calculada somando-se os pontos de diversos critérios fundamentalistas, totalizando um máximo de **200 pontos**. Abaixo, detalhamos cada critério e sua relevância.
-    """)
+    ''')
 
     with st.expander("1. Dividend Yield (DY) - Até 45 pontos"):
-        st.markdown("""
+        st.markdown('''
         - **O que é?** O Dividend Yield (DY) representa o retorno em dividendos pago pela ação, dividido pelo seu preço. A média de 5 anos reflete a consistência dos pagamentos.
         - **Por que analisar?** É o principal indicador para investidores focados em renda passiva, como defendido por **Luiz Barsi**. Um DY alto e consistente indica uma \"vaca leiteira\" – empresas que geram fluxo de caixa estável.
         - **Cálculo do Score:**
@@ -144,10 +144,10 @@ def render_tab_guia():
                 - > 8%: **+25 pontos**
                 - 6%–8%: **+20 pontos**
                 - 4%–6%: **+10 pontos**
-        """)
+        ''')
 
     with st.expander("2. Valuation (P/L e P/VP) - Até 35 pontos"):
-        st.markdown("""
+        st.markdown('''
         - **O que são?** P/L (Preço/Lucro) e P/VP (Preço/Valor Patrimonial) são indicadores de valuation, popularizados por **Benjamin Graham**, para avaliar se uma ação está \"barata\" em relação aos lucros ou patrimônio.
         - **Por que analisar?** Comprar ativos abaixo de seu valor intrínseco é a essência do *Value Investing*, criando uma margem de segurança contra a volatilidade do mercado.
         - **Cálculo do Score:**
@@ -160,10 +160,10 @@ def render_tab_guia():
                 - 0.66–1.5: **+10 pontos**
                 - 1.5–2.5: **+5 pontos**
                 - > 4: **-5 pontos**
-        """)
+        ''')
 
     with st.expander("3. Rentabilidade e Gestão (ROE e Payout) - Até 35 pontos"):
-        st.markdown("""
+        st.markdown('''
         - **O que são?** ROE (Return on Equity) mede a eficiência da empresa em gerar lucro com o capital próprio. Payout é a porcentagem do lucro distribuída como dividendos.
         - **Por que analisar?** Um ROE alto, valorizado por **Warren Buffett**, indica boa gestão e vantagens competitivas. Um Payout equilibrado mostra que a empresa remunera acionistas sem comprometer o reinvestimento.
         - **Cálculo do Score:**
@@ -178,10 +178,10 @@ def render_tab_guia():
                 - 30%–60%: **+10 pontos**
                 - 60%–80%: **+5 pontos**
                 - < 20% ou > 80%: **-5 pontos**
-        """)
+        ''')
 
     with st.expander("4. Saúde Financeira (Endividamento) - Até 20 pontos"):
-        st.markdown("""
+        st.markdown('''
         - **O que é?** Avalia a dívida da empresa em relação ao seu valor de mercado (Dívida/Market Cap) e geração de caixa (Dívida/EBITDA). *Não se aplica ao setor financeiro.*
         - **Por que analisar?** Empresas com dívidas controladas são mais resilientes a crises e têm maior flexibilidade para crescer e pagar dividendos, um princípio valorizado por **Bazin** e **Graham**.
         - **Cálculo do Score:**
@@ -193,10 +193,10 @@ def render_tab_guia():
                 - < 1: **+10 pontos**
                 - 1–2: **+5 pontos**
                 - > 6: **-5 pontos**
-        """)
+        ''')
 
     with st.expander("5. Crescimento e Sentimento - Até 25 pontos"):
-        st.markdown("""
+        st.markdown('''
         - **O que são?** Crescimento do preço da ação nos últimos 5 anos e a recomendação consolidada de analistas (Sentimento Gauge).
         - **Por que analisar?** O crescimento histórico reflete a valorização do ativo, enquanto o sentimento de mercado, enfatizado por **Peter Lynch**, adiciona uma camada de análise sobre a percepção atual.
         - **Cálculo do Score:**
@@ -207,21 +207,21 @@ def render_tab_guia():
                 - < 0%: **-5 pontos**
             - **Sentimento do Mercado:** 
                 - Varia de **-5 a +10 pontos**, proporcional à nota de 0 a 100.
-        """)
+        ''')
 
     st.markdown("---")
     st.subheader("Guia de Perfil da Ação")
-    st.markdown("""
+    st.markdown('''
 A classificação por perfil ajuda a entender o porte, o risco e o potencial de cada empresa com base no **Valor de Mercado (Market Cap)** e **Preço por Ação**.
-    """)
+    ''')
     with st.expander("Como o Perfil é Calculado?"):
-        st.markdown("""
+        st.markdown('''
         - **Penny Stock:** Preço da Ação < R$ 1,00.
         - **Micro Cap:** Valor de Mercado < R$ 2 bilhões.
         - **Small Cap:** Valor de Mercado entre R$ 2 bilhões e R$ 10 bilhões.
         - **Mid Cap:** Valor de Mercado entre R$ 10 bilhões e R$ 50 bilhões.
         - **Blue Chip:** Valor de Mercado > R$ 50 bilhões.
-        """)
+        ''')
 
 def render_tab_insights(df: pd.DataFrame):
     st.header("✨ Insights Visuais")
@@ -261,17 +261,19 @@ def render_tab_insights(df: pd.DataFrame):
         fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig_box, use_container_width=True)
 
-def render_tab_dividendos(all_data: dict, ticker_foco: str = None):
+def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     st.header("🔍 Análise de Dividendos")
     
     todos_dividendos = all_data.get('todos_dividendos', pd.DataFrame())
-    dividendos_ano = all_data.get('dividendos_ano', pd.DataFrame())
-    dividendos_ano_resumo = all_data.get('dividendos_ano_resumo', pd.DataFrame())
     dividend_yield_extra = all_data.get('dividend_yield', pd.DataFrame())
 
-    if todos_dividendos.empty and dividendos_ano.empty:
-        st.warning("Não foram encontrados dados de dividendos ('todos_dividendos.csv', 'dividendos_ano.csv').")
+    if dividend_yield_extra.empty:
+        st.warning("Arquivo 'dividend_yield.csv' não encontrado ou vazio.")
         return
+
+    # Filtra os dados de dividend yield com base nos tickers do dataframe filtrado principal
+    filtered_tickers = df['Ticker'].unique()
+    dy_data = dividend_yield_extra[dividend_yield_extra['ticker'].isin(filtered_tickers)].copy()
 
     c1, c2 = st.columns([1, 1])
     with c1:
@@ -291,36 +293,64 @@ def render_tab_dividendos(all_data: dict, ticker_foco: str = None):
             st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
 
     with c2:
-        if not dividendos_ano_resumo.empty:
+        if not dy_data.empty:
             st.subheader("Top 20 Maiores Pagadores (12M)")
-            top12 = dividendos_ano_resumo.nlargest(20, 'valor_12m')
-            fig12 = px.bar(top12.sort_values('valor_12m'), x='valor_12m', y='ticker', orientation='h', title='Top 20: Dividendos Acumulados em 12 Meses')
-            fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+            dy_data['DY12M'] = pd.to_numeric(dy_data['DY12M'], errors='coerce').fillna(0)
+            top12 = dy_data.nlargest(20, 'DY12M')
+            fig12 = px.bar(top12.sort_values('DY12M'), 
+                         x='DY12M', 
+                         y='ticker', 
+                         orientation='h', 
+                         title='Top 20: Maiores DY 12 Meses', 
+                         text='DY12M')
+            fig12.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
+            fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
+                              xaxis_title="Dividend Yield (12M) %",
+                              yaxis_title="Ticker")
             st.plotly_chart(fig12, use_container_width=True)
 
-        if not dividendos_ano.empty:
             st.subheader("Top 20 Maiores Pagadores (5 Anos)")
-            current_year = pd.to_datetime('today').year
-            five_years_ago = current_year - 5
-            
-            df_5y = dividendos_ano[dividendos_ano['ano'] >= five_years_ago]
-            top_5y = df_5y.groupby('ticker')['dividendo'].sum().nlargest(20).reset_index()
-            
-            fig_5y = px.bar(top_5y.sort_values('dividendo'), x='dividendo', y='ticker', orientation='h', title='Top 20: Dividendos Acumulados nos Últimos 5 Anos')
-            fig_5y.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+            dy_data['DY5anos'] = pd.to_numeric(dy_data['DY5anos'], errors='coerce').fillna(0)
+            top_5y = dy_data.nlargest(20, 'DY5anos')
+            fig_5y = px.bar(top_5y.sort_values('DY5anos'), 
+                          x='DY5anos', 
+                          y='ticker', 
+                          orientation='h', 
+                          title='Top 20: Maiores DY 5 Anos (Média)', 
+                          text='DY5anos')
+            fig_5y.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
+            fig_5y.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
+                               xaxis_title="Dividend Yield (5 Anos Média) %",
+                               yaxis_title="Ticker")
             st.plotly_chart(fig_5y, use_container_width=True)
+        else:
+            st.info("Nenhuma ação encontrada com os filtros atuais para exibir os gráficos de maiores pagadores.")
             
     st.divider() 
     
-    if not dividend_yield_extra.empty:
+    if not dy_data.empty:
         st.subheader("Relação DY 12m vs DY 5 anos")
-        dyy = dividend_yield_extra.copy()
+        dyy = dy_data.copy()
         dyy['DY12M'] = pd.to_numeric(dyy['DY12M'], errors='coerce')
         dyy['DY5anos'] = pd.to_numeric(dyy['DY5anos'], errors='coerce')
         dyy.dropna(subset=['DY12M','DY5anos'], inplace=True)
-        fig_dy = px.scatter(dyy, x='DY12M', y='DY5anos', hover_data=['ticker'], title='Relação DY 12m x DY 5 anos (por ticker)')
-        fig_dy.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+        
+        # Adicionando informações do df principal (Setor) para colorir o gráfico
+        if 'Setor' in df.columns:
+            dyy = dyy.merge(df[['Ticker', 'Setor']], left_on='ticker', right_on='Ticker', how='left')
+
+        fig_dy = px.scatter(dyy, 
+                            x='DY12M', 
+                            y='DY5anos', 
+                            color='Setor' if 'Setor' in dyy.columns else None,
+                            hover_data=['ticker'], 
+                            title='Relação DY 12m x DY 5 anos (por ticker)')
+        fig_dy.update_layout(margin=dict(l=20, r=20, t=50, b=20),
+                           xaxis_title="DY 12m (%)",
+                           yaxis_title="DY 5 anos Média (%)")
         st.plotly_chart(fig_dy, use_container_width=True)
+    elif not dividend_yield_extra.empty:
+        st.info("Nenhuma ação corresponde aos filtros para exibir a relação de DY.")
 
 def render_tab_rank_setores(all_data: dict):
     st.header("🏗️ Rank de Setores")
@@ -338,9 +368,9 @@ def render_tab_rank_setores(all_data: dict):
     
     st.divider()
     st.subheader("Análise Setorial (Foco em Dividendos)")
-    st.markdown("""
+    st.markdown('''
 Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuação média, com motivos para investir e cuidados a serem considerados, especialmente para carteiras focadas em dividendos.
-    """)
+    ''')
 
     # Dicionário com descrições de cada setor
     sector_descriptions = {
@@ -432,10 +462,10 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
                 "Por que não investir?": "Riscos específicos não detalhados. Considere avaliar a volatilidade e a estabilidade de dividendos."
             })
             with st.expander(f"{setor} (Pontuação: {pontuacao:.2f})"):
-                st.markdown(f"""
+                st.markdown(f'''
                 - **Por que investir?** {desc['Por que investir?']}
                 - **Por que não investir?** {desc['Por que não investir?']}
-                """)
+                ''')
     else:
         st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
 
@@ -478,7 +508,7 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = No
     with tab4:
         render_tab_insights(df_filtrado)
     with tab5:
-        render_tab_dividendos(all_data, ticker_foco)
+        render_tab_dividendos(df_filtrado, all_data, ticker_foco)
     with tab6:
         render_tab_ciclo_mercado(all_data)
     with tab7:
