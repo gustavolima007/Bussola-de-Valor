@@ -126,7 +126,7 @@ CORRECOES_ESPECIFICAS_B3 = {
 
 # Lista de tickers a serem removidos do conjunto de dados
 TICKERS_A_REMOVER = [
-    "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11"
+    "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L"
 ]
 
 def mapear_setores_b3(df):

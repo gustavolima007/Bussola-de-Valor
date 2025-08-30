@@ -23,6 +23,39 @@ import subprocess
 from pathlib import Path
 from typing import List, Tuple
 
+# --- Logging (Loguru + Rich) ---
+from loguru import logger
+from rich.traceback import install as rich_traceback_install
+
+# Enable rich tracebacks for clearer error visualization
+rich_traceback_install(show_locals=False, width=120, extra_lines=2)
+
+# Configure logging: colored console + rotating file logs
+LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# Reset default handlers and set up sinks
+logger.remove()
+# Colored console output
+logger.add(sys.stdout,
+           colorize=True,
+           backtrace=True,
+           diagnose=True,
+           level="INFO",
+           format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{message}</cyan>")
+# File output (rotation + retention)
+logger.add(
+    LOG_DIR / "loader_{time:YYYY-MM-DD}.log",
+    rotation="10 MB",
+    retention="14 days",
+    encoding="utf-8",
+    enqueue=True,
+    backtrace=True,
+    diagnose=True,
+    level="INFO",
+    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {message}"
+)
+
 # --- Funções Auxiliares ---
 
 def encontrar_scripts_ordenados(base_dir: Path) -> List[Path]:
@@ -38,7 +71,9 @@ def encontrar_scripts_ordenados(base_dir: Path) -> List[Path]:
     # Regex para encontrar arquivos no formato "NN-qualquercoisa.py"
     padrao_script = r"^\d{2}-.*\.py$"
     scripts_encontrados = [p for p in base_dir.glob("*.py") if re.match(padrao_script, p.name)]
-    
+
+    logger.debug(f"Scripts candidatos encontrados: {[p.name for p in scripts_encontrados]}")
+
     # Ordena os scripts pelo nome do arquivo, garantindo a ordem de execução
     scripts_encontrados.sort(key=lambda p: p.name)
     return scripts_encontrados
@@ -69,56 +104,62 @@ def main() -> int:
     scripts_para_executar = encontrar_scripts_ordenados(base_dir)
 
     if not scripts_para_executar:
-        print("⚠️ Nenhum script no formato 'NN-arquivo.py' foi encontrado para execução.")
+        logger.warning("Nenhum script no formato 'NN-arquivo.py' foi encontrado para execução.")
         return 1
 
-    print("🚀 Iniciando a execução do pipeline de dados:")
+    logger.info("Iniciando a execução do pipeline de dados:")
     for script in scripts_para_executar:
-        print(f"   - {script.name}")
+        logger.info(f" - {script.name}")
 
     # Lista para armazenar os resultados de cada execução
     execucoes: List[Tuple[str, float, int]] = []
     tempo_inicio_total = time.perf_counter()
 
     for script in scripts_para_executar:
-        print("\n" + "=" * 80)
-        print(f"▶️  Executando: {script.name}")
+        logger.info("\n" + "=" * 80)
+        logger.info(f"▶️  Executando: {script.name}")
         tempo_inicio_script = time.perf_counter()
 
         # Executa o script como um subprocesso usando o mesmo interpretador Python
         # O argumento "-u" força o output a não ter buffer, exibindo em tempo real
         processo = subprocess.run([sys.executable, "-u", str(script)], cwd=base_dir)
-        
+
         tempo_fim_script = time.perf_counter()
         duracao_script = tempo_fim_script - tempo_inicio_script
         execucoes.append((script.name, duracao_script, processo.returncode))
 
         if processo.returncode == 0:
-            status = "✅ SUCESSO"
-            print(f"⏹️  Finalizado: {script.name} | Duração: {formatar_tempo(duracao_script)} | Status: {status}")
+            status = "SUCESSO"
+            logger.success(f"Finalizado: {script.name} | Duração: {formatar_tempo(duracao_script)} | Status: {status}")
         else:
-            status = f"❌ ERRO (código de saída: {processo.returncode})"
-            print(f"⏹️  Finalizado: {script.name} | Duração: {formatar_tempo(duracao_script)} | Status: {status}")
-            print("\n🛑 Interrompendo o pipeline devido a erro no script anterior.")
+            status = f"ERRO (código de saída: {processo.returncode})"
+            logger.error(f"Finalizado: {script.name} | Duração: {formatar_tempo(duracao_script)} | Status: {status}")
+            logger.error("Interrompendo o pipeline devido a erro no script anterior.")
             break  # Interrompe o loop em caso de erro
 
     tempo_fim_total = time.perf_counter()
     duracao_total = tempo_fim_total - tempo_inicio_total
 
     # --- Resumo Final ---
-    print("\n" + "=" * 80)
-    print("📊 Resumo da Execução do Pipeline")
-    print("-" * 80)
+    logger.info("\n" + "=" * 80)
+    logger.info("📊 Resumo da Execução do Pipeline")
+    logger.info("-" * 80)
     for nome, duracao, codigo_retorno in execucoes:
-        status = "✅ Sucesso" if codigo_retorno == 0 else f"❌ Erro (código: {codigo_retorno})"
-        print(f"  - {nome:<30} | {status:<20} | Duração: {formatar_tempo(duracao)}")
-    print("-" * 80)
-    print(f"⏱️  Tempo total do pipeline: {formatar_tempo(duracao_total)}")
-    print("=" * 80)
+        status = "Sucesso" if codigo_retorno == 0 else f"Erro (código: {codigo_retorno})"
+        level = logger.success if codigo_retorno == 0 else logger.error
+        level(f"  - {nome:<30} | {status:<18} | Duração: {formatar_tempo(duracao)}")
+    logger.info("-" * 80)
+    logger.info(f"⏱️  Tempo total do pipeline: {formatar_tempo(duracao_total)}")
+    logger.info("=" * 80)
 
     # Retorna o último código de erro encontrado, ou 0 se tudo ocorreu bem
     codigo_saida_final = next((rc for _, _, rc in reversed(execucoes) if rc != 0), 0)
     return codigo_saida_final
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as e:
+        # Log full exception with traceback in both console and file
+        logger.exception(f"Falha inesperada no loader: {e}")
+        sys.exit(1)

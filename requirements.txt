@@ -11,3 +11,4 @@ deep-translator
 unidecode
 tqdm
 ta
+loguru
