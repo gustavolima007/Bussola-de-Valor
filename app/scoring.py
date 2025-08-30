@@ -88,21 +88,10 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
 
 def build_score_details_from_row(row: pd.Series) -> list[str]:
     """
-    Constrói a lista de detalhes do score a partir das colunas 'score_*'
-    carregadas do arquivo scores.csv.
+    Constrói a lista de detalhes do score a partir das colunas de score pré-calculadas,
+    mas gera as mesmas mensagens detalhadas da função de cálculo online.
     """
-    details = []
-    mapping = [
-        ('score_dy_12m', 'DY 12m'), ('score_dy_5anos', 'DY 5 Anos'),
-        ('score_payout', 'Payout'), ('score_roe', 'ROE'),
-        ('score_pl', 'P/L'), ('score_pvp', 'P/VP'),
-        ('score_divida_marketcap', 'Dívida/Market Cap'),
-        ('score_divida_ebitda', 'Dívida/EBITDA'),
-        ('score_crescimento', 'Crescimento 5A'), ('score_sentimento', 'Sentimento'),
-    ]
-    for col, label in mapping:
-        if col in row.index and pd.notna(row[col]):
-            val = row[col]
-            sign = '+' if val > 0 else ''
-            details.append(f"{label}: **{sign}{val:.1f}**")
+    # Usa a função de cálculo de score para gerar os detalhes, garantindo consistência.
+    # A pontuação final virá do CSV, mas os detalhes são gerados dinamicamente.
+    _, details = calculate_score_and_details(row)
     return details

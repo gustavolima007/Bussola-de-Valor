@@ -91,9 +91,22 @@ def render_tab_analise_individual(df: pd.DataFrame):
     c1, c2 = st.columns([1, 1])
     with c1:
         st.subheader("Composição do Score")
-        st.metric("Score Total", f"{acao.get('Score Total', 0):.0f} / 200")
-        for detail in acao.get('Score Details', []):
-            st.markdown(f"• {detail}")
+        with st.container():
+            details_html = ""
+            for detail in acao.get('Score Details', []):
+                details_html += f"<p style='margin-bottom: 0.5rem;'>• {detail}</p>"
+
+            card_content = f"""
+            <div class="analise-individual-container">
+                <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
+                    <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
+                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 200</div>
+                </div>
+                {details_html}
+            </div>
+            """
+            st.markdown(card_content, unsafe_allow_html=True)
+
     with c2:
         st.subheader("Sentimento dos Analistas")
         rec_cols = ['Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell']
@@ -120,7 +133,7 @@ def render_tab_guia():
     with st.expander("1. Dividend Yield (DY) - Até 45 pontos"):
         st.markdown("""
         - **O que é?** O Dividend Yield (DY) representa o retorno em dividendos pago pela ação, dividido pelo seu preço. A média de 5 anos reflete a consistência dos pagamentos.
-        - **Por que analisar?** É o principal indicador para investidores focados em renda passiva, como defendido por **Luiz Barsi**. Um DY alto e consistente indica uma "vaca leiteira" – empresas que geram fluxo de caixa estável.
+        - **Por que analisar?** É o principal indicador para investidores focados em renda passiva, como defendido por **Luiz Barsi**. Um DY alto e consistente indica uma \"vaca leiteira\" – empresas que geram fluxo de caixa estável.
         - **Cálculo do Score:**
             - **DY 12 meses:** 
                 - > 5%: **+20 pontos**
@@ -135,7 +148,7 @@ def render_tab_guia():
 
     with st.expander("2. Valuation (P/L e P/VP) - Até 35 pontos"):
         st.markdown("""
-        - **O que são?** P/L (Preço/Lucro) e P/VP (Preço/Valor Patrimonial) são indicadores de valuation, popularizados por **Benjamin Graham**, para avaliar se uma ação está "barata" em relação aos lucros ou patrimônio.
+        - **O que são?** P/L (Preço/Lucro) e P/VP (Preço/Valor Patrimonial) são indicadores de valuation, popularizados por **Benjamin Graham**, para avaliar se uma ação está \"barata\" em relação aos lucros ou patrimônio.
         - **Por que analisar?** Comprar ativos abaixo de seu valor intrínseco é a essência do *Value Investing*, criando uma margem de segurança contra a volatilidade do mercado.
         - **Cálculo do Score:**
             - **P/L:**
@@ -199,7 +212,7 @@ def render_tab_guia():
     st.markdown("---")
     st.subheader("Guia de Perfil da Ação")
     st.markdown("""
-    A classificação por perfil ajuda a entender o porte, o risco e o potencial de cada empresa com base no **Valor de Mercado (Market Cap)** e **Preço por Ação**.
+A classificação por perfil ajuda a entender o porte, o risco e o potencial de cada empresa com base no **Valor de Mercado (Market Cap)** e **Preço por Ação**.
     """)
     with st.expander("Como o Perfil é Calculado?"):
         st.markdown("""
@@ -222,7 +235,7 @@ def render_tab_insights(df: pd.DataFrame):
     fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
     st.plotly_chart(fig_bar, use_container_width=True)
     
-    st.divider()
+    st.divider() 
     
     c1, c2 = st.columns([1, 1])
     with c1:
@@ -248,7 +261,7 @@ def render_tab_insights(df: pd.DataFrame):
         fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig_box, use_container_width=True)
 
-def render_tab_dividendos(all_data: dict):
+def render_tab_dividendos(all_data: dict, ticker_foco: str = None):
     st.header("🔍 Análise de Dividendos")
     
     todos_dividendos = all_data.get('todos_dividendos', pd.DataFrame())
@@ -262,16 +275,21 @@ def render_tab_dividendos(all_data: dict):
 
     c1, c2 = st.columns([1, 1])
     with c1:
-        if not todos_dividendos.empty:
-            st.subheader("Série Temporal de Dividendos")
-            tickers_opt = sorted(todos_dividendos['ticker_base'].dropna().unique().tolist())
-            t_sel = st.selectbox("Selecione um ticker", tickers_opt, index=0)
-            if t_sel:
-                serie = todos_dividendos[todos_dividendos['ticker_base'] == t_sel].copy()
+        st.subheader("Série Temporal de Dividendos")
+        if not todos_dividendos.empty and ticker_foco:
+            serie = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
+            if not serie.empty:
                 serie['Data'] = pd.to_datetime(serie['Data'], errors='coerce')
-                fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {t_sel}")
+                fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {ticker_foco}")
                 fig_div.update_layout(margin=dict(l=20, r=20, t=50, b=20))
                 st.plotly_chart(fig_div, use_container_width=True)
+            else:
+                st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
+        elif not ticker_foco:
+            st.info("Selecione um ticker na barra lateral para ver a série temporal de dividendos.")
+        else:
+            st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+
     with c2:
         if not dividendos_ano_resumo.empty:
             st.subheader("Top 20 Maiores Pagadores (12M)")
@@ -279,8 +297,20 @@ def render_tab_dividendos(all_data: dict):
             fig12 = px.bar(top12.sort_values('valor_12m'), x='valor_12m', y='ticker', orientation='h', title='Top 20: Dividendos Acumulados em 12 Meses')
             fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20))
             st.plotly_chart(fig12, use_container_width=True)
+
+        if not dividendos_ano.empty:
+            st.subheader("Top 20 Maiores Pagadores (5 Anos)")
+            current_year = pd.to_datetime('today').year
+            five_years_ago = current_year - 5
             
-    st.divider()
+            df_5y = dividendos_ano[dividendos_ano['ano'] >= five_years_ago]
+            top_5y = df_5y.groupby('ticker')['dividendo'].sum().nlargest(20).reset_index()
+            
+            fig_5y = px.bar(top_5y.sort_values('dividendo'), x='dividendo', y='ticker', orientation='h', title='Top 20: Dividendos Acumulados nos Últimos 5 Anos')
+            fig_5y.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+            st.plotly_chart(fig_5y, use_container_width=True)
+            
+    st.divider() 
     
     if not dividend_yield_extra.empty:
         st.subheader("Relação DY 12m vs DY 5 anos")
@@ -309,7 +339,7 @@ def render_tab_rank_setores(all_data: dict):
     st.divider()
     st.subheader("Análise Setorial (Foco em Dividendos)")
     st.markdown("""
-    Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuação média, com motivos para investir e cuidados a serem considerados, especialmente para carteiras focadas em dividendos.
+Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuação média, com motivos para investir e cuidados a serem considerados, especialmente para carteiras focadas em dividendos.
     """)
 
     # Dicionário com descrições de cada setor
@@ -448,7 +478,7 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = No
     with tab4:
         render_tab_insights(df_filtrado)
     with tab5:
-        render_tab_dividendos(all_data)
+        render_tab_dividendos(all_data, ticker_foco)
     with tab6:
         render_tab_ciclo_mercado(all_data)
     with tab7:
