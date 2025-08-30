@@ -74,7 +74,7 @@ def main():
 
     # --- Renderização das Abas de Conteúdo ---
     # O módulo de layout de abas cuida da exibição de todo o conteúdo principal
-    render_tabs(df_filtrado, all_data, ticker_foco)
+    render_tabs(df, df_filtrado, all_data, ticker_foco)
 
 
 if __name__ == "__main__":

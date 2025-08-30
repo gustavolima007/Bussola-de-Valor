@@ -31,9 +31,9 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
-            "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%%"),
-            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
-            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%%"),
+            "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
+            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
+            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
         },
         use_container_width=True, hide_index=True
@@ -53,12 +53,12 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
-            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%%"),
-            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%%"),
-            "Payout Ratio (%)": st.column_config.NumberColumn("Payout", format="%.1f%%"),
-            "ROE (%)": st.column_config.NumberColumn("ROE", format="%.2f%%"),
+            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
+            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
+            "Payout Ratio (%)": st.column_config.NumberColumn("Payout", format="%.1f%% "),
+            "ROE (%)": st.column_config.NumberColumn("ROE", format="%.2f%% "),
             "Dívida/EBITDA": st.column_config.NumberColumn("Dív/EBITDA", format="%.2f"),
-            "Crescimento Preço (%)": st.column_config.NumberColumn("Cresc. 5A", format="%.1f%%"),
+            "Crescimento Preço (%)": st.column_config.NumberColumn("Cresc. 5A", format="%.1f%% "),
             "Sentimento Gauge": st.column_config.NumberColumn("Sentimento", format="%d/100"),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
         },
@@ -501,25 +501,112 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
 
 # --- Função Principal de Renderização ---
 
-def render_tab_ciclo_mercado(all_data: dict):
+def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
     st.header("📈 Ciclo de mercado")
-    df_ciclo = all_data.get('ciclo_mercado', pd.DataFrame())
+    df_ciclo_raw = all_data.get('ciclo_mercado', pd.DataFrame())
+    df_setor = all_data.get('avaliacao_setor', pd.DataFrame())
 
-    if df_ciclo.empty:
+    if df_ciclo_raw.empty:
         st.warning("Arquivo 'ciclo_mercado.csv' não encontrado ou sem dados. Execute o pipeline ou o script 11-ciclo_mercado.py para gerar os dados.")
         return
 
+    # Renomear coluna de status e fazer merge para obter o subsetor do df_unfiltered
+    df_ciclo = df_ciclo_raw.rename(columns={'Status 🟢🔴': 'Status'})
+    
+    # Use df_unfiltered to get subsetor_b3 for all tickers
+    if 'subsetor_b3' not in df_ciclo.columns and 'Ticker' in df_unfiltered.columns and 'subsetor_b3' in df_unfiltered.columns:
+        df_ciclo = pd.merge(
+            df_ciclo,
+            df_unfiltered[['Ticker', 'subsetor_b3']].drop_duplicates(),
+            on='Ticker',
+            how='left'
+        )
+
+    if 'subsetor_b3' not in df_ciclo.columns or df_ciclo['subsetor_b3'].isnull().all():
+        st.warning("Não foi possível obter a informação de subsetor para os dados de ciclo de mercado.")
+        # Mostra a tabela original como fallback
+        with st.expander("Ver dados completos do Ciclo de Mercado"):
+            st.dataframe(
+                df_ciclo_raw,
+                use_container_width=True,
+                hide_index=True,
+                column_config={"Score 📈": st.column_config.NumberColumn("Score 📈", format="%d")}
+            )
+        return
+
+    # --- Criar a tabela de resumo ---
+    st.subheader("Resumo do Status por Setor")
+    
+    # Contar os status por subsetor
+    status_counts = pd.crosstab(df_ciclo['subsetor_b3'], df_ciclo['Status'])
+    
+    # Renomear colunas
+    status_counts = status_counts.rename(columns={
+        'Compra': 'qtde_compra',
+        'Observação': 'qtde_observacao',
+        'Venda': 'qtde_venda'
+    })
+    
+    # Garantir que todas as colunas de status existam
+    for col in ['qtde_compra', 'qtde_observacao', 'qtde_venda']:
+        if col not in status_counts.columns:
+            status_counts[col] = 0
+            
+    status_counts = status_counts.reset_index()
+
+    # Preparar o dataframe de pontuação do setor
+    if not df_setor.empty:
+        df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_subsetor']].drop_duplicates()
+        summary_df = pd.merge(status_counts, df_setor_scores, on='subsetor_b3', how='left')
+        summary_df = summary_df.rename(columns={
+            'subsetor_b3': 'Subsetor',
+            'pontuacao_subsetor': 'pontuação do setor'
+        })
+    else:
+        summary_df = status_counts.rename(columns={'subsetor_b3': 'Subsetor'})
+        summary_df['pontuação do setor'] = 'N/A'
+
+    # Calcular o Momentum Score
+    summary_df['total_ativos'] = summary_df['qtde_compra'] + summary_df['qtde_observacao'] + summary_df['qtde_venda']
+    # Avoid division by zero
+    summary_df['Momentum Score'] = summary_df.apply(
+        lambda row: ((row['qtde_compra'] * 1) + (row['qtde_venda'] * -1)) / row['total_ativos'] if row['total_ativos'] != 0 else 0,
+        axis=1
+    )
+    
+    # Reordenar colunas
+    summary_df = summary_df[['Subsetor', 'pontuação do setor', 'Momentum Score', 'qtde_compra', 'qtde_observacao', 'qtde_venda']]
+    
+    # Ordenar pela pontuação do setor
+    if 'pontuação do setor' in summary_df.columns and pd.api.types.is_numeric_dtype(summary_df['pontuação do setor']):
+        summary_df = summary_df.sort_values(by='pontuação do setor', ascending=False)
+
+
     st.dataframe(
-        df_ciclo,
+        summary_df,
         use_container_width=True,
         hide_index=True,
         column_config={
-            "Score 📈": st.column_config.NumberColumn("Score 📈", format="%d"),
+            "pontuação do setor": st.column_config.NumberColumn("Pontuação", format="%.2f"),
+            "Momentum Score": st.column_config.NumberColumn("Momentum", format="%.2f"),
+            "qtde_compra": st.column_config.NumberColumn("Compra"),
+            "qtde_observacao": st.column_config.NumberColumn("Observação"),
+            "qtde_venda": st.column_config.NumberColumn("Venda"),
         }
     )
 
+    st.divider()
 
-def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
+    st.subheader("Dados completos do Ciclo de Mercado")
+    st.dataframe(
+        df_ciclo_raw,
+        use_container_width=True,
+        hide_index=True,
+        column_config={"Score 📈": st.column_config.NumberColumn("Score 📈", format="%d")}
+    )
+
+
+def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     from .calculadora import render_tab_calculadora
     tab_titles = [
@@ -540,7 +627,7 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = No
     with tab5:
         render_tab_dividendos(df_filtrado, all_data, ticker_foco)
     with tab6:
-        render_tab_ciclo_mercado(all_data)
+        render_tab_ciclo_mercado(df_unfiltered, all_data)
     with tab7:
         render_tab_rank_setores(df_filtrado, all_data)
     with tab8:
