@@ -132,7 +132,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
     return {
         "ticker": ticker_base,
         "empresa": info.get("longName", metadata.get("empresa")),
-        "setor_brapi": metadata.get("setor_brapi"),
+        "subsetor_b3": metadata.get("subsetor_b3"),
         "tipo": metadata.get("tipo"),
         "market_cap": market_cap,
         "logo": metadata.get("logo"),

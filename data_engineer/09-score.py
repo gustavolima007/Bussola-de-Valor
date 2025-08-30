@@ -112,9 +112,9 @@ def score_pl_pvp(pl, pvp):
         elif pvp > 4: score -= 5
     return score
 
-def score_divida(div_mc, div_ebitda, setor):
+def score_divida(div_mc, div_ebitda, subsetor):
     """Pontuação para os indicadores de endividamento."""
-    if 'finance' in str(setor).lower(): return 0
+    if 'finance' in str(subsetor).lower(): return 0
     score = 0
     if pd.notna(div_mc):
         if div_mc < 0.5: score += 10

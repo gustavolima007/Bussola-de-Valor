@@ -21,8 +21,8 @@ def style_alvo(val):
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
-    df_display = df[[col for col in cols_to_display if col in df.columns]]
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
+    df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor'})
     
     st.dataframe(
         df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
@@ -42,11 +42,11 @@ def render_tab_rank_geral(df: pd.DataFrame):
 def render_tab_rank_detalhado(df: pd.DataFrame):
     st.header(f"📋 Ranking Detalhado ({len(df)} ações encontradas)")
     cols = [
-        'Logo', 'Ticker', 'Empresa', 'Setor', 'Perfil da Ação', 'Preço Atual',
+        'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual',
         'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
         'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
     ]
-    df_display = df[[c for c in cols if c in df.columns]]
+    df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor'})
     
     st.dataframe(
         df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)']),
@@ -82,7 +82,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
     st.subheader(f"{acao['Empresa']} ({ticker_selecionado})")
 
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("Preço Atual", f"R$ {acao.get('Preço Atual', 0):.2f}")
+    c1.metric("PreçoAtual", f"R$ {acao.get('PreçoAtual', 0):.2f}")
     c2.metric("P/L", f"{acao.get('P/L', 0):.2f}")
     c3.metric("P/VP", f"{acao.get('P/VP', 0):.2f}")
     c4.metric("DY 12m", f"{acao.get('DY (Taxa 12m, %)', 0):.2f}%")
@@ -231,7 +231,7 @@ def render_tab_insights(df: pd.DataFrame):
 
     st.subheader("Top 15 por Score")
     top = df.nlargest(15, 'Score Total')
-    fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='Setor', hover_data=['Empresa'])
+    fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
     fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
     st.plotly_chart(fig_bar, use_container_width=True)
     
@@ -240,7 +240,7 @@ def render_tab_insights(df: pd.DataFrame):
     c1, c2 = st.columns([1, 1])
     with c1:
         st.subheader("DY 12m vs. P/L")
-        fig = px.scatter(df, x='P/L', y='DY (Taxa 12m, %)', color='Setor', hover_data=['Ticker'])
+        fig = px.scatter(df, x='P/L', y='DY (Taxa 12m, %)', color='subsetor_b3', hover_data=['Ticker'])
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         
@@ -252,12 +252,12 @@ def render_tab_insights(df: pd.DataFrame):
 
     with c2:
         st.subheader("DY 5 anos vs. P/VP")
-        fig = px.scatter(df, x='P/VP', y='DY 5 Anos Média (%)', color='Setor', hover_data=['Ticker'])
+        fig = px.scatter(df, x='P/VP', y='DY 5 Anos Média (%)', color='subsetor_b3', hover_data=['Ticker'])
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         
-        st.subheader("Score por Setor (Boxplot)")
-        fig_box = px.box(df, x='Setor', y='Score Total', title='Score por Setor')
+        st.subheader("Score por Subsetor (Boxplot)")
+        fig_box = px.box(df, x='subsetor_b3', y='Score Total', title='Score por Subsetor')
         fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig_box, use_container_width=True)
 
@@ -335,14 +335,14 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
         dyy['DY5anos'] = pd.to_numeric(dyy['DY5anos'], errors='coerce')
         dyy.dropna(subset=['DY12M','DY5anos'], inplace=True)
         
-        # Adicionando informações do df principal (Setor) para colorir o gráfico
-        if 'Setor' in df.columns:
-            dyy = dyy.merge(df[['Ticker', 'Setor']], left_on='ticker', right_on='Ticker', how='left')
+        # Adicionando informações do df principal (subsetor_b3) para colorir o gráfico
+        if 'subsetor_b3' in df.columns:
+            dyy = dyy.merge(df[['Ticker', 'subsetor_b3']], left_on='ticker', right_on='Ticker', how='left')
 
         fig_dy = px.scatter(dyy, 
                             x='DY12M', 
                             y='DY5anos', 
-                            color='Setor' if 'Setor' in dyy.columns else None,
+                            color='subsetor_b3' if 'subsetor_b3' in dyy.columns else None,
                             hover_data=['ticker'], 
                             title='Relação DY 12m x DY 5 anos (por ticker)')
         fig_dy.update_layout(margin=dict(l=20, r=20, t=50, b=20),
@@ -352,17 +352,47 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     elif not dividend_yield_extra.empty:
         st.info("Nenhuma ação corresponde aos filtros para exibir a relação de DY.")
 
-def render_tab_rank_setores(all_data: dict):
+def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Rank de Setores")
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
-        av_display = av_setor.rename(columns={'setor_resumido': 'Setor', 'pontuacao': 'Pontuação'}).sort_values('Pontuação', ascending=False)
-        st.dataframe(av_display[['Setor', 'Pontuação']], use_container_width=True, hide_index=True,
+        av_display = av_setor.rename(columns={'subsetor_b3': 'Subsetor', 'pontuacao_subsetor': 'Pontuação'}).sort_values('Pontuação', ascending=False)
+        st.dataframe(av_display[['Subsetor', 'Pontuação']], use_container_width=True, hide_index=True,
                      column_config={'Pontuação': st.column_config.NumberColumn('Pontuação', format='%.1f')})
         
-        fig = px.bar(av_display.sort_values('Pontuação'), x='Pontuação', y='Setor', orientation='h', title='Ranking de Setores por Pontuação Média')
+        fig = px.bar(av_display.sort_values('Pontuação'), x='Pontuação', y='Subsetor', orientation='h', title='Ranking de Setores por Pontuação Média')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
+
+        st.divider()
+        st.subheader("Detalhes dos Ativos (conforme filtros aplicados)")
+
+        if not df_filtrado.empty:
+            cols_to_show = ['subsetor_b3', 'Ticker', 'Score Total', 'pontuacao_subsetor']
+            if all(col in df_filtrado.columns for col in cols_to_show):
+                tabela_df = df_filtrado[cols_to_show].copy()
+                tabela_df.rename(columns={
+                    'subsetor_b3': 'Subsetor',
+                    'Ticker': 'Ticker',
+                    'Score Total': 'Score Total',
+                    'pontuacao_subsetor': 'Pontuação do Subsetor'
+                }, inplace=True)
+
+                tabela_df.sort_values(by='Score Total', ascending=False, inplace=True)
+
+                st.dataframe(
+                    tabela_df,
+                    use_container_width=True,
+                    hide_index=True,
+                    column_config={
+                        "Score Total": st.column_config.ProgressColumn("Score Total", format="%d", min_value=0, max_value=200),
+                        "Pontuação do Subsetor": st.column_config.NumberColumn("Pontuação Subsetor", format="%.2f"),
+                    }
+                )
+            else:
+                st.warning("As colunas necessárias para a tabela de detalhes não foram encontradas.")
+        else:
+            st.info("Nenhum ativo encontrado para os filtros selecionados.")
     else:
         st.warning("Arquivo 'avaliacao_setor.csv' não encontrado para gerar o ranking.")
     
@@ -455,13 +485,13 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
     # Exibir análise setorial ordenada pelo CSV
     if not av_setor.empty:
         for _, row in av_display.iterrows():
-            setor = row['Setor']
+            subsetor = row['Subsetor']
             pontuacao = row['Pontuação']
-            desc = sector_descriptions.get(setor, {
+            desc = sector_descriptions.get(subsetor, {
                 "Por que investir?": "Informações específicas não disponíveis. Setor pode oferecer oportunidades dependendo das condições de mercado.",
                 "Por que não investir?": "Riscos específicos não detalhados. Considere avaliar a volatilidade e a estabilidade de dividendos."
             })
-            with st.expander(f"{setor} (Pontuação: {pontuacao:.2f})"):
+            with st.expander(f"{subsetor} (Pontuação: {pontuacao:.2f})"):
                 st.markdown(f'''
                 - **Por que investir?** {desc['Por que investir?']}
                 - **Por que não investir?** {desc['Por que não investir?']}
@@ -512,7 +542,7 @@ def render_tabs(df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = No
     with tab6:
         render_tab_ciclo_mercado(all_data)
     with tab7:
-        render_tab_rank_setores(all_data)
+        render_tab_rank_setores(df_filtrado, all_data)
     with tab8:
         render_tab_guia()
     with tab9:

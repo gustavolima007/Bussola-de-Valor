@@ -104,34 +104,26 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
             df.drop(columns=['fechamento_atual'], inplace=True)
     except Exception: pass
+    
+    # --- Merge com Avaliação de Setor ---
+    try:
+        df_setor = read_csv_cached(base_path / 'avaliacao_setor.csv')
+        # Ambas as tabelas usam 'subsetor_b3' para a junção.
+        if 'subsetor_b3' in df.columns and 'subsetor_b3' in df_setor.columns:
+            # Seleciona apenas as colunas necessárias para o merge para evitar duplicatas.
+            df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_subsetor']].drop_duplicates(subset=['subsetor_b3'])
+            df = df.merge(df_setor_scores, on='subsetor_b3', how='left')
+        else:
+            st.warning("Não foi possível fazer o merge da pontuação de subsetor. Coluna 'subsetor_b3' não encontrada.")
+    except FileNotFoundError:
+        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado. A pontuação por subsetor não será carregada.")
+    except Exception as e:
+        st.warning(f"Erro ao processar 'avaliacao_setor.csv': {e}")
 
     # Limpa colunas auxiliares de merge
     df.drop(columns=[col for col in df.columns if 'ticker_base' in str(col)], inplace=True, errors='ignore')
 
-    # --- Padronização de Setores ---
-    try:
-        av = read_csv_cached(base_path / 'avaliacao_setor.csv')
-        TRADUCAO_SETORES_B3 = {
-            "Energy Minerals": "Petróleo, Gás e Biocombustíveis", "Non-Energy Minerals": "Materiais Básicos – Mineração e Siderurgia",
-            "Process Industries": "Materiais Básicos – Papel, Química e Outros", "Utilities": "Utilidade Pública – Energia Elétrica, Água e Saneamento",
-            "Finance": "Financeiro e Outros – Bancos, Seguros, Serviços Financeiros", "Health Technology": "Saúde – Equipamentos e Tecnologia",
-            "Health Services": "Saúde – Serviços Médicos e Hospitalares", "Producer Manufacturing": "Bens Industriais – Máquinas e Equipamentos",
-            "Industrial Services": "Bens Industriais – Serviços Industriais", "Transportation": "Bens Industriais – Transporte e Logística",
-            "Retail Trade": "Consumo Cíclico – Comércio Varejista", "Consumer Durables": "Consumo Cíclico – Bens Duráveis (Eletrodomésticos, Automóveis)",
-            "Consumer Services": "Consumo Cíclico – Serviços (Educação, Turismo)", "Commercial Services": "Consumo Cíclico – Serviços Comerciais",
-            "Electronic Technology": "Tecnologia da Informação – Hardware e Equipamentos", "Technology Services": "Tecnologia da Informação – Serviços de Software",
-            "Communications": "Comunicações e Telecom – Telefonia, Internet e Mídia", "Consumer Non-Durables": "Consumo não Cíclico – Alimentos, Bebidas e Produtos Pessoais",
-            "Distribution Services": "Consumo não Cíclico – Comércio e Distribuição"
-        }
-        df['Setor'] = df['Setor (brapi)'].map(TRADUCAO_SETORES_B3).fillna(df['Setor (brapi)'])
-        # Merge com os dados de avaliação do setor, incluindo o setor resumido
-        df = df.merge(av[['setor', 'pontuacao', 'setor_resumido']], left_on='Setor', right_on='setor', how='left')
-        # Renomeia a coluna de setor original para manter o detalhe
-        df.rename(columns={'Setor': 'Setor Detalhado'}, inplace=True)
-        # Define a coluna de setor resumido como a principal 'Setor'
-        df.rename(columns={'setor_resumido': 'Setor'}, inplace=True)
-    except Exception:
-        df['Setor'] = df.get('Setor (brapi)', 'Não categorizado')
+    
 
     # --- Carrega datasets para gráficos ---
     all_data = {}
