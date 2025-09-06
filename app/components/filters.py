@@ -9,10 +9,26 @@ def render_sidebar_filters(df: pd.DataFrame) -> pd.DataFrame:
     st.sidebar.header("🔎 Filtros de Análise")
 
     # --- Filtros Principais ---
-    perfil_ordem = {'Penny Stock': 0, 'Micro Cap': 1, 'Small Cap': 2, 'Mid Cap': 3, 'Blue Chip': 4}
+    # Normaliza os rótulos do perfil para os nomes desejados no UI
+    rename_map = {
+        'Penny Stock': 'Penny Stock < 1R$',
+        'Micro Cap': 'Micro Cap  < 2B',
+        'Small Cap': 'Small Cap 2B–10B',
+        'Mid Cap': 'Mid Cap 10B–50B',
+        'Blue Chip': 'Blue Cap > 50B',
+    }
+    if 'Perfil da Ação' in df.columns:
+        df['Perfil da Ação'] = df['Perfil da Ação'].replace(rename_map)
+    perfil_ordem = {
+        'Penny Stock < 1R$': 0,
+        'Micro Cap  < 2B': 1,
+        'Small Cap 2B–10B': 2,
+        'Mid Cap 10B–50B': 3,
+        'Blue Cap > 50B': 4
+    }
     perfis_raw = [p for p in df['Perfil da Ação'].dropna().unique().tolist()]
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
-    perfil_filtro = st.sidebar.multiselect("Perfil da Ação", perfis_disponiveis, default=perfis_disponiveis)
+    perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_disponiveis)
 
     tickers_disponiveis = sorted(df['Ticker'].dropna().unique().tolist())
     ticker_foco_opt = ["— Todos —"] + tickers_disponiveis
