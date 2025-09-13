@@ -178,8 +178,6 @@ def main():
     scores_df.to_csv(FN_OUT, index=False, float_format='%.2f')
     
     print(f"\n✅ Arquivo de scores salvo com sucesso em: {FN_OUT}")
-    print("\nAmostra dos tickers com maiores scores:")
-    print(scores_df.head())
 
 if __name__ == '__main__':
     main()

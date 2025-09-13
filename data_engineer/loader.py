@@ -23,17 +23,10 @@ import subprocess
 from pathlib import Path
 from typing import List, Tuple
 
-# --- Logging (Loguru + Rich) ---
+# --- Logging (Loguru) ---
 from loguru import logger
-from rich.traceback import install as rich_traceback_install
 
-# Enable rich tracebacks for clearer error visualization
-rich_traceback_install(show_locals=False, width=120, extra_lines=2)
-
-# Configure logging: colored console + rotating file logs
-LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
-LOG_DIR.mkdir(parents=True, exist_ok=True)
-
+# Configure logging: colored console
 # Reset default handlers and set up sinks
 logger.remove()
 # Colored console output
@@ -43,18 +36,6 @@ logger.add(sys.stdout,
            diagnose=True,
            level="INFO",
            format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{level: <8}</level> | <cyan>{message}</cyan>")
-# File output (rotation + retention)
-logger.add(
-    LOG_DIR / "loader_{time:YYYY-MM-DD}.log",
-    rotation="10 MB",
-    retention="14 days",
-    encoding="utf-8",
-    enqueue=True,
-    backtrace=True,
-    diagnose=True,
-    level="INFO",
-    format="{time:YYYY-MM-DD HH:mm:ss} | {level: <8} | {message}"
-)
 
 # --- Funções Auxiliares ---
 

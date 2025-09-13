@@ -77,5 +77,3 @@ BASE.mkdir(parents=True, exist_ok=True)
 df_final.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"\n✅ Arquivo 'dividend_yield.csv' salvo com sucesso em: {output_path}")
-print("\nAmostra dos dados gerados:")
-print(df_final.head())

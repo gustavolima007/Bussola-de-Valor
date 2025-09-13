@@ -55,6 +55,3 @@ resumo = resumo[['ticker', 'valor_5anos', 'valor_12m']]
 resumo.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"\n✅ Arquivo 'dividendos_ano_resumo.csv' gerado com sucesso em: {output_path}")
-print("\nAmostra dos dados gerados:")
-print(resumo.head())
-print(f"\nTotal de tickers processados: {resumo.shape[0]}")

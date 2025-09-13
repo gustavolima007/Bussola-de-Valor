@@ -81,8 +81,7 @@ CORRECOES_ESPECIFICAS_B3 = {
     "REDE3": ("Bens Industriais", "Energia Elétrica"),
     "TAEE3": ("Bens Industriais", "Energia Elétrica"),
     "TAEE4": ("Bens Industriais", "Energia Elétrica"),
-    "TAEE11": ("Bens Industriais", "Energia Elétrica"),
-    
+    "TAEE11": ("Bens Industriais", "Energia Elétrica"),    
     "SBSP3": ("Utilidade Pública", "Saneamento"),
     "CSMG3": ("Utilidade Pública", "Saneamento"),
     "SAPR3": ("Utilidade Pública", "Saneamento"),
@@ -176,7 +175,7 @@ def extrair_dados_brapi():
             print("Nenhum ativo encontrado na resposta da API.")
             return None
 
-        print("Processando dados...")
+        pass
         df_ativos = pd.DataFrame(ativos)
 
         df_ativos = df_ativos[
@@ -210,9 +209,6 @@ def extrair_dados_brapi():
         colunas_remover = [col for col in ['change', 'market_cap', 'name', 'close'] if col in df_ativos.columns]
         if colunas_remover:
             df_ativos = df_ativos.drop(columns=colunas_remover)
-            print(f"Colunas removidas: {colunas_remover}")
-        else:
-            print("Nenhuma das colunas alvo para remoção foi encontrada.")
         
         df_ativos = df_ativos.fillna('N/A')
         df_ativos = df_ativos.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
@@ -235,8 +231,4 @@ def extrair_dados_brapi():
         return None
 
 if __name__ == "__main__":
-    df = extrair_dados_brapi()
-    if df is not None:
-        print("\nAmostra dos primeiros 5 ativos:")
-        print(df.head().to_string(index=False))
-        print(f"\nColunas disponíveis: {list(df.columns)}")
+    extrair_dados_brapi()

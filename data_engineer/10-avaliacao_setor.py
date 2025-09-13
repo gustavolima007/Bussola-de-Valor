@@ -109,8 +109,6 @@ def main() -> None:
     # --- Salva ---
     resultado.to_csv(output_path, index=False, float_format="%.2f")
     print(f"\n✅ Arquivo salvo em: {output_path}")
-    print("Pré-visualização:")
-    print(resultado.head(20).to_string(index=False))
 
 
 if __name__ == "__main__":

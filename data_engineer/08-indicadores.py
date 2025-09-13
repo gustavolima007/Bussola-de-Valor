@@ -160,7 +160,7 @@ def main():
         print(f"❌ Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
         return
 
-    print(f"Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA}")
+    print("Iniciando extração de 08-indicadores...")
     df_input = pd.read_csv(CAMINHO_ARQUIVO_ENTRADA)
 
     df_input["ticker_norm"] = df_input["ticker"].str.strip().str.upper()

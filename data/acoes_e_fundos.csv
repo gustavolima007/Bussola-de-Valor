@@ -1,351 +1,350 @@
 ﻿ticker,volume,logo,setor_brapi,tipo,setor_b3,subsetor_b3
-AZUL4,113790900,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-STBP3,54601100,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-CSAN3,47056300,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-PETR4,46121900,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-RAIZ4,41458800,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-BBAS3,40453000,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BBDC4,31586500,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-MGLU3,30757600,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-COGN3,26837800,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
-B3SA3,24940400,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-ASAI3,17591100,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RAIL3,17458000,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-ABEV3,17025900,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-ITSA4,16466900,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-LREN3,15465400,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-ITUB4,15208100,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-IFCM3,15004500,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-PETR3,14906300,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-CBAV3,14728400,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-VALE3,14014700,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-BRFS3,12752800,https://icons.brapi.dev/icons/BRFS3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-MRVE3,12720500,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-PCAR3,12343400,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-VAMO3,12030000,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-RENT3,11213400,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-GGBR4,10602100,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-CPLE6,10420000,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-BRAV3,10280600,https://icons.brapi.dev/icons/BRAV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-CVCB3,10141900,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-BBSE3,10115100,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-GOAU4,9730600,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-UGPA3,9570800,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-MOTV3,9352000,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-PRIO3,9244900,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-BBDC3,9082300,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-USIM5,8655300,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-RADL3,8629300,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-VBBR3,8078200,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-SIMH3,7893900,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-BHIA3,7633400,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-EMBR3,7383600,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-ELET3,7078500,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ECOR3,7023700,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-BPAC11,6882000,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-BEEF3,6737900,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-ONCO3,6674400,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-WEGE3,6112300,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-NATU3,6090900,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-CSMG3,6085600,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock,Utilidade Pública,Saneamento
-ENEV3,5942600,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-KLBN11,5876400,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund,Materiais Básicos,"Papel, Química e Outros"
-HAPV3,5806600,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-POMO4,5804400,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-CYRE3,5730300,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-MOVI3,5349600,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CSNA3,5059700,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-SRNA3,4845900,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ALPA4,4671100,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-SANB11,4608700,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-MRFG3,4592500,https://icons.brapi.dev/icons/MRFG3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-CMIN3,4548600,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-CMIG4,4542600,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-EQTL3,4509400,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ENGI11,4459800,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
-RCSL4,4411500,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-YDUQ3,4403800,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
-PETZ3,4326100,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock,Consumo Cíclico,Comércio Varejista
-MULT3,4249500,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-SMFT3,4214100,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-SUZB3,4145500,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-RAPT4,4005900,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-AZZA3,4000000,https://icons.brapi.dev/icons/AZZA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-GGPS3,3990200,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-JHSF3,3915000,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-ALOS3,3761000,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-GMAT3,3662300,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-LJQQ3,3639000,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-AZTE3,3579600,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-CEAB3,3544400,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RDOR3,3460100,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-LWSA3,3401900,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-VIVT3,3379900,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-TIMS3,3327800,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-DIRR3,3294700,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-AURE3,3200300,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-MLAS3,3199500,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-AZEV4,3187400,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-IGTI11,3032100,https://icons.brapi.dev/icons/IGTI11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-FLRY3,2782700,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-DXCO3,2763200,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-CXSE3,2686700,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-TEND3,2685200,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
-OIBR3,2684200,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-CPLE3,2611600,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-CURY3,2597800,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-SBSP3,2562600,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock,Utilidade Pública,Saneamento
-ODPV3,2510800,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-CASH3,2481000,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
-INTB3,2385700,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-VIVA3,2321400,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-RECV3,2311200,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-HYPE3,2288900,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
-KLBN4,2063100,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
-SBFG3,2014900,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-SMTO3,2000400,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-PSSA3,1961500,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-OPCT3,1957500,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-AZEV3,1904300,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-TOTS3,1869100,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-AMER3,1853600,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-HBSA3,1842600,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-BRKM5,1818100,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-SLCE3,1814200,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-GRND3,1813400,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Bens Duráveis
-BRAP4,1614400,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CPFE3,1594400,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-PGMN3,1557300,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-MTRE3,1544900,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-NEOE3,1520300,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-SAPR4,1487400,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock,Utilidade Pública,Saneamento
-HBOR3,1420700,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock,Consumo Cíclico,Construção Civil e Imobiliário
-GFSA3,1407700,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-LAVV3,1344300,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
-TAEE11,1336300,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund,Bens Industriais,Energia Elétrica
-VULC3,1255700,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Bens Duráveis
-ENJU3,1241300,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-JALL3,1228000,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-SAPR11,1220100,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund,Utilidade Pública,Saneamento
-TTEN3,1210300,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
-EZTC3,1153900,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-PMAM3,1144100,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-SYNE3,1128700,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-JSLG3,1108700,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-MILS3,1084300,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock,Bens Industriais,Serviços Industriais
-PLPL3,1079700,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-DASA3,1061700,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-ELET6,1051600,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-BRSR6,1017800,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-VVEO3,989100,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-ISAE4,944500,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-QUAL3,940100,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-MELK3,926500,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-ESPA3,901400,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-POSI3,876600,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-MATD3,873700,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-AMBP3,840700,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-POMO3,838900,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-MDNE3,804700,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CAML3,804200,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-TUPY3,788100,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-ALUP11,778000,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
-TOKY3,755600,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-FESA4,733200,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-EGIE3,707700,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-GUAR3,692900,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-USIM3,651300,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-WIZC3,635000,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-KEPL3,633600,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-LIGT3,614700,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-IRBR3,600800,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-PDGR3,593100,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BPAN4,583400,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-KLBN3,558100,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
-ARML3,556700,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock,Bens Industriais,Máquinas e Equipamentos
-SHUL4,554700,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-ITUB3,486800,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BMGB4,472200,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-PNVL3,469000,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-FRAS3,431100,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-TRIS3,427500,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock,Consumo Cíclico,Construção Civil e Imobiliário
-CSED3,422400,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-BMOB3,411900,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-SEER3,394800,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-VTRU3,389400,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-SOJA3,388900,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-MYPK3,383600,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-TFCO4,380300,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-BRBI11,379500,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-LOGG3,366800,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-MDIA3,339000,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-RANI3,313500,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-PORT3,312300,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-EVEN3,293000,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
-FIQE3,292400,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-ZAMP3,284600,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-SAPR3,277800,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock,Utilidade Pública,Saneamento
-TASA4,270500,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-PRNR3,268800,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-ABCB4,261000,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-AMAR3,260300,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-PINE4,257700,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-LEVE3,251600,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-ORVR3,249600,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-CAMB3,237500,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-HBRE3,234600,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-VLID3,231200,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
-PDTC3,225300,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-UNIP6,217000,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-BRST3,202500,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-SHOW3,176500,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-BLAU3,176200,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
-CMIG3,159700,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ALPK3,158000,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-AGRO3,149100,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-SANB4,146500,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-RCSL3,145900,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-PTBL3,137800,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-PFRM3,136200,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-RNEW4,128600,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-MEAL3,122600,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-ROMI3,120900,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-ALPA3,118600,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-DESK3,116500,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-ALLD3,110000,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-TGMA3,108400,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-DEXP3,104900,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-TECN3,102200,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-TAEE4,101300,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock,Bens Industriais,Energia Elétrica
-SANB3,100700,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-ITSA3,91500,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CSUD3,84000,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
-AMOB3,81200,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RNEW3,72500,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ETER3,70900,https://icons.brapi.dev/icons/ETER3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-TAEE3,62300,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock,Bens Industriais,Energia Elétrica
-VITT3,57200,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-LUPA3,54900,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-VIVR3,52500,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-LPSB3,51100,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock,Consumo Cíclico,Construção Civil e Imobiliário
-LAND3,48300,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
-TRAD3,46400,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-DMVF3,44700,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-AERI3,44300,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-TCSA3,43500,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-SEQL3,42400,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-FHER3,36500,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-WHRL4,33900,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-CEBR6,33200,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-IGTI3,30600,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-TELB4,29700,https://icons.brapi.dev/icons/TELB4.svg,Communications,stock,Comunicações,Telefonia e Mídia
-GGBR3,28900,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-GOAU3,24100,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-UCAS3,23900,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-INEP3,23400,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-AGXY3,21100,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-WHRL3,21000,https://icons.brapi.dev/icons/WHRL3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-SCAR3,20900,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
-BMEB4,20700,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-EUCA4,20500,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
-ALUP4,19500,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-RAPT3,18800,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-BRAP3,17600,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BRKM3,16100,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-DOTZ3,15600,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-CEBR3,15500,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-EALT4,14600,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-LVTC3,13700,https://icons.brapi.dev/icons/LVTC3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-CEBR5,13500,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-BSLI3,13300,https://icons.brapi.dev/icons/BSLI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-ENGI4,12900,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-VSTE3,12700,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-BIOM3,12500,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
-LOGN3,12200,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-BSLI4,12100,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BEES3,12100,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-TASA3,11000,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-BAZA3,11000,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-TPIS3,10900,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-REAG3,10100,https://icons.brapi.dev/icons/REAG3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-ENGI3,9500,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-FICT3,9500,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-WEST3,9300,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RSID3,9000,https://icons.brapi.dev/icons/RSID3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-ALUP3,8800,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-TELB3,7400,https://icons.brapi.dev/icons/TELB3.svg,Communications,stock,Comunicações,Telefonia e Mídia
-BPAC5,6400,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CGRA4,5800,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-AALR3,5200,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
-LUXM4,5200,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Transporte e Logística
-COCE5,5100,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-CRPG5,5100,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-AVLL3,4800,https://icons.brapi.dev/icons/AVLL3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-UNIP3,4800,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-MGEL4,4800,https://icons.brapi.dev/icons/MGEL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-EPAR3,4700,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-NGRD3,4600,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-BPAC3,3600,https://icons.brapi.dev/icons/BPAC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-CTAX3,3400,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
-PTNT3,3200,https://icons.brapi.dev/icons/PTNT3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-RSUL4,3100,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-INEP4,3100,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-NUTR3,3000,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-CEDO4,2800,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-OIBR4,2600,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock,Comunicações,Telefonia e Mídia
-CLSC4,2500,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-WLMM4,2300,https://icons.brapi.dev/icons/WLMM4.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-CGRA3,2100,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-DEXP4,2000,https://icons.brapi.dev/icons/DEXP4.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-HOOT4,2000,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock,Consumo Cíclico,Serviços
-BEES4,2000,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-RDNI3,1900,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BRSR3,1800,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-DOHL4,1800,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-EQPA3,1500,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-SNSY5,1300,https://icons.brapi.dev/icons/SNSY5.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-MNPR3,1200,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-JFEN3,1200,https://icons.brapi.dev/icons/JFEN3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-CEEB3,1200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ENMT3,1100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-ISAE3,1100,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-PTNT4,1100,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-RNEW11,1100,https://icons.brapi.dev/icons/RNEW11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
-MNDL3,1100,https://icons.brapi.dev/icons/MNDL3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-OSXB3,1000,https://icons.brapi.dev/icons/OSXB3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-TKNO4,1000,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-FSPE11,1000,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-EMAE4,800,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-BGIP4,800,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-HAGA3,800,https://icons.brapi.dev/icons/HAGA3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+GOLL54,719654000,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+AZUL4,68554200,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+BBAS3,39368300,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BBDC4,26449500,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+COGN3,25841700,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
+B3SA3,25530500,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ASAI3,25054800,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+ABEV3,24015800,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+ITUB4,21931800,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+MGLU3,19670500,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+PETR4,19318400,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+GGBR4,18474900,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+RAIZ4,18309900,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+VAMO3,17356600,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ITSA4,15459800,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CSAN3,14604600,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+IFCM3,14465400,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+PCAR3,12921400,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+VALE3,12303800,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+BEEF3,11748100,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+BRFS3,10791000,https://icons.brapi.dev/icons/BRFS3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+RADL3,10702000,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+PRIO3,9725800,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+MRVE3,9725400,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+RAIL3,8888300,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+MRFG3,8434600,https://icons.brapi.dev/icons/MRFG3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+ENEV3,8362000,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CVCB3,8236000,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+POMO4,8140800,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+KLBN11,7765000,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund,Materiais Básicos,"Papel, Química e Outros"
+CPLE6,7725500,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+VBBR3,7533500,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+SRNA3,7301600,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+GOAU4,7301300,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+BPAC11,6734800,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
+USIM5,6683700,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+EMBR3,6557000,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+BBDC3,6350900,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CYRE3,6314000,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CSNA3,6311800,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+ELET3,6205700,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+LREN3,6124800,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+BRAV3,5745800,https://icons.brapi.dev/icons/BRAV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+PETR3,5744600,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+YDUQ3,5378300,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
+TIMS3,5252600,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+WEGE3,4908900,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+CBAV3,4756600,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+BHIA3,4719800,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+CMIG4,4706500,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CSMG3,4540400,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock,Utilidade Pública,Saneamento
+EQTL3,4485900,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+BBSE3,4413800,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+SUZB3,4190400,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+NATU3,4187200,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+UGPA3,4022800,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+DIRR3,3919400,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CMIN3,3849200,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+RAPT4,3704700,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+GMAT3,3635500,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+HYPE3,3632600,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
+OIBR3,3574600,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+MOTV3,3532600,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+CXSE3,3520200,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+RENT3,3408600,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ECOR3,3332800,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+TOTS3,3263800,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+CEAB3,3255600,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+SMFT3,3238300,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+PETZ3,3123400,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock,Consumo Cíclico,Comércio Varejista
+SIMH3,3056300,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+CASH3,2954700,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
+RDOR3,2899400,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+SEQL3,2711800,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+FLRY3,2643900,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+LJQQ3,2628600,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+STBP3,2461100,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+AURE3,2378500,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+NEOE3,2289700,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+SLCE3,2284200,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+DXCO3,2220900,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+HBRE3,2193500,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+HAPV3,2138600,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+GRND3,2110200,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Bens Duráveis
+BRAP4,2093600,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+KLBN4,2049600,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
+ONCO3,2022000,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+MOVI3,1931500,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+MULT3,1921800,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+AZTE3,1868800,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+HBSA3,1849000,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+VVEO3,1847600,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+LIGT3,1825600,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+VIVA3,1787000,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+SBSP3,1778400,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock,Utilidade Pública,Saneamento
+CPLE3,1758000,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+ALOS3,1713700,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BRKM5,1665900,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+IGTI11,1656400,https://icons.brapi.dev/icons/IGTI11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
+VIVT3,1645200,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+RECV3,1625900,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+LWSA3,1604300,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+ENGI11,1600500,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
+MLAS3,1540900,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+BPAN4,1529300,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CURY3,1522700,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+QUAL3,1521900,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+TEND3,1503200,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
+ALPA4,1476900,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+SANB11,1475800,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
+ARML3,1468600,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock,Bens Industriais,Máquinas e Equipamentos
+JHSF3,1465700,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+RCSL4,1441300,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+HBOR3,1441000,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock,Consumo Cíclico,Construção Civil e Imobiliário
+SBFG3,1397400,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+CPFE3,1389500,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+SMTO3,1316700,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+INTB3,1283800,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+PDGR3,1261900,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+PGMN3,1219800,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+PLPL3,1198200,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BRSR6,1191000,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+TAEE11,1135300,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund,Bens Industriais,Energia Elétrica
+VULC3,1107600,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Bens Duráveis
+GGPS3,1060800,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+AZEV3,1027600,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+ISAE4,1023800,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+AMER3,1023500,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+EZTC3,1019200,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ODPV3,1013300,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+DASA3,1012200,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+AZZA3,1009900,https://icons.brapi.dev/icons/AZZA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+KEPL3,965400,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+PSSA3,924300,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+POSI3,910300,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+SAPR11,901600,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund,Utilidade Pública,Saneamento
+SYNE3,786600,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+MILS3,784300,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock,Bens Industriais,Serviços Industriais
+PMAM3,758900,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+ESPA3,756600,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+GUAR3,745500,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+ELET6,732600,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+ITUB3,699100,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ALUP11,666400,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
+JALL3,665900,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+POMO3,665300,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+SAPR4,649400,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock,Utilidade Pública,Saneamento
+FRAS3,633800,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+ITSA3,622000,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+LAVV3,592100,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
+KLBN3,581700,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
+VIVR3,579600,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+ZAMP3,568200,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+CAML3,564700,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+TTEN3,507100,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Educacionais
+MTRE3,496000,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+SHUL4,478600,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+PNVL3,475700,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+TUPY3,474400,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+TRIS3,472300,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock,Consumo Cíclico,Construção Civil e Imobiliário
+IRBR3,462300,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+EVEN3,450300,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
+TOKY3,434800,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+RCSL3,432300,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+AZEV4,422000,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+RANI3,417900,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+USIM3,413500,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+ENJU3,410700,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+MDIA3,406400,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+JSLG3,393300,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+EGIE3,389000,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+PORT3,365700,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+FESA4,360100,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+PINE4,337700,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+WIZC3,333900,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+OPCT3,329200,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+MYPK3,326000,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+BRST3,322500,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+GFSA3,314900,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+FIQE3,295500,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+SOJA3,289600,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+SEER3,287700,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+MELK3,282500,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+AMBP3,281600,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+VITT3,278700,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+LOGG3,261100,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+TASA4,260700,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+MDNE3,260200,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ORVR3,248200,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+UNIP6,243900,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+MATD3,236200,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+ALPK3,235100,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+ABCB4,234100,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BRBI11,219500,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
+BMOB3,212800,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+TFCO4,209600,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+BMGB4,185100,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+PRNR3,177800,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+SAPR3,171600,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock,Utilidade Pública,Saneamento
+PFRM3,167300,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+PTBL3,164600,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+LEVE3,151400,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+SANB4,147600,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ALLD3,141500,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+BLAU3,141200,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
+VLID3,138400,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
+AGRO3,138100,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+TGMA3,133000,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+CSED3,129500,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+OIBR4,124800,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock,Comunicações,Telefonia e Mídia
+TAEE4,116500,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock,Bens Industriais,Energia Elétrica
+AMAR3,112300,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+CMIG3,109900,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+ROMI3,104700,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+SHOW3,104200,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+TCSA3,101100,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+DMVF3,93800,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+VTRU3,88500,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+ETER3,88200,https://icons.brapi.dev/icons/ETER3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+IGTI3,84600,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+MEAL3,81100,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+GGBR3,75600,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+AERI3,67300,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+TAEE3,61200,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock,Bens Industriais,Energia Elétrica
+WEST3,56900,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+LPSB3,55200,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock,Consumo Cíclico,Construção Civil e Imobiliário
+AALR3,54900,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock,Saúde,Saúde Serviços Médicos
+LVTC3,53600,https://icons.brapi.dev/icons/LVTC3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+DEXP3,52700,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+DESK3,51100,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+SCAR3,50600,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
+VSTE3,48200,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+LAND3,47300,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock,Consumo Cíclico,Construção Civil e Imobiliário
+TECN3,35000,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+SANB3,33800,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+PDTC3,31700,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+RNEW4,31400,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+LUPA3,30400,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+RAPT3,30400,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+EUCA4,30200,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
+CAMB3,29800,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+BOBR4,28800,https://icons.brapi.dev/icons/BOBR4.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+AMOB3,28400,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+RNEW3,28000,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+TPIS3,24400,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+BEES3,22200,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+AGXY3,20400,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+GOAU3,20200,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+JFEN3,19500,https://icons.brapi.dev/icons/JFEN3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+BIED3,19100,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+BMEB4,18200,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CEBR3,17500,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+UCAS3,16500,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+EALT4,15900,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+UNIP3,14500,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+LOGN3,13700,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+CSUD3,13200,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock,Tecnologia da Informação,Serviços de Software
+TRAD3,12300,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+BRSR3,11800,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CEBR6,11400,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+HOOT4,11400,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock,Consumo Cíclico,Serviços
+AVLL3,11100,https://icons.brapi.dev/icons/AVLL3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+EQPA3,11100,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+INEP3,11000,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+EMAE4,10400,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+BRAP3,10000,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ENGI4,9500,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+MNPR3,9400,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+TELB4,8800,https://icons.brapi.dev/icons/TELB4.svg,Communications,stock,Comunicações,Telefonia e Mídia
+DOTZ3,8500,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+FICT3,8400,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+REAG3,7200,https://icons.brapi.dev/icons/REAG3.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+WHRL4,7200,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+EALT3,7100,https://icons.brapi.dev/icons/EALT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+BEES4,7000,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BRKM3,6500,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+EPAR3,6400,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+TELB3,5700,https://icons.brapi.dev/icons/TELB3.svg,Communications,stock,Comunicações,Telefonia e Mídia
+ESTR4,5500,https://icons.brapi.dev/icons/ESTR4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+ALUP4,5300,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CGRA4,4700,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+INEP4,4500,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+WHRL3,4300,https://icons.brapi.dev/icons/WHRL3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+TASA3,4100,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+ENGI3,3700,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+BPAC5,3700,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BGIP4,3600,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+RDNI3,3400,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+BPAC3,3300,https://icons.brapi.dev/icons/BPAC3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CRPG5,3300,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+PTNT4,3100,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+ISAE3,3000,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+NUTR3,2900,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+HAGA4,2700,https://icons.brapi.dev/icons/HAGA4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+OFSA3,2400,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
+CLSC4,2400,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CEBR5,2300,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CTAX3,2300,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock,Consumo Cíclico,Serviços Comerciais
+MTSA4,2100,https://icons.brapi.dev/icons/MTSA4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+BIOM3,2100,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
+PATI3,2000,https://icons.brapi.dev/icons/PATI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+ALUP3,2000,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+COCE5,2000,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CEEB3,1900,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CPLE5,1800,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+OSXB3,1800,https://icons.brapi.dev/icons/OSXB3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+ATED3,1500,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+LUXM4,1400,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Transporte e Logística
+BAZA3,1400,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+NGRD3,1400,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
+TKNO4,1300,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+BSLI4,1200,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+FHER3,1100,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+DOHL4,1100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+RSID3,1000,https://icons.brapi.dev/icons/RSID3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+CEDO4,1000,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+RPMG3,1000,https://icons.brapi.dev/icons/RPMG3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+PTNT3,900,https://icons.brapi.dev/icons/PTNT3.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+RNEW11,900,https://icons.brapi.dev/icons/RNEW11.svg,Utilities,fund,Bens Industriais,Energia Elétrica
+REDE3,700,https://icons.brapi.dev/icons/REDE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
 BMEB3,700,https://icons.brapi.dev/icons/BMEB3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BOBR4,700,https://icons.brapi.dev/icons/BOBR4.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
-CPLE5,700,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-RPMG3,600,https://icons.brapi.dev/icons/RPMG3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-MOAR3,600,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-ESTR4,500,https://icons.brapi.dev/icons/ESTR4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-CGAS5,400,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-REDE3,400,https://icons.brapi.dev/icons/REDE3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-MTSA4,400,https://icons.brapi.dev/icons/MTSA4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-OFSA3,400,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock,Saúde,Saúde Tecnologia
-CTSA4,300,https://icons.brapi.dev/icons/CTSA4.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
-PATI4,300,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-BDLL3,300,https://icons.brapi.dev/icons/BDLL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+PPLA11,689,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
+ALPA3,600,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais"
+CGRA3,500,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+SNSY5,400,https://icons.brapi.dev/icons/SNSY5.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+FIEI3,400,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CEDO3,400,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+FESA3,300,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+BMIN4,300,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+GEPA4,300,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
 EKTR4,300,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-PPLA11,204,https://icons.brapi.dev/icons/BRAPI.svg,Finance,fund,Financeiro e Outros,Bancos e Financeiros
-GEPA4,200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-PLAS3,200,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-CGAS3,200,https://icons.brapi.dev/icons/CGAS3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-BMIN4,200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-GSHP3,200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-HAGA4,200,https://icons.brapi.dev/icons/HAGA4.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
-EALT3,100,https://icons.brapi.dev/icons/EALT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
-CALI3,100,https://icons.brapi.dev/icons/BRAPI.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-ATED3,100,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock,Tecnologia da Informação,Serviços de Software
-COCE3,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
-SOND5,100,https://icons.brapi.dev/icons/BRAPI.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-FESA3,100,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-RPAD5,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+CGAS5,300,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+DEXP4,300,https://icons.brapi.dev/icons/DEXP4.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+BAUH4,200,https://icons.brapi.dev/icons/BRAPI.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+WLMM4,200,https://icons.brapi.dev/icons/WLMM4.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+PATI4,200,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+PINE3,200,https://icons.brapi.dev/icons/PINE3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+NEXP3,200,https://icons.brapi.dev/icons/NEXP3.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+ESTR3,200,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+GSHP3,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
+SOND6,100,https://icons.brapi.dev/icons/BRAPI.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+HAGA3,100,https://icons.brapi.dev/icons/HAGA3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+MWET4,100,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+PLAS3,100,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Equipamentos
+CGAS3,100,https://icons.brapi.dev/icons/CGAS3.svg,Utilities,stock,Bens Industriais,Energia Elétrica
+CTKA4,100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,"Papel, Química e Outros"
+EKTR3,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Bens Industriais,Energia Elétrica
 EUCA3,100,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,"Papel, Química e Outros"
-BGIP3,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos e Financeiros
-BMKS3,3,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis
+BMKS3,18,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock,Consumo Cíclico,Bens Duráveis

@@ -25,3 +25,9 @@ jobs:
 
       - name: Run loader.py
         run: python data_engineer/loader.py
+
+      - name: Commit and push if it changed
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: Automated data update"
+          file_pattern: data/*.csv

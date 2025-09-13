@@ -1,351 +1,350 @@
 ﻿Ticker,RSI (Sentimento),MACD (Tendência),Volume (Convicção),Classificação 🧭,Score 📈,Ciclo de Mercado,Status 🟢🔴,Frase 💬
-AZUL4,84.51,0.057,113790900,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“O maior risco surge quando tudo parece seguro.” — Howard Marks
-STBP3,83.91,-0.001,54601100,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-CSAN3,74.76,0.233,47056300,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-PETR4,48.34,0.097,46121900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-RAIZ4,55.24,0.043,41458800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-BBAS3,57.82,0.093,40453000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-BBDC4,69.80,0.078,31586500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-MGLU3,75.60,0.263,30757600,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
-COGN3,62.72,0.011,26837800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-B3SA3,60.20,0.098,24940400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-ASAI3,57.46,0.033,17591100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RAIL3,40.28,0.042,17458000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-ABEV3,46.58,0.047,17025900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-ITSA4,60.93,0.009,16466900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-LREN3,49.15,0.105,15465400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-ITUB4,62.06,0.043,15208100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-IFCM3,19.90,-0.012,15004500,"📉 Baixo, ⚖️ Neutra, 🏦 Forte",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-PETR3,46.08,0.104,14906300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-CBAV3,59.69,0.127,14728400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-VALE3,70.33,0.122,14014700,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-BRFS3,46.57,0.040,12752800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-MRVE3,76.06,0.035,12720500,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-PCAR3,68.28,0.070,12343400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-VAMO3,57.43,0.032,12030000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RENT3,67.61,0.486,11213400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-GGBR4,67.07,0.086,10602100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-CPLE6,55.74,0.012,10420000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-BRAV3,36.76,-0.137,10217000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-CVCB3,55.61,0.025,10141900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-BBSE3,46.67,0.006,10115100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-GOAU4,67.52,0.044,9730600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-UGPA3,77.35,0.236,9570800,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“O maior risco surge quando tudo parece seguro.” — Howard Marks
-MOTV3,74.42,0.116,9351900,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-PRIO3,30.54,0.013,9244900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-BBDC3,68.56,0.061,9082300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-USIM5,61.75,0.039,8655300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RADL3,52.79,-0.219,8629300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-VBBR3,76.28,0.288,8078200,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-SIMH3,72.78,0.112,7893900,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-BHIA3,67.80,0.189,7633400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-EMBR3,65.00,0.269,7383600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-ELET3,73.78,0.077,7078500,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-ECOR3,75.09,0.095,7023700,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“O maior risco surge quando tudo parece seguro.” — Howard Marks
-BPAC11,69.85,0.116,6882000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-BEEF3,74.21,0.048,6737900,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-ONCO3,29.17,-0.051,6674400,"📉 Baixo, ⚖️ Neutra, 🏦 Forte",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-WEGE3,51.70,0.196,6112300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-NATU3,35.62,0.306,6090900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-CSMG3,77.95,0.347,6085600,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-ENEV3,66.64,0.041,5942600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-KLBN11,54.29,0.038,5875300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-HAPV3,66.89,0.172,5806600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-POMO4,71.82,-0.010,5804400,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-CYRE3,71.46,0.263,5730300,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-MOVI3,70.80,0.078,5349600,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-CSNA3,57.51,0.092,5059700,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-SRNA3,67.75,-0.015,4845900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-ALPA4,71.15,0.067,4671100,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“O maior risco surge quando tudo parece seguro.” — Howard Marks
-SANB11,71.22,0.194,4593400,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-MRFG3,53.33,0.093,4592500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-CMIN3,59.94,0.028,4548600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-CMIG4,59.87,0.011,4542600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-EQTL3,59.08,0.025,4509400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-ENGI11,66.62,0.143,4432200,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-RCSL4,49.68,-0.007,4411500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-YDUQ3,62.11,0.180,4403800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-PETZ3,46.93,-0.003,4326100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-MULT3,66.23,0.102,4249500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-SMFT3,68.61,0.110,4214100,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-SUZB3,45.59,-0.196,4145500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RAPT4,51.32,0.070,4005900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-AZZA3,42.35,0.120,4000000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-GGPS3,73.72,0.076,3990200,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-JHSF3,64.41,0.012,3915000,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-ALOS3,75.60,0.105,3749900,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-GMAT3,52.44,0.048,3662300,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-LJQQ3,56.03,0.023,3639000,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-AZTE3,36.67,-0.001,3569700,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-CEAB3,55.77,0.165,3544400,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RDOR3,72.44,0.028,3460100,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-LWSA3,60.15,0.006,3401900,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-VIVT3,63.16,-0.140,3379900,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-TIMS3,65.92,-0.049,3327800,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-DIRR3,74.78,0.086,3294700,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-AURE3,60.35,-0.027,3200300,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-MLAS3,52.32,0.008,3199500,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-AZEV4,44.13,0.001,3187400,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-IGTI11,67.40,0.135,2993600,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-FLRY3,78.44,0.123,2782700,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-DXCO3,55.22,-0.012,2763200,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-CXSE3,60.12,0.044,2686700,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-TEND3,66.15,0.307,2685200,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-OIBR3,46.16,-0.002,2684200,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-CPLE3,55.24,0.009,2611600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-CURY3,68.39,0.045,2597800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SBSP3,66.09,0.375,2562600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ODPV3,73.93,-0.001,2510800,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-CASH3,37.01,0.015,2481000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-INTB3,47.66,0.120,2385700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-VIVA3,65.46,0.044,2321400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-RECV3,44.40,0.064,2311200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-HYPE3,41.92,0.085,2288900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-KLBN4,57.64,0.007,2063100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-SBFG3,61.37,0.152,2014900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-SMTO3,60.69,0.146,2000400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-PSSA3,44.14,-0.105,1961500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-OPCT3,62.16,0.033,1957500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-AZEV3,39.13,-0.004,1904300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TOTS3,55.75,0.070,1869100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-AMER3,57.42,0.104,1853600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-HBSA3,48.53,-0.007,1842600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-BRKM5,61.76,0.116,1818100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-SLCE3,44.31,0.023,1814200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-GRND3,58.41,0.007,1813400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-BRAP4,63.11,0.060,1614400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CPFE3,46.53,-0.141,1594400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PGMN3,59.55,0.008,1557300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-MTRE3,65.91,0.049,1544900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-NEOE3,71.55,0.092,1520300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-SAPR4,67.01,0.067,1487400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-HBOR3,71.68,0.040,1420700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-GFSA3,35.28,0.071,1407700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-LAVV3,78.02,0.172,1344300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-TAEE11,67.80,0.096,1336200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-VULC3,75.66,0.228,1255700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-ENJU3,47.65,0.002,1241300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-JALL3,46.58,0.040,1228000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SAPR11,64.61,0.248,1219000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TTEN3,56.91,0.005,1210300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-EZTC3,66.92,0.066,1153900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PMAM3,59.40,0.043,1144100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-SYNE3,62.39,0.011,1128700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-JSLG3,71.91,0.093,1108700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-MILS3,60.27,-0.008,1084300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-PLPL3,67.69,0.238,1079700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-DASA3,48.35,-0.002,1061700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-ELET6,71.36,0.031,1051600,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-BRSR6,59.41,0.018,1017800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-VVEO3,44.57,0.009,989100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-ISAE4,64.24,0.093,922600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-QUAL3,60.82,0.015,940100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-MELK3,64.12,0.000,926500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-ESPA3,58.10,0.004,901400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-POSI3,50.84,0.007,876600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-MATD3,55.77,-0.005,873700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-AMBP3,40.51,-0.038,840700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-POMO3,73.25,0.015,838900,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-MDNE3,65.73,0.099,804700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-CAML3,71.00,0.087,804200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-TUPY3,45.17,0.097,788100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-ALUP11,66.23,0.112,736900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-TOKY3,46.82,-0.005,755600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-FESA4,53.47,0.041,733200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-EGIE3,49.45,0.084,707700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-GUAR3,64.64,0.074,692900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-USIM3,58.99,0.021,651300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-WIZC3,51.61,-0.026,635000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-KEPL3,65.07,0.051,633600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-LIGT3,39.90,-0.083,614700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-IRBR3,49.89,-0.130,600800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-PDGR3,26.20,-0.003,593100,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-BPAN4,54.80,-0.001,583400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-KLBN3,51.29,0.007,558100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ARML3,59.01,0.008,556700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SHUL4,48.97,0.012,554700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ITUB3,63.64,0.057,486800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BMGB4,65.44,0.017,472200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-PNVL3,50.29,-0.065,469000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-FRAS3,41.74,0.050,431100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TRIS3,57.64,0.029,427500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-CSED3,49.57,0.007,422400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BMOB3,55.18,0.092,411900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-SEER3,66.89,0.133,394800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-VTRU3,73.38,0.047,389400,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-SOJA3,58.40,0.070,388900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-MYPK3,54.21,0.016,383600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-TFCO4,61.63,-0.025,380300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-BRBI11,67.17,0.094,378700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-LOGG3,64.67,0.071,366800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-MDIA3,60.58,-0.165,339000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-RANI3,69.20,0.068,313500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-PORT3,67.65,0.001,312300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-EVEN3,64.25,0.025,293000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-FIQE3,75.30,0.014,292400,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-ZAMP3,62.97,0.000,284600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-SAPR3,56.00,-0.008,277800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-TASA4,48.65,0.074,270500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-PRNR3,62.31,0.056,268800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ABCB4,64.05,0.062,261000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-AMAR3,54.51,0.015,260300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PINE4,69.25,0.028,257700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-LEVE3,55.05,0.146,251600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ORVR3,69.63,0.252,249600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-CAMB3,62.75,0.049,237500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-HBRE3,68.03,0.013,234600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-VLID3,52.98,0.166,231200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PDTC3,38.19,-0.004,225300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-UNIP6,80.84,0.573,217000,"📈 Alto, 🐂 Alta, 🪙 Fraco",70,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
-BRST3,48.58,-0.004,201100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SHOW3,60.17,0.036,176500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BLAU3,69.79,0.177,176200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CMIG3,62.76,0.054,159700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-ALPK3,50.10,0.010,158000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-AGRO3,54.17,0.044,149100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SANB4,70.03,0.094,146500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-RCSL3,37.31,0.018,145900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-PTBL3,53.01,0.030,137800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-PFRM3,51.26,0.020,136200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-RNEW4,47.71,0.008,128600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-MEAL3,62.52,0.003,122600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ROMI3,55.72,0.073,120900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ALPA3,78.11,0.115,118600,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
-DESK3,56.27,0.063,116500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ALLD3,65.37,-0.038,110000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TGMA3,58.47,-0.052,108400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-DEXP3,51.99,0.009,104900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-TECN3,65.47,0.026,102200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TAEE4,68.76,0.029,101300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-SANB3,70.01,0.087,100700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-ITSA3,59.79,0.014,91500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CSUD3,54.95,0.044,84000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-AMOB3,64.96,0.122,81200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-RNEW3,54.82,0.015,72500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ETER3,68.17,0.046,70900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TAEE3,68.92,0.037,62300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-VITT3,54.24,0.006,57200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-LUPA3,44.59,-0.004,54900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-VIVR3,36.46,0.004,52500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-LPSB3,52.48,0.001,51100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-LAND3,33.34,-0.033,48300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-TRAD3,41.00,-0.089,46400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-DMVF3,41.04,-0.014,44700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-AERI3,45.20,-0.005,44300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TCSA3,42.18,-0.002,43500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-SEQL3,48.49,0.008,42400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-FHER3,53.95,0.014,36500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-WHRL4,69.63,0.049,33900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-CEBR6,68.00,0.032,33200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-IGTI3,63.35,0.014,30600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TELB4,66.84,0.332,29700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-GGBR3,59.08,0.038,28900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-GOAU3,62.55,0.040,24100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-UCAS3,45.11,0.002,23900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-INEP3,41.00,0.011,23400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-AGXY3,39.59,-0.003,21100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-WHRL3,72.45,0.048,21000,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-SCAR3,77.59,0.054,20900,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-BMEB4,74.87,0.465,20700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-EUCA4,55.13,0.075,20500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ALUP4,65.02,0.043,19500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-RAPT3,44.51,0.061,18800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BRAP3,64.90,0.049,17600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BRKM3,59.59,0.091,16100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-DOTZ3,74.71,0.153,15600,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-CEBR3,80.76,0.129,15500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-EALT4,53.88,0.206,14600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-LVTC3,53.66,0.044,13700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CEBR5,78.39,0.114,13500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-BSLI3,64.95,0.182,13300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ENGI4,57.59,0.032,12900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-VSTE3,31.93,-0.014,12200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BIOM3,50.48,0.039,12500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-LOGN3,47.61,-0.043,12200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BSLI4,53.01,0.033,12000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BEES3,79.33,0.029,12100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-TASA3,36.67,0.034,11000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BAZA3,67.63,0.687,11000,"📊 Médio, 🐂 Alta, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
-TPIS3,60.65,0.051,10900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-REAG3,21.53,-0.101,10100,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-ENGI3,60.69,-0.045,9500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-FICT3,33.57,-0.019,9500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-WEST3,65.90,0.023,9300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-RSID3,50.99,0.001,9000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ALUP3,56.44,0.021,8800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-TELB3,57.36,0.284,7400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BPAC5,60.99,-0.000,6400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CGRA4,58.39,0.185,5800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-AALR3,69.35,0.014,5200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-LUXM4,76.69,0.131,5200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-COCE5,44.95,-0.213,5100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CRPG5,41.36,0.029,5100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-AVLL3,53.55,0.017,4800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-UNIP3,73.72,0.517,4800,"📈 Alto, 🐂 Alta, 🪙 Fraco",70,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-MGEL4,67.94,0.036,4800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-EPAR3,45.80,0.008,4700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-NGRD3,56.97,0.043,4600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-BPAC3,63.40,0.095,3600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-CTAX3,57.36,0.010,3400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-PTNT3,45.53,-0.075,3200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-RSUL4,58.95,0.453,3100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-INEP4,49.91,0.003,3100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-NUTR3,45.12,0.019,3000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-CEDO4,22.52,0.062,2800,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-OIBR4,44.62,0.024,2600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-CLSC4,50.40,-0.092,2500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-WLMM4,40.78,0.141,2300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CGRA3,57.55,0.234,2100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-DEXP4,45.15,-0.029,2000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-HOOT4,49.67,0.008,2000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BEES4,73.14,0.023,2000,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
-RDNI3,38.13,0.003,1900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-BRSR3,62.98,0.057,1800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-DOHL4,41.89,0.003,1800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-EQPA3,45.86,-0.000,1500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-SNSY5,45.65,0.007,1300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-MNPR3,87.50,0.736,1200,"📈 Alto, 🐂 Alta, 🪙 Fraco",70,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
-JFEN3,42.91,0.006,1200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-CEEB3,55.83,-0.012,1200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-ENMT3,33.21,-0.088,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ISAE3,56.21,0.066,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-PTNT4,57.44,0.031,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-RNEW11,52.37,0.035,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-MNDL3,58.55,0.108,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-OSXB3,45.98,0.001,1000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-TKNO4,59.59,-2.908,1000,"📊 Médio, 🐻 Baixa, 🪙 Fraco",18,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-FSPE11,46.11,-0.001,1000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-EMAE4,41.08,0.029,800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-BGIP4,58.67,0.090,800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-HAGA3,51.90,0.002,800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-BMEB3,68.72,0.156,700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-BOBR4,49.08,0.014,700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-CPLE5,40.40,0.018,700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-RPMG3,48.29,-0.000,600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-MOAR3,11.00,0.134,600,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-ESTR4,60.92,-0.021,500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-CGAS5,46.88,0.024,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-REDE3,48.69,-0.006,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-MTSA4,43.31,0.057,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-OFSA3,39.78,-0.055,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-CTSA4,48.51,-0.017,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PATI4,74.46,0.106,300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-BDLL3,42.24,0.044,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-EKTR4,49.86,-0.093,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PPLA11,48.04,0.008,204,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-GEPA4,58.75,0.105,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-PLAS3,30.29,-0.050,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-CGAS3,41.62,0.025,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-BMIN4,47.03,0.004,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-GSHP3,24.35,-0.014,200,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-HAGA4,47.69,0.000,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-EALT3,51.73,0.023,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-CALI3,13.10,-0.828,100,"📉 Baixo, 🐻 Baixa, 🪙 Fraco",10,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
-ATED3,51.77,-0.008,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-COCE3,96.80,-0.048,100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
-SOND5,53.70,-0.078,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-FESA3,42.06,0.001,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
-RPAD5,61.75,0.034,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
-EUCA3,60.44,0.204,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
-BGIP3,98.42,0.545,100,"📈 Alto, 🐂 Alta, 🪙 Fraco",70,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
-BMKS3,58.45,1.057,3,"📊 Médio, 🐂 Alta, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+GOLL54,31.83,0.005,712697000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+AZUL4,69.25,0.060,68554200,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+BBAS3,66.07,0.199,39368300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+BBDC4,57.14,0.017,26449500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+COGN3,50.40,-0.000,25841700,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+B3SA3,49.92,0.039,25530500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+ASAI3,45.50,-0.042,25054800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+ABEV3,57.93,0.077,24015800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+ITUB4,50.26,-0.109,21931800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+MGLU3,73.57,0.244,19670500,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“O maior risco surge quando tudo parece seguro.” — Howard Marks
+PETR4,55.05,0.082,19318400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+GGBR4,42.57,-0.030,18474900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+RAIZ4,52.52,0.027,18309900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+VAMO3,44.73,-0.011,17356600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+ITSA4,53.93,-0.020,15459800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+CSAN3,71.68,0.170,14604600,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quando todos estão certos, é hora de duvidar.” — George Soros"
+IFCM3,29.71,0.011,14465400,"📉 Baixo, ⚖️ Neutra, 🏦 Forte",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+PCAR3,65.42,0.054,12921400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+VALE3,73.63,0.111,12303800,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
+BEEF3,82.56,0.050,11748100,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
+BRFS3,60.03,0.128,10791000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+RADL3,59.98,-0.118,10702000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+PRIO3,48.43,0.175,9725800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+MRVE3,55.01,-0.054,9725400,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+RAIL3,44.51,0.118,8888300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+MRFG3,64.96,0.206,8434600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+ENEV3,75.79,0.063,8362000,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
+CVCB3,39.66,0.002,8236000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+POMO4,71.69,-0.008,8140800,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,“Seja temeroso quando os outros são gananciosos.” — Warren Buffett
+KLBN11,52.63,0.040,7764900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+CPLE6,57.35,0.034,7725500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+VBBR3,67.50,0.059,7533500,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+SRNA3,74.34,-0.008,7301600,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
+GOAU4,45.65,-0.010,7301300,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+BPAC11,60.59,0.006,6734700,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+USIM5,58.67,0.029,6683700,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+EMBR3,46.64,-0.081,6557000,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+BBDC3,57.14,0.017,6350900,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+CYRE3,74.37,0.288,6314000,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
+CSNA3,57.79,0.069,6311800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+ELET3,74.53,0.019,6205700,"📈 Alto, ⚖️ Neutra, 🏦 Forte",78,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
+LREN3,44.26,0.052,6124800,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+BRAV3,35.73,-0.175,5738600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+PETR3,53.35,0.115,5744600,"📊 Médio, ⚖️ Neutra, 🏦 Forte",55,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+YDUQ3,45.45,0.067,5378300,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+TIMS3,56.78,-0.092,5252600,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+WEGE3,44.89,0.019,4908900,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+CBAV3,53.61,0.091,4756600,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+BHIA3,57.82,0.002,4719800,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+CMIG4,51.96,-0.013,4706500,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+CSMG3,81.29,0.249,4540400,"📈 Alto, ⚖️ Neutra, 💰 Normal",55,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+EQTL3,53.70,-0.007,4485900,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+BBSE3,44.23,0.011,4413800,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+SUZB3,37.96,-0.235,4190400,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+NATU3,36.76,0.217,4187200,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+UGPA3,69.73,0.081,4022800,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+DIRR3,62.84,-0.035,3919400,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+CMIN3,52.58,0.001,3849200,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+RAPT4,52.50,0.063,3704700,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+GMAT3,44.96,0.017,3635500,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+HYPE3,38.27,0.054,3632600,"📊 Médio, ⚖️ Neutra, 💰 Normal",33,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+OIBR3,47.93,-0.003,3574600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+MOTV3,63.77,0.002,3530600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CXSE3,50.07,-0.007,3520200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+RENT3,60.52,0.352,3408600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ECOR3,62.96,-0.006,3332800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TOTS3,53.37,0.054,3263800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CEAB3,56.75,0.138,3255600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+SMFT3,64.91,0.055,3238300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PETZ3,44.50,-0.004,3123400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+SIMH3,72.65,0.103,3056300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+CASH3,35.19,0.039,2954700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+RDOR3,66.39,-0.095,2899400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SEQL3,83.32,0.062,2711800,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+FLRY3,73.29,0.052,2643900,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+LJQQ3,60.18,0.021,2628600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+STBP3,89.44,0.005,2461100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+AURE3,57.71,-0.020,2378500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+NEOE3,72.93,0.098,2289700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+SLCE3,40.33,0.007,2284200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+DXCO3,53.08,0.017,2220900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+HBRE3,79.92,0.025,2193500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+HAPV3,52.70,-0.300,2138600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+GRND3,44.66,-0.020,2110200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BRAP4,67.03,0.057,2093600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+KLBN4,55.41,0.005,2049600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+ONCO3,32.43,0.056,2022000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+MOVI3,73.49,0.136,1931500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+MULT3,63.90,0.081,1921800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+AZTE3,34.11,-0.002,1865800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+HBSA3,44.41,-0.019,1849000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+VVEO3,65.87,0.030,1847600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+LIGT3,45.56,-0.003,1825600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+VIVA3,55.52,-0.093,1787000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+SBSP3,63.85,0.295,1778400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CPLE3,60.23,0.039,1758000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ALOS3,67.95,0.025,1712700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+BRKM5,50.13,0.006,1665900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+IGTI11,62.22,0.054,1656200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+VIVT3,54.09,-0.158,1645200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+RECV3,46.26,0.044,1625900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+LWSA3,62.39,0.013,1604300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+ENGI11,58.74,0.059,1600500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+MLAS3,61.95,0.010,1540900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BPAN4,62.45,0.035,1529300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CURY3,55.87,-0.187,1522700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+QUAL3,55.89,0.006,1521900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TEND3,72.05,0.403,1503200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+ALPA4,56.98,0.011,1476900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+SANB11,60.24,0.087,1475700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ARML3,46.44,-0.020,1468600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+JHSF3,53.08,-0.018,1465700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+RCSL4,47.64,-0.007,1441300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+HBOR3,63.19,0.015,1441000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+SBFG3,64.56,0.148,1397400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CPFE3,45.82,-0.080,1389500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SMTO3,49.50,0.021,1316700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+INTB3,50.66,0.149,1283800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+PDGR3,46.13,0.003,1261900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+PGMN3,55.05,0.023,1219800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PLPL3,73.92,0.254,1198200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+BRSR6,61.12,0.042,1191000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TAEE11,66.09,0.024,1135200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+VULC3,56.83,-0.030,1107600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+GGPS3,69.05,0.011,1060800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+AZEV3,41.89,-0.001,1027600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ISAE4,64.88,0.045,1022900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+AMER3,64.59,0.075,1023500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+EZTC3,79.12,0.220,1019200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+ODPV3,67.52,-0.016,1013300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+DASA3,51.74,0.001,1012200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+AZZA3,44.04,-0.002,1009900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+KEPL3,61.66,0.015,965400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+PSSA3,40.97,-0.126,924300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+POSI3,54.68,0.003,910300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SAPR11,65.97,0.277,901500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+SYNE3,45.17,-0.030,786600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+MILS3,48.47,-0.079,784300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PMAM3,46.82,0.009,758900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+ESPA3,57.76,0.002,756600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+GUAR3,56.88,-0.008,745500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+ELET6,76.09,0.016,732600,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+ITUB3,52.35,-0.089,699100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ALUP11,64.36,0.111,666400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+JALL3,44.97,0.032,665900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+POMO3,80.69,0.031,665300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+SAPR4,67.01,0.061,649400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+FRAS3,39.47,0.001,633800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ITSA3,53.43,-0.013,622000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LAVV3,80.62,0.186,592100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+KLBN3,53.12,0.007,581700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+VIVR3,78.23,0.040,579600,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+ZAMP3,53.13,-0.001,568200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CAML3,67.48,0.046,564700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TTEN3,54.51,-0.002,507100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+MTRE3,64.24,0.042,496000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SHUL4,40.53,-0.003,478600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+PNVL3,48.59,-0.056,475700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+TUPY3,46.36,0.148,474400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TRIS3,66.87,0.070,472300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+IRBR3,47.19,-0.121,462300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+EVEN3,64.79,0.026,450300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TOKY3,51.67,0.002,434800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+RCSL3,59.16,0.035,432300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+AZEV4,41.36,-0.002,422000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+RANI3,58.61,-0.005,417900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+USIM3,53.78,0.016,413500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ENJU3,42.69,0.003,410700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+MDIA3,54.33,-0.239,406400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+JSLG3,72.18,0.103,393300,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+EGIE3,58.52,0.209,389000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+PORT3,74.30,0.002,365700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+FESA4,63.46,0.037,360100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+PINE4,83.38,0.110,337700,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+WIZC3,55.05,-0.009,333900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+OPCT3,65.10,0.060,329200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+MYPK3,51.65,0.005,326000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BRST3,56.75,0.005,322500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+GFSA3,32.33,0.066,314900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+FIQE3,71.72,-0.007,295500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+SOJA3,57.98,0.051,289600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+SEER3,67.85,0.152,287700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+MELK3,61.55,-0.013,282500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+AMBP3,44.15,0.031,281600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+VITT3,60.56,0.015,278700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LOGG3,60.98,0.053,261100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TASA4,49.07,0.067,260700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+MDNE3,62.65,-0.041,260200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+ORVR3,65.97,0.020,248200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+UNIP6,87.65,0.464,243900,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+MATD3,56.48,0.000,236200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ALPK3,50.34,0.013,235100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ABCB4,62.70,0.022,234100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BRBI11,71.75,0.116,219500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+BMOB3,61.57,0.163,212800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TFCO4,60.50,0.025,209600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+BMGB4,65.77,0.004,185100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PRNR3,66.51,0.075,177800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SAPR3,55.45,0.021,171600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+PFRM3,43.87,-0.061,167300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PTBL3,54.24,0.012,164600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LEVE3,54.11,0.120,151400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+SANB4,57.92,0.037,147600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+ALLD3,64.52,-0.028,141500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BLAU3,70.32,0.110,141200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+VLID3,49.08,0.118,138400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+AGRO3,48.26,-0.041,138100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+TGMA3,60.80,0.023,133000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CSED3,47.87,0.022,129500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+OIBR4,45.77,0.008,124800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+TAEE4,64.34,0.008,116500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+AMAR3,56.02,0.010,112300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CMIG3,48.21,0.008,109900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ROMI3,55.34,0.049,104700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+SHOW3,58.37,0.066,104200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TCSA3,60.40,0.016,101100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+DMVF3,43.26,-0.024,93800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+VTRU3,73.68,0.080,88500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+ETER3,64.16,0.008,88200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+IGTI3,61.49,0.012,84600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+MEAL3,54.83,0.003,81100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+GGBR3,51.82,0.009,75600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+AERI3,50.87,0.007,67300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TAEE3,61.06,0.010,61200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+WEST3,54.77,-0.057,56900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+LPSB3,42.63,-0.012,55200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+AALR3,53.39,-0.047,54900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+LVTC3,56.01,0.015,53600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+DEXP3,46.86,0.003,52700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+DESK3,44.81,-0.007,51100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+SCAR3,51.11,-0.181,50600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+VSTE3,36.10,-0.020,48100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LAND3,31.89,-0.059,47300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+TECN3,52.90,-0.016,35000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+SANB3,59.90,0.049,33800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+PDTC3,50.44,0.004,31700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+RNEW4,57.06,0.016,31400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+RAPT3,48.45,0.052,30400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LUPA3,45.50,-0.002,30400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+EUCA4,53.74,0.042,30200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CAMB3,59.08,0.015,29800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BOBR4,51.30,0.011,28800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+AMOB3,63.54,0.058,28400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+RNEW3,58.11,0.024,28000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TPIS3,57.85,0.028,24400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+BEES3,57.46,-0.025,22200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+AGXY3,43.47,0.010,20400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+GOAU3,50.32,0.011,20200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+JFEN3,55.57,0.030,19500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+BIED3,42.10,0.005,19100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+BMEB4,70.52,0.186,18200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+CEBR3,55.26,-0.183,17500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+UCAS3,40.97,0.002,16500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+EALT4,46.58,0.126,15900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+UNIP3,72.93,0.371,14500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“Tenha paciência: o mercado sempre volta à razão.” — Luiz Barsi
+LOGN3,49.77,0.116,13700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CSUD3,48.32,-0.045,13200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TRAD3,35.64,-0.096,12300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BRSR3,73.17,0.089,11800,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+HOOT4,58.23,0.026,11400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CEBR6,59.99,-0.136,11400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+AVLL3,41.92,-0.006,11100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+EQPA3,55.42,0.017,11100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+INEP3,40.96,-0.000,11000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+EMAE4,37.57,-0.007,10400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BRAP3,65.96,0.052,10000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ENGI4,52.28,-0.002,9500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+MNPR3,71.54,0.543,9400,"📈 Alto, 🐂 Alta, 🪙 Fraco",70,Euforia / Topo,Venda,"“Quem compra na euforia, paga caro pela empolgação.” — Luiz Barsi"
+TELB4,58.17,0.057,8800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+DOTZ3,70.84,0.002,8500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+FICT3,44.49,-0.000,8400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+REAG3,23.67,-0.036,7200,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+WHRL4,60.18,0.020,7200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+EALT3,35.79,-0.128,7100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+BEES4,63.04,-0.021,7000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BRKM3,47.72,-0.010,6500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+EPAR3,45.38,0.007,6400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+TELB3,49.89,0.001,5700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ESTR4,70.91,-0.040,5500,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+ALUP4,67.08,0.046,5300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CGRA4,55.16,0.081,4700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+INEP4,46.37,-0.005,4500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+WHRL3,58.11,0.024,4300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TASA3,49.82,0.081,4100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+ENGI3,66.68,0.024,3700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+BPAC5,61.71,-0.018,3700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BGIP4,49.38,-0.073,3600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+RDNI3,39.23,0.006,3400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+CRPG5,43.05,0.047,3300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BPAC3,56.75,0.063,3300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PTNT4,52.60,0.007,3100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ISAE3,51.24,0.017,3000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+NUTR3,53.86,0.031,2900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+HAGA4,46.14,-0.002,2700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CLSC4,51.91,0.057,2400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+OFSA3,55.52,0.046,2400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+CTAX3,58.38,0.006,2300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CEBR5,58.87,-0.116,2300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+MTSA4,55.40,0.137,2100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BIOM3,71.20,0.204,2100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Não é sobre estar certo, é sobre estar lucrativo.” — George Soros"
+ALUP3,56.75,0.024,2000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+PATI3,52.77,-0.274,2000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+COCE5,53.82,0.021,2000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CEEB3,43.60,-0.095,1900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CPLE5,67.14,-0.009,1800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+OSXB3,43.30,-0.020,1800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+ATED3,49.08,-0.017,1500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BAZA3,62.74,0.392,1400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+LUXM4,67.76,0.094,1400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+NGRD3,51.14,-0.070,1400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+TKNO4,55.20,-2.481,1300,"📊 Médio, 🐻 Baixa, 🪙 Fraco",18,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+BSLI4,50.23,-0.101,1200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+DOHL4,44.29,0.007,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+FHER3,47.51,0.003,1100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+CEDO4,33.33,0.154,1000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+RPMG3,47.73,-0.001,1000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+RSID3,52.57,0.003,1000,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+PTNT3,41.46,-0.022,900,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+RNEW11,60.50,0.063,800,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BMEB3,64.79,0.137,700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+REDE3,53.40,0.010,700,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PPLA11,57.32,0.009,689,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+ALPA3,65.24,0.051,600,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+CGRA3,52.95,0.112,500,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+SNSY5,45.88,0.001,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+FIEI3,54.18,-0.363,400,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+CEDO3,1.30,-0.019,400,"📉 Baixo, ⚖️ Neutra, 🪙 Fraco",18,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+DEXP4,43.68,-0.023,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+GEPA4,58.47,0.118,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+CGAS5,57.27,0.217,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+FESA3,60.61,-0.026,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BMIN4,54.76,0.085,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+EKTR4,46.09,-0.061,300,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O mercado dá presentes para quem não tem medo.” — Luiz Barsi
+BAUH4,75.48,-0.131,200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+ESTR3,94.72,0.001,200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,“É melhor esperar por uma oportunidade clara do que agir na dúvida.” — Warren Buffett
+NEXP3,39.67,0.008,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+WLMM4,48.72,0.125,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+PINE3,79.89,0.151,200,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+PATI4,53.83,-0.253,200,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+PLAS3,54.81,0.044,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+HAGA3,45.87,-0.010,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+CGAS3,53.64,-0.070,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+SOND6,63.32,-0.684,100,"📊 Médio, 🐻 Baixa, 🪙 Fraco",18,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+GSHP3,32.99,0.052,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“As melhores oportunidades vêm quando ninguém quer comprar.” — Warren Buffett
+MWET4,36.97,0.036,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“A reflexividade transforma medo em oportunidade.” — George Soros
+EKTR3,97.20,0.269,100,"📈 Alto, ⚖️ Neutra, 🪙 Fraco",48,Neutro / Transição,Observação,"“Você não pode prever, mas pode se preparar.” — Howard Marks"
+CTKA4,42.50,-0.121,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+EUCA3,43.71,-0.056,100,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
+BMKS3,54.93,-0.288,18,"📊 Médio, ⚖️ Neutra, 🪙 Fraco",25,Pânico / Fundo,Compra,“O risco está mais baixo quando o preço está mais baixo.” — Howard Marks
