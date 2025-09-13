@@ -58,10 +58,15 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             df.rename(columns={
                 'empresa':'Empresa','setor_brapi':'Setor (brapi)','logo':'Logo','perfil_acao':'Perfil da Ação',
                 'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
-                'payout_ratio':'Payout Ratio (%)','crescimento_preco':'Crescimento Preço (%)','roe':'ROE (%)',
+                'payout_ratio':'Payout Ratio (%)','crescimento_preco_5a':'Crescimento Preço (%)','roe':'ROE (%)',
                 'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
                 'DY12M':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)'
             }, inplace=True)
+
+            # Garante que colunas de DY sejam numéricas e preenche NaNs com 0
+            df['DY (Taxa 12m, %)'] = pd.to_numeric(df['DY (Taxa 12m, %)'], errors='coerce').fillna(0)
+            df['DY 5 Anos Média (%)'] = pd.to_numeric(df['DY 5 Anos Média (%)'], errors='coerce').fillna(0)
+            
             df['Ticker'] = df['ticker_base']
         except Exception as e:
             st.error(f"Falha ao montar dados base de '{base_path}': {e}")

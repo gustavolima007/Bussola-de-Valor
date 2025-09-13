@@ -4,33 +4,28 @@
 
 Este script se conecta à API Brapi para obter uma lista de todos os ativos
 disponíveis, realiza uma série de filtros e limpezas, e salva o resultado
-em arquivo CSV.
+em um arquivo CSV.
 
 Otimizações e Filtros:
 - Remove tickers fracionados (terminados em 'F').
 - Exclui BDRs (Brazilian Depositary Receipts).
 - Elimina o setor 'Miscellaneous' e ativos com setor não especificado.
-- Mapeia o setor da Brapi para o padrão hierárquico da B3 (Setor e Subsetor).
-- Corrige a classificação de empresas como Klabin, Embraer, Taurus, etc.
+- Mapeia o setor da Brapi para o padrão hierárquico da B3 (Setor e Subsetor)
+  com nomes mais descritivos.
+- Corrige a classificação de empresas como a Klabin.
 - Remove colunas desnecessárias.
 - Remove ativos específicos solicitados pelo usuário.
 - Renomeia as colunas para um padrão em português e minúsculas.
-- Salva o DataFrame em 'data/acoes_e_fundos.csv'.
+- Salva o DataFrame resultante em 'data/acoes_e_fundos.csv'.
 """
 
 import requests
 import pandas as pd
 from pathlib import Path
 import time
-import logging
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-
-# Configuração de logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 # Mapeamento do padrão da B3 para Setor e Subsetor
+# Usa o setor da Brapi (em inglês) para definir Setor e Subsetor B3.
 SETORES_B3_MAPPER = {
     "Energy Minerals": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "Non-Energy Minerals": ("Materiais Básicos", "Mineração e Siderurgia"),
@@ -44,19 +39,19 @@ SETORES_B3_MAPPER = {
     "Transportation": ("Bens Industriais", "Transporte e Logística"),
     "Retail Trade": ("Consumo Cíclico", "Comércio Varejista"),
     "Consumer Durables": ("Consumo Cíclico", "Bens Duráveis"),
-    "Consumer Services": ("Consumo Cíclico", "Serviços Educacionais"),
+    "Consumer Services": ("Consumo Cíclico", "Serviços"),
     "Commercial Services": ("Consumo Cíclico", "Serviços Comerciais"),
     "Electronic Technology": ("Tecnologia da Informação", "Hardware e Equipamentos"),
     "Technology Services": ("Tecnologia da Informação", "Serviços de Software"),
     "Communications": ("Comunicações", "Telefonia e Mídia"),
     "Consumer Non-Durables": ("Consumo Não Cíclico", "Alimentos, Bebidas e Pessoais"),
-    "Distribution Services": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-    "Real Estate": ("Financeiro e Outros", "Imobiliário")
+    "Distribution Services": ("Consumo Não Cíclico", "Comércio e Distribuição")
 }
 
-# Mapeamento de tickers específicos para correção
+# Mapeamento de tickers específicos para correção.
+# Adicione mais empresas conforme a necessidade.
 CORRECOES_ESPECIFICAS_B3 = {
-    # Energia Elétrica e Saneamento
+    # Correções de Utilitiários - Energia Elétrica e Saneamento
     "ALUP3": ("Bens Industriais", "Energia Elétrica"),
     "ALUP4": ("Bens Industriais", "Energia Elétrica"),
     "ALUP11": ("Bens Industriais", "Energia Elétrica"),
@@ -86,13 +81,14 @@ CORRECOES_ESPECIFICAS_B3 = {
     "REDE3": ("Bens Industriais", "Energia Elétrica"),
     "TAEE3": ("Bens Industriais", "Energia Elétrica"),
     "TAEE4": ("Bens Industriais", "Energia Elétrica"),
-    "TAEE11": ("Bens Industriais", "Energia Elétrica"),
+    "TAEE11": ("Bens Industriais", "Energia Elétrica"),    
     "SBSP3": ("Utilidade Pública", "Saneamento"),
     "CSMG3": ("Utilidade Pública", "Saneamento"),
     "SAPR3": ("Utilidade Pública", "Saneamento"),
     "SAPR4": ("Utilidade Pública", "Saneamento"),
     "SAPR11": ("Utilidade Pública", "Saneamento"),
-    # Correções específicas
+
+    # Outras correções que você solicitou anteriormente
     "KLBN11": ("Materiais Básicos", "Papel, Química e Outros"),
     "KLBN4": ("Materiais Básicos", "Papel, Química e Outros"),
     "KLBN3": ("Materiais Básicos", "Papel, Química e Outros"),
@@ -124,13 +120,10 @@ CORRECOES_ESPECIFICAS_B3 = {
     "EVEN3": ("Consumo Cíclico", "Construção Civil e Imobiliário"),
     "AERI3": ("Bens Industriais", "Máquinas e Equipamentos"),
     "LAND3": ("Consumo Cíclico", "Construção Civil e Imobiliário"),
-    "DESK3": ("Comunicações", "Telefonia e Mídia"),
-    "EMBR3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "TASA3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "TASA4": ("Bens Industriais", "Máquinas e Equipamentos")
+    "DESK3": ("Comunicações", "Telefonia e Mídia")
 }
 
-# Lista de tickers a serem removidos
+# Lista de tickers a serem removidos do conjunto de dados
 TICKERS_A_REMOVER = [
     "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L"
 ]
@@ -146,16 +139,14 @@ def mapear_setores_b3(df):
     Returns:
         pd.DataFrame: DataFrame com as novas colunas 'setor_b3' e 'subsetor_b3'.
     """
-    def fallback_map(setor):
-        if pd.isna(setor) or setor in ['N/A', '', 'Miscellaneous']:
-            return ('Indefinido', 'Indefinido')
-        return SETORES_B3_MAPPER.get(setor, ('Outros', 'Não Classificado'))
-
-    df[['setor_b3', 'subsetor_b3']] = df['setor_brapi'].apply(fallback_map).apply(pd.Series)
+    # Aplica o mapeamento geral
+    df[['setor_b3', 'subsetor_b3']] = df['setor_brapi'].map(SETORES_B3_MAPPER).apply(pd.Series)
     
-    # Correções manuais
+    # Aplica as correções manuais para cada ticker
     for ticker, (setor, subsetor) in CORRECOES_ESPECIFICAS_B3.items():
-        df.loc[df['ticker'] == ticker, ['setor_b3', 'subsetor_b3']] = [setor, subsetor]
+        # Usa .loc para garantir a atribuição correta
+        df.loc[df['ticker'] == ticker, 'setor_b3'] = setor
+        df.loc[df['ticker'] == ticker, 'subsetor_b3'] = subsetor
     
     return df
 
@@ -168,52 +159,42 @@ def extrair_dados_brapi():
                           e processados. Retorna None se ocorrer um erro.
     """
     api_url = "https://brapi.dev/api/quote/list"
+    csv_output = "acoes_e_fundos.csv"
     base_dir = Path(__file__).resolve().parent.parent / 'data'
-    csv_output = base_dir / "acoes_e_fundos.csv"
 
-    logger.info("Iniciando extração de dados via Brapi...")
+    print("Iniciando extração de dados via Brapi...")
     start_time = time.time()
 
     try:
-        # Configuração de retry para a API
-        session = requests.Session()
-        retry = Retry(total=3, backoff_factor=1)
-        adapter = HTTPAdapter(max_retries=retry)
-        session.mount('http://', adapter)
-        session.mount('https://', adapter)
-        response = session.get(api_url, timeout=15)
+        response = requests.get(api_url, timeout=15)
         response.raise_for_status()
-        time.sleep(1)  # Respeitar rate limit
         data = response.json()
         ativos = data.get('stocks', [])
 
         if not ativos:
-            logger.error("Nenhum ativo encontrado na resposta da API.")
+            print("Nenhum ativo encontrado na resposta da API.")
             return None
 
+        pass
         df_ativos = pd.DataFrame(ativos)
 
-        # Filtros
         df_ativos = df_ativos[
-            (~df_ativos['stock'].str.endswith('F')) &
+            ~df_ativos['stock'].str.endswith('F') &
             (df_ativos['type'] != 'bdr')
         ]
 
-        # Remover tickers específicos
+        # Removendo os tickers específicos solicitados
         df_ativos = df_ativos[~df_ativos['stock'].isin(TICKERS_A_REMOVER)]
 
-        # Filtros de setor
         df_ativos = df_ativos[
             (df_ativos['sector'] != 'Miscellaneous') &
             (df_ativos['sector'].notna()) &
             (df_ativos['sector'].str.strip() != '') &
             (df_ativos['sector'] != 'N/A')
         ]
-
-        # Renomear colunas
+        
         colunas_renomear = {
             'stock': 'ticker',
-            'name': 'empresa',
             'sector': 'setor_brapi',
             'type': 'tipo',
             'volume': 'volume',
@@ -222,46 +203,31 @@ def extrair_dados_brapi():
         }
         df_ativos = df_ativos.rename(columns=colunas_renomear)
 
-        # Preencher NaNs em empresa
-        df_ativos['empresa'] = df_ativos['empresa'].fillna(df_ativos['ticker'] + ' - Não Especificado')
-
-        # Mapeamento de setores
+        # Adiciona a nova lógica de mapeamento de setores
         df_ativos = mapear_setores_b3(df_ativos)
 
-        # Remover colunas desnecessárias
-        colunas_remover = [col for col in ['change', 'market_cap', 'close'] if col in df_ativos.columns]
+        colunas_remover = [col for col in ['change', 'market_cap', 'name', 'close'] if col in df_ativos.columns]
         if colunas_remover:
             df_ativos = df_ativos.drop(columns=colunas_remover)
-
-        # Limpeza final
+        
         df_ativos = df_ativos.fillna('N/A')
         df_ativos = df_ativos.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
         df_ativos = df_ativos.replace('', 'N/A')
-
-        # Opcional: Remover duplicatas por ticker (descomente se desejar)
-        # df_ativos = df_ativos.drop_duplicates(subset=['ticker'])
-
-        # Validações
-        unmapped = df_ativos[df_ativos['setor_b3'] == 'Indefinido']['ticker'].tolist()
-        if unmapped:
-            logger.warning(f"Setores não mapeados para tickers: {unmapped}")
-        assert df_ativos['setor_b3'].notna().all(), "Alguns setores não mapeados!"
-        assert len(df_ativos) > 0, "DataFrame vazio após filtros!"
-
-        # Salvar output
+        
         base_dir.mkdir(parents=True, exist_ok=True)
-        df_ativos.to_csv(csv_output, index=False, encoding='utf-8-sig')
-        logger.info(f"Arquivo CSV salvo: {csv_output}")
+        csv_path = base_dir / csv_output
+        df_ativos.to_csv(csv_path, index=False, encoding='utf-8-sig')
+        print(f"Arquivo CSV salvo com sucesso em: {csv_path}")
 
         elapsed_time = time.time() - start_time
-        logger.info(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos: {len(df_ativos)}")
+        print(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos: {len(df_ativos)}")
         return df_ativos
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Erro na requisição à API: {e}")
+        print(f"Erro na requisição à API: {e}")
         return None
     except Exception as e:
-        logger.error(f"Ocorreu um erro inesperado: {e}")
+        print(f"Ocorreu um erro inesperado: {e}")
         return None
 
 if __name__ == "__main__":

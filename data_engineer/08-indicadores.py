@@ -103,6 +103,10 @@ def compute_indicadores_ta(hist: pd.DataFrame) -> dict:
     return out
 
 
+NOME_EMPRESA_MANUAL = {
+    "BRST3": "Brisanet Serviços de Telecomunicações S.A"
+}
+
 def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
     ticker_yf = f"{ticker_base}.SA"
     stock = yf.Ticker(ticker_yf)
@@ -128,10 +132,11 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
     total_debt = info.get("totalDebt")
     ebitda = info.get("ebitda")
     debt_to_ebitda = (total_debt / ebitda) if ebitda and total_debt else None
+    empresa = NOME_EMPRESA_MANUAL.get(ticker_base, info.get("longName", metadata.get("empresa")))
 
     return {
         "ticker": ticker_base,
-        "empresa": info.get("longName", metadata.get("empresa")),
+        "empresa": empresa,
         "subsetor_b3": metadata.get("subsetor_b3"),
         "tipo": metadata.get("tipo"),
         "market_cap": market_cap,
