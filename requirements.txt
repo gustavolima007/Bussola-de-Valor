@@ -12,3 +12,5 @@ unidecode
 tqdm
 ta
 loguru
+rich
+requests
