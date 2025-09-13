@@ -293,64 +293,81 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
             st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
 
     with c2:
-        if not dy_data.empty:
-            st.subheader("Top 20 Maiores Pagadores (12M)")
-            dy_data['DY12M'] = pd.to_numeric(dy_data['DY12M'], errors='coerce').fillna(0)
-            top12 = dy_data.nlargest(20, 'DY12M')
-            fig12 = px.bar(top12.sort_values('DY12M'), 
-                         x='DY12M', 
-                         y='ticker', 
-                         orientation='h', 
-                         title='Top 20: Maiores DY 12 Meses', 
-                         text='DY12M')
-            fig12.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
-            fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
-                              xaxis_title="Dividend Yield (12M) %",
-                              yaxis_title="Ticker")
-            st.plotly_chart(fig12, use_container_width=True)
+        st.subheader("Calendário de Dividendos por Mês")
+        if not todos_dividendos.empty and ticker_foco:
+            serie_foco = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
+            if not serie_foco.empty:
+                serie_foco['Data'] = pd.to_datetime(serie_foco['Data'], errors='coerce')
+                serie_foco['Mes'] = serie_foco['Data'].dt.month
 
-            st.subheader("Top 20 Maiores Pagadores (5 Anos)")
-            dy_data['DY5anos'] = pd.to_numeric(dy_data['DY5anos'], errors='coerce').fillna(0)
-            top_5y = dy_data.nlargest(20, 'DY5anos')
-            fig_5y = px.bar(top_5y.sort_values('DY5anos'), 
-                          x='DY5anos', 
-                          y='ticker', 
-                          orientation='h', 
-                          title='Top 20: Maiores DY 5 Anos (Média)', 
-                          text='DY5anos')
-            fig_5y.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
-            fig_5y.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
-                               xaxis_title="Dividend Yield (5 Anos Média) %",
-                               yaxis_title="Ticker")
-            st.plotly_chart(fig_5y, use_container_width=True)
+                # Contar a frequência de dividendos por mês
+                dividendos_por_mes = serie_foco['Mes'].value_counts().sort_index()
+                
+                # Criar DataFrame para o Plotly
+                df_meses = pd.DataFrame({
+                    'Mes': range(1, 13),
+                    'Frequencia': [dividendos_por_mes.get(m, 0) for m in range(1, 13)]
+                })
+                
+                # Mapear números dos meses para nomes
+                nomes_meses = {
+                    1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun',
+                    7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'
+                }
+                df_meses['Nome_Mes'] = df_meses['Mes'].map(nomes_meses)
+
+                fig_heatmap = px.bar(df_meses, 
+                                     x='Nome_Mes', 
+                                     y='Frequencia', 
+                                     title=f"Frequência de Dividendos por Mês - {ticker_foco}",
+                                     labels={'Nome_Mes': 'Mês', 'Frequencia': 'Número de Pagamentos'},
+                                     color='Frequencia', # Adiciona calor baseado na frequência
+                                     color_continuous_scale=px.colors.sequential.Plasma) # Escala de cor
+                fig_heatmap.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+                st.plotly_chart(fig_heatmap, use_container_width=True)
+            else:
+                st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
+        elif not ticker_foco:
+            st.info("Selecione um ticker na barra lateral para ver a frequência de dividendos por mês.")
         else:
-            st.info("Nenhuma ação encontrada com os filtros atuais para exibir os gráficos de maiores pagadores.")
-            
+            st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+
     st.divider() 
     
     if not dy_data.empty:
-        st.subheader("Relação DY 12m vs DY 5 anos")
-        dyy = dy_data.copy()
-        dyy['DY12M'] = pd.to_numeric(dyy['DY12M'], errors='coerce')
-        dyy['DY5anos'] = pd.to_numeric(dyy['DY5anos'], errors='coerce')
-        dyy.dropna(subset=['DY12M','DY5anos'], inplace=True)
-        
-        # Adicionando informações do df principal (subsetor_b3) para colorir o gráfico
-        if 'subsetor_b3' in df.columns:
-            dyy = dyy.merge(df[['Ticker', 'subsetor_b3']], left_on='ticker', right_on='Ticker', how='left')
+        st.subheader("Top 20 Maiores Pagadores (12M)")
+        dy_data['DY12M'] = pd.to_numeric(dy_data['DY12M'], errors='coerce').fillna(0)
+        top12 = dy_data.nlargest(20, 'DY12M')
+        fig12 = px.bar(top12.sort_values('DY12M'), 
+                     x='DY12M', 
+                     y='ticker', 
+                     orientation='h', 
+                     title='Top 20: Maiores DY 12 Meses', 
+                     text='DY12M')
+        fig12.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
+        fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
+                          xaxis_title="Dividend Yield (12M) %",
+                          yaxis_title="Ticker")
+        st.plotly_chart(fig12, use_container_width=True)
 
-        fig_dy = px.scatter(dyy, 
-                            x='DY12M', 
-                            y='DY5anos', 
-                            color='subsetor_b3' if 'subsetor_b3' in dyy.columns else None,
-                            hover_data=['ticker'], 
-                            title='Relação DY 12m x DY 5 anos (por ticker)')
-        fig_dy.update_layout(margin=dict(l=20, r=20, t=50, b=20),
-                           xaxis_title="DY 12m (%)",
-                           yaxis_title="DY 5 anos Média (%)")
-        st.plotly_chart(fig_dy, use_container_width=True)
-    elif not dividend_yield_extra.empty:
-        st.info("Nenhuma ação corresponde aos filtros para exibir a relação de DY.")
+        st.subheader("Top 20 Maiores Pagadores (5 Anos)")
+        dy_data['DY5anos'] = pd.to_numeric(dy_data['DY5anos'], errors='coerce').fillna(0)
+        top_5y = dy_data.nlargest(20, 'DY5anos')
+        fig_5y = px.bar(top_5y.sort_values('DY5anos'), 
+                      x='DY5anos', 
+                      y='ticker', 
+                      orientation='h', 
+                      title='Top 20: Maiores DY 5 Anos (Média)', 
+                      text='DY5anos')
+        fig_5y.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
+        fig_5y.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
+                           xaxis_title="Dividend Yield (5 Anos Média) %",
+                           yaxis_title="Ticker")
+        st.plotly_chart(fig_5y, use_container_width=True)
+    else:
+        st.info("Nenhuma ação encontrada com os filtros atuais para exibir os gráficos de maiores pagadores.")
+        
+    
 
 def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Rank de Setores")
