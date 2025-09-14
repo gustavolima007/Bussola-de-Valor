@@ -425,7 +425,11 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
             "Por que investir?": "Alta geração de caixa em períodos de preços elevados de commodities, com empresas frequentemente pagando dividendos robustos. Setor estratégico com demanda global constante.",
             "Por que não investir?": "Volatilidade ligada aos preços internacionais do petróleo e gás. Riscos regulatórios e impactos ambientais podem pressionar margens e gerar custos adicionais."
         },
-        "Energia Elétrica e Saneamento": {
+        "Energia Elétrica": {
+            "Por que investir?": "Demanda estável e previsível devido à essencialidade dos serviços. Contratos de concessão longos garantem receita recorrente, ideal para dividendos consistentes.",
+            "Por que não investir?": "Forte regulação governamental e risco de interferência política. Altos investimentos em infraestrutura podem limitar o fluxo de caixa livre."
+        },
+        "Saneamento": {
             "Por que investir?": "Demanda estável e previsível devido à essencialidade dos serviços. Contratos de concessão longos garantem receita recorrente, ideal para dividendos consistentes.",
             "Por que não investir?": "Forte regulação governamental e risco de interferência política. Altos investimentos em infraestrutura podem limitar o fluxo de caixa livre."
         },

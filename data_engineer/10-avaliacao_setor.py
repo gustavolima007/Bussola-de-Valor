@@ -108,7 +108,7 @@ def main() -> None:
 
     # --- Salva ---
     resultado.to_csv(output_path, index=False, float_format="%.2f")
-    print(f"\n✅ Arquivo salvo em: {output_path}")
+    print(f"OK. Arquivo salvo em: {output_path}")
 
 
 if __name__ == "__main__":
