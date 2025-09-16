@@ -1,0 +1,26 @@
+year,index,close
+2021,Ibovespa,293.56
+2022,Ibovespa,225.0
+2023,Ibovespa,257.61
+2024,Ibovespa,407.7
+2025,Ibovespa,395.5
+2021,Small Caps,113.3
+2022,Small Caps,96.52
+2023,Small Caps,113.2
+2024,Small Caps,85.95
+2025,Small Caps,110.67
+2021,Financeiro (ETF),89.05
+2022,Financeiro (ETF),99.44
+2023,Financeiro (ETF),133.55
+2024,Financeiro (ETF),114.65
+2025,Financeiro (ETF),151.79
+2021,Materiais Básicos (ETF),60.98
+2022,Materiais Básicos (ETF),57.56
+2023,Materiais Básicos (ETF),61.9
+2024,Materiais Básicos (ETF),54.53
+2025,Materiais Básicos (ETF),51.99
+2021,Dividendos,64.25
+2022,Dividendos,72.69
+2023,Dividendos,92.2
+2024,Dividendos,90.07
+2025,Dividendos,105.13
