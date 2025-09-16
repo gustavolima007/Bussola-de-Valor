@@ -1,16 +1,1 @@
 yfinance
-fundamentus
-SQLAlchemy
-pandas
-python-dotenv
-datetime
-streamlit
-numpy
-plotly
-deep-translator
-unidecode
-tqdm
-ta
-loguru
-rich
-requests

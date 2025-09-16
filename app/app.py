@@ -3,7 +3,7 @@ import streamlit as st
 from pathlib import Path
 
 # Importando os módulos refatorados
-from data_loader import load_and_merge_data
+from data_loader import load_and_merge_data, load_ibov_score
 from components.filters import render_sidebar_filters
 from components.tabs_layout import render_tabs
 
@@ -58,11 +58,11 @@ def main():
     st.markdown(
         "Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**."
     )
-
+    
     # --- Carregamento e Processamento de Dados ---
-    # A complexidade do carregamento e merge foi abstraída para o módulo data_loader
     data_path = Path(__file__).resolve().parent.parent / 'data'
     df, all_data = load_and_merge_data(data_path)
+    ibov_score = load_ibov_score(data_path)
 
     if df.empty:
         st.warning("O DataFrame principal está vazio. A aplicação não pode continuar.")
@@ -70,7 +70,7 @@ def main():
 
     # --- Renderização da Sidebar e Filtros ---
     # O módulo de filtros cuida de toda a lógica da sidebar
-    df_filtrado, ticker_foco = render_sidebar_filters(df)
+    df_filtrado, ticker_foco = render_sidebar_filters(df, ibov_score)
 
     # --- Renderização das Abas de Conteúdo ---
     # O módulo de layout de abas cuida da exibição de todo o conteúdo principal

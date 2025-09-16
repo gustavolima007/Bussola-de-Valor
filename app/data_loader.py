@@ -148,3 +148,21 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             all_data[filename] = pd.DataFrame()
 
     return df, all_data
+
+def load_ibov_score(base_path: Path) -> str:
+    """Carrega o último valor do Ibovespa a partir do arquivo CSV."""
+    try:
+        ibov_path = base_path / 'ibovespa.csv'
+        df_ibov = read_csv_cached(ibov_path)
+        if not df_ibov.empty:
+            # Ordena por data para garantir que o último valor é o mais recente
+            df_ibov['date'] = pd.to_datetime(df_ibov['date'])
+            latest_score = df_ibov.sort_values(by='date', ascending=False)['close'].iloc[0]
+            return f"{latest_score:,.2f}".replace(",", ".") # Formata com separador de milhar
+        return "N/A"
+    except FileNotFoundError:
+        # st.warning("Arquivo 'ibovespa.csv' não encontrado.")
+        return "N/A"
+    except Exception as e:
+        # st.error(f"Erro ao carregar 'ibovespa.csv': {e}")
+        return "N/A"
