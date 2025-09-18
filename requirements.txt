@@ -1,1 +1,16 @@
+dash
+dash-ag-grid
+dash-bootstrap-components
+deep_translator
+loguru
+numpy
+pandas
+plotly
+python-dateutil
+python-dotenv
+requests
+streamlit
+ta
+tqdm
+urllib3
 yfinance
