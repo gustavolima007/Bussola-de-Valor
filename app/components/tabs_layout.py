@@ -275,62 +275,59 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     filtered_tickers = df['Ticker'].unique()
     dy_data = dividend_yield_extra[dividend_yield_extra['ticker'].isin(filtered_tickers)].copy()
 
-    c1, c2 = st.columns([1, 1])
-    with c1:
-        st.subheader("Série Temporal de Dividendos")
-        if not todos_dividendos.empty and ticker_foco:
-            serie = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
-            if not serie.empty:
-                serie['Data'] = pd.to_datetime(serie['Data'], errors='coerce')
-                fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {ticker_foco}")
-                fig_div.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-                st.plotly_chart(fig_div, use_container_width=True)
-            else:
-                st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
-        elif not ticker_foco:
-            st.info("Selecione um ticker na barra lateral para ver a série temporal de dividendos.")
+    st.subheader("Calendário de Dividendos por Mês")
+    if not todos_dividendos.empty and ticker_foco:
+        serie_foco = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
+        if not serie_foco.empty:
+            serie_foco['Data'] = pd.to_datetime(serie_foco['Data'], errors='coerce')
+            serie_foco['Mes'] = serie_foco['Data'].dt.month
+
+            # Contar a frequência de dividendos por mês
+            dividendos_por_mes = serie_foco['Mes'].value_counts().sort_index()
+            
+            # Criar DataFrame para o Plotly
+            df_meses = pd.DataFrame({
+                'Mes': range(1, 13),
+                'Frequencia': [dividendos_por_mes.get(m, 0) for m in range(1, 13)]
+            })
+            
+            # Mapear números dos meses para nomes
+            nomes_meses = {
+                1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun',
+                7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'
+            }
+            df_meses['Nome_Mes'] = df_meses['Mes'].map(nomes_meses)
+
+            fig_heatmap = px.bar(df_meses, 
+                                 x='Nome_Mes', 
+                                 y='Frequencia', 
+                                 title=f"Frequência de Dividendos por Mês - {ticker_foco}",
+                                 labels={'Nome_Mes': 'Mês', 'Frequencia': 'Número de Pagamentos'},
+                                 color='Frequencia', # Adiciona calor baseado na frequência
+                                 color_continuous_scale=px.colors.sequential.Plasma) # Escala de cor
+            fig_heatmap.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+            st.plotly_chart(fig_heatmap, use_container_width=True)
         else:
-            st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+            st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
+    elif not ticker_foco:
+        st.info("Selecione um ticker na barra lateral para ver a frequência de dividendos por mês.")
+    else:
+        st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
 
-    with c2:
-        st.subheader("Calendário de Dividendos por Mês")
-        if not todos_dividendos.empty and ticker_foco:
-            serie_foco = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
-            if not serie_foco.empty:
-                serie_foco['Data'] = pd.to_datetime(serie_foco['Data'], errors='coerce')
-                serie_foco['Mes'] = serie_foco['Data'].dt.month
-
-                # Contar a frequência de dividendos por mês
-                dividendos_por_mes = serie_foco['Mes'].value_counts().sort_index()
-                
-                # Criar DataFrame para o Plotly
-                df_meses = pd.DataFrame({
-                    'Mes': range(1, 13),
-                    'Frequencia': [dividendos_por_mes.get(m, 0) for m in range(1, 13)]
-                })
-                
-                # Mapear números dos meses para nomes
-                nomes_meses = {
-                    1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun',
-                    7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'
-                }
-                df_meses['Nome_Mes'] = df_meses['Mes'].map(nomes_meses)
-
-                fig_heatmap = px.bar(df_meses, 
-                                     x='Nome_Mes', 
-                                     y='Frequencia', 
-                                     title=f"Frequência de Dividendos por Mês - {ticker_foco}",
-                                     labels={'Nome_Mes': 'Mês', 'Frequencia': 'Número de Pagamentos'},
-                                     color='Frequencia', # Adiciona calor baseado na frequência
-                                     color_continuous_scale=px.colors.sequential.Plasma) # Escala de cor
-                fig_heatmap.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-                st.plotly_chart(fig_heatmap, use_container_width=True)
-            else:
-                st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
-        elif not ticker_foco:
-            st.info("Selecione um ticker na barra lateral para ver a frequência de dividendos por mês.")
+    st.subheader("Série Temporal de Dividendos")
+    if not todos_dividendos.empty and ticker_foco:
+        serie = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
+        if not serie.empty:
+            serie['Data'] = pd.to_datetime(serie['Data'], errors='coerce')
+            fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {ticker_foco}")
+            fig_div.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+            st.plotly_chart(fig_div, use_container_width=True)
         else:
-            st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+            st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
+    elif not ticker_foco:
+        st.info("Selecione um ticker na barra lateral para ver a série temporal de dividendos.")
+    else:
+        st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
 
     st.divider() 
     

@@ -28,7 +28,8 @@ def render_sidebar_filters(df: pd.DataFrame, ibov_score: str) -> pd.DataFrame:
     }
     perfis_raw = [p for p in df['Perfil da Ação'].dropna().unique().tolist()]
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
-    perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_disponiveis)
+    perfis_default = [p for p in perfis_disponiveis if p not in ['Penny Stock < 1R$', 'Micro Cap  < 2B']]
+    perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_default)
 
     tickers_disponiveis = sorted(df['Ticker'].dropna().unique().tolist())
     ticker_foco_opt = ["— Todos —"] + tickers_disponiveis
@@ -38,7 +39,7 @@ def render_sidebar_filters(df: pd.DataFrame, ibov_score: str) -> pd.DataFrame:
     # --- Filtros de Indicadores ---
     score_range = st.sidebar.slider("Faixa de Score", 0, 200, (100, 200))
     subsetor_score_min = st.sidebar.slider("Score Mínimo do Subsetor", 0, 100, 50)
-    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 0.0, 0.1)
+    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
     df['subsetor_b3'] = df['subsetor_b3'].fillna('Não categorizado')
