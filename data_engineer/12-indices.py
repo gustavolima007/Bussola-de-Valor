@@ -9,7 +9,7 @@ Objetivo:
 - Substituir índices teóricos por ETFs equivalentes quando necessário.
 - Gerar um arquivo CSV consolidado com os dados em: ../data/indices.csv
 Índices incluídos:
-- Ibovespa (IVVB11.SA)
+- Ibovespa (BOVA11.SA)
 - Small Caps (SMAL11.SA)
 - Financeiro (FIND11.SA)
 - Materiais Básicos (MATB11.SA)
@@ -22,7 +22,7 @@ Notas:
 base_path = os.path.join(os.path.dirname(__file__), '..', 'data')
 output_annual_path = os.path.join(base_path, 'indices.csv')
 indices = {
-    "IVVB11.SA": "Ibovespa",
+    "BOVA11.SA": "iShares Ibovespa",
     "SMAL11.SA": "Small Caps",
     "FIND11.SA": "Financeiro (ETF)",
     "MATB11.SA": "Materiais Básicos (ETF)",

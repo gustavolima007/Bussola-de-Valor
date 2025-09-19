@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 
-def render_sidebar_filters(df: pd.DataFrame, ibov_score: str) -> pd.DataFrame:
+def render_sidebar_filters(df: pd.DataFrame, ibov_score: float, ibov_delta: float) -> pd.DataFrame:
     """
     Renderiza todos os filtros e ordenação na sidebar e retorna o DataFrame filtrado.
     """
@@ -67,10 +67,10 @@ def render_sidebar_filters(df: pd.DataFrame, ibov_score: str) -> pd.DataFrame:
         index=0
     )
     asc = st.sidebar.radio("Ordem", ["Decrescente", "Crescente"], index=0) == "Crescente"
-    st.sidebar.metric(label="Ibovespa", value=ibov_score)
-    
     df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
-    
-    df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
+
+    # --- Índices ---
+    st.sidebar.header("📈 Índices")
+    st.sidebar.metric(label="iShares Ibovespa BOVA11", value=ibov_score, delta=f"{ibov_delta:.2f}% (1Y)")
 
     return df_filtrado, ticker_foco

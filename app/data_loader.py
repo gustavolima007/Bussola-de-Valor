@@ -149,21 +149,38 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
 
     return df, all_data
 
-def load_ibov_score(data_path: Path) -> float:
+def load_ibov_score(data_path: Path) -> tuple[float, float]:
     """
-    Carrega o valor de fechamento mais recente do índice Ibovespa a partir do arquivo indices.csv.
+    Carrega o valor de fechamento mais recente do índice Ibovespa e a variação percentual
+    em relação ao ano anterior.
 
     Args:
         data_path (Path): Caminho para a pasta de dados.
 
     Returns:
-        float: Valor de fechamento mais recente do índice Ibovespa.
+        tuple[float, float]: Valor de fechamento mais recente e a variação percentual.
+                             Retorna (NaN, NaN) em caso de erro.
     """
     file_path = data_path / "indices.csv"
     try:
         df = pd.read_csv(file_path)
-        # Considera o último valor disponível
-        valor_ibovespa = df["close"].iloc[-1]
-        return valor_ibovespa
+        ibov_df = df[df['index'] == 'iShares Ibovespa'].sort_values('year', ascending=False)
+        
+        if len(ibov_df) < 2:
+            # Retorna o valor mais recente se não houver dados para comparar
+            latest_close = ibov_df['close'].iloc[0] if not ibov_df.empty else float('nan')
+            return latest_close, float('nan')
+
+        latest_close = ibov_df['close'].iloc[0]
+        previous_close = ibov_df['close'].iloc[1]
+        
+        # Evita divisão por zero
+        if previous_close == 0:
+            delta = float('inf') if latest_close > 0 else 0.0
+        else:
+            delta = ((latest_close - previous_close) / previous_close) * 100
+            
+        return latest_close, delta
+
     except (FileNotFoundError, KeyError, IndexError):
-        return float("nan")
+        return float("nan"), float("nan")
