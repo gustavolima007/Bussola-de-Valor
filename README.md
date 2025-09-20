@@ -22,11 +22,11 @@ Este projeto utiliza um stack tecnológico moderno e integrado para coleta, arma
 ## 🧠 Filosofia do Investidor Inteligente
 
 ### Critérios de Pontuação (Score)
-A pontuação de cada ação soma critérios fundamentalistas, totalizando até **200 pontos**:
+A pontuação de cada ação soma critérios fundamentalistas e técnicos, totalizando até **200 pontos**:
 
 1. **Dividend Yield (DY) – até 45 pts**
    - DY 12 meses: >5% (+20), 3.5%-5% (+15), 2%-3.5% (+10), <2% (-5)
-   - DY média 5 anos: >8% (+25), 6%-8% (+20), 4%-6% (+10)
+   - DY média 5 anos: >8% (+25), 6%-8% (+20), 4%-6% (+10), 0%<DY<2% (-5)
 
 2. **Valuation (P/L e P/VP) – até 35 pts**
    - P/L: <12 (+15), 12-18 (+10), >25 (-5)
@@ -35,7 +35,7 @@ A pontuação de cada ação soma critérios fundamentalistas, totalizando até 
 3. **Rentabilidade e Gestão (ROE e Payout) – até 35 pts**
    - ROE (Financeiro): >15% (+25), 12%-15% (+20), 8%-12% (+10)
    - ROE (Outros): >12% (+15), 8%-12% (+5)
-   - Payout: 30%-60% (+10), 60%-80% (+5), fora de 20%-80% (-5)
+   - Payout: 30%-60% (+10), 60%-80% (+5), 0%<Payout<20% ou >80% (-5)
 
 4. **Saúde Financeira (Endividamento) – até 20 pts**
    - Dívida/Market Cap: <0.5 (+10), 0.5-1.0 (+5), >2.0 (-5)
@@ -44,6 +44,12 @@ A pontuação de cada ação soma critérios fundamentalistas, totalizando até 
 5. **Crescimento e Sentimento – até 25 pts**
    - Crescimento preço 5 anos: >15% (+15), 10%-15% (+10), 5%-10% (+5), <0% (-5)
    - Sentimento do mercado: -5 a +10 (proporcional à nota de 0 a 100)
+
+6. **Ciclo de Mercado (Timing) – de -15 a +15 pts**
+   - Análise técnica (RSI, MACD, Volume) para identificar o momento psicológico do mercado.
+   - Compra (Pânico / Medo Extremo): **+15 pontos**
+   - Observação (Neutro / Incerteza): **0 pontos**
+   - Venda (Euforia / Ganância Extrema): **-15 pontos**
 
 ---
 

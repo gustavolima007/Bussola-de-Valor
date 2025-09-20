@@ -125,6 +125,22 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     except Exception as e:
         st.warning(f"Erro ao processar 'avaliacao_setor.csv': {e}")
 
+    # --- Merge com Ciclo de Mercado ---
+    try:
+        df_ciclo = read_csv_cached(base_path / 'ciclo_mercado.csv')
+        if not df_ciclo.empty:
+            # Renomear a coluna de status e selecionar as colunas de interesse
+            df_ciclo_to_merge = df_ciclo[['Ticker', 'Status 🟢🔴']].rename(columns={'Status 🟢🔴': 'Status Ciclo'})
+            # Normalizar o ticker para o merge
+            df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['Ticker'].str.strip().str.upper()
+            df_ciclo_to_merge.set_index('ticker_base', inplace=True)
+            # Fazer o merge com o dataframe principal
+            df = df.merge(df_ciclo_to_merge[['Status Ciclo']], left_on='Ticker', right_index=True, how='left')
+            # Preencher valores nulos na nova coluna, se houver
+            df['Status Ciclo'].fillna('N/A', inplace=True)
+    except Exception as e:
+        st.warning(f"Não foi possível fazer o merge com os dados de ciclo de mercado: {e}")
+
     # Limpa colunas auxiliares de merge
     df.drop(columns=[col for col in df.columns if 'ticker_base' in str(col)], inplace=True, errors='ignore')
 

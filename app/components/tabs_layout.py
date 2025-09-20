@@ -21,7 +21,7 @@ def style_alvo(val):
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Status Ciclo', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor'})
     
     st.dataframe(

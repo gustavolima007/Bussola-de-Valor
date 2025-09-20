@@ -123,8 +123,9 @@ def montar_ciclo_mercado(df_ind: pd.DataFrame) -> pd.DataFrame:
         frase = random.choice(frases_por_ciclo[ciclo])
         frase_final = f"“{frase['frase']}” — {frase['autor']}"
 
+        # Usa 'ticker' como chave para consistência com outros scripts
         linhas.append({
-            "Ticker": row['Ticker'],
+            "ticker": row['Ticker'],
             "RSI (Sentimento)": None if pd.isna(rsi_val) else f"{rsi_val:.2f}",
             "MACD (Tendência)": None if pd.isna(macd_val) else f"{macd_val:.3f}",
             "Volume (Convicção)": None if pd.isna(vol_val) else f"{vol_val:.0f}",
@@ -136,7 +137,7 @@ def montar_ciclo_mercado(df_ind: pd.DataFrame) -> pd.DataFrame:
         })
 
     cols = [
-        "Ticker", "RSI (Sentimento)", "MACD (Tendência)", "Volume (Convicção)",
+        "ticker", "RSI (Sentimento)", "MACD (Tendência)", "Volume (Convicção)",
         "Classificação 🧭", "Score 📈", "Ciclo de Mercado", "Status 🟢🔴", "Frase 💬",
     ]
     return pd.DataFrame(linhas)[cols]

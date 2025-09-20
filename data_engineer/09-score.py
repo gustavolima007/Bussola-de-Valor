@@ -30,6 +30,7 @@ BASE = Path(__file__).resolve().parent.parent / "data"
 FN_INDICADORES = BASE / "indicadores.csv"
 FN_DY = BASE / "dividend_yield.csv"
 FN_PRECO_TETO = BASE / "preco_teto.csv"
+FN_CICLO_MERCADO = BASE / "ciclo_mercado.csv"
 FN_OUT = BASE / "scores.csv"
 
 # --- Funções de Carregamento e Preparação ---
@@ -39,14 +40,16 @@ def load_and_prepare_data() -> pd.DataFrame:
     indicadores = pd.read_csv(FN_INDICADORES)
     dy = pd.read_csv(FN_DY)
     preco_teto = pd.read_csv(FN_PRECO_TETO)
+    ciclo_mercado = pd.read_csv(FN_CICLO_MERCADO)
 
     # Normaliza os tickers para a junção
-    for df in [indicadores, dy, preco_teto]:
+    for df in [indicadores, dy, preco_teto, ciclo_mercado]:
         df['ticker_base'] = df['ticker'].str.strip().str.upper()
 
     # Junta os DataFrames
     df_merged = pd.merge(indicadores, dy, on='ticker_base', how='left', suffixes=('', '_dy'))
     df_merged = pd.merge(df_merged, preco_teto, on='ticker_base', how='left', suffixes=('', '_teto'))
+    df_merged = pd.merge(df_merged, ciclo_mercado, on='ticker_base', how='left', suffixes=('', '_ciclo'))
 
     # Converte colunas para numérico, tratando erros
     num_cols = [
@@ -58,7 +61,7 @@ def load_and_prepare_data() -> pd.DataFrame:
         if col in df_merged.columns:
             df_merged[col] = pd.to_numeric(df_merged[col], errors='coerce')
             
-    return df_merged.drop(columns=['ticker_dy', 'ticker_teto'], errors='ignore')
+    return df_merged.drop(columns=['ticker_dy', 'ticker_teto', 'ticker_ciclo'], errors='ignore')
 
 # --- Funções de Pontuação (Score) ---
 # Cada função atribui pontos com base em critérios predefinidos para um indicador.
@@ -138,6 +141,14 @@ def score_crescimento_sentimento(crescimento, sentimento):
         score += ((sentimento - 50) / 50.0) * (10 if sentimento >= 50 else 5)
     return score
 
+def score_ciclo_mercado(status_ciclo):
+    """Pontuação baseada no status do ciclo de mercado."""
+    if pd.isna(status_ciclo): return 0
+    if status_ciclo == 'Compra': return 15
+    if status_ciclo == 'Venda': return -15
+    # 'Observação' ou qualquer outro valor
+    return 0
+
 # --- Função Principal de Execução ---
 def main():
     """Orquestra a execução do script: carrega, processa e salva os scores."""
@@ -157,8 +168,9 @@ def main():
         s_pl_pvp = score_pl_pvp(row.get('p_l'), row.get('p_vp'))
         s_divida = score_divida(div_mc, row.get('divida_ebitda'), setor)
         s_cresc_sent = score_crescimento_sentimento(row.get('crescimento_preco_5a'), row.get('sentimento_gauge'))
+        s_ciclo = score_ciclo_mercado(row.get('Status 🟢🔴'))
         
-        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent
+        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent + s_ciclo
         
         scores_data.append({
             'ticker_base': row['ticker_base'],
@@ -168,6 +180,7 @@ def main():
             'score_pl_pvp': s_pl_pvp,
             'score_divida': s_divida,
             'score_crescimento_sentimento': s_cresc_sent,
+            'score_ciclo_mercado': s_ciclo,
             'score_total': max(0, min(200, score_total)) # Clamping entre 0 e 200
         })
 
