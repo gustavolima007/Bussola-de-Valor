@@ -149,38 +149,41 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
 
     return df, all_data
 
-def load_ibov_score(data_path: Path) -> tuple[float, float]:
+def load_indices_scores(data_path: Path) -> dict:
     """
-    Carrega o valor de fechamento mais recente do índice Ibovespa e a variação percentual
+    Carrega os valores de fechamento mais recentes dos índices e a variação percentual
     em relação ao ano anterior.
 
     Args:
         data_path (Path): Caminho para a pasta de dados.
 
     Returns:
-        tuple[float, float]: Valor de fechamento mais recente e a variação percentual.
-                             Retorna (NaN, NaN) em caso de erro.
+        dict: Dicionário com os dados de cada índice.
+              Ex: {'iShares Ibovespa': {'score': 142.79, 'delta': 9.51}}
     """
     file_path = data_path / "indices.csv"
+    indices_data = {}
     try:
         df = pd.read_csv(file_path)
-        ibov_df = df[df['index'] == 'iShares Ibovespa'].sort_values('year', ascending=False)
         
-        if len(ibov_df) < 2:
-            # Retorna o valor mais recente se não houver dados para comparar
-            latest_close = ibov_df['close'].iloc[0] if not ibov_df.empty else float('nan')
-            return latest_close, float('nan')
-
-        latest_close = ibov_df['close'].iloc[0]
-        previous_close = ibov_df['close'].iloc[1]
-        
-        # Evita divisão por zero
-        if previous_close == 0:
-            delta = float('inf') if latest_close > 0 else 0.0
-        else:
-            delta = ((latest_close - previous_close) / previous_close) * 100
+        for index_name in df['index'].unique():
+            index_df = df[df['index'] == index_name].sort_values('year', ascending=False)
             
-        return latest_close, delta
+            if len(index_df) < 2:
+                latest_close = index_df['close'].iloc[0] if not index_df.empty else float('nan')
+                delta = float('nan')
+            else:
+                latest_close = index_df['close'].iloc[0]
+                previous_close = index_df['close'].iloc[1]
+                
+                if previous_close == 0:
+                    delta = float('inf') if latest_close > 0 else 0.0
+                else:
+                    delta = ((latest_close - previous_close) / previous_close) * 100
+            
+            indices_data[index_name] = {'score': latest_close, 'delta': delta}
+            
+        return indices_data
 
     except (FileNotFoundError, KeyError, IndexError):
-        return float("nan"), float("nan")
+        return {}

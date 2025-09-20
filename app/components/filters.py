@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 
-def render_sidebar_filters(df: pd.DataFrame, ibov_score: float, ibov_delta: float) -> pd.DataFrame:
+def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.DataFrame, str | None]:
     """
     Renderiza todos os filtros e ordenação na sidebar e retorna o DataFrame filtrado.
     """
@@ -71,6 +71,21 @@ def render_sidebar_filters(df: pd.DataFrame, ibov_score: float, ibov_delta: floa
 
     # --- Índices ---
     st.sidebar.header("📈 Índices")
-    st.sidebar.metric(label="iShares Ibovespa BOVA11", value=ibov_score, delta=f"{ibov_delta:.2f}% (1Y)")
+    
+    index_labels = {
+        "iShares Ibovespa": "iShares Ibovespa BOVA11",
+        "Small Caps": "Small Caps SMAL11",
+        "Financeiro (ETF)": "Financeiro FIND11",
+        "Materiais Básicos (ETF)": "Materiais Básicos MATB11",
+        "Dividendos": "Dividendos DIVO11"
+    }
+
+    for index_name, data in indices_scores.items():
+        label = index_labels.get(index_name, index_name)
+        score = data.get('score', float('nan'))
+        delta = data.get('delta', float('nan'))
+        
+        if pd.notna(score):
+            st.sidebar.metric(label=label, value=f"{score:.2f}", delta=f"{delta:.2f}% (1Y)" if pd.notna(delta) else None)
 
     return df_filtrado, ticker_foco
