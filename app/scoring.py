@@ -82,6 +82,25 @@ def calculate_score_and_details(row: pd.Series) -> tuple[float, list[str]]:
         sentiment_score = ((sentiment_gauge - 50) / 50) * 5
         details.append(f"Sentimento ({sentiment_gauge:.0f}/100) Negativo: **{sentiment_score:.1f}**")
     score += sentiment_score
+
+    # Critério: Margem de Segurança (Graham)
+    graham_margin = row.get('margem_seguranca_percent')
+    if graham_margin is not None:
+        if graham_margin > 100:
+            score += 20
+            details.append(f"Margem Graham ({graham_margin:.2f}%) > 100%: **+20**")
+        elif graham_margin >= 50:
+            score += 15
+            details.append(f"Margem Graham ({graham_margin:.2f}%) >= 50%: **+15**")
+        elif graham_margin >= 20:
+            score += 10
+            details.append(f"Margem Graham ({graham_margin:.2f}%) >= 20%: **+10**")
+        elif graham_margin >= 0:
+            score += 5
+            details.append(f"Margem Graham ({graham_margin:.2f}%) >= 0%: **+5**")
+        else:
+            score -= 10
+            details.append(f"Margem Graham ({graham_margin:.2f}%) < 0%: **-10**")
     
     return max(0, min(200, score)), details
 

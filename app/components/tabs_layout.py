@@ -19,19 +19,119 @@ def style_alvo(val):
     color = '#3dd56d' if val >= 0 else '#ff4b4b'
     return f'color: {color}'
 
+def style_graham(val):
+    """Aplica cor baseada na margem de segurança Graham."""
+    if pd.isna(val):
+        return ''
+    if val > 100:
+        color = '#3dd56d'  # Verde para excepcional (>100%)
+    elif val >= 50:
+        color = '#3dd56d'  # Verde para muito boa (50-100%)
+    elif val >= 20:
+        color = '#ffaa00'  # Amarelo para boa (20-50%)
+    elif val >= 0:
+        color = '#ffaa00'  # Amarelo para aceitável (0-20%)
+    else:
+        color = '#ff4b4b'  # Vermelho para risco (<0%)
+    return f'color: {color}'
+
+def style_pl(val):
+    """Aplica cor baseada no P/L."""
+    if pd.isna(val) or val <= 0:
+        return ''
+    if val < 12:
+        color = '#3dd56d'  # Verde
+    elif val < 18:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_pvp(val):
+    """Aplica cor baseada no P/VP."""
+    if pd.isna(val) or val <= 0:
+        return ''
+    if val < 1.5:
+        color = '#3dd56d'  # Verde
+    elif val < 2.5:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_payout(val):
+    """Aplica cor baseada no Payout."""
+    if pd.isna(val):
+        return ''
+    if 30 <= val <= 80:
+        color = '#3dd56d'  # Verde
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_roe(val):
+    """Aplica cor baseada no ROE."""
+    if pd.isna(val):
+        return ''
+    if val > 15:
+        color = '#3dd56d'  # Verde
+    elif val > 8:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_div_mc(val):
+    """Aplica cor baseada na Dívida/Market Cap."""
+    if pd.isna(val):
+        return ''
+    if val < 0.5:
+        color = '#3dd56d'  # Verde
+    elif val < 1.0:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_div_ebitda(val):
+    """Aplica cor baseada na Dívida/EBITDA."""
+    if pd.isna(val) or val < 0:
+        return ''
+    if val < 2:
+        color = '#3dd56d'  # Verde
+    elif val < 4:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
+def style_cresc(val):
+    """Aplica cor baseada no Crescimento Preço (5A)."""
+    if pd.isna(val):
+        return ''
+    if val > 15:
+        color = '#3dd56d'  # Verde
+    elif val > 5:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Status Ciclo', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
-    df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor'})
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
+    df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
     
     st.dataframe(
         df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
-                         .map(style_alvo, subset=['Alvo']),
+                         .map(style_alvo, subset=['Alvo'])
+                         .map(style_graham, subset=['Margem de Segurança %']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
+            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%"),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
@@ -43,20 +143,30 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
     st.header(f"📋 Ranking Detalhado ({len(df)} ações encontradas)")
     cols = [
         'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual',
-        'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
-        'ROE (%)', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
+        'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
+        'ROE (%)', 'Dívida/Market Cap', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
     ]
-    df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor'})
+    df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
     
     st.dataframe(
-        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)']),
+        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
+                         .map(style_graham, subset=['Margem de Segurança %'])
+                         .map(style_pl, subset=['P/L'])
+                         .map(style_pvp, subset=['P/VP'])
+                         .map(style_payout, subset=['Payout Ratio (%)'])
+                         .map(style_roe, subset=['ROE (%)'])
+                         .map(style_div_mc, subset=['Dívida/Market Cap'])
+                         .map(style_div_ebitda, subset=['Dívida/EBITDA'])
+                         .map(style_cresc, subset=['Crescimento Preço (%)']),
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
+            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%"),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
             "Payout Ratio (%)": st.column_config.NumberColumn("Payout", format="%.1f%% "),
             "ROE (%)": st.column_config.NumberColumn("ROE", format="%.2f%% "),
+            "Dívida/Market Cap": st.column_config.NumberColumn("Dív/MCap", format="%.2f"),
             "Dívida/EBITDA": st.column_config.NumberColumn("Dív/EBITDA", format="%.2f"),
             "Crescimento Preço (%)": st.column_config.NumberColumn("Cresc. 5A", format="%.1f%% "),
             "Sentimento Gauge": st.column_config.NumberColumn("Sentimento", format="%d/100"),
@@ -82,7 +192,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
     st.subheader(f"{acao['Empresa']} ({ticker_selecionado})")
 
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("PreçoAtual", f"R$ {acao.get('PreçoAtual', 0):.2f}")
+    c1.metric("Preço Atual", f"R$ {acao.get('Preço Atual', 0):.2f}")
     c2.metric("P/L", f"{acao.get('P/L', 0):.2f}")
     c3.metric("P/VP", f"{acao.get('P/VP', 0):.2f}")
     c4.metric("DY 12m", f"{acao.get('DY (Taxa 12m, %)', 0):.2f}%")
@@ -209,6 +319,22 @@ def render_tab_guia():
                 - Varia de **-5 a +10 pontos**, proporcional à nota de 0 a 100.
         ''')
 
+    with st.expander("6. Ciclo de Mercado e Fórmula de Graham - Até +35 pontos"):
+        st.markdown('''
+        - **O que são?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado. A **Fórmula de Graham** calcula o "preço justo" (`√(22.5 * LPA * VPA)`) para encontrar a margem de segurança.
+        - **Por que analisar?** Juntos, eles respondem "o quê comprar" (Graham) e "quando comprar" (Ciclo). Comprar ativos com alta margem de segurança durante períodos de pânico é uma estratégia poderosa.
+        - **Cálculo do Score (Ciclo):**
+            - Compra (Pânico): **+15 pontos**
+            - Observação (Neutro): **0 pontos**
+            - Venda (Euforia): **-15 pontos**
+        - **Cálculo do Score (Graham):**
+            - Margem > 100%: **+20 pontos**
+            - Margem 50% a 100%: **+15 pontos**
+            - Margem 20% a 50%: **+10 pontos**
+            - Margem 0% a 20%: **+5 pontos**
+            - Margem < 0%: **-10 pontos**
+        ''')
+
     st.markdown("---")
     st.subheader("Guia de Perfil da Ação")
     st.markdown('''
@@ -235,31 +361,34 @@ def render_tab_insights(df: pd.DataFrame):
     fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
     st.plotly_chart(fig_bar, use_container_width=True)
     
-    st.divider() 
-    
-    c1, c2 = st.columns([1, 1])
-    with c1:
-        st.subheader("DY 12m vs. P/L")
-        fig = px.scatter(df, x='P/L', y='DY (Taxa 12m, %)', color='subsetor_b3', hover_data=['Ticker'])
-        fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-        st.plotly_chart(fig, use_container_width=True)
-        
-        st.subheader("Distribuição de P/L (Histograma)")
-        query_df = df.query("`P/L` > 0 and `P/L` < 50")
-        fig_hist = px.histogram(query_df, x='P/L', nbins=30, title='Distribuição de P/L (0 a 50)')
-        fig_hist.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-        st.plotly_chart(fig_hist, use_container_width=True)
+    st.divider()
 
-    with c2:
-        st.subheader("DY 5 anos vs. P/VP")
-        fig = px.scatter(df, x='P/VP', y='DY 5 Anos Média (%)', color='subsetor_b3', hover_data=['Ticker'])
-        fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-        st.plotly_chart(fig, use_container_width=True)
-        
-        st.subheader("Score por Subsetor (Boxplot)")
-        fig_box = px.box(df, x='subsetor_b3', y='Score Total', title='Score por Subsetor')
-        fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
-        st.plotly_chart(fig_box, use_container_width=True)
+    st.subheader("DY 12m vs. P/L")
+    fig = px.scatter(df, x='P/L', y='DY (Taxa 12m, %)', color='subsetor_b3', hover_data=['Ticker'])
+    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    st.subheader("Distribuição de P/L (Histograma)")
+    query_df = df.query("`P/L` > 0 and `P/L` < 50")
+    fig_hist = px.histogram(query_df, x='P/L', nbins=30, title='Distribuição de P/L (0 a 50)')
+    fig_hist.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+    st.plotly_chart(fig_hist, use_container_width=True)
+
+    st.divider()
+
+    st.subheader("DY 5 anos vs. P/VP")
+    fig = px.scatter(df, x='P/VP', y='DY 5 Anos Média (%)', color='subsetor_b3', hover_data=['Ticker'])
+    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+    st.plotly_chart(fig, use_container_width=True)
+    
+    st.divider()
+
+    st.subheader("Score por Subsetor (Boxplot)")
+    fig_box = px.box(df, x='subsetor_b3', y='Score Total', title='Score por Subsetor')
+    fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
+    st.plotly_chart(fig_box, use_container_width=True)
 
 def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     st.header("🔍 Análise de Dividendos")
@@ -532,12 +661,15 @@ def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
     df_ciclo = df_ciclo_raw.rename(columns={'Status 🟢🔴': 'Status'})
     
     # Use df_unfiltered to get subsetor_b3 for all tickers
-    if 'subsetor_b3' not in df_ciclo.columns and 'Ticker' in df_unfiltered.columns and 'subsetor_b3' in df_unfiltered.columns:
+    ticker_col_name = 'Ticker' if 'Ticker' in df_unfiltered.columns else 'ticker_base'
+    
+    if 'subsetor_b3' not in df_ciclo.columns and ticker_col_name in df_unfiltered.columns and 'subsetor_b3' in df_unfiltered.columns:
         df_ciclo = pd.merge(
             df_ciclo,
-            df_unfiltered[['Ticker', 'subsetor_b3']].drop_duplicates(),
-            on='Ticker',
-            how='left'
+            df_unfiltered[[ticker_col_name, 'subsetor_b3']].drop_duplicates(),
+            left_on='ticker',  # Coluna em df_ciclo (minúsculo)
+            right_on=ticker_col_name, # Coluna em df_unfiltered (pode ser 'Ticker' ou 'ticker_base')
+            how='left'         # Mantém todos os dados de ciclo
         )
 
     if 'subsetor_b3' not in df_ciclo.columns or df_ciclo['subsetor_b3'].isnull().all():

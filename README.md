@@ -51,6 +51,14 @@ A pontuação de cada ação soma critérios fundamentalistas e técnicos, total
    - Observação (Neutro / Incerteza): **0 pontos**
    - Venda (Euforia / Ganância Extrema): **-15 pontos**
 
+7. **Fórmula de Graham (Margem de Segurança) – de -10 a +20 pts**
+   - Análise do "preço justo" (`√(22.5 * LPA * VPA)`) em relação ao preço atual.
+   - Margem > 100% (Excepcional): **+20 pontos**
+   - Margem 50% a 100% (Muito Boa): **+15 pontos**
+   - Margem 20% a 50% (Boa): **+10 pontos**
+   - Margem 0% a 20% (Aceitável): **+5 pontos**
+   - Margem < 0% (Risco/Cara): **-10 pontos**
+
 ---
 
 ## 📊 Guia de Perfil da Ação

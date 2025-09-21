@@ -42,13 +42,8 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
-    df['subsetor_b3'] = df['subsetor_b3'].fillna('Não categorizado')
-    subsetores_disponiveis = sorted(df['subsetor_b3'].unique().tolist())
-    subsetor_filtro = st.sidebar.multiselect("Subsetores", subsetores_disponiveis, default=subsetores_disponiveis)
-
     # --- Lógica de Filtragem ---
     df_filtrado = df[
-        (df['subsetor_b3'].isin(subsetor_filtro)) &
         (df['Perfil da Ação'].isin(perfil_filtro)) &
         (df['Score Total'].between(score_range[0], score_range[1])) &
         (df['DY (Taxa 12m, %)'] >= dy_min) &
@@ -59,15 +54,8 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
     if ticker_foco:
         df_filtrado = df_filtrado[df_filtrado['Ticker'] == ticker_foco]
 
-    # --- Ordenação ---
-    st.sidebar.header("📊 Ordenação")
-    col_ordem = st.sidebar.selectbox(
-        "Ordenar por",
-        ['Score Total', 'DY 5 Anos Média (%)', 'DY (Taxa 12m, %)', 'Alvo', 'P/L', 'P/VP'],
-        index=0
-    )
-    asc = st.sidebar.radio("Ordem", ["Decrescente", "Crescente"], index=0) == "Crescente"
-    df_filtrado = df_filtrado.sort_values(by=col_ordem, ascending=asc)
+    # Ordenação padrão por Score Total
+    df_filtrado = df_filtrado.sort_values(by='Score Total', ascending=False)
 
     # --- Índices ---
     st.sidebar.header("📈 Índices")

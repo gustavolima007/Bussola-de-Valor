@@ -30,6 +30,15 @@ def load_main_data(path: str) -> pd.DataFrame:
         for col in ["Data Últ. Div.", "Data Ex-Div."]:
             if col in df.columns:
                 df[col] = pd.to_datetime(df[col], errors='coerce')
+        # Renomear colunas de recomendação para maiúsculo
+        rename_dict = {
+            'strong_buy': 'Strong Buy',
+            'buy': 'Buy',
+            'hold': 'Hold',
+            'sell': 'Sell',
+            'strong_sell': 'Strong Sell'
+        }
+        df.rename(columns={k: v for k, v in rename_dict.items() if k in df.columns}, inplace=True)
         df['Ticker'] = df.index.str.replace('.SA', '')
         return df
     except Exception as e:
@@ -60,12 +69,17 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
                 'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
                 'payout_ratio':'Payout Ratio (%)','crescimento_preco_5a':'Crescimento Preço (%)','roe':'ROE (%)',
                 'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
-                'DY12M':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)'
+                'DY12M':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)',
+                'strong_buy': 'Strong Buy', 'buy': 'Buy', 'hold': 'Hold', 'sell': 'Sell', 'strong_sell': 'Strong Sell'
             }, inplace=True)
 
-            # Garante que colunas de DY sejam numéricas e preenche NaNs com 0
-            df['DY (Taxa 12m, %)'] = pd.to_numeric(df['DY (Taxa 12m, %)'], errors='coerce').fillna(0)
-            df['DY 5 Anos Média (%)'] = pd.to_numeric(df['DY 5 Anos Média (%)'], errors='coerce').fillna(0)
+            # Garante que colunas de DY e recomendação sejam numéricas e preenche NaNs com 0
+            numeric_cols = [
+                'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'
+            ]
+            for col in numeric_cols:
+                if col in df.columns:
+                    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
             
             df['Ticker'] = df['ticker_base']
         except Exception as e:
@@ -74,6 +88,17 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
 
     if df.empty:
         return pd.DataFrame(), {}
+
+    # --- Cálculo de Dívida/Market Cap ---
+    if 'Dívida Total' in df.columns and 'Market Cap' in df.columns:
+        # Garante que as colunas são numéricas antes da divisão
+        df['Dívida Total'] = pd.to_numeric(df['Dívida Total'], errors='coerce')
+        df['Market Cap'] = pd.to_numeric(df['Market Cap'], errors='coerce')
+        # Evita divisão por zero
+        df['Dívida/Market Cap'] = df.apply(
+            lambda row: row['Dívida Total'] / row['Market Cap'] if row['Market Cap'] != 0 else 0,
+            axis=1
+        )
 
     # --- Merge com Scores Externos ---
     try:
@@ -130,9 +155,9 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         df_ciclo = read_csv_cached(base_path / 'ciclo_mercado.csv')
         if not df_ciclo.empty:
             # Renomear a coluna de status e selecionar as colunas de interesse
-            df_ciclo_to_merge = df_ciclo[['Ticker', 'Status 🟢🔴']].rename(columns={'Status 🟢🔴': 'Status Ciclo'})
+            df_ciclo_to_merge = df_ciclo[['ticker', 'Status 🟢🔴']].rename(columns={'Status 🟢🔴': 'Status Ciclo'})
             # Normalizar o ticker para o merge
-            df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['Ticker'].str.strip().str.upper()
+            df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['ticker'].str.strip().str.upper()
             df_ciclo_to_merge.set_index('ticker_base', inplace=True)
             # Fazer o merge com o dataframe principal
             df = df.merge(df_ciclo_to_merge[['Status Ciclo']], left_on='Ticker', right_index=True, how='left')

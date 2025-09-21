@@ -55,7 +55,7 @@ def load_and_prepare_data() -> pd.DataFrame:
     num_cols = [
         'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe',
         'divida_total', 'market_cap', 'divida_ebitda', 'sentimento_gauge',
-        'DY12M', 'DY5anos'
+        'DY12M', 'DY5anos', 'preco_atual', 'lpa', 'vpa'
     ]
     for col in num_cols:
         if col in df_merged.columns:
@@ -149,6 +149,30 @@ def score_ciclo_mercado(status_ciclo):
     # 'Observação' ou qualquer outro valor
     return 0
 
+def score_graham(preco_atual, lpa, vpa):
+    """Pontuação baseada na Margem de Segurança da Fórmula de Graham."""
+    # A fórmula só é válida para empresas lucrativas (LPA > 0) e com patrimônio positivo (VPA > 0)
+    if pd.isna(preco_atual) or pd.isna(lpa) or pd.isna(vpa) or lpa <= 0 or vpa <= 0 or preco_atual <= 0:
+        return 0
+
+    try:
+        # Fórmula de Graham: Valor Intrínseco = Raiz(22.5 * LPA * VPA)
+        numero_graham = (22.5 * lpa * vpa) ** 0.5
+        # Margem de Segurança = (Valor Intrínseco / Preço Atual) - 1
+        margem_seguranca = (numero_graham / preco_atual) - 1
+    except (ValueError, TypeError):
+        return 0
+
+    if margem_seguranca > 1.0:  # Margem > 100%
+        return 20
+    if margem_seguranca > 0.5:  # Margem > 50%
+        return 15
+    if margem_seguranca > 0.2:  # Margem > 20%
+        return 10
+    if margem_seguranca > 0:    # Margem > 0%
+        return 5
+    return -10 # Margem <= 0% (ação sobrevalorizada)
+
 # --- Função Principal de Execução ---
 def main():
     """Orquestra a execução do script: carrega, processa e salva os scores."""
@@ -169,8 +193,9 @@ def main():
         s_divida = score_divida(div_mc, row.get('divida_ebitda'), setor)
         s_cresc_sent = score_crescimento_sentimento(row.get('crescimento_preco_5a'), row.get('sentimento_gauge'))
         s_ciclo = score_ciclo_mercado(row.get('Status 🟢🔴'))
+        s_graham = score_graham(row.get('preco_atual'), row.get('lpa'), row.get('vpa'))
         
-        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent + s_ciclo
+        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent + s_ciclo + s_graham
         
         scores_data.append({
             'ticker_base': row['ticker_base'],
@@ -181,6 +206,7 @@ def main():
             'score_divida': s_divida,
             'score_crescimento_sentimento': s_cresc_sent,
             'score_ciclo_mercado': s_ciclo,
+            'score_graham': s_graham,
             'score_total': max(0, min(200, score_total)) # Clamping entre 0 e 200
         })
 

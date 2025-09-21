@@ -125,7 +125,7 @@ def montar_ciclo_mercado(df_ind: pd.DataFrame) -> pd.DataFrame:
 
         # Usa 'ticker' como chave para consistência com outros scripts
         linhas.append({
-            "ticker": row['Ticker'],
+            "ticker": row.get('Ticker', row.get('ticker')), # Usa 'Ticker' se existir, senão 'ticker'
             "RSI (Sentimento)": None if pd.isna(rsi_val) else f"{rsi_val:.2f}",
             "MACD (Tendência)": None if pd.isna(macd_val) else f"{macd_val:.3f}",
             "Volume (Convicção)": None if pd.isna(vol_val) else f"{vol_val:.0f}",

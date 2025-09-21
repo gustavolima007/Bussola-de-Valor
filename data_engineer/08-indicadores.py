@@ -134,6 +134,23 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
     debt_to_ebitda = (total_debt / ebitda) if ebitda and total_debt else None
     empresa = NOME_EMPRESA_MANUAL.get(ticker_base, info.get("longName", metadata.get("empresa")))
 
+    # --- 🆕 Adição para Fórmula de Graham ---
+    # Coleta os dados e já calcula a margem de segurança percentual.
+    lpa = info.get('trailingEps')
+    vpa = info.get('bookValue')
+    margem_seguranca_percent = None
+    
+    # Validação dos dados: LPA, VPA e Preço devem ser positivos para a fórmula
+    if lpa and vpa and current_price and lpa > 0 and vpa > 0 and current_price > 0:
+        try:
+            # Fórmula de Graham: Valor Intrínseco = Raiz(22.5 * LPA * VPA)
+            numero_graham = (22.5 * lpa * vpa) ** 0.5
+            # Margem de Segurança = (Valor Intrínseco / Preço Atual) - 1
+            margem_seguranca = (numero_graham / current_price) - 1
+            margem_seguranca_percent = round(margem_seguranca * 100, 2)
+        except (ValueError, TypeError):
+            pass # Mantém margem_seguranca_percent como None
+
     return {
         "ticker": ticker_base,
         "empresa": empresa,
@@ -151,6 +168,10 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
         "ebitda": ebitda,
         "divida_ebitda": debt_to_ebitda,
         "perfil_acao": classify_stock_profile(current_price, market_cap),
+        # 🆕 Campos para Fórmula de Graham
+        "lpa": lpa,
+        "vpa": vpa,
+        "margem_seguranca_percent": margem_seguranca_percent,
 
         # Sentimento de Mercado (analistas)
         **get_market_sentiment(stock),
