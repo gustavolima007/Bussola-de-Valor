@@ -118,14 +118,25 @@ def style_cresc(val):
     return f'color: {color}'
 
 def render_tab_rank_geral(df: pd.DataFrame):
-    st.header(f"🏆 Rank Geral ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)','DY 5 Anos Média (%)', 'Score Total']
+    st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
-    
+
+    styler = df_display.style
+    df_cols = df_display.columns
+
+    dy_cols_to_style = [c for c in ['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'] if c in df_cols]
+    if dy_cols_to_style:
+        styler.map(style_dy, subset=dy_cols_to_style)
+
+    if 'Alvo' in df_cols:
+        styler.map(style_alvo, subset=['Alvo'])
+
+    if 'Margem de Segurança %' in df_cols:
+        styler.map(style_graham, subset=['Margem de Segurança %'])
+
     st.dataframe(
-        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
-                         .map(style_alvo, subset=['Alvo'])
-                         .map(style_graham, subset=['Margem de Segurança %']),
+        styler,
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
@@ -140,7 +151,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
     )
 
 def render_tab_rank_detalhado(df: pd.DataFrame):
-    st.header(f"📋 Ranking Detalhado ({len(df)} ações encontradas)")
+    st.header(f"📋 Indices ({len(df)} ações encontradas)")
     cols = [
         'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual',
         'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
@@ -148,16 +159,39 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
     ]
     df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
     
+    styler = df_display.style
+    df_cols = df_display.columns
+
+    dy_cols_to_style = [c for c in ['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'] if c in df_cols]
+    if dy_cols_to_style:
+        styler.map(style_dy, subset=dy_cols_to_style)
+
+    if 'Margem de Segurança %' in df_cols:
+        styler.map(style_graham, subset=['Margem de Segurança %'])
+    
+    if 'P/L' in df_cols:
+        styler.map(style_pl, subset=['P/L'])
+
+    if 'P/VP' in df_cols:
+        styler.map(style_pvp, subset=['P/VP'])
+
+    if 'Payout Ratio (%)' in df_cols:
+        styler.map(style_payout, subset=['Payout Ratio (%)'])
+
+    if 'ROE (%)' in df_cols:
+        styler.map(style_roe, subset=['ROE (%)'])
+
+    if 'Dívida/Market Cap' in df_cols:
+        styler.map(style_div_mc, subset=['Dívida/Market Cap'])
+
+    if 'Dívida/EBITDA' in df_cols:
+        styler.map(style_div_ebitda, subset=['Dívida/EBITDA'])
+
+    if 'Crescimento Preço (%)' in df_cols:
+        styler.map(style_cresc, subset=['Crescimento Preço (%)'])
+
     st.dataframe(
-        df_display.style.map(style_dy, subset=['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'])
-                         .map(style_graham, subset=['Margem de Segurança %'])
-                         .map(style_pl, subset=['P/L'])
-                         .map(style_pvp, subset=['P/VP'])
-                         .map(style_payout, subset=['Payout Ratio (%)'])
-                         .map(style_roe, subset=['ROE (%)'])
-                         .map(style_div_mc, subset=['Dívida/Market Cap'])
-                         .map(style_div_ebitda, subset=['Dívida/EBITDA'])
-                         .map(style_cresc, subset=['Crescimento Preço (%)']),
+        styler,
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
@@ -349,46 +383,7 @@ A classificação por perfil ajuda a entender o porte, o risco e o potencial de 
         - **Blue Chip:** Valor de Mercado > R$ 50 bilhões.
         ''')
 
-def render_tab_insights(df: pd.DataFrame):
-    st.header("✨ Insights Visuais")
-    if df.empty:
-        st.info("Nenhum dado para exibir com os filtros atuais.")
-        return
 
-    st.subheader("Top 15 por Score")
-    top = df.nlargest(15, 'Score Total')
-    fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
-    fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig_bar, use_container_width=True)
-    
-    st.divider()
-
-    st.subheader("DY 12m vs. P/L")
-    fig = px.scatter(df, x='P/L', y='DY (Taxa 12m, %)', color='subsetor_b3', hover_data=['Ticker'])
-    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig, use_container_width=True)
-
-    st.divider()
-
-    st.subheader("Distribuição de P/L (Histograma)")
-    query_df = df.query("`P/L` > 0 and `P/L` < 50")
-    fig_hist = px.histogram(query_df, x='P/L', nbins=30, title='Distribuição de P/L (0 a 50)')
-    fig_hist.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig_hist, use_container_width=True)
-
-    st.divider()
-
-    st.subheader("DY 5 anos vs. P/VP")
-    fig = px.scatter(df, x='P/VP', y='DY 5 Anos Média (%)', color='subsetor_b3', hover_data=['Ticker'])
-    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig, use_container_width=True)
-    
-    st.divider()
-
-    st.subheader("Score por Subsetor (Boxplot)")
-    fig_box = px.box(df, x='subsetor_b3', y='Score Total', title='Score por Subsetor')
-    fig_box.update_layout(xaxis={'categoryorder':'total descending'}, margin=dict(l=20, r=20, t=50, b=20))
-    st.plotly_chart(fig_box, use_container_width=True)
 
 def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     st.header("🔍 Análise de Dividendos")
@@ -495,8 +490,47 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
         
     
 
+def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
+    """Cria e gerencia o conteúdo de todas as abas da aplicação."""
+    from .calculadora import render_tab_calculadora
+    tab_titles = [
+        "🏆 Ranking", "📋 Indices", "🔬 Análise",
+        "🔍 Dividendos", "📈 Ciclo de mercado",
+        "🏗️ Setores", "🧭 Guia da Bússola", "💰 Calculadora"
+    ]
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(tab_titles)
+
+    with tab1:
+        render_tab_rank_geral(df_filtrado)
+    with tab2:
+        render_tab_rank_detalhado(df_filtrado)
+    with tab3:
+        render_tab_analise_individual(df_filtrado)
+    with tab4:
+        render_tab_dividendos(df_filtrado, all_data, ticker_foco)
+    with tab5:
+        render_tab_ciclo_mercado(df_unfiltered, all_data)
+    with tab6:
+        render_tab_rank_setores(df_filtrado, all_data)
+    with tab7:
+        render_tab_guia()
+    with tab8:
+        render_tab_calculadora(all_data, ticker_foco)
+        
+    
+
 def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
-    st.header("🏗️ Rank de Setores")
+    st.header("🏗️ Setores")
+
+    # Adicionado Top 15 por Score
+    if not df_filtrado.empty:
+        st.subheader("Top 15 por Score")
+        top = df_filtrado.nlargest(15, 'Score Total')
+        fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
+        fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+        st.plotly_chart(fig_bar, use_container_width=True)
+        st.divider()
+
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
         av_display = av_setor.rename(columns={'subsetor_b3': 'Subsetor', 'pontuacao_subsetor': 'Pontuação'}).sort_values('Pontuação', ascending=False)
@@ -756,31 +790,3 @@ def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
     )
 
 
-def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
-    """Cria e gerencia o conteúdo de todas as abas da aplicação."""
-    from .calculadora import render_tab_calculadora
-    tab_titles = [
-        "🏆 Rank Geral", "📋 Rank Detalhado", "🔬 Análise Individual",
-        "✨ Insights Visuais", "🔍 Análise de Dividendos", "📈 Ciclo de mercado",
-        "🏗️ Rank Setores", "🧭 Guia da Bússola", "💰 Calculadora"
-    ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(tab_titles)
-
-    with tab1:
-        render_tab_rank_geral(df_filtrado)
-    with tab2:
-        render_tab_rank_detalhado(df_filtrado)
-    with tab3:
-        render_tab_analise_individual(df_filtrado)
-    with tab4:
-        render_tab_insights(df_filtrado)
-    with tab5:
-        render_tab_dividendos(df_filtrado, all_data, ticker_foco)
-    with tab6:
-        render_tab_ciclo_mercado(df_unfiltered, all_data)
-    with tab7:
-        render_tab_rank_setores(df_filtrado, all_data)
-    with tab8:
-        render_tab_guia()
-    with tab9:
-        render_tab_calculadora(all_data, ticker_foco)

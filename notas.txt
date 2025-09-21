@@ -35,8 +35,6 @@ Criada por Benjamin Graham, considera lucratividade e solidez patrimonial
 
 * Graficos:
 
-Criar um mapa de calor para mostrar o dividendo passado e o dividendo no futuro
-
 - Indicador gráfico e também pontuação para recomendações.
 
 
