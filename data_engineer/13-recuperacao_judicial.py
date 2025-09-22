@@ -93,7 +93,24 @@ empresas_recuperadas = [
     {"nome": "Livraria Cultura", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2018-10-25", "data_saida_rj": None, "data_falencia": "2023-02-09"},
     {"nome": "Livraria Saraiva", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2018-11-13", "data_saida_rj": None, "data_falencia": "2023-01-01"},
     {"nome": "Unimed Nacional (Cooperativas)", "ticker": None, "setor": "Saúde", "data_entrada_rj": "2015-01-01", "data_saida_rj": None, "data_falencia": "2018-01-01"},
-    {"nome": "Hapvida (Subsidiárias)", "ticker": "HAPV3", "setor": "Saúde", "data_entrada_rj": "2023-01-01", "data_saida_rj": None, "data_falencia": None}
+    {"nome": "Hapvida (Subsidiárias)", "ticker": "HAPV3", "setor": "Saúde", "data_entrada_rj": "2023-01-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Banco Nacional", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-11-01", "data_saida_rj": None, "data_falencia": None},  # Liquidação 1995 PROER; vendido a Unibanco
+    {"nome": "Banco Bamerindus", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1997-03-01", "data_saida_rj": None, "data_falencia": None},  # Liquidação 1997 PROER; vendido a HSBC
+    {"nome": "Banco Econômico", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-08-01", "data_saida_rj": "2021-01-01", "data_falencia": None},  # Liquidação 1995 PROER; vendido a BTG 2021
+    {"nome": "Banco Halles", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1974-04-01", "data_saida_rj": None, "data_falencia": "1975-01-01"},  # Intervenção 1974; liquidação 1975
+    {"nome": "Agrogalaxy", "ticker": "AGXY3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-09-18", "data_saida_rj": None, "data_falencia": None},  # RJ 2024 ativa (ajustado de Agronegócio)
+    {"nome": "Atmasa", "ticker": "ATMP3", "setor": "Telecomunicações", "data_entrada_rj": "2022-06-07", "data_saida_rj": None, "data_falencia": None},  # RJ 2022 ativa
+    {"nome": "Bardella", "ticker": "BDLL3", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2019-07-01", "data_saida_rj": None, "data_falencia": None},  # RJ 2019 ativa
+    {"nome": "Hotéis Othon", "ticker": "HOOT3", "setor": "Serviços Diversos", "data_entrada_rj": "2018-11-28", "data_saida_rj": None, "data_falencia": None},  # RJ 2018 ativa
+    {"nome": "João Fortes", "ticker": "JFEN3", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2020-03-10", "data_saida_rj": None, "data_falencia": None},  # RJ 2020 ativa
+    {"nome": "Pet Manguinhos", "ticker": "RPMG3", "setor": "Petróleo, Gás e Biocombustíveis", "data_entrada_rj": "2016-01-01", "data_saida_rj": "2020-01-01", "data_falencia": None},  # RJ concluída 2020
+    {"nome": "Pomifrutas", "ticker": "FRTA3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-04-18", "data_saida_rj": None, "data_falencia": "2024-04-18"},  # RJ 2024 a autofalência (ajustado de Agronegócio)
+    {"nome": "Tecnosolo", "ticker": "TCNO4", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2012-01-01", "data_saida_rj": None, "data_falencia": None},  # RJ 2012 ativa
+    {"nome": "Teka", "ticker": "TEKA4", "setor": "Têxtil", "data_entrada_rj": "2010-01-01", "data_saida_rj": None, "data_falencia": None},  # RJ ativa
+    {"nome": "Wetzel", "ticker": "MWET4", "setor": "Hardware e Equipamentos", "data_entrada_rj": "2018-01-01", "data_saida_rj": "2022-09-01", "data_falencia": None},  # RJ saída 2022
+    {"nome": "Eneva (ex-MPX)", "ticker": "ENEV3", "setor": "Energia Elétrica", "data_entrada_rj": "2014-12-10", "data_saida_rj": "2016-06-01", "data_falencia": None} # RJ concluída 2016
+
+
 ]
 
 df_rj = pd.DataFrame(empresas_recuperadas)

@@ -117,6 +117,18 @@ def style_cresc(val):
         color = '#ff4b4b'  # Vermelho
     return f'color: {color}'
 
+def style_pontuacao_final(val):
+    """Aplica cor com base na Pontuação Final do Setor."""
+    if pd.isna(val):
+        return ''
+    if val > 60:
+        color = '#3dd56d'  # Verde
+    elif val > 40:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
+    return f'color: {color}'
+
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
     cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
@@ -142,7 +154,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
-            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%"),
+            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
             "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
@@ -195,7 +207,7 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
-            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%"),
+            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
             "Payout Ratio (%)": st.column_config.NumberColumn("Payout", format="%.1f%% "),
@@ -355,8 +367,8 @@ def render_tab_guia():
 
     with st.expander("6. Ciclo de Mercado e Fórmula de Graham - Até +35 pontos"):
         st.markdown('''
-        - **O que são?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado. A **Fórmula de Graham** calcula o "preço justo" (`√(22.5 * LPA * VPA)`) para encontrar a margem de segurança.
-        - **Por que analisar?** Juntos, eles respondem "o quê comprar" (Graham) e "quando comprar" (Ciclo). Comprar ativos com alta margem de segurança durante períodos de pânico é uma estratégia poderosa.
+        - **O que são?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado. A **Fórmula de Graham** calcula o \"preço justo\" (`√(22.5 * LPA * VPA)`) para encontrar a margem de segurança.
+        - **Por que analisar?** Juntos, eles respondem \"o quê comprar\" (Graham) e \"quando comprar\" (Ciclo). Comprar ativos com alta margem de segurança durante períodos de pânico é uma estratégia poderosa.
         - **Cálculo do Score (Ciclo):**
             - Compra (Pânico): **+15 pontos**
             - Observação (Neutro): **0 pontos**
@@ -524,17 +536,9 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
 def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Setores")
 
-    # Adicionado Top 15 por Score
-    if not df_filtrado.empty:
-        st.subheader("Top 15 por Score")
-        top = df_filtrado.nlargest(15, 'Score Total')
-        fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
-        fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
-        st.plotly_chart(fig_bar, use_container_width=True)
-        st.divider()
-
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
+        st.subheader("Ranking de Setores por Pontuação Média")
         # O CSV agora contém a pontuação original, a penalidade e a final.
         # Apenas renomeamos as colunas para exibição.
 
@@ -552,8 +556,10 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
         if 'Penalidade (RJ)' not in av_display.columns:
             cols_to_show.remove('Penalidade (RJ)')
 
+        styler = av_display[cols_to_show].style.map(style_pontuacao_final, subset=['Pontuação Final'])
+
         st.dataframe(
-            av_display[cols_to_show],
+            styler,
             use_container_width=True,
             hide_index=True,
             column_config={
@@ -566,8 +572,21 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
         fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='Ranking de Setores por Pontuação Média Final')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
-
         st.divider()
+
+    else:
+        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado para gerar o ranking.")
+
+    # Adicionado Top 15 por Score
+    if not df_filtrado.empty:
+        st.subheader("Top 15 Ações por Score")
+        top = df_filtrado.nlargest(15, 'Score Total')
+        fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
+        fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+        st.plotly_chart(fig_bar, use_container_width=True)
+        st.divider()
+
+    if not av_setor.empty:
         st.subheader("Detalhes dos Ativos (conforme filtros aplicados)")
 
         if not df_filtrado.empty:
@@ -596,8 +615,6 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
                 st.warning("As colunas necessárias para a tabela de detalhes não foram encontradas.")
         else:
             st.info("Nenhum ativo encontrado para os filtros selecionados.")
-    else:
-        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado para gerar o ranking.")
     
     st.divider()
     st.subheader("Análise Setorial (Foco em Dividendos)")
@@ -758,7 +775,7 @@ def render_tab_recuperacao_judicial(all_data: dict):
 
     with st.expander("Como a penalidade é calculada?"):
         st.markdown(f"""
-        A pontuação de cada setor é penalizada com base no seu histórico de recuperações judiciais e falências para refletir o risco setorial. A fórmula é:
+A pontuação de cada setor é penalizada com base no seu histórico de recuperações judiciais e falências para refletir o risco setorial. A fórmula é:
 
         1.  **Contagem de Ocorrências**: Contamos quantas empresas de cada setor estão na nossa base de dados de RJ/Falência.
             - *Mínimo de ocorrências em um setor*: **{min_ocorrencias}**
@@ -823,7 +840,7 @@ def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
     df_ciclo = df_ciclo_raw.rename(columns={'Status 🟢🔴': 'Status'})
     
     # Use df_unfiltered to get subsetor_b3 for all tickers
-    ticker_col_name = 'Ticker' if 'Ticker' in df_unfiltered.columns else 'ticker_base'
+    ticker_col_name = 'Ticker' if 'Ticker' in df_unfiltered.columns else 'ticker_base' 
     
     if 'subsetor_b3' not in df_ciclo.columns and ticker_col_name in df_unfiltered.columns and 'subsetor_b3' in df_unfiltered.columns:
         df_ciclo = pd.merge(

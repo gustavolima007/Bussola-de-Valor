@@ -38,7 +38,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
 
     # --- Filtros de Indicadores ---
     score_range = st.sidebar.slider("Faixa de Score", 0, 200, (100, 200))
-    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 100, 50)
+    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 100, 60)
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
