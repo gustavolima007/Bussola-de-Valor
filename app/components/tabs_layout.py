@@ -512,6 +512,8 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
         render_tab_ciclo_mercado(df_unfiltered, all_data)
     with tab6:
         render_tab_rank_setores(df_filtrado, all_data)
+        st.divider()
+        render_tab_rj_por_setor(all_data)
     with tab7:
         render_tab_guia()
     with tab8:
@@ -679,6 +681,29 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
                 ''')
     else:
         st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
+
+def render_tab_rj_por_setor(all_data: dict):
+    st.subheader("Empresas em Recuperação Judicial/Falência por Setor")
+    rj_df = all_data.get('rj', pd.DataFrame())
+
+    if rj_df.empty:
+        st.info("Nenhum dado de recuperação judicial/falência encontrado.")
+        return
+
+    # Contar ocorrências por setor
+    rj_counts = rj_df['setor'].value_counts().reset_index()
+    rj_counts.columns = ['Setor', 'Quantidade de Ocorrências']
+
+    st.dataframe(
+        rj_counts,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Quantidade de Ocorrências": st.column_config.NumberColumn(
+                "Quantidade de Ocorrências", format="%d"
+            ),
+        }
+    )
 
 # --- Função Principal de Renderização ---
 

@@ -1,23 +1,24 @@
 setor_b3,subsetor_b3,pontuacao_setor,pontuacao_subsetor
-Utilidade Pública,Saneamento,85.06,94.32
-Utilidade Pública,Energia Elétrica,85.06,84.03
-Financeiro e Outros,Bancos e Financeiros,83.75,83.75
-Materiais Básicos,Mineração e Siderurgia,77.97,82.79
-Materiais Básicos,"Papel, Química e Outros",77.97,75.54
-Materiais Básicos,Papel e Celulose,77.97,74.82
-"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",74.04,74.04
-Financeiro,Construção Civil e Imobiliário,60.51,60.51
-Tecnologia da Informação,Serviços de Software,58.17,61.59
-Tecnologia da Informação,Hardware e Equipamentos,58.17,43.33
-Bens Industriais,Máquinas e Equipamentos,57.13,71.16
-Bens Industriais,Serviços Industriais,57.13,45.89
-Bens Industriais,Transporte e Logística,57.13,39.16
-Consumo Cíclico,Bens Duráveis,52.09,62.30
-Consumo Cíclico,Comércio Varejista,52.09,55.90
-Consumo Cíclico,Serviços Comerciais,52.09,48.79
-Consumo Cíclico,Serviços Educacionais,52.09,34.56
-Consumo Não Cíclico,Comércio e Distribuição,50.41,52.64
-Consumo Não Cíclico,"Alimentos, Bebidas e Pessoais",50.41,49.08
-Comunicações,Telefonia e Mídia,36.82,36.82
-Saúde,Saúde Tecnologia,36.59,52.49
-Saúde,Saúde Serviços Médicos,36.59,27.76
+Utilidade Pública,Saneamento,85.47,94.32
+Utilidade Pública,Energia Elétrica,85.47,84.46
+Materiais Básicos,Papel e Celulose,78.81,83.06
+Materiais Básicos,Mineração e Siderurgia,78.81,82.79
+Materiais Básicos,Química e Petroquímica,78.81,70.69
+Financeiro e Outros,Bancos,78.59,98.63
+Financeiro e Outros,Serviços Financeiros Diversos,78.59,83.14
+Financeiro e Outros,Construção Civil e Imobiliário,78.59,57.80
+"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",74.89,74.89
+Consumo Não Cíclico,Comércio e Distribuição,60.75,61.21
+Consumo Não Cíclico,Alimentos e Bebidas,60.75,60.52
+Tecnologia da Informação,Hardware e Equipamentos,58.17,61.25
+Tecnologia da Informação,Software e Serviços de TI,58.17,57.14
+Consumo Cíclico,Têxtil,58.09,64.00
+Consumo Cíclico,Bens de Consumo,58.09,61.21
+Consumo Cíclico,Comércio Varejista,58.09,54.78
+Bens Industriais,Máquinas e Equipamentos,56.95,70.99
+Bens Industriais,Transporte e Logística,56.95,41.96
+Bens Industriais,Serviços Industriais,56.95,34.04
+Serviços Diversos,Serviços Diversos,40.69,40.69
+Saúde,Saúde,38.64,38.64
+Comunicações,Telecomunicações,37.94,37.94
+Educação,Educação,35.78,35.78
