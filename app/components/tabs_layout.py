@@ -496,9 +496,9 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
     tab_titles = [
         "🏆 Ranking", "📋 Indices", "🔬 Análise",
         "🔍 Dividendos", "📈 Ciclo de mercado",
-        "🏗️ Setores", "🧭 Guia da Bússola", "💰 Calculadora"
+        "🏗️ Setores", "⚖️ Recuperação Judicial", "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
@@ -512,11 +512,11 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
         render_tab_ciclo_mercado(df_unfiltered, all_data)
     with tab6:
         render_tab_rank_setores(df_filtrado, all_data)
-        st.divider()
-        render_tab_rj_por_setor(all_data)
     with tab7:
-        render_tab_guia()
+        render_tab_recuperacao_judicial(all_data)
     with tab8:
+        render_tab_guia()
+    with tab9:
         render_tab_calculadora(all_data, ticker_foco)
         
     
@@ -535,11 +535,35 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
 
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
-        av_display = av_setor.rename(columns={'subsetor_b3': 'Subsetor', 'pontuacao_subsetor': 'Pontuação'}).sort_values('Pontuação', ascending=False)
-        st.dataframe(av_display[['Subsetor', 'Pontuação']], use_container_width=True, hide_index=True,
-                     column_config={'Pontuação': st.column_config.NumberColumn('Pontuação', format='%.1f')})
+        # O CSV agora contém a pontuação original, a penalidade e a final.
+        # Apenas renomeamos as colunas para exibição.
+
+        av_display = av_setor.rename(columns={
+            'subsetor_b3': 'Subsetor',
+            'pontuacao_original_subsetor': 'Pontuação Original',
+            'penalidade_rj': 'Penalidade (RJ)',
+            'pontuacao_subsetor': 'Pontuação Final'
+        }).sort_values('Pontuação Final', ascending=False)
+
+        # Define as colunas a serem exibidas
+        cols_to_show = ['Subsetor', 'Pontuação Original', 'Penalidade (RJ)', 'Pontuação Final']
+        if 'Pontuação Original' not in av_display.columns:
+            cols_to_show.remove('Pontuação Original')
+        if 'Penalidade (RJ)' not in av_display.columns:
+            cols_to_show.remove('Penalidade (RJ)')
+
+        st.dataframe(
+            av_display[cols_to_show],
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                'Pontuação Original': st.column_config.NumberColumn('Pontuação Original', format='%.1f', help="Pontuação média dos ativos do setor, antes da penalidade."),
+                'Penalidade (RJ)': st.column_config.NumberColumn('Penalidade', format='-%.1f', help="Penalidade subtraída da pontuação original devido ao histórico de RJs do setor."),
+                'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do setor após a aplicação da penalidade.")
+            }
+        )
         
-        fig = px.bar(av_display.sort_values('Pontuação'), x='Pontuação', y='Subsetor', orientation='h', title='Ranking de Setores por Pontuação Média')
+        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='Ranking de Setores por Pontuação Média Final')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
 
@@ -669,7 +693,7 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
     if not av_setor.empty:
         for _, row in av_display.iterrows():
             subsetor = row['Subsetor']
-            pontuacao = row['Pontuação']
+            pontuacao = row['Pontuação Final']
             desc = sector_descriptions.get(subsetor, {
                 "Por que investir?": "Informações específicas não disponíveis. Setor pode oferecer oportunidades dependendo das condições de mercado.",
                 "Por que não investir?": "Riscos específicos não detalhados. Considere avaliar a volatilidade e a estabilidade de dividendos."
@@ -681,28 +705,107 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
                 ''')
     else:
         st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
-
-def render_tab_rj_por_setor(all_data: dict):
-    st.subheader("Empresas em Recuperação Judicial/Falência por Setor")
+    
+def render_tab_recuperacao_judicial(all_data: dict):
+    st.header("⚖️ Recuperação Judicial e Falências")
     rj_df = all_data.get('rj', pd.DataFrame())
+    setores_df = all_data.get('avaliacao_setor', pd.DataFrame())
+
+    # Garante que todos os setores sejam exibidos, mesmo sem ocorrências
+    if not setores_df.empty and 'subsetor_b3' in setores_df.columns:
+        all_setores = pd.DataFrame(setores_df['subsetor_b3'].unique(), columns=['Setor'])
+    else:
+        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado. A lista de setores pode estar incompleta.")
+        all_setores = pd.DataFrame(rj_df['setor'].unique(), columns=['Setor']) if not rj_df.empty else pd.DataFrame(columns=['Setor'])
 
     if rj_df.empty:
-        st.info("Nenhum dado de recuperação judicial/falência encontrado.")
-        return
+        rj_counts = all_setores.copy()
+        rj_counts['Quantidade de Ocorrências'] = 0
+    else:
+        ocorrencias = rj_df['setor'].value_counts().reset_index()
+        ocorrencias.columns = ['Setor', 'Quantidade de Ocorrências']
+        rj_counts = pd.merge(all_setores, ocorrencias, on='Setor', how='left')
+        rj_counts['Quantidade de Ocorrências'].fillna(0, inplace=True)
+        rj_counts['Quantidade de Ocorrências'] = rj_counts['Quantidade de Ocorrências'].astype(int)
+
+    # --- Cálculo da Penalidade (para exibição) ---
+    min_ocorrencias = rj_counts['Quantidade de Ocorrências'].min()
+    max_ocorrencias = rj_counts['Quantidade de Ocorrências'].max()
+
+    def calcular_penalidade(ocorrencias):
+        if ocorrencias == 0 or (max_ocorrencias - min_ocorrencias) == 0:
+            return 0.0
+        penalidade_normalizada = (ocorrencias - min_ocorrencias) / (max_ocorrencias - min_ocorrencias)
+        return penalidade_normalizada * 20  # Fator de impacto
+
+    rj_counts['Penalidade (Pontos)'] = rj_counts['Quantidade de Ocorrências'].apply(calcular_penalidade)
 
     # Contar ocorrências por setor
-    rj_counts = rj_df['setor'].value_counts().reset_index()
-    rj_counts.columns = ['Setor', 'Quantidade de Ocorrências']
-
+    st.subheader("Ocorrências por Setor")
     st.dataframe(
-        rj_counts,
+        rj_counts.sort_values('Quantidade de Ocorrências', ascending=False),
         use_container_width=True,
         hide_index=True,
         column_config={
             "Quantidade de Ocorrências": st.column_config.NumberColumn(
-                "Quantidade de Ocorrências", format="%d"
+                "Ocorrências", format="%d", help="Número de vezes que empresas do setor entraram em RJ ou faliram."
+            ),
+            "Penalidade (Pontos)": st.column_config.NumberColumn(
+                "Penalidade", format="%.2f", help="Penalidade aplicada ao score médio do setor devido ao histórico de RJs."
             ),
         }
+    )
+
+    with st.expander("Como a penalidade é calculada?"):
+        st.markdown(f"""
+        A pontuação de cada setor é penalizada com base no seu histórico de recuperações judiciais e falências para refletir o risco setorial. A fórmula é:
+
+        1.  **Contagem de Ocorrências**: Contamos quantas empresas de cada setor estão na nossa base de dados de RJ/Falência.
+            - *Mínimo de ocorrências em um setor*: **{min_ocorrencias}**
+            - *Máximo de ocorrências em um setor*: **{max_ocorrencias}**
+
+        2.  **Penalidade Normalizada**: O número de ocorrências de um setor é normalizado em uma escala de 0 a 1.
+            - `Penalidade Normalizada = (Ocorrências do Setor - Mínimo) / (Máximo - Mínimo)`
+
+        3.  **Penalidade Ajustada**: A penalidade normalizada é multiplicada por um fator de impacto de **20 pontos**.
+            - `Penalidade Ajustada = Penalidade Normalizada * 20`
+
+        4.  **Pontuação Final do Setor**: A penalidade ajustada é subtraída da pontuação média original do setor.
+        """)
+
+    st.divider()
+    st.subheader("Lista de Empresas")
+
+    if rj_df.empty:
+        st.info("Nenhuma empresa na lista de recuperação judicial ou falência.")
+        return
+
+    # Seleciona e renomeia colunas para exibição
+    cols_to_show = ['nome', 'ticker', 'setor', 'data_entrada_rj', 'data_saida_rj', 'data_falencia', 'duracao_rj']
+    df_display = rj_df[[col for col in cols_to_show if col in rj_df.columns]].copy()
+    df_display.rename(columns={
+        'nome': 'Empresa',
+        'ticker': 'Ticker',
+        'setor': 'Setor',
+        'data_entrada_rj': 'Início RJ',
+        'data_saida_rj': 'Fim RJ',
+        'data_falencia': 'Falência',
+        'duracao_rj': 'Duração'
+    }, inplace=True)
+
+    # Formata as colunas de data
+    for col in ['Início RJ', 'Fim RJ', 'Falência']:
+        if col in df_display.columns:
+            df_display[col] = pd.to_datetime(df_display[col], errors='coerce').dt.strftime('%d/%m/%Y')
+
+    # Limpa valores nulos para exibição
+    df_display.fillna('-', inplace=True)
+    df_display['Ticker'] = df_display['Ticker'].replace({None: '-'})
+
+    st.dataframe(
+        df_display.sort_values(by='Início RJ', ascending=False),
+        use_container_width=True,
+        hide_index=True
     )
 
 # --- Função Principal de Renderização ---
@@ -813,5 +916,3 @@ def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
         hide_index=True,
         column_config={"Score 📈": st.column_config.NumberColumn("Score 📈", format="%d")}
     )
-
-

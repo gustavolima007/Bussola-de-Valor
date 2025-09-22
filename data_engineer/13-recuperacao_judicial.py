@@ -1,5 +1,5 @@
 import pandas as pd
-import os
+from pathlib import Path
 
 # Lista de empresas brasileiras que entraram em recuperação judicial ou extrajudicial desde 1960
 # O campo "setor" foi atualizado para corresponder à classificação oficial (subsetor) definida.
@@ -103,31 +103,41 @@ df_rj = pd.DataFrame(empresas_recuperadas)
 # Converte as colunas de data para o formato datetime, tratando erros como 'NaT' (Not a Time)
 df_rj['data_entrada_rj'] = pd.to_datetime(df_rj['data_entrada_rj'], errors='coerce')
 df_rj['data_saida_rj'] = pd.to_datetime(df_rj['data_saida_rj'], errors='coerce')
+df_rj['data_falencia'] = pd.to_datetime(df_rj['data_falencia'], errors='coerce')
 
 def calcular_duracao(row):
-    """Calcula a duração entre duas datas e formata em anos e meses."""
-    if pd.notna(row['data_entrada_rj']) and pd.notna(row['data_saida_rj']):
-        # Calcula a diferença total em meses
-        meses_totais = (row['data_saida_rj'].year - row['data_entrada_rj'].year) * 12 + (row['data_saida_rj'].month - row['data_entrada_rj'].month)
-        
-        if meses_totais < 0:
+    """
+    Calcula a duração do processo de RJ.
+    - Se houver data de saída, calcula a duração até ela.
+    - Se não houver data de saída mas houver data de falência, calcula a duração até a falência.
+    - Se não houver nenhuma das duas, o processo está 'Em Andamento'.
+    """
+    data_inicio = row['data_entrada_rj']
+    data_fim_sucesso = row['data_saida_rj']
+    data_fim_falencia = row['data_falencia']
+    
+    if pd.isna(data_inicio):
+        return 'Data de Início Inválida'
+    
+    # Define a data final: prioriza a saída da RJ, senão, a falência.
+    data_fim = data_fim_sucesso if pd.notna(data_fim_sucesso) else data_fim_falencia
+    
+    if pd.notna(data_fim):
+        if data_fim < data_inicio:
             return 'Datas Inválidas'
-
+            
+        meses_totais = (data_fim.year - data_inicio.year) * 12 + (data_fim.month - data_inicio.month)
         anos = meses_totais // 12
         meses = meses_totais % 12
-        
         resultado = []
         if anos > 0:
             resultado.append(f"{anos} ano{'s' if anos > 1 else ''}")
-        # Inclui meses se houver, ou se for a única unidade (anos == 0)
         if meses > 0 or anos == 0:
-            # Correção para o plural de "mês"
-            resultado.append(f"{meses} {'meses' if meses > 1 else 'mês'}")
-        
-        # Junta as partes com " e " ou retorna o valor único
+            resultado.append(f"{meses} {'mês' if meses > 1 else 'meses'}")
+            
         return " e ".join(resultado) if resultado else "Menos de 1 mês"
     else:
-        # Se a data de saída não existir, o processo está em andamento
+        # Se não há data de saída nem de falência, o processo está em andamento.
         return 'Em Andamento'
 
 # Aplica a função para criar a nova coluna 'duracao_rj'
@@ -135,13 +145,16 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 
 # --- FIM DA SEÇÃO DE CÁLCULO ---
 
-# Assegura que o diretório 'data' exista
-os.makedirs('data', exist_ok=True)
+# --- Configuração de Caminhos e Salvamento ---
+BASE_DIR = Path(__file__).resolve().parent.parent / 'data'
+OUTPUT_PATH = BASE_DIR / "rj.csv"
 
-output_path = r"data\rj.csv"
-df_rj.to_csv(output_path, index=False, encoding='utf-8-sig')
+# Garante que o diretório de saída exista
+BASE_DIR.mkdir(parents=True, exist_ok=True)
 
-print(f"Dados de recuperação judicial salvos em {output_path}")
+df_rj.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
+
+print(f"Dados de recuperação judicial salvos em {OUTPUT_PATH}")
 
 # Imprime as 5 primeiras linhas com as colunas relevantes para verificação
 print("\nVisualização do DataFrame com a nova coluna 'duracao_rj':")

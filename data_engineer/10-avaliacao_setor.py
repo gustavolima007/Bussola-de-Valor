@@ -27,6 +27,7 @@ def main() -> None:
     data_dir = Path(__file__).resolve().parent.parent / "data"
     scores_path = data_dir / "scores.csv"
     acoes_path = data_dir / "acoes_e_fundos.csv"
+    rj_path = data_dir / "rj.csv"
     output_path = data_dir / "avaliacao_setor.csv"
 
     # --- Load data ---
@@ -34,6 +35,8 @@ def main() -> None:
     scores_df = pd.read_csv(scores_path)
     print(f"Carregando acoes_e_fundos: {acoes_path}")
     acoes_df = pd.read_csv(acoes_path)
+    print(f"Carregando dados de RJ: {rj_path}")
+    rj_df = pd.read_csv(rj_path)
 
     # --- Preparação e Merge ---
     print("Preparando chaves de merge (ticker_base)...")
@@ -78,8 +81,37 @@ def main() -> None:
     print("Calculando média por subsetor_b3 (pontuacao_subsetor)...")
     por_subsetor = (
         merged_df.groupby("subsetor_b3")["score_total"].mean().reset_index()
-        .rename(columns={"score_total": "pontuacao_subsetor"})
+        .rename(columns={"score_total": "pontuacao_original_subsetor"})
     )
+
+    # --- Cálculo da Penalidade por Recuperação Judicial ---
+    print("Calculando penalidade por RJ...")
+    # O campo 'setor' no rj.csv corresponde ao 'subsetor_b3'
+    rj_counts = rj_df['setor'].value_counts().reset_index()
+    rj_counts.columns = ['subsetor_b3', 'ocorrencias_rj']
+
+    # Merge com os subsetores para aplicar a penalidade
+    por_subsetor = pd.merge(por_subsetor, rj_counts, on='subsetor_b3', how='left')
+    por_subsetor['ocorrencias_rj'].fillna(0, inplace=True)
+
+    # Cálculo da penalidade normalizada e ajustada
+    min_ocorrencias = por_subsetor['ocorrencias_rj'].min()
+    max_ocorrencias = por_subsetor['ocorrencias_rj'].max()
+    
+    # Evita divisão por zero se todos os setores tiverem o mesmo número de ocorrências
+    if (max_ocorrencias - min_ocorrencias) > 0:
+        por_subsetor['penalidade_normalizada'] = (por_subsetor['ocorrencias_rj'] - min_ocorrencias) / (max_ocorrencias - min_ocorrencias)
+    else:
+        por_subsetor['penalidade_normalizada'] = 0
+
+    # Aplica o fator de impacto de 20 pontos
+    por_subsetor['penalidade_rj'] = por_subsetor['penalidade_normalizada'] * 20
+    
+    # Calcula a pontuação final do subsetor aplicando a penalidade
+    por_subsetor['pontuacao_subsetor'] = por_subsetor['pontuacao_original_subsetor'] - por_subsetor['penalidade_rj']
+    
+    # Remove colunas intermediárias
+    por_subsetor.drop(columns=['ocorrencias_rj', 'penalidade_normalizada'], inplace=True)
 
     # --- Monta base final por combinação de Setor x Subsetor ---
     print("Compondo base final por Setor x Subsetor...")
@@ -97,7 +129,7 @@ def main() -> None:
     )
 
     # Arredonda
-    for col in ["pontuacao_setor", "pontuacao_subsetor"]:
+    for col in ["pontuacao_setor", "pontuacao_original_subsetor", "pontuacao_subsetor", "penalidade_rj"]:
         if col in resultado.columns:
             resultado[col] = resultado[col].round(2)
 
