@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 📄 Script para extrair e processar dados de ações e fundos da B3.
-   Versão refinada com mapeamento de setores e subsetores aprimorado.
+   Versão 2.0 com mapeamento de setores e subsetores refinado.
 """
 
 import requests
@@ -16,32 +16,36 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# --- MAPEAMENTO DE TICKERS REFINADO ---
+# --- MAPEAMENTO DE TICKERS REFINADO (VERSÃO FINAL) ---
 MAPEAMENTO_COMPLETO_TICKERS = {
-    # Utilidade Pública - Energia Elétrica
-    "AFLT3": ("Utilidade Pública", "Energia Elétrica"), "ALUP3": ("Utilidade Pública", "Energia Elétrica"),
-    "ALUP4": ("Utilidade Pública", "Energia Elétrica"), "ALUP11": ("Utilidade Pública", "Energia Elétrica"),
-    "AURE3": ("Utilidade Pública", "Energia Elétrica"), "CEBR3": ("Utilidade Pública", "Energia Elétrica"),
-    "CEBR5": ("Utilidade Pública", "Energia Elétrica"), "CEBR6": ("Utilidade Pública", "Energia Elétrica"),
-    "CLSC4": ("Utilidade Pública", "Energia Elétrica"), "CMIG3": ("Utilidade Pública", "Energia Elétrica"),
-    "CMIG4": ("Utilidade Pública", "Energia Elétrica"), "COCE5": ("Utilidade Pública", "Energia Elétrica"),
-    "CPFE3": ("Utilidade Pública", "Energia Elétrica"), "CPLE3": ("Utilidade Pública", "Energia Elétrica"),
-    "CPLE5": ("Utilidade Pública", "Energia Elétrica"), "CPLE6": ("Utilidade Pública", "Energia Elétrica"),
-    "EGIE3": ("Utilidade Pública", "Energia Elétrica"), "EKTR4": ("Utilidade Pública", "Energia Elétrica"),
-    "ELET3": ("Utilidade Pública", "Energia Elétrica"), "ELET6": ("Utilidade Pública", "Energia Elétrica"),
-    "EMAE4": ("Utilidade Pública", "Energia Elétrica"), "ENEV3": ("Utilidade Pública", "Energia Elétrica"),
-    "ENGI3": ("Utilidade Pública", "Energia Elétrica"), "ENGI4": ("Utilidade Pública", "Energia Elétrica"),
-    "ENGI11": ("Utilidade Pública", "Energia Elétrica"), "ENMT3": ("Utilidade Pública", "Energia Elétrica"),
-    "ENMT4": ("Utilidade Pública", "Energia Elétrica"), "EQMA3B": ("Utilidade Pública", "Energia Elétrica"),
-    "EQPA3": ("Utilidade Pública", "Energia Elétrica"), "EQTL3": ("Utilidade Pública", "Energia Elétrica"),
-    "GEPA4": ("Utilidade Pública", "Energia Elétrica"), "ISAE3": ("Utilidade Pública", "Energia Elétrica"),
-    "ISAE4": ("Utilidade Pública", "Energia Elétrica"), "LIGT3": ("Utilidade Pública", "Energia Elétrica"),
-    "NEOE3": ("Utilidade Pública", "Energia Elétrica"), "ORVR3": ("Utilidade Pública", "Energia Elétrica"),
-    "REDE3": ("Utilidade Pública", "Energia Elétrica"), "RNEW3": ("Utilidade Pública", "Energia Elétrica"),
-    "RNEW4": ("Utilidade Pública", "Energia Elétrica"), "RNEW11": ("Utilidade Pública", "Energia Elétrica"),
-    "SRNA3": ("Utilidade Pública", "Energia Elétrica"), "TAEE3": ("Utilidade Pública", "Energia Elétrica"),
-    "TAEE4": ("Utilidade Pública", "Energia Elétrica"), "TAEE11": ("Utilidade Pública", "Energia Elétrica"),
-    "AESB3": ("Utilidade Pública", "Energia Elétrica"),
+    # Utilidade Pública - Geração de Energia
+    "AURE3": ("Utilidade Pública", "Geração de Energia"), "AESB3": ("Utilidade Pública", "Geração de Energia"),
+    "ELET3": ("Utilidade Pública", "Geração de Energia"), "ELET6": ("Utilidade Pública", "Geração de Energia"),
+    "EMAE4": ("Utilidade Pública", "Geração de Energia"), "ENEV3": ("Utilidade Pública", "Geração de Energia"),
+    "ENGI3": ("Utilidade Pública", "Geração de Energia"), "ENGI4": ("Utilidade Pública", "Geração de Energia"),
+    "ENGI11": ("Utilidade Pública", "Geração de Energia"),"EGIE3": ("Utilidade Pública", "Geração de Energia"),
+    "GEPA4": ("Utilidade Pública", "Geração de Energia"), "ORVR3": ("Utilidade Pública", "Geração de Energia"),
+    "RNEW3": ("Utilidade Pública", "Geração de Energia"), "RNEW4": ("Utilidade Pública", "Geração de Energia"),
+    "RNEW11": ("Utilidade Pública", "Geração de Energia"),"SRNA3": ("Utilidade Pública", "Geração de Energia"),
+
+    # Utilidade Pública - Transmissão de Energia
+    "AFLT3": ("Utilidade Pública", "Transmissão de Energia"), "ALUP3": ("Utilidade Pública", "Transmissão de Energia"),
+    "ALUP4": ("Utilidade Pública", "Transmissão de Energia"), "ALUP11": ("Utilidade Pública", "Transmissão de Energia"),
+    "ISAE3": ("Utilidade Pública", "Transmissão de Energia"), "ISAE4": ("Utilidade Pública", "Transmissão de Energia"),
+    "TAEE3": ("Utilidade Pública", "Transmissão de Energia"), "TAEE4": ("Utilidade Pública", "Transmissão de Energia"),
+    "TAEE11": ("Utilidade Pública", "Transmissão de Energia"),
+
+    # Utilidade Pública - Distribuição de Energia
+    "CEBR3": ("Utilidade Pública", "Distribuição de Energia"), "CEBR5": ("Utilidade Pública", "Distribuição de Energia"),
+    "CEBR6": ("Utilidade Pública", "Distribuição de Energia"), "CLSC4": ("Utilidade Pública", "Distribuição de Energia"),
+    "CMIG3": ("Utilidade Pública", "Distribuição de Energia"), "CMIG4": ("Utilidade Pública", "Distribuição de Energia"),
+    "COCE5": ("Utilidade Pública", "Distribuição de Energia"), "CPFE3": ("Utilidade Pública", "Distribuição de Energia"),
+    "CPLE3": ("Utilidade Pública", "Distribuição de Energia"), "CPLE5": ("Utilidade Pública", "Distribuição de Energia"),
+    "CPLE6": ("Utilidade Pública", "Distribuição de Energia"), "EKTR4": ("Utilidade Pública", "Distribuição de Energia"),
+    "ENMT3": ("Utilidade Pública", "Distribuição de Energia"), "ENMT4": ("Utilidade Pública", "Distribuição de Energia"),
+    "EQMA3B": ("Utilidade Pública", "Distribuição de Energia"), "EQPA3": ("Utilidade Pública", "Distribuição de Energia"),
+    "EQTL3": ("Utilidade Pública", "Distribuição de Energia"), "LIGT3": ("Utilidade Pública", "Distribuição de Energia"),
+    "NEOE3": ("Utilidade Pública", "Distribuição de Energia"), "REDE3": ("Utilidade Pública", "Distribuição de Energia"),
 
     # Utilidade Pública - Saneamento
     "CSMG3": ("Utilidade Pública", "Saneamento"), "SAPR3": ("Utilidade Pública", "Saneamento"),
@@ -64,40 +68,42 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "SANB11": ("Financeiro e Outros", "Bancos"), "BBAS3": ("Financeiro e Outros", "Bancos"),
 
     # Financeiro e Outros - Serviços Financeiros Diversos
-    "ALOS3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "B3SA3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "BBSE3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "BRAP3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "BRAP4": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "CXSE3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "IGTI3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "IRBR3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "B3SA3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "BBSE3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "BRAP3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "BRAP4": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "CXSE3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "IRBR3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
     "ITSA3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "ITSA4": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "PEAB4": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "PSSA3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "QUAL3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "RENT3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "SYNE3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "VAMO3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
-    "WIZC3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "MOVI3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "PSSA3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "QUAL3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "WIZC3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "CIEL3": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
+    "GETT3": ("Financeiro e Outros", "Serviços Financeiros Diversos"), "GETT4": ("Financeiro e Outros", "Serviços Financeiros Diversos"),
 
-    # Financeiro e Outros - Construção Civil e Imobiliário
-    "AVLL3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "CALI3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "CURY3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "CYRE3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "DIRR3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "EVEN3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "EZTC3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "GFSA3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "HBOR3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "HBRE3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "JFEN3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "JHSF3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "LAND3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "LAVV3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "LPSB3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "MDNE3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "MELK3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "MRVE3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "MTRE3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "MULT3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "PDGR3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "PLPL3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "RDNI3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "RSID3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "SCAR3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "TCSA3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "TEND3": ("Financeiro e Outros", "Construção Civil e Imobiliário"), "TRIS3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
-    "VIVR3": ("Financeiro e Outros", "Construção Civil e Imobiliário"),
+    # Financeiro e Outros - Incorporação e Construção
+    "CALI3": ("Financeiro e Outros", "Incorporação e Construção"), "CURY3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "CYRE3": ("Financeiro e Outros", "Incorporação e Construção"), "DIRR3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "EVEN3": ("Financeiro e Outros", "Incorporação e Construção"), "EZTC3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "GFSA3": ("Financeiro e Outros", "Incorporação e Construção"), "HBOR3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "HBRE3": ("Financeiro e Outros", "Incorporação e Construção"), "JFEN3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "LAVV3": ("Financeiro e Outros", "Incorporação e Construção"), "MDNE3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "MRVE3": ("Financeiro e Outros", "Incorporação e Construção"), "MTRE3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "PDGR3": ("Financeiro e Outros", "Incorporação e Construção"), "PLPL3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "RDNI3": ("Financeiro e Outros", "Incorporação e Construção"), "RSID3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "TCSA3": ("Financeiro e Outros", "Incorporação e Construção"), "TEND3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "TRIS3": ("Financeiro e Outros", "Incorporação e Construção"), "VIVR3": ("Financeiro e Outros", "Incorporação e Construção"),
+    "LPSB3": ("Financeiro e Outros", "Incorporação e Construção"),
+
+    # Financeiro e Outros - Propriedades e Locação
+    "ALOS3": ("Financeiro e Outros", "Propriedades e Locação"), "AVLL3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "IGTI3": ("Financeiro e Outros", "Propriedades e Locação"), "JHSF3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "LAND3": ("Financeiro e Outros", "Propriedades e Locação"), "LOGG3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "MELK3": ("Financeiro e Outros", "Propriedades e Locação"), "MULT3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "PEAB4": ("Financeiro e Outros", "Propriedades e Locação"), "SCAR3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "SYNE3": ("Financeiro e Outros", "Propriedades e Locação"),
 
     # Materiais Básicos - Mineração e Siderurgia
     "CBAV3": ("Materiais Básicos", "Mineração e Siderurgia"), "CMIN3": ("Materiais Básicos", "Mineração e Siderurgia"),
-    "CSNA3": ("Materiais Básicos", "Mineração e Siderurgia"), "ETER3": ("Materiais Básicos", "Mineração e Siderurgia"),
-    "FESA3": ("Materiais Básicos", "Mineração e Siderurgia"), "FESA4": ("Materiais Básicos", "Mineração e Siderurgia"),
-    "GGBR3": ("Materiais Básicos", "Mineração e Siderurgia"), "GGBR4": ("Materiais Básicos", "Mineração e Siderurgia"),
-    "GOAU3": ("Materiais Básicos", "Mineração e Siderurgia"), "GOAU4": ("Materiais Básicos", "Mineração e Siderurgia"),
-    "PMAM3": ("Materiais Básicos", "Mineração e Siderurgia"), "TKNO4": ("Materiais Básicos", "Mineração e Siderurgia"),
+    "CSNA3": ("Materiais Básicos", "Mineração e Siderurgia"), "FESA3": ("Materiais Básicos", "Mineração e Siderurgia"),
+    "FESA4": ("Materiais Básicos", "Mineração e Siderurgia"), "GGBR3": ("Materiais Básicos", "Mineração e Siderurgia"),
+    "GGBR4": ("Materiais Básicos", "Mineração e Siderurgia"), "GOAU3": ("Materiais Básicos", "Mineração e Siderurgia"),
+    "GOAU4": ("Materiais Básicos", "Mineração e Siderurgia"), "PMAM3": ("Materiais Básicos", "Mineração e Siderurgia"),
     "USIM3": ("Materiais Básicos", "Mineração e Siderurgia"), "USIM5": ("Materiais Básicos", "Mineração e Siderurgia"),
     "VALE3": ("Materiais Básicos", "Mineração e Siderurgia"),
 
@@ -124,8 +130,7 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "MGLU3": ("Consumo Cíclico", "Comércio Varejista"), "PCAR3": ("Consumo Cíclico", "Comércio Varejista"),
     "PETZ3": ("Consumo Cíclico", "Comércio Varejista"), "PGMN3": ("Consumo Cíclico", "Comércio Varejista"),
     "PNVL3": ("Consumo Cíclico", "Comércio Varejista"), "RADL3": ("Consumo Cíclico", "Comércio Varejista"),
-    "RAIZ4": ("Consumo Cíclico", "Comércio Varejista"), "TFCO4": ("Consumo Cíclico", "Comércio Varejista"),
-    "UGPA3": ("Consumo Cíclico", "Comércio Varejista"), "VIVA3": ("Consumo Cíclico", "Comércio Varejista"),
+    "TFCO4": ("Consumo Cíclico", "Comércio Varejista"), "VIVA3": ("Consumo Cíclico", "Comércio Varejista"),
     "WEST3": ("Consumo Cíclico", "Comércio Varejista"),
 
     # Consumo Cíclico - Calçados e Vestuário
@@ -134,55 +139,52 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "SBFG3": ("Consumo Cíclico", "Calçados e Vestuário"), "LREN3": ("Consumo Cíclico", "Calçados e Vestuário"),
     "CEAB3": ("Consumo Cíclico", "Calçados e Vestuário"), "GUAR3": ("Consumo Cíclico", "Calçados e Vestuário"),
 
-    # Consumo Cíclico - Eletrodomésticos
-    "WHRL3": ("Consumo Cíclico", "Eletrodomésticos"), "WHRL4": ("Consumo Cíclico", "Eletrodomésticos"),
-
-    # Consumo Cíclico - Têxtil
-    "CEDO4": ("Consumo Cíclico", "Têxtil"), "CTKA4": ("Consumo Cíclico", "Têxtil"),
-    "CTSA3": ("Consumo Cíclico", "Têxtil"), "DOHL4": ("Consumo Cíclico", "Têxtil"),
-    "PTNT4": ("Consumo Cíclico", "Têxtil"),
-
-    # Consumo Cíclico - Consumo Diverso (Cosméticos, Brinquedos, etc.)
+    # Consumo Cíclico - Consumo Diverso (inclui Eletrodomésticos e Têxtil)
     "CAMB3": ("Consumo Cíclico", "Consumo Diverso"), "MNDL3": ("Consumo Cíclico", "Consumo Diverso"),
     "NATU3": ("Consumo Cíclico", "Consumo Diverso"), "TECN3": ("Consumo Cíclico", "Consumo Diverso"),
     "UCAS3": ("Consumo Cíclico", "Consumo Diverso"), "VSTE3": ("Consumo Cíclico", "Consumo Diverso"),
     "BMKS3": ("Consumo Cíclico", "Consumo Diverso"), "ESTR4": ("Consumo Cíclico", "Consumo Diverso"),
+    "WHRL3": ("Consumo Cíclico", "Consumo Diverso"), "WHRL4": ("Consumo Cíclico", "Consumo Diverso"),
+    "CEDO4": ("Consumo Cíclico", "Consumo Diverso"), "CTKA4": ("Consumo Cíclico", "Consumo Diverso"),
+    "CTSA3": ("Consumo Cíclico", "Consumo Diverso"), "DOHL4": ("Consumo Cíclico", "Consumo Diverso"),
+    "PTNT4": ("Consumo Cíclico", "Consumo Diverso"),
 
-    # Consumo Não Cíclico - Alimentos e Bebidas
+    # Consumo Não Cíclico - Alimentos e Bebidas (inclui Produtos de Limpeza)
     "ABEV3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "AGRO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "AZZA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "BEEF3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "BRFS3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "CAML3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "JALL3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "MDIA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "MEAL3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "MRFG3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "NUTR3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "SLCE3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
-    "SMTO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "SOJA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "BEEF3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "BRFS3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "CAML3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "JALL3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "MDIA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "MEAL3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "MRFG3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "NUTR3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "SLCE3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "SMTO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
+    "SOJA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "BOBR4": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
 
     # Consumo Não Cíclico - Comércio e Distribuição
     "AGXY3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "DMVF3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
     "IFCM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "LVTC3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-    "PFRM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "VVEO3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+    "PFRM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "RAIZ4": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+    "UGPA3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "VVEO3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
     "WLMM4": ("Consumo Não Cíclico", "Comércio e Distribuição"),
 
-    # Consumo Não Cíclico - Produtos de Limpeza e Higiene
-    "BOBR4": ("Consumo Não Cíclico", "Produtos de Limpeza e Higiene"),
-    
-    # Bens Industriais - Máquinas e Equipamentos
-    "AERI3": ("Bens Industriais", "Máquinas e Equipamentos"), "ARML3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "DXCO3": ("Bens Industriais", "Máquinas e Equipamentos"), "EALT3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "EALT4": ("Bens Industriais", "Máquinas e Equipamentos"), "EMBR3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "EPAR3": ("Bens Industriais", "Máquinas e Equipamentos"), "FRAS3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "KEPL3": ("Bens Industriais", "Máquinas e Equipamentos"), "LEVE3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "LUPA3": ("Bens Industriais", "Máquinas e Equipamentos"), "MGEL4": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "MTSA4": ("Bens Industriais", "Máquinas e Equipamentos"), "MYPK3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "POMO3": ("Bens Industriais", "Máquinas e Equipamentos"), "POMO4": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "PTBL3": ("Bens Industriais", "Máquinas e Equipamentos"), "RAPT3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "RAPT4": ("Bens Industriais", "Máquinas e Equipamentos"), "RCSL3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "RCSL4": ("Bens Industriais", "Máquinas e Equipamentos"), "ROMI3": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "RSUL4": ("Bens Industriais", "Máquinas e Equipamentos"), "SHUL4": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "TASA3": ("Bens Industriais", "Máquinas e Equipamentos"), "TASA4": ("Bens Industriais", "Máquinas e Equipamentos"),
-    "TUPY3": ("Bens Industriais", "Máquinas e Equipamentos"), "WEGE3": ("Bens Industriais", "Máquinas e Equipamentos"),
+    # Bens Industriais - Máquinas e Motores
+    "ARML3": ("Bens Industriais", "Máquinas e Motores"), "DXCO3": ("Bens Industriais", "Máquinas e Motores"),
+    "EALT3": ("Bens Industriais", "Máquinas e Motores"), "EALT4": ("Bens Industriais", "Máquinas e Motores"),
+    "HAGA3": ("Bens Industriais", "Máquinas e Motores"), "HAGA4": ("Bens Industriais", "Máquinas e Motores"),
+    "LUPA3": ("Bens Industriais", "Máquinas e Motores"), "MGEL4": ("Bens Industriais", "Máquinas e Motores"),
+    "MTSA4": ("Bens Industriais", "Máquinas e Motores"), "ROMI3": ("Bens Industriais", "Máquinas e Motores"),
+    "RSUL4": ("Bens Industriais", "Máquinas e Motores"), "SHUL4": ("Bens Industriais", "Máquinas e Motores"),
+    "WEGE3": ("Bens Industriais", "Máquinas e Motores"),
 
-    # Bens Industriais - Transporte e Logística
+    # Bens Industriais - Transporte e Componentes
+    "AERI3": ("Bens Industriais", "Transporte e Componentes"), "EMBR3": ("Bens Industriais", "Transporte e Componentes"),
+    "FRAS3": ("Bens Industriais", "Transporte e Componentes"), "KEPL3": ("Bens Industriais", "Transporte e Componentes"),
+    "LEVE3": ("Bens Industriais", "Transporte e Componentes"), "MYPK3": ("Bens Industriais", "Transporte e Componentes"),
+    "POMO3": ("Bens Industriais", "Transporte e Componentes"), "POMO4": ("Bens Industriais", "Transporte e Componentes"),
+    "PTBL3": ("Bens Industriais", "Transporte e Componentes"), "RAPT3": ("Bens Industriais", "Transporte e Componentes"),
+    "RAPT4": ("Bens Industriais", "Transporte e Componentes"), "RCSL3": ("Bens Industriais", "Transporte e Componentes"),
+    "RCSL4": ("Bens Industriais", "Transporte e Componentes"), "TASA3": ("Bens Industriais", "Transporte e Componentes"),
+    "TASA4": ("Bens Industriais", "Transporte e Componentes"), "TUPY3": ("Bens Industriais", "Transporte e Componentes"),
+
+    # Bens Industriais - Transporte e Logística (Serviços)
     "AZUL4": ("Bens Industriais", "Transporte e Logística"), "ECOR3": ("Bens Industriais", "Transporte e Logística"),
     "GOLL4": ("Bens Industriais", "Transporte e Logística"), "HBSA3": ("Bens Industriais", "Transporte e Logística"),
     "JSLG3": ("Bens Industriais", "Transporte e Logística"), "LOGN3": ("Bens Industriais", "Transporte e Logística"),
@@ -190,16 +192,13 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "PORT3": ("Bens Industriais", "Transporte e Logística"), "RAIL3": ("Bens Industriais", "Transporte e Logística"),
     "SEQL3": ("Bens Industriais", "Transporte e Logística"), "SIMH3": ("Bens Industriais", "Transporte e Logística"),
     "STBP3": ("Bens Industriais", "Transporte e Logística"), "TGMA3": ("Bens Industriais", "Transporte e Logística"),
-    "TPIS3": ("Bens Industriais", "Transporte e Logística"),
+    "VAMO3": ("Bens Industriais", "Transporte e Logística"), "MOVI3": ("Bens Industriais", "Transporte e Logística"),
 
     # Bens Industriais - Serviços Industriais
     "AZEV3": ("Bens Industriais", "Serviços Industriais"), "AZEV4": ("Bens Industriais", "Serviços Industriais"),
-    "INEP3": ("Bens Industriais", "Serviços Industriais"), "INEP4": ("Bens Industriais", "Serviços Industriais"),
-    "LOGG3": ("Bens Industriais", "Serviços Industriais"), "MILS3": ("Bens Industriais", "Serviços Industriais"),
+    "EPAR3": ("Bens Industriais", "Serviços Industriais"), "INEP3": ("Bens Industriais", "Serviços Industriais"),
+    "INEP4": ("Bens Industriais", "Serviços Industriais"), "MILS3": ("Bens Industriais", "Serviços Industriais"),
     "OSXB3": ("Bens Industriais", "Serviços Industriais"), "PRNR3": ("Bens Industriais", "Serviços Industriais"),
-
-    # Bens Industriais - Outros
-    "HAGA3": ("Bens Industriais", "Outros"), "HAGA4": ("Bens Industriais", "Outros"),
 
     # Saúde - Hospitais e Análises Clínicas
     "AALR3": ("Saúde", "Hospitais e Análises Clínicas"), "DASA3": ("Saúde", "Hospitais e Análises Clínicas"),
@@ -225,8 +224,6 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "PDTC3": ("Tecnologia da Informação", "Hardware e Equipamentos"), "POSI3": ("Tecnologia da Informação", "Hardware e Equipamentos"),
 
     # Petróleo, Gás e Biocombustíveis
-    "BRAV3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
-    "CGAS5": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "CSAN3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "PETR3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "PETR4": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
@@ -234,6 +231,7 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "RECV3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "RPMG3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "VBBR3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
+    "CGAS5": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
 
     # Comunicações - Telecomunicações
     "BRST3": ("Comunicações", "Telecomunicações"), "DESK3": ("Comunicações", "Telecomunicações"),
@@ -243,23 +241,23 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "VIVT3": ("Comunicações", "Telecomunicações"),
 
     # Educação
-    "ALPK3": ("Educação", "Educação"), "BIED3": ("Educação", "Educação"),
-    "COGN3": ("Educação", "Educação"), "CSED3": ("Educação", "Educação"),
-    "SEER3": ("Educação", "Educação"), "SMFT3": ("Educação", "Educação"),
-    "YDUQ3": ("Educação", "Educação"), "ZAMP3": ("Educação", "Educação"),
+    "ALPK3": ("Educação", "Educação"), "COGN3": ("Educação", "Educação"),
+    "CSED3": ("Educação", "Educação"), "SEER3": ("Educação", "Educação"),
+    "SMFT3": ("Educação", "Educação"), "YDUQ3": ("Educação", "Educação"),
+    "ZAMP3": ("Educação", "Educação"),
 
     # Serviços Diversos
     "AHEB3": ("Serviços Diversos", "Serviços Diversos"), "AMBP3": ("Serviços Diversos", "Serviços Diversos"),
     "CVCB3": ("Serviços Diversos", "Serviços Diversos"), "ESPA3": ("Serviços Diversos", "Serviços Diversos"),
-    "FICT3": ("Serviços Diversos", "Serviços Diversos"), "GGPS3": ("Serviços Diversos", "Serviços Diversos"),
-    "OPCT3": ("Serviços Diversos", "Serviços Diversos"), "SHOW3": ("Serviços Diversos", "Serviços Diversos"),
-    "VTRU3": ("Serviços Diversos", "Serviços Diversos"), "HOOT4": ("Serviços Diversos", "Serviços Diversos"),
-    "REAG3": ("Serviços Diversos", "Serviços Diversos"), "CTAX3": ("Serviços Diversos", "Serviços Diversos"),
+    "GGPS3": ("Serviços Diversos", "Serviços Diversos"), "OPCT3": ("Serviços Diversos", "Serviços Diversos"),
+    "SHOW3": ("Serviços Diversos", "Serviços Diversos"), "HOOT4": ("Serviços Diversos", "Serviços Diversos"),
 }
+
 
 # Lista de tickers a serem removidos
 TICKERS_A_REMOVER = [
-    "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L", "PPLA11"
+    "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L", "PPLA11",
+    "ETER3", "TKNO4" # Removendo empresas com baixa liquidez ou de setores indefinidos
 ]
 
 def mapear_setores_b3(df):
@@ -273,16 +271,9 @@ def mapear_setores_b3(df):
     Returns:
         pd.DataFrame: DataFrame com as novas colunas 'setor_b3' e 'subsetor_b3'.
     """
-    # Define o valor padrão para tickers que não forem encontrados no mapeamento
     valor_padrao = ('Indefinido', 'Indefinido')
-
-    # Usa o método .get() que é seguro e retorna o valor padrão se a chave (ticker) não existir.
-    # Isso garante que a lista sempre terá o mesmo tamanho do DataFrame.
     lista_de_setores = [MAPEAMENTO_COMPLETO_TICKERS.get(ticker, valor_padrao) for ticker in df['ticker']]
-
-    # Converte a lista de tuplas em duas novas colunas no DataFrame
     df[['setor_b3', 'subsetor_b3']] = pd.DataFrame(lista_de_setores, index=df.index)
-
     return df
 
 def extrair_dados_brapi():
@@ -301,15 +292,13 @@ def extrair_dados_brapi():
     start_time = time.time()
 
     try:
-        # Configuração de retry para a API
         session = requests.Session()
         retry = Retry(total=3, backoff_factor=1)
         adapter = HTTPAdapter(max_retries=retry)
-        session.mount('http://', adapter)
         session.mount('https://', adapter)
-        response = session.get(api_url, timeout=15)
+        response = session.get(api_url, timeout=20)
         response.raise_for_status()
-        time.sleep(1)  # Respeitar rate limit
+        time.sleep(1)
         data = response.json()
         ativos = data.get('stocks', [])
 
@@ -319,24 +308,17 @@ def extrair_dados_brapi():
 
         df_ativos = pd.DataFrame(ativos)
 
-        # Filtros
         df_ativos = df_ativos[
             (~df_ativos['stock'].str.endswith('F')) &
             (df_ativos['type'] != 'bdr')
         ]
         
         df_ativos = df_ativos.rename(columns={'stock': 'ticker'})
-
-        # Remover tickers específicos
         df_ativos = df_ativos[~df_ativos['ticker'].isin(TICKERS_A_REMOVER)]
 
-        # Mapeamento de setores (usando a nova lógica)
         df_ativos = mapear_setores_b3(df_ativos)
-
-        # Filtro de setores indefinidos APÓS o mapeamento
         df_ativos = df_ativos[df_ativos['setor_b3'] != 'Indefinido']
 
-        # Renomear outras colunas
         colunas_renomear = {
             'name': 'empresa',
             'sector': 'setor_brapi',
@@ -347,23 +329,18 @@ def extrair_dados_brapi():
         }
         df_ativos = df_ativos.rename(columns=colunas_renomear)
 
-        # Preencher NaNs em empresa
         df_ativos['empresa'] = df_ativos['empresa'].fillna(df_ativos['ticker'] + ' - Não Especificado')
 
-        # Remover colunas desnecessárias
         colunas_remover = [col for col in ['change', 'market_cap', 'close'] if col in df_ativos.columns]
         if colunas_remover:
             df_ativos = df_ativos.drop(columns=colunas_remover)
 
-        # Limpeza final
         df_ativos = df_ativos.fillna('N/A')
         df_ativos = df_ativos.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
         df_ativos = df_ativos.replace('', 'N/A')
         
-        # Validações
         assert len(df_ativos) > 0, "DataFrame vazio após filtros!"
         
-        # Salvar output
         base_dir.mkdir(parents=True, exist_ok=True)
         df_ativos.to_csv(csv_output, index=False, encoding='utf-8-sig')
         logger.info(f"Arquivo CSV salvo: {csv_output}")

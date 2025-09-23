@@ -1,56 +1,29 @@
-<<<<<<< HEAD
 setor_b3,subsetor_b3,pontuacao_setor,pontuacao_original_subsetor,dy_5a_subsetor,bonus_dy_5a,penalidade_rj,pontuacao_subsetor
-Utilidade Pública,Energia Elétrica,99.76,89.78,6.81,20,8.57,101.21
-Utilidade Pública,Saneamento,99.76,98.32,3.48,0,0.00,98.32
-Materiais Básicos,Mineração e Siderurgia,92.19,83.46,8.91,20,8.57,94.89
-Materiais Básicos,Química e Petroquímica,92.19,78.62,10.11,20,5.71,92.91
-Materiais Básicos,Papel e Celulose,92.19,81.63,4.22,10,2.86,88.77
-"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",83.46,74.89,8.42,20,11.43,83.46
-Financeiro e Outros,Serviços Financeiros Diversos,71.70,83.61,9.99,20,2.86,100.76
-Financeiro e Outros,Bancos,71.70,96.97,4.72,10,11.43,95.55
-Financeiro e Outros,Construção Civil e Imobiliário,71.70,58.79,2.73,0,40.00,18.79
-Tecnologia da Informação,Hardware e Equipamentos,66.75,61.25,6.60,20,5.71,75.54
-Tecnologia da Informação,Software e Serviços de TI,66.75,57.97,1.45,0,0.00,57.97
-Consumo Cíclico,Eletrodomésticos,66.67,87.50,8.53,20,8.57,98.93
-Consumo Cíclico,Consumo Diverso,66.67,76.96,4.20,10,0.00,86.96
-Consumo Cíclico,Calçados e Vestuário,66.67,75.70,3.57,0,2.86,72.84
-Consumo Cíclico,Têxtil,66.67,58.33,2.00,0,17.14,41.19
-Consumo Cíclico,Comércio Varejista,66.67,50.55,10.60,20,37.14,33.41
-Saúde,Produtos e Equipamentos Médicos,39.37,58.44,2.63,0,0.00,58.44
-Saúde,Hospitais e Análises Clínicas,39.37,28.87,2.58,0,8.57,20.30
-Educação,Educação,37.91,37.91,1.02,0,0.00,37.91
-Consumo Não Cíclico,Comércio e Distribuição,34.98,60.50,4.96,10,11.43,59.07
-Consumo Não Cíclico,Alimentos e Bebidas,34.98,63.02,4.63,10,28.57,44.45
-Consumo Não Cíclico,Produtos de Limpeza e Higiene,34.98,10.00,0.00,0,8.57,1.43
-Comunicações,Telecomunicações,31.03,39.60,1.45,0,8.57,31.03
-Bens Industriais,Máquinas e Equipamentos,27.17,70.81,5.62,10,28.57,52.24
-Bens Industriais,Serviços Industriais,27.17,33.41,0.92,0,8.57,24.84
-Bens Industriais,Transporte e Logística,27.17,41.96,2.25,0,22.86,19.10
-Bens Industriais,Outros,27.17,12.50,0.00,0,0.00,12.50
-Serviços Diversos,Serviços Diversos,22.97,34.39,0.64,0,11.43,22.97
-=======
-setor_b3,subsetor_b3,pontuacao_setor,pontuacao_original_subsetor,penalidade_rj,pontuacao_subsetor
-Utilidade Pública,Saneamento,90.41,98.32,0.00,98.32
-Utilidade Pública,Energia Elétrica,90.41,89.39,4.29,85.11
-Materiais Básicos,Papel e Celulose,82.13,83.77,1.43,82.34
-Materiais Básicos,Mineração e Siderurgia,82.13,84.46,4.29,80.17
-Materiais Básicos,Química e Petroquímica,82.13,76.95,2.86,74.10
-Financeiro e Outros,Bancos,79.23,98.77,5.71,93.06
-Financeiro e Outros,Serviços Financeiros Diversos,79.23,84.14,1.43,82.71
-Financeiro e Outros,Construção Civil e Imobiliário,79.23,58.79,20.00,38.79
-"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",73.22,73.22,5.71,67.51
-Consumo Não Cíclico,Comércio e Distribuição,61.47,58.36,5.71,52.64
-Consumo Não Cíclico,Alimentos e Bebidas,61.47,63.02,14.29,48.73
-Tecnologia da Informação,Software e Serviços de TI,59.73,59.22,0.00,59.22
-Tecnologia da Informação,Hardware e Equipamentos,59.73,61.25,2.86,58.39
-Consumo Cíclico,Bens de Consumo,57.76,64.37,10.00,54.37
-Consumo Cíclico,Têxtil,57.76,58.33,8.57,49.76
-Consumo Cíclico,Comércio Varejista,57.76,53.73,18.57,35.16
-Bens Industriais,Máquinas e Equipamentos,57.05,71.34,14.29,57.06
-Bens Industriais,Transporte e Logística,57.05,41.96,11.43,30.53
-Bens Industriais,Serviços Industriais,57.05,33.41,4.29,29.13
-Saúde,Saúde,43.64,43.64,4.29,39.35
-Comunicações,Telecomunicações,41.27,41.27,4.29,36.98
-Educação,Educação,36.04,36.04,0.00,36.04
-Serviços Diversos,Serviços Diversos,34.39,34.39,5.71,28.68
->>>>>>> ad4c5a44fad1b7fd79211d873a1d61721518269b
+Utilidade Pública,Transmissão de Energia,104.91,122.12,6.52,20,0.00,142.12
+Utilidade Pública,Distribuição de Energia,104.91,103.59,9.55,20,0.00,123.59
+Utilidade Pública,Saneamento,104.91,98.32,3.54,0,0.00,98.32
+Utilidade Pública,Geração de Energia,104.91,55.60,3.76,0,0.00,55.60
+Materiais Básicos,Química e Petroquímica,91.16,78.62,10.27,20,6.15,92.47
+Materiais Básicos,Mineração e Siderurgia,91.16,81.69,9.50,20,9.23,92.45
+Materiais Básicos,Papel e Celulose,91.16,81.63,4.25,10,3.08,88.55
+Financeiro e Outros,Serviços Financeiros Diversos,89.50,93.30,8.99,20,3.08,110.22
+Financeiro e Outros,Propriedades e Locação,89.50,75.84,9.26,20,0.00,95.84
+Financeiro e Outros,Bancos,89.50,96.37,4.72,10,12.31,94.07
+Financeiro e Outros,Incorporação e Construção,89.50,57.88,2.39,0,0.00,57.88
+"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",86.31,78.62,9.55,20,12.31,86.31
+Tecnologia da Informação,Hardware e Equipamentos,66.54,61.25,6.76,20,6.15,75.10
+Tecnologia da Informação,Software e Serviços de TI,66.54,57.97,1.46,0,0.00,57.97
+Consumo Cíclico,Consumo Diverso,62.30,73.80,4.39,10,0.00,83.80
+Consumo Cíclico,Calçados e Vestuário,62.30,75.70,3.57,0,3.08,72.62
+Consumo Cíclico,Comércio Varejista,62.30,50.47,11.65,20,40.00,30.47
+Bens Industriais,Transporte e Componentes,48.76,63.59,5.32,10,0.00,73.59
+Bens Industriais,Máquinas e Motores,48.76,70.78,3.03,0,0.00,70.78
+Bens Industriais,Serviços Industriais,48.76,31.47,4.80,10,9.23,32.24
+Bens Industriais,Transporte e Logística,48.76,43.06,2.60,0,24.62,18.44
+Consumo Não Cíclico,Comércio e Distribuição,46.85,58.46,5.11,10,12.31,56.16
+Consumo Não Cíclico,Alimentos e Bebidas,46.85,58.32,4.46,10,30.77,37.55
+Educação,Educação,41.19,41.19,1.17,0,0.00,41.19
+Saúde,Produtos e Equipamentos Médicos,39.75,59.86,2.70,0,0.00,59.86
+Saúde,Hospitais e Análises Clínicas,39.75,28.87,2.59,0,9.23,19.64
+Comunicações,Telecomunicações,30.37,39.60,1.47,0,9.23,30.37
+Serviços Diversos,Serviços Diversos,11.74,24.05,0.40,0,12.31,11.74

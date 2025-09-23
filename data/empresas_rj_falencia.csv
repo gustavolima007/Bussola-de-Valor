@@ -1,0 +1,109 @@
+﻿nome,ticker,setor,data_entrada_rj,data_saida_rj,data_falencia,duracao_rj
+Mesbla,,Comércio Varejista,1997-06-10,,1999-05-20,1 ano e 11 meses
+Gessy Lever,,Alimentos e Bebidas,1982-03-10,1987-01-01,,4 anos e 10 meses
+Souza Cruz (Têxtil),,Consumo Diverso,1992-05-15,,1995-08-20,3 anos e 3 meses
+Panatlântica,,Mineração e Siderurgia,1992-01-01,,1995-03-15,3 anos e 2 meses
+Grazziotin,CGRA4,Comércio Varejista,1998-01-01,,2001-06-30,3 anos e 5 meses
+Cimento Tupi,,Incorporação e Construção,2018-02-26,2020-08-12,,2 anos e 6 meses
+Sadia,BRFS3,Alimentos e Bebidas,2008-10-01,2009-12-15,,1 ano e 2 meses
+Oi,OIBR3,Telecomunicações,2016-06-20,2022-12-19,,6 anos e 6 meses
+Oi,OIBR3,Telecomunicações,2023-03-13,,,Em Andamento
+OGX (atual Dommo),DMMO3,"Petróleo, Gás e Biocombustíveis",2013-10-30,2015-12-31,,2 anos e 2 meses
+OAS,,Incorporação e Construção,2015-06-30,2020-03-15,,4 anos e 9 meses
+Bombril Holding,BOBR4,Alimentos e Bebidas,2023-01-10,2024-05-20,,1 ano e 4 meses
+Bombril Holding,BOBR4,Alimentos e Bebidas,2025-01-15,,,Em Andamento
+Renova Energia,RNEW4,Geração de Energia,2016-12-08,2025-03-15,,8 anos e 3 meses
+Eucatex,EUCA4,Papel e Celulose,2009-05-12,2011-08-25,,2 anos e 3 meses
+Fertilizantes Heringer,FHER3,Química e Petroquímica,2017-11-22,2021-07-10,,3 anos e 8 meses
+Inepar,INEP4,Serviços Industriais,2015-03-18,2018-11-05,,3 anos e 8 meses
+Sansuy,SNSY3,Química e Petroquímica,2016-09-14,2019-04-30,,2 anos e 7 meses
+Witzel,,Incorporação e Construção,2010-02-08,2013-06-20,,3 anos e 4 meses
+Viver Incorporadora,VIVR3,Incorporação e Construção,2018-07-25,2022-01-12,,3 anos e 6 meses
+Petroluz Distribuidora,,Comércio e Distribuição,2008-11-03,2011-02-18,,2 anos e 3 meses
+Algodoeira Nova Prata,,Alimentos e Bebidas,2007-04-15,2010-09-30,,3 anos e 5 meses
+Algodoeira Rio Verde,,Alimentos e Bebidas,2007-05-20,2010-11-05,,3 anos e 6 meses
+Cristal Calçados,,Calçados e Vestuário,2009-07-12,2012-03-28,,2 anos e 8 meses
+Guimasa,,Alimentos e Bebidas,2008-10-05,2011-05-15,,2 anos e 7 meses
+Refrima,,Máquinas e Motores,2008-03-22,2010-12-10,,2 anos e 9 meses
+Recrusul,RCSL4,Transporte e Componentes,2009-01-18,2011-07-08,,2 anos e 6 meses
+Refrisa,,Máquinas e Motores,2008-06-30,2011-01-25,,2 anos e 7 meses
+Cory,,Alimentos e Bebidas,2009-09-14,2012-04-12,,2 anos e 7 meses
+IRB Brasil,IRBR3,Serviços Financeiros Diversos,2020-10-01,2025-02-15,,4 anos e 4 meses
+Chapecoense,,Serviços Diversos,2021-05-20,2025-09-10,,4 anos e 4 meses
+Gradiente (Primeiro Processo),IGBR3,Consumo Diverso,1994-03-15,,1997-06-20,3 anos e 3 meses
+Gradiente (IGB Eletrônica),IGBR3,Consumo Diverso,2018-09-05,2025-04-20,,6 anos e 7 meses
+Lupatech,LUPA3,Máquinas e Motores,2015-08-12,2018-06-30,,2 anos e 10 meses
+Mangels,MGEL4,Transporte e Componentes,2014-05-15,2019-02-28,,4 anos e 9 meses
+Paranapanema,PMAM3,Mineração e Siderurgia,2016-03-10,2019-11-15,,3 anos e 8 meses
+Avibras,,Transporte e Componentes,2008-09-25,2010-05-20,,1 ano e 8 meses
+Mabe,,Consumo Diverso,2012-03-15,,2016-06-10,4 anos e 3 meses
+Varig,,Transporte e Logística,2005-06-17,,2010-08-20,5 anos e 2 meses
+Vasp,,Transporte e Logística,2005-01-20,,2008-05-15,3 anos e 4 meses
+Transbrasil,,Transporte e Logística,2001-12-10,,2003-07-18,1 ano e 7 meses
+Avianca Brasil,,Transporte e Logística,2018-12-10,,2020-07-14,1 ano e 7 meses
+Itapemirim (ITA),,Transporte e Logística,2021-04-05,,2022-09-30,1 ano e 5 meses
+Coteminas,CTNM3,Consumo Diverso,2024-05-20,,,Em Andamento
+Americanas,AMER3,Comércio Varejista,2023-01-19,,,Em Andamento
+Busscar Ônibus,,Transporte e Componentes,2010-09-15,,2012-11-30,2 anos e 2 meses
+Karmann-Ghia,,Transporte e Componentes,1993-04-20,,1997-08-15,4 anos e 4 meses
+Móveis Gazin,,Comércio Varejista,2019-03-10,2022-06-25,,3 anos e 3 meses
+Eldorado Móveis,,Comércio Varejista,2016-07-05,2020-04-30,,3 anos e 9 meses
+TAM (atual Latam Brasil),,Transporte e Logística,2003-05-12,2005-09-30,,2 anos e 4 meses
+Gol Linhas Aéreas,GOLL4,Transporte e Logística,2024-01-25,2025-06-06,,1 ano e 5 meses
+Casas Bahia (Via S.A.),BHIA3,Comércio Varejista,2024-04-28,2024-06-19,,2 meses
+Dia Brasil (Grupo Dia),,Comércio Varejista,2024-03-21,2024-10-08,,7 meses
+Subway Brasil (SouthRock),,Alimentos e Bebidas,2024-03-11,2025-04-02,,1 ano e 1 mês
+Casa do Pão de Queijo,,Alimentos e Bebidas,2024-06-28,,,Em Andamento
+AgroGalaxy,AGXY3,Comércio e Distribuição,2024-09-18,,,Em Andamento
+InterCement Brasil,,Incorporação e Construção,2024-12-04,,,Em Andamento
+Indústrias Reunidas Matarazzo,,Serviços Industriais,1983-07-20,,1990-03-15,6 anos e 8 meses
+Proença S/A,,Comércio Varejista,1998-03-10,,2001-09-25,3 anos e 6 meses
+Galvão Engenharia,,Incorporação e Construção,2015-02-15,,2019-06-30,4 anos e 4 meses
+Grupo Bertin,,Alimentos e Bebidas,2010-03-20,,2013-08-10,3 anos e 5 meses
+Arasco,,Incorporação e Construção,2016-05-10,,2020-03-15,3 anos e 10 meses
+Gloria (Indústrias Reunidas Gloria),,Alimentos e Bebidas,2012-06-05,2016-04-20,,3 anos e 10 meses
+Ski Brasil,,Comércio Varejista,2017-04-15,2020-03-10,,2 anos e 11 meses
+Le Biscuit,,Comércio Varejista,2018-02-20,2021-06-30,,3 anos e 4 meses
+Amil,,Hospitais e Análises Clínicas,2015-08-10,2018-03-25,,2 anos e 7 meses
+Odebrecht S.A. (Novonor),,Incorporação e Construção,2019-06-17,,,Em Andamento
+UTC Engenharia,,Incorporação e Construção,2017-04-05,,2020-01-01,2 anos e 9 meses
+Esporte Clube Corinthians,,Serviços Diversos,2004-01-01,2007-01-01,,3 anos
+Arapuã (Grupo Arapuã),,Comércio Varejista,2018-07-10,,2021-05-15,2 anos e 10 meses
+MMX Mineração,MMXM3,Mineração e Siderurgia,2014-07-30,2016-11-22,,2 anos e 4 meses
+PDG Realty,PDGR3,Incorporação e Construção,2017-04-19,2021-04-15,,4 anos
+Agrenco,AGEN11,"Petróleo, Gás e Biocombustíveis",2008-11-10,,2013-06-20,4 anos e 7 meses
+Parmalat Brasil,,Alimentos e Bebidas,2004-01-01,2006-01-01,,2 anos
+Teka (Tecelagem Kuehnrich),TEKA4,Consumo Diverso,2012-01-01,,,Em Andamento
+Refinaria de Manguinhos,RPMG3,"Petróleo, Gás e Biocombustíveis",2016-01-01,2020-01-01,,4 anos
+Hotéis Othon,HOOT4,Serviços Diversos,2018-11-28,,,Em Andamento
+Bardella,BDLL4,Máquinas e Motores,2019-07-26,,,Em Andamento
+Rodovias do Tietê,RDVT3,Transporte e Logística,2019-09-11,2025-03-25,,5 anos e 6 meses
+João Fortes Engenharia,JFEN3,Incorporação e Construção,2020-03-10,,,Em Andamento
+Rossi Residencial,RSID3,Incorporação e Construção,2022-01-17,,,Em Andamento
+Light S.A.,LIGT3,Distribuição de Energia,2023-05-12,,,Em Andamento
+OSX Brasil,OSXB3,Serviços Industriais,2013-11-01,2020-11-25,,7 anos
+Springs Global,SGPS3,Consumo Diverso,2024-05-20,,,Em Andamento
+Cia de Tecidos Santanense,CTSA3,Consumo Diverso,2024-05-06,,,Em Andamento
+H-Buster,,Hardware e Equipamentos,2013-03-22,,2015-01-01,1 ano e 10 meses
+Livraria Cultura,,Comércio Varejista,2018-10-25,,2023-02-09,4 anos e 4 meses
+Livraria Saraiva,,Comércio Varejista,2018-11-13,,2023-01-01,4 anos e 2 meses
+Unimed Nacional (Cooperativas),,Hospitais e Análises Clínicas,2015-01-01,,2018-01-01,3 anos
+Hapvida (Subsidiárias),HAPV3,Hospitais e Análises Clínicas,2023-01-01,,,Em Andamento
+Banco Nacional,,Bancos,1995-11-01,,,Em Andamento
+Banco Bamerindus,,Bancos,1997-03-01,,,Em Andamento
+Banco Econômico,,Bancos,1995-08-01,2021-01-01,,25 anos e 5 meses
+Banco Halles,,Bancos,1974-04-01,,1975-01-01,9 meses
+Agrogalaxy,AGXY3,Comércio e Distribuição,2024-09-18,,,Em Andamento
+Atmasa,ATMP3,Telecomunicações,2022-06-07,,,Em Andamento
+Bardella,BDLL3,Máquinas e Motores,2019-07-01,,,Em Andamento
+Hotéis Othon,HOOT3,Serviços Diversos,2018-11-28,,,Em Andamento
+João Fortes,JFEN3,Incorporação e Construção,2020-03-10,,,Em Andamento
+Pet Manguinhos,RPMG3,"Petróleo, Gás e Biocombustíveis",2016-01-01,2020-01-01,,4 anos
+Pomifrutas,FRTA3,Comércio e Distribuição,2024-04-18,,2024-04-18,0 meses
+Tecnosolo,TCNO4,Incorporação e Construção,2012-01-01,,,Em Andamento
+Teka,TEKA4,Consumo Diverso,2010-01-01,,,Em Andamento
+Wetzel,MWET4,Hardware e Equipamentos,2018-01-01,2022-09-01,,4 anos e 8 meses
+Eneva (ex-MPX),ENEV3,Geração de Energia,2014-12-10,2016-06-01,,1 ano e 6 meses
+Engesa S.A.,,Transporte e Componentes,1990-03-21,,1995-01-01,4 anos e 10 meses
+Indústrias Reunidas Fábricas Matarazzo S.A.,,Serviços Industriais,1983-07-19,,,Em Andamento
+Grupo Guararapes S.A.,,Comércio Varejista,1990-01-01,1990-12-31,,11 meses
