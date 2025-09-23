@@ -534,27 +534,28 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
     
 
 def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
-    st.header("🏗️ Setores")
+    st.header("🏗️ Análise de Setores")
 
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
         st.subheader("Ranking de Setores por Pontuação Média")
-        # O CSV agora contém a pontuação original, a penalidade e a final.
-        # Apenas renomeamos as colunas para exibição.
+        st.markdown("Esta tabela classifica os subsetores com base em uma pontuação final que considera o desempenho médio de suas ações, a penalidade por recuperação judicial e o dividend yield médio dos últimos 5 anos.")
 
         av_display = av_setor.rename(columns={
             'subsetor_b3': 'Subsetor',
             'pontuacao_original_subsetor': 'Pontuação Original',
             'penalidade_rj': 'Penalidade (RJ)',
+            'dy_5a_subsetor': 'DY 5 Anos Setor (%)',
             'pontuacao_subsetor': 'Pontuação Final'
         }).sort_values('Pontuação Final', ascending=False)
 
-        # Define as colunas a serem exibidas
-        cols_to_show = ['Subsetor', 'Pontuação Original', 'Penalidade (RJ)', 'Pontuação Final']
+        cols_to_show = ['Subsetor', 'Pontuação Original', 'Penalidade (RJ)', 'DY 5 Anos Setor (%)', 'Pontuação Final']
         if 'Pontuação Original' not in av_display.columns:
             cols_to_show.remove('Pontuação Original')
         if 'Penalidade (RJ)' not in av_display.columns:
             cols_to_show.remove('Penalidade (RJ)')
+        if 'DY 5 Anos Setor (%)' not in av_display.columns:
+            cols_to_show.remove('DY 5 Anos Setor (%)')
 
         styler = av_display[cols_to_show].style.map(style_pontuacao_final, subset=['Pontuação Final'])
 
@@ -565,11 +566,12 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
             column_config={
                 'Pontuação Original': st.column_config.NumberColumn('Pontuação Original', format='%.1f', help="Pontuação média dos ativos do setor, antes da penalidade."),
                 'Penalidade (RJ)': st.column_config.NumberColumn('Penalidade', format='-%.1f', help="Penalidade subtraída da pontuação original devido ao histórico de RJs do setor."),
-                'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do setor após a aplicação da penalidade.")
+                'DY 5 Anos Setor (%)': st.column_config.NumberColumn('DY 5 Anos (%)', format='%.2f%%', help="Média do Dividend Yield dos últimos 5 anos para o setor."),
+                'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do setor após a aplicação da penalidade e bônus de dividendos.")
             }
         )
         
-        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='Ranking de Setores por Pontuação Média Final')
+        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
@@ -579,47 +581,16 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
 
     # Adicionado Top 15 por Score
     if not df_filtrado.empty:
-        st.subheader("Top 15 Ações por Score")
+        st.subheader("Top 15 Ações por Score (Filtro Atual)")
         top = df_filtrado.nlargest(15, 'Score Total')
         fig_bar = px.bar(top.sort_values('Score Total'), x='Score Total', y='Ticker', orientation='h', color='subsetor_b3', hover_data=['Empresa'])
-        fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+        fig_bar.update_layout(margin=dict(l=20, r=20, t=50, b=20), legend_title_text='Setor')
         st.plotly_chart(fig_bar, use_container_width=True)
-        st.divider()
-
-    if not av_setor.empty:
-        st.subheader("Detalhes dos Ativos (conforme filtros aplicados)")
-
-        if not df_filtrado.empty:
-            cols_to_show = ['subsetor_b3', 'Ticker', 'Score Total', 'pontuacao_subsetor']
-            if all(col in df_filtrado.columns for col in cols_to_show):
-                tabela_df = df_filtrado[cols_to_show].copy()
-                tabela_df.rename(columns={
-                    'subsetor_b3': 'Subsetor',
-                    'Ticker': 'Ticker',
-                    'Score Total': 'Score Total',
-                    'pontuacao_subsetor': 'Pontuação do Subsetor'
-                }, inplace=True)
-
-                tabela_df.sort_values(by='Score Total', ascending=False, inplace=True)
-
-                st.dataframe(
-                    tabela_df,
-                    use_container_width=True,
-                    hide_index=True,
-                    column_config={
-                        "Score Total": st.column_config.ProgressColumn("Score Total", format="%d", min_value=0, max_value=200),
-                        "Pontuação do Subsetor": st.column_config.NumberColumn("Pontuação Subsetor", format="%.2f"),
-                    }
-                )
-            else:
-                st.warning("As colunas necessárias para a tabela de detalhes não foram encontradas.")
-        else:
-            st.info("Nenhum ativo encontrado para os filtros selecionados.")
     
     st.divider()
-    st.subheader("Análise Setorial (Foco em Dividendos)")
+    st.subheader("Análise Qualitativa dos Setores (Foco em Dividendos)")
     st.markdown('''
-Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuação média, com motivos para investir e cuidados a serem considerados, especialmente para carteiras focadas em dividendos.
+Abaixo, apresentamos uma análise qualitativa de cada setor, com motivos para investir e pontos de atenção, especialmente para carteiras focadas em renda passiva.
     ''')
 
     # Dicionário com descrições de cada setor
@@ -715,11 +686,15 @@ Abaixo, apresentamos uma análise detalhada de cada setor, ordenada por pontuaç
                 "Por que investir?": "Informações específicas não disponíveis. Setor pode oferecer oportunidades dependendo das condições de mercado.",
                 "Por que não investir?": "Riscos específicos não detalhados. Considere avaliar a volatilidade e a estabilidade de dividendos."
             })
-            with st.expander(f"{subsetor} (Pontuação: {pontuacao:.2f})"):
-                st.markdown(f'''
-                - **Por que investir?** {desc['Por que investir?']}
-                - **Por que não investir?** {desc['Por que não investir?']}
-                ''')
+            with st.container(border=True):
+                st.markdown(f"<h5>{subsetor} <span style='float: right; font-size: 0.9rem; color: #ffaa00;'>Pontuação: {pontuacao:.2f}</span></h5>", unsafe_allow_html=True)
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.markdown(f"✅ **Por que investir?**")
+                    st.markdown(f"<p style='font-size: 0.9rem;'>{desc['Por que investir?']}</p>", unsafe_allow_html=True)
+                with col2:
+                    st.markdown(f"❌ **Por que não investir?**")
+                    st.markdown(f"<p style='font-size: 0.9rem;'>{desc['Por que não investir?']}</p>", unsafe_allow_html=True)
     else:
         st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
     
@@ -791,7 +766,7 @@ A pontuação de cada setor é penalizada com base no seu histórico de recupera
         """)
 
     st.divider()
-    st.subheader("Lista de Empresas")
+    st.subheader(f"Lista de Empresas ({len(rj_df)} encontradas)")
 
     if rj_df.empty:
         st.info("Nenhuma empresa na lista de recuperação judicial ou falência.")

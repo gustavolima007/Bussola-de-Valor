@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 📄 Script para extrair e processar dados de ações e fundos da B3.
-... (o resto do seu script) ...
+   Versão refinada com mapeamento de setores e subsetores aprimorado.
 """
 
 import requests
@@ -16,9 +16,8 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Mapeamento completo e específico de Ticker para (Setor, Subsetor)
+# --- MAPEAMENTO DE TICKERS REFINADO ---
 MAPEAMENTO_COMPLETO_TICKERS = {
-    # ... (seu dicionário gigante e correto permanece aqui, sem alterações) ...
     # Utilidade Pública - Energia Elétrica
     "AFLT3": ("Utilidade Pública", "Energia Elétrica"), "ALUP3": ("Utilidade Pública", "Energia Elétrica"),
     "ALUP4": ("Utilidade Pública", "Energia Elétrica"), "ALUP11": ("Utilidade Pública", "Energia Elétrica"),
@@ -119,33 +118,35 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     # Consumo Cíclico - Comércio Varejista
     "AMAR3": ("Consumo Cíclico", "Comércio Varejista"), "AMER3": ("Consumo Cíclico", "Comércio Varejista"),
     "AMOB3": ("Consumo Cíclico", "Comércio Varejista"), "ASAI3": ("Consumo Cíclico", "Comércio Varejista"),
-    "BHIA3": ("Consumo Cíclico", "Comércio Varejista"), "CEAB3": ("Consumo Cíclico", "Comércio Varejista"),
-    "CGRA3": ("Consumo Cíclico", "Comércio Varejista"), "CGRA4": ("Consumo Cíclico", "Comércio Varejista"),
-    "ENJU3": ("Consumo Cíclico", "Comércio Varejista"), "GMAT3": ("Consumo Cíclico", "Comércio Varejista"),
-    "GUAR3": ("Consumo Cíclico", "Comércio Varejista"), "LJQQ3": ("Consumo Cíclico", "Comércio Varejista"),
-    "LREN3": ("Consumo Cíclico", "Comércio Varejista"), "MGLU3": ("Consumo Cíclico", "Comércio Varejista"),
-    "PCAR3": ("Consumo Cíclico", "Comércio Varejista"), "PETZ3": ("Consumo Cíclico", "Comércio Varejista"),
-    "PGMN3": ("Consumo Cíclico", "Comércio Varejista"), "PNVL3": ("Consumo Cíclico", "Comércio Varejista"),
-    "RADL3": ("Consumo Cíclico", "Comércio Varejista"), "RAIZ4": ("Consumo Cíclico", "Comércio Varejista"),
-    "SBFG3": ("Consumo Cíclico", "Comércio Varejista"), "TFCO4": ("Consumo Cíclico", "Comércio Varejista"),
+    "BHIA3": ("Consumo Cíclico", "Comércio Varejista"), "CGRA3": ("Consumo Cíclico", "Comércio Varejista"),
+    "CGRA4": ("Consumo Cíclico", "Comércio Varejista"), "ENJU3": ("Consumo Cíclico", "Comércio Varejista"),
+    "GMAT3": ("Consumo Cíclico", "Comércio Varejista"), "LJQQ3": ("Consumo Cíclico", "Comércio Varejista"),
+    "MGLU3": ("Consumo Cíclico", "Comércio Varejista"), "PCAR3": ("Consumo Cíclico", "Comércio Varejista"),
+    "PETZ3": ("Consumo Cíclico", "Comércio Varejista"), "PGMN3": ("Consumo Cíclico", "Comércio Varejista"),
+    "PNVL3": ("Consumo Cíclico", "Comércio Varejista"), "RADL3": ("Consumo Cíclico", "Comércio Varejista"),
+    "RAIZ4": ("Consumo Cíclico", "Comércio Varejista"), "TFCO4": ("Consumo Cíclico", "Comércio Varejista"),
     "UGPA3": ("Consumo Cíclico", "Comércio Varejista"), "VIVA3": ("Consumo Cíclico", "Comércio Varejista"),
     "WEST3": ("Consumo Cíclico", "Comércio Varejista"),
 
-    # Bens de Consumo (Vestuário, Casa e Pessoais)
-    "ALPA3": ("Consumo Cíclico", "Bens de Consumo"), "ALPA4": ("Consumo Cíclico", "Bens de Consumo"),
-    "BOBR4": ("Consumo Cíclico", "Bens de Consumo"), "CAMB3": ("Consumo Cíclico", "Bens de Consumo"),
-    "GRND3": ("Consumo Cíclico", "Bens de Consumo"), "HAGA3": ("Consumo Cíclico", "Bens de Consumo"),
-    "HAGA4": ("Consumo Cíclico", "Bens de Consumo"), "MNDL3": ("Consumo Cíclico", "Bens de Consumo"),
-    "NATU3": ("Consumo Cíclico", "Bens de Consumo"), "TECN3": ("Consumo Cíclico", "Bens de Consumo"),
-    "UCAS3": ("Consumo Cíclico", "Bens de Consumo"), "VSTE3": ("Consumo Cíclico", "Bens de Consumo"),
-    "VULC3": ("Consumo Cíclico", "Bens de Consumo"), "WHRL3": ("Consumo Cíclico", "Bens de Consumo"),
-    "WHRL4": ("Consumo Cíclico", "Bens de Consumo"), "BMKS3": ("Consumo Cíclico", "Bens de Consumo"),
-    "ESTR4": ("Consumo Cíclico", "Bens de Consumo"),
+    # Consumo Cíclico - Calçados e Vestuário
+    "ALPA3": ("Consumo Cíclico", "Calçados e Vestuário"), "ALPA4": ("Consumo Cíclico", "Calçados e Vestuário"),
+    "GRND3": ("Consumo Cíclico", "Calçados e Vestuário"), "VULC3": ("Consumo Cíclico", "Calçados e Vestuário"),
+    "SBFG3": ("Consumo Cíclico", "Calçados e Vestuário"), "LREN3": ("Consumo Cíclico", "Calçados e Vestuário"),
+    "CEAB3": ("Consumo Cíclico", "Calçados e Vestuário"), "GUAR3": ("Consumo Cíclico", "Calçados e Vestuário"),
 
-    # Têxtil
+    # Consumo Cíclico - Eletrodomésticos
+    "WHRL3": ("Consumo Cíclico", "Eletrodomésticos"), "WHRL4": ("Consumo Cíclico", "Eletrodomésticos"),
+
+    # Consumo Cíclico - Têxtil
     "CEDO4": ("Consumo Cíclico", "Têxtil"), "CTKA4": ("Consumo Cíclico", "Têxtil"),
     "CTSA3": ("Consumo Cíclico", "Têxtil"), "DOHL4": ("Consumo Cíclico", "Têxtil"),
     "PTNT4": ("Consumo Cíclico", "Têxtil"),
+
+    # Consumo Cíclico - Consumo Diverso (Cosméticos, Brinquedos, etc.)
+    "CAMB3": ("Consumo Cíclico", "Consumo Diverso"), "MNDL3": ("Consumo Cíclico", "Consumo Diverso"),
+    "NATU3": ("Consumo Cíclico", "Consumo Diverso"), "TECN3": ("Consumo Cíclico", "Consumo Diverso"),
+    "UCAS3": ("Consumo Cíclico", "Consumo Diverso"), "VSTE3": ("Consumo Cíclico", "Consumo Diverso"),
+    "BMKS3": ("Consumo Cíclico", "Consumo Diverso"), "ESTR4": ("Consumo Cíclico", "Consumo Diverso"),
 
     # Consumo Não Cíclico - Alimentos e Bebidas
     "ABEV3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "AGRO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
@@ -156,6 +157,15 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "NUTR3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "SLCE3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
     "SMTO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "SOJA3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
 
+    # Consumo Não Cíclico - Comércio e Distribuição
+    "AGXY3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "DMVF3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+    "IFCM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "LVTC3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+    "PFRM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "VVEO3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+    "WLMM4": ("Consumo Não Cíclico", "Comércio e Distribuição"),
+
+    # Consumo Não Cíclico - Produtos de Limpeza e Higiene
+    "BOBR4": ("Consumo Não Cíclico", "Produtos de Limpeza e Higiene"),
+    
     # Bens Industriais - Máquinas e Equipamentos
     "AERI3": ("Bens Industriais", "Máquinas e Equipamentos"), "ARML3": ("Bens Industriais", "Máquinas e Equipamentos"),
     "DXCO3": ("Bens Industriais", "Máquinas e Equipamentos"), "EALT3": ("Bens Industriais", "Máquinas e Equipamentos"),
@@ -182,12 +192,25 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "STBP3": ("Bens Industriais", "Transporte e Logística"), "TGMA3": ("Bens Industriais", "Transporte e Logística"),
     "TPIS3": ("Bens Industriais", "Transporte e Logística"),
 
-    # Saúde
-    "AALR3": ("Saúde", "Saúde"), "BALM4": ("Saúde", "Saúde"), "BIOM3": ("Saúde", "Saúde"),
-    "BLAU3": ("Saúde", "Saúde"), "DASA3": ("Saúde", "Saúde"), "FLRY3": ("Saúde", "Saúde"),
-    "HAPV3": ("Saúde", "Saúde"), "HYPE3": ("Saúde", "Saúde"), "MATD3": ("Saúde", "Saúde"),
-    "ODPV3": ("Saúde", "Saúde"), "OFSA3": ("Saúde", "Saúde"), "ONCO3": ("Saúde", "Saúde"),
-    "RDOR3": ("Saúde", "Saúde"),
+    # Bens Industriais - Serviços Industriais
+    "AZEV3": ("Bens Industriais", "Serviços Industriais"), "AZEV4": ("Bens Industriais", "Serviços Industriais"),
+    "INEP3": ("Bens Industriais", "Serviços Industriais"), "INEP4": ("Bens Industriais", "Serviços Industriais"),
+    "LOGG3": ("Bens Industriais", "Serviços Industriais"), "MILS3": ("Bens Industriais", "Serviços Industriais"),
+    "OSXB3": ("Bens Industriais", "Serviços Industriais"), "PRNR3": ("Bens Industriais", "Serviços Industriais"),
+
+    # Bens Industriais - Outros
+    "HAGA3": ("Bens Industriais", "Outros"), "HAGA4": ("Bens Industriais", "Outros"),
+
+    # Saúde - Hospitais e Análises Clínicas
+    "AALR3": ("Saúde", "Hospitais e Análises Clínicas"), "DASA3": ("Saúde", "Hospitais e Análises Clínicas"),
+    "FLRY3": ("Saúde", "Hospitais e Análises Clínicas"), "HAPV3": ("Saúde", "Hospitais e Análises Clínicas"),
+    "ONCO3": ("Saúde", "Hospitais e Análises Clínicas"), "RDOR3": ("Saúde", "Hospitais e Análises Clínicas"),
+
+    # Saúde - Produtos e Equipamentos Médicos
+    "BALM4": ("Saúde", "Produtos e Equipamentos Médicos"), "BIOM3": ("Saúde", "Produtos e Equipamentos Médicos"),
+    "BLAU3": ("Saúde", "Produtos e Equipamentos Médicos"), "HYPE3": ("Saúde", "Produtos e Equipamentos Médicos"),
+    "MATD3": ("Saúde", "Produtos e Equipamentos Médicos"), "ODPV3": ("Saúde", "Produtos e Equipamentos Médicos"),
+    "OFSA3": ("Saúde", "Produtos e Equipamentos Médicos"),
 
     # Tecnologia da Informação - Software e Serviços de TI
     "ATED3": ("Tecnologia da Informação", "Software e Serviços de TI"), "BMOB3": ("Tecnologia da Informação", "Software e Serviços de TI"),
@@ -196,6 +219,10 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "LWSA3": ("Tecnologia da Informação", "Software e Serviços de TI"), "NGRD3": ("Tecnologia da Informação", "Software e Serviços de TI"),
     "TOTS3": ("Tecnologia da Informação", "Software e Serviços de TI"), "TRAD3": ("Tecnologia da Informação", "Software e Serviços de TI"),
     "VLID3": ("Tecnologia da Informação", "Software e Serviços de TI"), "TOKY3": ("Tecnologia da Informação", "Software e Serviços de TI"),
+
+    # Tecnologia da Informação - Hardware e Equipamentos
+    "ALLD3": ("Tecnologia da Informação", "Hardware e Equipamentos"), "MLAS3": ("Tecnologia da Informação", "Hardware e Equipamentos"),
+    "PDTC3": ("Tecnologia da Informação", "Hardware e Equipamentos"), "POSI3": ("Tecnologia da Informação", "Hardware e Equipamentos"),
 
     # Petróleo, Gás e Biocombustíveis
     "BRAV3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
@@ -207,12 +234,6 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "RECV3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "RPMG3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
     "VBBR3": ("Petróleo, Gás e Biocombustíveis", "Petróleo, Gás e Biocombustíveis"),
-
-    # Bens Industriais - Serviços Industriais
-    "AZEV3": ("Bens Industriais", "Serviços Industriais"), "AZEV4": ("Bens Industriais", "Serviços Industriais"),
-    "INEP3": ("Bens Industriais", "Serviços Industriais"), "INEP4": ("Bens Industriais", "Serviços Industriais"),
-    "LOGG3": ("Bens Industriais", "Serviços Industriais"), "MILS3": ("Bens Industriais", "Serviços Industriais"),
-    "OSXB3": ("Bens Industriais", "Serviços Industriais"), "PRNR3": ("Bens Industriais", "Serviços Industriais"),
 
     # Comunicações - Telecomunicações
     "BRST3": ("Comunicações", "Telecomunicações"), "DESK3": ("Comunicações", "Telecomunicações"),
@@ -226,16 +247,6 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "COGN3": ("Educação", "Educação"), "CSED3": ("Educação", "Educação"),
     "SEER3": ("Educação", "Educação"), "SMFT3": ("Educação", "Educação"),
     "YDUQ3": ("Educação", "Educação"), "ZAMP3": ("Educação", "Educação"),
-
-    # Consumo Não Cíclico - Comércio e Distribuição
-    "AGXY3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "DMVF3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-    "IFCM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "LVTC3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-    "PFRM3": ("Consumo Não Cíclico", "Comércio e Distribuição"), "VVEO3": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-    "WLMM4": ("Consumo Não Cíclico", "Comércio e Distribuição"),
-
-    # Tecnologia da Informação - Hardware e Equipamentos
-    "ALLD3": ("Tecnologia da Informação", "Hardware e Equipamentos"), "MLAS3": ("Tecnologia da Informação", "Hardware e Equipamentos"),
-    "PDTC3": ("Tecnologia da Informação", "Hardware e Equipamentos"), "POSI3": ("Tecnologia da Informação", "Hardware e Equipamentos"),
 
     # Serviços Diversos
     "AHEB3": ("Serviços Diversos", "Serviços Diversos"), "AMBP3": ("Serviços Diversos", "Serviços Diversos"),
@@ -251,7 +262,6 @@ TICKERS_A_REMOVER = [
     "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L", "PPLA11"
 ]
 
-# --- FUNÇÃO CORRIGIDA ---
 def mapear_setores_b3(df):
     """
     Mapeia os tickers para o padrão B3 de Setor e Subsetor usando

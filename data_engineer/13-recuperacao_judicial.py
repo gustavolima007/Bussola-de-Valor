@@ -1,11 +1,11 @@
 import pandas as pd
 from pathlib import Path
 
-# Lista de empresas brasileiras que entraram em recuperação judicial ou extrajudicial desde 1960
-# O campo "setor" foi atualizado para corresponder à classificação oficial (subsetor) definida.
+# Lista de empresas brasileiras em recuperação judicial com o campo "setor"
+# devidamente alinhado à nova classificação de subsetores.
 empresas_recuperadas = [
     {"nome": "Mesbla", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "1997-06-10", "data_saida_rj": None, "data_falencia": "1999-05-20"},
-    {"nome": "Gessy Lever", "ticker": None, "setor": "Bens de Consumo", "data_entrada_rj": "1982-03-10", "data_saida_rj": "1987-01-01", "data_falencia": None},
+    {"nome": "Gessy Lever", "ticker": None, "setor": "Produtos de Limpeza e Higiene", "data_entrada_rj": "1982-03-10", "data_saida_rj": "1987-01-01", "data_falencia": None},
     {"nome": "Souza Cruz (Têxtil)", "ticker": None, "setor": "Têxtil", "data_entrada_rj": "1992-05-15", "data_saida_rj": None, "data_falencia": "1995-08-20"},
     {"nome": "Panatlântica", "ticker": None, "setor": "Mineração e Siderurgia", "data_entrada_rj": "1992-01-01", "data_saida_rj": None, "data_falencia": "1995-03-15"},
     {"nome": "Grazziotin", "ticker": "CGRA4", "setor": "Comércio Varejista", "data_entrada_rj": "1998-01-01", "data_saida_rj": None, "data_falencia": "2001-06-30"},
@@ -15,8 +15,8 @@ empresas_recuperadas = [
     {"nome": "Oi", "ticker": "OIBR3", "setor": "Telecomunicações", "data_entrada_rj": "2023-03-13", "data_saida_rj": None, "data_falencia": None},
     {"nome": "OGX (atual Dommo)", "ticker": "DMMO3", "setor": "Petróleo, Gás e Biocombustíveis", "data_entrada_rj": "2013-10-30", "data_saida_rj": "2015-12-31", "data_falencia": None},
     {"nome": "OAS", "ticker": None, "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2015-06-30", "data_saida_rj": "2020-03-15", "data_falencia": None},
-    {"nome": "Bombril Holding", "ticker": "BOBR4", "setor": "Bens de Consumo", "data_entrada_rj": "2023-01-10", "data_saida_rj": "2024-05-20", "data_falencia": None},
-    {"nome": "Bombril Holding", "ticker": "BOBR4", "setor": "Bens de Consumo", "data_entrada_rj": "2025-01-15", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Bombril Holding", "ticker": "BOBR4", "setor": "Produtos de Limpeza e Higiene", "data_entrada_rj": "2023-01-10", "data_saida_rj": "2024-05-20", "data_falencia": None},
+    {"nome": "Bombril Holding", "ticker": "BOBR4", "setor": "Produtos de Limpeza e Higiene", "data_entrada_rj": "2025-01-15", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Renova Energia", "ticker": "RNEW4", "setor": "Energia Elétrica", "data_entrada_rj": "2016-12-08", "data_saida_rj": "2025-03-15", "data_falencia": None},
     {"nome": "Eucatex", "ticker": "EUCA4", "setor": "Papel e Celulose", "data_entrada_rj": "2009-05-12", "data_saida_rj": "2011-08-25", "data_falencia": None},
     {"nome": "Fertilizantes Heringer", "ticker": "FHER3", "setor": "Química e Petroquímica", "data_entrada_rj": "2017-11-22", "data_saida_rj": "2021-07-10", "data_falencia": None},
@@ -27,7 +27,7 @@ empresas_recuperadas = [
     {"nome": "Petroluz Distribuidora", "ticker": None, "setor": "Comércio e Distribuição", "data_entrada_rj": "2008-11-03", "data_saida_rj": "2011-02-18", "data_falencia": None},
     {"nome": "Algodoeira Nova Prata", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2007-04-15", "data_saida_rj": "2010-09-30", "data_falencia": None},
     {"nome": "Algodoeira Rio Verde", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2007-05-20", "data_saida_rj": "2010-11-05", "data_falencia": None},
-    {"nome": "Cristal Calçados", "ticker": None, "setor": "Bens de Consumo", "data_entrada_rj": "2009-07-12", "data_saida_rj": "2012-03-28", "data_falencia": None},
+    {"nome": "Cristal Calçados", "ticker": None, "setor": "Calçados e Vestuário", "data_entrada_rj": "2009-07-12", "data_saida_rj": "2012-03-28", "data_falencia": None},
     {"nome": "Guimasa", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2008-10-05", "data_saida_rj": "2011-05-15", "data_falencia": None},
     {"nome": "Refrima", "ticker": None, "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2008-03-22", "data_saida_rj": "2010-12-10", "data_falencia": None},
     {"nome": "Recrusul", "ticker": "RCSL4", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2009-01-18", "data_saida_rj": "2011-07-08", "data_falencia": None},
@@ -35,13 +35,13 @@ empresas_recuperadas = [
     {"nome": "Cory", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2009-09-14", "data_saida_rj": "2012-04-12", "data_falencia": None},
     {"nome": "IRB Brasil", "ticker": "IRBR3", "setor": "Serviços Financeiros Diversos", "data_entrada_rj": "2020-10-01", "data_saida_rj": "2025-02-15", "data_falencia": None},
     {"nome": "Chapecoense", "ticker": None, "setor": "Serviços Diversos", "data_entrada_rj": "2021-05-20", "data_saida_rj": "2025-09-10", "data_falencia": None},
-    {"nome": "Gradiente (Primeiro Processo)", "ticker": "IGBR3", "setor": "Bens de Consumo", "data_entrada_rj": "1994-03-15", "data_saida_rj": None, "data_falencia": "1997-06-20"},
-    {"nome": "Gradiente (IGB Eletrônica)", "ticker": "IGBR3", "setor": "Bens de Consumo", "data_entrada_rj": "2018-09-05", "data_saida_rj": "2025-04-20", "data_falencia": None},
+    {"nome": "Gradiente (Primeiro Processo)", "ticker": "IGBR3", "setor": "Eletrodomésticos", "data_entrada_rj": "1994-03-15", "data_saida_rj": None, "data_falencia": "1997-06-20"},
+    {"nome": "Gradiente (IGB Eletrônica)", "ticker": "IGBR3", "setor": "Eletrodomésticos", "data_entrada_rj": "2018-09-05", "data_saida_rj": "2025-04-20", "data_falencia": None},
     {"nome": "Lupatech", "ticker": "LUPA3", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2015-08-12", "data_saida_rj": "2018-06-30", "data_falencia": None},
     {"nome": "Mangels", "ticker": "MGEL4", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2014-05-15", "data_saida_rj": "2019-02-28", "data_falencia": None},
     {"nome": "Paranapanema", "ticker": "PMAM3", "setor": "Mineração e Siderurgia", "data_entrada_rj": "2016-03-10", "data_saida_rj": "2019-11-15", "data_falencia": None},
     {"nome": "Avibras", "ticker": None, "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2008-09-25", "data_saida_rj": "2010-05-20", "data_falencia": None},
-    {"nome": "Mabe", "ticker": None, "setor": "Bens de Consumo", "data_entrada_rj": "2012-03-15", "data_saida_rj": None, "data_falencia": "2016-06-10"},
+    {"nome": "Mabe", "ticker": None, "setor": "Eletrodomésticos", "data_entrada_rj": "2012-03-15", "data_saida_rj": None, "data_falencia": "2016-06-10"},
     {"nome": "Varig", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2005-06-17", "data_saida_rj": None, "data_falencia": "2010-08-20"},
     {"nome": "Vasp", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2005-01-20", "data_saida_rj": None, "data_falencia": "2008-05-15"},
     {"nome": "Transbrasil", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2001-12-10", "data_saida_rj": None, "data_falencia": "2003-07-18"},
@@ -69,7 +69,7 @@ empresas_recuperadas = [
     {"nome": "Gloria (Indústrias Reunidas Gloria)", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2012-06-05", "data_saida_rj": "2016-04-20", "data_falencia": None},
     {"nome": "Ski Brasil", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2017-04-15", "data_saida_rj": "2020-03-10", "data_falencia": None},
     {"nome": "Le Biscuit", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2018-02-20", "data_saida_rj": "2021-06-30", "data_falencia": None},
-    {"nome": "Amil", "ticker": None, "setor": "Saúde", "data_entrada_rj": "2015-08-10", "data_saida_rj": "2018-03-25", "data_falencia": None},
+    {"nome": "Amil", "ticker": None, "setor": "Hospitais e Análises Clínicas", "data_entrada_rj": "2015-08-10", "data_saida_rj": "2018-03-25", "data_falencia": None},
     {"nome": "Odebrecht S.A. (Novonor)", "ticker": None, "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2019-06-17", "data_saida_rj": None, "data_falencia": None},
     {"nome": "UTC Engenharia", "ticker": None, "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2017-04-05", "data_saida_rj": None, "data_falencia": "2020-01-01"},
     {"nome": "Esporte Clube Corinthians", "ticker": None, "setor": "Serviços Diversos", "data_entrada_rj": "2004-01-01", "data_saida_rj": "2007-01-01", "data_falencia": None},
@@ -92,25 +92,23 @@ empresas_recuperadas = [
     {"nome": "H-Buster", "ticker": None, "setor": "Hardware e Equipamentos", "data_entrada_rj": "2013-03-22", "data_saida_rj": None, "data_falencia": "2015-01-01"},
     {"nome": "Livraria Cultura", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2018-10-25", "data_saida_rj": None, "data_falencia": "2023-02-09"},
     {"nome": "Livraria Saraiva", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2018-11-13", "data_saida_rj": None, "data_falencia": "2023-01-01"},
-    {"nome": "Unimed Nacional (Cooperativas)", "ticker": None, "setor": "Saúde", "data_entrada_rj": "2015-01-01", "data_saida_rj": None, "data_falencia": "2018-01-01"},
-    {"nome": "Hapvida (Subsidiárias)", "ticker": "HAPV3", "setor": "Saúde", "data_entrada_rj": "2023-01-01", "data_saida_rj": None, "data_falencia": None},
-    {"nome": "Banco Nacional", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-11-01", "data_saida_rj": None, "data_falencia": None},  # Liquidação 1995 PROER; vendido a Unibanco
-    {"nome": "Banco Bamerindus", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1997-03-01", "data_saida_rj": None, "data_falencia": None},  # Liquidação 1997 PROER; vendido a HSBC
-    {"nome": "Banco Econômico", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-08-01", "data_saida_rj": "2021-01-01", "data_falencia": None},  # Liquidação 1995 PROER; vendido a BTG 2021
-    {"nome": "Banco Halles", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1974-04-01", "data_saida_rj": None, "data_falencia": "1975-01-01"},  # Intervenção 1974; liquidação 1975
-    {"nome": "Agrogalaxy", "ticker": "AGXY3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-09-18", "data_saida_rj": None, "data_falencia": None},  # RJ 2024 ativa (ajustado de Agronegócio)
-    {"nome": "Atmasa", "ticker": "ATMP3", "setor": "Telecomunicações", "data_entrada_rj": "2022-06-07", "data_saida_rj": None, "data_falencia": None},  # RJ 2022 ativa
-    {"nome": "Bardella", "ticker": "BDLL3", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2019-07-01", "data_saida_rj": None, "data_falencia": None},  # RJ 2019 ativa
-    {"nome": "Hotéis Othon", "ticker": "HOOT3", "setor": "Serviços Diversos", "data_entrada_rj": "2018-11-28", "data_saida_rj": None, "data_falencia": None},  # RJ 2018 ativa
-    {"nome": "João Fortes", "ticker": "JFEN3", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2020-03-10", "data_saida_rj": None, "data_falencia": None},  # RJ 2020 ativa
-    {"nome": "Pet Manguinhos", "ticker": "RPMG3", "setor": "Petróleo, Gás e Biocombustíveis", "data_entrada_rj": "2016-01-01", "data_saida_rj": "2020-01-01", "data_falencia": None},  # RJ concluída 2020
-    {"nome": "Pomifrutas", "ticker": "FRTA3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-04-18", "data_saida_rj": None, "data_falencia": "2024-04-18"},  # RJ 2024 a autofalência (ajustado de Agronegócio)
-    {"nome": "Tecnosolo", "ticker": "TCNO4", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2012-01-01", "data_saida_rj": None, "data_falencia": None},  # RJ 2012 ativa
-    {"nome": "Teka", "ticker": "TEKA4", "setor": "Têxtil", "data_entrada_rj": "2010-01-01", "data_saida_rj": None, "data_falencia": None},  # RJ ativa
-    {"nome": "Wetzel", "ticker": "MWET4", "setor": "Hardware e Equipamentos", "data_entrada_rj": "2018-01-01", "data_saida_rj": "2022-09-01", "data_falencia": None},  # RJ saída 2022
-    {"nome": "Eneva (ex-MPX)", "ticker": "ENEV3", "setor": "Energia Elétrica", "data_entrada_rj": "2014-12-10", "data_saida_rj": "2016-06-01", "data_falencia": None} # RJ concluída 2016
-
-
+    {"nome": "Unimed Nacional (Cooperativas)", "ticker": None, "setor": "Hospitais e Análises Clínicas", "data_entrada_rj": "2015-01-01", "data_saida_rj": None, "data_falencia": "2018-01-01"},
+    {"nome": "Hapvida (Subsidiárias)", "ticker": "HAPV3", "setor": "Hospitais e Análises Clínicas", "data_entrada_rj": "2023-01-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Banco Nacional", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-11-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Banco Bamerindus", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1997-03-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Banco Econômico", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1995-08-01", "data_saida_rj": "2021-01-01", "data_falencia": None},
+    {"nome": "Banco Halles", "ticker": None, "setor": "Bancos", "data_entrada_rj": "1974-04-01", "data_saida_rj": None, "data_falencia": "1975-01-01"},
+    {"nome": "Agrogalaxy", "ticker": "AGXY3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-09-18", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Atmasa", "ticker": "ATMP3", "setor": "Telecomunicações", "data_entrada_rj": "2022-06-07", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Bardella", "ticker": "BDLL3", "setor": "Máquinas e Equipamentos", "data_entrada_rj": "2019-07-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Hotéis Othon", "ticker": "HOOT3", "setor": "Serviços Diversos", "data_entrada_rj": "2018-11-28", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "João Fortes", "ticker": "JFEN3", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2020-03-10", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Pet Manguinhos", "ticker": "RPMG3", "setor": "Petróleo, Gás e Biocombustíveis", "data_entrada_rj": "2016-01-01", "data_saida_rj": "2020-01-01", "data_falencia": None},
+    {"nome": "Pomifrutas", "ticker": "FRTA3", "setor": "Comércio e Distribuição", "data_entrada_rj": "2024-04-18", "data_saida_rj": None, "data_falencia": "2024-04-18"},
+    {"nome": "Tecnosolo", "ticker": "TCNO4", "setor": "Construção Civil e Imobiliário", "data_entrada_rj": "2012-01-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Teka", "ticker": "TEKA4", "setor": "Têxtil", "data_entrada_rj": "2010-01-01", "data_saida_rj": None, "data_falencia": None},
+    {"nome": "Wetzel", "ticker": "MWET4", "setor": "Hardware e Equipamentos", "data_entrada_rj": "2018-01-01", "data_saida_rj": "2022-09-01", "data_falencia": None},
+    {"nome": "Eneva (ex-MPX)", "ticker": "ENEV3", "setor": "Energia Elétrica", "data_entrada_rj": "2014-12-10", "data_saida_rj": "2016-06-01", "data_falencia": None}
 ]
 
 df_rj = pd.DataFrame(empresas_recuperadas)
@@ -150,7 +148,8 @@ def calcular_duracao(row):
         if anos > 0:
             resultado.append(f"{anos} ano{'s' if anos > 1 else ''}")
         if meses > 0 or anos == 0:
-            resultado.append(f"{meses} {'mês' if meses > 1 else 'meses'}")
+            # Correção para plural de "mês"
+            resultado.append(f"{meses} {'meses' if meses > 1 or meses == 0 else 'mês'}")
             
         return " e ".join(resultado) if resultado else "Menos de 1 mês"
     else:
@@ -175,4 +174,4 @@ print(f"Dados de recuperação judicial salvos em {OUTPUT_PATH}")
 
 # Imprime as 5 primeiras linhas com as colunas relevantes para verificação
 print("\nVisualização do DataFrame com a nova coluna 'duracao_rj':")
-print(df_rj[['nome', 'data_entrada_rj', 'data_saida_rj', 'duracao_rj']].head().to_string())
+print(df_rj[['nome', 'setor', 'data_entrada_rj', 'duracao_rj']].head().to_string())
