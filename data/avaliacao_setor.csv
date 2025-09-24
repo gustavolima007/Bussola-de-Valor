@@ -1,30 +1,30 @@
 setor_b3,subsetor_b3,pontuacao_setor,pontuacao_original_subsetor,dy_5a_subsetor,bonus_dy_5a,penalidade_rj,pontuacao_subsetor
 "Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",134.93,113.50,9.38,30,8.57,134.93
-Utilidade Pública,Distribuição de Energia,132.65,140.78,9.63,30,2.86,167.92
-Utilidade Pública,Transmissão de Energia,132.65,147.44,6.25,20,0.00,167.44
-Utilidade Pública,Saneamento,132.65,140.12,3.53,-10,0.00,130.12
-Utilidade Pública,Geração de Energia,132.65,77.99,2.98,-10,2.86,65.13
-Materiais Básicos,Mineração e Siderurgia,129.30,121.57,8.78,30,11.43,140.14
-Materiais Básicos,Química e Petroquímica,129.30,103.70,10.95,30,5.71,127.98
-Materiais Básicos,Papel e Celulose,129.30,112.63,4.26,10,2.86,119.77
-Financeiro e Outros,Holdings e Outros Serviços Financeiros,123.15,144.88,7.04,20,0.00,164.88
-Financeiro e Outros,Bancos,123.15,129.58,4.76,10,0.00,139.58
-Financeiro e Outros,Propriedades e Locação,123.15,106.40,8.14,30,0.00,136.40
-Financeiro e Outros,Seguros,123.15,114.03,6.95,20,2.86,131.17
-Financeiro e Outros,Incorporação e Construção,123.15,93.71,2.36,-10,40.00,43.71
+Materiais Básicos,Mineração e Siderurgia,133.39,121.57,8.78,30,11.43,140.14
+Materiais Básicos,Química e Petroquímica,133.39,113.84,10.43,30,5.71,138.13
+Materiais Básicos,Papel e Celulose,133.39,114.77,4.29,10,2.86,121.91
+Utilidade Pública,Transmissão de Energia,132.01,147.44,6.35,20,0.00,167.44
+Utilidade Pública,Distribuição de Energia,132.01,138.21,9.47,30,2.86,165.35
+Utilidade Pública,Saneamento,132.01,140.12,3.53,-10,0.00,130.12
+Utilidade Pública,Geração de Energia,132.01,77.99,2.98,-10,2.86,65.13
+Financeiro e Outros,Holdings e Outros Serviços Financeiros,123.23,143.00,6.70,20,0.00,163.00
+Financeiro e Outros,Bancos,123.23,130.08,4.80,10,0.00,140.08
+Financeiro e Outros,Propriedades e Locação,123.23,107.31,8.14,30,0.00,137.31
+Financeiro e Outros,Seguros,123.23,114.03,6.93,20,2.86,131.17
+Financeiro e Outros,Incorporação e Construção,123.23,94.58,2.46,-10,40.00,44.58
 Tecnologia da Informação,Hardware e Equipamentos,97.36,102.50,6.74,20,0.00,122.50
 Tecnologia da Informação,Software e Serviços de TI,97.36,92.22,1.48,-20,0.00,72.22
-Consumo Cíclico,Calçados e Vestuário,83.10,116.70,3.61,-10,2.86,103.84
-Consumo Cíclico,Comércio Varejista,83.10,74.62,11.85,30,28.57,76.05
-Consumo Cíclico,Consumo Diverso,83.10,107.98,3.60,-10,28.57,69.41
-Consumo Não Cíclico,Comércio e Distribuição,83.07,92.46,5.01,10,5.71,96.75
-Consumo Não Cíclico,Alimentos e Bebidas,83.07,96.53,5.76,10,37.14,69.39
-Bens Industriais,Transporte e Componentes,60.58,97.62,5.17,10,20.00,87.62
-Bens Industriais,Máquinas e Motores,60.58,104.08,2.80,-10,14.29,79.79
-Bens Industriais,Serviços Industriais,60.58,52.97,4.77,10,8.57,54.40
-Bens Industriais,Logística e Mobilidade,60.58,59.09,2.60,-10,28.57,20.52
+Consumo Cíclico,Calçados e Vestuário,88.50,117.32,3.17,-10,2.86,104.47
+Consumo Cíclico,Consumo Diverso,88.50,103.55,4.01,10,28.57,84.98
+Consumo Cíclico,Comércio Varejista,88.50,74.62,11.85,30,28.57,76.05
+Consumo Não Cíclico,Comércio e Distribuição,82.79,91.91,5.01,10,5.71,96.19
+Consumo Não Cíclico,Alimentos e Bebidas,82.79,96.53,5.76,10,37.14,69.39
+Bens Industriais,Transporte e Componentes,59.88,97.91,5.36,10,20.00,87.91
+Bens Industriais,Máquinas e Motores,59.88,98.47,2.61,-10,14.29,74.19
+Bens Industriais,Serviços Industriais,59.88,53.60,4.77,10,8.57,55.03
+Bens Industriais,Logística e Mobilidade,59.88,60.97,2.67,-10,28.57,22.40
+Saúde,Produtos e Equipamentos Médicos,57.49,72.29,2.20,-10,0.00,62.29
+Saúde,Hospitais e Análises Clínicas,57.49,65.54,2.56,-10,2.86,52.68
 Educação,Educação,57.10,77.10,1.38,-20,0.00,57.10
-Saúde,Produtos e Equipamentos Médicos,56.77,70.86,2.18,-10,0.00,60.86
-Saúde,Hospitais e Análises Clínicas,56.77,65.54,2.56,-10,2.86,52.68
-Serviços Diversos,Serviços Diversos,36.52,67.94,0.60,-20,11.43,36.52
-Comunicações,Telecomunicações,35.55,61.27,1.46,-20,5.71,35.55
+Comunicações,Telecomunicações,34.44,60.16,1.41,-20,5.71,34.44
+Serviços Diversos,Serviços Diversos,33.98,65.41,0.55,-20,11.43,33.98

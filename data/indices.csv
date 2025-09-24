@@ -1,26 +1,26 @@
 year,index,close,rsi,macd,volume
-2021,iShares Ibovespa,100.8,70.57,0.2,1961375
-2022,iShares Ibovespa,105.95,70.57,0.2,1961375
-2023,iShares Ibovespa,130.39,70.57,0.2,1961375
-2024,iShares Ibovespa,117.27,70.57,0.2,1961375
-2025,iShares Ibovespa,143.45,70.57,0.2,1961375
-2021,Small Caps,113.3,57.64,-0.07,1760406
-2022,Small Caps,96.52,57.64,-0.07,1760406
-2023,Small Caps,113.2,57.64,-0.07,1760406
-2024,Small Caps,85.95,57.64,-0.07,1760406
-2025,Small Caps,110.76,57.64,-0.07,1760406
-2021,Financeiro (ETF),89.05,65.65,0.26,943
-2022,Financeiro (ETF),99.44,65.65,0.26,943
-2023,Financeiro (ETF),133.55,65.65,0.26,943
-2024,Financeiro (ETF),114.65,65.65,0.26,943
-2025,Financeiro (ETF),155.33,65.65,0.26,943
-2021,Materiais Básicos (ETF),60.98,54.49,-0.04,3998
-2022,Materiais Básicos (ETF),57.56,54.49,-0.04,3998
-2023,Materiais Básicos (ETF),61.9,54.49,-0.04,3998
-2024,Materiais Básicos (ETF),54.53,54.49,-0.04,3998
-2025,Materiais Básicos (ETF),52.07,54.49,-0.04,3998
-2021,Dividendos,64.25,71.35,0.15,38159
-2022,Dividendos,72.69,71.35,0.15,38159
-2023,Dividendos,92.2,71.35,0.15,38159
-2024,Dividendos,90.07,71.35,0.15,38159
-2025,Dividendos,107.48,71.35,0.15,38159
+2021,iShares Ibovespa,100.8,70.49,0.2,2316577
+2022,iShares Ibovespa,105.95,70.49,0.2,2316577
+2023,iShares Ibovespa,130.39,70.49,0.2,2316577
+2024,iShares Ibovespa,117.27,70.49,0.2,2316577
+2025,iShares Ibovespa,143.42,70.49,0.2,2316577
+2021,Small Caps,113.3,57.06,-0.07,1891511
+2022,Small Caps,96.52,57.06,-0.07,1891511
+2023,Small Caps,113.2,57.06,-0.07,1891511
+2024,Small Caps,85.95,57.06,-0.07,1891511
+2025,Small Caps,110.62,57.06,-0.07,1891511
+2021,Financeiro (ETF),89.05,64.6,0.24,1155
+2022,Financeiro (ETF),99.44,64.6,0.24,1155
+2023,Financeiro (ETF),133.55,64.6,0.24,1155
+2024,Financeiro (ETF),114.65,64.6,0.24,1155
+2025,Financeiro (ETF),155.06,64.6,0.24,1155
+2021,Materiais Básicos (ETF),60.98,55.96,-0.03,31020
+2022,Materiais Básicos (ETF),57.56,55.96,-0.03,31020
+2023,Materiais Básicos (ETF),61.9,55.96,-0.03,31020
+2024,Materiais Básicos (ETF),54.53,55.96,-0.03,31020
+2025,Materiais Básicos (ETF),52.2,55.96,-0.03,31020
+2021,Dividendos,64.25,72.23,0.15,39601
+2022,Dividendos,72.69,72.23,0.15,39601
+2023,Dividendos,92.2,72.23,0.15,39601
+2024,Dividendos,90.07,72.23,0.15,39601
+2025,Dividendos,107.57,72.23,0.15,39601
