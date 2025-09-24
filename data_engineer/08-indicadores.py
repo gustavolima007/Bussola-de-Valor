@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 🔍 Script para Coleta de Indicadores Financeiros via yfinance + ta
+   Calcula e classifica o ciclo de mercado para cada ativo.
 
 Indicadores Coletados:
 - Fundamentais: Preço Atual, P/L, P/VP, ROE, Payout, Crescimento 5a, Dívida, EBITDA, Dívida/EBITDA, Perfil da Ação
@@ -14,6 +15,7 @@ Requisitos:
 import pandas as pd
 import yfinance as yf
 from tqdm.auto import tqdm
+import random
 from pathlib import Path
 
 # Indicadores técnicos via ta
@@ -27,6 +29,30 @@ CAMINHO_ARQUIVO_SAIDA = BASE / "indicadores.csv"
 
 # ✅ período base para técnicos
 PERIODO_PADRAO_HIST = "1y"
+
+# --- Frases por ciclo de mercado ---
+frases_por_ciclo = {
+    "Pânico / Fundo": [
+        {"autor": "Howard Marks", "frase": "O risco está mais baixo quando o preço está mais baixo.", "status": "Compra"},
+        {"autor": "George Soros", "frase": "A reflexividade transforma medo em oportunidade.", "status": "Compra"},
+        {"autor": "Luiz Barsi", "frase": "O mercado dá presentes para quem não tem medo.", "status": "Compra"},
+        {"autor": "Warren Buffett", "frase": "As melhores oportunidades vêm quando ninguém quer comprar.", "status": "Compra"},
+    ],
+    "Neutro / Transição": [
+        {"autor": "Howard Marks", "frase": "Você não pode prever, mas pode se preparar.", "status": "Observação"},
+        {"autor": "George Soros", "frase": "Não é sobre estar certo, é sobre estar lucrativo.", "status": "Observação"},
+        {"autor": "Luiz Barsi", "frase": "Tenha paciência: o mercado sempre volta à razão.", "status": "Observação"},
+        {"autor": "Warren Buffett", "frase": "É melhor esperar por uma oportunidade clara do que agir na dúvida.", "status": "Observação"},
+    ],
+    "Euforia / Topo": [
+        {"autor": "Howard Marks", "frase": "O maior risco surge quando tudo parece seguro.", "status": "Venda"},
+        {"autor": "George Soros", "frase": "Quando todos estão certos, é hora de duvidar.", "status": "Venda"},
+        {"autor": "Luiz Barsi", "frase": "Quem compra na euforia, paga caro pela empolgação.", "status": "Venda"},
+        {"autor": "Warren Buffett", "frase": "Seja temeroso quando os outros são gananciosos.", "status": "Venda"},
+    ],
+}
+
+# --- Funções de Classificação e Cálculo ---
 
 
 def classify_stock_profile(price: float, market_cap: float) -> str:
@@ -103,11 +129,59 @@ def compute_indicadores_ta(hist: pd.DataFrame) -> dict:
     return out
 
 
+def classificar_indicador_tecnico(valor: float, lim_baixo: float, lim_alto: float, tipo: str) -> str:
+    """Classifica um valor conforme o tipo do indicador."""
+    if pd.isna(valor):
+        return "N/A"
+    v = float(valor)
+    if tipo == "RSI":
+        if v < lim_baixo: return "📉 Baixo"
+        elif v > lim_alto: return "📈 Alto"
+        else: return "📊 Médio"
+    elif tipo == "MACD":
+        if v < lim_baixo: return "🐻 Baixa"
+        elif v > lim_alto: return "🐂 Alta"
+        else: return "⚖️ Neutra"
+    elif tipo == "Volume":
+        if v < lim_baixo: return "🪙 Fraco"
+        elif v > lim_alto: return "🏦 Forte"
+        else: return "💰 Normal"
+    return "N/A"
+
+def classificar_ciclo_mercado(score: float) -> str:
+    """Classifica o ciclo de mercado com base no score técnico."""
+    if pd.isna(score): return "Neutro / Transição"
+    if score <= 30: return "Pânico / Fundo"
+    elif score <= 60: return "Neutro / Transição"
+    else: return "Euforia / Topo"
+
+def calcular_dados_ciclo(rsi_val, macd_val, vol_val, vol_mean) -> dict:
+    """Calcula o score e classifica o ciclo de mercado a partir dos indicadores."""
+    rsi_status = classificar_indicador_tecnico(rsi_val, 30, 70, "RSI")
+    macd_status = classificar_indicador_tecnico(macd_val, -0.5, 0.5, "MACD")
+    vol_status = classificar_indicador_tecnico(vol_val, vol_mean * 0.8, vol_mean * 1.2, "Volume")
+
+    score_total = 0
+    for cls in (rsi_status, macd_status, vol_status):
+        if any(key in str(cls) for key in ["Baixo", "Fraco", "🐻"]): score_total += 10
+        elif any(key in str(cls) for key in ["Médio", "Normal", "⚖️"]): score_total += 33
+        elif any(key in str(cls) for key in ["Alto", "Forte", "🐂"]): score_total += 100
+    
+    score_medio = round(score_total / 3)
+    ciclo = classificar_ciclo_mercado(score_medio)
+    frase = random.choice(frases_por_ciclo[ciclo])
+
+    return {
+        "ciclo_de_mercado": ciclo,
+        "status_ciclo": frase["status"],
+        "frase_ciclo": f"“{frase['frase']}” — {frase['autor']}"
+    }
+
 NOME_EMPRESA_MANUAL = {
     "BRST3": "Brisanet Serviços de Telecomunicações S.A"
 }
 
-def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
+def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict | None:
     ticker_yf = f"{ticker_base}.SA"
     stock = yf.Ticker(ticker_yf)
     info = stock.info
@@ -132,6 +206,12 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
     total_debt = info.get("totalDebt")
     ebitda = info.get("ebitda")
     debt_to_ebitda = (total_debt / ebitda) if ebitda and total_debt else None
+    beta = info.get("beta")
+    average_volume = info.get("averageVolume")
+    liquidez_media_diaria = average_volume * current_price if average_volume and current_price else None
+    free_cash_flow = info.get("freeCashflow")
+    fcf_yield = (free_cash_flow / market_cap) * 100 if free_cash_flow and market_cap else None
+    current_ratio = info.get("currentRatio")
     empresa = NOME_EMPRESA_MANUAL.get(ticker_base, info.get("longName", metadata.get("empresa")))
 
     # --- 🆕 Adição para Fórmula de Graham ---
@@ -151,7 +231,10 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
         except (ValueError, TypeError):
             pass # Mantém margem_seguranca_percent como None
 
-    return {
+    # --- 🆕 Adição para Ciclo de Mercado ---
+    dados_ciclo = calcular_dados_ciclo(tecnicos.get('rsi_14_1y'), tecnicos.get('macd_diff_1y'), tecnicos.get('volume_1y'), vol_mean)
+
+    resultado = {
         "ticker": ticker_base,
         "empresa": empresa,
         "subsetor_b3": metadata.get("subsetor_b3"),
@@ -167,6 +250,10 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
         "divida_total": total_debt,
         "ebitda": ebitda,
         "divida_ebitda": debt_to_ebitda,
+        "beta": beta,
+        "current_ratio": current_ratio,
+        "liquidez_media_diaria": liquidez_media_diaria,
+        "fcf_yield": fcf_yield,
         "perfil_acao": classify_stock_profile(current_price, market_cap),
         # 🆕 Campos para Fórmula de Graham
         "lpa": lpa,
@@ -179,6 +266,10 @@ def fetch_stock_data(ticker_base: str, metadata: dict) -> dict | None:
         # 🆕 Técnicos via ta (1y, 3 colunas)
         **tecnicos,
     }
+    # Adiciona os dados do ciclo ao dicionário principal
+    resultado.update(dados_ciclo)
+    return resultado
+
 
 
 def main():
@@ -192,10 +283,22 @@ def main():
     df_input["ticker_norm"] = df_input["ticker"].str.strip().str.upper()
     metadata_map = df_input.set_index("ticker_norm").to_dict(orient="index")
 
-    resultados = []
-    for ticker_base, meta in tqdm(metadata_map.items(), desc="Coletando indicadores"):
+    # --- Pré-cálculo da média de volume ---
+    print("Pré-calculando a média de volume de todos os ativos...")
+    all_volumes = []
+    for ticker_base in tqdm(metadata_map.keys(), desc="Coletando volumes"):
         try:
-            dados = fetch_stock_data(ticker_base, meta)
+            hist_1y = yf.Ticker(f"{ticker_base}.SA").history(period=PERIODO_PADRAO_HIST)
+            if not hist_1y.empty and 'Volume' in hist_1y.columns:
+                all_volumes.append(hist_1y['Volume'].iloc[-1])
+        except Exception:
+            continue
+    vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
+
+    resultados = []
+    for ticker_base, meta in tqdm(metadata_map.items(), desc="Coletando indicadores e ciclo de mercado"):
+        try:
+            dados = fetch_stock_data(ticker_base, meta, vol_mean)
             if dados:
                 resultados.append(dados)
         except Exception as e:

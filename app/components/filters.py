@@ -37,8 +37,8 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
     ticker_foco = None if ticker_foco == "— Todos —" else ticker_foco
 
     # --- Filtros de Indicadores ---
-    score_range = st.sidebar.slider("Faixa de Score", 0, 200, (100, 200))
-    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 100, 60)
+    score_range = st.sidebar.slider("Faixa de Score", 0, 300, (100, 300))
+    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 200, 100) # Mantido em 200 pois é score de setor
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
@@ -61,13 +61,14 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
     st.sidebar.header("📈 Índices")
     
     index_labels = {
-        "iShares Ibovespa": "iShares Ibovespa BOVA11",
-        "Small Caps": "Small Caps SMAL11",
-        "Financeiro (ETF)": "Financeiro FIND11",
-        "Materiais Básicos (ETF)": "Materiais Básicos MATB11",
-        "Dividendos": "Dividendos DIVO11"
+        "iShares Ibovespa": "Ibovespa (BOVA11)",
+        "Small Caps": "Small Caps (SMAL11)",
+        "Financeiro (ETF)": "Financeiro (FIND11)",
+        "Materiais Básicos (ETF)": "Materiais (MATB11)",
+        "Dividendos": "Dividendos (DIVO11)"
     }
 
+    tech_indicators_data = []
     for index_name, data in indices_scores.items():
         label = index_labels.get(index_name, index_name)
         score = data.get('score', float('nan'))
@@ -75,5 +76,20 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
         
         if pd.notna(score):
             st.sidebar.metric(label=label, value=f"{score:.2f}", delta=f"{delta:.2f}% (1Y)" if pd.notna(delta) else None)
+        
+        tech_indicators_data.append({
+            "Índice": label,
+            "RSI (Sentimento)": data.get('rsi'),
+            "MACD (Tendência)": data.get('macd'),
+            "Volume (Convicção)": data.get('volume')
+        })
+
+    with st.sidebar.expander("Ver Indicadores Técnicos dos Índices"):
+        df_tech = pd.DataFrame(tech_indicators_data).set_index('Índice')
+        st.dataframe(
+            df_tech,
+            use_container_width=True,
+            column_config={"Volume (Convicção)": st.column_config.NumberColumn(format="%d")}
+        )
 
     return df_filtrado, ticker_foco

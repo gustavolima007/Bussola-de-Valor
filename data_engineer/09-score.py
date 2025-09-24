@@ -55,7 +55,8 @@ def load_and_prepare_data() -> pd.DataFrame:
     num_cols = [
         'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe',
         'divida_total', 'market_cap', 'divida_ebitda', 'sentimento_gauge',
-        'DY12M', 'DY5anos', 'preco_atual', 'lpa', 'vpa'
+        'DY12M', 'DY5anos', 'preco_atual', 'lpa', 'vpa', 'beta', 'current_ratio',
+        'liquidez_media_diaria', 'fcf_yield'
     ]
     for col in num_cols:
         if col in df_merged.columns:
@@ -75,7 +76,8 @@ def score_dy(dy_12m, dy_5a):
         elif dy_12m > 2: score += 10
         elif dy_12m < 2 and dy_12m > 0: score -= 5
     if pd.notna(dy_5a):
-        if dy_5a > 8: score += 25
+        if dy_5a > 10: score += 30
+        elif dy_5a > 8: score += 25
         elif dy_5a > 6: score += 20
         elif dy_5a > 4: score += 10
     return score
@@ -108,25 +110,35 @@ def score_pl_pvp(pl, pvp):
         if pl < 12: score += 15
         elif pl < 18: score += 10
         elif pl > 25: score -= 5
+    # P/VP com nova pontuação (até 40 pts)
     if pd.notna(pvp) and pvp > 0:
-        if pvp < 0.66: score += 20
-        elif pvp < 1.5: score += 10
-        elif pvp < 2.5: score += 5
-        elif pvp > 4: score -= 5
+        if pvp < 0.50: score += 45
+        elif pvp < 0.66: score += 40
+        elif pvp < 1.00: score += 30
+        elif pvp < 1.50: score += 15
+        elif pvp < 2.50: score += 5
+        elif pvp > 4.00: score -= 10
     return score
 
-def score_divida(div_mc, div_ebitda, subsetor):
+def score_divida(div_mc, div_ebitda, current_ratio, subsetor):
     """Pontuação para os indicadores de endividamento."""
     if 'finance' in str(subsetor).lower(): return 0
     score = 0
+    # Dívida/Market Cap
     if pd.notna(div_mc):
-        if div_mc < 0.5: score += 10
-        elif div_mc < 1.0: score += 5
-        elif div_mc > 2.0: score -= 5
+        if div_mc < 0.3: score += 15
+        elif div_mc < 0.7: score += 10
+        elif div_mc > 1.5: score -= 10
+    # Dívida/EBITDA
     if pd.notna(div_ebitda) and div_ebitda > 0:
-        if div_ebitda < 1: score += 10
-        elif div_ebitda < 2: score += 5
-        elif div_ebitda > 6: score -= 5
+        if div_ebitda < 1: score += 15
+        elif div_ebitda < 3: score += 5
+        elif div_ebitda > 5: score -= 10
+    # Current Ratio
+    if pd.notna(current_ratio):
+        if current_ratio > 2: score += 10
+        elif current_ratio > 1: score += 5
+        else: score -= 5
     return score
 
 def score_crescimento_sentimento(crescimento, sentimento):
@@ -144,8 +156,8 @@ def score_crescimento_sentimento(crescimento, sentimento):
 def score_ciclo_mercado(status_ciclo):
     """Pontuação baseada no status do ciclo de mercado."""
     if pd.isna(status_ciclo): return 0
-    if status_ciclo == 'Compra': return 15
-    if status_ciclo == 'Venda': return -15
+    if status_ciclo == 'Compra': return 20
+    if status_ciclo == 'Venda': return -20
     # 'Observação' ou qualquer outro valor
     return 0
 
@@ -163,15 +175,49 @@ def score_graham(preco_atual, lpa, vpa):
     except (ValueError, TypeError):
         return 0
 
-    if margem_seguranca > 1.0:  # Margem > 100%
+    if margem_seguranca > 2.0:  # > 200%
+        return 40
+    if margem_seguranca > 1.5:  # 150% – 200%
+        return 35
+    if margem_seguranca > 1.0:  # 100% – 150%
+        return 30
+    if margem_seguranca > 0.5:  # 50% – 100%
         return 20
-    if margem_seguranca > 0.5:  # Margem > 50%
-        return 15
-    if margem_seguranca > 0.2:  # Margem > 20%
+    if margem_seguranca > 0.2:  # 20% – 50%
         return 10
-    if margem_seguranca > 0:    # Margem > 0%
+    if margem_seguranca > 0:    # 0% – 20%
         return 5
-    return -10 # Margem <= 0% (ação sobrevalorizada)
+    return -20 # < 0%
+
+def score_beta(beta):
+    """Pontuação baseada na volatilidade (Beta)."""
+    if pd.isna(beta): return 0
+    if beta < 1.0: return 10
+    if beta > 1.5: return -10
+    return 0
+
+def score_market_cap(market_cap):
+    """Pontuação baseada na Capitalização de Mercado."""
+    if pd.isna(market_cap): return 0
+    if market_cap > 50_000_000_000: return 10  # Blue Chip
+    if market_cap > 10_000_000_000: return 7   # Mid Cap
+    if market_cap > 2_000_000_000:  return 4   # Small Cap
+    return 0  # Micro Cap
+
+def score_liquidez(liquidez):
+    """Pontuação baseada na Liquidez Média Diária."""
+    if pd.isna(liquidez): return 0
+    if liquidez > 50_000_000: return 10
+    if liquidez > 20_000_000: return 7
+    if liquidez > 5_000_000:  return 4
+    return 0
+
+def score_fcf_yield(fcf_yield):
+    """Pontuação baseada no Free Cash Flow Yield."""
+    if pd.isna(fcf_yield): return 0
+    if fcf_yield > 8: return 10
+    if fcf_yield > 5: return 5
+    return 0
 
 # --- Função Principal de Execução ---
 def main():
@@ -190,12 +236,16 @@ def main():
         s_payout = score_payout(row.get('payout_ratio'))
         s_roe = score_roe(row.get('roe'), setor)
         s_pl_pvp = score_pl_pvp(row.get('p_l'), row.get('p_vp'))
-        s_divida = score_divida(div_mc, row.get('divida_ebitda'), setor)
+        s_divida = score_divida(div_mc, row.get('divida_ebitda'), row.get('current_ratio'), setor)
         s_cresc_sent = score_crescimento_sentimento(row.get('crescimento_preco_5a'), row.get('sentimento_gauge'))
         s_ciclo = score_ciclo_mercado(row.get('Status 🟢🔴'))
         s_graham = score_graham(row.get('preco_atual'), row.get('lpa'), row.get('vpa'))
+        s_beta = score_beta(row.get('beta'))
+        s_mcap = score_market_cap(row.get('market_cap'))
+        s_liquidez = score_liquidez(row.get('liquidez_media_diaria'))
+        s_fcf = score_fcf_yield(row.get('fcf_yield'))
         
-        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent + s_ciclo + s_graham
+        score_total = s_dy + s_payout + s_roe + s_pl_pvp + s_divida + s_cresc_sent + s_ciclo + s_graham + s_beta + s_mcap + s_liquidez + s_fcf
         
         scores_data.append({
             'ticker_base': row['ticker_base'],
@@ -207,7 +257,11 @@ def main():
             'score_crescimento_sentimento': s_cresc_sent,
             'score_ciclo_mercado': s_ciclo,
             'score_graham': s_graham,
-            'score_total': max(0, min(200, score_total)) # Clamping entre 0 e 200
+            'score_beta': s_beta,
+            'score_market_cap': s_mcap,
+            'score_liquidez': s_liquidez,
+            'score_fcf_yield': s_fcf,
+            'score_total': max(0, score_total) # Clamping em 0
         })
 
     scores_df = pd.DataFrame(scores_data).round(2)

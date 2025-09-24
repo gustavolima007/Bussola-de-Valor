@@ -121,13 +121,25 @@ def style_pontuacao_final(val):
     """Aplica cor com base na Pontuação Final do Setor."""
     if pd.isna(val):
         return ''
-    if val > 60:
+    if val > 99:
         color = '#3dd56d'  # Verde
-    elif val > 40:
+    elif val >= 70:
         color = '#ffaa00'  # Amarelo
     else:
         color = '#ff4b4b'  # Vermelho
     return f'color: {color}'
+
+def style_ciclo_mercado(row: pd.Series, cols_to_style: list) -> list:
+    """Aplica cor às colunas técnicas com base no status do ciclo de mercado."""
+    status = row.get('status_ciclo', 'Observação')
+    if status == 'Compra':
+        color = '#3dd56d'  # Verde
+    elif status == 'Venda':
+        color = '#ff4b4b'  # Vermelho
+    else: # Observação ou N/A
+        color = '#ffaa00'  # Amarelo
+    
+    return [f'color: {color}' if col in cols_to_style else '' for col in row.index]
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
@@ -157,7 +169,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
+            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
         },
         use_container_width=True, hide_index=True
     )
@@ -166,8 +178,9 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
     st.header(f"📋 Indices ({len(df)} ações encontradas)")
     cols = [
         'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual',
-        'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Payout Ratio (%)',
-        'ROE (%)', 'Dívida/Market Cap', 'Dívida/EBITDA', 'Crescimento Preço (%)', 'Sentimento Gauge', 'Score Total'
+        'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)',
+        'Payout Ratio (%)', 'ROE (%)', 'Dívida/Market Cap', 'Dívida/EBITDA', 'Crescimento Preço (%)',
+        'Sentimento Gauge', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'Score Total'
     ]
     df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
     
@@ -202,6 +215,11 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
     if 'Crescimento Preço (%)' in df_cols:
         styler.map(style_cresc, subset=['Crescimento Preço (%)'])
 
+    # Aplica estilo baseado no ciclo de mercado
+    tech_cols = ['rsi_14_1y', 'macd_diff_1y', 'volume_1y']
+    if 'status_ciclo' in df.columns and all(c in df.columns for c in tech_cols):
+        styler.apply(style_ciclo_mercado, cols_to_style=tech_cols, axis=1)
+
     st.dataframe(
         styler,
         column_config={
@@ -216,9 +234,13 @@ def render_tab_rank_detalhado(df: pd.DataFrame):
             "Dívida/EBITDA": st.column_config.NumberColumn("Dív/EBITDA", format="%.2f"),
             "Crescimento Preço (%)": st.column_config.NumberColumn("Cresc. 5A", format="%.1f%% "),
             "Sentimento Gauge": st.column_config.NumberColumn("Sentimento", format="%d/100"),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=200),
+            "rsi_14_1y": st.column_config.NumberColumn("RSI (Sentimento)", format="%.2f"),
+            "macd_diff_1y": st.column_config.NumberColumn("MACD (Tendência)", format="%.3f"),
+            "volume_1y": st.column_config.NumberColumn("Volume (Convicção)", format="%d"),
+            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
         },
-        use_container_width=True, hide_index=True
+        use_container_width=True, 
+        hide_index=True
     )
 
 def render_tab_analise_individual(df: pd.DataFrame):
@@ -256,7 +278,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
             <div class="analise-individual-container">
                 <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
                     <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
-                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 200</div>
+                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 300</div>
                 </div>
                 {details_html}
             </div>
@@ -280,8 +302,8 @@ def render_tab_analise_individual(df: pd.DataFrame):
 def render_tab_guia():
     st.header("🧭 Guia da Bússola de Valor")
     st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
-
-    st.subheader("Critérios de Pontuação (Score)")
+    
+    st.subheader("Critérios de Pontuação (Score) - Máximo de 300 pontos")
     st.markdown('''
     A pontuação de cada ação é calculada somando-se os pontos de diversos critérios fundamentalistas, totalizando um máximo de **200 pontos**. Navegue pelas abas abaixo para detalhar cada critério.
     ''')
@@ -289,14 +311,15 @@ def render_tab_guia():
     tab_titles = [
         "1. Dividend Yield (45 pts)",
         "2. Valuation (35 pts)",
-        "3. Rentabilidade (35 pts)",
+        "3. Rentabilidade (35 pts)", # TODO: Update total points in titles
         "4. Endividamento (20 pts)",
         "5. Crescimento (25 pts)",
-        "6. Ciclo e Graham (35 pts)"
+        "6. Ciclo de Mercado (±15 pts)",
+        "7. Fórmula de Graham (20 pts)"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(tab_titles)
 
-    with tab1:
+    with tab1: # Dividend Yield
         st.markdown('''
         - **O que é?** O Dividend Yield (DY) representa o retorno em dividendos pago pela ação, dividido pelo seu preço. A média de 5 anos reflete a consistência dos pagamentos.
         - **Por que analisar?** É o principal indicador para investidores focados em renda passiva, como defendido por **Luiz Barsi**. Um DY alto e consistente indica uma \"vaca leiteira\" – empresas que geram fluxo de caixa estável.
@@ -307,28 +330,31 @@ def render_tab_guia():
                 - 2%–3.5%: **+10 pontos**
                 - < 2% (e > 0%): **-5 pontos**
             - **DY Média 5 Anos:** 
-                - > 8%: **+25 pontos**
-                - 6%–8%: **+20 pontos**
-                - 4%–6%: **+10 pontos**
+                - > 10%: **+30 pontos** (Excelente histórico)
+                - 8%–10%: **+25 pontos** (Muito atrativo)
+                - 6%–8%: **+20 pontos** (Bom histórico)
+                - 4%–6%: **+10 pontos** (Regular)
         ''')
 
-    with tab2:
+    with tab2: # Valuation
         st.markdown('''
         - **O que são?** P/L (Preço/Lucro) e P/VP (Preço/Valor Patrimonial) são indicadores de valuation, popularizados por **Benjamin Graham**, para avaliar se uma ação está \"barata\" em relação aos lucros ou patrimônio.
         - **Por que analisar?** Comprar ativos abaixo de seu valor intrínseco é a essência do *Value Investing*, criando uma margem de segurança contra a volatilidade do mercado.
         - **Cálculo do Score:**
             - **P/L:**
                 - < 12: **+15 pontos**
-                - 12–18: **+10 pontos**
+                - 12–18: **+10 pontos** 
                 - > 25: **-5 pontos**
             - **P/VP:**
-                - < 0.66: **+20 pontos**
-                - 0.66–1.5: **+10 pontos**
-                - 1.5–2.5: **+5 pontos**
-                - > 4: **-5 pontos**
+                - < 0.50: **+45 pontos** (Extremamente descontada)
+                - 0.50 – 0.66: **+40 pontos** (Muito abaixo do valor)
+                - 0.66 – 1.00: **+30 pontos** (Abaixo do valor)
+                - 1.00 – 1.50: **+15 pontos** (Próximo ao valor)
+                - 1.50 – 2.50: **+5 pontos** (Leve sobrepreço)
+                - > 4.00: **-10 pontos** (Potencial bolha)
         ''')
 
-    with tab3:
+    with tab3: # Rentabilidade
         st.markdown('''
         - **O que são?** ROE (Return on Equity) mede a eficiência da empresa em gerar lucro com o capital próprio. Payout é a porcentagem do lucro distribuída como dividendos.
         - **Por que analisar?** Um ROE alto, valorizado por **Warren Buffett**, indica boa gestão e vantagens competitivas. Um Payout equilibrado mostra que a empresa remunera acionistas sem comprometer o reinvestimento.
@@ -346,7 +372,7 @@ def render_tab_guia():
                 - < 20% ou > 80%: **-5 pontos**
         ''')
 
-    with tab4:
+    with tab4: # Endividamento
         st.markdown('''
         - **O que é?** Avalia a dívida da empresa em relação ao seu valor de mercado (Dívida/Market Cap) e geração de caixa (Dívida/EBITDA). *Não se aplica ao setor financeiro.*
         - **Por que analisar?** Empresas com dívidas controladas são mais resilientes a crises e têm maior flexibilidade para crescer e pagar dividendos, um princípio valorizado por **Bazin** e **Graham**.
@@ -361,7 +387,7 @@ def render_tab_guia():
                 - > 6: **-5 pontos**
         ''')
 
-    with tab5:
+    with tab5: # Crescimento
         st.markdown('''
         - **O que são?** Crescimento do preço da ação nos últimos 5 anos e a recomendação consolidada de analistas (Sentimento Gauge).
         - **Por que analisar?** O crescimento histórico reflete a valorização do ativo, enquanto o sentimento de mercado, enfatizado por **Peter Lynch**, adiciona uma camada de análise sobre a percepção atual.
@@ -375,20 +401,27 @@ def render_tab_guia():
                 - Varia de **-5 a +10 pontos**, proporcional à nota de 0 a 100.
         ''')
 
-    with tab6:
+    with tab6: # Ciclo de Mercado
         st.markdown('''
-        - **O que são?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado. A **Fórmula de Graham** calcula o \"preço justo\" (`√(22.5 * LPA * VPA)`) para encontrar a margem de segurança.
-        - **Por que analisar?** Juntos, eles respondem \"o quê comprar\" (Graham) e \"quando comprar\" (Ciclo). Comprar ativos com alta margem de segurança durante períodos de pânico é uma estratégia poderosa.
+        - **O que é?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado, identificando se o ativo está em um momento de euforia (venda) ou pânico (compra).
+        - **Por que analisar?** Ajuda a responder **\"quando comprar\"**. Comprar ativos durante períodos de pessimismo extremo (pânico) historicamente oferece melhores pontos de entrada e maiores retornos potenciais.
         - **Cálculo do Score (Ciclo):**
             - Compra (Pânico): **+15 pontos**
             - Observação (Neutro): **0 pontos**
             - Venda (Euforia): **-15 pontos**
+        ''')
+    with tab7: # Fórmula de Graham
+        st.markdown('''
+        - **O que é?** A **Fórmula de Graham** calcula o \"preço justo\" de uma ação (`√(22.5 * LPA * VPA)`) e o compara com o preço atual para encontrar a **margem de segurança**.
+        - **Por que analisar?** Ajuda a responder **\"o quê comprar\"**. Uma margem de segurança alta indica que a ação está sendo negociada bem abaixo de seu valor intrínseco, protegendo o investidor de perdas e aumentando o potencial de ganho.
         - **Cálculo do Score (Graham):**
-            - Margem > 100%: **+20 pontos**
-            - Margem 50% a 100%: **+15 pontos**
-            - Margem 20% a 50%: **+10 pontos**
-            - Margem 0% a 20%: **+5 pontos**
-            - Margem < 0%: **-10 pontos**
+            - Margem > 200%: **+40 pontos** (Barganha extrema)
+            - 150% – 200%: **+35 pontos** (Excelente margem)
+            - 100% – 150%: **+30 pontos** (Muito atrativo)
+            - 50% – 100%: **+20 pontos** (Boa margem)
+            - 20% – 50%: **+10 pontos** (Margem aceitável)
+            - 0% – 20%: **+5 pontos** (Margem mínima)
+            - < 0%: **-20 pontos** (Risco elevado)
         ''')
 
     st.markdown("---")
@@ -538,11 +571,11 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     from .calculadora import render_tab_calculadora
     tab_titles = [
-        "🏆 Ranking", "📋 Indices", "🔬 Análise",
-        "🔍 Dividendos", "📈 Ciclo de mercado",
-        "🏗️ Setores", "⚖️ Recuperação Judicial", "🧭 Guia da Bússola", "💰 Calculadora"
+        "🏆 Ranking", "📋 Índices", "🔬 Análise",
+        "🔍 Dividendos", "🏗️ Setores", "⚖️ Recuperação Judicial",
+        "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs(tab_titles)
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
@@ -553,14 +586,12 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
     with tab4:
         render_tab_dividendos(df_filtrado, all_data, ticker_foco)
     with tab5:
-        render_tab_ciclo_mercado(df_unfiltered, all_data)
-    with tab6:
         render_tab_rank_setores(df_filtrado, all_data)
-    with tab7:
+    with tab6:
         render_tab_recuperacao_judicial(all_data)
-    with tab8:
+    with tab7:
         render_tab_guia()
-    with tab9:
+    with tab8:
         render_tab_calculadora(all_data, ticker_foco)
         
     
@@ -838,113 +869,4 @@ def render_tab_recuperacao_judicial(all_data: dict):
         df_display.sort_values(by='Início RJ', ascending=False),
         use_container_width=True,
         hide_index=True
-    )
-
-# --- Função Principal de Renderização ---
-
-def render_tab_ciclo_mercado(df_unfiltered: pd.DataFrame, all_data: dict):
-    st.header("📈 Ciclo de mercado")
-    df_ciclo_raw = all_data.get('ciclo_mercado', pd.DataFrame())
-    df_setor = all_data.get('avaliacao_setor', pd.DataFrame())
-
-    if df_ciclo_raw.empty:
-        st.warning("Arquivo 'ciclo_mercado.csv' não encontrado ou sem dados. Execute o pipeline ou o script 11-ciclo_mercado.py para gerar os dados.")
-        return
-
-    # Renomear coluna de status e fazer merge para obter o subsetor do df_unfiltered
-    df_ciclo = df_ciclo_raw.rename(columns={'Status 🟢🔴': 'Status'})
-    
-    # Use df_unfiltered to get subsetor_b3 for all tickers
-    ticker_col_name = 'Ticker' if 'Ticker' in df_unfiltered.columns else 'ticker_base' 
-    
-    if 'subsetor_b3' not in df_ciclo.columns and ticker_col_name in df_unfiltered.columns and 'subsetor_b3' in df_unfiltered.columns:
-        df_ciclo = pd.merge(
-            df_ciclo,
-            df_unfiltered[[ticker_col_name, 'subsetor_b3']].drop_duplicates(),
-            left_on='ticker',  # Coluna em df_ciclo (minúsculo)
-            right_on=ticker_col_name, # Coluna em df_unfiltered (pode ser 'Ticker' ou 'ticker_base')
-            how='left'         # Mantém todos os dados de ciclo
-        )
-
-    if 'subsetor_b3' not in df_ciclo.columns or df_ciclo['subsetor_b3'].isnull().all():
-        st.warning("Não foi possível obter a informação de subsetor para os dados de ciclo de mercado.")
-        # Mostra a tabela original como fallback
-        with st.expander("Ver dados completos do Ciclo de Mercado"):
-            st.dataframe(
-                df_ciclo_raw,
-                use_container_width=True,
-                hide_index=True,
-                column_config={"Score 📈": st.column_config.NumberColumn("Score 📈", format="%d")}
-            )
-        return
-
-    # --- Criar a tabela de resumo ---
-    st.subheader("Resumo do Status por Setor")
-    
-    # Contar os status por subsetor
-    status_counts = pd.crosstab(df_ciclo['subsetor_b3'], df_ciclo['Status'])
-    
-    # Renomear colunas
-    status_counts = status_counts.rename(columns={
-        'Compra': 'qtde_compra',
-        'Observação': 'qtde_observacao',
-        'Venda': 'qtde_venda'
-    })
-    
-    # Garantir que todas as colunas de status existam
-    for col in ['qtde_compra', 'qtde_observacao', 'qtde_venda']:
-        if col not in status_counts.columns:
-            status_counts[col] = 0
-            
-    status_counts = status_counts.reset_index()
-
-    # Preparar o dataframe de pontuação do setor
-    if not df_setor.empty:
-        df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_subsetor']].drop_duplicates()
-        summary_df = pd.merge(status_counts, df_setor_scores, on='subsetor_b3', how='left')
-        summary_df = summary_df.rename(columns={
-            'subsetor_b3': 'Subsetor',
-            'pontuacao_subsetor': 'pontuação do setor'
-        })
-    else:
-        summary_df = status_counts.rename(columns={'subsetor_b3': 'Subsetor'})
-        summary_df['pontuação do setor'] = 'N/A'
-
-    # Calcular o Momentum Score
-    summary_df['total_ativos'] = summary_df['qtde_compra'] + summary_df['qtde_observacao'] + summary_df['qtde_venda']
-    # Avoid division by zero
-    summary_df['Momentum Score'] = summary_df.apply(
-        lambda row: ((row['qtde_compra'] * 1) + (row['qtde_venda'] * -1)) / row['total_ativos'] if row['total_ativos'] != 0 else 0,
-        axis=1
-    )
-    
-    # Reordenar colunas
-    summary_df = summary_df[['Subsetor', 'pontuação do setor', 'Momentum Score', 'qtde_compra', 'qtde_observacao', 'qtde_venda']]
-    
-    # Ordenar pela pontuação do setor
-    if 'pontuação do setor' in summary_df.columns and pd.api.types.is_numeric_dtype(summary_df['pontuação do setor']):
-        summary_df = summary_df.sort_values(by='pontuação do setor', ascending=False)
-
-
-    st.dataframe(
-        summary_df,
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "pontuação do setor": st.column_config.NumberColumn("Pontuação", format="%.2f"),
-            "Momentum Score": st.column_config.NumberColumn("Momentum", format="%.2f"),
-            "qtde_compra": st.column_config.NumberColumn("Compra"),
-            "qtde_observacao": st.column_config.NumberColumn("Observação"),
-            "qtde_venda": st.column_config.NumberColumn("Venda"),
-        }
-    )
-
-    st.divider()
-
-    st.subheader("Dados completos do Ciclo de Mercado")
-    st.dataframe(
-        df_ciclo_raw,
-        use_container_width=True,
-        hide_index=True,
-        column_config={"Score 📈": st.column_config.NumberColumn("Score 📈", format="%d")}
     )

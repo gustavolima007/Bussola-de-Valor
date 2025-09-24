@@ -2,6 +2,8 @@ import yfinance as yf
 import pandas as pd
 import os
 from datetime import datetime
+from ta.momentum import RSIIndicator
+from ta.trend import MACD
 """
 📊 Script: 12-indices.py
 Objetivo:
@@ -28,6 +30,20 @@ indices = {
     "MATB11.SA": "Materiais Básicos (ETF)",
     "DIVO11.SA": "Dividendos"
 }
+
+def compute_indicadores_tecnicos(hist: pd.DataFrame) -> dict:
+    """Calcula RSI, MACD e Volume para um histórico de dados."""
+    indicadores = {'rsi': None, 'macd': None, 'volume': None}
+    if hist.empty or len(hist) < 35: # MACD precisa de ~35 períodos
+        return indicadores
+
+    close = hist['Close']
+    indicadores['rsi'] = RSIIndicator(close=close, window=14).rsi().iloc[-1]
+    indicadores['macd'] = MACD(close=close, window_slow=26, window_fast=12, window_sign=9).macd_diff().iloc[-1]
+    indicadores['volume'] = hist['Volume'].iloc[-1] if 'Volume' in hist.columns and not hist['Volume'].empty else None
+    
+    return {k: round(v, 2) if v is not None else None for k, v in indicadores.items()}
+
 def get_annual_closing(index_code, index_name):
     ticker = yf.Ticker(index_code)
     hist = ticker.history(period="5y", auto_adjust=True)
@@ -36,6 +52,9 @@ def get_annual_closing(index_code, index_name):
    
     hist.reset_index(inplace=True)
     hist['year'] = pd.to_datetime(hist['Date']).dt.year
+    
+    # Calcula indicadores técnicos com base no histórico completo de 5 anos
+    tecnicos = compute_indicadores_tecnicos(hist)
     annual = pd.DataFrame()
     current_year = datetime.now().year
     current_date = datetime.now().date()
@@ -50,7 +69,12 @@ def get_annual_closing(index_code, index_name):
             if not last_day.empty:
                 last_day = last_day.copy()  # Evita o warning criando uma cópia
                 last_day.loc[:, 'index'] = index_name  # Usa .loc para atribuição segura
-                annual = pd.concat([annual, last_day[['year', 'index', 'Close']]], ignore_index=True)
+                # Adiciona os indicadores técnicos a cada linha anual (serão os mesmos para o mesmo índice)
+                for key, value in tecnicos.items():
+                    last_day.loc[:, key] = value
+                
+                cols_to_keep = ['year', 'index', 'Close', 'rsi', 'macd', 'volume']
+                annual = pd.concat([annual, last_day[[c for c in cols_to_keep if c in last_day.columns]]], ignore_index=True)
     
     return annual[annual['year'] >= current_year - 5]
 def get_and_save_indices():
