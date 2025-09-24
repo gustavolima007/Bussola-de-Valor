@@ -96,6 +96,8 @@ def main() -> int:
     execucoes: List[Tuple[str, float, int]] = []
     tempo_inicio_total = time.perf_counter()
 
+    interrupcao_manual = False
+
     for script in scripts_para_executar:
         logger.info("\n" + "=" * 80)
         logger.info(f"▶️  Executando: {script.name}")
@@ -103,7 +105,15 @@ def main() -> int:
 
         # Executa o script como um subprocesso usando o mesmo interpretador Python
         # O argumento "-u" força o output a não ter buffer, exibindo em tempo real
-        processo = subprocess.run([sys.executable, "-u", str(script)], cwd=base_dir)
+        try:
+            processo = subprocess.run([sys.executable, "-u", str(script)], cwd=base_dir)
+        except KeyboardInterrupt:
+            tempo_fim_script = time.perf_counter()
+            duracao_script = tempo_fim_script - tempo_inicio_script
+            execucoes.append((script.name, duracao_script, 130))
+            logger.warning("Execução interrompida manualmente pelo usuário. Encerrando pipeline.")
+            interrupcao_manual = True
+            break
 
         tempo_fim_script = time.perf_counter()
         duracao_script = tempo_fim_script - tempo_inicio_script
@@ -126,12 +136,22 @@ def main() -> int:
     logger.info("📊 Resumo da Execução do Pipeline")
     logger.info("-" * 80)
     for nome, duracao, codigo_retorno in execucoes:
-        status = "Sucesso" if codigo_retorno == 0 else f"Erro (código: {codigo_retorno})"
-        level = logger.success if codigo_retorno == 0 else logger.error
+        if codigo_retorno == 0:
+            status = "Sucesso"
+            level = logger.success
+        elif codigo_retorno == 130:
+            status = "Interrompido pelo usuário"
+            level = logger.warning
+        else:
+            status = f"Erro (código: {codigo_retorno})"
+            level = logger.error
         level(f"  - {nome:<30} | {status:<18} | Duração: {formatar_tempo(duracao)}")
     logger.info("-" * 80)
     logger.info(f"⏱️  Tempo total do pipeline: {formatar_tempo(duracao_total)}")
     logger.info("=" * 80)
+
+    if interrupcao_manual:
+        return 130
 
     # Retorna o último código de erro encontrado, ou 0 se tudo ocorreu bem
     codigo_saida_final = next((rc for _, _, rc in reversed(execucoes) if rc != 0), 0)
@@ -140,6 +160,9 @@ def main() -> int:
 if __name__ == "__main__":
     try:
         sys.exit(main())
+    except KeyboardInterrupt:
+        logger.warning("Pipeline interrompido manualmente pelo usuário.")
+        sys.exit(130)
     except Exception as e:
         # Log full exception with traceback in both console and file
         logger.exception(f"Falha inesperada no loader: {e}")
