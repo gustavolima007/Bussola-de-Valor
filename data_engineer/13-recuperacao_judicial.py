@@ -33,7 +33,7 @@ empresas_recuperadas = [
     {"nome": "Recrusul", "ticker": "RCSL4", "setor": "Transporte e Componentes", "data_entrada_rj": "2009-01-18", "data_saida_rj": "2011-07-08", "data_falencia": None},
     {"nome": "Refrisa", "ticker": None, "setor": "Máquinas e Motores", "data_entrada_rj": "2008-06-30", "data_saida_rj": "2011-01-25", "data_falencia": None},
     {"nome": "Cory", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2009-09-14", "data_saida_rj": "2012-04-12", "data_falencia": None},
-    {"nome": "IRB Brasil", "ticker": "IRBR3", "setor": "Serviços Financeiros Diversos", "data_entrada_rj": "2020-10-01", "data_saida_rj": "2025-02-15", "data_falencia": None},
+    {"nome": "IRB Brasil", "ticker": "IRBR3", "setor": "Seguros", "data_entrada_rj": "2020-10-01", "data_saida_rj": "2025-02-15", "data_falencia": None},
     {"nome": "Chapecoense", "ticker": None, "setor": "Serviços Diversos", "data_entrada_rj": "2021-05-20", "data_saida_rj": "2025-09-10", "data_falencia": None},
     {"nome": "Gradiente (Primeiro Processo)", "ticker": "IGBR3", "setor": "Consumo Diverso", "data_entrada_rj": "1994-03-15", "data_saida_rj": None, "data_falencia": "1997-06-20"},
     {"nome": "Gradiente (IGB Eletrônica)", "ticker": "IGBR3", "setor": "Consumo Diverso", "data_entrada_rj": "2018-09-05", "data_saida_rj": "2025-04-20", "data_falencia": None},
@@ -42,19 +42,19 @@ empresas_recuperadas = [
     {"nome": "Paranapanema", "ticker": "PMAM3", "setor": "Mineração e Siderurgia", "data_entrada_rj": "2016-03-10", "data_saida_rj": "2019-11-15", "data_falencia": None},
     {"nome": "Avibras", "ticker": None, "setor": "Transporte e Componentes", "data_entrada_rj": "2008-09-25", "data_saida_rj": "2010-05-20", "data_falencia": None},
     {"nome": "Mabe", "ticker": None, "setor": "Consumo Diverso", "data_entrada_rj": "2012-03-15", "data_saida_rj": None, "data_falencia": "2016-06-10"},
-    {"nome": "Varig", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2005-06-17", "data_saida_rj": None, "data_falencia": "2010-08-20"},
-    {"nome": "Vasp", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2005-01-20", "data_saida_rj": None, "data_falencia": "2008-05-15"},
-    {"nome": "Transbrasil", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2001-12-10", "data_saida_rj": None, "data_falencia": "2003-07-18"},
-    {"nome": "Avianca Brasil", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2018-12-10", "data_saida_rj": None, "data_falencia": "2020-07-14"},
-    {"nome": "Itapemirim (ITA)", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2021-04-05", "data_saida_rj": None, "data_falencia": "2022-09-30"},
+    {"nome": "Varig", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2005-06-17", "data_saida_rj": None, "data_falencia": "2010-08-20"},
+    {"nome": "Vasp", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2005-01-20", "data_saida_rj": None, "data_falencia": "2008-05-15"},
+    {"nome": "Transbrasil", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2001-12-10", "data_saida_rj": None, "data_falencia": "2003-07-18"},
+    {"nome": "Avianca Brasil", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2018-12-10", "data_saida_rj": None, "data_falencia": "2020-07-14"},
+    {"nome": "Itapemirim (ITA)", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2021-04-05", "data_saida_rj": None, "data_falencia": "2022-09-30"},
     {"nome": "Coteminas", "ticker": "CTNM3", "setor": "Consumo Diverso", "data_entrada_rj": "2024-05-20", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Americanas", "ticker": "AMER3", "setor": "Comércio Varejista", "data_entrada_rj": "2023-01-19", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Busscar Ônibus", "ticker": None, "setor": "Transporte e Componentes", "data_entrada_rj": "2010-09-15", "data_saida_rj": None, "data_falencia": "2012-11-30"},
     {"nome": "Karmann-Ghia", "ticker": None, "setor": "Transporte e Componentes", "data_entrada_rj": "1993-04-20", "data_saida_rj": None, "data_falencia": "1997-08-15"},
     {"nome": "Móveis Gazin", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2019-03-10", "data_saida_rj": "2022-06-25", "data_falencia": None},
     {"nome": "Eldorado Móveis", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2016-07-05", "data_saida_rj": "2020-04-30", "data_falencia": None},
-    {"nome": "TAM (atual Latam Brasil)", "ticker": None, "setor": "Transporte e Logística", "data_entrada_rj": "2003-05-12", "data_saida_rj": "2005-09-30", "data_falencia": None},
-    {"nome": "Gol Linhas Aéreas", "ticker": "GOLL4", "setor": "Transporte e Logística", "data_entrada_rj": "2024-01-25", "data_saida_rj": "2025-06-06", "data_falencia": None},
+    {"nome": "TAM (atual Latam Brasil)", "ticker": None, "setor": "Logística e Mobilidade", "data_entrada_rj": "2003-05-12", "data_saida_rj": "2005-09-30", "data_falencia": None},
+    {"nome": "Gol Linhas Aéreas", "ticker": "GOLL4", "setor": "Logística e Mobilidade", "data_entrada_rj": "2024-01-25", "data_saida_rj": "2025-06-06", "data_falencia": None},
     {"nome": "Casas Bahia (Via S.A.)", "ticker": "BHIA3", "setor": "Comércio Varejista", "data_entrada_rj": "2024-04-28", "data_saida_rj": "2024-06-19", "data_falencia": None},
     {"nome": "Dia Brasil (Grupo Dia)", "ticker": None, "setor": "Comércio Varejista", "data_entrada_rj": "2024-03-21", "data_saida_rj": "2024-10-08", "data_falencia": None},
     {"nome": "Subway Brasil (SouthRock)", "ticker": None, "setor": "Alimentos e Bebidas", "data_entrada_rj": "2024-03-11", "data_saida_rj": "2025-04-02", "data_falencia": None},
@@ -82,7 +82,7 @@ empresas_recuperadas = [
     {"nome": "Refinaria de Manguinhos", "ticker": "RPMG3", "setor": "Petróleo, Gás e Biocombustíveis", "data_entrada_rj": "2016-01-01", "data_saida_rj": "2020-01-01", "data_falencia": None},
     {"nome": "Hotéis Othon", "ticker": "HOOT4", "setor": "Serviços Diversos", "data_entrada_rj": "2018-11-28", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Bardella", "ticker": "BDLL4", "setor": "Máquinas e Motores", "data_entrada_rj": "2019-07-26", "data_saida_rj": None, "data_falencia": None},
-    {"nome": "Rodovias do Tietê", "ticker": "RDVT3", "setor": "Transporte e Logística", "data_entrada_rj": "2019-09-11", "data_saida_rj": "2025-03-25", "data_falencia": None},
+    {"nome": "Rodovias do Tietê", "ticker": "RDVT3", "setor": "Logística e Mobilidade", "data_entrada_rj": "2019-09-11", "data_saida_rj": "2025-03-25", "data_falencia": None},
     {"nome": "João Fortes Engenharia", "ticker": "JFEN3", "setor": "Incorporação e Construção", "data_entrada_rj": "2020-03-10", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Rossi Residencial", "ticker": "RSID3", "setor": "Incorporação e Construção", "data_entrada_rj": "2022-01-17", "data_saida_rj": None, "data_falencia": None},
     {"nome": "Light S.A.", "ticker": "LIGT3", "setor": "Distribuição de Energia", "data_entrada_rj": "2023-05-12", "data_saida_rj": None, "data_falencia": None},
@@ -165,12 +165,12 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 # --- FIM DA SEÇÃO DE CÁLCULO ---
 
 # --- Configuração de Caminhos e Salvamento ---
-# Ajuste o caminho se este script não estiver na mesma estrutura de diretórios do anterior
-BASE_DIR = Path.cwd() / 'data'
-OUTPUT_PATH = BASE_DIR / "empresas_rj_falencia.csv"
+# O caminho para a pasta 'data' na raiz do projeto
+DATA_DIR = Path(__file__).resolve().parent.parent / 'data'
+OUTPUT_PATH = DATA_DIR / "rj.csv"
 
 # Garante que o diretório de saída exista
-BASE_DIR.mkdir(parents=True, exist_ok=True)
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 df_rj.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
 

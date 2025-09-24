@@ -283,10 +283,20 @@ def render_tab_guia():
 
     st.subheader("Critérios de Pontuação (Score)")
     st.markdown('''
-    A pontuação de cada ação é calculada somando-se os pontos de diversos critérios fundamentalistas, totalizando um máximo de **200 pontos**. Abaixo, detalhamos cada critério e sua relevância.
+    A pontuação de cada ação é calculada somando-se os pontos de diversos critérios fundamentalistas, totalizando um máximo de **200 pontos**. Navegue pelas abas abaixo para detalhar cada critério.
     ''')
 
-    with st.expander("1. Dividend Yield (DY) - Até 45 pontos"):
+    tab_titles = [
+        "1. Dividend Yield (45 pts)",
+        "2. Valuation (35 pts)",
+        "3. Rentabilidade (35 pts)",
+        "4. Endividamento (20 pts)",
+        "5. Crescimento (25 pts)",
+        "6. Ciclo e Graham (35 pts)"
+    ]
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(tab_titles)
+
+    with tab1:
         st.markdown('''
         - **O que é?** O Dividend Yield (DY) representa o retorno em dividendos pago pela ação, dividido pelo seu preço. A média de 5 anos reflete a consistência dos pagamentos.
         - **Por que analisar?** É o principal indicador para investidores focados em renda passiva, como defendido por **Luiz Barsi**. Um DY alto e consistente indica uma \"vaca leiteira\" – empresas que geram fluxo de caixa estável.
@@ -302,7 +312,7 @@ def render_tab_guia():
                 - 4%–6%: **+10 pontos**
         ''')
 
-    with st.expander("2. Valuation (P/L e P/VP) - Até 35 pontos"):
+    with tab2:
         st.markdown('''
         - **O que são?** P/L (Preço/Lucro) e P/VP (Preço/Valor Patrimonial) são indicadores de valuation, popularizados por **Benjamin Graham**, para avaliar se uma ação está \"barata\" em relação aos lucros ou patrimônio.
         - **Por que analisar?** Comprar ativos abaixo de seu valor intrínseco é a essência do *Value Investing*, criando uma margem de segurança contra a volatilidade do mercado.
@@ -318,7 +328,7 @@ def render_tab_guia():
                 - > 4: **-5 pontos**
         ''')
 
-    with st.expander("3. Rentabilidade e Gestão (ROE e Payout) - Até 35 pontos"):
+    with tab3:
         st.markdown('''
         - **O que são?** ROE (Return on Equity) mede a eficiência da empresa em gerar lucro com o capital próprio. Payout é a porcentagem do lucro distribuída como dividendos.
         - **Por que analisar?** Um ROE alto, valorizado por **Warren Buffett**, indica boa gestão e vantagens competitivas. Um Payout equilibrado mostra que a empresa remunera acionistas sem comprometer o reinvestimento.
@@ -336,7 +346,7 @@ def render_tab_guia():
                 - < 20% ou > 80%: **-5 pontos**
         ''')
 
-    with st.expander("4. Saúde Financeira (Endividamento) - Até 20 pontos"):
+    with tab4:
         st.markdown('''
         - **O que é?** Avalia a dívida da empresa em relação ao seu valor de mercado (Dívida/Market Cap) e geração de caixa (Dívida/EBITDA). *Não se aplica ao setor financeiro.*
         - **Por que analisar?** Empresas com dívidas controladas são mais resilientes a crises e têm maior flexibilidade para crescer e pagar dividendos, um princípio valorizado por **Bazin** e **Graham**.
@@ -351,7 +361,7 @@ def render_tab_guia():
                 - > 6: **-5 pontos**
         ''')
 
-    with st.expander("5. Crescimento e Sentimento - Até 25 pontos"):
+    with tab5:
         st.markdown('''
         - **O que são?** Crescimento do preço da ação nos últimos 5 anos e a recomendação consolidada de analistas (Sentimento Gauge).
         - **Por que analisar?** O crescimento histórico reflete a valorização do ativo, enquanto o sentimento de mercado, enfatizado por **Peter Lynch**, adiciona uma camada de análise sobre a percepção atual.
@@ -365,7 +375,7 @@ def render_tab_guia():
                 - Varia de **-5 a +10 pontos**, proporcional à nota de 0 a 100.
         ''')
 
-    with st.expander("6. Ciclo de Mercado e Fórmula de Graham - Até +35 pontos"):
+    with tab6:
         st.markdown('''
         - **O que são?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado. A **Fórmula de Graham** calcula o \"preço justo\" (`√(22.5 * LPA * VPA)`) para encontrar a margem de segurança.
         - **Por que analisar?** Juntos, eles respondem \"o quê comprar\" (Graham) e \"quando comprar\" (Ciclo). Comprar ativos com alta margem de segurança durante períodos de pânico é uma estratégia poderosa.
@@ -384,16 +394,38 @@ def render_tab_guia():
     st.markdown("---")
     st.subheader("Guia de Perfil da Ação")
     st.markdown('''
-A classificação por perfil ajuda a entender o porte, o risco e o potencial de cada empresa com base no **Valor de Mercado (Market Cap)** e **Preço por Ação**.
+    A classificação por perfil ajuda a entender o porte, o risco e o potencial de cada empresa com base no **Valor de Mercado (Market Cap)** e **Preço por Ação**.
     ''')
-    with st.expander("Como o Perfil é Calculado?"):
-        st.markdown('''
-        - **Penny Stock:** Preço da Ação < R$ 1,00.
-        - **Micro Cap:** Valor de Mercado < R$ 2 bilhões.
-        - **Small Cap:** Valor de Mercado entre R$ 2 bilhões e R$ 10 bilhões.
-        - **Mid Cap:** Valor de Mercado entre R$ 10 bilhões e R$ 50 bilhões.
-        - **Blue Chip:** Valor de Mercado > R$ 50 bilhões.
-        ''')
+
+    # Using columns for a card-like layout
+    col1, col2 = st.columns(2)
+
+    with col1:
+        with st.container(border=True):
+            st.markdown("##### 💎 Blue Chip")
+            st.markdown("**Valor de Mercado > R$ 50 bilhões.**")
+            st.markdown("_Empresas gigantes, líderes em seus setores, com alta liquidez e consideradas mais seguras._")
+
+        with st.container(border=True):
+            st.markdown("##### 📈 Mid Cap")
+            st.markdown("**Valor de Mercado entre R$ 10 bilhões e R$ 50 bilhões.**")
+            st.markdown("_Empresas de médio porte, com bom potencial de crescimento e risco moderado._")
+
+        with st.container(border=True):
+            st.markdown("##### 🚀 Small Cap")
+            st.markdown("**Valor de Mercado entre R$ 2 bilhões e R$ 10 bilhões.**")
+            st.markdown("_Empresas menores com alto potencial de crescimento, mas também maior risco e volatilidade._")
+
+    with col2:
+        with st.container(border=True):
+            st.markdown("##### 🌱 Micro Cap")
+            st.markdown("**Valor de Mercado < R$ 2 bilhões.**")
+            st.markdown("_Empresas muito pequenas, com altíssimo potencial de valorização e risco elevado._")
+
+        with st.container(border=True):
+            st.markdown("##### 🪙 Penny Stock")
+            st.markdown("**Preço da Ação < R$ 1,00.**")
+            st.markdown("_Ações de baixíssimo valor, especulativas e com altíssimo risco. Podem ou não ser Micro Caps._")
 
 
 
@@ -748,22 +780,30 @@ def render_tab_recuperacao_judicial(all_data: dict):
         }
     )
 
-    with st.expander("Como a penalidade é calculada?"):
-        st.markdown(f"""
-A pontuação de cada setor é penalizada com base no seu histórico de recuperações judiciais e falências para refletir o risco setorial. A fórmula é:
+    st.subheader("Como a penalidade é calculada?")
+    st.markdown("""
+    A pontuação de cada setor é penalizada para refletir o risco com base no seu histórico de recuperações judiciais e falências.
+    """)
 
-        1.  **Contagem de Ocorrências**: Contamos quantas empresas de cada setor estão na nossa base de dados de RJ/Falência.
-            - *Mínimo de ocorrências em um setor*: **{min_ocorrencias}**
-            - *Máximo de ocorrências em um setor*: **{max_ocorrencias}**
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Mínimo de ocorrências em um setor", f"{min_ocorrencias}")
+    with col2:
+        st.metric("Máximo de ocorrências em um setor", f"{max_ocorrencias}")
 
-        2.  **Penalidade Normalizada**: O número de ocorrências de um setor é normalizado em uma escala de 0 a 1.
-            - `Penalidade Normalizada = (Ocorrências do Setor - Mínimo) / (Máximo - Mínimo)`
+    st.markdown("""
+    **Fórmula da Penalidade:**
 
-        3.  **Penalidade Ajustada**: A penalidade normalizada é multiplicada por um fator de impacto de **20 pontos**.
-            - `Penalidade Ajustada = Penalidade Normalizada * 20`
-
-        4.  **Pontuação Final do Setor**: A penalidade ajustada é subtraída da pontuação média original do setor.
-        """)
+    1.  **Normalização**: As ocorrências de cada setor são normalizadas para uma escala de 0 a 1.
+        ```
+        Penalidade Normalizada = (Ocorrências do Setor - Mínimo) / (Máximo - Mínimo)
+        ```
+    2.  **Ajuste**: A penalidade normalizada é multiplicada por um fator de impacto de **20 pontos**.
+        ```
+        Penalidade Ajustada = Penalidade Normalizada * 20
+        ```
+    3.  **Aplicação**: A penalidade ajustada é subtraída da pontuação original do setor.
+    """)
 
     st.divider()
     st.subheader(f"Lista de Empresas ({len(rj_df)} encontradas)")
