@@ -94,6 +94,24 @@ Os setores são classificados por uma pontuação média que considera o desempe
 - 🟡 **Amarelo (Neutro):** 70 a 99 pontos – Setor misto, exige seletividade.
 - 🔴 **Vermelho (Risco):** < 70 pontos – Setor com baixa atratividade ou fundamentos frágeis.
 
+### Cálculo de Bônus de Dividendos por Setor
+
+O cálculo de dividendos para a pontuação do setor é um bônus baseado na média de Dividend Yield (DY) dos últimos 5 anos de cada subsetor. A lógica é a seguinte:
+
+1.  **Cálculo da Média do DY de 5 anos por Subsetor**:
+    *   Primeiro, o sistema calcula a média do `DY dos últimos 5 anos` para cada empresa dentro de um mesmo subsetor.
+
+2.  **Aplicação do Bônus**:
+    *   Com base nessa média, um bônus é aplicado à pontuação do subsetor:
+        *   Se o DY médio for **maior ou igual a 6%**, o subsetor recebe **+20 pontos**.
+        *   Se o DY médio estiver **entre 4% e 6%**, o subsetor recebe **+10 pontos**.
+        *   Se o DY médio for **menor que 4%**, **nenhum bônus** é concedido.
+
+3.  **Impacto na Pontuação Final**:
+    *   Este bônus é somado à pontuação original do subsetor, que por sua vez influencia a pontuação final do setor (que é a média das pontuações dos seus subsetores).
+
+Essa abordagem valoriza setores que, como um todo, demonstram um histórico consistente de distribuição de proventos, alinhado com a filosofia de investimento em dividendos.
+
 ---
 
 ## 📊 Guia de Perfil da Ação
