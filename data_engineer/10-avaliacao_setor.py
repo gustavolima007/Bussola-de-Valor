@@ -22,12 +22,16 @@ from pathlib import Path
 import pandas as pd
 
 def calcular_bonus_dy(dy_5a):
-    if dy_5a < 4:
-        return 0
-    elif dy_5a < 6:
-        return 10
-    else:
+    if dy_5a >= 8:
+        return 30
+    elif dy_5a >= 6:
         return 20
+    elif dy_5a >= 4:
+        return 10
+    elif dy_5a >= 2:
+        return -10
+    else:
+        return -20
 
 def main() -> None:
     # --- Paths ---

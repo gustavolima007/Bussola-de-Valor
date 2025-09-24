@@ -98,17 +98,13 @@ Os setores são classificados por uma pontuação média que considera o desempe
 
 O cálculo de dividendos para a pontuação do setor é um bônus baseado na média de Dividend Yield (DY) dos últimos 5 anos de cada subsetor. A lógica é a seguinte:
 
-1.  **Cálculo da Média do DY de 5 anos por Subsetor**:
-    *   Primeiro, o sistema calcula a média do `DY dos últimos 5 anos` para cada empresa dentro de um mesmo subsetor.
-
-2.  **Aplicação do Bônus**:
-    *   Com base nessa média, um bônus é aplicado à pontuação do subsetor:
-        *   Se o DY médio for **maior ou igual a 6%**, o subsetor recebe **+20 pontos**.
-        *   Se o DY médio estiver **entre 4% e 6%**, o subsetor recebe **+10 pontos**.
-        *   Se o DY médio for **menor que 4%**, **nenhum bônus** é concedido.
-
-3.  **Impacto na Pontuação Final**:
-    *   Este bônus é somado à pontuação original do subsetor, que por sua vez influencia a pontuação final do setor (que é a média das pontuações dos seus subsetores).
+| DY Médio 5 Anos do Subsetor | Ajuste Setorial | Interpretação                                                 |
+| --------------------------- | --------------- | --------------------------------------------------------------- |
+| ≥ 8%                        | +30 pts         | Setor com cultura sólida de dividendos, perfil Barsi/Bazin      |
+| 6% – 8%                     | +20 pts         | Setor atrativo, empresas maduras e rentáveis                  |
+| 4% – 6%                     | +10 pts         | Setor razoável, exige seletividade                            |
+| 2% – 4%                     | -10 pts         | Setor fraco, baixa remuneração ao acionista                   |
+| < 2%                        | -20 pts         | Setor hostil ao investidor de valor, foco em crescimento ou risco elevado |
 
 Essa abordagem valoriza setores que, como um todo, demonstram um histórico consistente de distribuição de proventos, alinhado com a filosofia de investimento em dividendos.
 
