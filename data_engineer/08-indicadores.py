@@ -296,7 +296,7 @@ def main():
     vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
 
     resultados = []
-    for ticker_base, meta in tqdm(metadata_map.items(), desc="Coletando indicadores e ciclo de mercado"):
+    for ticker_base, meta in tqdm(metadata_map.items(), desc="Coletando indicadores"):
         try:
             dados = fetch_stock_data(ticker_base, meta, vol_mean)
             if dados:

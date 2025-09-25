@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 
-def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.DataFrame, str | None]:
+def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dict) -> tuple[pd.DataFrame, str | None]:
     """
     Renderiza todos os filtros e ordenação na sidebar e retorna o DataFrame filtrado.
     """
@@ -37,8 +37,8 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
     ticker_foco = None if ticker_foco == "— Todos —" else ticker_foco
 
     # --- Filtros de Indicadores ---
-    score_range = st.sidebar.slider("Faixa de Score", 0, 300, (100, 300))
-    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 200, 100) # Mantido em 200 pois é score de setor
+    score_range = st.sidebar.slider("Faixa de Score", 0, 500, (100, 300))
+    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 500, 200)
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
 
@@ -48,7 +48,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
         (df['Score Total'].between(score_range[0], score_range[1])) &
         (df['DY (Taxa 12m, %)'] >= dy_min) &
         (df['DY 5 Anos Média (%)'] >= dy_5y_min) &
-        (df['pontuacao_subsetor'].fillna(0) >= subsetor_score_min)
+        (df['pontuacao_final'].fillna(0) >= subsetor_score_min)
     ].copy()
 
     if ticker_foco:
@@ -59,6 +59,17 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict) -> tuple[pd.D
 
     # --- Índices ---
     st.sidebar.header("📈 Índices")
+
+    # Card de Pontuação Geral do Mercado
+    overall_score = df['Score Total'].mean()
+    st.sidebar.metric(label="Pontuação Geral do Mercado", value=f"{overall_score:.2f}", help="Média da pontuação de todas as ações (Máx: 300)")
+
+    # Card de Pontuação Média dos Setores
+    sector_scores = all_data.get('avaliacao_setor', pd.DataFrame())
+    if not sector_scores.empty and 'pontuacao_final' in sector_scores.columns:
+        avg_sector_score = sector_scores['pontuacao_final'].mean()
+        st.sidebar.metric(label="Pontuação Média dos Setores", value=f"{avg_sector_score:.2f}", help="Média da pontuação de todos os setores (Máx: 200)")
+
     
     index_labels = {
         "iShares Ibovespa": "Ibovespa (BOVA11)",

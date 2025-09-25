@@ -286,8 +286,15 @@ def mapear_setores_b3(df):
     um dicionário completo e robusto.
     """
     valor_padrao = ('Indefinido', 'Indefinido')
-    lista_de_setores = [MAPEAMENTO_COMPLETO_TICKERS.get(ticker, valor_padrao) for ticker in df['ticker']]
-    df[['setor_b3', 'subsetor_b3']] = pd.DataFrame(lista_de_setores, index=df.index)
+    
+    # Gera as listas de setores e subsetores de forma explícita
+    setores = [MAPEAMENTO_COMPLETO_TICKERS.get(ticker, valor_padrao)[0] for ticker in df['ticker']]
+    subsetores = [MAPEAMENTO_COMPLETO_TICKERS.get(ticker, valor_padrao)[1] for ticker in df['ticker']]
+    
+    # Atribui as listas diretamente às novas colunas
+    df['setor_b3'] = setores
+    df['subsetor_b3'] = subsetores
+    
     return df
 
 def extrair_dados_brapi():

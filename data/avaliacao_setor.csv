@@ -1,30 +1,30 @@
-setor_b3,subsetor_b3,pontuacao_setor,pontuacao_original_subsetor,dy_5a_subsetor,bonus_dy_5a,penalidade_rj,pontuacao_subsetor
-"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis",134.93,113.50,9.38,30,8.57,134.93
-Materiais Básicos,Mineração e Siderurgia,133.39,121.57,8.78,30,11.43,140.14
-Materiais Básicos,Química e Petroquímica,133.39,113.84,10.43,30,5.71,138.13
-Materiais Básicos,Papel e Celulose,133.39,114.77,4.29,10,2.86,121.91
-Utilidade Pública,Transmissão de Energia,132.01,147.44,6.35,20,0.00,167.44
-Utilidade Pública,Distribuição de Energia,132.01,138.21,9.47,30,2.86,165.35
-Utilidade Pública,Saneamento,132.01,140.12,3.53,-10,0.00,130.12
-Utilidade Pública,Geração de Energia,132.01,77.99,2.98,-10,2.86,65.13
-Financeiro e Outros,Holdings e Outros Serviços Financeiros,123.23,143.00,6.70,20,0.00,163.00
-Financeiro e Outros,Bancos,123.23,130.08,4.80,10,0.00,140.08
-Financeiro e Outros,Propriedades e Locação,123.23,107.31,8.14,30,0.00,137.31
-Financeiro e Outros,Seguros,123.23,114.03,6.93,20,2.86,131.17
-Financeiro e Outros,Incorporação e Construção,123.23,94.58,2.46,-10,40.00,44.58
-Tecnologia da Informação,Hardware e Equipamentos,97.36,102.50,6.74,20,0.00,122.50
-Tecnologia da Informação,Software e Serviços de TI,97.36,92.22,1.48,-20,0.00,72.22
-Consumo Cíclico,Calçados e Vestuário,88.70,117.95,3.64,-10,2.86,105.09
-Consumo Cíclico,Consumo Diverso,88.70,103.55,4.01,10,28.57,84.98
-Consumo Cíclico,Comércio Varejista,88.70,74.62,11.85,30,28.57,76.05
-Consumo Não Cíclico,Comércio e Distribuição,82.79,91.91,5.01,10,5.71,96.19
-Consumo Não Cíclico,Alimentos e Bebidas,82.79,96.53,5.76,10,37.14,69.39
-Bens Industriais,Transporte e Componentes,59.88,97.91,5.36,10,20.00,87.91
-Bens Industriais,Máquinas e Motores,59.88,98.47,2.61,-10,14.29,74.19
-Bens Industriais,Serviços Industriais,59.88,53.60,4.77,10,8.57,55.03
-Bens Industriais,Logística e Mobilidade,59.88,60.97,2.67,-10,28.57,22.40
-Saúde,Produtos e Equipamentos Médicos,57.49,72.29,2.20,-10,0.00,62.29
-Saúde,Hospitais e Análises Clínicas,57.49,65.54,2.56,-10,2.86,52.68
-Educação,Educação,57.10,77.10,1.38,-20,0.00,57.10
-Comunicações,Telecomunicações,34.44,60.16,1.41,-20,5.71,34.44
-Serviços Diversos,Serviços Diversos,33.98,65.41,0.55,-20,11.43,33.98
+setor_b3,pontuacao_setor,subsetor_b3,pontuacao_final,score_dy,score_roe,score_beta,score_payout,score_empresas_boas,penalidade_empresas_ruins,score_graham,penalidade_rj,dy_5a_medio,roe_medio,beta_medio,payout_medio,margem_graham_media,score_original,empresas_boas_contagem,empresas_ruins_contagem,ocorrencias_rj
+Utilidade Pública,208.12,Distribuição de Energia,297.32,40,30,20,20,40,0,10,-4.44,8.97,20.61,0.37,57.37,81.98,141.76,8.00,0.00,1.00
+Utilidade Pública,208.12,Transmissão de Energia,253.55,20,20,20,20,20,0,10,-0.00,5.27,18.40,0.23,31.24,74.12,143.55,5.00,0.00,0.00
+Utilidade Pública,208.12,Saneamento,200.12,-10,30,20,10,10,0,0,-0.00,3.53,21.93,0.27,25.92,37.49,140.12,2.00,0.00,0.00
+Utilidade Pública,208.12,Geração de Energia,81.49,-10,0,20,0,10,-20,0,-0.00,3.71,7.69,0.37,103.83,-17.76,81.49,1.00,3.00,0.00
+"Petróleo, Gás e Biocombustíveis",202.12,"Petróleo, Gás e Biocombustíveis",202.12,40,10,20,20,10,-10,0,-4.44,9.30,14.93,0.45,36.41,44.18,116.57,2.00,1.00,1.00
+Financeiro e Outros,195.15,Holdings e Outros Serviços Financeiros,264.25,40,10,20,0,20,0,20,-0.00,8.05,11.03,0.48,80.07,104.33,154.25,5.00,0.00,0.00
+Financeiro e Outros,195.15,Bancos,236.37,20,20,20,20,30,-10,10,-0.00,4.63,17.72,0.44,35.62,80.24,126.37,6.00,2.00,0.00
+Financeiro e Outros,195.15,Seguros,214.86,30,40,20,20,0,-10,0,-0.00,6.81,30.63,0.45,40.15,10.95,114.86,0.00,1.00,0.00
+Financeiro e Outros,195.15,Propriedades e Locação,206.04,40,10,20,0,20,-10,10,-0.00,8.93,10.71,0.18,80.18,65.53,116.04,4.00,2.00,0.00
+Financeiro e Outros,195.15,Incorporação e Construção,54.23,-10,0,20,10,10,-30,0,-40.00,2.48,7.18,0.50,70.21,34.06,94.23,1.00,6.00,9.00
+Materiais Básicos,192.58,Química e Petroquímica,201.60,50,10,20,10,10,-10,0,-0.00,10.31,14.39,0.60,21.89,20.24,111.60,1.00,2.00,0.00
+Materiais Básicos,192.58,Mineração e Siderurgia,188.92,40,0,10,0,20,-20,20,-4.44,9.13,6.04,0.98,779.22,125.96,123.37,5.00,3.00,1.00
+Materiais Básicos,192.58,Papel e Celulose,187.23,20,20,20,20,10,-10,0,-0.00,4.66,18.85,0.36,39.07,32.40,107.23,2.00,1.00,0.00
+Consumo Cíclico,155.40,Consumo Diverso,163.14,20,10,20,20,20,-10,0,-31.11,4.57,14.76,0.28,57.62,34.81,114.25,4.00,1.00,7.00
+Consumo Cíclico,155.40,Calçados e Vestuário,157.32,-10,10,20,20,10,-10,0,-0.00,3.14,13.41,0.64,35.62,20.32,117.32,2.00,2.00,0.00
+Consumo Cíclico,155.40,Comércio Varejista,145.73,50,0,20,0,20,-30,30,-26.67,12.22,-10.07,0.63,930.92,302.21,82.39,3.00,7.00,6.00
+Consumo Não Cíclico,146.33,Comércio e Distribuição,148.57,20,0,20,20,10,-10,0,-4.44,5.00,-5.42,0.43,56.44,46.77,93.02,1.00,1.00,1.00
+Consumo Não Cíclico,146.33,Alimentos e Bebidas,144.08,20,0,20,20,10,-10,0,-13.33,4.16,2.60,0.24,34.98,18.80,97.42,1.00,2.00,3.00
+Tecnologia da Informação,127.78,Hardware e Equipamentos,153.75,30,0,20,0,10,-10,0,-0.00,6.69,-2.61,0.68,516.68,34.52,103.75,1.00,1.00,0.00
+Tecnologia da Informação,127.78,Software e Serviços de TI,101.81,-20,0,20,20,10,-20,0,-0.00,1.47,-4.09,0.43,30.69,12.79,91.81,2.00,3.00,0.00
+Bens Industriais,122.61,Transporte e Componentes,188.05,20,30,20,20,20,-20,10,-13.33,5.31,22.42,0.42,50.14,50.86,101.38,3.00,5.00,3.00
+Bens Industriais,122.61,Máquinas e Motores,145.27,-10,10,20,20,20,-20,0,-4.44,3.50,11.64,0.38,31.76,46.62,109.71,4.00,3.00,1.00
+Bens Industriais,122.61,Serviços Industriais,103.95,20,0,20,20,10,-20,0,-4.44,5.46,-4.60,0.52,49.70,-5.99,58.40,1.00,5.00,1.00
+Bens Industriais,122.61,Logística e Mobilidade,53.18,-10,10,20,20,10,-30,0,-26.67,2.61,10.81,0.43,45.14,4.74,59.84,2.00,9.00,6.00
+Saúde,96.48,Produtos e Equipamentos Médicos,115.76,-10,0,20,20,10,-10,0,-0.00,2.35,1.13,0.40,37.70,19.45,85.76,1.00,2.00,0.00
+Saúde,96.48,Hospitais e Análises Clínicas,77.21,-10,0,20,10,0,-10,0,-0.00,2.58,-4.32,0.61,21.88,-8.25,67.21,0.00,1.00,0.00
+Educação,74.60,Educação,74.60,-20,0,20,20,0,-20,0,-0.00,1.39,5.71,0.50,40.17,44.54,74.60,0.00,3.00,0.00
+Comunicações,44.60,Telecomunicações,44.60,-20,0,20,10,0,-20,0,-4.44,1.40,5.21,0.60,26.04,2.06,59.05,0.00,4.00,1.00
+Serviços Diversos,23.15,Serviços Diversos,23.15,-20,0,20,0,0,-20,0,-8.89,0.81,-32.78,0.59,3.42,18.57,52.04,0.00,3.00,2.00

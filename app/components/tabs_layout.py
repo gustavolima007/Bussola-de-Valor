@@ -141,6 +141,70 @@ def style_ciclo_mercado(row: pd.Series, cols_to_style: list) -> list:
     
     return [f'color: {color}' if col in cols_to_style else '' for col in row.index]
 
+def style_pontuacao_final_setor(val):
+    if pd.isna(val): return ''
+    if val >= 400: return 'color: #3dd56d'
+    if 350 <= val < 400: return 'color: #58d68d'
+    if 300 <= val < 350: return 'color: #ffaa00'
+    if 200 <= val < 300: return 'color: #ff7f50'
+    return 'color: #ff4b4b'
+
+def style_score_dy_setor(val):
+    if pd.isna(val): return ''
+    if val >= 40: return 'color: #3dd56d'
+    if 30 <= val < 40: return 'color: #58d68d'
+    if 20 <= val < 30: return 'color: #ffaa00'
+    if 0 <= val < 20: return 'color: #ff7f50'
+    return 'color: #ff4b4b'
+
+def style_score_roe_setor(val):
+    if pd.isna(val): return ''
+    if val >= 30: return 'color: #3dd56d'
+    if 20 <= val < 30: return 'color: #58d68d'
+    if 10 <= val < 20: return 'color: #ffaa00'
+    return 'color: #ff4b4b'
+
+def style_score_beta_setor(val):
+    if pd.isna(val): return ''
+    if val >= 20: return 'color: #3dd56d'
+    if 10 <= val < 20: return 'color: #58d68d'
+    if 0 <= val < 10: return 'color: #ffaa00'
+    return 'color: #ff4b4b'
+
+def style_score_payout_setor(val):
+    if pd.isna(val): return ''
+    if val >= 20: return 'color: #3dd56d'
+    if 10 <= val < 20: return 'color: #58d68d'
+    return 'color: #ff4b4b'
+
+def style_score_empresas_boas_setor(val):
+    if pd.isna(val): return ''
+    if val >= 30: return 'color: #3dd56d'
+    if 20 <= val < 30: return 'color: #58d68d'
+    if 10 <= val < 20: return 'color: #ffaa00'
+    return 'color: #ff4b4b'
+
+def style_penalidade_empresas_ruins_setor(val):
+    if pd.isna(val): return ''
+    if val == 0: return 'color: #3dd56d'
+    if val == -10: return 'color: #ffaa00'
+    if val == -20: return 'color: #ff7f50'
+    return 'color: #ff4b4b'
+
+def style_score_graham_setor(val):
+    if pd.isna(val): return ''
+    if val >= 30: return 'color: #3dd56d'
+    if 20 <= val < 30: return 'color: #58d68d'
+    if 10 <= val < 20: return 'color: #ffaa00'
+    return 'color: #ff4b4b'
+
+def style_penalidade_rj_setor(val):
+    if pd.isna(val): return ''
+    if val == 0: return 'color: #3dd56d'
+    if -20 <= val < 0: return 'color: #ffaa00'
+    if -30 <= val < -20: return 'color: #ff7f50'
+    return 'color: #ff4b4b'
+
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
     cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
@@ -169,7 +233,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
+            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
         },
         use_container_width=True, hide_index=True
     )
@@ -242,7 +306,7 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
             "rsi_14_1y": st.column_config.NumberColumn("RSI (Sentimento)", format="%.2f"),
             "macd_diff_1y": st.column_config.NumberColumn("MACD (Tendência)", format="%.3f"),
             "volume_1y": st.column_config.NumberColumn("Volume (Convicção)", format="%d"),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
+            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
         },
         use_container_width=True, 
         hide_index=True
@@ -282,7 +346,7 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
             "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
+            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
         },
         use_container_width=True, 
         hide_index=True
@@ -323,7 +387,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
             <div class="analise-individual-container">
                 <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
                     <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
-                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 300</div>
+                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 500</div>
                 </div>
                 {details_html}
             </div>
@@ -348,7 +412,7 @@ def render_tab_guia():
     st.header("🧭 Guia da Bússola de Valor")
     st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
     
-    st.subheader("Critérios de Pontuação (Score) - Máximo de 300 pontos")
+    st.subheader("Critérios de Pontuação (Score) - Máximo de 500 pontos")
     st.markdown('''
     A pontuação de cada ação é calculada somando-se os pontos de diversos critérios fundamentalistas, totalizando um máximo de **200 pontos**. Navegue pelas abas abaixo para detalhar cada critério.
     ''')
@@ -621,8 +685,8 @@ def render_tab_empresas_por_setor(df: pd.DataFrame, all_data: dict):
 
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     setor_scores = {}
-    if not av_setor.empty and 'pontuacao_subsetor' in av_setor.columns and 'subsetor_b3' in av_setor.columns:
-        setor_scores = pd.Series(av_setor.pontuacao_subsetor.values, index=av_setor.subsetor_b3).to_dict()
+    if not av_setor.empty and 'pontuacao_final' in av_setor.columns and 'subsetor_b3' in av_setor.columns:
+        setor_scores = pd.Series(av_setor.pontuacao_final.values, index=av_setor.subsetor_b3).to_dict()
 
     setor_emojis = {
         "Petróleo, Gás e Biocombustíveis": "⛽",
@@ -682,7 +746,7 @@ def render_tab_empresas_por_setor(df: pd.DataFrame, all_data: dict):
                 "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%% "),
                 "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
                 "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-                "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=300),
+                "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
             },
             use_container_width=True, hide_index=True
         )
@@ -710,7 +774,7 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
     with tab_dividendos:
         render_tab_dividendos(df_filtrado, all_data, ticker_foco)
     with tab_setores:
-        render_tab_rank_setores(df_filtrado, all_data)
+        render_tab_rank_setores(df_unfiltered, df_filtrado, all_data)
     with tab_rj:
         render_tab_recuperacao_judicial(all_data)
     with tab_guia:
@@ -720,18 +784,29 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
         
     
 
-def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
+def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Análise de Setores")
+
+    # --- CÁLCULO DA PONTUAÇÃO ORIGINAL ---
+    pontuacao_original_setor = pd.DataFrame()
+    if not df_unfiltered.empty and 'subsetor_b3' in df_unfiltered.columns and 'Score Total' in df_unfiltered.columns:
+        pontuacao_original_setor = df_unfiltered.groupby('subsetor_b3')['Score Total'].mean().reset_index()
+        pontuacao_original_setor.rename(columns={'Score Total': 'Pontuacao Original'}, inplace=True)
 
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
+        # --- MERGE DA PONTUAÇÃO ORIGINAL ---
+        if not pontuacao_original_setor.empty:
+            av_setor = pd.merge(av_setor, pontuacao_original_setor, on='subsetor_b3', how='left')
+
         st.subheader("Ranking de Setores por Pontuação Média")
         st.markdown("Esta tabela classifica os subsetores com base em uma pontuação final que considera o desempenho médio de suas ações, a penalidade por recuperação judicial e o dividend yield médio dos últimos 5 anos.")
 
         # Define as colunas de pontuação e seus novos nomes
         rename_map = {
             'subsetor_b3': 'Subsetor',
-            'pontuacao_subsetor': 'Score Final',
+            'pontuacao_final': 'Pontuação Final',
+            'Pontuacao Original': 'Pontuação Original',
             'score_dy': 'Score DY',
             'score_roe': 'Score ROE',
             'score_beta': 'Score Beta',
@@ -746,18 +821,28 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
 
         # Define a ordem das colunas a serem exibidas
         cols_to_show = [
-            'Subsetor', 'Score Final', 'Score DY', 'Score ROE', 'Score Beta', 'Score Payout',
+            'Subsetor', 'Pontuação Final', 'Pontuação Original',
+            'Score DY', 'Score ROE', 'Score Beta', 'Score Payout',
             'Bônus Boas Empresas', 'Pena Más Empresas', 'Score Graham', 'Pena RJ'
         ]
         
         # Filtra apenas as colunas que realmente existem no dataframe
         cols_to_show_existing = [col for col in cols_to_show if col in av_display.columns]
         
-        styler = av_display[cols_to_show_existing].style.map(style_pontuacao_final, subset=['Score Final'])
+        styler = av_display[cols_to_show_existing].style.map(style_pontuacao_final_setor, subset=['Pontuação Final'])
+        styler.map(style_score_dy_setor, subset=['Score DY'])
+        styler.map(style_score_roe_setor, subset=['Score ROE'])
+        styler.map(style_score_beta_setor, subset=['Score Beta'])
+        styler.map(style_score_payout_setor, subset=['Score Payout'])
+        styler.map(style_score_empresas_boas_setor, subset=['Bônus Boas Empresas'])
+        styler.map(style_penalidade_empresas_ruins_setor, subset=['Pena Más Empresas'])
+        styler.map(style_score_graham_setor, subset=['Score Graham'])
+        styler.map(style_penalidade_rj_setor, subset=['Pena RJ'])
 
         # Configuração das colunas para o dataframe do Streamlit
         column_config = {
-            'Score Final': st.column_config.NumberColumn('Score Final', format='%.1f', help="Pontuação final do subsetor, somando todos os critérios."),
+            'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do subsetor, somando todos os critérios."),
+            'Pontuação Original': st.column_config.NumberColumn('Pontuação Original', format='%.1f', help="Média da pontuação de todas as empresas do setor."),
             'Score DY': st.column_config.NumberColumn('DY', format='%.1f'),
             'Score ROE': st.column_config.NumberColumn('ROE', format='%.1f'),
             'Score Beta': st.column_config.NumberColumn('Beta', format='%.1f'),
@@ -775,7 +860,7 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
             column_config=column_config
         )
         
-        fig = px.bar(av_display.sort_values('Score Final'), x='Score Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
+        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         st.divider()

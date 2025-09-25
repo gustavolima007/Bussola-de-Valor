@@ -145,7 +145,7 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         # Ambas as tabelas usam 'subsetor_b3' para a junção.
         if 'subsetor_b3' in df.columns and 'subsetor_b3' in df_setor.columns:
             # Seleciona apenas as colunas necessárias para o merge para evitar duplicatas.
-            df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_subsetor']].drop_duplicates(subset=['subsetor_b3'])
+            df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_final']].drop_duplicates(subset=['subsetor_b3'])
             df = df.merge(df_setor_scores, on='subsetor_b3', how='left')
         else:
             st.warning("Não foi possível fazer o merge da pontuação de subsetor. Coluna 'subsetor_b3' não encontrada.")

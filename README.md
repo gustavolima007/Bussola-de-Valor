@@ -88,23 +88,60 @@ A pontuação de cada ação soma critérios fundamentalistas e técnicos, total
 
 ### Análise e Pontuação de Setores
 
-Para evitar a compra de "cascudos" (ações de empresas ruins em setores problemáticos), o Bússola de Valor aplica uma análise criteriosa sobre o desempenho geral de cada setor e subsetor da bolsa. A pontuação final de um setor é uma média ajustada que reflete não apenas o score individual das empresas, mas também a saúde e o histórico do ecossistema em que elas operam.
+Para evitar a compra de "cascudos" (ações de empresas ruins em setores problemáticos), o Bússola de Valor aplica uma análise criteriosa sobre o desempenho geral de cada setor e subsetor da bolsa. A pontuação final de um setor é uma soma de múltiplos fatores que refletem não apenas o score individual das empresas, mas também a saúde e o histórico do ecossistema em que elas operam.
 
 O cálculo é feito em duas etapas:
 
 **1. Pontuação do Subsetor**
 
-Cada subsetor (ex: "Energia Elétrica", "Intermediários Financeiros") recebe uma pontuação final baseada em três componentes:
+Cada subsetor (ex: "Energia Elétrica", "Intermediários Financeiros") recebe uma `pontuacao_final` que é a soma dos seguintes componentes:
 
--   **Score Médio Original**: A pontuação média de todas as ações que compõem o subsetor.
--   **Ajuste de Dividendos (Bônus/Penalidade)**: Um ajuste que premia ou penaliza o subsetor com base na sua média de *Dividend Yield* dos últimos 5 anos. Um histórico de dividendos altos e consistentes gera um bônus de até **+30 pontos**, enquanto um histórico fraco pode gerar uma penalidade de até **-20 pontos**.
--   **Penalidade por Recuperação Judicial (RJ)**: Uma penalidade de até **-40 pontos** é aplicada com base no número de empresas em Recuperação Judicial dentro do subsetor. O subsetor com o maior número de casos de RJ recebe a penalidade máxima, e os demais são penalizados proporcionalmente.
+*   **Componentes Positivos (Máximo de 500 pontos)**:
+    *   **Score Original (`score_original`)**: A média do `Score Total` de todas as empresas do subsetor. Pontuação máxima: **300 pontos**.
+    *   **Score de Dividend Yield (`score_dy`)**: Bônus ou penalidade com base na média de Dividend Yield dos últimos 5 anos (`dy_5a_medio`). Pontuação máxima: **50 pontos**.
+        *   `>= 10%`: **+50 pontos**
+        *   `8% a 10%`: **+40 pontos**
+        *   `6% a 8%`: **+30 pontos**
+        *   `4% a 6%`: **+20 pontos**
+        *   `2% a 4%`: **-10 pontos**
+        *   `< 2%`: **-20 pontos**
+    *   **Score de ROE (`score_roe`)**: Bônus baseado no Retorno sobre o Patrimônio Líquido médio (`roe_medio`). Pontuação máxima: **40 pontos**.
+        *   `> 25%`: **+40 pontos**
+        *   `20% a 25%`: **+30 pontos**
+        *   `15% a 20%`: **+20 pontos**
+        *   `10% a 15%`: **+10 pontos**
+    *   **Score de Beta (`score_beta`)**: Bônus ou penalidade baseado na volatilidade média do subsetor (`beta_medio`). Pontuação máxima: **20 pontos**.
+        *   `< 0.8`: **+20 pontos**
+        *   `0.8 a 1.2`: **+10 pontos**
+        *   `> 1.5`: **-10 pontos**
+    *   **Score de Payout (`score_payout`)**: Bônus baseado na média de Payout (`payout_medio`). Pontuação máxima: **20 pontos**.
+        *   `30% a 60%`: **+20 pontos**
+        *   `20% a 30%` ou `60% a 80%`: **+10 pontos**
+    *   **Bônus por Empresas Boas (`score_empresas_boas`)**: Bônus pela quantidade de empresas com `Score Total` > 150. Pontuação máxima: **40 pontos**.
+        *   `>= 8 empresas`: **+40 pontos**
+        *   `6 a 7 empresas`: **+30 pontos**
+        *   `3 a 5 empresas`: **+20 pontos**
+        *   `1 a 2 empresas`: **+10 pontos**
+    *   **Score de Graham (`score_graham`)**: Bônus baseado na média da margem de segurança de Graham (`margem_graham_media`). Pontuação máxima: **30 pontos**.
+        *   `> 150%`: **+30 pontos**
+        *   `100% a 150%`: **+20 pontos**
+        *   `50% a 100%`: **+10 pontos**
 
-**Fórmula:** `Score do Subsetor = (Score Médio) + (Ajuste de Dividendos) - (Penalidade de RJ)`
+*   **Penalidades**:
+    *   **Penalidade por Empresas Ruins (`penalidade_empresas_ruins`)**: Penalidade pela quantidade de empresas com `Score Total` < 50.
+        *   `>= 6 empresas`: **-30 pontos**
+        *   `3 a 5 empresas`: **-20 pontos**
+        *   `1 a 2 empresas`: **-10 pontos**
+    *   **Penalidade por Recuperação Judicial (`penalidade_rj`)**: Penalidade de até **-40 pontos** baseada no número de empresas em Recuperação Judicial no subsetor.
+
+**Fórmula e Pontuação Máxima:**
+
+A soma dos componentes positivos é limitada a **500 pontos**. A pontuação final é calculada como:
+`pontuacao_final = min(Soma dos Componentes Positivos, 500) + penalidade_empresas_ruins + penalidade_rj`
 
 **2. Pontuação do Setor**
 
-A pontuação do setor principal (ex: "Financeiro", "Utilidade Pública") é simplesmente a média das pontuações finais de todos os seus subsetores.
+A pontuação do setor principal (ex: "Financeiro", "Utilidade Pública") é a média das `pontuacao_final` de todos os seus subsetores.
 
 Essa abordagem permite identificar setores resilientes e com bom histórico, ao mesmo tempo que alerta para aqueles com riscos sistêmicos ou má fama, ajudando o investidor a "pescar no aquário certo".
 

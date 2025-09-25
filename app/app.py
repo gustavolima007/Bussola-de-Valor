@@ -70,7 +70,7 @@ def main():
 
     # --- Renderização da Sidebar e Filtros ---
     # O módulo de filtros cuida de toda a lógica da sidebar
-    df_filtrado, ticker_foco = render_sidebar_filters(df, indices_scores)
+    df_filtrado, ticker_foco = render_sidebar_filters(df, indices_scores, all_data)
 
     # --- Renderização das Abas de Conteúdo ---
     # O módulo de layout de abas cuida da exibição de todo o conteúdo principal
