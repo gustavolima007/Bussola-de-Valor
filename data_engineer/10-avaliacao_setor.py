@@ -2,169 +2,212 @@
 """
 Avaliação de desempenho por Setor e Subsetor (padrão B3)
 
-Este script calcula as pontuações médias (score_total) por:
-- setor_b3 -> coluna resultante: pontuacao_setor
-- subsetor_b3 -> coluna resultante: pontuacao_subsetor
+Este script calcula uma pontuação detalhada para cada subsetor com base em 8 critérios,
+e então agrega os resultados para uma pontuação de setor.
 
-Saída: data/avaliacao_setor.csv com as colunas:
-- setor_b3
-- subsetor_b3
-- pontuacao_setor (média por setor_b3)
-- pontuacao_subsetor (média por subsetor_b3)
+Critérios de Pontuação do Subsetor (Total: 210 pts):
+1. Dividend Yield Médio 5 Anos: -20 a +40 pts
+2. ROE Médio: 0 a +30 pts
+3. Beta Médio (Volatilidade): -10 a +20 pts
+4. Payout Médio: 0 a +20 pts
+5. Nº de Empresas com Score > 150: 0 a +30 pts
+6. Penalidade por Nº de Empresas com Score < 50: -30 a 0 pts
+7. Margem de Segurança Média (Graham): 0 a +30 pts
+8. Penalidade por Recuperação Judicial (RJ): -40 a 0 pts
 
-Observações:
-- O script depende de data/scores.csv (com colunas: ticker_base, score_total)
-  e data/acoes_e_fundos.csv (com colunas: ticker, setor_b3, subsetor_b3).
-- O merge é feito via ticker_base (ticker normalizado para maiúsculas).
+Saída: data/avaliacao_setor.csv
 """
 
 from pathlib import Path
 import pandas as pd
+import numpy as np
 
-def calcular_bonus_dy(dy_5a):
-    if dy_5a >= 8:
-        return 30
-    elif dy_5a >= 6:
-        return 20
-    elif dy_5a >= 4:
-        return 10
-    elif dy_5a >= 2:
-        return -10
-    else:
-        return -20
+# --- Funções de Cálculo de Score por Critério ---
+
+def calcular_score_dy(dy_5a_medio):
+    if dy_5a_medio >= 8: return 40
+    if 6 <= dy_5a_medio < 8: return 30
+    if 4 <= dy_5a_medio < 6: return 20
+    if 2 <= dy_5a_medio < 4: return -10
+    return -20
+
+def calcular_score_roe(roe_medio):
+    if roe_medio > 20: return 30
+    if 15 <= roe_medio <= 20: return 20
+    if 10 <= roe_medio < 15: return 10
+    return 0
+
+def calcular_score_beta(beta_medio):
+    if beta_medio < 0.8: return 20
+    if 0.8 <= beta_medio <= 1.2: return 10
+    if 1.2 < beta_medio <= 1.5: return 0
+    return -10
+
+def calcular_score_payout(payout_medio):
+    if 30 <= payout_medio <= 60: return 20
+    if (20 <= payout_medio < 30) or (60 < payout_medio <= 80): return 10
+    return 0
+
+def calcular_score_empresas_boas(contagem):
+    if contagem >= 6: return 30
+    if 3 <= contagem <= 5: return 20
+    if 1 <= contagem <= 2: return 10
+    return 0
+
+def calcular_penalidade_empresas_ruins(contagem):
+    if contagem >= 6: return -30
+    if 3 <= contagem <= 5: return -20
+    if 1 <= contagem <= 2: return -10
+    return 0
+
+def calcular_score_graham(margem_media):
+    if margem_media > 150: return 30
+    if 100 <= margem_media <= 150: return 20
+    if 50 <= margem_media < 100: return 10
+    return 0
 
 def main() -> None:
     # --- Paths ---
     data_dir = Path(__file__).resolve().parent.parent / "data"
-    scores_path = data_dir / "scores.csv"
-    acoes_path = data_dir / "acoes_e_fundos.csv"
-    rj_path = data_dir / "rj.csv"
+    indicadores_path = data_dir / "indicadores.csv"
     dy_path = data_dir / "dividend_yield.csv"
+    scores_path = data_dir / "scores.csv"
+    rj_path = data_dir / "rj.csv"
+    acoes_path = data_dir / "acoes_e_fundos.csv"
     output_path = data_dir / "avaliacao_setor.csv"
 
     # --- Load data ---
-    print(f"Carregando scores: {scores_path}")
-    scores_df = pd.read_csv(scores_path)
-    print(f"Carregando acoes_e_fundos: {acoes_path}")
-    acoes_df = pd.read_csv(acoes_path)
-    print(f"Carregando dados de RJ: {rj_path}")
-    rj_df = pd.read_csv(rj_path)
-    print(f"Carregando dividend yield: {dy_path}")
-    dy_df = pd.read_csv(dy_path)
-
-    # --- Preparação e Merge ---
-    print("Preparando chaves de merge (ticker_base)...")
-    acoes_df["ticker_base"] = acoes_df["ticker"].astype(str).str.upper().str.strip()
-    if "ticker_base" not in scores_df.columns:
-        if "ticker" in scores_df.columns:
-            scores_df["ticker_base"] = scores_df["ticker"].astype(str).str.upper().str.strip()
-        else:
-            raise ValueError("scores.csv precisa conter 'ticker_base' ou 'ticker'.")
-
-    cols_necessarias_acoes = ["ticker_base", "setor_b3", "subsetor_b3"]
-    faltantes = [c for c in ["setor_b3", "subsetor_b3"] if c not in acoes_df.columns]
-    if faltantes:
-        raise ValueError(
-            f"Colunas ausentes em acoes_e_fundos.csv: {faltantes}. "
-            "Certifique-se de ter executado 01-acoes_e_fundos.py atualizado."
-        )
-
-    merged_df = (
-        pd.merge(
-            scores_df[["ticker_base", "score_total"]],
-            acoes_df[cols_necessarias_acoes],
-            on="ticker_base",
-            how="inner",
-        )
-        .drop_duplicates("ticker_base")
-    )
-
-    # Merge com dados de dividend yield
-    dy_df["ticker_base"] = dy_df["ticker"].astype(str).str.upper().str.strip()
-    merged_df = pd.merge(merged_df, dy_df[['ticker_base', 'DY5anos']], on="ticker_base", how="left")
-    merged_df['DY5anos'] = pd.to_numeric(merged_df['DY5anos'], errors='coerce').fillna(0)
-
-    if merged_df.empty:
-        print("Nenhum dado após o merge. Verifique os arquivos de entrada.")
+    print("Carregando arquivos de dados...")
+    try:
+        indicadores_df = pd.read_csv(indicadores_path)
+        dy_df = pd.read_csv(dy_path)
+        scores_df = pd.read_csv(scores_path)
+        rj_df = pd.read_csv(rj_path)
+        acoes_df = pd.read_csv(acoes_path)
+    except FileNotFoundError as e:
+        print(f"Erro: Arquivo não encontrado - {e}. Abortando.")
         return
 
-    # --- Cálculo das pontuações ---
-    print("Calculando média por subsetor_b3 (pontuacao_subsetor)...")
-    por_subsetor = (
-        merged_df.groupby("subsetor_b3")["score_total"].mean().reset_index()
-        .rename(columns={"score_total": "pontuacao_original_subsetor"})
+    # --- Preparação e Merge ---
+    print("Preparando e unificando os dados...")
+    # Normaliza tickers
+    for df in [indicadores_df, dy_df, scores_df, acoes_df]:
+        if 'ticker' in df.columns:
+            df["ticker_base"] = df["ticker"].astype(str).str.upper().str.strip()
+        elif 'ticker_base' in df.columns:
+             df["ticker_base"] = df["ticker_base"].astype(str).str.upper().str.strip()
+
+
+    # Merge principal
+    merged_df = pd.merge(
+        indicadores_df,
+        acoes_df[['ticker_base', 'setor_b3', 'subsetor_b3']].drop_duplicates(),
+        on="ticker_base",
+        how="left"
     )
-
-    # Calcula DY 5 anos médio por subsetor
-    print("Calculando DY 5 anos médio por subsetor...")
-    dy_por_subsetor = (
-        merged_df.groupby("subsetor_b3")["DY5anos"].mean().reset_index()
-        .rename(columns={"DY5anos": "dy_5a_subsetor"})
+    merged_df = pd.merge(
+        merged_df,
+        dy_df[['ticker_base', 'DY5anos']],
+        on="ticker_base",
+        how="left"
     )
-    por_subsetor = pd.merge(por_subsetor, dy_por_subsetor, on='subsetor_b3', how='left')
-    por_subsetor['dy_5a_subsetor'].fillna(0, inplace=True)
-
-    # --- Cálculo do Bônus de Dividendo ---
-    print("Calculando bônus de dividendo por subsetor...")
-    por_subsetor['bonus_dy_5a'] = por_subsetor['dy_5a_subsetor'].apply(calcular_bonus_dy)
-
-    # --- Cálculo da Penalidade por Recuperação Judicial ---
-    print("Calculando penalidade por RJ...")
-    rj_counts = rj_df['setor'].value_counts().reset_index()
-    rj_counts.columns = ['subsetor_b3', 'ocorrencias_rj']
-    por_subsetor = pd.merge(por_subsetor, rj_counts, on='subsetor_b3', how='left')
-    por_subsetor['ocorrencias_rj'].fillna(0, inplace=True)
-
-    min_ocorrencias = por_subsetor['ocorrencias_rj'].min()
-    max_ocorrencias = por_subsetor['ocorrencias_rj'].max()
+    merged_df = pd.merge(
+        merged_df,
+        scores_df[['ticker_base', 'score_total']],
+        on="ticker_base",
+        how="left"
+    )
     
-    if (max_ocorrencias - min_ocorrencias) > 0:
-        por_subsetor['penalidade_normalizada'] = (por_subsetor['ocorrencias_rj'] - min_ocorrencias) / (max_ocorrencias - min_ocorrencias)
+    # Limpa e converte tipos
+    merged_df.dropna(subset=['setor_b3', 'subsetor_b3'], inplace=True)
+    numeric_cols = ['roe', 'beta', 'payout_ratio', 'margem_seguranca_percent', 'DY5anos', 'score_total']
+    for col in numeric_cols:
+        merged_df[col] = pd.to_numeric(merged_df[col], errors='coerce')
+    merged_df.fillna(0, inplace=True)
+
+
+    # --- Agregação por Subsetor ---
+    print("Calculando métricas agregadas por subsetor...")
+    subsetor_stats = merged_df.groupby('subsetor_b3').agg(
+        roe_medio=('roe', 'mean'),
+        beta_medio=('beta', 'mean'),
+        payout_medio=('payout_ratio', 'mean'),
+        dy_5a_medio=('DY5anos', 'mean'),
+        margem_graham_media=('margem_seguranca_percent', 'mean')
+    ).reset_index()
+
+    # Contagem de empresas com score > 150
+    boas = merged_df[merged_df['score_total'] > 150].groupby('subsetor_b3').size().reset_index(name='empresas_boas_contagem')
+    subsetor_stats = pd.merge(subsetor_stats, boas, on='subsetor_b3', how='left')
+
+    # Contagem de empresas com score < 50
+    ruins = merged_df[merged_df['score_total'] < 50].groupby('subsetor_b3').size().reset_index(name='empresas_ruins_contagem')
+    subsetor_stats = pd.merge(subsetor_stats, ruins, on='subsetor_b3', how='left')
+
+    # Contagem de empresas em RJ
+    rj_df['setor'] = rj_df['setor'].str.strip()
+    rj_counts = rj_df[rj_df['data_saida_rj'].isnull()].groupby('setor').size().reset_index(name='ocorrencias_rj')
+    subsetor_stats = pd.merge(subsetor_stats, rj_counts, left_on='subsetor_b3', right_on='setor', how='left').drop(columns='setor')
+    
+    subsetor_stats.fillna(0, inplace=True)
+
+    # --- Cálculo das Pontuações por Critério ---
+    print("Calculando pontuações de cada critério...")
+    subsetor_stats['score_dy'] = subsetor_stats['dy_5a_medio'].apply(calcular_score_dy)
+    subsetor_stats['score_roe'] = subsetor_stats['roe_medio'].apply(calcular_score_roe)
+    subsetor_stats['score_beta'] = subsetor_stats['beta_medio'].apply(calcular_score_beta)
+    subsetor_stats['score_payout'] = subsetor_stats['payout_medio'].apply(calcular_score_payout)
+    subsetor_stats['score_empresas_boas'] = subsetor_stats['empresas_boas_contagem'].apply(calcular_score_empresas_boas)
+    subsetor_stats['penalidade_empresas_ruins'] = subsetor_stats['empresas_ruins_contagem'].apply(calcular_penalidade_empresas_ruins)
+    subsetor_stats['score_graham'] = subsetor_stats['margem_graham_media'].apply(calcular_score_graham)
+
+    # Cálculo da Penalidade de RJ (normalizada)
+    max_ocorrencias = subsetor_stats['ocorrencias_rj'].max()
+    if max_ocorrencias > 0:
+        subsetor_stats['penalidade_rj'] = -(subsetor_stats['ocorrencias_rj'] / max_ocorrencias * 40)
     else:
-        por_subsetor['penalidade_normalizada'] = 0
+        subsetor_stats['penalidade_rj'] = 0
 
-    por_subsetor['penalidade_rj'] = por_subsetor['penalidade_normalizada'] * 40
-    
-    # Calcula a pontuação final do subsetor
+    # --- Pontuação Final ---
     print("Calculando pontuação final do subsetor...")
-    por_subsetor['pontuacao_subsetor'] = por_subsetor['pontuacao_original_subsetor'] - por_subsetor['penalidade_rj'] + por_subsetor['bonus_dy_5a']
+    score_cols = [
+        'score_dy', 'score_roe', 'score_beta', 'score_payout', 
+        'score_empresas_boas', 'penalidade_empresas_ruins', 
+        'score_graham', 'penalidade_rj'
+    ]
+    subsetor_stats['pontuacao_subsetor'] = subsetor_stats[score_cols].sum(axis=1)
+
+    # --- Agregação para o Setor Principal ---
+    print("Agregando resultados para o setor principal...")
+    # Garante que cada subsetor está mapeado para um setor_b3
+    setor_mapping = acoes_df[['setor_b3', 'subsetor_b3']].drop_duplicates()
+    resultado_final = pd.merge(subsetor_stats, setor_mapping, on='subsetor_b3', how='left')
     
-    por_subsetor.drop(columns=['ocorrencias_rj', 'penalidade_normalizada'], inplace=True)
+    # Calcula a pontuação média do setor
+    pontuacao_setor_media = resultado_final.groupby('setor_b3')['pontuacao_subsetor'].mean().reset_index()
+    pontuacao_setor_media.rename(columns={'pontuacao_subsetor': 'pontuacao_setor'}, inplace=True)
+    
+    resultado_final = pd.merge(resultado_final, pontuacao_setor_media, on='setor_b3', how='left')
 
-    # --- Monta base final por combinação de Setor x Subsetor ---
-    print("Compondo base final por Setor x Subsetor...")
-    base_chaves = (
-        merged_df[["setor_b3", "subsetor_b3"]]
-        .dropna()
-        .drop_duplicates()
-        .reset_index(drop=True)
-    )
+    # --- Finalização e Salvamento ---
+    # Ordena e seleciona colunas
+    colunas_finais = [
+        'setor_b3', 'pontuacao_setor', 'subsetor_b3', 'pontuacao_subsetor',
+        'score_dy', 'score_roe', 'score_beta', 'score_payout',
+        'score_empresas_boas', 'penalidade_empresas_ruins', 'score_graham', 'penalidade_rj',
+        'dy_5a_medio', 'roe_medio', 'beta_medio', 'payout_medio', 'margem_graham_media',
+        'empresas_boas_contagem', 'empresas_ruins_contagem', 'ocorrencias_rj'
+    ]
+    resultado_final = resultado_final[colunas_finais]
+    resultado_final = resultado_final.sort_values(by=['pontuacao_setor', 'pontuacao_subsetor'], ascending=[False, False])
+    
+    # Arredonda valores para melhor visualização
+    for col in resultado_final.columns:
+        if pd.api.types.is_numeric_dtype(resultado_final[col]):
+            resultado_final[col] = resultado_final[col].round(2)
 
-    # --- Recalcula a pontuação do setor com base nos subsetores penalizados ---
-    print("Recalculando média por setor_b3 (pontuacao_setor) com base nas pontuações dos subsetores penalizados...")
-    setor_subsetor_scores = pd.merge(base_chaves, por_subsetor[['subsetor_b3', 'pontuacao_subsetor']], on='subsetor_b3', how='left')
-    por_setor = setor_subsetor_scores.groupby('setor_b3')['pontuacao_subsetor'].mean().reset_index()
-    por_setor.rename(columns={'pontuacao_subsetor': 'pontuacao_setor'}, inplace=True)
-
-    resultado = (
-        base_chaves
-        .merge(por_setor, on="setor_b3", how="left")
-        .merge(por_subsetor, on="subsetor_b3", how="left")
-    )
-
-    # Arredonda
-    for col in ["pontuacao_setor", "pontuacao_original_subsetor", "pontuacao_subsetor", "penalidade_rj", "dy_5a_subsetor", "bonus_dy_5a"]:
-        if col in resultado.columns:
-            resultado[col] = resultado[col].round(2)
-
-    # Ordena por melhor setor e subsetor
-    resultado = resultado.sort_values(
-        by=["pontuacao_setor", "pontuacao_subsetor"], ascending=[False, False]
-    )
-
-    # --- Salva ---
-    resultado.to_csv(output_path, index=False, float_format="%.2f")
-    print(f"OK. Arquivo salvo em: {output_path}")
+    resultado_final.to_csv(output_path, index=False, float_format="%.2f")
+    print(f"OK. Novo arquivo de avaliação de setores salvo em: {output_path}")
 
 
 if __name__ == "__main__":

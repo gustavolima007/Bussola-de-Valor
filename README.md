@@ -86,27 +86,27 @@ A pontuação de cada ação soma critérios fundamentalistas e técnicos, total
 
 ---
 
-## 🏗️ Classificação de Setores
+### Análise e Pontuação de Setores
 
-Os setores são classificados por uma pontuação média que considera o desempenho das ações que o compõem, penalidades por histórico de Recuperação Judicial e o DY médio. A cor indica o quão atrativo o setor está no momento:
+Para evitar a compra de "cascudos" (ações de empresas ruins em setores problemáticos), o Bússola de Valor aplica uma análise criteriosa sobre o desempenho geral de cada setor e subsetor da bolsa. A pontuação final de um setor é uma média ajustada que reflete não apenas o score individual das empresas, mas também a saúde e o histórico do ecossistema em que elas operam.
 
-- 🟢 **Verde (Atrativo):** > 99 pontos – Setor com múltiplas ações de qualidade.
-- 🟡 **Amarelo (Neutro):** 70 a 99 pontos – Setor misto, exige seletividade.
-- 🔴 **Vermelho (Risco):** < 70 pontos – Setor com baixa atratividade ou fundamentos frágeis.
+O cálculo é feito em duas etapas:
 
-### Cálculo de Bônus de Dividendos por Setor
+**1. Pontuação do Subsetor**
 
-O cálculo de dividendos para a pontuação do setor é um bônus baseado na média de Dividend Yield (DY) dos últimos 5 anos de cada subsetor. A lógica é a seguinte:
+Cada subsetor (ex: "Energia Elétrica", "Intermediários Financeiros") recebe uma pontuação final baseada em três componentes:
 
-| DY Médio 5 Anos do Subsetor | Ajuste Setorial | Interpretação                                                 |
-| --------------------------- | --------------- | --------------------------------------------------------------- |
-| ≥ 8%                        | +30 pts         | Setor com cultura sólida de dividendos, perfil Barsi/Bazin      |
-| 6% – 8%                     | +20 pts         | Setor atrativo, empresas maduras e rentáveis                  |
-| 4% – 6%                     | +10 pts         | Setor razoável, exige seletividade                            |
-| 2% – 4%                     | -10 pts         | Setor fraco, baixa remuneração ao acionista                   |
-| < 2%                        | -20 pts         | Setor hostil ao investidor de valor, foco em crescimento ou risco elevado |
+-   **Score Médio Original**: A pontuação média de todas as ações que compõem o subsetor.
+-   **Ajuste de Dividendos (Bônus/Penalidade)**: Um ajuste que premia ou penaliza o subsetor com base na sua média de *Dividend Yield* dos últimos 5 anos. Um histórico de dividendos altos e consistentes gera um bônus de até **+30 pontos**, enquanto um histórico fraco pode gerar uma penalidade de até **-20 pontos**.
+-   **Penalidade por Recuperação Judicial (RJ)**: Uma penalidade de até **-40 pontos** é aplicada com base no número de empresas em Recuperação Judicial dentro do subsetor. O subsetor com o maior número de casos de RJ recebe a penalidade máxima, e os demais são penalizados proporcionalmente.
 
-Essa abordagem valoriza setores que, como um todo, demonstram um histórico consistente de distribuição de proventos, alinhado com a filosofia de investimento em dividendos.
+**Fórmula:** `Score do Subsetor = (Score Médio) + (Ajuste de Dividendos) - (Penalidade de RJ)`
+
+**2. Pontuação do Setor**
+
+A pontuação do setor principal (ex: "Financeiro", "Utilidade Pública") é simplesmente a média das pontuações finais de todos os seus subsetores.
+
+Essa abordagem permite identificar setores resilientes e com bom histórico, ao mesmo tempo que alerta para aqueles com riscos sistêmicos ou má fama, ajudando o investidor a "pescar no aquário certo".
 
 ---
 

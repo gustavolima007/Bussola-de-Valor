@@ -114,3 +114,22 @@ def build_score_details_from_row(row: pd.Series) -> list[str]:
     # A pontuação final virá do CSV, mas os detalhes são gerados dinamicamente.
     _, details = calculate_score_and_details(row)
     return details
+
+
+from joblib import Parallel, delayed
+
+def calculate_scores_in_parallel(df: pd.DataFrame) -> list[tuple[float, list[str]]]:
+    """
+    Calcula os scores para todas as ações no DataFrame em paralelo.
+    """
+    if df.empty:
+        return []
+    
+    # Extrai as linhas como uma lista de Series para o joblib
+    rows = [row for _, row in df.iterrows()]
+    
+    # Usa n_jobs=-1 para usar todos os cores de CPU disponíveis
+    # O backend 'threading' é usado para evitar problemas de memória com pandas Series
+    results = Parallel(n_jobs=-1, backend='threading')(delayed(calculate_score_and_details)(row) for row in rows)
+    
+    return results

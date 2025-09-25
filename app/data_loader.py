@@ -4,7 +4,7 @@ import pandas as pd
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from scoring import calculate_score_and_details, build_score_details_from_row
+from scoring import calculate_score_and_details, build_score_details_from_row, calculate_scores_in_parallel
 
 @st.cache_data
 def read_csv_cached(path, **kwargs):
@@ -108,14 +108,18 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         df['Score Details'] = df.apply(build_score_details_from_row, axis=1)
     except FileNotFoundError:
         st.info("Arquivo 'scores.csv' não encontrado. Calculando score em tempo real.")
-        score_results = df.apply(calculate_score_and_details, axis=1)
-        df['Score Total'] = score_results.apply(lambda x: x[0])
-        df['Score Details'] = score_results.apply(lambda x: x[1])
+        # Chamada para a função de cálculo em paralelo
+        score_results = calculate_scores_in_parallel(df)
+        # Desempacota os resultados para as colunas do DataFrame
+        df['Score Total'] = [result[0] for result in score_results]
+        df['Score Details'] = [result[1] for result in score_results]
     except Exception as e:
         st.warning(f"Não foi possível carregar 'scores.csv': {e}. Calculando score em tempo real.")
-        score_results = df.apply(calculate_score_and_details, axis=1)
-        df['Score Total'] = score_results.apply(lambda x: x[0])
-        df['Score Details'] = score_results.apply(lambda x: x[1])
+        # Chamada para a função de cálculo em paralelo
+        score_results = calculate_scores_in_parallel(df)
+        # Desempacota os resultados para as colunas do DataFrame
+        df['Score Total'] = [result[0] for result in score_results]
+        df['Score Details'] = [result[1] for result in score_results]
 
 
     # --- Merge com Dados de Apoio ---

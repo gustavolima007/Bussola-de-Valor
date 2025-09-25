@@ -728,37 +728,54 @@ def render_tab_rank_setores(df_filtrado: pd.DataFrame, all_data: dict):
         st.subheader("Ranking de Setores por Pontuação Média")
         st.markdown("Esta tabela classifica os subsetores com base em uma pontuação final que considera o desempenho médio de suas ações, a penalidade por recuperação judicial e o dividend yield médio dos últimos 5 anos.")
 
-        av_display = av_setor.rename(columns={
+        # Define as colunas de pontuação e seus novos nomes
+        rename_map = {
             'subsetor_b3': 'Subsetor',
-            'pontuacao_original_subsetor': 'Pontuação Original',
-            'penalidade_rj': 'Penalidade (RJ)',
-            'dy_5a_subsetor': 'DY 5 Anos Setor (%)',
-            'pontuacao_subsetor': 'Pontuação Final'
-        }).sort_values('Pontuação Final', ascending=False)
+            'pontuacao_subsetor': 'Score Final',
+            'score_dy': 'Score DY',
+            'score_roe': 'Score ROE',
+            'score_beta': 'Score Beta',
+            'score_payout': 'Score Payout',
+            'score_empresas_boas': 'Bônus Boas Empresas',
+            'penalidade_empresas_ruins': 'Pena Más Empresas',
+            'score_graham': 'Score Graham',
+            'penalidade_rj': 'Pena RJ'
+        }
+        
+        av_display = av_setor.rename(columns=rename_map)
 
-        cols_to_show = ['Subsetor', 'Pontuação Original', 'Penalidade (RJ)', 'DY 5 Anos Setor (%)', 'Pontuação Final']
-        if 'Pontuação Original' not in av_display.columns:
-            cols_to_show.remove('Pontuação Original')
-        if 'Penalidade (RJ)' not in av_display.columns:
-            cols_to_show.remove('Penalidade (RJ)')
-        if 'DY 5 Anos Setor (%)' not in av_display.columns:
-            cols_to_show.remove('DY 5 Anos Setor (%)')
+        # Define a ordem das colunas a serem exibidas
+        cols_to_show = [
+            'Subsetor', 'Score Final', 'Score DY', 'Score ROE', 'Score Beta', 'Score Payout',
+            'Bônus Boas Empresas', 'Pena Más Empresas', 'Score Graham', 'Pena RJ'
+        ]
+        
+        # Filtra apenas as colunas que realmente existem no dataframe
+        cols_to_show_existing = [col for col in cols_to_show if col in av_display.columns]
+        
+        styler = av_display[cols_to_show_existing].style.map(style_pontuacao_final, subset=['Score Final'])
 
-        styler = av_display[cols_to_show].style.map(style_pontuacao_final, subset=['Pontuação Final'])
+        # Configuração das colunas para o dataframe do Streamlit
+        column_config = {
+            'Score Final': st.column_config.NumberColumn('Score Final', format='%.1f', help="Pontuação final do subsetor, somando todos os critérios."),
+            'Score DY': st.column_config.NumberColumn('DY', format='%.1f'),
+            'Score ROE': st.column_config.NumberColumn('ROE', format='%.1f'),
+            'Score Beta': st.column_config.NumberColumn('Beta', format='%.1f'),
+            'Score Payout': st.column_config.NumberColumn('Payout', format='%.1f'),
+            'Bônus Boas Empresas': st.column_config.NumberColumn('Bônus Score > 150', format='%.1f'),
+            'Pena Más Empresas': st.column_config.NumberColumn('Pena Score < 50', format='%.1f'),
+            'Score Graham': st.column_config.NumberColumn('Graham', format='%.1f'),
+            'Pena RJ': st.column_config.NumberColumn('Pena RJ', format='%.1f')
+        }
 
         st.dataframe(
             styler,
             use_container_width=True,
             hide_index=True,
-            column_config={
-                'Pontuação Original': st.column_config.NumberColumn('Pontuação Original', format='%.1f', help="Pontuação média dos ativos do setor, antes da penalidade."),
-                'Penalidade (RJ)': st.column_config.NumberColumn('Penalidade', format='-%.1f', help="Penalidade subtraída da pontuação original devido ao histórico de RJs do setor."),
-                'DY 5 Anos Setor (%)': st.column_config.NumberColumn('DY 5 Anos (%)', format='%.2f%%', help="Média do Dividend Yield dos últimos 5 anos para o setor."),
-                'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do setor após a aplicação da penalidade e bônus de dividendos.")
-            }
+            column_config=column_config
         )
         
-        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
+        fig = px.bar(av_display.sort_values('Score Final'), x='Score Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
