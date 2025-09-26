@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-🔍 Script para Coleta de Indicadores Financeiros via yfinance + ta
+Script para Coleta de Indicadores Financeiros via yfinance + ta
    Calcula e classifica o ciclo de mercado para cada ativo.
 
 Indicadores Coletados:
 - Fundamentais: Preço Atual, P/L, P/VP, ROE, Payout, Crescimento 5a, Dívida, EBITDA, Dívida/EBITDA, Perfil da Ação
 - Sentimento de Mercado (recomendações)
-- 🆕 Técnicos (somente 1 ano, via ta): RSI(14), MACD(hist) e Volume (último)
+- Técnicos (somente 1 ano, via ta): RSI(14), MACD(hist) e Volume (último)
 
 Requisitos:
     pip install yfinance ta pandas tqdm
@@ -27,7 +27,7 @@ BASE = Path(__file__).resolve().parent.parent / 'data'
 CAMINHO_ARQUIVO_ENTRADA = BASE / "acoes_e_fundos.csv"
 CAMINHO_ARQUIVO_SAIDA = BASE / "indicadores.csv"
 
-# ✅ período base para técnicos
+# período base para técnicos
 PERIODO_PADRAO_HIST = "1y"
 
 # --- Frases por ciclo de mercado ---
@@ -135,17 +135,17 @@ def classificar_indicador_tecnico(valor: float, lim_baixo: float, lim_alto: floa
         return "N/A"
     v = float(valor)
     if tipo == "RSI":
-        if v < lim_baixo: return "📉 Baixo"
-        elif v > lim_alto: return "📈 Alto"
-        else: return "📊 Médio"
+        if v < lim_baixo: return "Baixo"
+        elif v > lim_alto: return "Alto"
+        else: return "Medio"
     elif tipo == "MACD":
-        if v < lim_baixo: return "🐻 Baixa"
-        elif v > lim_alto: return "🐂 Alta"
-        else: return "⚖️ Neutra"
+        if v < lim_baixo: return "Baixa"
+        elif v > lim_alto: return "Alta"
+        else: return "Neutra"
     elif tipo == "Volume":
-        if v < lim_baixo: return "🪙 Fraco"
-        elif v > lim_alto: return "🏦 Forte"
-        else: return "💰 Normal"
+        if v < lim_baixo: return "Fraco"
+        elif v > lim_alto: return "Forte"
+        else: return "Normal"
     return "N/A"
 
 def classificar_ciclo_mercado(score: float) -> str:
@@ -163,9 +163,9 @@ def calcular_dados_ciclo(rsi_val, macd_val, vol_val, vol_mean) -> dict:
 
     score_total = 0
     for cls in (rsi_status, macd_status, vol_status):
-        if any(key in str(cls) for key in ["Baixo", "Fraco", "🐻"]): score_total += 10
-        elif any(key in str(cls) for key in ["Médio", "Normal", "⚖️"]): score_total += 33
-        elif any(key in str(cls) for key in ["Alto", "Forte", "🐂"]): score_total += 100
+        if any(key in str(cls) for key in ["Baixo", "Fraco"]): score_total += 10
+        elif any(key in str(cls) for key in ["Medio", "Normal"]): score_total += 33
+        elif any(key in str(cls) for key in ["Alto", "Forte"]): score_total += 100
     
     score_medio = round(score_total / 3)
     ciclo = classificar_ciclo_mercado(score_medio)
@@ -192,7 +192,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
     if not hist_5y.empty and len(hist_5y["Close"]) > 1 and hist_5y["Close"].iloc[0] > 0:
         growth_price = ((hist_5y["Close"].iloc[-1] / hist_5y["Close"].iloc[0]) - 1) * 100
 
-    # ✅ Histórico base para técnicos: 1 ano
+    # Histórico base para técnicos: 1 ano
     hist_1y = stock.history(period=PERIODO_PADRAO_HIST)
 
     # Técnicos (1y) com ta
@@ -214,7 +214,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
     current_ratio = info.get("currentRatio")
     empresa = NOME_EMPRESA_MANUAL.get(ticker_base, info.get("longName", metadata.get("empresa")))
 
-    # --- 🆕 Adição para Fórmula de Graham ---
+    # Adição para Fórmula de Graham
     # Coleta os dados e já calcula a margem de segurança percentual.
     lpa = info.get('trailingEps')
     vpa = info.get('bookValue')
@@ -231,7 +231,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
         except (ValueError, TypeError):
             pass # Mantém margem_seguranca_percent como None
 
-    # --- 🆕 Adição para Ciclo de Mercado ---
+    # Adição para Ciclo de Mercado
     dados_ciclo = calcular_dados_ciclo(tecnicos.get('rsi_14_1y'), tecnicos.get('macd_diff_1y'), tecnicos.get('volume_1y'), vol_mean)
 
     resultado = {
@@ -255,7 +255,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
         "liquidez_media_diaria": liquidez_media_diaria,
         "fcf_yield": fcf_yield,
         "perfil_acao": classify_stock_profile(current_price, market_cap),
-        # 🆕 Campos para Fórmula de Graham
+        # Campos para Fórmula de Graham
         "lpa": lpa,
         "vpa": vpa,
         "margem_seguranca_percent": margem_seguranca_percent,
@@ -263,7 +263,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
         # Sentimento de Mercado (analistas)
         **get_market_sentiment(stock),
 
-        # 🆕 Técnicos via ta (1y, 3 colunas)
+        # Técnicos via ta (1y, 3 colunas)
         **tecnicos,
     }
     # Adiciona os dados do ciclo ao dicionário principal
@@ -274,7 +274,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
 
 def main():
     if not CAMINHO_ARQUIVO_ENTRADA.exists():
-        print(f"❌ Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
+        print(f"Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
         return
 
     print("Iniciando extração de 08-indicadores...")
@@ -302,10 +302,10 @@ def main():
             if dados:
                 resultados.append(dados)
         except Exception as e:
-            print(f"❌ Erro ao processar {ticker_base}: {e}")
+            print(f"Erro ao processar {ticker_base}: {e}")
 
     if not resultados:
-        print("⚠️ Nenhum dado foi coletado com sucesso.")
+        print("Nenhum dado foi coletado com sucesso.")
         return
 
     df_output = pd.DataFrame(resultados)
@@ -314,7 +314,7 @@ def main():
     CAMINHO_ARQUIVO_SAIDA.parent.mkdir(parents=True, exist_ok=True)
     df_output.to_csv(CAMINHO_ARQUIVO_SAIDA, index=False, encoding='utf-8-sig')
 
-    print(f"\n✅ Arquivo de indicadores salvo com sucesso em: {CAMINHO_ARQUIVO_SAIDA}")
+    print(f"\nArquivo de indicadores salvo com sucesso em: {CAMINHO_ARQUIVO_SAIDA}")
     print(f"Total de {len(df_output)} tickers processados.")
 
 

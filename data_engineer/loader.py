@@ -100,7 +100,7 @@ def main() -> int:
 
     for script in scripts_para_executar:
         logger.info("\n" + "=" * 80)
-        logger.info(f"▶️  Executando: {script.name}")
+        logger.info(f"Executando: {script.name}")
         tempo_inicio_script = time.perf_counter()
 
         # Executa o script como um subprocesso usando o mesmo interpretador Python
@@ -133,7 +133,7 @@ def main() -> int:
 
     # --- Resumo Final ---
     logger.info("\n" + "=" * 80)
-    logger.info("📊 Resumo da Execução do Pipeline")
+    logger.info("Resumo da Execução do Pipeline")
     logger.info("-" * 80)
     for nome, duracao, codigo_retorno in execucoes:
         if codigo_retorno == 0:
@@ -147,7 +147,7 @@ def main() -> int:
             level = logger.error
         level(f"  - {nome:<30} | {status:<18} | Duração: {formatar_tempo(duracao)}")
     logger.info("-" * 80)
-    logger.info(f"⏱️  Tempo total do pipeline: {formatar_tempo(duracao_total)}")
+    logger.info(f"Tempo total do pipeline: {formatar_tempo(duracao_total)}")
     logger.info("=" * 80)
 
     if interrupcao_manual:

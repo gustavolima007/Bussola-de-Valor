@@ -40,4 +40,4 @@ soma_por_ano_ticker = df.groupby(['ano', 'ticker'])['dividendo'].sum().reset_ind
 
 # --- Salvamento do Resultado ---
 soma_por_ano_ticker.to_csv(output_path, index=False, encoding='utf-8-sig')
-print(f"✅ Arquivo 'dividendos_ano.csv' gerado com sucesso em: {output_path}")
+print(f"Arquivo 'dividendos_ano.csv' gerado com sucesso em: {output_path}")

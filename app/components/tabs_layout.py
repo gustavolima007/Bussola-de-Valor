@@ -143,11 +143,15 @@ def style_ciclo_mercado(row: pd.Series, cols_to_style: list) -> list:
 
 def style_pontuacao_final_setor(val):
     if pd.isna(val): return ''
-    if val >= 400: return 'color: #3dd56d'
-    if 350 <= val < 400: return 'color: #58d68d'
-    if 300 <= val < 350: return 'color: #ffaa00'
-    if 200 <= val < 300: return 'color: #ff7f50'
-    return 'color: #ff4b4b'
+    if val >= 415:
+        return 'color: #15803d'  # Verde Escuro (Excelente)
+    if 365 <= val < 415:
+        return 'color: #3dd56d'  # Verde Claro (Muito bom)
+    if 300 <= val < 365:
+        return 'color: #ffaa00'  # Amarelo (Razoável)
+    if 200 <= val < 300:
+        return 'color: #ff7f50'  # Laranja (Fraco)
+    return 'color: #ff4b4b'      # Vermelho (Ruim)
 
 def style_score_dy_setor(val):
     if pd.isna(val): return ''

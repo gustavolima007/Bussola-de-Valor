@@ -139,15 +139,15 @@ if __name__ == "__main__":
             output_path_completo = output_folder / "precos_acoes_completo.csv"
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
             tabela_completa.to_csv(output_path_completo, index=False, encoding='utf-8-sig')
-            print(f"\n✅ Tabela completa salva em: {output_path_completo}")
+            print(f"\nTabela completa salva em: {output_path_completo}")
 
             # Salva a tabela resumida
             output_path_resumido = output_folder / "precos_acoes.csv"
             tabela_resumida.round(2).to_csv(output_path_resumido, encoding='utf-8-sig')
-            print(f"✅ Tabela resumida salva em: {output_path_resumido}")
+            print(f"Tabela resumida salva em: {output_path_resumido}")
 
             # Exibe estatísticas da execução
-            print(f"\n📊 Estatísticas da Execução:")
+            print(f"\nEstatísticas da Execução:")
             print(f"   - Total de ativos processados com sucesso: {len(tabela_resumida)}")
             print(f"   - Período de análise: {anos_para_analise} anos")
             print(f"   - Total de registros na tabela completa: {len(tabela_completa)}")

@@ -22,67 +22,60 @@ Este projeto utiliza um stack tecnológico moderno e integrado para coleta, arma
 ## 🧠 Filosofia do Investidor Inteligente
 
 ### Critérios de Pontuação (Score)
-A pontuação de cada ação soma critérios fundamentalistas e técnicos, totalizando até **300 pontos**:
+A pontuação de cada ação soma critérios fundamentalistas e técnicos, com a seguinte distribuição de pontos:
 
-1. **Dividend Yield (DY) – até 50 pts**
-   - DY 12 meses: >5% (+20), 3.5%-5% (+15), 2%-3.5% (+10), <2% (-5)
-   - DY média 5 anos: >10% (+30), 8%-10% (+25), 6%-8% (+20), 4%-6% (+10)
+1.  **Dividend Yield (DY) – até 83 pts**
+    -   DY 12 meses: >5% (+33 pts), 3.5%-5% (+25 pts), 2%-3.5% (+17 pts), <2% (-8 pts)
+    -   DY média 5 anos: >10% (+50 pts), 8%-10% (+42 pts), 6%-8% (+33 pts), 4%-6% (+17 pts)
 
-2. **Valuation (P/L e P/VP) – até 60 pts**
-   - P/L: <12 (+15), 12-18 (+10), >25 (-5)
-   - P/VP: <0.50 (+45), 0.50-0.66 (+40), 0.66-1.00 (+30), 1.00-1.50 (+15), 1.50-2.50 (+5), >4.00 (-10)
+2.  **Valuation (P/L e P/VP) – até 100 pts**
+    -   P/L: <12 (+25 pts), 12-18 (+17 pts), >25 (-8 pts)
+    -   P/VP: <0.50 (+75 pts), 0.50-0.66 (+67 pts), 0.66-1.00 (+50 pts), 1.00-1.50 (+25 pts), 1.50-2.50 (+8 pts), >4.00 (-17 pts)
 
-3. **Rentabilidade e Gestão (ROE e Payout) – até 35 pts**
-   - ROE (Setor Financeiro): >15% (+25), 12%-15% (+20), 8%-12% (+10)
-   - ROE (Outros Setores): >12% (+15), 8%-12% (+5)
-   - Payout: 30%-60% (+10), 60%-80% (+5), <20% ou >80% (-5)
+3.  **Rentabilidade e Gestão (ROE e Payout) – até 58 pts**
+    -   ROE (Setor Financeiro): >15% (+42 pts), 12%-15% (+33 pts), 8%-12% (+17 pts)
+    -   ROE (Outros Setores): >12% (+25 pts), 8%-12% (+8 pts)
+    -   Payout: 30%-60% (+17 pts), 60%-80% (+8 pts), <20% ou >80% (-8 pts)
 
-4. **Saúde Financeira (Endividamento e Liquidez) – até 40 pts**
-   - Dívida/Market Cap: <0.3 (+15), 0.3-0.7 (+10), >1.5 (-10)
-   - Dívida/EBITDA: <1 (+15), 1-3 (+5), >5 (-10)
-   - Current Ratio: >2 (+10), 1-2 (+5), <1 (-5)
+4.  **Saúde Financeira (Endividamento e Liquidez) – até 67 pts**
+    -   Dívida/Market Cap: <0.3 (+25 pts), 0.3-0.7 (+17 pts), >1.5 (-17 pts)
+    -   Dívida/EBITDA: <1 (+25 pts), 1-3 (+8 pts), >5 (-17 pts)
+    -   Current Ratio: >2 (+17 pts), 1-2 (+8 pts), <1 (-8 pts)
 
-5. **Crescimento e Sentimento – até 25 pts**
-   - Crescimento Preço 5 Anos: >15% (+15), 10%-15% (+10), 5%-10% (+5), <0% (-5)
-   - Sentimento do Mercado: -5 a +10 (proporcional à nota de 0 a 100)
+5.  **Crescimento e Sentimento – até 42 pts**
+    -   Crescimento Preço 5 Anos: >15% (+25 pts), 10%-15% (+17 pts), 5%-10% (+8 pts), <0% (-8 pts)
+    -   Sentimento do Mercado: -8 a +17 pts (proporcional)
 
-6. **Ciclo de Mercado (Timing) – de -20 a +20 pts**
-   - Análise técnica (RSI, MACD, Volume) para avaliar o momento psicológico do mercado.
-   - Compra (Pânico / Medo Extremo): **+20 pontos**
-   - Observação (Neutro / Incerteza): **0 pontos**
-   - Venda (Euforia / Ganância Extrema): **-20 pontos**
+6.  **Ciclo de Mercado (Timing) – de -33 a +33 pts**
+    -   Compra (Pânico / Medo Extremo): +33 pontos
+    -   Venda (Euforia / Ganância Extrema): -33 pontos
 
-7. **Fórmula de Graham (Margem de Segurança) – de -20 a +40 pts**
-   - Análise do "preço justo" (`√(22.5 * LPA * VPA)`) em relação ao preço atual.
-   - Margem > 200%: **+40 pontos**
-   - Margem 150% a 200%: **+35 pontos**
-   - Margem 100% a 150%: **+30 pontos**
-   - Margem 50% a 100%: **+20 pontos**
-   - Margem 20% a 50%: **+10 pontos**
-   - Margem 0% a 20%: **+5 pontos**
-   - Margem < 0%: **-20 pontos**
+7.  **Fórmula de Graham (Margem de Segurança) – de -33 a +67 pts**
+    -   Margem > 200%: +67 pontos
+    -   Margem 150% a 200%: +58 pontos
+    -   Margem 100% a 150%: +50 pontos
+    -   Margem 50% a 100%: +33 pontos
+    -   Margem 20% a 50%: +17 pontos
+    -   Margem 0% a 20%: +8 pontos
+    -   Margem < 0%: -33 pontos
 
-8. **Volatilidade (Beta) – de -10 a +10 pts**
-   - Mede a volatilidade da ação em relação ao mercado (Ibovespa).
-   - Beta < 1 (Baixa Volatilidade): **+10 pontos**
-   - Beta > 1.5 (Alta Volatilidade): **-10 pontos**
+8.  **Volatilidade (Beta) – de -17 a +17 pts**
+    -   Beta < 1: +17 pontos
+    -   Beta > 1.5: -17 pontos
 
-9. **Capitalização de Mercado – até 10 pts**
-   - Blue Cap (> R$ 50 bilhões): **+10 pontos**
-   - Mid Cap (R$ 10B – R$ 50B): **+7 pontos**
-   - Small Cap (R$ 2B – R$ 10B): **+4 pontos**
-   - Micro Cap (< R$ 2 bilhões): **0 pontos**
+9.  **Capitalização de Mercado – até 17 pts**
+    -   Blue Cap: +17 pts
+    -   Mid Cap: +12 pts
+    -   Small Cap: +7 pts
 
-10. **Liquidez Média Diária – até 10 pts**
-    - > R$ 50 milhões/dia: **+10 pontos**
-    - R$ 20M – R$ 50M/dia: **+7 pontos**
-    - R$ 5M – R$ 20M/dia: **+4 pontos**
-    - < R$ 5 milhões/dia: **0 pontos**
+10. **Liquidez Média Diária – até 17 pts**
+    -   > R$ 50 milhões/dia: +17 pts
+    -   R$ 20M – R$ 50M/dia: +12 pts
+    -   R$ 5M – R$ 20M/dia: +7 pts
 
-11. **Geração de Caixa (FCF Yield) – até 10 pts**
-    - > 8%: **+10 pontos**
-    - 5%–8%: **+5 pontos**
-    - < 5%: **0 pontos**
+11. **Geração de Caixa (FCF Yield) – até 17 pts**
+    -   > 8%: +17 pontos
+    -   5%–8%: +8 pontos
 
 ---
 

@@ -5,7 +5,7 @@ from datetime import datetime
 from ta.momentum import RSIIndicator
 from ta.trend import MACD
 """
-📊 Script: 12-indices.py
+Script: 12-indices.py
 Objetivo:
 - Buscar os valores de fechamento anual dos principais índices da B3 nos últimos 5 anos.
 - Substituir índices teóricos por ETFs equivalentes quando necessário.
@@ -81,28 +81,28 @@ def get_and_save_indices():
     try:
         os.makedirs(base_path, exist_ok=True)
         all_data = pd.DataFrame()
-        print("📥 Coletando dados dos índices da B3...\n")
+        print("Coletando dados dos índices da B3...\n")
         for code, name in indices.items():
-            print(f"🔎 {name} ({code})...")
+            print(f"{name} ({code})...")
             df = get_annual_closing(code, name)
             if df.empty:
-                print(f"⚠️ Dados não encontrados para {name}.")
+                print(f"Dados não encontrados para {name}.")
             else:
                 anos = df['year'].nunique()
                 if anos < 5:
-                    print(f"⚠️ Apenas {anos} anos disponíveis para {name}.")
+                    print(f"Apenas {anos} anos disponíveis para {name}.")
                 else:
-                    print(f"✅ Dados completos para {name}.")
+                    print(f"Dados completos para {name}.")
                 all_data = pd.concat([all_data, df], ignore_index=True)
         if not all_data.empty:
             all_data.columns = [col.lower() for col in all_data.columns]
             all_data['close'] = all_data['close'].round(2)
             all_data.to_csv(output_annual_path, index=False)
-            print(f"\n📁 Resumo anual salvo com sucesso em: {output_annual_path}")
+            print(f"\nResumo anual salvo com sucesso em: {output_annual_path}")
         else:
-            print("\n❌ Nenhum dado foi retornado para os índices.")
+            print("\nNenhum dado foi retornado para os índices.")
    
     except Exception as e:
-        print(f"\n🚨 Erro inesperado: {e}")
+        print(f"\nErro inesperado: {e}")
 if __name__ == "__main__":
     get_and_save_indices()

@@ -76,4 +76,4 @@ resultado_final = dados_consolidados[['ticker', 'preco_teto_5anos', 'diferenca_p
 # Salva o resultado em um arquivo CSV
 resultado_final.to_csv(output_path, index=False, encoding='utf-8-sig')
 
-print(f"\n✅ Arquivo 'preco_teto.csv' gerado com sucesso em: {output_path}")
+print(f"\nArquivo 'preco_teto.csv' gerado com sucesso em: {output_path}")

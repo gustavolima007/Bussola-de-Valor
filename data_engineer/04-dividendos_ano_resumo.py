@@ -54,4 +54,4 @@ resumo = resumo[['ticker', 'valor_5anos', 'valor_12m']]
 # Salva o DataFrame de resumo em um novo arquivo CSV
 resumo.to_csv(output_path, index=False, encoding='utf-8-sig')
 
-print(f"\n✅ Arquivo 'dividendos_ano_resumo.csv' gerado com sucesso em: {output_path}")
+print(f"\nArquivo 'dividendos_ano_resumo.csv' gerado com sucesso em: {output_path}")

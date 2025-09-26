@@ -91,7 +91,7 @@ if todos_dividendos:
     # Salva o resultado em um arquivo CSV
     df_final.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
     
-    print(f"🏁 Finalizado! {len(df_final)} registros de dividendos salvos em {OUTPUT_PATH}")
+    print(f"Finalizado! {len(df_final)} registros de dividendos salvos em {OUTPUT_PATH}")
 else:
     print("⚠️ Nenhum dividendo encontrado no período para os tickers fornecidos.")
     
