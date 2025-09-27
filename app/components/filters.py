@@ -28,8 +28,15 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     }
     perfis_raw = [p for p in df['Perfil da Ação'].dropna().unique().tolist()]
     perfis_disponiveis = sorted(perfis_raw, key=lambda x: (perfil_ordem.get(x, 999), x))
-    perfis_default = [p for p in perfis_disponiveis if p not in ['Penny Stock < 1R$', 'Micro Cap  < 2B']]
-    perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_default)
+    # Lógica para seleção de perfis conforme modo
+    if st.session_state.get('reset_filtros', False):
+        perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_disponiveis)
+    elif st.session_state.get('recomendados_filtros', False):
+        perfis_recomendados = [p for p in perfis_disponiveis if p in ['Small Cap 2B–10B', 'Mid Cap 10B–50B', 'Blue Cap > 50B']]
+        perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_recomendados)
+    else:
+        perfis_default = [p for p in perfis_disponiveis if p not in ['Penny Stock < 1R$', 'Micro Cap  < 2B']]
+        perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, default=perfis_default)
 
     tickers_disponiveis = sorted(df['Ticker'].dropna().unique().tolist())
     ticker_foco_opt = ["— Todos —"] + tickers_disponiveis
@@ -37,10 +44,37 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     ticker_foco = None if ticker_foco == "— Todos —" else ticker_foco
 
     # --- Filtros de Indicadores ---
-    score_range = st.sidebar.slider("Faixa de Score", 0, 500, (100, 300))
-    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 500, 200)
-    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 30.0, 6.0, 0.1)
-    dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, 6.0, 0.1)
+    # Flag para reset dos filtros
+    if 'reset_filtros' not in st.session_state:
+        st.session_state['reset_filtros'] = False
+
+    # Define valores padrão ou resetados
+    if st.session_state['reset_filtros']:
+        score_range_default = (0, 500)
+        subsetor_score_min_default = 0
+        dy_min_default = 0.0
+        dy_5y_min_default = 0.0
+        st.session_state['reset_filtros'] = False
+    else:
+        score_range_default = (200, 500)
+        subsetor_score_min_default = 200
+        dy_min_default = 6.0
+        dy_5y_min_default = 6.0
+
+    score_range = st.sidebar.slider("Faixa de Score", 0, 500, score_range_default, key='score_range')
+    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 500, subsetor_score_min_default, key='subsetor_score_min')
+    dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 20.0, dy_min_default, 0.1, key='dy_min')
+    dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, dy_5y_min_default, 0.1, key='dy_5y_min')
+
+    col1, col2 = st.sidebar.columns(2)
+    if col1.button("Limpar Filtros"):
+        st.session_state['reset_filtros'] = True
+        st.session_state['recomendados_filtros'] = False
+        st.rerun()
+    if col2.button("Filtros Recomendados"):
+        st.session_state['reset_filtros'] = False
+        st.session_state['recomendados_filtros'] = True
+        st.rerun()
 
     # --- Lógica de Filtragem ---
     df_filtrado = df[
