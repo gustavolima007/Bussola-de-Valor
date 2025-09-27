@@ -36,7 +36,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     if 'filters_initialized' not in st.session_state:
         st.session_state.perfil_filtro = perfis_default
         st.session_state.score_range = (200, 1000)
-        st.session_state.subsetor_score_min = 200
+        st.session_state.subsetor_score_min = 350
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
         st.session_state.ticker_foco = "— Todos —"
@@ -52,9 +52,12 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
         st.session_state.ticker_foco = "— Todos —"
 
     def recommend_filters():
+        """
+        Define os filtros recomendados ao clicar no botão correspondente.
+        """
         st.session_state.perfil_filtro = perfis_recomendados
         st.session_state.score_range = (200, 1000)
-        st.session_state.subsetor_score_min = 200
+        st.session_state.subsetor_score_min = 350
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
         st.session_state.ticker_foco = "— Todos —"

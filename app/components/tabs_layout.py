@@ -6,10 +6,15 @@ import plotly.express as px
 # --- Funções para cada Aba ---
 
 def style_dy(val):
-    """Aplica cor verde para DY >= 6% e vermelho para < 6%."""
+    """Coloração DY conforme regras do usuário."""
     if pd.isna(val):
         return ''
-    color = '#3dd56d' if val >= 6 else '#ff4b4b'
+    if val > 6:
+        color = '#3dd56d'  # Verde
+    elif 3 <= val <= 6:
+        color = '#ffaa00'  # Amarelo
+    else:
+        color = '#ff4b4b'  # Vermelho
     return f'color: {color}'
 
 def style_alvo(val):
@@ -31,47 +36,49 @@ def style_graham(val):
     if pd.isna(val):
         return ''
     if val > 100:
-        color = '#3dd56d'  # Verde para excepcional (>100%)
-    elif val >= 50:
-        color = '#3dd56d'  # Verde para muito boa (50-100%)
-    elif val >= 20:
-        color = '#ffaa00'  # Amarelo para boa (20-50%)
+        color = '#3dd56d'  # Verde
     elif val >= 0:
-        color = '#ffaa00'  # Amarelo para aceitável (0-20%)
+        color = '#ffaa00'  # Amarelo
     else:
-        color = '#ff4b4b'  # Vermelho para risco (<0%)
+        color = '#ff4b4b'  # Vermelho
     return f'color: {color}'
 
 def style_pl(val):
     """Aplica cor baseada no P/L."""
     if pd.isna(val) or val <= 0:
         return ''
-    if val < 12:
+    if val < 15:
         color = '#3dd56d'  # Verde
-    elif val < 18:
+    elif 15 <= val <= 20:
         color = '#ffaa00'  # Amarelo
-    else:
+    elif val > 25:
         color = '#ff4b4b'  # Vermelho
+    else:
+        color = ''
     return f'color: {color}'
 
 def style_pvp(val):
     """Aplica cor baseada no P/VP."""
     if pd.isna(val) or val <= 0:
         return ''
-    if val < 1.5:
+    if val < 1.0:
         color = '#3dd56d'  # Verde
-    elif val < 2.5:
+    elif 1.0 <= val <= 2.5:
         color = '#ffaa00'  # Amarelo
-    else:
+    elif val > 4.0:
         color = '#ff4b4b'  # Vermelho
+    else:
+        color = ''
     return f'color: {color}'
 
 def style_payout(val):
     """Aplica cor baseada no Payout."""
     if pd.isna(val):
         return ''
-    if 30 <= val <= 80:
+    if 25 <= val <= 65:
         color = '#3dd56d'  # Verde
+    elif 65 < val <= 85:
+        color = '#ffaa00'  # Amarelo
     else:
         color = '#ff4b4b'  # Vermelho
     return f'color: {color}'
@@ -80,9 +87,9 @@ def style_roe(val):
     """Aplica cor baseada no ROE."""
     if pd.isna(val):
         return ''
-    if val > 15:
+    if val > 12:
         color = '#3dd56d'  # Verde
-    elif val > 8:
+    elif 8 <= val <= 12:
         color = '#ffaa00'  # Amarelo
     else:
         color = '#ff4b4b'  # Vermelho
@@ -94,43 +101,49 @@ def style_div_mc(val):
         return ''
     if val < 0.5:
         color = '#3dd56d'  # Verde
-    elif val < 1.0:
+    elif 0.5 <= val <= 1.0:
         color = '#ffaa00'  # Amarelo
-    else:
+    elif val > 1.5:
         color = '#ff4b4b'  # Vermelho
+    else:
+        color = ''
     return f'color: {color}'
 
 def style_div_ebitda(val):
     """Aplica cor baseada na Dívida/EBITDA."""
     if pd.isna(val) or val < 0:
         return ''
-    if val < 2:
+    if val < 1.5:
         color = '#3dd56d'  # Verde
-    elif val < 4:
+    elif 1.5 <= val <= 4:
         color = '#ffaa00'  # Amarelo
-    else:
+    elif val > 5:
         color = '#ff4b4b'  # Vermelho
+    else:
+        color = ''
     return f'color: {color}'
 
 def style_cresc(val):
     """Aplica cor baseada no Crescimento Preço (5A)."""
     if pd.isna(val):
         return ''
-    if val > 15:
+    if val > 10:
         color = '#3dd56d'  # Verde
-    elif val > 5:
+    elif 5 <= val <= 10:
         color = '#ffaa00'  # Amarelo
-    else:
+    elif val < 0:
         color = '#ff4b4b'  # Vermelho
+    else:
+        color = ''
     return f'color: {color}'
 
 def style_pontuacao_final(val):
-    """Aplica cor com base na Pontuação Final do Setor."""
+    """Score Total: Verde >=600, Amarelo 300-599, Vermelho <300"""
     if pd.isna(val):
         return ''
-    if val > 99:
+    if val >= 600:
         color = '#3dd56d'  # Verde
-    elif val >= 70:
+    elif 300 <= val < 600:
         color = '#ffaa00'  # Amarelo
     else:
         color = '#ff4b4b'  # Vermelho
