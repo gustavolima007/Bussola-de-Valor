@@ -331,46 +331,6 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
         hide_index=True
     )
 
-    st.divider()
-
-    st.header("Setores Perenes")
-    
-    setores_estrategicos = [
-        'Bancos', 
-        'Transmissão de Energia', 
-        'Distribuição de Energia', 
-        'Geração de Energia', 
-        'Saneamento', 
-        'Seguros', 
-        'Telecomunicações'
-    ]
-    
-    df_estrategico = df_unfiltered[df_unfiltered['subsetor_b3'].isin(setores_estrategicos)].copy()
-
-    cols_to_display = [
-        'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 
-        'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 
-        'DY 5 Anos Média (%)', 'Score Total'
-    ]
-    
-    df_display_estrategico = df_estrategico[[col for col in cols_to_display if col in df_estrategico.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
-
-    st.dataframe(
-        df_display_estrategico,
-        column_config={
-            "Logo": st.column_config.ImageColumn("Logo"),
-            "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
-            "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
-            "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
-            "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
-            "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
-            "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-            "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
-        },
-        use_container_width=True, 
-        hide_index=True
-    )
-
 def render_tab_analise_individual(df: pd.DataFrame):
     st.header("🔬 Análise Individual e Composição do Score")
     if df.empty:
