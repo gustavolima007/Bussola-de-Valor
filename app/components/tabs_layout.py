@@ -1042,8 +1042,6 @@ def render_tab_recuperacao_judicial(all_data: dict):
     )
 
     st.subheader("Como a penalidade é calculada?")
-    A pontuação de cada setor é penalizada para refletir o risco com base no seu histórico de recuperações judiciais e falências.
-    """
     st.markdown("A pontuação de cada setor é penalizada para refletir o risco com base no seu histórico de recuperações judiciais e falências.")
     col1, col2 = st.columns(2)
     with col1:
@@ -1063,7 +1061,7 @@ def render_tab_recuperacao_judicial(all_data: dict):
         Penalidade Ajustada = Penalidade Normalizada * 20
         ```
     3.  **Aplicação**: A penalidade ajustada é subtraída da pontuação original do setor.
-    """
+    """)
 
     st.divider()
     st.subheader(f"Lista de Empresas ({len(rj_df)} encontradas)")
