@@ -19,6 +19,13 @@ def style_alvo(val):
     color = '#3dd56d' if val >= 0 else '#ff4b4b'
     return f'color: {color}'
 
+def style_valorizacao(val):
+    """Aplica cor verde para valorização positiva e vermelha para negativa."""
+    if pd.isna(val):
+        return ''
+    color = '#3dd56d' if val > 0 else '#ff4b4b' if val < 0 else ''
+    return f'color: {color}'
+
 def style_graham(val):
     """Aplica cor baseada na margem de segurança Graham."""
     if pd.isna(val):
@@ -211,7 +218,7 @@ def style_penalidade_rj_setor(val):
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço 1M', 'Val 1M', 'Preço 6M', 'Val 6M', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
     df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
 
     styler = df_display.style
@@ -226,11 +233,19 @@ def render_tab_rank_geral(df: pd.DataFrame):
 
     if 'Margem de Segurança %' in df_cols:
         styler.map(style_graham, subset=['Margem de Segurança %'])
+        
+    val_cols_to_style = [c for c in ['Val 1M', 'Val 6M'] if c in df_cols]
+    if val_cols_to_style:
+        styler.map(style_valorizacao, subset=val_cols_to_style)
 
     st.dataframe(
         styler,
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
+            "Preço 1M": st.column_config.NumberColumn("Preço 1M", format="R$ %.2f"),
+            "Val 1M": st.column_config.NumberColumn("Val 1M", format="%.2f%%"),
+            "Preço 6M": st.column_config.NumberColumn("Preço 6M", format="R$ %.2f"),
+            "Val 6M": st.column_config.NumberColumn("Val 6M", format="%.2f%%"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
@@ -853,7 +868,7 @@ def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFra
             'Pont. > 150': st.column_config.NumberColumn('Pont. > 150', format='%.1f'),
             'Pont < 50': st.column_config.NumberColumn('Pont < 50', format='%.1f'),
             'Graham': st.column_config.NumberColumn('Graham', format='%.1f'),
-            'Penalidade Recuperação Judicial': st.column_config.NumberColumn('Pena RJ', format='%.1f')
+            'Penalidade Recuperação Judicial': st.column_config.NumberColumn('Penalidade Recuperação Judicial', format='%.1f')
         }
 
         st.dataframe(
@@ -1092,6 +1107,11 @@ def render_tab_recuperacao_judicial(all_data: dict):
     df_display.fillna('-', inplace=True)
     df_display['Ticker'] = df_display['Ticker'].replace({None: '-'})
 
+    st.dataframe(
+        df_display.sort_values(by='Início RJ', ascending=False),
+        use_container_width=True,
+        hide_index=True
+    )
     st.dataframe(
         df_display.sort_values(by='Início RJ', ascending=False),
         use_container_width=True,

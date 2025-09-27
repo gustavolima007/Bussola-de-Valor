@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 📄 Script para extrair e processar dados de ações e fundos da B3.
-    Versão 4.2 com reclassificação de tickers e log de não mapeados.
+   Versão 4.0 com mapeamento de setores completo e refinado.
 """
 
 import requests
@@ -20,14 +20,14 @@ logger = logging.getLogger(__name__)
 MAPEAMENTO_COMPLETO_TICKERS = {
     # Utilidade Pública - Geração de Energia
     "AURE3": ("Utilidade Pública", "Geração de Energia"), "AESB3": ("Utilidade Pública", "Geração de Energia"),
-    "ELET3": ("Utilidade Pública", "Geração de Energia"), "ELET5": ("Utilidade Pública", "Geração de Energia"), 
-    "ELET6": ("Utilidade Pública", "Geração de Energia"), "EMAE4": ("Utilidade Pública", "Geração de Energia"), 
-    "ENEV3": ("Utilidade Pública", "Geração de Energia"), "ENGI3": ("Utilidade Pública", "Geração de Energia"), 
-    "ENGI4": ("Utilidade Pública", "Geração de Energia"), "ENGI11": ("Utilidade Pública", "Geração de Energia"),
-    "EGIE3": ("Utilidade Pública", "Geração de Energia"), "GEPA3": ("Utilidade Pública", "Geração de Energia"), 
-    "GEPA4": ("Utilidade Pública", "Geração de Energia"), "ORVR3": ("Utilidade Pública", "Geração de Energia"), 
-    "RNEW3": ("Utilidade Pública", "Geração de Energia"), "RNEW4": ("Utilidade Pública", "Geração de Energia"), 
-    "RNEW11": ("Utilidade Pública", "Geração de Energia"), "SRNA3": ("Utilidade Pública", "Geração de Energia"),
+    "ELET3": ("Utilidade Pública", "Geração de Energia"), "ELET6": ("Utilidade Pública", "Geração de Energia"),
+    "EMAE4": ("Utilidade Pública", "Geração de Energia"), "ENEV3": ("Utilidade Pública", "Geração de Energia"),
+    "ENGI3": ("Utilidade Pública", "Geração de Energia"), "ENGI4": ("Utilidade Pública", "Geração de Energia"),
+    "ENGI11": ("Utilidade Pública", "Geração de Energia"),"EGIE3": ("Utilidade Pública", "Geração de Energia"),
+    "GEPA3": ("Utilidade Pública", "Geração de Energia"), "GEPA4": ("Utilidade Pública", "Geração de Energia"),
+    "ORVR3": ("Utilidade Pública", "Geração de Energia"), "RNEW3": ("Utilidade Pública", "Geração de Energia"),
+    "RNEW4": ("Utilidade Pública", "Geração de Energia"), "RNEW11": ("Utilidade Pública", "Geração de Energia"),
+    "SRNA3": ("Utilidade Pública", "Geração de Energia"),
 
     # Utilidade Pública - Transmissão de Energia
     "AFLT3": ("Utilidade Pública", "Transmissão de Energia"), "ALUP3": ("Utilidade Pública", "Transmissão de Energia"),
@@ -95,7 +95,6 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "GETT3": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"), "GETT4": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"),
     "MNPR3": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"), "NEXP3": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"),
     "REAG3": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"), "RPAD5": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"),
-    "BRBI11": ("Financeiro e Outros", "Holdings e Outros Serviços Financeiros"),
 
     # Financeiro e Outros - Incorporação e Construção
     "CALI3": ("Financeiro e Outros", "Incorporação e Construção"), "CURY3": ("Financeiro e Outros", "Incorporação e Construção"),
@@ -110,16 +109,14 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "TCSA3": ("Financeiro e Outros", "Incorporação e Construção"), "TEND3": ("Financeiro e Outros", "Incorporação e Construção"),
     "TPIS3": ("Financeiro e Outros", "Incorporação e Construção"), "TRIS3": ("Financeiro e Outros", "Incorporação e Construção"),
     "VIVR3": ("Financeiro e Outros", "Incorporação e Construção"), "LPSB3": ("Financeiro e Outros", "Incorporação e Construção"),
-    "CCTY3": ("Financeiro e Outros", "Incorporação e Construção"),
 
     # Financeiro e Outros - Propriedades e Locação
     "ALOS3": ("Financeiro e Outros", "Propriedades e Locação"), "AVLL3": ("Financeiro e Outros", "Propriedades e Locação"),
     "GSHP3": ("Financeiro e Outros", "Propriedades e Locação"), "IGTI3": ("Financeiro e Outros", "Propriedades e Locação"),
     "JHSF3": ("Financeiro e Outros", "Propriedades e Locação"), "LAND3": ("Financeiro e Outros", "Propriedades e Locação"),
     "LOGG3": ("Financeiro e Outros", "Propriedades e Locação"), "MELK3": ("Financeiro e Outros", "Propriedades e Locação"),
-    "MULT3": ("Financeiro e Outros", "Propriedades e Locação"), "PEAB3": ("Financeiro e Outros", "Propriedades e Locação"),
-    "PEAB4": ("Financeiro e Outros", "Propriedades e Locação"), "SCAR3": ("Financeiro e Outros", "Propriedades e Locação"), 
-    "SYNE3": ("Financeiro e Outros", "Propriedades e Locação"),
+    "MULT3": ("Financeiro e Outros", "Propriedades e Locação"), "PEAB4": ("Financeiro e Outros", "Propriedades e Locação"),
+    "SCAR3": ("Financeiro e Outros", "Propriedades e Locação"), "SYNE3": ("Financeiro e Outros", "Propriedades e Locação"),
 
     # Materiais Básicos - Mineração e Siderurgia
     "CBAV3": ("Materiais Básicos", "Mineração e Siderurgia"), "CMIN3": ("Materiais Básicos", "Mineração e Siderurgia"),
@@ -143,8 +140,8 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "CRPG3": ("Materiais Básicos", "Química e Petroquímica"), "CRPG5": ("Materiais Básicos", "Química e Petroquímica"),
     "DEXP3": ("Materiais Básicos", "Química e Petroquímica"), "DEXP4": ("Materiais Básicos", "Química e Petroquímica"),
     "FHER3": ("Materiais Básicos", "Química e Petroquímica"), "SNSY5": ("Materiais Básicos", "Química e Petroquímica"),
-    "UNIP3": ("Materiais Básicos", "Química e Petroquímica"), "UNIP5": ("Materiais Básicos", "Química e Petroquímica"), 
-    "UNIP6": ("Materiais Básicos", "Química e Petroquímica"), "VITT3": ("Materiais Básicos", "Química e Petroquímica"),
+    "UNIP3": ("Materiais Básicos", "Química e Petroquímica"), "UNIP6": ("Materiais Básicos", "Química e Petroquímica"),
+    "VITT3": ("Materiais Básicos", "Química e Petroquímica"),
 
     # Consumo Cíclico - Comércio Varejista
     "AMAR3": ("Consumo Cíclico", "Comércio Varejista"), "AMER3": ("Consumo Cíclico", "Comércio Varejista"),
@@ -170,11 +167,10 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "TECN3": ("Consumo Cíclico", "Consumo Diverso"), "UCAS3": ("Consumo Cíclico", "Consumo Diverso"),
     "VSTE3": ("Consumo Cíclico", "Consumo Diverso"), "BMKS3": ("Consumo Cíclico", "Consumo Diverso"),
     "ESTR4": ("Consumo Cíclico", "Consumo Diverso"), "WHRL3": ("Consumo Cíclico", "Consumo Diverso"),
-    "WHRL4": ("Consumo Cíclico", "Consumo Diverso"), "CEDO3": ("Consumo Cíclico", "Consumo Diverso"), 
-    "CEDO4": ("Consumo Cíclico", "Consumo Diverso"), "CTKA4": ("Consumo Cíclico", "Consumo Diverso"), 
-    "CTSA3": ("Consumo Cíclico", "Consumo Diverso"), "CTSA4": ("Consumo Cíclico", "Consumo Diverso"), 
-    "DOHL4": ("Consumo Cíclico", "Consumo Diverso"), "PTNT3": ("Consumo Cíclico", "Consumo Diverso"), 
-    "PTNT4": ("Consumo Cíclico", "Consumo Diverso"),
+    "WHRL4": ("Consumo Cíclico", "Consumo Diverso"), "CEDO4": ("Consumo Cíclico", "Consumo Diverso"),
+    "CTKA4": ("Consumo Cíclico", "Consumo Diverso"), "CTSA3": ("Consumo Cíclico", "Consumo Diverso"),
+    "CTSA4": ("Consumo Cíclico", "Consumo Diverso"), "DOHL4": ("Consumo Cíclico", "Consumo Diverso"),
+    "PTNT3": ("Consumo Cíclico", "Consumo Diverso"), "PTNT4": ("Consumo Cíclico", "Consumo Diverso"),
 
     # Consumo Não Cíclico - Alimentos e Bebidas (inclui Produtos de Limpeza)
     "ABEV3": ("Consumo Não Cíclico", "Alimentos e Bebidas"), "AGRO3": ("Consumo Não Cíclico", "Alimentos e Bebidas"),
@@ -194,26 +190,25 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "WLMM4": ("Consumo Não Cíclico", "Comércio e Distribuição"),
 
     # Bens Industriais - Máquinas e Motores
-    "AERI3": ("Bens Industriais", "Máquinas e Motores"), "ARML3": ("Bens Industriais", "Máquinas e Motores"), 
-    "BDLL3": ("Bens Industriais", "Máquinas e Motores"), "BDLL4": ("Bens Industriais", "Máquinas e Motores"), 
-    "DXCO3": ("Bens Industriais", "Máquinas e Motores"), "EALT3": ("Bens Industriais", "Máquinas e Motores"), 
-    "EALT4": ("Bens Industriais", "Máquinas e Motores"), "FRIO3": ("Bens Industriais", "Máquinas e Motores"),
+    "ARML3": ("Bens Industriais", "Máquinas e Motores"), "BDLL3": ("Bens Industriais", "Máquinas e Motores"),
+    "BDLL4": ("Bens Industriais", "Máquinas e Motores"), "DXCO3": ("Bens Industriais", "Máquinas e Motores"),
+    "EALT3": ("Bens Industriais", "Máquinas e Motores"), "EALT4": ("Bens Industriais", "Máquinas e Motores"),
     "HAGA3": ("Bens Industriais", "Máquinas e Motores"), "HAGA4": ("Bens Industriais", "Máquinas e Motores"),
-    "HETA4": ("Bens Industriais", "Máquinas e Motores"), "KEPL3": ("Bens Industriais", "Máquinas e Motores"), 
-    "LUPA3": ("Bens Industriais", "Máquinas e Motores"), "MGEL4": ("Bens Industriais", "Máquinas e Motores"), 
-    "MTSA4": ("Bens Industriais", "Máquinas e Motores"), "ROMI3": ("Bens Industriais", "Máquinas e Motores"), 
-    "RSUL4": ("Bens Industriais", "Máquinas e Motores"), "SHUL4": ("Bens Industriais", "Máquinas e Motores"), 
-    "WEGE3": ("Bens Industriais", "Máquinas e Motores"),
+    "HETA4": ("Bens Industriais", "Máquinas e Motores"), "LUPA3": ("Bens Industriais", "Máquinas e Motores"),
+    "MGEL4": ("Bens Industriais", "Máquinas e Motores"), "MTSA4": ("Bens Industriais", "Máquinas e Motores"),
+    "ROMI3": ("Bens Industriais", "Máquinas e Motores"), "RSUL4": ("Bens Industriais", "Máquinas e Motores"),
+    "SHUL4": ("Bens Industriais", "Máquinas e Motores"), "WEGE3": ("Bens Industriais", "Máquinas e Motores"),
 
     # Bens Industriais - Transporte e Componentes
-    "EMBR3": ("Bens Industriais", "Transporte e Componentes"), "FRAS3": ("Bens Industriais", "Transporte e Componentes"),
+    "AERI3": ("Bens Industriais", "Transporte e Componentes"), "EMBR3": ("Bens Industriais", "Transporte e Componentes"),
+    "FRAS3": ("Bens Industriais", "Transporte e Componentes"), "KEPL3": ("Bens Industriais", "Transporte e Componentes"),
     "LEVE3": ("Bens Industriais", "Transporte e Componentes"), "MWET4": ("Bens Industriais", "Transporte e Componentes"),
-    "MYPK3": ("Bens Industriais", "Transporte e Componentes"), "PLAS3": ("Bens Industriais", "Transporte e Componentes"),
-    "POMO3": ("Bens Industriais", "Transporte e Componentes"), "POMO4": ("Bens Industriais", "Transporte e Componentes"), 
-    "PTBL3": ("Bens Industriais", "Transporte e Componentes"), "RAPT3": ("Bens Industriais", "Transporte e Componentes"), 
-    "RAPT4": ("Bens Industriais", "Transporte e Componentes"), "RCSL3": ("Bens Industriais", "Transporte e Componentes"), 
-    "RCSL4": ("Bens Industriais", "Transporte e Componentes"), "TASA3": ("Bens Industriais", "Transporte e Componentes"), 
-    "TASA4": ("Bens Industriais", "Transporte e Componentes"), "TUPY3": ("Bens Industriais", "Transporte e Componentes"),
+    "MYPK3": ("Bens Industriais", "Transporte e Componentes"), "POMO3": ("Bens Industriais", "Transporte e Componentes"),
+    "POMO4": ("Bens Industriais", "Transporte e Componentes"), "PTBL3": ("Bens Industriais", "Transporte e Componentes"),
+    "RAPT3": ("Bens Industriais", "Transporte e Componentes"), "RAPT4": ("Bens Industriais", "Transporte e Componentes"),
+    "RCSL3": ("Bens Industriais", "Transporte e Componentes"), "RCSL4": ("Bens Industriais", "Transporte e Componentes"),
+    "TASA3": ("Bens Industriais", "Transporte e Componentes"), "TASA4": ("Bens Industriais", "Transporte e Componentes"),
+    "TUPY3": ("Bens Industriais", "Transporte e Componentes"),
 
     # Bens Industriais - Logística e Mobilidade
     "AZUL4": ("Bens Industriais", "Logística e Mobilidade"), "ECOR3": ("Bens Industriais", "Logística e Mobilidade"),
@@ -275,7 +270,7 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "FIEI3": ("Serviços Diversos", "Serviços Diversos"), "GGPS3": ("Serviços Diversos", "Serviços Diversos"),
     "HOOT4": ("Serviços Diversos", "Serviços Diversos"), "OPCT3": ("Serviços Diversos", "Serviços Diversos"),
     "RVEE3": ("Serviços Diversos", "Serviços Diversos"), "SHOW3": ("Serviços Diversos", "Serviços Diversos"),
-    "VTRU3": ("Serviços Diversos", "Serviços Diversos"), "HBTS5": ("Serviços Diversos", "Serviços Diversos"),
+    "VTRU3": ("Serviços Diversos", "Serviços Diversos"),
 }
 
 
@@ -309,7 +304,6 @@ def extrair_dados_brapi():
     api_url = "https://brapi.dev/api/quote/list"
     base_dir = Path(__file__).resolve().parent.parent / 'data'
     csv_output = base_dir / "acoes_e_fundos.csv"
-    log_nao_mapeados = base_dir / "tickers_nao_mapeados.txt"
 
     logger.info("Iniciando extração de dados via Brapi...")
     start_time = time.time()
@@ -340,18 +334,6 @@ def extrair_dados_brapi():
         df_ativos = df_ativos[~df_ativos['ticker'].isin(TICKERS_A_REMOVER)]
 
         df_ativos = mapear_setores_b3(df_ativos)
-
-        # --- NOVO: Bloco para salvar tickers não mapeados ---
-        df_nao_mapeados = df_ativos[df_ativos['setor_b3'] == 'Indefinido']
-        if not df_nao_mapeados.empty:
-            tickers_para_log = df_nao_mapeados['ticker'].tolist()
-            base_dir.mkdir(parents=True, exist_ok=True)
-            with open(log_nao_mapeados, 'w', encoding='utf-8') as f:
-                for ticker in tickers_para_log:
-                    f.write(f"{ticker}\n")
-            logger.warning(f"{len(tickers_para_log)} tickers não mapeados foram salvos em: {log_nao_mapeados}")
-        # --- FIM DO NOVO BLOCO ---
-
         df_ativos = df_ativos[df_ativos['setor_b3'] != 'Indefinido']
 
         colunas_renomear = {
@@ -381,7 +363,7 @@ def extrair_dados_brapi():
         logger.info(f"Arquivo CSV salvo: {csv_output}")
 
         elapsed_time = time.time() - start_time
-        logger.info(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos mapeados: {len(df_ativos)}")
+        logger.info(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos: {len(df_ativos)}")
         return df_ativos
 
     except requests.exceptions.RequestException as e:

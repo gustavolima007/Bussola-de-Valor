@@ -7,13 +7,13 @@ da B3, utilizando a biblioteca yfinance, e gera dois arquivos de saída:
 
 1.  `precos_acoes_completo.csv`: Contém o preço de fechamento do último dia
     de cada ano para os últimos 7 anos.
-2.  `precos_acoes.csv`: Um resumo com o preço de fechamento mais recente.
+2.  `precos_acoes.csv`: Um resumo com o preço atual e de 1 e 6 meses atrás.
 
 Etapas do Processo:
 - Lê a lista de tickers de 'data/acoes_e_fundos.csv'.
 - Adiciona o sufixo '.SA' aos tickers para consulta no yfinance.
 - Baixa o histórico de preços dos últimos 7 anos.
-- Processa os dados para extrair os preços de fechamento anuais e o atual.
+- Processa os dados para extrair os preços de fechamento anuais e o atual/mensal.
 - Salva os dois DataFrames resultantes em arquivos CSV.
 """
 
@@ -54,7 +54,7 @@ def ler_tickers_do_csv(caminho_do_arquivo: str, coluna_ticker: str = 'ticker') -
 def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 7) -> tuple[pd.DataFrame, pd.DataFrame] | tuple[None, None]:
     """
     Busca o preço de fechamento ajustado para uma lista de tickers e gera duas tabelas:
-    uma completa com dados anuais e uma resumida com o preço atual.
+    uma completa com dados anuais e uma resumida com o preço atual e mensal.
 
     Args:
         lista_tickers (list): A lista de tickers a serem processados.
@@ -69,6 +69,10 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
         tickers_sa = [f"{t.upper()}.SA" for t in lista_tickers]
         hoje = date.today()
         ano_inicio = hoje.year - anos_anteriores
+
+        # Define as datas de referência para 1 e 6 meses atrás
+        data_1_mes_atras = pd.to_datetime(hoje) - pd.DateOffset(months=1)
+        data_6_meses_atras = pd.to_datetime(hoje) - pd.DateOffset(months=6)
 
         print(f"Baixando dados históricos para {len(tickers_sa)} ativos...")
         # Baixa os dados de uma vez para otimizar as requisições
@@ -90,17 +94,29 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
 
             # Preço de fechamento mais recente
             fechamento_atual = col.dropna().iloc[-1]
-            lista_resumida.append({'ticker': ticker, 'fechamento_atual': fechamento_atual})
+
+            # Busca os preços de 1 e 6 meses atrás usando .asof()
+            # O .asof() encontra o último valor válido na data ou antes dela (lida com fins de semana/feriados)
+            fechamento_1M_atras = col.asof(data_1_mes_atras)
+            fechamento_6M_atras = col.asof(data_6_meses_atras)
+
+            # Adiciona os novos campos ao dicionário da lista resumida
+            lista_resumida.append({
+                'ticker': ticker,
+                'fechamento_atual': fechamento_atual,
+                'fechamento_1M_atras': fechamento_1M_atras,
+                'fechamento_6M_atras': fechamento_6M_atras
+            })
+            
             lista_completa.append({'ticker': ticker, 'ano': hoje.year, 'fechamento': fechamento_atual})
 
-            # Preços de fechamento dos anos anteriores
+            # Preços de fechamento dos anos anteriores (lógica original mantida)
             for j in range(anos_anteriores):
                 ano_alvo = hoje.year - (j + 1)
                 try:
-                    # Pega o último preço de fechamento disponível para o ano alvo
                     fechamento_ano = df_closes.loc[str(ano_alvo), ticker_sa].dropna().iloc[-1]
                 except (KeyError, IndexError):
-                    fechamento_ano = None  # Define como None se não houver dados para o ano
+                    fechamento_ano = None
                 lista_completa.append({'ticker': ticker, 'ano': ano_alvo, 'fechamento': fechamento_ano})
 
         if not lista_completa:
@@ -119,7 +135,9 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
 # --- Bloco de Execução Principal ---
 if __name__ == "__main__":
     # Define os caminhos dos arquivos de entrada e saída
-    repo_root = Path(__file__).resolve().parent.parent
+    # Ajuste o caminho para subir um nível (do 'data_engineer' para a raiz do projeto)
+    repo_root = Path(__file__).resolve().parent.parent 
+    
     csv_path = repo_root / "data" / "acoes_e_fundos.csv"
     output_folder = repo_root / "data"
 
@@ -132,21 +150,17 @@ if __name__ == "__main__":
         tabela_completa, tabela_resumida = gerar_tabela_comparativa_precos(ativos_alvo, anos_anteriores=anos_para_analise)
 
         if tabela_completa is not None and tabela_resumida is not None:
-            # Cria o diretório de saída se ele não existir
             output_folder.mkdir(parents=True, exist_ok=True)
 
-            # Salva a tabela completa
             output_path_completo = output_folder / "precos_acoes_completo.csv"
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
             tabela_completa.to_csv(output_path_completo, index=False, encoding='utf-8-sig')
             print(f"\nTabela completa salva em: {output_path_completo}")
 
-            # Salva a tabela resumida
             output_path_resumido = output_folder / "precos_acoes.csv"
             tabela_resumida.round(2).to_csv(output_path_resumido, encoding='utf-8-sig')
             print(f"Tabela resumida salva em: {output_path_resumido}")
 
-            # Exibe estatísticas da execução
             print(f"\nEstatísticas da Execução:")
             print(f"   - Total de ativos processados com sucesso: {len(tabela_resumida)}")
             print(f"   - Período de análise: {anos_para_analise} anos")

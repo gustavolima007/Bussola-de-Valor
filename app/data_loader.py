@@ -103,7 +103,7 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     # --- Merge com Scores Externos ---
     try:
         scores_df = read_csv_cached(base_path / 'scores.csv')
-        df = df.merge(scores_df, left_on='Ticker', right_on='ticker_base', how='left')
+        df = df.merge(scores_df, left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_scores'))
         df['Score Total'] = pd.to_numeric(df['score_total'], errors='coerce').fillna(0)
         df['Score Details'] = df.apply(build_score_details_from_row, axis=1)
     except FileNotFoundError:
@@ -126,18 +126,47 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     try:
         pt = read_csv_cached(base_path / 'preco_teto.csv')
         pt['ticker_base'] = pt['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
-        df = df.merge(pt[['ticker_base', 'preco_teto_5anos', 'diferenca_percentual']], left_on='Ticker', right_on='ticker_base', how='left')
+        df = df.merge(pt[['ticker_base', 'preco_teto_5anos', 'diferenca_percentual']], left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_pt'))
         df.rename(columns={'preco_teto_5anos': 'Preço Teto 5A', 'diferenca_percentual': 'Alvo'}, inplace=True)
     except Exception: pass
 
+    # --- Merge com Preços de Ações (1M e 6M) ---
     try:
         pa = read_csv_cached(base_path / 'precos_acoes.csv')
-        pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
-        df = df.merge(pa[['ticker_base', 'fechamento_atual']], left_on='Ticker', right_on='ticker_base', how='left')
-        if 'fechamento_atual' in df.columns:
-            df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
-            df.drop(columns=['fechamento_atual'], inplace=True)
-    except Exception: pass
+        if 'ticker' in pa.columns and 'Ticker' in df.columns:
+            pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
+            
+            cols_to_merge = ['ticker_base', 'fechamento_atual', 'fechamento_1M_atras', 'fechamento_6M_atras']
+            pa_cols = [col for col in cols_to_merge if col in pa.columns]
+            
+            df = df.merge(pa[pa_cols], left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_pa'))
+
+            if 'fechamento_atual' in df.columns:
+                df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
+                df.drop(columns=['fechamento_atual'], inplace=True)
+            
+            df.rename(columns={
+                'fechamento_1M_atras': 'Preço 1M',
+                'fechamento_6M_atras': 'Preço 6M'
+            }, inplace=True)
+
+            # --- Cálculo da Valorização (1M e 6M) ---
+            for period in ['1M', '6M']:
+                price_col = f'Preço {period}'
+                val_col = f'Val {period}'
+                if price_col in df.columns and 'Preço Atual' in df.columns:
+                    # Garante que as colunas são numéricas
+                    df[price_col] = pd.to_numeric(df[price_col], errors='coerce')
+                    df['Preço Atual'] = pd.to_numeric(df['Preço Atual'], errors='coerce')
+                    # Calcula a valorização, tratando divisão por zero
+                    df[val_col] = df.apply(
+                        lambda row: ((row['Preço Atual'] - row[price_col]) / row[price_col]) * 100 if row[price_col] and row[price_col] != 0 else 0,
+                        axis=1
+                    )
+    except FileNotFoundError:
+        st.warning("Arquivo 'precos_acoes.csv' não encontrado. As colunas 'Preço 1M' e 'Preço 6M' não serão exibidas.")
+    except Exception as e:
+        st.error(f"Erro ao processar 'precos_acoes.csv': {e}")
     
     # --- Merge com Avaliação de Setor ---
     try:
