@@ -414,7 +414,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
 
 def render_tab_guia():
     st.header("🧭 Guia da Bússola de Valor")
-    st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
+        st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
     
     st.subheader("Critérios de Pontuação (Score) - Máximo de 500 pontos")
     st.markdown('''
@@ -517,7 +517,7 @@ def render_tab_guia():
     with tab6: # Ciclo de Mercado
         st.markdown('''
         - **O que é?** O **Ciclo de Mercado** usa indicadores técnicos (RSI, MACD, Volume) para avaliar o *timing* psicológico do mercado, identificando se o ativo está em um momento de euforia (venda) ou pânico (compra).
-        - **Por que analisar?** Ajuda a responder **\"quando comprar\"**. Comprar ativos durante períodos de pessimismo extremo (pânico) historicamente oferece melhores pontos de entrada e maiores retornos potenciais.
+        - **Por que analisar?** Ajuda a responder **"quando comprar"**. Comprar ativos durante períodos de pessimismo extremo (pânico) historicamente oferece melhores pontos de entrada e maiores retornos potenciais.
         - **Cálculo do Score (Ciclo):**
             - Compra (Pânico): **+15 pontos**
             - Observação (Neutro): **0 pontos**
@@ -572,7 +572,6 @@ def render_tab_guia():
             st.markdown("##### 🪙 Penny Stock")
             st.markdown("**Preço da Ação < R$ 1,00.**")
             st.markdown("_Ações de baixíssimo valor, especulativas e com altíssimo risco. Podem ou não ser Micro Caps._")
-
 
 
 def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = None):
@@ -808,53 +807,53 @@ def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFra
 
         # Define as colunas de pontuação e seus novos nomes
         rename_map = {
-            'subsetor_b3': 'Subsetor',
-            'pontuacao_final': 'Pontuação Final',
-            'Pontuacao Original': 'Pontuação Original',
-            'score_dy': 'Score DY',
-            'score_roe': 'Score ROE',
-            'score_beta': 'Score Beta',
-            'score_payout': 'Score Payout',
-            'score_empresas_boas': 'Bônus Boas Empresas',
-            'penalidade_empresas_ruins': 'Pena Más Empresas',
-            'score_graham': 'Score Graham',
-            'penalidade_rj': 'Pena RJ'
+            'subsetor_b3': 'Setor',
+            'pontuacao_final': 'Pont. Final',
+            'Pontuacao Original': 'Pont. Inicial',
+            'score_dy': 'DY',
+            'score_roe': 'ROE',
+            'score_beta': 'Beta',
+            'score_payout': 'Payout',
+            'score_empresas_boas': 'Pont. > 150',
+            'penalidade_empresas_ruins': 'Pont < 50',
+            'score_graham': 'Graham',
+            'penalidade_rj': 'Penalidade Recuperação Judicial'
         }
         
-        av_display = av_setor.rename(columns=rename_map)
+        av_display = av_setor.rename(columns=rename_map).sort_values(by='Pont. Final', ascending=False)
 
         # Define a ordem das colunas a serem exibidas
         cols_to_show = [
-            'Subsetor', 'Pontuação Final', 'Pontuação Original',
-            'Score DY', 'Score ROE', 'Score Beta', 'Score Payout',
-            'Bônus Boas Empresas', 'Pena Más Empresas', 'Score Graham', 'Pena RJ'
+            'Setor', 'Pont. Final', 'Pont. Inicial',
+            'DY', 'ROE', 'Beta', 'Payout',
+            'Pont. > 150', 'Pont < 50', 'Graham', 'Penalidade Recuperação Judicial'
         ]
         
         # Filtra apenas as colunas que realmente existem no dataframe
         cols_to_show_existing = [col for col in cols_to_show if col in av_display.columns]
         
-        styler = av_display[cols_to_show_existing].style.map(style_pontuacao_final_setor, subset=['Pontuação Final'])
-        styler.map(style_score_dy_setor, subset=['Score DY'])
-        styler.map(style_score_roe_setor, subset=['Score ROE'])
-        styler.map(style_score_beta_setor, subset=['Score Beta'])
-        styler.map(style_score_payout_setor, subset=['Score Payout'])
-        styler.map(style_score_empresas_boas_setor, subset=['Bônus Boas Empresas'])
-        styler.map(style_penalidade_empresas_ruins_setor, subset=['Pena Más Empresas'])
-        styler.map(style_score_graham_setor, subset=['Score Graham'])
-        styler.map(style_penalidade_rj_setor, subset=['Pena RJ'])
+        styler = av_display[cols_to_show_existing].style.map(style_pontuacao_final_setor, subset=['Pont. Final'])
+        styler.map(style_score_dy_setor, subset=['DY'])
+        styler.map(style_score_roe_setor, subset=['ROE'])
+        styler.map(style_score_beta_setor, subset=['Beta'])
+        styler.map(style_score_payout_setor, subset=['Payout'])
+        styler.map(style_score_empresas_boas_setor, subset=['Pont. > 150'])
+        styler.map(style_penalidade_empresas_ruins_setor, subset=['Pont < 50'])
+        styler.map(style_score_graham_setor, subset=['Graham'])
+        styler.map(style_penalidade_rj_setor, subset=['Penalidade Recuperação Judicial'])
 
         # Configuração das colunas para o dataframe do Streamlit
         column_config = {
-            'Pontuação Final': st.column_config.NumberColumn('Pontuação Final', format='%.1f', help="Pontuação final do subsetor, somando todos os critérios."),
-            'Pontuação Original': st.column_config.NumberColumn('Pontuação Original', format='%.1f', help="Média da pontuação de todas as empresas do setor."),
-            'Score DY': st.column_config.NumberColumn('DY', format='%.1f'),
-            'Score ROE': st.column_config.NumberColumn('ROE', format='%.1f'),
-            'Score Beta': st.column_config.NumberColumn('Beta', format='%.1f'),
-            'Score Payout': st.column_config.NumberColumn('Payout', format='%.1f'),
-            'Bônus Boas Empresas': st.column_config.NumberColumn('Bônus Score > 150', format='%.1f'),
-            'Pena Más Empresas': st.column_config.NumberColumn('Pena Score < 50', format='%.1f'),
-            'Score Graham': st.column_config.NumberColumn('Graham', format='%.1f'),
-            'Pena RJ': st.column_config.NumberColumn('Pena RJ', format='%.1f')
+            'Pont. Final': st.column_config.NumberColumn('Pont. Final', format='%.1f', help="Pontuação final do subsetor, somando todos os critérios."),
+            'Pont. Inicial': st.column_config.NumberColumn('Pont. Inicial', format='%.1f', help="Média da pontuação de todas as empresas do setor."),
+            'DY': st.column_config.NumberColumn('DY', format='%.1f'),
+            'ROE': st.column_config.NumberColumn('ROE', format='%.1f'),
+            'Beta': st.column_config.NumberColumn('Beta', format='%.1f'),
+            'Payout': st.column_config.NumberColumn('Payout', format='%.1f'),
+            'Pont. > 150': st.column_config.NumberColumn('Pont. > 150', format='%.1f'),
+            'Pont < 50': st.column_config.NumberColumn('Pont < 50', format='%.1f'),
+            'Graham': st.column_config.NumberColumn('Graham', format='%.1f'),
+            'Penalidade Recuperação Judicial': st.column_config.NumberColumn('Pena RJ', format='%.1f')
         }
 
         st.dataframe(
@@ -864,7 +863,7 @@ def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFra
             column_config=column_config
         )
         
-        fig = px.bar(av_display.sort_values('Pontuação Final'), x='Pontuação Final', y='Subsetor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
+        fig = px.bar(av_display, x='Pont. Final', y='Setor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
@@ -973,8 +972,8 @@ Abaixo, apresentamos uma análise qualitativa de cada setor, com motivos para in
     # Exibir análise setorial ordenada pelo CSV
     if not av_setor.empty:
         for _, row in av_display.iterrows():
-            subsetor = row['Subsetor']
-            pontuacao = row['Pontuação Final']
+            subsetor = row['Setor']
+            pontuacao = row['Pont. Final']
             desc = sector_descriptions.get(subsetor, {
                 "Por que investir?": "Informações específicas não disponíveis. Setor pode oferecer oportunidades dependendo das condições de mercado.",
                 "Por que não investir?": "Riscos específicos não detalhados. Considere avaliar a volatilidade e a estabilidade de dividendos."
@@ -991,6 +990,7 @@ Abaixo, apresentamos uma análise qualitativa de cada setor, com motivos para in
     else:
         st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
     
+
 def render_tab_recuperacao_judicial(all_data: dict):
     st.header("⚖️ Recuperação Judicial e Falências")
     rj_df = all_data.get('rj', pd.DataFrame())
@@ -1042,10 +1042,9 @@ def render_tab_recuperacao_judicial(all_data: dict):
     )
 
     st.subheader("Como a penalidade é calculada?")
-    st.markdown("""
     A pontuação de cada setor é penalizada para refletir o risco com base no seu histórico de recuperações judiciais e falências.
-    """)
-
+    """
+    st.markdown("A pontuação de cada setor é penalizada para refletir o risco com base no seu histórico de recuperações judiciais e falências.")
     col1, col2 = st.columns(2)
     with col1:
         st.metric("Mínimo de ocorrências em um setor", f"{min_ocorrencias}")
@@ -1064,7 +1063,7 @@ def render_tab_recuperacao_judicial(all_data: dict):
         Penalidade Ajustada = Penalidade Normalizada * 20
         ```
     3.  **Aplicação**: A penalidade ajustada é subtraída da pontuação original do setor.
-    """)
+    """
 
     st.divider()
     st.subheader(f"Lista de Empresas ({len(rj_df)} encontradas)")

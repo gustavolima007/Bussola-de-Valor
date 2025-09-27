@@ -412,12 +412,12 @@ def main() -> None:
         score_original=('score_total', 'mean')
     ).reset_index()
 
-    # Contagem de empresas com score > 150
-    boas = merged_df[merged_df['score_total'] > 150].groupby('subsetor_b3').size().reset_index(name='empresas_boas_contagem')
+    # Contagem de empresas com score > 200
+    boas = merged_df[merged_df['score_total'] > 200].groupby('subsetor_b3').size().reset_index(name='empresas_boas_contagem')
     subsetor_stats = pd.merge(subsetor_stats, boas, on='subsetor_b3', how='left')
 
-    # Contagem de empresas com score < 50
-    ruins = merged_df[merged_df['score_total'] < 50].groupby('subsetor_b3').size().reset_index(name='empresas_ruins_contagem')
+    # Contagem de empresas com score < 100
+    ruins = merged_df[merged_df['score_total'] < 100].groupby('subsetor_b3').size().reset_index(name='empresas_ruins_contagem')
     subsetor_stats = pd.merge(subsetor_stats, ruins, on='subsetor_b3', how='left')
 
     # Contagem de empresas em RJ

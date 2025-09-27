@@ -1,19 +1,6 @@
-* Validar valores de ciclo de mercado
 
-
-
-* Arrumar dividendo estragado da Americana de 62 reais
-
-* Incluir todos os setores?
 
 Criar grupos de perfis: Exemplo, setores perenes
-
-* Extrair apenas empresas, coisas do yfinance fazer depois.
-
-* Novas bibliotecas para melhorar extração
-requests-cache: cacheia chamadas HTTP (brapi/yfinance), reduzindo latência e rate-limits.
-tenacity ou backoff: retries com espera exponencial nas consultas (robustez de rede).
-loguru + rich: logs claros, coloridos e com rastreio de erros fácil de ler.
 
 
 # Setores Besst:
