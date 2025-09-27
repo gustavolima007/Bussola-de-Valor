@@ -414,7 +414,7 @@ def render_tab_analise_individual(df: pd.DataFrame):
 
 def render_tab_guia():
     st.header("🧭 Guia da Bússola de Valor")
-        st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
+    st.markdown("Entenda a metodologia por trás do score e dos conceitos de investimento baseados nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.")
     
     st.subheader("Critérios de Pontuação (Score) - Máximo de 500 pontos")
     st.markdown('''
