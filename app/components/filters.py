@@ -35,7 +35,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     # --- Inicialização do Session State ---
     if 'filters_initialized' not in st.session_state:
         st.session_state.perfil_filtro = perfis_default
-        st.session_state.score_range = (200, 500)
+        st.session_state.score_range = (200, 1000)
         st.session_state.subsetor_score_min = 200
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
@@ -45,7 +45,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     # --- Callbacks dos Botões ---
     def clear_filters():
         st.session_state.perfil_filtro = perfis_disponiveis
-        st.session_state.score_range = (0, 500)
+        st.session_state.score_range = (0, 1000)
         st.session_state.subsetor_score_min = 0
         st.session_state.dy_min = 0.0
         st.session_state.dy_5y_min = 0.0
@@ -53,7 +53,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
 
     def recommend_filters():
         st.session_state.perfil_filtro = perfis_recomendados
-        st.session_state.score_range = (200, 500)
+        st.session_state.score_range = (200, 1000)
         st.session_state.subsetor_score_min = 200
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
@@ -62,8 +62,8 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     # --- Renderização dos Widgets ---
     perfil_filtro = st.sidebar.multiselect("Perfil da Ação (Reais)", perfis_disponiveis, key='perfil_filtro')
     ticker_foco_val = st.sidebar.selectbox("Ticker em Foco (opcional)", ticker_foco_opt, key='ticker_foco')
-    score_range = st.sidebar.slider("Faixa de Score", 0, 500, key='score_range')
-    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 500, key='subsetor_score_min')
+    score_range = st.sidebar.slider("Faixa de Score", 0, 1000, value=(st.session_state.get('score_range', (0, 1000)) if isinstance(st.session_state.get('score_range', (0, 1000)), tuple) else (0, 1000)), key='score_range')
+    subsetor_score_min = st.sidebar.slider("Pontuação Mínima do Setor", 0, 1000, key='subsetor_score_min')
     dy_min = st.sidebar.slider("DY 12 Meses Mínimo (%)", 0.0, 20.0, key='dy_min', step=0.1)
     dy_5y_min = st.sidebar.slider("DY 5 Anos Mínimo (%)", 0.0, 20.0, key='dy_5y_min', step=0.1)
 
@@ -74,7 +74,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     # --- Lógica de Filtragem ---
     df_filtrado = df[
         (df['Perfil da Ação'].isin(perfil_filtro)) &
-        (df['Score Total'].between(score_range[0], score_range[1])) &
+        (df['Pontuação'].between(score_range[0], score_range[1])) &
         (df['DY (Taxa 12m, %)'] >= dy_min) &
         (df['DY 5 Anos Média (%)'] >= dy_5y_min) &
         (df['pontuacao_final'].fillna(0) >= subsetor_score_min)
@@ -84,17 +84,17 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     if ticker_foco:
         df_filtrado = df_filtrado[df_filtrado['Ticker'] == ticker_foco]
 
-    df_filtrado = df_filtrado.sort_values(by='Score Total', ascending=False)
+    df_filtrado = df_filtrado.sort_values(by='Pontuação', ascending=False)
 
     # --- Índices ---
     st.sidebar.header("📈 Índices")
-    overall_score = df['Score Total'].mean()
-    st.sidebar.metric(label="Pontuação Geral do Mercado", value=f"{overall_score:.2f}", help="Média da pontuação de todas as ações (Máx: 300)")
+    overall_score = df['Pontuação'].mean()
+    st.sidebar.metric(label="Pontuação Geral do Mercado", value=f"{overall_score:.2f}", help="Média da pontuação de todas as ações (Máx: 1000)")
 
     sector_scores = all_data.get('avaliacao_setor', pd.DataFrame())
     if not sector_scores.empty and 'pontuacao_final' in sector_scores.columns:
         avg_sector_score = sector_scores['pontuacao_final'].mean()
-        st.sidebar.metric(label="Pontuação Média dos Setores", value=f"{avg_sector_score:.2f}", help="Média da pontuação de todos os setores (Máx: 200)")
+        st.sidebar.metric(label="Pontuação Média dos Setores", value=f"{avg_sector_score:.2f}", help="Média da pontuação de todos os setores (Máx: 1000)")
 
     index_labels = {
         "iShares Ibovespa": "Ibovespa (BOVA11)",

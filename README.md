@@ -21,122 +21,155 @@ Este projeto utiliza um stack tecnológico moderno e integrado para coleta, arma
 
 ## 🧠 Filosofia do Investidor Inteligente
 
-### Critérios de Pontuação (Score)
-A pontuação de cada ação soma critérios fundamentalistas e técnicos, com a seguinte distribuição de pontos:
+### Critérios de Pontuação (Score) – Ações (Máximo 1000 pontos)
 
-1.  **Dividend Yield (DY) – até 83 pts**
-    -   DY 12 meses: >5% (+33 pts), 3.5%-5% (+25 pts), 2%-3.5% (+17 pts), <2% (-8 pts)
-    -   DY média 5 anos: >10% (+50 pts), 8%-10% (+42 pts), 6%-8% (+33 pts), 4%-6% (+17 pts)
+Dividend Yield (DY) – até 200 pts (20%)
 
-2.  **Valuation (P/L e P/VP) – até 100 pts**
-    -   P/L: <12 (+25 pts), 12-18 (+17 pts), >25 (-8 pts)
-    -   P/VP: <0.50 (+75 pts), 0.50-0.66 (+67 pts), 0.66-1.00 (+50 pts), 1.00-1.50 (+25 pts), 1.50-2.50 (+8 pts), >4.00 (-17 pts)
+DY 12 meses: &gt;5% (+60 pts), 3.5%-5% (+45 pts), 2%-3.5% (+30 pts), &lt;2% (-20 pts)
+DY média 5 anos: &gt;10% (+120 pts), 8%-10% (+100 pts), 6%-8% (+80 pts), 4%-6% (+40 pts), &lt;3% (-20 pts), &lt;1% (-30 pts)
 
-3.  **Rentabilidade e Gestão (ROE e Payout) – até 58 pts**
-    -   ROE (Setor Financeiro): >15% (+42 pts), 12%-15% (+33 pts), 8%-12% (+17 pts)
-    -   ROE (Outros Setores): >12% (+25 pts), 8%-12% (+8 pts)
-    -   Payout: 30%-60% (+17 pts), 60%-80% (+8 pts), <20% ou >80% (-8 pts)
 
-4.  **Saúde Financeira (Endividamento e Liquidez) – até 67 pts**
-    -   Dívida/Market Cap: <0.3 (+25 pts), 0.3-0.7 (+17 pts), >1.5 (-17 pts)
-    -   Dívida/EBITDA: <1 (+25 pts), 1-3 (+8 pts), >5 (-17 pts)
-    -   Current Ratio: >2 (+17 pts), 1-2 (+8 pts), <1 (-8 pts)
+Valuation (P/L e P/VP) – até 180 pts (18%)
 
-5.  **Crescimento e Sentimento – até 42 pts**
-    -   Crescimento Preço 5 Anos: >15% (+25 pts), 10%-15% (+17 pts), 5%-10% (+8 pts), <0% (-8 pts)
-    -   Sentimento do Mercado: -8 a +17 pts (proporcional)
+P/L: &lt;12 (+45 pts), 12-18 (+30 pts), &gt;25 (-15 pts)
+P/VP: &lt;0.50 (+135 pts), 0.50-0.66 (+120 pts), 0.66-1.00 (+90 pts), 1.00-1.50 (+45 pts), 1.50-2.50 (+15 pts), &gt;4.00 (-30 pts)
 
-6.  **Ciclo de Mercado (Timing) – de -33 a +33 pts**
-    -   Compra (Pânico / Medo Extremo): +33 pontos
-    -   Venda (Euforia / Ganância Extrema): -33 pontos
 
-7.  **Fórmula de Graham (Margem de Segurança) – de -33 a +67 pts**
-    -   Margem > 200%: +67 pontos
-    -   Margem 150% a 200%: +58 pontos
-    -   Margem 100% a 150%: +50 pontos
-    -   Margem 50% a 100%: +33 pontos
-    -   Margem 20% a 50%: +17 pontos
-    -   Margem 0% a 20%: +8 pontos
-    -   Margem < 0%: -33 pontos
+Rentabilidade e Gestão (ROE e Payout) – até 110 pts (11%)
 
-8.  **Volatilidade (Beta) – de -17 a +17 pts**
-    -   Beta < 1: +17 pontos
-    -   Beta > 1.5: -17 pontos
+ROE (Setor Financeiro): &gt;15% (+80 pts), 12%-15% (+60 pts), 8%-12% (+30 pts)
+ROE (Outros Setores): &gt;12% (+45 pts), 8%-12% (+15 pts)
+Payout: 30%-60% (+30 pts), 60%-80% (+15 pts), &lt;20% ou &gt;80% (-15 pts)
 
-9.  **Capitalização de Mercado – até 17 pts**
-    -   Blue Cap: +17 pts
-    -   Mid Cap: +12 pts
-    -   Small Cap: +7 pts
 
-10. **Liquidez Média Diária – até 17 pts**
-    -   > R$ 50 milhões/dia: +17 pts
-    -   R$ 20M – R$ 50M/dia: +12 pts
-    -   R$ 5M – R$ 20M/dia: +7 pts
+Saúde Financeira (Endividamento e Liquidez) – até 130 pts (13%)
 
-11. **Geração de Caixa (FCF Yield) – até 17 pts**
-    -   > 8%: +17 pontos
-    -   5%–8%: +8 pontos
+Dívida/Market Cap: &lt;0.3 (+45 pts), 0.3-0.7 (+30 pts), &gt;1.5 (-30 pts)
+Dívida/EBITDA: &lt;1 (+45 pts), 1-3 (+15 pts), &gt;5 (-30 pts)
+Current Ratio: &gt;2 (+40 pts), 1-2 (+20 pts), &lt;1 (-15 pts)
+
+
+Crescimento e Sentimento – até 90 pts (9%)
+
+Crescimento Preço 5 Anos: &gt;15% (+50 pts), 10%-15% (+35 pts), 5%-10% (+20 pts), &lt;0% (-20 pts)
+Sentimento do Mercado: -20 a +40 pts (proporcional)
+
+
+Ciclo de Mercado (Timing) – de -70 a +70 pts (7%)
+
+Compra (Pânico / Medo Extremo): +70 pontos
+Venda (Euforia / Ganância Extrema): -70 pontos
+
+
+Fórmula de Graham (Margem de Segurança) – de -70 a +150 pts (15%)
+
+Margem &gt; 200%: +150 pontos
+Margem 150% a 200%: +130 pontos
+Margem 100% a 150%: +110 pontos
+Margem 50% a 100%: +70 pontos
+Margem 20% a 50%: +35 pontos
+Margem 0% a 20%: +20 pontos
+Margem &lt; 0%: -70 pontos
+
+
+Volatilidade (Beta) – de -35 a +35 pts (3.5%)
+
+Beta &lt; 1: +35 pontos
+Beta &gt; 1.5: -35 pontos
+
+
+Capitalização de Mercado – até 35 pts (3.5%)
+
+Blue Cap: +35 pts
+Mid Cap: +25 pts
+Small Cap: +15 pts
+
+
+**Liquidez Média Diária – até 35 pts (3.5%)**
+- > R$ 50 milhões/dia: +35 pts
+- R$ 20M – R$ 50M/dia: +25 pts
+- R$ 5M – R$ 20M/dia: +15 pts
+
+
+**Geração de Caixa (FCF Yield) – até 35 pts (3.5%)**
+- > 8%: +35 pontos
+- 5%–8%: +20 pontos
 
 ---
 
-### Análise e Pontuação de Setores
+### Pontuação de Setores (Máximo 1000 pontos)
+1. Pontuação do Subsetor
 
-Para evitar a compra de "cascudos" (ações de empresas ruins em setores problemáticos), o Bússola de Valor aplica uma análise criteriosa sobre o desempenho geral de cada setor e subsetor da bolsa. A pontuação final de um setor é uma soma de múltiplos fatores que refletem não apenas o score individual das empresas, mas também a saúde e o histórico do ecossistema em que elas operam.
+Componentes Positivos (Máximo 1000 pontos):
 
-O cálculo é feito em duas etapas:
+Score Original (score_original) – até 550 pts (55%): Média do Score Total das empresas do subsetor.
+Score de Dividend Yield (score_dy) – até 150 pts (15%): Bônus ou penalidade com base na média de Dividend Yield dos últimos 5 anos (dy_5a_medio).
 
-**1. Pontuação do Subsetor**
+&gt;= 10%: +150 pontos
+8% a 10%: +120 pontos
+6% a 8%: +90 pontos
+4% a 6%: +60 pontos
+2% a 4%: -30 pontos
+&lt; 2%: -60 pontos
+&lt; 1%: -90 pontos
 
-Cada subsetor (ex: "Energia Elétrica", "Intermediários Financeiros") recebe uma `pontuacao_final` que é a soma dos seguintes componentes:
 
-*   **Componentes Positivos (Máximo de 500 pontos)**:
-    *   **Score Original (`score_original`)**: A média do `Score Total` de todas as empresas do subsetor. Pontuação máxima: **300 pontos**.
-    *   **Score de Dividend Yield (`score_dy`)**: Bônus ou penalidade com base na média de Dividend Yield dos últimos 5 anos (`dy_5a_medio`). Pontuação máxima: **50 pontos**.
-        *   `>= 10%`: **+50 pontos**
-        *   `8% a 10%`: **+40 pontos**
-        *   `6% a 8%`: **+30 pontos**
-        *   `4% a 6%`: **+20 pontos**
-        *   `2% a 4%`: **-10 pontos**
-        *   `< 2%`: **-20 pontos**
-    *   **Score de ROE (`score_roe`)**: Bônus baseado no Retorno sobre o Patrimônio Líquido médio (`roe_medio`). Pontuação máxima: **40 pontos**.
-        *   `> 25%`: **+40 pontos**
-        *   `20% a 25%`: **+30 pontos**
-        *   `15% a 20%`: **+20 pontos**
-        *   `10% a 15%`: **+10 pontos**
-    *   **Score de Beta (`score_beta`)**: Bônus ou penalidade baseado na volatilidade média do subsetor (`beta_medio`). Pontuação máxima: **20 pontos**.
-        *   `< 0.8`: **+20 pontos**
-        *   `0.8 a 1.2`: **+10 pontos**
-        *   `> 1.5`: **-10 pontos**
-    *   **Score de Payout (`score_payout`)**: Bônus baseado na média de Payout (`payout_medio`). Pontuação máxima: **20 pontos**.
-        *   `30% a 60%`: **+20 pontos**
-        *   `20% a 30%` ou `60% a 80%`: **+10 pontos**
-    *   **Bônus por Empresas Boas (`score_empresas_boas`)**: Bônus pela quantidade de empresas com `Score Total` > 150. Pontuação máxima: **40 pontos**.
-        *   `>= 8 empresas`: **+40 pontos**
-        *   `6 a 7 empresas`: **+30 pontos**
-        *   `3 a 5 empresas`: **+20 pontos**
-        *   `1 a 2 empresas`: **+10 pontos**
-    *   **Score de Graham (`score_graham`)**: Bônus baseado na média da margem de segurança de Graham (`margem_graham_media`). Pontuação máxima: **30 pontos**.
-        *   `> 150%`: **+30 pontos**
-        *   `100% a 150%`: **+20 pontos**
-        *   `50% a 100%`: **+10 pontos**
+Score de ROE (score_roe) – até 75 pts (7.5%): Bônus baseado no Retorno sobre o Patrimônio Líquido médio (roe_medio).
 
-*   **Penalidades**:
-    *   **Penalidade por Empresas Ruins (`penalidade_empresas_ruins`)**: Penalidade pela quantidade de empresas com `Score Total` < 50.
-        *   `>= 6 empresas`: **-30 pontos**
-        *   `3 a 5 empresas`: **-20 pontos**
-        *   `1 a 2 empresas`: **-10 pontos**
-    *   **Penalidade por Recuperação Judicial (`penalidade_rj`)**: Penalidade de até **-40 pontos** baseada no número de empresas em Recuperação Judicial no subsetor.
+&gt; 25%: +75 pontos
+20% a 25%: +55 pontos
+15% a 20%: +35 pontos
+10% a 15%: +20 pontos
 
-**Fórmula e Pontuação Máxima:**
 
-A soma dos componentes positivos é limitada a **500 pontos**. A pontuação final é calculada como:
-`pontuacao_final = min(Soma dos Componentes Positivos, 500) + penalidade_empresas_ruins + penalidade_rj`
+Score de Beta (score_beta) – até 35 pts (3.5%): Bônus ou penalidade baseado na volatilidade média do subsetor (beta_medio).
 
-**2. Pontuação do Setor**
+&lt; 0.8: +35 pontos
+0.8 a 1.2: +20 pontos
+&gt; 1.5: -20 pontos
 
-A pontuação do setor principal (ex: "Financeiro", "Utilidade Pública") é a média das `pontuacao_final` de todos os seus subsetores.
 
-Essa abordagem permite identificar setores resilientes e com bom histórico, ao mesmo tempo que alerta para aqueles com riscos sistêmicos ou má fama, ajudando o investidor a "pescar no aquário certo".
+Score de Payout (score_payout) – até 35 pts (3.5%): Bônus baseado na média de Payout (payout_medio).
+
+30% a 60%: +35 pontos
+20% a 30% ou 60% a 80%: +20 pontos
+
+
+Bônus por Empresas Boas (score_empresas_boas) – até 75 pts (7.5%): Bônus pela quantidade de empresas com Score Total &gt; 300.
+
+&gt;= 8 empresas: +75 pontos
+6 a 7 empresas: +55 pontos
+3 a 5 empresas: +35 pontos
+1 a 2 empresas: +20 pontos
+
+
+Score de Graham (score_graham) – até 55 pts (5.5%): Bônus baseado na média da margem de segurança de Graham (margem_graham_media).
+
+&gt; 150%: +55 pontos
+100% a 150%: +35 pontos
+50% a 100%: +20 pontos
+
+
+
+
+Penalidades:
+
+Penalidade por Empresas Ruins (penalidade_empresas_ruins) – até -60 pts (6%): Penalidade pela quantidade de empresas com Score Total &lt; 100.
+
+&gt;= 6 empresas: -60 pontos
+3 a 5 empresas: -40 pontos
+1 a 2 empresas: -20 pontos
+
+
+Penalidade por Recuperação Judicial (penalidade_rj) – até -80 pts (8%): Penalidade baseada no número de empresas em Recuperação Judicial no subsetor.
+
+
+
+Fórmula e Pontuação Máxima:
+A soma dos componentes positivos é limitada a 1000 pontos. A pontuação final é calculada como:
+pontuacao_final = min(Soma dos Componentes Positivos, 1000) + penalidade_empresas_ruins + penalidade_rj
+2. Pontuação do Setor
+A pontuação do setor principal é a média das pontuacao_final de todos os seus subsetores.
 
 ---
 

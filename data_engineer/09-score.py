@@ -70,175 +70,173 @@ def load_and_prepare_data() -> pd.DataFrame:
 def score_dy(dy_12m, dy_5a):
     """Pontuação baseada no Dividend Yield."""
     score = 0
-    # DY 12 meses: >5% (+33 pts), 3.5%-5% (+25 pts), 2%-3.5% (+17 pts), <2% (-8 pts)
+    # DY 12 meses: >5% (+60 pts), 3.5%-5% (+45 pts), 2%-3.5% (+30 pts), <2% (-20 pts)
     if pd.notna(dy_12m):
-        if dy_12m > 5: score += 33
-        elif dy_12m > 3.5: score += 25
-        elif dy_12m > 2: score += 17
-        elif dy_12m < 2 and dy_12m > 0: score -= 8
-    # DY média 5 anos: >10% (+50 pts), 8%-10% (+42 pts), 6%-8% (+33 pts), 4%-6% (+17 pts)
+        if dy_12m > 5: score += 60
+        elif dy_12m > 3.5: score += 45
+        elif dy_12m > 2: score += 30
+        elif dy_12m < 2 and dy_12m > 0: score -= 20
+    # DY média 5 anos: >10% (+120 pts), 8%-10% (+100 pts), 6%-8% (+80 pts), 4%-6% (+40 pts), <3% (-20 pts), <1% (-30 pts)
     if pd.notna(dy_5a):
-        if dy_5a > 10: score += 50
-        elif dy_5a > 8: score += 42
-        elif dy_5a > 6: score += 33
-        elif dy_5a > 4: score += 17
+        if dy_5a > 10: score += 120
+        elif dy_5a > 8: score += 100
+        elif dy_5a > 6: score += 80
+        elif dy_5a > 4: score += 40
+        elif dy_5a < 3 and dy_5a > 1: score -= 20
+        elif dy_5a <= 1: score -= 30
     return score
 
 def score_payout(payout):
     """Pontuação para o Payout Ratio."""
-    # Payout: 30%-60% (+17 pts), 60%-80% (+8 pts), <20% ou >80% (-8 pts)
+    # Payout: 30%-60% (+30 pts), 60%-80% (+15 pts), <20% ou >80% (-15 pts)
     if pd.isna(payout): return 0
-    if 30 <= payout <= 60: return 17
-    if 60 < payout <= 80: return 8
-    if (payout > 0 and payout < 20) or payout > 80: return -8
+    if 30 <= payout <= 60: return 30
+    if 60 < payout <= 80: return 15
+    if (payout > 0 and payout < 20) or payout > 80: return -15
     return 0
 
 def score_roe(roe, setor):
     """Pontuação para o ROE, com lógica diferente para o setor financeiro."""
     if pd.isna(roe): return 0
     is_finance = 'finance' in str(setor).lower()
-    # ROE (Setor Financeiro): >15% (+42 pts), 12%-15% (+33 pts), 8%-12% (+17 pts)
+    # ROE (Setor Financeiro): >15% (+80 pts), 12%-15% (+60 pts), 8%-12% (+30 pts)
     if is_finance:
-        if roe > 15: return 42
-        if roe > 12: return 33
-        if roe > 8: return 17
-    # ROE (Outros Setores): >12% (+25 pts), 8%-12% (+8 pts)
+        if roe > 15: return 80
+        if roe > 12: return 60
+        if roe > 8: return 30
+    # ROE (Outros Setores): >12% (+45 pts), 8%-12% (+15 pts)
     else:
-        if roe > 12: return 25
-        if roe > 8: return 8
+        if roe > 12: return 45
+        if roe > 8: return 15
     return 0
 
 def score_pl_pvp(pl, pvp):
     """Pontuação combinada para P/L e P/VP."""
     score = 0
-    # P/L: <12 (+25 pts), 12-18 (+17 pts), >25 (-8 pts)
+    # P/L: <12 (+45 pts), 12-18 (+30 pts), >25 (-15 pts)
     if pd.notna(pl) and pl > 0:
-        if pl < 12: score += 25
-        elif pl < 18: score += 17
-        elif pl > 25: score -= 8
-    # P/VP: <0.50 (+75 pts), 0.50-0.66 (+67 pts), 0.66-1.00 (+50 pts), 1.00-1.50 (+25 pts), 1.50-2.50 (+8 pts), >4.00 (-17 pts)
+        if pl < 12: score += 45
+        elif pl < 18: score += 30
+        elif pl > 25: score -= 15
+    # P/VP: <0.50 (+135 pts), 0.50-0.66 (+120 pts), 0.66-1.00 (+90 pts), 1.00-1.50 (+45 pts), 1.50-2.50 (+15 pts), >4.00 (-30 pts)
     if pd.notna(pvp) and pvp > 0:
-        if pvp < 0.50: score += 75
-        elif pvp < 0.66: score += 67
-        elif pvp < 1.00: score += 50
-        elif pvp < 1.50: score += 25
-        elif pvp < 2.50: score += 8
-        elif pvp > 4.00: score -= 17
+        if pvp < 0.50: score += 135
+        elif pvp < 0.66: score += 120
+        elif pvp < 1.00: score += 90
+        elif pvp < 1.50: score += 45
+        elif pvp < 2.50: score += 15
+        elif pvp > 4.00: score -= 30
     return score
 
 def score_divida(div_mc, div_ebitda, current_ratio, subsetor):
     """Pontuação para os indicadores de endividamento."""
     if 'finance' in str(subsetor).lower(): return 0
     score = 0
-    # Dívida/Market Cap: <0.3 (+25 pts), 0.3-0.7 (+17 pts), >1.5 (-17 pts)
+    # Dívida/Market Cap: <0.3 (+45 pts), 0.3-0.7 (+30 pts), >1.5 (-30 pts)
     if pd.notna(div_mc):
-        if div_mc < 0.3: score += 25
-        elif div_mc < 0.7: score += 17
-        elif div_mc > 1.5: score -= 17
-    # Dívida/EBITDA: <1 (+25 pts), 1-3 (+8 pts), >5 (-17 pts)
+        if div_mc < 0.3: score += 45
+        elif div_mc < 0.7: score += 30
+        elif div_mc > 1.5: score -= 30
+    # Dívida/EBITDA: <1 (+45 pts), 1-3 (+15 pts), >5 (-30 pts)
     if pd.notna(div_ebitda) and div_ebitda > 0:
-        if div_ebitda < 1: score += 25
-        elif div_ebitda < 3: score += 8
-        elif div_ebitda > 5: score -= 17
-    # Current Ratio: >2 (+17 pts), 1-2 (+8 pts), <1 (-8 pts)
+        if div_ebitda < 1: score += 45
+        elif div_ebitda < 3: score += 15
+        elif div_ebitda > 5: score -= 30
+    # Current Ratio: >2 (+40 pts), 1-2 (+20 pts), <1 (-15 pts)
     if pd.notna(current_ratio):
-        if current_ratio > 2: score += 17
-        elif current_ratio > 1: score += 8
-        else: score -= 8
+        if current_ratio > 2: score += 40
+        elif current_ratio > 1: score += 20
+        else: score -= 15
     return score
 
 def score_crescimento_sentimento(crescimento, sentimento):
     """Pontuação para crescimento de preço e sentimento de mercado."""
     score = 0
-    # Crescimento Preço 5 Anos: >15% (+25 pts), 10%-15% (+17 pts), 5%-10% (+8 pts), <0% (-8 pts)
+    # Crescimento Preço 5 Anos: >15% (+50 pts), 10%-15% (+35 pts), 5%-10% (+20 pts), <0% (-20 pts)
     if pd.notna(crescimento):
-        if crescimento > 15: score += 25
-        elif crescimento > 10: score += 17
-        elif crescimento > 5: score += 8
-        elif crescimento < 0: score -= 8
-    # Sentimento do Mercado: -8 a +17 pts (proporcional)
+        if crescimento > 15: score += 50
+        elif crescimento > 10: score += 35
+        elif crescimento > 5: score += 20
+        elif crescimento < 0: score -= 20
+    # Sentimento do Mercado: -20 a +40 pts (proporcional)
     if pd.notna(sentimento):
-        # Mapeia o sentimento (0-100) para o intervalo de pontos (-8 a +17)
-        score += (sentimento / 100.0) * 25 - 8
+        # Mapeia o sentimento (0-100) para o intervalo de pontos (-20 a +40)
+        score += (sentimento / 100.0) * 60 - 20
     return score
 
 def score_ciclo_mercado(status_ciclo):
     """Pontuação baseada no status do ciclo de mercado."""
     if pd.isna(status_ciclo): return 0
-    # Compra (Pânico / Medo Extremo): +33 pontos
-    if status_ciclo == 'Compra': return 33
-    # Venda (Euforia / Ganância Extrema): -33 pontos
-    if status_ciclo == 'Venda': return -33
-    # 'Observação' ou qualquer outro valor
+    # Compra (Pânico / Medo Extremo): +70 pontos
+    if status_ciclo == 'Compra': return 70
+    # Venda (Euforia / Ganância Extrema): -70 pontos
+    if status_ciclo == 'Venda': return -70
     return 0
 
 def score_graham(preco_atual, lpa, vpa):
     """Pontuação baseada na Margem de Segurança da Fórmula de Graham."""
-    # A fórmula só é válida para empresas lucrativas (LPA > 0) e com patrimônio positivo (VPA > 0)
     if pd.isna(preco_atual) or pd.isna(lpa) or pd.isna(vpa) or lpa <= 0 or vpa <= 0 or preco_atual <= 0:
         return 0
 
     try:
-        # Fórmula de Graham: Valor Intrínseco = Raiz(22.5 * LPA * VPA)
         numero_graham = (22.5 * lpa * vpa) ** 0.5
-        # Margem de Segurança = (Valor Intrínseco / Preço Atual) - 1
         margem_seguranca = (numero_graham / preco_atual) - 1
     except (ValueError, TypeError):
         return 0
 
-    # Margem > 200%: +67 pontos
-    if margem_seguranca > 2.0: return 67
-    # Margem 150% a 200%: +58 pontos
-    if margem_seguranca > 1.5: return 58
-    # Margem 100% a 150%: +50 pontos
-    if margem_seguranca > 1.0: return 50
-    # Margem 50% a 100%: +33 pontos
-    if margem_seguranca > 0.5: return 33
-    # Margem 20% a 50%: +17 pontos
-    if margem_seguranca > 0.2: return 17
-    # Margem 0% a 20%: +8 pontos
-    if margem_seguranca > 0: return 8
-    # Margem < 0%: -33 pontos
-    return -33
+    # Margem > 200%: +150 pontos
+    if margem_seguranca > 2.0: return 150
+    # Margem 150% a 200%: +130 pontos
+    if margem_seguranca > 1.5: return 130
+    # Margem 100% a 150%: +110 pontos
+    if margem_seguranca > 1.0: return 110
+    # Margem 50% a 100%: +70 pontos
+    if margem_seguranca > 0.5: return 70
+    # Margem 20% a 50%: +35 pontos
+    if margem_seguranca > 0.2: return 35
+    # Margem 0% a 20%: +20 pontos
+    if margem_seguranca > 0: return 20
+    # Margem < 0%: -70 pontos
+    return -70
 
 def score_beta(beta):
     """Pontuação baseada na volatilidade (Beta)."""
     if pd.isna(beta): return 0
-    # Beta < 1: +17 pontos
-    if beta < 1.0: return 17
-    # Beta > 1.5: -17 pontos
-    if beta > 1.5: return -17
+    # Beta < 1: +35 pontos
+    if beta < 1.0: return 35
+    # Beta > 1.5: -35 pontos
+    if beta > 1.5: return -35
     return 0
 
 def score_market_cap(market_cap):
     """Pontuação baseada na Capitalização de Mercado."""
     if pd.isna(market_cap): return 0
-    # Blue Cap: +17 pts
-    if market_cap > 50_000_000_000: return 17
-    # Mid Cap: +12 pts
-    if market_cap > 10_000_000_000: return 12
-    # Small Cap: +7 pts
-    if market_cap > 2_000_000_000:  return 7
+    # Blue Cap: +35 pts
+    if market_cap > 50_000_000_000: return 35
+    # Mid Cap: +25 pts
+    if market_cap > 10_000_000_000: return 25
+    # Small Cap: +15 pts
+    if market_cap > 2_000_000_000:  return 15
     return 0
 
 def score_liquidez(liquidez):
     """Pontuação baseada na Liquidez Média Diária."""
     if pd.isna(liquidez): return 0
-    # > R$ 50 milhões/dia: +17 pts
-    if liquidez > 50_000_000: return 17
-    # R$ 20M – R$ 50M/dia: +12 pts
-    if liquidez > 20_000_000: return 12
-    # R$ 5M – R$ 20M/dia: +7 pts
-    if liquidez > 5_000_000:  return 7
+    # > R$ 50 milhões/dia: +35 pts
+    if liquidez > 50_000_000: return 35
+    # R$ 20M – R$ 50M/dia: +25 pts
+    if liquidez > 20_000_000: return 25
+    # R$ 5M – R$ 20M/dia: +15 pts
+    if liquidez > 5_000_000:  return 15
     return 0
 
 def score_fcf_yield(fcf_yield):
     """Pontuação baseada no Free Cash Flow Yield."""
     if pd.isna(fcf_yield): return 0
-    # > 8%: +17 pontos
-    if fcf_yield > 8: return 17
-    # 5%–8%: +8 pontos
-    if fcf_yield > 5: return 8
+    # > 8%: +35 pontos
+    if fcf_yield > 8: return 35
+    # 5%–8%: +20 pontos
+    if fcf_yield > 5: return 20
     return 0
 
 # --- Função Principal de Execução ---

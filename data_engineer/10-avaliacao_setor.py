@@ -294,48 +294,50 @@ def mapear_setores_b3(df):
 # --- Funções de Cálculo de Score por Critério ---
 
 def calcular_score_dy(dy_5a_medio):
-    if dy_5a_medio >= 10: return 50
-    if 8 <= dy_5a_medio < 10: return 40
-    if 6 <= dy_5a_medio < 8: return 30
-    if 4 <= dy_5a_medio < 6: return 20
-    if 2 <= dy_5a_medio < 4: return -10
-    return -20
+    if dy_5a_medio >= 10: return 150
+    if 8 <= dy_5a_medio < 10: return 120
+    if 6 <= dy_5a_medio < 8: return 90
+    if 4 <= dy_5a_medio < 6: return 60
+    if 2 <= dy_5a_medio < 4: return -30
+    if dy_5a_medio < 2: return -60
+    if dy_5a_medio < 1: return -90
+    return 0
 
 def calcular_score_roe(roe_medio):
-    if roe_medio > 25: return 40
-    if 20 <= roe_medio <= 25: return 30
-    if 15 <= roe_medio < 20: return 20
-    if 10 <= roe_medio < 15: return 10
+    if roe_medio > 25: return 75
+    if 20 <= roe_medio <= 25: return 55
+    if 15 <= roe_medio < 20: return 35
+    if 10 <= roe_medio < 15: return 20
     return 0
 
 def calcular_score_beta(beta_medio):
-    if beta_medio < 0.8: return 20
-    if 0.8 <= beta_medio <= 1.2: return 10
-    if 1.2 < beta_medio <= 1.5: return 0
-    return -10
+    if beta_medio < 0.8: return 35
+    if 0.8 <= beta_medio <= 1.2: return 20
+    if beta_medio > 1.5: return -20
+    return 0
 
 def calcular_score_payout(payout_medio):
-    if 30 <= payout_medio <= 60: return 20
-    if (20 <= payout_medio < 30) or (60 < payout_medio <= 80): return 10
+    if 30 <= payout_medio <= 60: return 35
+    if (20 <= payout_medio < 30) or (60 < payout_medio <= 80): return 20
     return 0
 
 def calcular_score_empresas_boas(contagem):
-    if contagem >= 8: return 40
-    if 6 <= contagem < 8: return 30
-    if 3 <= contagem <= 5: return 20
-    if 1 <= contagem <= 2: return 10
+    if contagem >= 8: return 75
+    if 6 <= contagem < 8: return 55
+    if 3 <= contagem <= 5: return 35
+    if 1 <= contagem <= 2: return 20
     return 0
 
 def calcular_penalidade_empresas_ruins(contagem):
-    if contagem >= 6: return -30
-    if 3 <= contagem <= 5: return -20
-    if 1 <= contagem <= 2: return -10
+    if contagem >= 6: return -60
+    if 3 <= contagem <= 5: return -40
+    if 1 <= contagem <= 2: return -20
     return 0
 
 def calcular_score_graham(margem_media):
-    if margem_media > 150: return 30
-    if 100 <= margem_media <= 150: return 20
-    if 50 <= margem_media < 100: return 10
+    if margem_media > 150: return 55
+    if 100 <= margem_media <= 150: return 35
+    if 50 <= margem_media < 100: return 20
     return 0
 
 def main() -> None:
@@ -412,8 +414,8 @@ def main() -> None:
         score_original=('score_total', 'mean')
     ).reset_index()
 
-    # Contagem de empresas com score > 200
-    boas = merged_df[merged_df['score_total'] > 200].groupby('subsetor_b3').size().reset_index(name='empresas_boas_contagem')
+    # Contagem de empresas com score > 300
+    boas = merged_df[merged_df['score_total'] > 300].groupby('subsetor_b3').size().reset_index(name='empresas_boas_contagem')
     subsetor_stats = pd.merge(subsetor_stats, boas, on='subsetor_b3', how='left')
 
     # Contagem de empresas com score < 100
@@ -428,6 +430,7 @@ def main() -> None:
     subsetor_stats = subsetor_stats.fillna(0)
 
     # --- Cálculo das Pontuações por Critério ---
+    subsetor_stats['score_original'] = (subsetor_stats['score_original'] / 1000) * 550 # Ajusta o score original para o peso de 55%
     subsetor_stats['score_dy'] = subsetor_stats['dy_5a_medio'].apply(calcular_score_dy)
     subsetor_stats['score_roe'] = subsetor_stats['roe_medio'].apply(calcular_score_roe)
     subsetor_stats['score_beta'] = subsetor_stats['beta_medio'].apply(calcular_score_beta)
@@ -439,7 +442,7 @@ def main() -> None:
     # Cálculo da Penalidade de RJ (normalizada)
     max_ocorrencias = subsetor_stats['ocorrencias_rj'].max()
     if max_ocorrencias > 0:
-        subsetor_stats['penalidade_rj'] = -(subsetor_stats['ocorrencias_rj'] / max_ocorrencias * 40)
+        subsetor_stats['penalidade_rj'] = -(subsetor_stats['ocorrencias_rj'] / max_ocorrencias * 80)
     else:
         subsetor_stats['penalidade_rj'] = 0
 
@@ -449,7 +452,7 @@ def main() -> None:
         'score_empresas_boas', 'score_graham'
     ]
     subsetor_stats['pontuacao_positiva'] = subsetor_stats[positive_score_cols].sum(axis=1)
-    subsetor_stats['pontuacao_positiva'] = subsetor_stats['pontuacao_positiva'].apply(lambda x: min(x, 500))
+    subsetor_stats['pontuacao_positiva'] = subsetor_stats['pontuacao_positiva'].apply(lambda x: min(x, 1000))
 
     penalty_cols = ['penalidade_empresas_ruins', 'penalidade_rj']
     subsetor_stats['pontuacao_final'] = subsetor_stats['pontuacao_positiva'] + subsetor_stats[penalty_cols].sum(axis=1)
