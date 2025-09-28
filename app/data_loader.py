@@ -104,21 +104,21 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     try:
         scores_df = read_csv_cached(base_path / 'scores.csv')
         df = df.merge(scores_df, left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_scores'))
-        df['Pontuação'] = pd.to_numeric(df['score_total'], errors='coerce').fillna(0)
+        df['Score Total'] = pd.to_numeric(df['score_total'], errors='coerce').fillna(0)
         df['Score Details'] = df.apply(build_score_details_from_row, axis=1)
     except FileNotFoundError:
         st.info("Arquivo 'scores.csv' não encontrado. Calculando score em tempo real.")
         # Chamada para a função de cálculo em paralelo
         score_results = calculate_scores_in_parallel(df)
         # Desempacota os resultados para as colunas do DataFrame
-        df['Pontuação'] = [result[0] for result in score_results]
+        df['Score Total'] = [result[0] for result in score_results]
         df['Score Details'] = [result[1] for result in score_results]
     except Exception as e:
         st.warning(f"Não foi possível carregar 'scores.csv': {e}. Calculando score em tempo real.")
         # Chamada para a função de cálculo em paralelo
         score_results = calculate_scores_in_parallel(df)
         # Desempacota os resultados para as colunas do DataFrame
-        df['Pontuação'] = [result[0] for result in score_results]
+        df['Score Total'] = [result[0] for result in score_results]
         df['Score Details'] = [result[1] for result in score_results]
 
 

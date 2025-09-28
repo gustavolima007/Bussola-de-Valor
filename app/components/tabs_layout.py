@@ -231,8 +231,8 @@ def style_penalidade_rj_setor(val):
 
 def render_tab_rank_geral(df: pd.DataFrame):
     st.header(f"🏆 Ranking ({len(df)} ações encontradas)")
-    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço 1M', 'Val 1M', 'Preço 6M', 'Val 6M', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Pontuação']
-    df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %', 'Score Total': 'Pontuação'})
+    cols_to_display = ['Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço 1M', 'Val 1M', 'Preço 6M', 'Val 6M', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
+    df_display = df[[col for col in cols_to_display if col in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
 
     styler = df_display.style
     df_cols = df_display.columns
@@ -265,7 +265,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
             "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
             "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
             "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-            "Pontuação": st.column_config.ProgressColumn("Pontuação", format="%d", min_value=0, max_value=1000),
+            "Score Total": st.column_config.ProgressColumn("Pontuação", format="%d", min_value=0, max_value=1000),
         },
         use_container_width=True, hide_index=True
     )
@@ -276,9 +276,9 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
         'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo',
         'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)',
         'Payout Ratio (%)', 'ROE (%)', 'Dívida/Market Cap', 'Dívida/EBITDA', 'Crescimento Preço (%)',
-        'Sentimento Gauge', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'Pontuação'
+        'Sentimento Gauge', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'Score Total'
     ]
-    df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %', 'Score Total': 'Pontuação'})
+    df_display = df[[c for c in cols if c in df.columns]].rename(columns={'subsetor_b3': 'Setor', 'margem_seguranca_percent': 'Margem de Segurança %'})
     
     styler = df_display.style
     df_cols = df_display.columns
@@ -338,7 +338,7 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
             "rsi_14_1y": st.column_config.NumberColumn("RSI (Sentimento)", format="%.2f"),
             "macd_diff_1y": st.column_config.NumberColumn("MACD (Tendência)", format="%.3f"),
             "volume_1y": st.column_config.NumberColumn("Volume (Convicção)", format="%d"),
-            "Pontuação": st.column_config.ProgressColumn("Pontuação", format="%d", min_value=0, max_value=1000),
+            "Score Total": st.column_config.ProgressColumn("Pontuação", format="%d", min_value=0, max_value=1000),
         },
         use_container_width=True, 
         hide_index=True
@@ -378,8 +378,8 @@ def render_tab_analise_individual(df: pd.DataFrame):
             card_content = f'''
             <div class="analise-individual-container">
                 <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
-                    <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Pontuação</label>
-                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Pontuação', 0):.0f} / 1000</div>
+                    <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
+                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 1000</div>
                 </div>
                 {details_html}
             </div>
