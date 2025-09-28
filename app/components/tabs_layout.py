@@ -667,99 +667,20 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
         
     
 
-def render_tab_empresas_por_setor(df: pd.DataFrame, all_data: dict):
-    st.header(f"🏢 Empresas por Setor ({len(df)} ações encontradas)")
-
-    if 'subsetor_b3' not in df.columns:
-        st.warning("A coluna 'subsetor_b3' não foi encontrada no DataFrame.")
-        return
-
-    av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
-    setor_scores = {}
-    if not av_setor.empty and 'pontuacao_final' in av_setor.columns and 'subsetor_b3' in av_setor.columns:
-        setor_scores = pd.Series(av_setor.pontuacao_final.values, index=av_setor.subsetor_b3).to_dict()
-
-    setor_emojis = {
-        "Petróleo, Gás e Biocombustíveis": "⛽",
-        "Energia Elétrica": "💡",
-        "Saneamento": "💧",
-        "Bancos, Seguros e Financeiros": "🏦",
-        "Mineração e Siderurgia": "⛏️",
-        "Papel, Química e Outros": "📦",
-        "Serviços Industriais": "🏭",
-        "Máquinas e Equipamentos Industriais": "⚙️",
-        "Serviços Comerciais": "📈",
-        "Comércio Varejista": "🛒",
-        "Alimentos, Bebidas e Higiene": "🍔",
-        "Tecnologia – Hardware": "💻",
-        "Bens Duráveis (Eletro e Autos)": "🚗",
-        "Telefonia, Internet e Mídia": "📡",
-        "Tecnologia – Software": "👨‍💻",
-        "Distribuição e Comércio": "🚚",
-        "Saúde – Tecnologia e Equipamentos": "🩺",
-        "Transporte e Logística": "✈️",
-        "Saúde – Serviços Médicos": "🏥",
-        "Serviços de Educação e Turismo": "🎓"
-    }
-
-    setores = sorted(df['subsetor_b3'].unique())
-
-    for setor in setores:
-        emoji = setor_emojis.get(setor, "🏢")
-        score = setor_scores.get(setor)
-        score_text = f"| Pontuação: {score:.1f}" if score is not None else ""
-        st.subheader(f"{emoji} {setor} ({len(df[df['subsetor_b3'] == setor])} ações) {score_text}")
-        df_setor = df[df['subsetor_b3'] == setor]
-        
-        cols_to_display = ['Logo', 'Ticker', 'Empresa', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Score Total']
-        df_display = df_setor[[col for col in cols_to_display if col in df_setor.columns]].rename(columns={'margem_seguranca_percent': 'Margem de Segurança %'})
-
-        styler = df_display.style
-        df_cols = df_display.columns
-
-        dy_cols_to_style = [c for c in ['DY 5 Anos Média (%)', 'DY (Taxa 12m, %)'] if c in df_cols]
-        if dy_cols_to_style:
-            styler.map(style_dy, subset=dy_cols_to_style)
-
-        if 'Alvo' in df_cols:
-            styler.map(style_alvo, subset=['Alvo'])
-
-        if 'Margem de Segurança %' in df_cols:
-            styler.map(style_graham, subset=['Margem de Segurança %'])
-
-        st.dataframe(
-            styler,
-            column_config={
-                "Logo": st.column_config.ImageColumn("Logo"),
-                "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
-                "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
-                "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
-                "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%% "),
-                "DY (Taxa 12m, %)": st.column_config.NumberColumn("DY 12m", format="%.2f%% "),
-                "DY 5 Anos Média (%)": st.column_config.NumberColumn("DY 5 Anos", format="%.2f%% "),
-                "Score Total": st.column_config.ProgressColumn("Score", format="%d", min_value=0, max_value=500),
-            },
-            use_container_width=True, hide_index=True
-        )
-        st.divider()
-
-
 def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     from .calculadora import render_tab_calculadora
     tab_titles = [
-        "🏆 Ranking", "🏢 Por Setor", "🔬 Análise",
+        "🏆 Ranking", "🔬 Análise",
         "🔍 Dividendos", "🏗️ Setores", "⚖️ Recuperação Judicial",
         "🧭 Guia da Bússola", "💰 Calculadora"
     ]
-    tab1, tab_por_setor, tab_analise, tab_dividendos, tab_setores, tab_rj, tab_guia, tab_calculadora = st.tabs(tab_titles)
+    tab1, tab_analise, tab_dividendos, tab_setores, tab_rj, tab_guia, tab_calculadora = st.tabs(tab_titles)
 
     with tab1:
         render_tab_rank_geral(df_filtrado)
         st.divider()
         render_tab_rank_detalhado(df_filtrado, df_unfiltered)
-    with tab_por_setor:
-        render_tab_empresas_por_setor(df_filtrado, all_data)
     with tab_analise:
         render_tab_analise_individual(df_filtrado)
     with tab_dividendos:
