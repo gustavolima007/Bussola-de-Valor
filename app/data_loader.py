@@ -189,8 +189,8 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     try:
         df_ciclo = read_csv_cached(base_path / 'ciclo_mercado.csv')
         if not df_ciclo.empty:
-            # Renomear a coluna de status e selecionar as colunas de interesse
-            df_ciclo_to_merge = df_ciclo[['ticker', 'Status 🟢🔴']].rename(columns={'Status 🟢🔴': 'Status Ciclo'})
+            # A coluna 'Status Ciclo' já vem com o nome correto do CSV
+            df_ciclo_to_merge = df_ciclo[['ticker', 'Status Ciclo']]
             # Normalizar o ticker para o merge
             df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['ticker'].str.strip().str.upper()
             df_ciclo_to_merge.set_index('ticker_base', inplace=True)

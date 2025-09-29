@@ -1,348 +1,342 @@
-﻿ticker,score_ciclo,ciclo_mercado,Status 🟢🔴
-AZUL4,55,Neutro / Transição,Observação
-RAIZ4,55,Neutro / Transição,Observação
-B3SA3,33,Neutro / Transição,Observação
-CSAN3,55,Neutro / Transição,Observação
-VALE3,55,Neutro / Transição,Observação
-PETR4,33,Neutro / Transição,Observação
-MGLU3,55,Neutro / Transição,Observação
-BRKM5,48,Neutro / Transição,Observação
-ASAI3,33,Neutro / Transição,Observação
-BBDC4,25,Pânico / Fundo,Compra
-BBAS3,25,Pânico / Fundo,Compra
-PCAR3,33,Neutro / Transição,Observação
-COGN3,25,Pânico / Fundo,Compra
-NATU3,55,Neutro / Transição,Observação
-VAMO3,33,Neutro / Transição,Observação
-LREN3,25,Pânico / Fundo,Compra
-ABEV3,25,Pânico / Fundo,Compra
-ITUB4,25,Pânico / Fundo,Compra
-MRVE3,33,Neutro / Transição,Observação
-VBBR3,33,Neutro / Transição,Observação
-RAIL3,25,Pânico / Fundo,Compra
-AZTE3,55,Neutro / Transição,Observação
-ITSA4,25,Pânico / Fundo,Compra
-MBRF3,25,Pânico / Fundo,Compra
-CPLE6,25,Pânico / Fundo,Compra
-CVCB3,25,Pânico / Fundo,Compra
-AZEV4,55,Neutro / Transição,Observação
-POMO4,25,Pânico / Fundo,Compra
-ENEV3,55,Neutro / Transição,Observação
-PETR3,25,Pânico / Fundo,Compra
-CMIG4,25,Pânico / Fundo,Compra
-RADL3,25,Pânico / Fundo,Compra
-USIM5,25,Pânico / Fundo,Compra
-GMAT3,55,Neutro / Transição,Observação
-RENT3,25,Pânico / Fundo,Compra
-AMBP3,55,Neutro / Transição,Observação
-BEEF3,25,Pânico / Fundo,Compra
-PRIO3,25,Pânico / Fundo,Compra
-CSNA3,25,Pânico / Fundo,Compra
-AZEV3,55,Neutro / Transição,Observação
-ECOR3,33,Neutro / Transição,Observação
-TIMS3,25,Pânico / Fundo,Compra
-AURE3,33,Neutro / Transição,Observação
-WEGE3,25,Pânico / Fundo,Compra
-CYRE3,25,Pânico / Fundo,Compra
-BBDC3,25,Pânico / Fundo,Compra
-GGBR4,25,Pânico / Fundo,Compra
-MOTV3,25,Pânico / Fundo,Compra
-KLBN11,33,Neutro / Transição,Observação
-DIRR3,25,Pânico / Fundo,Compra
-IFCM3,48,Neutro / Transição,Observação
-ANIM3,25,Pânico / Fundo,Compra
-BPAC11,25,Pânico / Fundo,Compra
-SUZB3,25,Pânico / Fundo,Compra
-ELET3,48,Neutro / Transição,Observação
-BBSE3,25,Pânico / Fundo,Compra
-ONCO3,25,Pânico / Fundo,Compra
-CXSE3,25,Pânico / Fundo,Compra
-EQTL3,25,Pânico / Fundo,Compra
-EMBR3,25,Pânico / Fundo,Compra
-SIMH3,25,Pânico / Fundo,Compra
-BHIA3,25,Pânico / Fundo,Compra
-VIVT3,25,Pânico / Fundo,Compra
-FLRY3,33,Neutro / Transição,Observação
-ISAE4,78,Euforia / Topo,Venda
-SANB11,33,Neutro / Transição,Observação
-MULT3,25,Pânico / Fundo,Compra
-SMFT3,25,Pânico / Fundo,Compra
-HAPV3,25,Pânico / Fundo,Compra
-RAPT4,33,Neutro / Transição,Observação
-MOVI3,48,Neutro / Transição,Observação
-CBAV3,25,Pânico / Fundo,Compra
-CPLE3,25,Pânico / Fundo,Compra
-PSSA3,33,Neutro / Transição,Observação
-INTB3,55,Neutro / Transição,Observação
-UGPA3,25,Pânico / Fundo,Compra
-CMIN3,25,Pânico / Fundo,Compra
-JHSF3,25,Pânico / Fundo,Compra
-GOAU4,25,Pânico / Fundo,Compra
-LWSA3,25,Pânico / Fundo,Compra
-RECV3,33,Neutro / Transição,Observação
-CEAB3,25,Pânico / Fundo,Compra
-CSMG3,55,Neutro / Transição,Observação
-CURY3,33,Neutro / Transição,Observação
-SBSP3,25,Pânico / Fundo,Compra
-BRAP4,25,Pânico / Fundo,Compra
-SRNA3,48,Neutro / Transição,Observação
-GUAR3,55,Neutro / Transição,Observação
-YDUQ3,25,Pânico / Fundo,Compra
-ALOS3,48,Neutro / Transição,Observação
-DXCO3,25,Pânico / Fundo,Compra
-KLBN4,33,Neutro / Transição,Observação
-CPFE3,33,Neutro / Transição,Observação
-PETZ3,25,Pânico / Fundo,Compra
-OIBR3,25,Pânico / Fundo,Compra
-ENGI11,25,Pânico / Fundo,Compra
-VVEO3,33,Neutro / Transição,Observação
-HYPE3,25,Pânico / Fundo,Compra
-RDOR3,25,Pânico / Fundo,Compra
-TOTS3,25,Pânico / Fundo,Compra
-AMER3,25,Pânico / Fundo,Compra
-VIVA3,25,Pânico / Fundo,Compra
-GRND3,33,Neutro / Transição,Observação
-STBP3,48,Neutro / Transição,Observação
-MLAS3,33,Neutro / Transição,Observação
-QUAL3,48,Neutro / Transição,Observação
-KEPL3,55,Neutro / Transição,Observação
-SEQL3,55,Neutro / Transição,Observação
-SLCE3,25,Pânico / Fundo,Compra
-NEOE3,33,Neutro / Transição,Observação
-ARML3,33,Neutro / Transição,Observação
-TEND3,25,Pânico / Fundo,Compra
-TAEE11,48,Neutro / Transição,Observação
-GGPS3,48,Neutro / Transição,Observação
-SBFG3,25,Pânico / Fundo,Compra
-HBSA3,25,Pânico / Fundo,Compra
-ODPV3,25,Pânico / Fundo,Compra
-PGMN3,33,Neutro / Transição,Observação
-TTEN3,33,Neutro / Transição,Observação
-CASH3,18,Pânico / Fundo,Compra
-SYNE3,33,Neutro / Transição,Observação
-CAML3,25,Pânico / Fundo,Compra
-EZTC3,25,Pânico / Fundo,Compra
-ALPA4,25,Pânico / Fundo,Compra
-LJQQ3,25,Pânico / Fundo,Compra
-MDNE3,55,Neutro / Transição,Observação
-MYPK3,18,Pânico / Fundo,Compra
-SAPR11,25,Pânico / Fundo,Compra
-BRSR6,25,Pânico / Fundo,Compra
-EGIE3,25,Pânico / Fundo,Compra
-HBOR3,25,Pânico / Fundo,Compra
-TFCO4,55,Neutro / Transição,Observação
-SAPR4,25,Pânico / Fundo,Compra
-SMTO3,25,Pânico / Fundo,Compra
-BPAN4,25,Pânico / Fundo,Compra
-DASA3,25,Pânico / Fundo,Compra
-MELK3,78,Euforia / Topo,Venda
-MILS3,25,Pânico / Fundo,Compra
-VULC3,33,Neutro / Transição,Observação
-JSLG3,33,Neutro / Transição,Observação
-JALL3,33,Neutro / Transição,Observação
-GFSA3,48,Neutro / Transição,Observação
-SHUL4,55,Neutro / Transição,Observação
-LIGT3,25,Pânico / Fundo,Compra
-TUPY3,33,Neutro / Transição,Observação
-POSI3,25,Pânico / Fundo,Compra
-FESA4,33,Neutro / Transição,Observação
-LAVV3,25,Pânico / Fundo,Compra
-PLPL3,25,Pânico / Fundo,Compra
-ELET6,48,Neutro / Transição,Observação
-MDIA3,25,Pânico / Fundo,Compra
-RCSL4,25,Pânico / Fundo,Compra
-BMOB3,78,Euforia / Topo,Venda
-RANI3,25,Pânico / Fundo,Compra
-PFRM3,55,Neutro / Transição,Observação
-LOGG3,55,Neutro / Transição,Observação
-BMGB4,48,Neutro / Transição,Observação
-USIM3,33,Neutro / Transição,Observação
-BRBI11,55,Neutro / Transição,Observação
-MTRE3,25,Pânico / Fundo,Compra
-EVEN3,25,Pânico / Fundo,Compra
-ITUB3,25,Pânico / Fundo,Compra
-POMO3,33,Neutro / Transição,Observação
-OPCT3,25,Pânico / Fundo,Compra
-ABCB4,25,Pânico / Fundo,Compra
-KLBN3,33,Neutro / Transição,Observação
-ENJU3,25,Pânico / Fundo,Compra
-LPSB3,55,Neutro / Transição,Observação
-ALUP11,25,Pânico / Fundo,Compra
-WIZC3,25,Pânico / Fundo,Compra
-FRAS3,25,Pânico / Fundo,Compra
-IRBR3,25,Pânico / Fundo,Compra
-ORVR3,25,Pânico / Fundo,Compra
-TRIS3,25,Pânico / Fundo,Compra
-DESK3,78,Euforia / Topo,Venda
-LEVE3,33,Neutro / Transição,Observação
-AGRO3,55,Neutro / Transição,Observação
-SEER3,25,Pânico / Fundo,Compra
-HBRE3,25,Pânico / Fundo,Compra
-BRKM3,48,Neutro / Transição,Observação
-VLID3,25,Pânico / Fundo,Compra
-CSED3,25,Pânico / Fundo,Compra
-SOJA3,25,Pânico / Fundo,Compra
-ESPA3,25,Pânico / Fundo,Compra
-ZAMP3,25,Pânico / Fundo,Compra
-TOKY3,25,Pânico / Fundo,Compra
-MEAL3,25,Pânico / Fundo,Compra
-TGMA3,25,Pânico / Fundo,Compra
-BRST3,33,Neutro / Transição,Observação
-TASA4,25,Pânico / Fundo,Compra
-PORT3,25,Pânico / Fundo,Compra
-ALPK3,55,Neutro / Transição,Observação
-SANB4,55,Neutro / Transição,Observação
-ROMI3,55,Neutro / Transição,Observação
-PINE4,25,Pânico / Fundo,Compra
-FIQE3,25,Pânico / Fundo,Compra
-UNIP6,33,Neutro / Transição,Observação
-AMAR3,25,Pânico / Fundo,Compra
-ALLD3,55,Neutro / Transição,Observação
-PRNR3,25,Pânico / Fundo,Compra
-PDGR3,25,Pânico / Fundo,Compra
-PMAM3,25,Pânico / Fundo,Compra
-TRAD3,48,Neutro / Transição,Observação
-PNVL3,25,Pânico / Fundo,Compra
-SAPR3,25,Pânico / Fundo,Compra
-LUPA3,25,Pânico / Fundo,Compra
-VTRU3,48,Neutro / Transição,Observação
-SANB3,33,Neutro / Transição,Observação
-TAEE4,48,Neutro / Transição,Observação
-AERI3,25,Pânico / Fundo,Compra
-DEXP3,33,Neutro / Transição,Observação
-UCAS3,55,Neutro / Transição,Observação
-NGRD3,55,Neutro / Transição,Observação
-BLAU3,25,Pânico / Fundo,Compra
-VIVR3,25,Pânico / Fundo,Compra
-TCSA3,25,Pânico / Fundo,Compra
-CMIG3,25,Pânico / Fundo,Compra
-VITT3,25,Pânico / Fundo,Compra
-BIOM3,55,Neutro / Transição,Observação
-RNEW4,25,Pânico / Fundo,Compra
-PTBL3,25,Pânico / Fundo,Compra
-MATD3,25,Pânico / Fundo,Compra
-DMVF3,25,Pânico / Fundo,Compra
-GOAU3,33,Neutro / Transição,Observação
-ITSA3,25,Pânico / Fundo,Compra
-RSID3,48,Neutro / Transição,Observação
-BRAP3,33,Neutro / Transição,Observação
-TECN3,25,Pânico / Fundo,Compra
-TAEE3,48,Neutro / Transição,Observação
-AALR3,25,Pânico / Fundo,Compra
-LUXM4,55,Neutro / Transição,Observação
-AVLL3,55,Neutro / Transição,Observação
-WEST3,55,Neutro / Transição,Observação
-INEP3,33,Neutro / Transição,Observação
-TASA3,55,Neutro / Transição,Observação
-BMEB4,78,Euforia / Topo,Venda
-EMAE4,78,Euforia / Topo,Venda
-RPMG3,55,Neutro / Transição,Observação
-RNEW3,25,Pânico / Fundo,Compra
-SCAR3,25,Pânico / Fundo,Compra
-LOGN3,25,Pânico / Fundo,Compra
-PDTC3,25,Pânico / Fundo,Compra
-RCSL3,25,Pânico / Fundo,Compra
-CAMB3,25,Pânico / Fundo,Compra
-CRPG5,48,Neutro / Transição,Observação
-WHRL4,55,Neutro / Transição,Observação
-AMOB3,25,Pânico / Fundo,Compra
-RAPT3,25,Pânico / Fundo,Compra
-GGBR3,25,Pânico / Fundo,Compra
-SHOW3,25,Pânico / Fundo,Compra
-PTNT4,55,Neutro / Transição,Observação
-EALT4,33,Neutro / Transição,Observação
-BAZA3,55,Neutro / Transição,Observação
-TPIS3,25,Pânico / Fundo,Compra
-EUCA4,25,Pânico / Fundo,Compra
-FHER3,25,Pânico / Fundo,Compra
-LAND3,18,Pânico / Fundo,Compra
-ENGI4,33,Neutro / Transição,Observação
-BEES3,33,Neutro / Transição,Observação
-BIED3,55,Neutro / Transição,Observação
-BPAC5,55,Neutro / Transição,Observação
-CLSC4,55,Neutro / Transição,Observação
-AGXY3,25,Pânico / Fundo,Compra
-OIBR4,25,Pânico / Fundo,Compra
-NUTR3,55,Neutro / Transição,Observação
-CSUD3,25,Pânico / Fundo,Compra
-REAG3,18,Pânico / Fundo,Compra
-DOTZ3,25,Pânico / Fundo,Compra
-CEBR5,55,Neutro / Transição,Observação
-BRSR3,55,Neutro / Transição,Observação
-LVTC3,25,Pânico / Fundo,Compra
-TELB4,55,Neutro / Transição,Observação
-JFEN3,25,Pânico / Fundo,Compra
-INEP4,25,Pânico / Fundo,Compra
-ALUP4,25,Pânico / Fundo,Compra
-CEBR6,25,Pânico / Fundo,Compra
-CTAX3,33,Neutro / Transição,Observação
-ISAE3,55,Neutro / Transição,Observação
-EQPA3,25,Pânico / Fundo,Compra
-ATED3,25,Pânico / Fundo,Compra
-UNIP3,25,Pânico / Fundo,Compra
-ENGI3,25,Pânico / Fundo,Compra
-CGRA4,25,Pânico / Fundo,Compra
-CEBR3,25,Pânico / Fundo,Compra
-FICT3,25,Pânico / Fundo,Compra
-HAGA4,25,Pânico / Fundo,Compra
-VSTE3,18,Pânico / Fundo,Compra
-IGTI3,25,Pânico / Fundo,Compra
-EQMA3B,55,Neutro / Transição,Observação
-ALUP3,25,Pânico / Fundo,Compra
-RDNI3,25,Pânico / Fundo,Compra
-BSLI4,25,Pânico / Fundo,Compra
-MNPR3,18,Pânico / Fundo,Compra
-BOBR4,25,Pânico / Fundo,Compra
-BPAC3,25,Pânico / Fundo,Compra
-PINE3,48,Neutro / Transição,Observação
-CEDO3,48,Neutro / Transição,Observação
-NEXP3,55,Neutro / Transição,Observação
-ALPA3,25,Pânico / Fundo,Compra
-MNDL3,33,Neutro / Transição,Observação
-GSHP3,55,Neutro / Transição,Observação
-TELB3,33,Neutro / Transição,Observação
-CGRA3,25,Pânico / Fundo,Compra
-BEES4,25,Pânico / Fundo,Compra
-COCE5,25,Pânico / Fundo,Compra
-PLAS3,55,Neutro / Transição,Observação
-ENMT3,78,Euforia / Topo,Venda
-MTSA4,25,Pânico / Fundo,Compra
-DOHL4,33,Neutro / Transição,Observação
-CTKA4,55,Neutro / Transição,Observação
-CCTY3,40,Neutro / Transição,Observação
-BSLI3,25,Pânico / Fundo,Compra
-UNIP5,78,Euforia / Topo,Venda
-MGEL4,25,Pânico / Fundo,Compra
-CTSA4,25,Pânico / Fundo,Compra
-BMEB3,55,Neutro / Transição,Observação
-HAGA3,25,Pânico / Fundo,Compra
-WHRL3,25,Pânico / Fundo,Compra
-CEDO4,25,Pânico / Fundo,Compra
-PTNT3,33,Neutro / Transição,Observação
-EALT3,25,Pânico / Fundo,Compra
-BGIP4,25,Pânico / Fundo,Compra
-CEEB3,55,Neutro / Transição,Observação
-OFSA3,25,Pânico / Fundo,Compra
-EPAR3,25,Pânico / Fundo,Compra
-ENMT4,55,Neutro / Transição,Observação
-HBTS5,55,Neutro / Transição,Observação
-RVEE3,18,Pânico / Fundo,Compra
-PEAB3,25,Pânico / Fundo,Compra
-GEPA4,25,Pânico / Fundo,Compra
-CRPG6,48,Neutro / Transição,Observação
-REDE3,25,Pânico / Fundo,Compra
-EKTR4,25,Pânico / Fundo,Compra
-ELET5,48,Neutro / Transição,Observação
-RSUL4,25,Pânico / Fundo,Compra
-CGAS5,25,Pânico / Fundo,Compra
-FESA3,25,Pânico / Fundo,Compra
-MOAR3,48,Neutro / Transição,Observação
-HETA4,25,Pânico / Fundo,Compra
-BNBR3,25,Pânico / Fundo,Compra
-PEAB4,25,Pânico / Fundo,Compra
-CPLE5,25,Pânico / Fundo,Compra
-CGAS3,55,Neutro / Transição,Observação
-HOOT4,25,Pânico / Fundo,Compra
-FRIO3,10,Pânico / Fundo,Compra
-BRKM6,25,Pânico / Fundo,Compra
-BMKS3,18,Pânico / Fundo,Compra
+﻿ticker,Status Ciclo
+MGLU3,Observação
+PETR4,Observação
+COGN3,Observação
+AZUL4,Observação
+B3SA3,Observação
+CSAN3,Observação
+RAIZ4,Observação
+ABEV3,Observação
+VAMO3,Observação
+RAIL3,Observação
+ITSA4,Observação
+ITUB4,Observação
+BBAS3,Observação
+BBDC4,Observação
+JHSF3,Venda
+RADL3,Observação
+VALE3,Observação
+BRKM5,Observação
+CPLE6,Observação
+MRVE3,Observação
+ASAI3,Observação
+PETR3,Observação
+PCAR3,Observação
+CMIG4,Observação
+VBBR3,Observação
+ELET3,Venda
+ISAE4,Venda
+CSNA3,Observação
+MBRF3,Observação
+LREN3,Observação
+CVCB3,Observação
+PRIO3,Observação
+ENEV3,Venda
+GGBR4,Observação
+POMO4,Observação
+USIM5,Observação
+KLBN11,Observação
+BPAC11,Venda
+CMIN3,Venda
+BHIA3,Observação
+AZTE3,Observação
+NATU3,Observação
+KLBN4,Observação
+SIMH3,Observação
+TIMS3,Observação
+UGPA3,Venda
+MOTV3,Observação
+MOVI3,Observação
+SUZB3,Observação
+WEGE3,Observação
+ECOR3,Observação
+CBAV3,Observação
+BBDC3,Observação
+AURE3,Observação
+CPLE3,Observação
+GOAU4,Observação
+GMAT3,Observação
+RENT3,Observação
+AMBP3,Observação
+CYRE3,Observação
+BEEF3,Observação
+EQTL3,Observação
+EMBR3,Observação
+BBSE3,Observação
+RDOR3,Venda
+ANIM3,Observação
+SMFT3,Observação
+RCSL4,Observação
+FLRY3,Observação
+INTB3,Observação
+DXCO3,Observação
+AZEV4,Observação
+RAPT4,Compra
+DIRR3,Compra
+SBSP3,Compra
+AZEV3,Compra
+VIVT3,Compra
+CASH3,Compra
+HAPV3,Compra
+QUAL3,Observação
+RECV3,Compra
+PETZ3,Compra
+MYPK3,Compra
+CXSE3,Compra
+TAEE11,Observação
+ONCO3,Compra
+YDUQ3,Compra
+ALOS3,Observação
+ELET6,Observação
+ENGI11,Compra
+CEAB3,Compra
+GFSA3,Compra
+CPFE3,Compra
+LJQQ3,Compra
+NEOE3,Compra
+GGPS3,Observação
+TOTS3,Compra
+VIVA3,Compra
+BRAP4,Compra
+MULT3,Compra
+VVEO3,Compra
+AMER3,Compra
+PSSA3,Compra
+IFCM3,Compra
+CSMG3,Observação
+HBOR3,Compra
+SBFG3,Compra
+OIBR3,Compra
+SRNA3,Observação
+LWSA3,Compra
+HYPE3,Compra
+GRND3,Compra
+ALPA4,Compra
+MILS3,Compra
+HBSA3,Compra
+CURY3,Compra
+SLCE3,Compra
+STBP3,Observação
+MLAS3,Compra
+SANB11,Compra
+PGMN3,Compra
+KLBN3,Compra
+MELK3,Observação
+SMTO3,Compra
+ARML3,Compra
+BRSR6,Compra
+TEND3,Compra
+SYNE3,Compra
+SAPR4,Compra
+ODPV3,Compra
+EGIE3,Compra
+BPAN4,Compra
+GUAR3,Compra
+USIM3,Compra
+DASA3,Compra
+MDNE3,Observação
+ITUB3,Compra
+SHUL4,Compra
+LIGT3,Compra
+EVEN3,Compra
+JALL3,Compra
+CAML3,Compra
+EZTC3,Compra
+SOJA3,Compra
+SAPR11,Compra
+TOKY3,Compra
+KEPL3,Compra
+TTEN3,Compra
+JSLG3,Compra
+TUPY3,Compra
+TFCO4,Compra
+VULC3,Compra
+PLPL3,Compra
+ABCB4,Compra
+IRBR3,Compra
+ENJU3,Compra
+RCSL3,Compra
+HBRE3,Compra
+AMAR3,Compra
+SEQL3,Compra
+LAVV3,Compra
+DESK3,Observação
+MDIA3,Compra
+ALUP11,Observação
+FESA4,Compra
+ESPA3,Compra
+POSI3,Compra
+ALLD3,Compra
+ALPK3,Observação
+BMGB4,Observação
+PORT3,Compra
+TRIS3,Compra
+PRNR3,Compra
+POMO3,Compra
+BMOB3,Observação
+FIQE3,Compra
+VTRU3,Observação
+MTRE3,Compra
+BRBI11,Compra
+PDGR3,Compra
+PTBL3,Compra
+OPCT3,Compra
+RANI3,Compra
+WIZC3,Compra
+SEER3,Compra
+ZAMP3,Compra
+ROMI3,Compra
+LEVE3,Compra
+MEAL3,Compra
+PINE4,Compra
+TAEE4,Observação
+TASA4,Compra
+PFRM3,Compra
+PNVL3,Compra
+ORVR3,Compra
+AGRO3,Compra
+FRAS3,Compra
+LOGG3,Observação
+CSED3,Compra
+TGMA3,Compra
+BLAU3,Compra
+BRST3,Compra
+DEXP3,Compra
+SAPR3,Compra
+TAEE3,Observação
+CMIG3,Compra
+PMAM3,Compra
+MATD3,Compra
+SANB4,Compra
+UNIP6,Compra
+EUCA4,Compra
+BRKM3,Compra
+VLID3,Compra
+VITT3,Compra
+AALR3,Compra
+SANB3,Compra
+BIOM3,Observação
+ITSA3,Compra
+LPSB3,Compra
+TPIS3,Compra
+LOGN3,Compra
+TCSA3,Compra
+OIBR4,Compra
+DEXP4,Compra
+RPMG3,Compra
+CRPG5,Compra
+PDTC3,Compra
+LUPA3,Compra
+VIVR3,Compra
+EALT4,Compra
+RNEW4,Compra
+DMVF3,Compra
+NGRD3,Compra
+GOAU3,Compra
+RNEW3,Compra
+REAG3,Compra
+UCAS3,Compra
+AMOB3,Compra
+AERI3,Compra
+BRAP3,Compra
+CAMB3,Compra
+SCAR3,Compra
+EMAE4,Observação
+LUXM4,Compra
+BEES3,Compra
+SHOW3,Compra
+LAND3,Compra
+TECN3,Compra
+LVTC3,Compra
+RSID3,Compra
+BMEB4,Observação
+IGTI3,Compra
+TRAD3,Compra
+WEST3,Compra
+CGRA4,Compra
+EPAR3,Compra
+INEP3,Compra
+GGBR3,Compra
+CEBR6,Compra
+FICT3,Compra
+TASA3,Compra
+BRSR3,Observação
+BPAC5,Compra
+CSUD3,Compra
+ATED3,Compra
+ALUP4,Observação
+DOTZ3,Compra
+WHRL3,Compra
+WHRL4,Compra
+AGXY3,Compra
+PTNT4,Compra
+JFEN3,Compra
+MTSA4,Compra
+ALUP3,Compra
+CLSC4,Compra
+BPAC3,Observação
+TELB4,Compra
+RAPT3,Compra
+INEP4,Compra
+COCE5,Compra
+NUTR3,Compra
+CEBR3,Compra
+ALPA3,Compra
+SNSY5,Compra
+OSXB3,Compra
+VSTE3,Compra
+EQPA3,Compra
+UNIP3,Compra
+HOOT4,Compra
+BAZA3,Compra
+BOBR4,Compra
+ISAE3,Compra
+RDNI3,Compra
+ENGI4,Compra
+MGEL4,Compra
+WLMM4,Compra
+OFSA3,Compra
+BRKM6,Compra
+CGRA3,Compra
+NEXP3,Compra
+CEDO4,Compra
+CTSA4,Compra
+MOAR3,Compra
+MNPR3,Compra
+REDE3,Compra
+BSLI4,Compra
+BEES4,Compra
+PTNT3,Compra
+HAGA4,Compra
+CEBR5,Compra
+CEDO3,Compra
+BGIP4,Compra
+BSLI3,Compra
+GEPA4,Compra
+AVLL3,Compra
+RSUL4,Compra
+ENGI3,Compra
+DOHL4,Compra
+PINE3,Observação
+MNDL3,Compra
+RVEE3,Compra
+BALM4,Observação
+COCE3,Compra
+CEEB3,Compra
+CGAS5,Compra
+CTKA4,Compra
+FIEI3,Compra
+PEAB4,Compra
+CTSA3,Compra
+TELB3,Compra
+HAGA3,Compra
+EALT3,Compra
+FHER3,Compra
+BNBR3,Compra
+EKTR4,Compra
+AHEB3,Compra
+CGAS3,Compra
+FESA3,Compra
+ENMT3,Compra
+ENMT4,Compra
+BMKS3,Compra

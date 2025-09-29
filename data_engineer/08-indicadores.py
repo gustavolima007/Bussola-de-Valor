@@ -273,20 +273,30 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
 
 
 def main():
+    """
+    Função principal para orquestrar a coleta de indicadores e dados de ciclo de mercado.
+    """
+    # 1. Setup e Impressão Inicial
+    print("="*80)
+    print("--- Coleta de Indicadores Financeiros (08-indicadores) ---")
+    print("="*80)
+
     if not CAMINHO_ARQUIVO_ENTRADA.exists():
-        print(f"Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
+        print(f"[X] ERRO: Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
         return
 
-    print("Iniciando extração de 08-indicadores...")
+    print(f"[>] Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA}")
     df_input = pd.read_csv(CAMINHO_ARQUIVO_ENTRADA)
-
     df_input["ticker_norm"] = df_input["ticker"].str.strip().str.upper()
     metadata_map = df_input.set_index("ticker_norm").to_dict(orient="index")
+    total_tickers = len(metadata_map)
+    print(f"[+] {total_tickers} tickers encontrados.")
 
-    # --- Pré-cálculo da média de volume ---
-    print("Pré-calculando a média de volume de todos os ativos...")
+    # 2. Pré-cálculo do volume (saída simplificada)
+    print("\n[>] Pré-calculando a média de volume de todos os ativos...")
     all_volumes = []
-    for ticker_base in tqdm(metadata_map.keys(), desc="Coletando volumes"):
+    # Loop simples, sem tqdm para esta parte
+    for ticker_base in metadata_map.keys():
         try:
             hist_1y = yf.Ticker(f"{ticker_base}.SA").history(period=PERIODO_PADRAO_HIST)
             if not hist_1y.empty and 'Volume' in hist_1y.columns:
@@ -294,28 +304,62 @@ def main():
         except Exception:
             continue
     vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
+    print("[+] Média de volume calculada.")
 
+    # 3. Loop principal com progresso limpo e tratamento de erros
+    print("\n[>] Coletando indicadores fundamentalistas e técnicos...")
     resultados = []
-    for ticker_base, meta in tqdm(metadata_map.items(), desc="Coletando indicadores"):
-        try:
-            dados = fetch_stock_data(ticker_base, meta, vol_mean)
-            if dados:
-                resultados.append(dados)
-        except Exception as e:
-            print(f"Erro ao processar {ticker_base}: {e}")
+    erros = []
+    with tqdm(total=total_tickers, desc="Coletando Indicadores", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
+        for ticker_base, meta in metadata_map.items():
+            try:
+                dados = fetch_stock_data(ticker_base, meta, vol_mean)
+                if dados:
+                    resultados.append(dados)
+                else:
+                    erros.append((ticker_base, "Dados não retornados pelo fetcher"))
+            except Exception as e:
+                erros.append((ticker_base, str(e).replace('\n', ' ')))
+            pbar.update(1)
+
+    # 4. Resumo Final
+    print("\n" + "="*80)
+    print("--- Resumo da Execução ---")
 
     if not resultados:
-        print("Nenhum dado foi coletado com sucesso.")
+        print("[X] ERRO: Nenhum dado foi coletado com sucesso.")
+        if erros:
+            print(f"    - {len(erros)} tickers falharam durante a coleta.")
+        print("="*80)
         return
 
+    # Salvar indicadores.csv
     df_output = pd.DataFrame(resultados)
     df_output.columns = [c.strip().lower().replace(" ", "_") for c in df_output.columns]
-
     CAMINHO_ARQUIVO_SAIDA.parent.mkdir(parents=True, exist_ok=True)
     df_output.to_csv(CAMINHO_ARQUIVO_SAIDA, index=False, encoding='utf-8-sig')
+    
+    print(f"[+] {len(df_output)} tickers processados com sucesso.")
+    print(f"    - Arquivo de indicadores salvo em: {CAMINHO_ARQUIVO_SAIDA}")
 
-    print(f"\nArquivo de indicadores salvo com sucesso em: {CAMINHO_ARQUIVO_SAIDA}")
-    print(f"Total de {len(df_output)} tickers processados.")
+    # Salvar ciclo_mercado.csv
+    CAMINHO_CICLO_MERCADO = DATA_DIR / "ciclo_mercado.csv"
+    if 'ticker' in df_output.columns and 'status_ciclo' in df_output.columns:
+        df_ciclo = df_output[['ticker', 'status_ciclo']].copy()
+        df_ciclo.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
+        df_ciclo.to_csv(CAMINHO_CICLO_MERCADO, index=False, encoding='utf-8-sig')
+        print(f"    - Arquivo de ciclo de mercado salvo em: {CAMINHO_CICLO_MERCADO}")
+
+    # Imprimir erros, se houver
+    if erros:
+        print(f"\n[!] {len(erros)} tickers falharam:")
+        for ticker, erro in erros[:5]:  # Imprime os 5 primeiros erros para amostragem
+             print(f"    - {ticker}: {erro}")
+        if len(erros) > 5:
+            print("    - ... (e outros)")
+
+    print("\n[+] Processo concluído.")
+    print("="*80)
 
 
 if __name__ == "__main__":

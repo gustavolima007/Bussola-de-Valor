@@ -1,6 +1,5 @@
 venv/
-.devcontainer
-.vscode
 /.vscode
 .zencoder
 .venv/
+.env
