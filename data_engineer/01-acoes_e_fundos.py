@@ -309,7 +309,7 @@ def extrair_dados_brapi():
     api_url = "https://brapi.dev/api/quote/list"
     base_dir = Path(__file__).resolve().parent.parent / 'data'
     csv_output = base_dir / "acoes_e_fundos.csv"
-    log_nao_mapeados = base_dir / "tickers_nao_mapeados.txt"
+    log_nao_mapeados = base_dir / "tickers_nao_mapeados.csv"
 
     logger.info("Iniciando extração de dados via Brapi...")
     start_time = time.time()

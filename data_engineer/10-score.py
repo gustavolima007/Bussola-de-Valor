@@ -32,7 +32,6 @@ from common import DATA_DIR
 FN_INDICADORES = DATA_DIR / "indicadores.csv"
 FN_DY = DATA_DIR / "dividend_yield.csv"
 FN_PRECO_TETO = DATA_DIR / "preco_teto.csv"
-FN_CICLO_MERCADO = DATA_DIR / "ciclo_mercado.csv"
 FN_OUT = DATA_DIR / "scores.csv"
 
 # --- Funções de Carregamento e Preparação ---
@@ -42,16 +41,14 @@ def load_and_prepare_data() -> pd.DataFrame:
     indicadores = pd.read_csv(FN_INDICADORES)
     dy = pd.read_csv(FN_DY)
     preco_teto = pd.read_csv(FN_PRECO_TETO)
-    ciclo_mercado = pd.read_csv(FN_CICLO_MERCADO)
 
     # Normaliza os tickers para a junção
-    for df in [indicadores, dy, preco_teto, ciclo_mercado]:
+    for df in [indicadores, dy, preco_teto]:
         df['ticker_base'] = df['ticker'].str.strip().str.upper()
 
     # Junta os DataFrames
     df_merged = pd.merge(indicadores, dy, on='ticker_base', how='left', suffixes=('', '_dy'))
     df_merged = pd.merge(df_merged, preco_teto, on='ticker_base', how='left', suffixes=('', '_teto'))
-    df_merged = pd.merge(df_merged, ciclo_mercado, on='ticker_base', how='left', suffixes=('', '_ciclo'))
 
     # Converte colunas para numérico, tratando erros
     num_cols = [
@@ -260,7 +257,7 @@ def main():
         s_pl_pvp = score_pl_pvp(row.get('p_l'), row.get('p_vp'))
         s_divida = score_divida(div_mc, row.get('divida_ebitda'), row.get('current_ratio'), setor)
         s_cresc_sent = score_crescimento_sentimento(row.get('crescimento_preco_5a'), row.get('sentimento_gauge'))
-        s_ciclo = score_ciclo_mercado(row.get('Status 🟢🔴'))
+        s_ciclo = score_ciclo_mercado(row.get('status_ciclo'))
         s_graham = score_graham(row.get('preco_atual'), row.get('lpa'), row.get('vpa'))
         s_beta = score_beta(row.get('beta'))
         s_mcap = score_market_cap(row.get('market_cap'))

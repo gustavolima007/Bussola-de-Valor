@@ -9,6 +9,55 @@ import numpy as np
 
 from common import DATA_DIR
 
+# --- Funções de Cálculo de Score por Critério ---
+
+def calcular_score_dy(dy_5a_medio):
+    if dy_5a_medio >= 10: return 150
+    if 8 <= dy_5a_medio < 10: return 120
+    if 6 <= dy_5a_medio < 8: return 90
+    if 4 <= dy_5a_medio < 6: return 60
+    if 2 <= dy_5a_medio < 4: return -30
+    if dy_5a_medio < 2: return -60
+    if dy_5a_medio < 1: return -90
+    return 0
+
+def calcular_score_roe(roe_medio):
+    if roe_medio > 25: return 75
+    if 20 <= roe_medio <= 25: return 55
+    if 15 <= roe_medio < 20: return 35
+    if 10 <= roe_medio < 15: return 20
+    return 0
+
+def calcular_score_beta(beta_medio):
+    if beta_medio < 0.8: return 35
+    if 0.8 <= beta_medio <= 1.2: return 20
+    if beta_medio > 1.5: return -20
+    return 0
+
+def calcular_score_payout(payout_medio):
+    if 30 <= payout_medio <= 60: return 35
+    if (20 <= payout_medio < 30) or (60 < payout_medio <= 80): return 20
+    return 0
+
+def calcular_score_empresas_boas(contagem):
+    if contagem >= 8: return 75
+    if 6 <= contagem < 8: return 55
+    if 3 <= contagem <= 5: return 35
+    if 1 <= contagem <= 2: return 20
+    return 0
+
+def calcular_penalidade_empresas_ruins(contagem):
+    if contagem >= 6: return -60
+    if 3 <= contagem <= 5: return -40
+    if 1 <= contagem <= 2: return -20
+    return 0
+
+def calcular_score_graham(margem_media):
+    if margem_media > 150: return 55
+    if 100 <= margem_media <= 150: return 35
+    if 50 <= margem_media < 100: return 20
+    return 0
+
 def main() -> None:
     # --- Paths ---
     indicadores_path = DATA_DIR / "indicadores.csv"
