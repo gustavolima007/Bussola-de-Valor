@@ -21,8 +21,9 @@ Notas:
 - Alguns ativos podem ter menos dados disponíveis.
 - Fechamento anual baseado no último dia útil (2021-2024) ou dia atual (2025).
 """
-base_path = os.path.join(os.path.dirname(__file__), '..', 'data')
-output_annual_path = os.path.join(base_path, 'indices.csv')
+from common import DATA_DIR
+
+output_annual_path = DATA_DIR / 'indices.csv'
 indices = {
     "BOVA11.SA": "iShares Ibovespa",
     "SMAL11.SA": "Small Caps",
@@ -79,7 +80,7 @@ def get_annual_closing(index_code, index_name):
     return annual[annual['year'] >= current_year - 5]
 def get_and_save_indices():
     try:
-        os.makedirs(base_path, exist_ok=True)
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
         all_data = pd.DataFrame()
         print("Coletando dados dos índices da B3...\n")
         for code, name in indices.items():

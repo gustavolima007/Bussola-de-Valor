@@ -20,16 +20,18 @@ Etapas do Processo:
 import pandas as pd
 from pathlib import Path
 
+# Importa as utilidades comuns do pipeline
+from common import DATA_DIR
+
 # --- Configurações ---
 # Define a rentabilidade mínima desejada (6% ao ano)
 # O cálculo (100 / 6) resulta no fator multiplicador para a média de dividendos
 RENTABILIDADE_ALVO = 0.06
 
 # --- Configuração de Caminhos ---
-BASE = Path(__file__).resolve().parent.parent / 'data'
-resumo_dividendos_path = BASE / "dividendos_ano_resumo.csv"
-precos_path = BASE / "precos_acoes.csv"
-output_path = BASE / "preco_teto.csv"
+resumo_dividendos_path = DATA_DIR / "dividendos_ano_resumo.csv"
+precos_path = DATA_DIR / "precos_acoes.csv"
+output_path = DATA_DIR / "preco_teto.csv"
 
 # --- Leitura dos Dados ---
 print(f"Lendo resumo de dividendos de: {resumo_dividendos_path}")

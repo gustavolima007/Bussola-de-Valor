@@ -25,13 +25,15 @@ from pathlib import Path
 import pandas as pd
 from tqdm.auto import tqdm
 
+# Importa as utilidades comuns do pipeline
+from common import DATA_DIR
+
 # --- Configuração de Caminhos ---
-BASE = Path(__file__).resolve().parent.parent / "data"
-FN_INDICADORES = BASE / "indicadores.csv"
-FN_DY = BASE / "dividend_yield.csv"
-FN_PRECO_TETO = BASE / "preco_teto.csv"
-FN_CICLO_MERCADO = BASE / "ciclo_mercado.csv"
-FN_OUT = BASE / "scores.csv"
+FN_INDICADORES = DATA_DIR / "indicadores.csv"
+FN_DY = DATA_DIR / "dividend_yield.csv"
+FN_PRECO_TETO = DATA_DIR / "preco_teto.csv"
+FN_CICLO_MERCADO = DATA_DIR / "ciclo_mercado.csv"
+FN_OUT = DATA_DIR / "scores.csv"
 
 # --- Funções de Carregamento e Preparação ---
 def load_and_prepare_data() -> pd.DataFrame:

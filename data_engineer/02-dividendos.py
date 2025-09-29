@@ -20,33 +20,17 @@ import pandas as pd
 import yfinance as yf
 from tqdm.auto import tqdm
 
+# Importa as utilidades comuns do pipeline
+from common import DATA_DIR, get_tickers
+
 # Ignora avisos de FutureWarning para manter o output limpo
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # --- Configuração de Caminhos ---
-# Define o diretório base 'data' para leitura e escrita dos arquivos
-BASE = Path(__file__).resolve().parent.parent / 'data'
-CSV_PATH = BASE / "acoes_e_fundos.csv"
-OUTPUT_PATH = BASE / "todos_dividendos.csv"
+OUTPUT_PATH = DATA_DIR / "todos_dividendos.csv"
 
 # --- Leitura e Preparação dos Tickers ---
-print(f"Lendo tickers de: {CSV_PATH}")
-try:
-    df_tickers = pd.read_csv(CSV_PATH)
-    # Extrai, limpa e garante que a lista de tickers não tenha duplicatas
-    tickers = (
-        df_tickers['ticker']
-        .dropna()
-        .astype(str)
-        .str.strip()
-        .str.upper()
-        .unique()
-        .tolist()
-    )
-    print(f"Encontrados {len(tickers)} tickers únicos.")
-except FileNotFoundError:
-    print(f"❌ Erro: O arquivo {CSV_PATH} não foi encontrado.")
-    tickers = []
+tickers = get_tickers()
 
 # --- Definição do Período de Busca ---
 # Define o intervalo de 7 anos a partir da data atual

@@ -155,9 +155,9 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 
 # --- FIM DA SEÇÃO DE CÁLCULO ---
 
+from common import DATA_DIR
+
 # --- Configuração de Caminhos e Salvamento ---
-# O caminho para a pasta 'data' na raiz do projeto
-DATA_DIR = Path(__file__).resolve().parent.parent / 'data'
 OUTPUT_PATH = DATA_DIR / "rj.csv"
 
 # Garante que o diretório de saída exista

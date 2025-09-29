@@ -17,15 +17,15 @@ import yfinance as yf
 from tqdm.auto import tqdm
 import random
 from pathlib import Path
+from common import DATA_DIR
 
 # Indicadores técnicos via ta
 from ta.momentum import RSIIndicator
 from ta.trend import MACD
 
 # --- Configurações ---
-BASE = Path(__file__).resolve().parent.parent / 'data'
-CAMINHO_ARQUIVO_ENTRADA = BASE / "acoes_e_fundos.csv"
-CAMINHO_ARQUIVO_SAIDA = BASE / "indicadores.csv"
+CAMINHO_ARQUIVO_ENTRADA = DATA_DIR / "acoes_e_fundos.csv"
+CAMINHO_ARQUIVO_SAIDA = DATA_DIR / "indicadores.csv"
 
 # período base para técnicos
 PERIODO_PADRAO_HIST = "1y"

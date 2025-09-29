@@ -180,8 +180,10 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             st.warning("Não foi possível fazer o merge da pontuação de subsetor. Coluna 'subsetor_b3' não encontrada.")
     except FileNotFoundError:
         st.warning("Arquivo 'avaliacao_setor.csv' não encontrado. A pontuação por subsetor não será carregada.")
+        df['pontuacao_final'] = 0
     except Exception as e:
         st.warning(f"Erro ao processar 'avaliacao_setor.csv': {e}")
+        df['pontuacao_final'] = 0
 
     # --- Merge com Ciclo de Mercado ---
     try:

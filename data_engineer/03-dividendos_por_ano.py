@@ -17,11 +17,12 @@ Etapas do Processo:
 import pandas as pd
 from pathlib import Path
 
+# Importa as utilidades comuns do pipeline
+from common import DATA_DIR
+
 # --- Configuração de Caminhos ---
-# Define o diretório base 'data' para leitura e escrita dos arquivos
-BASE = Path(__file__).resolve().parent.parent / 'data'
-input_path = BASE / 'todos_dividendos.csv'
-output_path = BASE / 'dividendos_ano.csv'
+input_path = DATA_DIR / 'todos_dividendos.csv'
+output_path = DATA_DIR / 'dividendos_ano.csv'
 
 # --- Leitura e Processamento dos Dados ---
 print(f"Lendo dados de dividendos de: {input_path}")

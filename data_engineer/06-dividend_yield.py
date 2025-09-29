@@ -21,12 +21,13 @@ Etapas do Processo:
 import pandas as pd
 from pathlib import Path
 
+# Importa as utilidades comuns do pipeline
+from common import DATA_DIR
+
 # --- Configuração de Caminhos ---
-# Define o diretório base 'data' para leitura e escrita dos arquivos
-BASE = Path(__file__).resolve().parent.parent / 'data'
-precos_path = BASE / "precos_acoes.csv"
-dividendos_path = BASE / "dividendos_ano_resumo.csv"
-output_path = BASE / "dividend_yield.csv"
+precos_path = DATA_DIR / "precos_acoes.csv"
+dividendos_path = DATA_DIR / "dividendos_ano_resumo.csv"
+output_path = DATA_DIR / "dividend_yield.csv"
 
 # --- Leitura dos Dados ---
 print(f"Lendo dados de preços de: {precos_path}")
@@ -71,7 +72,7 @@ df["DY12M"] = df["DY12M"].round(2)
 df_final = df[["ticker", "DY5anos", "DY12M"]]
 
 # Garante que o diretório de saída exista
-BASE.mkdir(parents=True, exist_ok=True)
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Salva o resultado em um arquivo CSV
 df_final.to_csv(output_path, index=False, encoding='utf-8-sig')

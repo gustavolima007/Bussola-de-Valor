@@ -23,33 +23,12 @@ from datetime import date
 import warnings
 from pathlib import Path
 from tqdm.auto import tqdm
+from common import DATA_DIR, get_tickers
 
 # Ignora avisos de FutureWarning para manter o output limpo
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-def ler_tickers_do_csv(caminho_do_arquivo: str, coluna_ticker: str = 'ticker') -> list:
-    """
-    Lê um arquivo CSV e extrai uma lista de tickers únicos de uma coluna específica.
 
-    Args:
-        caminho_do_arquivo (str): O caminho completo para o arquivo CSV.
-        coluna_ticker (str): O nome da coluna que contém os tickers.
-
-    Returns:
-        list: Uma lista de tickers únicos. Retorna uma lista vazia em caso de erro.
-    """
-    try:
-        df = pd.read_csv(caminho_do_arquivo)
-        if coluna_ticker not in df.columns:
-            print(f"Erro: A coluna '{coluna_ticker}' não foi encontrada.")
-            return []
-        return df[coluna_ticker].dropna().unique().tolist()
-    except FileNotFoundError:
-        print(f"Erro: Arquivo não encontrado em '{caminho_do_arquivo}'.")
-        return []
-    except Exception as e:
-        print(f"Ocorreu um erro inesperado ao ler o arquivo: {e}")
-        return []
 
 def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 7) -> tuple[pd.DataFrame, pd.DataFrame] | tuple[None, None]:
     """
@@ -134,15 +113,8 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
 
 # --- Bloco de Execução Principal ---
 if __name__ == "__main__":
-    # Define os caminhos dos arquivos de entrada e saída
-    # Ajuste o caminho para subir um nível (do 'data_engineer' para a raiz do projeto)
-    repo_root = Path(__file__).resolve().parent.parent 
-    
-    csv_path = repo_root / "data" / "acoes_e_fundos.csv"
-    output_folder = repo_root / "data"
-
     print(f"Iniciando o script de coleta de preços...")
-    ativos_alvo = ler_tickers_do_csv(str(csv_path))
+    ativos_alvo = get_tickers()
 
     if ativos_alvo:
         print(f"Processando {len(ativos_alvo)} ativos. Amostra: {ativos_alvo[:5]}...")
@@ -150,14 +122,14 @@ if __name__ == "__main__":
         tabela_completa, tabela_resumida = gerar_tabela_comparativa_precos(ativos_alvo, anos_anteriores=anos_para_analise)
 
         if tabela_completa is not None and tabela_resumida is not None:
-            output_folder.mkdir(parents=True, exist_ok=True)
+            DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-            output_path_completo = output_folder / "precos_acoes_completo.csv"
+            output_path_completo = DATA_DIR / "precos_acoes_completo.csv"
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
             tabela_completa.to_csv(output_path_completo, index=False, encoding='utf-8-sig')
             print(f"\nTabela completa salva em: {output_path_completo}")
 
-            output_path_resumido = output_folder / "precos_acoes.csv"
+            output_path_resumido = DATA_DIR / "precos_acoes.csv"
             tabela_resumida.round(2).to_csv(output_path_resumido, encoding='utf-8-sig')
             print(f"Tabela resumida salva em: {output_path_resumido}")
 
