@@ -1,14 +1,25 @@
 setor_b3,pontuacao_setor,subsetor_b3,pontuacao_final,score_dy,score_roe,score_beta,score_payout,score_empresas_boas,penalidade_empresas_ruins,score_graham,penalidade_rj,dy_5a_medio,roe_medio,beta_medio,payout_medio,margem_graham_media,score_original,empresas_boas_contagem,empresas_ruins_contagem,ocorrencias_rj
 "Petróleo, Gás e Biocombustíveis",500.23,"Petróleo, Gás e Biocombustíveis",500.23,120,75,35,35,35,0,0,-8.89,9.20,34.43,0.33,47.89,22.95,209.12,5,0.00,1.00
+<<<<<<< HEAD
 Utilidade Pública,430.95,Transmissão de Energia,580.25,90,35,35,35,75,0,20,-0.00,6.41,19.34,0.23,31.98,81.21,290.25,8,0.00,0.00
 Utilidade Pública,430.95,Distribuição de Energia,571.17,120,55,35,20,75,0,20,-8.89,9.39,23.01,0.29,60.65,59.97,255.06,19,0.00,1.00
 Utilidade Pública,430.95,Saneamento,379.34,-30,55,35,20,35,0,0,-0.00,3.56,21.93,0.27,25.92,36.81,264.34,4,0.00,0.00
 Utilidade Pública,430.95,Geração de Energia,193.02,-30,0,35,0,55,-20,0,-0.00,3.66,7.69,0.37,103.83,-18.64,153.02,7,2.00,0.00
 Financeiro e Outros,430.63,Holdings e Outros Serviços Financeiros,508.95,90,20,35,35,55,0,20,-0.00,6.66,12.59,0.60,34.29,85.26,253.95,6,0.00,0.00
+=======
+Financeiro e Outros,430.63,Holdings e Outros Serviços Financeiros,508.95,90,20,35,35,55,0,20,-0.00,6.89,12.59,0.60,34.29,85.26,253.95,6,0.00,0.00
+>>>>>>> 7a19bb158c00e38a32cefcf4b77086c8842822d6
 Financeiro e Outros,430.63,Seguros,499.10,90,75,35,35,35,0,0,-0.00,6.92,30.63,0.60,40.15,10.67,229.10,5,0.00,0.00
 Financeiro e Outros,430.63,Propriedades e Locação,490.02,120,20,35,20,75,-20,20,-0.00,9.14,10.13,0.19,76.71,60.25,220.02,8,2.00,0.00
 Financeiro e Outros,430.63,Bancos,475.15,60,35,35,35,75,-20,20,-0.00,4.78,17.83,0.42,35.15,82.30,235.15,21,2.00,0.00
 Financeiro e Outros,430.63,Incorporação e Construção,179.95,-30,0,35,20,75,-20,0,-80.00,2.33,7.18,0.54,70.21,33.05,179.95,13,2.00,9.00
+<<<<<<< HEAD
+=======
+Utilidade Pública,430.60,Transmissão de Energia,580.25,90,35,35,35,75,0,20,-0.00,6.41,19.34,0.23,31.98,81.21,290.25,8,0.00,0.00
+Utilidade Pública,430.60,Distribuição de Energia,569.80,120,55,35,20,75,0,20,-8.89,9.33,23.01,0.29,60.65,59.97,253.69,19,0.00,1.00
+Utilidade Pública,430.60,Saneamento,379.34,-30,55,35,20,35,0,0,-0.00,3.56,21.93,0.27,25.92,36.81,264.34,4,0.00,0.00
+Utilidade Pública,430.60,Geração de Energia,193.02,-30,0,35,0,55,-20,0,-0.00,3.66,7.69,0.37,103.83,-18.64,153.02,7,2.00,0.00
+>>>>>>> 7a19bb158c00e38a32cefcf4b77086c8842822d6
 Materiais Básicos,418.12,Mineração e Siderurgia,465.58,120,0,20,0,75,-20,35,-8.89,9.42,6.20,0.93,727.94,118.95,244.47,9,1.00,1.00
 Materiais Básicos,418.12,Papel e Celulose,409.38,60,35,35,35,35,0,0,-0.00,4.66,18.85,0.36,39.07,33.54,209.38,4,0.00,0.00
 Materiais Básicos,418.12,Química e Petroquímica,379.39,120,0,35,0,55,-20,0,-0.00,9.04,9.30,0.68,15.18,22.96,189.39,6,1.00,0.00
