@@ -155,7 +155,7 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 
 # --- FIM DA SEÇÃO DE CÁLCULO ---
 
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configuração de Caminhos e Salvamento ---
 OUTPUT_PATH = DATA_DIR / "rj.csv"
@@ -163,6 +163,7 @@ OUTPUT_PATH = DATA_DIR / "rj.csv"
 # Garante que o diretório de saída exista
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+df_rj = tratar_dados_para_json(df_rj)
 df_rj.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
 
 print(f"Dados de recuperação judicial e falência salvos em {OUTPUT_PATH}")

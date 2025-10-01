@@ -18,7 +18,7 @@ import pandas as pd
 from pathlib import Path
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configuração de Caminhos ---
 input_path = DATA_DIR / 'dividendos_ano.csv'
@@ -53,6 +53,7 @@ resumo = pd.merge(soma_5anos, soma_12m, on='ticker', how='outer').fillna(0)
 resumo = resumo[['ticker', 'valor_5anos', 'valor_12m']]
 
 # Salva o DataFrame de resumo em um novo arquivo CSV
+resumo = tratar_dados_para_json(resumo)
 resumo.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"\nArquivo 'dividendos_ano_resumo.csv' gerado com sucesso em: {output_path}")

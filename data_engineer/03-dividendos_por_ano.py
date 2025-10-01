@@ -18,7 +18,7 @@ import pandas as pd
 from pathlib import Path
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configuração de Caminhos ---
 input_path = DATA_DIR / 'todos_dividendos.csv'
@@ -30,15 +30,16 @@ df = pd.read_csv(input_path)
 
 # Converte a coluna 'Data' para o formato datetime e extrai o ano
 print("Processando datas e agregando dividendos por ano...")
-df['Data'] = pd.to_datetime(df['Data'])
-df['ano'] = df['Data'].dt.year
+df['data'] = pd.to_datetime(df['data'])
+df['ano'] = df['data'].dt.year
 
 # Renomeia as colunas para um padrão em minúsculas para consistência
-df = df.rename(columns={'Ticker': 'ticker', 'Valor': 'dividendo', 'Data': 'data'})
+df = df.rename(columns={'Ticker': 'ticker', 'valor': 'dividendo'})
 
 # Agrupa por 'ano' e 'ticker' e soma os dividendos anuais
 soma_por_ano_ticker = df.groupby(['ano', 'ticker'])['dividendo'].sum().reset_index()
 
 # --- Salvamento do Resultado ---
+soma_por_ano_ticker = tratar_dados_para_json(soma_por_ano_ticker)
 soma_por_ano_ticker.to_csv(output_path, index=False, encoding='utf-8-sig')
 print(f"Arquivo 'dividendos_ano.csv' gerado com sucesso em: {output_path}")

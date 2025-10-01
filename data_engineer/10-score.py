@@ -26,7 +26,7 @@ import pandas as pd
 from tqdm.auto import tqdm
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configuração de Caminhos ---
 FN_INDICADORES = DATA_DIR / "indicadores.csv"
@@ -287,6 +287,7 @@ def main():
     
     # Ordena pelo score total e salva
     scores_df = scores_df.sort_values(by='score_total', ascending=False)
+    scores_df = tratar_dados_para_json(scores_df)
     scores_df.to_csv(FN_OUT, index=False, float_format='%.2f')
     
     print(f"\nArquivo de scores salvo com sucesso em: {FN_OUT}")

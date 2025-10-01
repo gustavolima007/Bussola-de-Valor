@@ -1,398 +1,222 @@
-2025-09-29 19:53:09.895 | INFO     | __main__:main:46 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-29 19:53:09.896 | INFO     | __main__:get_csv_files:14 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-29 19:53:09.896 | INFO     | __main__:main:58 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-29 19:53:09.903 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: acoes_e_fundos...
-2025-09-29 19:53:10.059 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para acoes_e_fundos. 
-2025-09-29 19:53:10.059 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela acoes_e_fundos concluído com sucesso!
-2025-09-29 19:53:10.059 | INFO     | __main__:main:58 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-29 19:53:10.063 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: avaliacao_setor...
-2025-09-29 19:53:10.064 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para avaliacao_setor. 
-2025-09-29 19:53:10.064 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela avaliacao_setor concluído com sucesso!
-2025-09-29 19:53:10.064 | INFO     | __main__:main:58 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-29 19:53:10.066 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: ciclo_mercado...
-2025-09-29 19:53:10.066 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para ciclo_mercado. 
-2025-09-29 19:53:10.066 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela ciclo_mercado concluído com sucesso!
-2025-09-29 19:53:10.066 | INFO     | __main__:main:58 - Processando arquivo: data\dividendos_ano.csv
-2025-09-29 19:53:10.071 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano...
-2025-09-29 19:53:10.072 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano. 
-2025-09-29 19:53:10.072 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para dividendos_ano. 
-2025-09-29 19:53:10.072 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para dividendos_ano. 
-2025-09-29 19:53:10.072 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para dividendos_ano. 
-2025-09-29 19:53:10.072 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano concluído com sucesso!
-2025-09-29 19:53:10.072 | INFO     | __main__:main:58 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-29 19:53:10.075 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano_resumo...
-2025-09-29 19:53:10.075 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano_resumo. 
-2025-09-29 19:53:10.075 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano_resumo concluído com sucesso!
-2025-09-29 19:53:10.075 | INFO     | __main__:main:58 - Processando arquivo: data\dividend_yield.csv
-2025-09-29 19:53:10.077 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividend_yield...
-2025-09-29 19:53:10.077 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividend_yield. 
-2025-09-29 19:53:10.077 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividend_yield concluído com sucesso!
-2025-09-29 19:53:10.077 | INFO     | __main__:main:58 - Processando arquivo: data\indicadores.csv
-2025-09-29 19:53:10.086 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indicadores...
-2025-09-29 19:53:10.086 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indicadores. 
-2025-09-29 19:53:10.087 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indicadores concluído com sucesso!
-2025-09-29 19:53:10.087 | INFO     | __main__:main:58 - Processando arquivo: data\indices.csv
-2025-09-29 19:53:10.090 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indices...
-2025-09-29 19:53:10.090 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indices. 
-2025-09-29 19:53:10.090 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indices concluído com sucesso!
-2025-09-29 19:53:10.090 | INFO     | __main__:main:58 - Processando arquivo: data\precos_acoes.csv
-2025-09-29 19:53:10.093 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes...
-2025-09-29 19:53:10.093 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes. 
-2025-09-29 19:53:10.093 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes concluído com sucesso!
-2025-09-29 19:53:10.093 | INFO     | __main__:main:58 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-29 19:53:10.098 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes_completo...
-2025-09-29 19:53:10.098 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.098 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.099 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.099 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.099 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.099 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para precos_acoes_completo. 
-2025-09-29 19:53:10.099 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes_completo concluído com sucesso!
-2025-09-29 19:53:10.099 | INFO     | __main__:main:58 - Processando arquivo: data\preco_teto.csv
-2025-09-29 19:53:10.101 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: preco_teto...
-2025-09-29 19:53:10.101 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para preco_teto. 
-2025-09-29 19:53:10.101 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela preco_teto concluído com sucesso!
-2025-09-29 19:53:10.102 | INFO     | __main__:main:58 - Processando arquivo: data\rj.csv
-2025-09-29 19:53:10.110 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: rj...
-2025-09-29 19:53:10.110 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para rj. 
-2025-09-29 19:53:10.111 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela rj concluído com sucesso!
-2025-09-29 19:53:10.111 | INFO     | __main__:main:58 - Processando arquivo: data\scores.csv
-2025-09-29 19:53:10.114 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: scores...
-2025-09-29 19:53:10.114 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para scores. 
-2025-09-29 19:53:10.114 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela scores concluído com sucesso!
-2025-09-29 19:53:10.114 | INFO     | __main__:main:58 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-29 19:53:10.117 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: tickers_nao_mapeados...
-2025-09-29 19:53:10.117 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para tickers_nao_mapeados. 
-2025-09-29 19:53:10.117 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para tickers_nao_mapeados. 
-2025-09-29 19:53:10.117 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela tickers_nao_mapeados concluído com sucesso!
-2025-09-29 19:53:10.117 | INFO     | __main__:main:58 - Processando arquivo: data\todos_dividendos.csv
-2025-09-29 19:53:10.144 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: todos_dividendos...
-2025-09-29 19:53:10.144 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para todos_dividendos. 
-2025-09-29 19:53:10.144 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para todos_dividendos. 
-2025-09-29 19:53:10.144 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para todos_dividendos. 
-2025-09-29 19:53:10.144 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | INFO     | __main__:upload_to_supabase:28 - Lote 7 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | INFO     | __main__:upload_to_supabase:28 - Lote 8 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | INFO     | __main__:upload_to_supabase:28 - Lote 9 enviado para todos_dividendos. 
-2025-09-29 19:53:10.145 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela todos_dividendos concluído com sucesso!
-2025-09-29 20:02:10.927 | INFO     | __main__:main:47 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-29 20:02:10.927 | INFO     | __main__:get_csv_files:14 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-29 20:02:10.927 | INFO     | __main__:main:59 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-29 20:02:10.934 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: acoes_e_fundos...
-2025-09-29 20:02:11.106 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para acoes_e_fundos. 
-2025-09-29 20:02:11.106 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela acoes_e_fundos concluído com sucesso!
-2025-09-29 20:02:11.106 | INFO     | __main__:main:59 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-29 20:02:11.110 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: avaliacao_setor...
-2025-09-29 20:02:11.110 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para avaliacao_setor. 
-2025-09-29 20:02:11.110 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela avaliacao_setor concluído com sucesso!
-2025-09-29 20:02:11.110 | INFO     | __main__:main:59 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-29 20:02:11.113 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: ciclo_mercado...
-2025-09-29 20:02:11.113 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para ciclo_mercado. 
-2025-09-29 20:02:11.113 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela ciclo_mercado concluído com sucesso!
-2025-09-29 20:02:11.113 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano.csv
-2025-09-29 20:02:11.118 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano...
-2025-09-29 20:02:11.118 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano. 
-2025-09-29 20:02:11.118 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para dividendos_ano. 
-2025-09-29 20:02:11.119 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para dividendos_ano. 
-2025-09-29 20:02:11.119 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para dividendos_ano. 
-2025-09-29 20:02:11.119 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano concluído com sucesso!
-2025-09-29 20:02:11.119 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-29 20:02:11.121 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano_resumo...
-2025-09-29 20:02:11.121 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano_resumo. 
-2025-09-29 20:02:11.121 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano_resumo concluído com sucesso!
-2025-09-29 20:02:11.121 | INFO     | __main__:main:59 - Processando arquivo: data\dividend_yield.csv
-2025-09-29 20:02:11.125 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividend_yield...
-2025-09-29 20:02:11.126 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividend_yield. 
-2025-09-29 20:02:11.126 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividend_yield concluído com sucesso!
-2025-09-29 20:02:11.126 | INFO     | __main__:main:59 - Processando arquivo: data\indicadores.csv
-2025-09-29 20:02:11.136 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indicadores...
-2025-09-29 20:02:11.136 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indicadores. 
-2025-09-29 20:02:11.136 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indicadores concluído com sucesso!
-2025-09-29 20:02:11.136 | INFO     | __main__:main:59 - Processando arquivo: data\indices.csv
-2025-09-29 20:02:11.139 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indices...
-2025-09-29 20:02:11.139 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indices. 
-2025-09-29 20:02:11.139 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indices concluído com sucesso!
-2025-09-29 20:02:11.139 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes.csv
-2025-09-29 20:02:11.141 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes...
-2025-09-29 20:02:11.142 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes. 
-2025-09-29 20:02:11.142 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes concluído com sucesso!
-2025-09-29 20:02:11.142 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-29 20:02:11.147 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes_completo...
-2025-09-29 20:02:11.147 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.147 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.148 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.148 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.148 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.148 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para precos_acoes_completo. 
-2025-09-29 20:02:11.148 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes_completo concluído com sucesso!
-2025-09-29 20:02:11.148 | INFO     | __main__:main:59 - Processando arquivo: data\preco_teto.csv
-2025-09-29 20:02:11.151 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: preco_teto...
-2025-09-29 20:02:11.151 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para preco_teto. 
-2025-09-29 20:02:11.151 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela preco_teto concluído com sucesso!
-2025-09-29 20:02:11.151 | INFO     | __main__:main:59 - Processando arquivo: data\rj.csv
-2025-09-29 20:02:11.161 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: rj...
-2025-09-29 20:02:11.161 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para rj. 
-2025-09-29 20:02:11.161 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela rj concluído com sucesso!
-2025-09-29 20:02:11.161 | INFO     | __main__:main:59 - Processando arquivo: data\scores.csv
-2025-09-29 20:02:11.165 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: scores...
-2025-09-29 20:02:11.165 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para scores. 
-2025-09-29 20:02:11.165 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela scores concluído com sucesso!
-2025-09-29 20:02:11.165 | INFO     | __main__:main:59 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-29 20:02:11.168 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: tickers_nao_mapeados...
-2025-09-29 20:02:11.168 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para tickers_nao_mapeados. 
-2025-09-29 20:02:11.168 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para tickers_nao_mapeados. 
-2025-09-29 20:02:11.168 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela tickers_nao_mapeados concluído com sucesso!
-2025-09-29 20:02:11.168 | INFO     | __main__:main:59 - Processando arquivo: data\todos_dividendos.csv
-2025-09-29 20:02:11.197 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: todos_dividendos...
-2025-09-29 20:02:11.198 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para todos_dividendos. 
-2025-09-29 20:02:11.198 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para todos_dividendos. 
-2025-09-29 20:02:11.198 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para todos_dividendos. 
-2025-09-29 20:02:11.198 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para todos_dividendos. 
-2025-09-29 20:02:11.198 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para todos_dividendos. 
-2025-09-29 20:02:11.199 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para todos_dividendos. 
-2025-09-29 20:02:11.199 | INFO     | __main__:upload_to_supabase:28 - Lote 7 enviado para todos_dividendos. 
-2025-09-29 20:02:11.199 | INFO     | __main__:upload_to_supabase:28 - Lote 8 enviado para todos_dividendos. 
-2025-09-29 20:02:11.199 | INFO     | __main__:upload_to_supabase:28 - Lote 9 enviado para todos_dividendos. 
-2025-09-29 20:02:11.199 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela todos_dividendos concluído com sucesso!
-2025-09-29 21:02:31.220 | INFO     | __main__:main:47 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-29 21:02:31.221 | INFO     | __main__:get_csv_files:14 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-29 21:02:31.221 | INFO     | __main__:main:59 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-29 21:02:31.229 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: acoes_e_fundos...
-2025-09-29 21:02:31.422 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para acoes_e_fundos. 
-2025-09-29 21:02:31.422 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela acoes_e_fundos concluído com sucesso!
-2025-09-29 21:02:31.422 | INFO     | __main__:main:59 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-29 21:02:31.427 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: avaliacao_setor...
-2025-09-29 21:02:31.428 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para avaliacao_setor. 
-2025-09-29 21:02:31.428 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela avaliacao_setor concluído com sucesso!
-2025-09-29 21:02:31.428 | INFO     | __main__:main:59 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-29 21:02:31.432 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: ciclo_mercado...
-2025-09-29 21:02:31.432 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para ciclo_mercado. 
-2025-09-29 21:02:31.433 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela ciclo_mercado concluído com sucesso!
-2025-09-29 21:02:31.433 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano.csv
-2025-09-29 21:02:31.439 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano...
-2025-09-29 21:02:31.439 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano. 
-2025-09-29 21:02:31.439 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para dividendos_ano. 
-2025-09-29 21:02:31.440 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para dividendos_ano. 
-2025-09-29 21:02:31.440 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para dividendos_ano. 
-2025-09-29 21:02:31.440 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano concluído com sucesso!
-2025-09-29 21:02:31.440 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-29 21:02:31.444 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano_resumo...
-2025-09-29 21:02:31.445 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano_resumo. 
-2025-09-29 21:02:31.445 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano_resumo concluído com sucesso!
-2025-09-29 21:02:31.446 | INFO     | __main__:main:59 - Processando arquivo: data\dividend_yield.csv
-2025-09-29 21:02:31.449 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividend_yield...
-2025-09-29 21:02:31.449 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividend_yield. 
-2025-09-29 21:02:31.449 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividend_yield concluído com sucesso!
-2025-09-29 21:02:31.450 | INFO     | __main__:main:59 - Processando arquivo: data\indicadores.csv
-2025-09-29 21:02:31.466 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indicadores...
-2025-09-29 21:02:31.467 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indicadores. 
-2025-09-29 21:02:31.467 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para indicadores. 
-2025-09-29 21:02:31.467 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indicadores concluído com sucesso!
-2025-09-29 21:02:31.468 | INFO     | __main__:main:59 - Processando arquivo: data\indices.csv
-2025-09-29 21:02:31.471 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indices...
-2025-09-29 21:02:31.471 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indices. 
-2025-09-29 21:02:31.472 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indices concluído com sucesso!
-2025-09-29 21:02:31.472 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes.csv
-2025-09-29 21:02:31.476 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes...
-2025-09-29 21:02:31.476 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes. 
-2025-09-29 21:02:31.477 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes concluído com sucesso!
-2025-09-29 21:02:31.477 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-29 21:02:31.484 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes_completo...
-2025-09-29 21:02:31.485 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.485 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.485 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.485 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.486 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.486 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para precos_acoes_completo. 
-2025-09-29 21:02:31.486 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes_completo concluído com sucesso!
-2025-09-29 21:02:31.486 | INFO     | __main__:main:59 - Processando arquivo: data\preco_teto.csv
-2025-09-29 21:02:31.489 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: preco_teto...
-2025-09-29 21:02:31.490 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para preco_teto. 
-2025-09-29 21:02:31.490 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela preco_teto concluído com sucesso!
-2025-09-29 21:02:31.491 | INFO     | __main__:main:59 - Processando arquivo: data\rj.csv
-2025-09-29 21:02:31.500 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: rj...
-2025-09-29 21:02:31.501 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para rj. 
-2025-09-29 21:02:31.501 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela rj concluído com sucesso!
-2025-09-29 21:02:31.501 | INFO     | __main__:main:59 - Processando arquivo: data\scores.csv
-2025-09-29 21:02:31.505 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: scores...
-2025-09-29 21:02:31.506 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para scores. 
-2025-09-29 21:02:31.507 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela scores concluído com sucesso!
-2025-09-29 21:02:31.507 | INFO     | __main__:main:59 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-29 21:02:31.511 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: tickers_nao_mapeados...
-2025-09-29 21:02:31.511 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para tickers_nao_mapeados. 
-2025-09-29 21:02:31.512 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para tickers_nao_mapeados. 
-2025-09-29 21:02:31.512 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela tickers_nao_mapeados concluído com sucesso!
-2025-09-29 21:02:31.512 | INFO     | __main__:main:59 - Processando arquivo: data\todos_dividendos.csv
-2025-09-29 21:02:31.551 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: todos_dividendos...
-2025-09-29 21:02:31.551 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para todos_dividendos. 
-2025-09-29 21:02:31.552 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para todos_dividendos. 
-2025-09-29 21:02:31.552 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para todos_dividendos. 
-2025-09-29 21:02:31.552 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para todos_dividendos. 
-2025-09-29 21:02:31.553 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para todos_dividendos. 
-2025-09-29 21:02:31.553 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para todos_dividendos. 
-2025-09-29 21:02:31.553 | INFO     | __main__:upload_to_supabase:28 - Lote 7 enviado para todos_dividendos. 
-2025-09-29 21:02:31.553 | INFO     | __main__:upload_to_supabase:28 - Lote 8 enviado para todos_dividendos. 
-2025-09-29 21:02:31.553 | INFO     | __main__:upload_to_supabase:28 - Lote 9 enviado para todos_dividendos. 
-2025-09-29 21:02:31.554 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela todos_dividendos concluído com sucesso!
-2025-09-29 21:56:41.762 | INFO     | __main__:main:47 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-29 21:56:41.763 | INFO     | __main__:get_csv_files:14 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-29 21:56:41.763 | INFO     | __main__:main:59 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-29 21:56:41.770 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: acoes_e_fundos...
-2025-09-29 21:56:41.921 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para acoes_e_fundos. 
-2025-09-29 21:56:41.922 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela acoes_e_fundos concluído com sucesso!
-2025-09-29 21:56:41.922 | INFO     | __main__:main:59 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-29 21:56:41.925 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: avaliacao_setor...
-2025-09-29 21:56:41.925 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para avaliacao_setor. 
-2025-09-29 21:56:41.926 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela avaliacao_setor concluído com sucesso!
-2025-09-29 21:56:41.926 | INFO     | __main__:main:59 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-29 21:56:41.928 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: ciclo_mercado...
-2025-09-29 21:56:41.928 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para ciclo_mercado. 
-2025-09-29 21:56:41.928 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela ciclo_mercado concluído com sucesso!
-2025-09-29 21:56:41.928 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano.csv
-2025-09-29 21:56:41.934 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano...
-2025-09-29 21:56:41.934 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano. 
-2025-09-29 21:56:41.935 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para dividendos_ano. 
-2025-09-29 21:56:41.935 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para dividendos_ano. 
-2025-09-29 21:56:41.935 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para dividendos_ano. 
-2025-09-29 21:56:41.935 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano concluído com sucesso!
-2025-09-29 21:56:41.936 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-29 21:56:41.938 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano_resumo...
-2025-09-29 21:56:41.939 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano_resumo. 
-2025-09-29 21:56:41.939 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano_resumo concluído com sucesso!
-2025-09-29 21:56:41.939 | INFO     | __main__:main:59 - Processando arquivo: data\dividend_yield.csv
-2025-09-29 21:56:41.942 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividend_yield...
-2025-09-29 21:56:41.942 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividend_yield. 
-2025-09-29 21:56:41.942 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividend_yield concluído com sucesso!
-2025-09-29 21:56:41.942 | INFO     | __main__:main:59 - Processando arquivo: data\indicadores.csv
-2025-09-29 21:56:41.956 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indicadores...
-2025-09-29 21:56:41.956 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indicadores. 
-2025-09-29 21:56:41.957 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para indicadores. 
-2025-09-29 21:56:41.957 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indicadores concluído com sucesso!
-2025-09-29 21:56:41.957 | INFO     | __main__:main:59 - Processando arquivo: data\indices.csv
-2025-09-29 21:56:41.960 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indices...
-2025-09-29 21:56:41.960 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indices. 
-2025-09-29 21:56:41.961 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indices concluído com sucesso!
-2025-09-29 21:56:41.961 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes.csv
-2025-09-29 21:56:41.964 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes...
-2025-09-29 21:56:41.965 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes. 
-2025-09-29 21:56:41.965 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes concluído com sucesso!
-2025-09-29 21:56:41.965 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-29 21:56:41.971 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes_completo...
-2025-09-29 21:56:41.972 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.972 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.972 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.973 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.973 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.973 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para precos_acoes_completo. 
-2025-09-29 21:56:41.973 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes_completo concluído com sucesso!
-2025-09-29 21:56:41.973 | INFO     | __main__:main:59 - Processando arquivo: data\preco_teto.csv
-2025-09-29 21:56:41.975 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: preco_teto...
-2025-09-29 21:56:41.976 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para preco_teto. 
-2025-09-29 21:56:41.976 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela preco_teto concluído com sucesso!
-2025-09-29 21:56:41.976 | INFO     | __main__:main:59 - Processando arquivo: data\rj.csv
-2025-09-29 21:56:41.984 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: rj...
-2025-09-29 21:56:41.985 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para rj. 
-2025-09-29 21:56:41.985 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela rj concluído com sucesso!
-2025-09-29 21:56:41.985 | INFO     | __main__:main:59 - Processando arquivo: data\scores.csv
-2025-09-29 21:56:41.989 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: scores...
-2025-09-29 21:56:41.989 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para scores. 
-2025-09-29 21:56:41.989 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela scores concluído com sucesso!
-2025-09-29 21:56:41.989 | INFO     | __main__:main:59 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-29 21:56:41.992 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: tickers_nao_mapeados...
-2025-09-29 21:56:41.992 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para tickers_nao_mapeados. 
-2025-09-29 21:56:41.993 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para tickers_nao_mapeados. 
-2025-09-29 21:56:41.993 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela tickers_nao_mapeados concluído com sucesso!
-2025-09-29 21:56:41.993 | INFO     | __main__:main:59 - Processando arquivo: data\todos_dividendos.csv
-2025-09-29 21:56:42.017 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: todos_dividendos...
-2025-09-29 21:56:42.017 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para todos_dividendos. 
-2025-09-29 21:56:42.018 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para todos_dividendos. 
-2025-09-29 21:56:42.018 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para todos_dividendos. 
-2025-09-29 21:56:42.018 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para todos_dividendos. 
-2025-09-29 21:56:42.018 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para todos_dividendos. 
-2025-09-29 21:56:42.019 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para todos_dividendos. 
-2025-09-29 21:56:42.019 | INFO     | __main__:upload_to_supabase:28 - Lote 7 enviado para todos_dividendos. 
-2025-09-29 21:56:42.019 | INFO     | __main__:upload_to_supabase:28 - Lote 8 enviado para todos_dividendos. 
-2025-09-29 21:56:42.019 | INFO     | __main__:upload_to_supabase:28 - Lote 9 enviado para todos_dividendos. 
-2025-09-29 21:56:42.020 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela todos_dividendos concluído com sucesso!
-2025-09-29 21:58:24.577 | INFO     | __main__:main:47 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-29 21:58:24.577 | INFO     | __main__:get_csv_files:14 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-29 21:58:24.577 | INFO     | __main__:main:59 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-29 21:58:24.585 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: acoes_e_fundos...
-2025-09-29 21:58:24.762 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para acoes_e_fundos. 
-2025-09-29 21:58:24.763 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela acoes_e_fundos concluído com sucesso!
-2025-09-29 21:58:24.763 | INFO     | __main__:main:59 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-29 21:58:24.769 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: avaliacao_setor...
-2025-09-29 21:58:24.769 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para avaliacao_setor. 
-2025-09-29 21:58:24.770 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela avaliacao_setor concluído com sucesso!
-2025-09-29 21:58:24.770 | INFO     | __main__:main:59 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-29 21:58:24.775 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: ciclo_mercado...
-2025-09-29 21:58:24.776 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para ciclo_mercado. 
-2025-09-29 21:58:24.776 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela ciclo_mercado concluído com sucesso!
-2025-09-29 21:58:24.776 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano.csv
-2025-09-29 21:58:24.783 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano...
-2025-09-29 21:58:24.783 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano. 
-2025-09-29 21:58:24.784 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para dividendos_ano. 
-2025-09-29 21:58:24.784 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para dividendos_ano. 
-2025-09-29 21:58:24.784 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para dividendos_ano. 
-2025-09-29 21:58:24.785 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano concluído com sucesso!
-2025-09-29 21:58:24.785 | INFO     | __main__:main:59 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-29 21:58:24.787 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividendos_ano_resumo...
-2025-09-29 21:58:24.788 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividendos_ano_resumo. 
-2025-09-29 21:58:24.788 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividendos_ano_resumo concluído com sucesso!
-2025-09-29 21:58:24.788 | INFO     | __main__:main:59 - Processando arquivo: data\dividend_yield.csv
-2025-09-29 21:58:24.791 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: dividend_yield...
-2025-09-29 21:58:24.791 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para dividend_yield. 
-2025-09-29 21:58:24.791 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela dividend_yield concluído com sucesso!
-2025-09-29 21:58:24.791 | INFO     | __main__:main:59 - Processando arquivo: data\indicadores.csv
-2025-09-29 21:58:24.810 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indicadores...
-2025-09-29 21:58:24.811 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indicadores. 
-2025-09-29 21:58:24.811 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para indicadores. 
-2025-09-29 21:58:24.811 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indicadores concluído com sucesso!
-2025-09-29 21:58:24.811 | INFO     | __main__:main:59 - Processando arquivo: data\indices.csv
-2025-09-29 21:58:24.814 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: indices...
-2025-09-29 21:58:24.814 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para indices. 
-2025-09-29 21:58:24.814 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela indices concluído com sucesso!
-2025-09-29 21:58:24.815 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes.csv
-2025-09-29 21:58:24.817 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes...
-2025-09-29 21:58:24.817 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes. 
-2025-09-29 21:58:24.817 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes concluído com sucesso!
-2025-09-29 21:58:24.818 | INFO     | __main__:main:59 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-29 21:58:24.823 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: precos_acoes_completo...
-2025-09-29 21:58:24.823 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.824 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.824 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.824 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.824 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.824 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para precos_acoes_completo. 
-2025-09-29 21:58:24.825 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela precos_acoes_completo concluído com sucesso!
-2025-09-29 21:58:24.825 | INFO     | __main__:main:59 - Processando arquivo: data\preco_teto.csv
-2025-09-29 21:58:24.827 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: preco_teto...
-2025-09-29 21:58:24.828 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para preco_teto. 
-2025-09-29 21:58:24.828 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela preco_teto concluído com sucesso!
-2025-09-29 21:58:24.828 | INFO     | __main__:main:59 - Processando arquivo: data\rj.csv
-2025-09-29 21:58:24.838 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: rj...
-2025-09-29 21:58:24.839 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para rj. 
-2025-09-29 21:58:24.839 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela rj concluído com sucesso!
-2025-09-29 21:58:24.839 | INFO     | __main__:main:59 - Processando arquivo: data\scores.csv
-2025-09-29 21:58:24.842 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: scores...
-2025-09-29 21:58:24.843 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para scores. 
-2025-09-29 21:58:24.843 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela scores concluído com sucesso!
-2025-09-29 21:58:24.843 | INFO     | __main__:main:59 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-29 21:58:24.846 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: tickers_nao_mapeados...
-2025-09-29 21:58:24.846 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para tickers_nao_mapeados. 
-2025-09-29 21:58:24.846 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para tickers_nao_mapeados. 
-2025-09-29 21:58:24.846 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela tickers_nao_mapeados concluído com sucesso!
-2025-09-29 21:58:24.846 | INFO     | __main__:main:59 - Processando arquivo: data\todos_dividendos.csv
-2025-09-29 21:58:24.871 | INFO     | __main__:upload_to_supabase:20 - Iniciando upload para a tabela: todos_dividendos...
-2025-09-29 21:58:24.872 | INFO     | __main__:upload_to_supabase:28 - Lote 1 enviado para todos_dividendos. 
-2025-09-29 21:58:24.872 | INFO     | __main__:upload_to_supabase:28 - Lote 2 enviado para todos_dividendos. 
-2025-09-29 21:58:24.872 | INFO     | __main__:upload_to_supabase:28 - Lote 3 enviado para todos_dividendos. 
-2025-09-29 21:58:24.873 | INFO     | __main__:upload_to_supabase:28 - Lote 4 enviado para todos_dividendos. 
-2025-09-29 21:58:24.873 | INFO     | __main__:upload_to_supabase:28 - Lote 5 enviado para todos_dividendos. 
-2025-09-29 21:58:24.873 | INFO     | __main__:upload_to_supabase:28 - Lote 6 enviado para todos_dividendos. 
-2025-09-29 21:58:24.873 | INFO     | __main__:upload_to_supabase:28 - Lote 7 enviado para todos_dividendos. 
-2025-09-29 21:58:24.873 | INFO     | __main__:upload_to_supabase:28 - Lote 8 enviado para todos_dividendos. 
-2025-09-29 21:58:24.874 | INFO     | __main__:upload_to_supabase:28 - Lote 9 enviado para todos_dividendos. 
-2025-09-29 21:58:24.874 | SUCCESS  | __main__:upload_to_supabase:29 - Upload para a tabela todos_dividendos concluído com sucesso!
+2025-09-30 21:46:16.693 | INFO     | __main__:main:69 - Conexão com o Supabase estabelecida com sucesso!
+2025-09-30 21:46:16.693 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.acoes_e_fundos...
+2025-09-30 21:46:17.135 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.acoes_e_fundos limpa com sucesso!
+2025-09-30 21:46:17.135 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.ciclo_mercado...
+2025-09-30 21:46:17.194 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.ciclo_mercado limpa com sucesso!
+2025-09-30 21:46:17.195 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividendos_ano...
+2025-09-30 21:46:17.253 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividendos_ano limpa com sucesso!
+2025-09-30 21:46:17.254 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividendos_ano_resumo...
+2025-09-30 21:46:17.320 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividendos_ano_resumo limpa com sucesso!
+2025-09-30 21:46:17.321 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividend_yield...
+2025-09-30 21:46:17.365 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividend_yield limpa com sucesso!
+2025-09-30 21:46:17.366 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.indicadores...
+2025-09-30 21:46:17.411 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.indicadores limpa com sucesso!
+2025-09-30 21:46:17.411 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.indices...
+2025-09-30 21:46:17.446 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.indices limpa com sucesso!
+2025-09-30 21:46:17.446 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.precos_acoes...
+2025-09-30 21:46:17.501 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.precos_acoes limpa com sucesso!
+2025-09-30 21:46:17.501 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.precos_acoes_completo...
+2025-09-30 21:46:17.565 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.precos_acoes_completo limpa com sucesso!
+2025-09-30 21:46:17.566 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.preco_teto...
+2025-09-30 21:46:17.601 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.preco_teto limpa com sucesso!
+2025-09-30 21:46:17.601 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.rj...
+2025-09-30 21:46:17.637 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.rj limpa com sucesso!
+2025-09-30 21:46:17.637 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.scores...
+2025-09-30 21:46:17.683 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.scores limpa com sucesso!
+2025-09-30 21:46:17.683 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.tickers_nao_mapeados...
+2025-09-30 21:46:17.713 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.tickers_nao_mapeados limpa com sucesso!
+2025-09-30 21:46:17.713 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.todos_dividendos...
+2025-09-30 21:46:17.791 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.todos_dividendos limpa com sucesso!
+2025-09-30 21:46:17.791 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.avaliacao_setor...
+2025-09-30 21:46:17.828 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.avaliacao_setor limpa com sucesso!
+2025-09-30 21:46:17.828 | INFO     | __main__:get_csv_files:13 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
+2025-09-30 21:46:17.828 | INFO     | __main__:main:83 - Processando arquivo: data\acoes_e_fundos.csv
+2025-09-30 21:46:17.833 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'empresa', 'close', 'change', 'volume', 'market_cap', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3']
+2025-09-30 21:46:17.835 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'empresa', 'close', 'change', 'volume', 'market_cap', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3'])
+2025-09-30 21:46:17.835 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.acoes_e_fundos...
+2025-09-30 21:46:17.882 | ERROR    | __main__:upload_to_supabase:54 - Erro ao fazer upload para a tabela land_dw.acoes_e_fundos: {'message': "Could not find the 'change' column of 'acoes_e_fundos' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2025-09-30 21:46:17.882 | INFO     | __main__:main:83 - Processando arquivo: data\avaliacao_setor.csv
+2025-09-30 21:46:17.884 | INFO     | __main__:main:93 - Colunas do DataFrame: ['setor_b3', 'pontuacao_setor', 'subsetor_b3', 'pontuacao_final', 'score_dy', 'score_roe', 'score_beta', 'score_payout', 'score_empresas_boas', 'penalidade_empresas_ruins', 'score_graham', 'penalidade_rj', 'dy_5a_medio', 'roe_medio', 'beta_medio', 'payout_medio', 'margem_graham_media', 'score_original', 'empresas_boas_contagem', 'empresas_ruins_contagem', 'ocorrencias_rj']
+2025-09-30 21:46:17.885 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['setor_b3', 'pontuacao_setor', 'subsetor_b3', 'pontuacao_final', 'score_dy', 'score_roe', 'score_beta', 'score_payout', 'score_empresas_boas', 'penalidade_empresas_ruins', 'score_graham', 'penalidade_rj', 'dy_5a_medio', 'roe_medio', 'beta_medio', 'payout_medio', 'margem_graham_media', 'score_original', 'empresas_boas_contagem', 'empresas_ruins_contagem', 'ocorrencias_rj'])
+2025-09-30 21:46:17.886 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.avaliacao_setor...
+2025-09-30 21:46:17.936 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.avaliacao_setor.
+2025-09-30 21:46:17.937 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.avaliacao_setor concluído com sucesso!
+2025-09-30 21:46:17.937 | INFO     | __main__:main:83 - Processando arquivo: data\ciclo_mercado.csv
+2025-09-30 21:46:17.938 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'status_ciclo']
+2025-09-30 21:46:17.939 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'status_ciclo'])
+2025-09-30 21:46:17.940 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.ciclo_mercado...
+2025-09-30 21:46:17.994 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.ciclo_mercado.
+2025-09-30 21:46:17.995 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.ciclo_mercado concluído com sucesso!
+2025-09-30 21:46:17.995 | INFO     | __main__:main:83 - Processando arquivo: data\dividendos_ano.csv
+2025-09-30 21:46:17.998 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ano', 'ticker', 'dividendo']
+2025-09-30 21:46:18.000 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ano', 'ticker', 'dividendo'])
+2025-09-30 21:46:18.000 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividendos_ano...
+2025-09-30 21:46:18.050 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividendos_ano.
+2025-09-30 21:46:18.091 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.dividendos_ano.
+2025-09-30 21:46:18.139 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.dividendos_ano.
+2025-09-30 21:46:18.172 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.dividendos_ano.
+2025-09-30 21:46:18.172 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividendos_ano concluído com sucesso!
+2025-09-30 21:46:18.173 | INFO     | __main__:main:83 - Processando arquivo: data\dividendos_ano_resumo.csv
+2025-09-30 21:46:18.174 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'valor_5anos', 'valor_12m']
+2025-09-30 21:46:18.175 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'valor_5anos', 'valor_12m'])
+2025-09-30 21:46:18.175 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividendos_ano_resumo...
+2025-09-30 21:46:18.218 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividendos_ano_resumo.
+2025-09-30 21:46:18.218 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividendos_ano_resumo concluído com sucesso!
+2025-09-30 21:46:18.219 | INFO     | __main__:main:83 - Processando arquivo: data\dividend_yield.csv
+2025-09-30 21:46:18.221 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'dy5anos', 'dy12m']
+2025-09-30 21:46:18.222 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'dy5anos', 'dy12m'])
+2025-09-30 21:46:18.222 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividend_yield...
+2025-09-30 21:46:18.330 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividend_yield.
+2025-09-30 21:46:18.330 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividend_yield concluído com sucesso!
+2025-09-30 21:46:18.331 | INFO     | __main__:main:83 - Processando arquivo: data\indicadores.csv
+2025-09-30 21:46:18.335 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'empresa', 'subsetor_b3', 'tipo', 'market_cap', 'logo', 'preco_atual', 'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe', 'divida_total', 'ebitda', 'divida_ebitda', 'beta', 'current_ratio', 'liquidez_media_diaria', 'fcf_yield', 'perfil_acao', 'lpa', 'vpa', 'margem_seguranca_percent', 'sentimento_gauge', 'strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'ciclo_de_mercado', 'status_ciclo', 'frase_ciclo']
+2025-09-30 21:46:18.339 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'empresa', 'subsetor_b3', 'tipo', 'market_cap', 'logo', 'preco_atual', 'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe', 'divida_total', 'ebitda', 'divida_ebitda', 'beta', 'current_ratio', 'liquidez_media_diaria', 'fcf_yield', 'perfil_acao', 'lpa', 'vpa', 'margem_seguranca_percent', 'sentimento_gauge', 'strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'ciclo_de_mercado', 'status_ciclo', 'frase_ciclo'])
+2025-09-30 21:46:18.339 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.indicadores...
+2025-09-30 21:46:18.417 | ERROR    | __main__:upload_to_supabase:54 - Erro ao fazer upload para a tabela land_dw.indicadores: {'message': 'invalid input syntax for type bigint: "188510748672.0"', 'code': '22P02', 'hint': None, 'details': None}
+2025-09-30 21:46:18.418 | INFO     | __main__:main:83 - Processando arquivo: data\indices.csv
+2025-09-30 21:46:18.419 | INFO     | __main__:main:93 - Colunas do DataFrame: ['year', 'index', 'close', 'rsi', 'macd', 'volume']
+2025-09-30 21:46:18.420 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['year', 'index', 'close', 'rsi', 'macd', 'volume'])
+2025-09-30 21:46:18.420 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.indices...
+2025-09-30 21:46:18.463 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.indices.
+2025-09-30 21:46:18.464 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.indices concluído com sucesso!
+2025-09-30 21:46:18.464 | INFO     | __main__:main:83 - Processando arquivo: data\precos_acoes.csv
+2025-09-30 21:46:18.465 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'fechamento_atual', 'fechamento_1m_atras', 'fechamento_6m_atras']
+2025-09-30 21:46:18.466 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'fechamento_atual', 'fechamento_1m_atras', 'fechamento_6m_atras'])
+2025-09-30 21:46:18.467 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.precos_acoes...
+2025-09-30 21:46:18.522 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.precos_acoes.
+2025-09-30 21:46:18.522 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.precos_acoes concluído com sucesso!
+2025-09-30 21:46:18.522 | INFO     | __main__:main:83 - Processando arquivo: data\precos_acoes_completo.csv
+2025-09-30 21:46:18.525 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'ano', 'fechamento']
+2025-09-30 21:46:18.528 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'ano', 'fechamento'])
+2025-09-30 21:46:18.528 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.precos_acoes_completo...
+2025-09-30 21:46:18.587 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.644 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.697 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.743 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.795 | INFO     | __main__:upload_to_supabase:51 - Lote 5 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.835 | INFO     | __main__:upload_to_supabase:51 - Lote 6 enviado para land_dw.precos_acoes_completo.
+2025-09-30 21:46:18.835 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.precos_acoes_completo concluído com sucesso!
+2025-09-30 21:46:18.835 | INFO     | __main__:main:83 - Processando arquivo: data\preco_teto.csv
+2025-09-30 21:46:18.837 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'preco_teto_5anos', 'diferenca_percentual']
+2025-09-30 21:46:18.838 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'preco_teto_5anos', 'diferenca_percentual'])
+2025-09-30 21:46:18.838 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.preco_teto...
+2025-09-30 21:46:18.880 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.preco_teto.
+2025-09-30 21:46:18.880 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.preco_teto concluído com sucesso!
+2025-09-30 21:46:18.880 | INFO     | __main__:main:83 - Processando arquivo: data\rj.csv
+2025-09-30 21:46:18.882 | INFO     | __main__:main:93 - Colunas do DataFrame: ['nome', 'ticker', 'setor', 'data_entrada_rj', 'data_saida_rj', 'data_falencia', 'duracao_rj']
+2025-09-30 21:46:18.883 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['nome', 'ticker', 'setor', 'data_entrada_rj', 'data_saida_rj', 'data_falencia', 'duracao_rj'])
+2025-09-30 21:46:18.883 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.rj...
+2025-09-30 21:46:18.929 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.rj.
+2025-09-30 21:46:18.929 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.rj concluído com sucesso!
+2025-09-30 21:46:18.929 | INFO     | __main__:main:83 - Processando arquivo: data\scores.csv
+2025-09-30 21:46:18.931 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker_base', 'score_dy', 'score_payout', 'score_roe', 'score_pl_pvp', 'score_divida', 'score_crescimento_sentimento', 'score_ciclo_mercado', 'score_graham', 'score_beta', 'score_market_cap', 'score_liquidez', 'score_fcf_yield', 'score_total']
+2025-09-30 21:46:18.933 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker_base', 'score_dy', 'score_payout', 'score_roe', 'score_pl_pvp', 'score_divida', 'score_crescimento_sentimento', 'score_ciclo_mercado', 'score_graham', 'score_beta', 'score_market_cap', 'score_liquidez', 'score_fcf_yield', 'score_total'])
+2025-09-30 21:46:18.933 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.scores...
+2025-09-30 21:46:19.000 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.scores.
+2025-09-30 21:46:19.000 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.scores concluído com sucesso!
+2025-09-30 21:46:19.000 | INFO     | __main__:main:83 - Processando arquivo: data\tickers_nao_mapeados.csv
+2025-09-30 21:46:19.002 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker']
+2025-09-30 21:46:19.003 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker'])
+2025-09-30 21:46:19.003 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.tickers_nao_mapeados...
+2025-09-30 21:46:19.062 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.tickers_nao_mapeados.
+2025-09-30 21:46:19.100 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.tickers_nao_mapeados.
+2025-09-30 21:46:19.100 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.tickers_nao_mapeados concluído com sucesso!
+2025-09-30 21:46:19.101 | INFO     | __main__:main:83 - Processando arquivo: data\todos_dividendos.csv
+2025-09-30 21:46:19.106 | INFO     | __main__:main:93 - Colunas do DataFrame: ['data', 'valor', 'ticker']
+2025-09-30 21:46:19.111 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['data', 'valor', 'ticker'])
+2025-09-30 21:46:19.112 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.todos_dividendos...
+2025-09-30 21:46:19.172 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.423 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.482 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.539 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.600 | INFO     | __main__:upload_to_supabase:51 - Lote 5 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.649 | INFO     | __main__:upload_to_supabase:51 - Lote 6 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.698 | INFO     | __main__:upload_to_supabase:51 - Lote 7 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.751 | INFO     | __main__:upload_to_supabase:51 - Lote 8 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.807 | INFO     | __main__:upload_to_supabase:51 - Lote 9 enviado para land_dw.todos_dividendos.
+2025-09-30 21:46:19.807 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.todos_dividendos concluído com sucesso!
+2025-09-30 22:08:59.593 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-09-30 22:08:59.785 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-09-30 22:08:59.785 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-09-30 22:09:01.555 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-09-30 22:09:01.556 | INFO     | __main__:main:76 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-09-30 22:09:01.561 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-09-30 22:09:01.661 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-09-30 22:09:01.720 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-09-30 22:09:01.792 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-09-30 22:09:02.330 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-09-30 22:09:02.371 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-09-30 22:09:02.429 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-09-30 22:09:02.705 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-09-30 22:09:02.772 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-09-30 22:09:02.866 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-09-30 22:09:02.953 | INFO     | __main__:main:103 - 
+
+📋 Resumo do Upload:
+==============================
+2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividend_yield.csv             ✅ Sucesso
+2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ⚠️ Vazio
+2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ⚠️ Vazio
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - preco_teto.csv                 ⚠️ Vazio
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - rj.csv                         ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ⚠️ Vazio
+2025-09-30 22:09:02.954 | INFO     | __main__:main:106 - ==============================
+
+✨ Script concluído!
+
+2025-09-30 22:15:23.016 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-09-30 22:15:23.208 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-09-30 22:15:23.208 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-09-30 22:15:24.903 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-09-30 22:15:24.903 | INFO     | __main__:main:76 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-09-30 22:15:24.908 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-09-30 22:15:25.006 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-09-30 22:15:25.079 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-09-30 22:15:25.146 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-09-30 22:15:25.314 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-09-30 22:15:25.357 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-09-30 22:15:25.413 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-09-30 22:15:25.773 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-09-30 22:15:25.828 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-09-30 22:15:25.901 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-09-30 22:15:26.013 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
+2025-09-30 22:15:26.655 | INFO     | __main__:main:103 - 
+
+📋 Resumo do Upload:
+==============================
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividend_yield.csv             ✅ Sucesso
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ⚠️ Vazio
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ⚠️ Vazio
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
+2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - preco_teto.csv                 ⚠️ Vazio
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - rj.csv                         ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ✅ Sucesso
+2025-09-30 22:15:26.657 | INFO     | __main__:main:106 - ==============================
+
+✨ Script concluído!
+

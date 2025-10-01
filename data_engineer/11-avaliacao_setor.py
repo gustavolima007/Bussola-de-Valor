@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Funções de Cálculo de Score por Critério ---
 
@@ -198,6 +198,7 @@ def main() -> None:
         if pd.api.types.is_numeric_dtype(resultado_final[col]):
             resultado_final[col] = resultado_final[col].round(2)
 
+    resultado_final = tratar_dados_para_json(resultado_final)
     resultado_final.to_csv(output_path, index=False, float_format="%.2f")
     print(f"OK. Novo arquivo de avaliação de setores salvo em: {output_path}")
 

@@ -23,7 +23,7 @@ from datetime import date
 import warnings
 from pathlib import Path
 from tqdm.auto import tqdm
-from common import DATA_DIR, get_tickers
+from common import DATA_DIR, get_tickers, tratar_dados_para_json
 
 # Ignora avisos de FutureWarning para manter o output limpo
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -83,8 +83,8 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
             lista_resumida.append({
                 'ticker': ticker,
                 'fechamento_atual': fechamento_atual,
-                'fechamento_1M_atras': fechamento_1M_atras,
-                'fechamento_6M_atras': fechamento_6M_atras
+                'fechamento_1m_atras': fechamento_1M_atras,
+                'fechamento_6m_atras': fechamento_6M_atras
             })
             
             lista_completa.append({'ticker': ticker, 'ano': hoje.year, 'fechamento': fechamento_atual})
@@ -126,10 +126,12 @@ if __name__ == "__main__":
 
             output_path_completo = DATA_DIR / "precos_acoes_completo.csv"
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
+            tabela_completa = tratar_dados_para_json(tabela_completa)
             tabela_completa.to_csv(output_path_completo, index=False, encoding='utf-8-sig')
             print(f"\nTabela completa salva em: {output_path_completo}")
 
             output_path_resumido = DATA_DIR / "precos_acoes.csv"
+            tabela_resumida = tratar_dados_para_json(tabela_resumida)
             tabela_resumida.round(2).to_csv(output_path_resumido, encoding='utf-8-sig')
             print(f"Tabela resumida salva em: {output_path_resumido}")
 

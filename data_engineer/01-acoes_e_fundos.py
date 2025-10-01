@@ -11,6 +11,7 @@ import time
 import logging
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from common import tratar_dados_para_json
 
 # Configuração de logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -360,19 +361,18 @@ def extrair_dados_brapi():
             'type': 'tipo',
             'volume': 'volume',
             'logo': 'logo',
-            'changePercent': 'percentual_variacao'
         }
         df_ativos = df_ativos.rename(columns=colunas_renomear)
 
         df_ativos['empresa'] = df_ativos['empresa'].fillna(df_ativos['ticker'] + ' - Não Especificado')
 
-        colunas_remover = [col for col in ['change', 'market_cap', 'close'] if col in df_ativos.columns]
-        if colunas_remover:
-            df_ativos = df_ativos.drop(columns=colunas_remover)
+        colunas_manter = [
+            'ticker', 'empresa', 'volume', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3'
+        ]
+        df_ativos = df_ativos[colunas_manter]
 
-        df_ativos = df_ativos.fillna('N/A')
-        df_ativos = df_ativos.apply(lambda x: x.str.strip() if x.dtype == "object" else x)
-        df_ativos = df_ativos.replace('', 'N/A')
+        # Preparar dados para JSON e CSV
+        df_ativos = tratar_dados_para_json(df_ativos)
         
         assert len(df_ativos) > 0, "DataFrame vazio após filtros!"
         

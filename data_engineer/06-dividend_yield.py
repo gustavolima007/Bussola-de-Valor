@@ -22,7 +22,7 @@ import pandas as pd
 from pathlib import Path
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configuração de Caminhos ---
 precos_path = DATA_DIR / "precos_acoes.csv"
@@ -58,23 +58,24 @@ df = precos.merge(div[["ticker_base", "valor_5anos", "valor_12m"]], on="ticker_b
 print("Calculando o Dividend Yield (5 anos e 12 meses)...")
 # Calcula o DY dos últimos 5 anos (média anual)
 # A cláusula .where() evita divisão por zero
-df["DY5anos"] = (((df["valor_5anos"] / 5) / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
+df["dy5anos"] = (((df["valor_5anos"] / 5) / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
 
 # Calcula o DY dos últimos 12 meses
-df["DY12M"] = ((df["valor_12m"] / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
+df["dy12m"] = ((df["valor_12m"] / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
 
 # Arredonda os resultados para duas casas decimais
-df["DY5anos"] = df["DY5anos"].round(2)
-df["DY12M"] = df["DY12M"].round(2)
+df["dy5anos"] = df["dy5anos"].round(2)
+df["dy12m"] = df["dy12m"].round(2)
 
 # --- Finalização e Salvamento ---
 # Seleciona e reordena as colunas finais
-df_final = df[["ticker", "DY5anos", "DY12M"]]
+df_final = df[["ticker", "dy5anos", "dy12m"]]
 
 # Garante que o diretório de saída exista
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Salva o resultado em um arquivo CSV
+df_final = tratar_dados_para_json(df_final)
 df_final.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"\nArquivo 'dividend_yield.csv' salvo com sucesso em: {output_path}")

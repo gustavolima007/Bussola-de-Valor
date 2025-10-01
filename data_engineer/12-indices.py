@@ -21,7 +21,7 @@ Notas:
 - Alguns ativos podem ter menos dados disponíveis.
 - Fechamento anual baseado no último dia útil (2021-2024) ou dia atual (2025).
 """
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 output_annual_path = DATA_DIR / 'indices.csv'
 indices = {
@@ -98,6 +98,7 @@ def get_and_save_indices():
         if not all_data.empty:
             all_data.columns = [col.lower() for col in all_data.columns]
             all_data['close'] = all_data['close'].round(2)
+            all_data = tratar_dados_para_json(all_data)
             all_data.to_csv(output_annual_path, index=False)
             print(f"\nResumo anual salvo com sucesso em: {output_annual_path}")
         else:

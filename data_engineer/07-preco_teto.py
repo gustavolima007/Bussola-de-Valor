@@ -21,7 +21,7 @@ import pandas as pd
 from pathlib import Path
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # --- Configurações ---
 # Define a rentabilidade mínima desejada (6% ao ano)
@@ -76,6 +76,7 @@ dados_consolidados['diferenca_percentual'] = dados_consolidados.apply(calcular_d
 resultado_final = dados_consolidados[['ticker', 'preco_teto_5anos', 'diferenca_percentual']]
 
 # Salva o resultado em um arquivo CSV
+resultado_final = tratar_dados_para_json(resultado_final)
 resultado_final.to_csv(output_path, index=False, encoding='utf-8-sig')
 
 print(f"\nArquivo 'preco_teto.csv' gerado com sucesso em: {output_path}")

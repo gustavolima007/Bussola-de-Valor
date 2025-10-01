@@ -17,7 +17,7 @@ import yfinance as yf
 from tqdm.auto import tqdm
 import random
 from pathlib import Path
-from common import DATA_DIR
+from common import DATA_DIR, tratar_dados_para_json
 
 # Indicadores técnicos via ta
 from ta.momentum import RSIIndicator
@@ -336,6 +336,7 @@ def main():
     # Salvar indicadores.csv
     df_output = pd.DataFrame(resultados)
     df_output.columns = [c.strip().lower().replace(" ", "_") for c in df_output.columns]
+    df_output = tratar_dados_para_json(df_output)
     CAMINHO_ARQUIVO_SAIDA.parent.mkdir(parents=True, exist_ok=True)
     df_output.to_csv(CAMINHO_ARQUIVO_SAIDA, index=False, encoding='utf-8-sig')
     
@@ -346,7 +347,8 @@ def main():
     CAMINHO_CICLO_MERCADO = DATA_DIR / "ciclo_mercado.csv"
     if 'ticker' in df_output.columns and 'status_ciclo' in df_output.columns:
         df_ciclo = df_output[['ticker', 'status_ciclo']].copy()
-        df_ciclo.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
+        df_ciclo.rename(columns={'status_ciclo': 'status_ciclo'}, inplace=True)
+        df_ciclo = tratar_dados_para_json(df_ciclo)
         df_ciclo.to_csv(CAMINHO_CICLO_MERCADO, index=False, encoding='utf-8-sig')
         print(f"    - Arquivo de ciclo de mercado salvo em: {CAMINHO_CICLO_MERCADO}")
 

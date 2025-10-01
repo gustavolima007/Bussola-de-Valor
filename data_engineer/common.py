@@ -50,3 +50,31 @@ def get_tickers(csv_path=None) -> list:
     except Exception as e:
         print(f"Ocorreu um erro inesperado ao ler o arquivo de tickers: {e}")
         return []
+
+def tratar_dados_para_json(df):
+    """
+    Prepara um DataFrame para ser salvo em JSON, tratando NaNs e Timestamps.
+
+    - Substitui np.nan por None em colunas de ponto flutuante (float).
+    - Converte colunas de Timestamp para strings no formato ISO 8601.
+    - Remove espaços em branco extras de colunas de string.
+
+    Args:
+        df (pd.DataFrame): O DataFrame a ser tratado.
+
+    Returns:
+        pd.DataFrame: O DataFrame com os tipos de dados ajustados.
+    """
+    for col in df.columns:
+        # Trata colunas de data e hora
+        if pd.api.types.is_datetime64_any_dtype(df[col]):
+            df[col] = df[col].apply(lambda x: x.strftime('%Y-%m-%d %H:%M:%S+00') if pd.notnull(x) else None)
+            
+        # Trata colunas de string/objeto
+        elif pd.api.types.is_object_dtype(df[col]):
+            df[col] = df[col].str.strip()
+
+    # Substitui todos os NaNs restantes por None
+    df = df.where(pd.notnull(df), None)
+
+    return df

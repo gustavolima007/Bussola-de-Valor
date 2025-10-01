@@ -21,7 +21,7 @@ import yfinance as yf
 from tqdm.auto import tqdm
 
 # Importa as utilidades comuns do pipeline
-from common import DATA_DIR, get_tickers
+from common import DATA_DIR, get_tickers, tratar_dados_para_json
 
 # Ignora avisos de FutureWarning para manter o output limpo
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -53,12 +53,20 @@ for ticker in tqdm(tickers, desc="Coletando dividendos (7 anos)"):
         # Processamento e filtro dos dados
         if not dividendos.empty:
             df_div = dividendos.reset_index()
-            df_div.columns = ['Data', 'Valor']  # Renomeia as colunas
-            df_div['Data'] = pd.to_datetime(df_div['Data']).dt.tz_localize(None) # Normaliza a data
+            
+            # Rename columns safely
+            if len(df_div.columns) == 2:
+                df_div.columns = ['data', 'valor']
+            else:
+                # Log an error or handle unexpected format
+                print(f"Formato inesperado de dividendos para {ticker_yf}: {df_div.columns}")
+                continue
+
+            df_div['data'] = pd.to_datetime(df_div['data']).dt.tz_localize(None) # Normaliza a data
             df_div['Ticker'] = ticker  # Adiciona o ticker original (sem .SA)
             
             # Filtra os dividendos para o período de 7 anos definido
-            df_div = df_div[(df_div['Data'] >= start_date) & (df_div['Data'] <= end_date)]
+            df_div = df_div[(df_div['data'] >= start_date) & (df_div['data'] <= end_date)]
 
             if not df_div.empty:
                 todos_dividendos.append(df_div)
@@ -72,12 +80,17 @@ if todos_dividendos:
     # Concatena a lista de dataframes em um único dataframe final
     df_final = pd.concat(todos_dividendos, ignore_index=True)
     
+    # Trata os dados antes de salvar
+    df_final = tratar_dados_para_json(df_final)
+
     # Salva o resultado em um arquivo CSV
     df_final.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
     
     print(f"Finalizado! {len(df_final)} registros de dividendos salvos em {OUTPUT_PATH}")
 else:
     print("⚠️ Nenhum dividendo encontrado no período para os tickers fornecidos.")
+    # Cria um arquivo vazio com o cabeçalho
+    pd.DataFrame(columns=['data', 'valor', 'ticker']).to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
     
 if erros:
     print("\n--- Tickers com Erro ---")
