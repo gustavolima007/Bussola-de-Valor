@@ -634,14 +634,14 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     
     if not dy_data.empty:
         st.subheader("Top 20 Maiores Pagadores (12M)")
-        dy_data['DY12M'] = pd.to_numeric(dy_data['DY12M'], errors='coerce').fillna(0)
-        top12 = dy_data.nlargest(20, 'DY12M')
-        fig12 = px.bar(top12.sort_values('DY12M'), 
-                     x='DY12M', 
+        dy_data['DY12m'] = pd.to_numeric(dy_data['DY12m'], errors='coerce').fillna(0)
+        top12 = dy_data.nlargest(20, 'DY12m')
+        fig12 = px.bar(top12.sort_values('DY12m'), 
+                     x='DY12m', 
                      y='ticker', 
                      orientation='h', 
                      title='Top 20: Maiores DY 12 Meses', 
-                     text='DY12M')
+                     text='DY12m')
         fig12.update_traces(texttemplate='%{text:.2f}%', textposition='inside')
         fig12.update_layout(margin=dict(l=20, r=20, t=50, b=20), 
                           xaxis_title="Dividend Yield (12M) %",

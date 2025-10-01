@@ -58,18 +58,18 @@ df = precos.merge(div[["ticker_base", "valor_5anos", "valor_12m"]], on="ticker_b
 print("Calculando o Dividend Yield (5 anos e 12 meses)...")
 # Calcula o DY dos últimos 5 anos (média anual)
 # A cláusula .where() evita divisão por zero
-df["dy5anos"] = (((df["valor_5anos"] / 5) / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
+df["DY5anos"] = (((df["valor_5anos"] / 5) / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
 
 # Calcula o DY dos últimos 12 meses
-df["dy12m"] = ((df["valor_12m"] / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
+df["DY12m"] = ((df["valor_12m"] / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
 
 # Arredonda os resultados para duas casas decimais
-df["dy5anos"] = df["dy5anos"].round(2)
-df["dy12m"] = df["dy12m"].round(2)
+df["DY5anos"] = df["DY5anos"].round(2)
+df["DY12m"] = df["DY12m"].round(2)
 
 # --- Finalização e Salvamento ---
 # Seleciona e reordena as colunas finais
-df_final = df[["ticker", "dy5anos", "dy12m"]]
+df_final = df[["ticker", "ticker_base", "DY5anos", "DY12m"]]
 
 # Garante que o diretório de saída exista
 DATA_DIR.mkdir(parents=True, exist_ok=True)

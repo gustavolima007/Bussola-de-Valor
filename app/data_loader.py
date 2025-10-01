@@ -63,13 +63,13 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
             dy = read_csv_cached(base_path / 'dividend_yield.csv')
             indic['ticker_base'] = indic['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
             dy['ticker_base'] = dy['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
-            df = indic.merge(dy[['ticker_base','DY12M','DY5anos']], on='ticker_base', how='left')
+            df = indic.merge(dy[['ticker_base','DY12m','DY5anos']], on='ticker_base', how='left')
             df.rename(columns={
                 'empresa':'Empresa','setor_brapi':'Setor (brapi)','logo':'Logo','perfil_acao':'Perfil da Ação',
                 'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
                 'payout_ratio':'Payout Ratio (%)','crescimento_preco_5a':'Crescimento Preço (%)','roe':'ROE (%)',
                 'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
-                'DY12M':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)',
+                'DY12m':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)',
                 'strong_buy': 'Strong Buy', 'buy': 'Buy', 'hold': 'Hold', 'sell': 'Sell', 'strong_sell': 'Strong Sell'
             }, inplace=True)
 
@@ -189,15 +189,15 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
     try:
         df_ciclo = read_csv_cached(base_path / 'ciclo_mercado.csv')
         if not df_ciclo.empty:
-            # A coluna 'Status Ciclo' já vem com o nome correto do CSV
-            df_ciclo_to_merge = df_ciclo[['ticker', 'Status Ciclo']]
-            # Normalizar o ticker para o merge
-            df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['ticker'].str.strip().str.upper()
-            df_ciclo_to_merge.set_index('ticker_base', inplace=True)
-            # Fazer o merge com o dataframe principal
-            df = df.merge(df_ciclo_to_merge[['Status Ciclo']], left_on='Ticker', right_index=True, how='left')
-            # Preencher valores nulos na nova coluna, se houver
-            df['Status Ciclo'].fillna('N/A', inplace=True)
+            # A coluna 'status_ciclo' é lida do CSV e depois renomeada para 'Status Ciclo'
+            if 'status_ciclo' in df_ciclo.columns:
+                df_ciclo_to_merge = df_ciclo[['ticker', 'status_ciclo']]
+                df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['ticker'].str.strip().str.upper()
+                df_ciclo_to_merge.set_index('ticker_base', inplace=True)
+                
+                df = df.merge(df_ciclo_to_merge[['status_ciclo']], left_on='Ticker', right_index=True, how='left')
+                df.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
+                df['Status Ciclo'].fillna('N/A', inplace=True)
     except Exception as e:
         st.warning(f"Não foi possível fazer o merge com os dados de ciclo de mercado: {e}")
 

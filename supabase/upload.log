@@ -1,222 +1,435 @@
-2025-09-30 21:46:16.693 | INFO     | __main__:main:69 - Conexão com o Supabase estabelecida com sucesso!
-2025-09-30 21:46:16.693 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.acoes_e_fundos...
-2025-09-30 21:46:17.135 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.acoes_e_fundos limpa com sucesso!
-2025-09-30 21:46:17.135 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.ciclo_mercado...
-2025-09-30 21:46:17.194 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.ciclo_mercado limpa com sucesso!
-2025-09-30 21:46:17.195 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividendos_ano...
-2025-09-30 21:46:17.253 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividendos_ano limpa com sucesso!
-2025-09-30 21:46:17.254 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividendos_ano_resumo...
-2025-09-30 21:46:17.320 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividendos_ano_resumo limpa com sucesso!
-2025-09-30 21:46:17.321 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.dividend_yield...
-2025-09-30 21:46:17.365 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.dividend_yield limpa com sucesso!
-2025-09-30 21:46:17.366 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.indicadores...
-2025-09-30 21:46:17.411 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.indicadores limpa com sucesso!
-2025-09-30 21:46:17.411 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.indices...
-2025-09-30 21:46:17.446 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.indices limpa com sucesso!
-2025-09-30 21:46:17.446 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.precos_acoes...
-2025-09-30 21:46:17.501 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.precos_acoes limpa com sucesso!
-2025-09-30 21:46:17.501 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.precos_acoes_completo...
-2025-09-30 21:46:17.565 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.precos_acoes_completo limpa com sucesso!
-2025-09-30 21:46:17.566 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.preco_teto...
-2025-09-30 21:46:17.601 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.preco_teto limpa com sucesso!
-2025-09-30 21:46:17.601 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.rj...
-2025-09-30 21:46:17.637 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.rj limpa com sucesso!
-2025-09-30 21:46:17.637 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.scores...
-2025-09-30 21:46:17.683 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.scores limpa com sucesso!
-2025-09-30 21:46:17.683 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.tickers_nao_mapeados...
-2025-09-30 21:46:17.713 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.tickers_nao_mapeados limpa com sucesso!
-2025-09-30 21:46:17.713 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.todos_dividendos...
-2025-09-30 21:46:17.791 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.todos_dividendos limpa com sucesso!
-2025-09-30 21:46:17.791 | INFO     | __main__:truncate_tables:36 - Limpando a tabela: land_dw.avaliacao_setor...
-2025-09-30 21:46:17.828 | SUCCESS  | __main__:truncate_tables:40 - Tabela land_dw.avaliacao_setor limpa com sucesso!
-2025-09-30 21:46:17.828 | INFO     | __main__:get_csv_files:13 - Arquivos CSV encontrados: ['acoes_e_fundos.csv', 'avaliacao_setor.csv', 'ciclo_mercado.csv', 'dividendos_ano.csv', 'dividendos_ano_resumo.csv', 'dividend_yield.csv', 'indicadores.csv', 'indices.csv', 'precos_acoes.csv', 'precos_acoes_completo.csv', 'preco_teto.csv', 'rj.csv', 'scores.csv', 'tickers_nao_mapeados.csv', 'todos_dividendos.csv']
-2025-09-30 21:46:17.828 | INFO     | __main__:main:83 - Processando arquivo: data\acoes_e_fundos.csv
-2025-09-30 21:46:17.833 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'empresa', 'close', 'change', 'volume', 'market_cap', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3']
-2025-09-30 21:46:17.835 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'empresa', 'close', 'change', 'volume', 'market_cap', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3'])
-2025-09-30 21:46:17.835 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.acoes_e_fundos...
-2025-09-30 21:46:17.882 | ERROR    | __main__:upload_to_supabase:54 - Erro ao fazer upload para a tabela land_dw.acoes_e_fundos: {'message': "Could not find the 'change' column of 'acoes_e_fundos' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
-2025-09-30 21:46:17.882 | INFO     | __main__:main:83 - Processando arquivo: data\avaliacao_setor.csv
-2025-09-30 21:46:17.884 | INFO     | __main__:main:93 - Colunas do DataFrame: ['setor_b3', 'pontuacao_setor', 'subsetor_b3', 'pontuacao_final', 'score_dy', 'score_roe', 'score_beta', 'score_payout', 'score_empresas_boas', 'penalidade_empresas_ruins', 'score_graham', 'penalidade_rj', 'dy_5a_medio', 'roe_medio', 'beta_medio', 'payout_medio', 'margem_graham_media', 'score_original', 'empresas_boas_contagem', 'empresas_ruins_contagem', 'ocorrencias_rj']
-2025-09-30 21:46:17.885 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['setor_b3', 'pontuacao_setor', 'subsetor_b3', 'pontuacao_final', 'score_dy', 'score_roe', 'score_beta', 'score_payout', 'score_empresas_boas', 'penalidade_empresas_ruins', 'score_graham', 'penalidade_rj', 'dy_5a_medio', 'roe_medio', 'beta_medio', 'payout_medio', 'margem_graham_media', 'score_original', 'empresas_boas_contagem', 'empresas_ruins_contagem', 'ocorrencias_rj'])
-2025-09-30 21:46:17.886 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.avaliacao_setor...
-2025-09-30 21:46:17.936 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.avaliacao_setor.
-2025-09-30 21:46:17.937 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.avaliacao_setor concluído com sucesso!
-2025-09-30 21:46:17.937 | INFO     | __main__:main:83 - Processando arquivo: data\ciclo_mercado.csv
-2025-09-30 21:46:17.938 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'status_ciclo']
-2025-09-30 21:46:17.939 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'status_ciclo'])
-2025-09-30 21:46:17.940 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.ciclo_mercado...
-2025-09-30 21:46:17.994 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.ciclo_mercado.
-2025-09-30 21:46:17.995 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.ciclo_mercado concluído com sucesso!
-2025-09-30 21:46:17.995 | INFO     | __main__:main:83 - Processando arquivo: data\dividendos_ano.csv
-2025-09-30 21:46:17.998 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ano', 'ticker', 'dividendo']
-2025-09-30 21:46:18.000 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ano', 'ticker', 'dividendo'])
-2025-09-30 21:46:18.000 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividendos_ano...
-2025-09-30 21:46:18.050 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividendos_ano.
-2025-09-30 21:46:18.091 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.dividendos_ano.
-2025-09-30 21:46:18.139 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.dividendos_ano.
-2025-09-30 21:46:18.172 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.dividendos_ano.
-2025-09-30 21:46:18.172 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividendos_ano concluído com sucesso!
-2025-09-30 21:46:18.173 | INFO     | __main__:main:83 - Processando arquivo: data\dividendos_ano_resumo.csv
-2025-09-30 21:46:18.174 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'valor_5anos', 'valor_12m']
-2025-09-30 21:46:18.175 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'valor_5anos', 'valor_12m'])
-2025-09-30 21:46:18.175 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividendos_ano_resumo...
-2025-09-30 21:46:18.218 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividendos_ano_resumo.
-2025-09-30 21:46:18.218 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividendos_ano_resumo concluído com sucesso!
-2025-09-30 21:46:18.219 | INFO     | __main__:main:83 - Processando arquivo: data\dividend_yield.csv
-2025-09-30 21:46:18.221 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'dy5anos', 'dy12m']
-2025-09-30 21:46:18.222 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'dy5anos', 'dy12m'])
-2025-09-30 21:46:18.222 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.dividend_yield...
-2025-09-30 21:46:18.330 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.dividend_yield.
-2025-09-30 21:46:18.330 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.dividend_yield concluído com sucesso!
-2025-09-30 21:46:18.331 | INFO     | __main__:main:83 - Processando arquivo: data\indicadores.csv
-2025-09-30 21:46:18.335 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'empresa', 'subsetor_b3', 'tipo', 'market_cap', 'logo', 'preco_atual', 'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe', 'divida_total', 'ebitda', 'divida_ebitda', 'beta', 'current_ratio', 'liquidez_media_diaria', 'fcf_yield', 'perfil_acao', 'lpa', 'vpa', 'margem_seguranca_percent', 'sentimento_gauge', 'strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'ciclo_de_mercado', 'status_ciclo', 'frase_ciclo']
-2025-09-30 21:46:18.339 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'empresa', 'subsetor_b3', 'tipo', 'market_cap', 'logo', 'preco_atual', 'p_l', 'p_vp', 'payout_ratio', 'crescimento_preco_5a', 'roe', 'divida_total', 'ebitda', 'divida_ebitda', 'beta', 'current_ratio', 'liquidez_media_diaria', 'fcf_yield', 'perfil_acao', 'lpa', 'vpa', 'margem_seguranca_percent', 'sentimento_gauge', 'strong_buy', 'buy', 'hold', 'sell', 'strong_sell', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'ciclo_de_mercado', 'status_ciclo', 'frase_ciclo'])
-2025-09-30 21:46:18.339 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.indicadores...
-2025-09-30 21:46:18.417 | ERROR    | __main__:upload_to_supabase:54 - Erro ao fazer upload para a tabela land_dw.indicadores: {'message': 'invalid input syntax for type bigint: "188510748672.0"', 'code': '22P02', 'hint': None, 'details': None}
-2025-09-30 21:46:18.418 | INFO     | __main__:main:83 - Processando arquivo: data\indices.csv
-2025-09-30 21:46:18.419 | INFO     | __main__:main:93 - Colunas do DataFrame: ['year', 'index', 'close', 'rsi', 'macd', 'volume']
-2025-09-30 21:46:18.420 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['year', 'index', 'close', 'rsi', 'macd', 'volume'])
-2025-09-30 21:46:18.420 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.indices...
-2025-09-30 21:46:18.463 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.indices.
-2025-09-30 21:46:18.464 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.indices concluído com sucesso!
-2025-09-30 21:46:18.464 | INFO     | __main__:main:83 - Processando arquivo: data\precos_acoes.csv
-2025-09-30 21:46:18.465 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'fechamento_atual', 'fechamento_1m_atras', 'fechamento_6m_atras']
-2025-09-30 21:46:18.466 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'fechamento_atual', 'fechamento_1m_atras', 'fechamento_6m_atras'])
-2025-09-30 21:46:18.467 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.precos_acoes...
-2025-09-30 21:46:18.522 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.precos_acoes.
-2025-09-30 21:46:18.522 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.precos_acoes concluído com sucesso!
-2025-09-30 21:46:18.522 | INFO     | __main__:main:83 - Processando arquivo: data\precos_acoes_completo.csv
-2025-09-30 21:46:18.525 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'ano', 'fechamento']
-2025-09-30 21:46:18.528 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'ano', 'fechamento'])
-2025-09-30 21:46:18.528 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.precos_acoes_completo...
-2025-09-30 21:46:18.587 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.644 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.697 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.743 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.795 | INFO     | __main__:upload_to_supabase:51 - Lote 5 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.835 | INFO     | __main__:upload_to_supabase:51 - Lote 6 enviado para land_dw.precos_acoes_completo.
-2025-09-30 21:46:18.835 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.precos_acoes_completo concluído com sucesso!
-2025-09-30 21:46:18.835 | INFO     | __main__:main:83 - Processando arquivo: data\preco_teto.csv
-2025-09-30 21:46:18.837 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker', 'preco_teto_5anos', 'diferenca_percentual']
-2025-09-30 21:46:18.838 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker', 'preco_teto_5anos', 'diferenca_percentual'])
-2025-09-30 21:46:18.838 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.preco_teto...
-2025-09-30 21:46:18.880 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.preco_teto.
-2025-09-30 21:46:18.880 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.preco_teto concluído com sucesso!
-2025-09-30 21:46:18.880 | INFO     | __main__:main:83 - Processando arquivo: data\rj.csv
-2025-09-30 21:46:18.882 | INFO     | __main__:main:93 - Colunas do DataFrame: ['nome', 'ticker', 'setor', 'data_entrada_rj', 'data_saida_rj', 'data_falencia', 'duracao_rj']
-2025-09-30 21:46:18.883 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['nome', 'ticker', 'setor', 'data_entrada_rj', 'data_saida_rj', 'data_falencia', 'duracao_rj'])
-2025-09-30 21:46:18.883 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.rj...
-2025-09-30 21:46:18.929 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.rj.
-2025-09-30 21:46:18.929 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.rj concluído com sucesso!
-2025-09-30 21:46:18.929 | INFO     | __main__:main:83 - Processando arquivo: data\scores.csv
-2025-09-30 21:46:18.931 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker_base', 'score_dy', 'score_payout', 'score_roe', 'score_pl_pvp', 'score_divida', 'score_crescimento_sentimento', 'score_ciclo_mercado', 'score_graham', 'score_beta', 'score_market_cap', 'score_liquidez', 'score_fcf_yield', 'score_total']
-2025-09-30 21:46:18.933 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker_base', 'score_dy', 'score_payout', 'score_roe', 'score_pl_pvp', 'score_divida', 'score_crescimento_sentimento', 'score_ciclo_mercado', 'score_graham', 'score_beta', 'score_market_cap', 'score_liquidez', 'score_fcf_yield', 'score_total'])
-2025-09-30 21:46:18.933 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.scores...
-2025-09-30 21:46:19.000 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.scores.
-2025-09-30 21:46:19.000 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.scores concluído com sucesso!
-2025-09-30 21:46:19.000 | INFO     | __main__:main:83 - Processando arquivo: data\tickers_nao_mapeados.csv
-2025-09-30 21:46:19.002 | INFO     | __main__:main:93 - Colunas do DataFrame: ['ticker']
-2025-09-30 21:46:19.003 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['ticker'])
-2025-09-30 21:46:19.003 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.tickers_nao_mapeados...
-2025-09-30 21:46:19.062 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.tickers_nao_mapeados.
-2025-09-30 21:46:19.100 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.tickers_nao_mapeados.
-2025-09-30 21:46:19.100 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.tickers_nao_mapeados concluído com sucesso!
-2025-09-30 21:46:19.101 | INFO     | __main__:main:83 - Processando arquivo: data\todos_dividendos.csv
-2025-09-30 21:46:19.106 | INFO     | __main__:main:93 - Colunas do DataFrame: ['data', 'valor', 'ticker']
-2025-09-30 21:46:19.111 | INFO     | __main__:main:96 - Chaves do primeiro registro: dict_keys(['data', 'valor', 'ticker'])
-2025-09-30 21:46:19.112 | INFO     | __main__:upload_to_supabase:46 - Iniciando upload para a tabela: land_dw.todos_dividendos...
-2025-09-30 21:46:19.172 | INFO     | __main__:upload_to_supabase:51 - Lote 1 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.423 | INFO     | __main__:upload_to_supabase:51 - Lote 2 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.482 | INFO     | __main__:upload_to_supabase:51 - Lote 3 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.539 | INFO     | __main__:upload_to_supabase:51 - Lote 4 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.600 | INFO     | __main__:upload_to_supabase:51 - Lote 5 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.649 | INFO     | __main__:upload_to_supabase:51 - Lote 6 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.698 | INFO     | __main__:upload_to_supabase:51 - Lote 7 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.751 | INFO     | __main__:upload_to_supabase:51 - Lote 8 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.807 | INFO     | __main__:upload_to_supabase:51 - Lote 9 enviado para land_dw.todos_dividendos.
-2025-09-30 21:46:19.807 | SUCCESS  | __main__:upload_to_supabase:52 - Upload para a tabela land_dw.todos_dividendos concluído com sucesso!
-2025-09-30 22:08:59.593 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+2025-10-01 07:38:26.722 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
 
-2025-09-30 22:08:59.785 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
-2025-09-30 22:08:59.785 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+2025-10-01 07:38:27.027 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-10-01 07:38:27.031 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
 
-2025-09-30 22:09:01.555 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
+2025-10-01 07:38:28.458 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
 
-2025-09-30 22:09:01.556 | INFO     | __main__:main:76 - 
+2025-10-01 07:38:28.459 | INFO     | __main__:main:76 - 
 📤 Iniciando upload dos arquivos CSV...
 
-2025-09-30 22:09:01.561 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
-2025-09-30 22:09:01.661 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
-2025-09-30 22:09:01.720 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
-2025-09-30 22:09:01.792 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
-2025-09-30 22:09:02.330 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
-2025-09-30 22:09:02.371 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
-2025-09-30 22:09:02.429 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
-2025-09-30 22:09:02.705 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
-2025-09-30 22:09:02.772 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
-2025-09-30 22:09:02.866 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
-2025-09-30 22:09:02.953 | INFO     | __main__:main:103 - 
+2025-10-01 07:38:28.467 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 07:38:28.562 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-10-01 07:38:28.623 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-10-01 07:38:28.686 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-10-01 07:38:28.811 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-10-01 07:38:28.862 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-10-01 07:38:28.924 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 07:38:29.259 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-10-01 07:38:29.308 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-10-01 07:38:29.382 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 07:38:29.500 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
+2025-10-01 07:38:29.956 | INFO     | __main__:main:103 - 
 
 📋 Resumo do Upload:
 ==============================
-2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
-2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
-2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividend_yield.csv             ✅ Sucesso
-2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ⚠️ Vazio
-2025-09-30 22:09:02.953 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ⚠️ Vazio
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - preco_teto.csv                 ⚠️ Vazio
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - rj.csv                         ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
-2025-09-30 22:09:02.954 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ⚠️ Vazio
-2025-09-30 22:09:02.954 | INFO     | __main__:main:106 - ==============================
+2025-10-01 07:38:29.957 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 07:38:29.957 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 07:38:29.957 | INFO     | __main__:main:105 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ⚠️ Vazio
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ⚠️ Vazio
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - preco_teto.csv                 ⚠️ Vazio
+2025-10-01 07:38:29.958 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:105 -   - rj.csv                         ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 07:38:29.959 | INFO     | __main__:main:106 - ==============================
 
 ✨ Script concluído!
 
-2025-09-30 22:15:23.016 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+2025-10-01 08:15:17.409 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
 
-2025-09-30 22:15:23.208 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
-2025-09-30 22:15:23.208 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+2025-10-01 08:15:17.744 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-10-01 08:15:17.745 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
 
-2025-09-30 22:15:24.903 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
+2025-10-01 08:15:19.728 | ERROR    | __main__:truncate_tables:35 - ❌ Erro ao limpar as seguintes tabelas:
+2025-10-01 08:15:19.728 | ERROR    | __main__:truncate_tables:37 -    - acoes_e_fundos: {'message': 'permission denied for table acoes_e_fundos', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.730 | ERROR    | __main__:truncate_tables:37 -    - ciclo_mercado: {'message': 'permission denied for table ciclo_mercado', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.730 | ERROR    | __main__:truncate_tables:37 -    - dividendos_ano: {'message': 'permission denied for table dividendos_ano', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.730 | ERROR    | __main__:truncate_tables:37 -    - dividendos_ano_resumo: {'message': 'permission denied for table dividendos_ano_resumo', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.730 | ERROR    | __main__:truncate_tables:37 -    - dividend_yield: {'message': 'permission denied for table dividend_yield', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - indicadores: {'message': 'permission denied for table indicadores', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - indices: {'message': 'permission denied for table indices', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - precos_acoes: {'message': 'permission denied for table precos_acoes', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - precos_acoes_completo: {'message': 'permission denied for table precos_acoes_completo', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - preco_teto: {'message': 'permission denied for table preco_teto', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.731 | ERROR    | __main__:truncate_tables:37 -    - rj: {'message': 'permission denied for table rj', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.732 | ERROR    | __main__:truncate_tables:37 -    - scores: {'message': 'permission denied for table scores', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.732 | ERROR    | __main__:truncate_tables:37 -    - tickers_nao_mapeados: {'message': 'permission denied for table tickers_nao_mapeados', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.732 | ERROR    | __main__:truncate_tables:37 -    - todos_dividendos: {'message': 'permission denied for table todos_dividendos', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.732 | ERROR    | __main__:truncate_tables:37 -    - avaliacao_setor: {'message': 'permission denied for table avaliacao_setor', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.732 | INFO     | __main__:truncate_tables:38 - 
 
-2025-09-30 22:15:24.903 | INFO     | __main__:main:76 - 
+2025-10-01 08:15:19.733 | INFO     | __main__:main:76 - 
 📤 Iniciando upload dos arquivos CSV...
 
-2025-09-30 22:15:24.908 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
-2025-09-30 22:15:25.006 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
-2025-09-30 22:15:25.079 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
-2025-09-30 22:15:25.146 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
-2025-09-30 22:15:25.314 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
-2025-09-30 22:15:25.357 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
-2025-09-30 22:15:25.413 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
-2025-09-30 22:15:25.773 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
-2025-09-30 22:15:25.828 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
-2025-09-30 22:15:25.901 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
-2025-09-30 22:15:26.013 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
-2025-09-30 22:15:26.655 | INFO     | __main__:main:103 - 
+2025-10-01 08:15:19.742 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 08:15:19.839 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela acoes_e_fundos: {'message': 'permission denied for table acoes_e_fundos', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.852 | INFO     | __main__:main:93 -   - Processando: avaliacao_setor.csv           
+2025-10-01 08:15:19.961 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela avaliacao_setor: {'message': 'permission denied for table avaliacao_setor', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:19.983 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-10-01 08:15:20.034 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela ciclo_mercado: {'message': 'permission denied for table ciclo_mercado', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.039 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-10-01 08:15:20.083 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela dividend_yield: {'message': "Could not find the 'ticker_base' column of 'dividend_yield' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2025-10-01 08:15:20.089 | INFO     | __main__:main:93 -   - Processando: dividendos_ano.csv            
+2025-10-01 08:15:20.137 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela dividendos_ano: {'message': 'permission denied for table dividendos_ano', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.140 | INFO     | __main__:main:93 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 08:15:20.197 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela dividendos_ano_resumo: {'message': 'permission denied for table dividendos_ano_resumo', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.209 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-10-01 08:15:20.350 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela indicadores: {'message': 'permission denied for table indicadores', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.361 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-10-01 08:15:20.401 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela indices: {'message': 'permission denied for table indices', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.407 | INFO     | __main__:main:93 -   - Processando: preco_teto.csv                
+2025-10-01 08:15:20.443 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela preco_teto: {'message': 'permission denied for table preco_teto', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.454 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-10-01 08:15:20.496 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela precos_acoes: {'message': 'permission denied for table precos_acoes', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.530 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 08:15:20.569 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela precos_acoes_completo: {'message': 'permission denied for table precos_acoes_completo', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.588 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-10-01 08:15:20.622 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela rj: {'message': 'permission denied for table rj', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.625 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-10-01 08:15:20.672 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela scores: {'message': 'permission denied for table scores', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.683 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 08:15:20.723 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela tickers_nao_mapeados: {'message': 'permission denied for table tickers_nao_mapeados', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.736 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
+2025-10-01 08:15:20.776 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela todos_dividendos: {'message': 'permission denied for table todos_dividendos', 'code': '42501', 'hint': None, 'details': None}
+2025-10-01 08:15:20.776 | INFO     | __main__:main:103 - 
 
 📋 Resumo do Upload:
 ==============================
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividend_yield.csv             ✅ Sucesso
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ⚠️ Vazio
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ⚠️ Vazio
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
-2025-09-30 22:15:26.656 | INFO     | __main__:main:105 -   - preco_teto.csv                 ⚠️ Vazio
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - rj.csv                         ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ✅ Sucesso
-2025-09-30 22:15:26.657 | INFO     | __main__:main:106 - ==============================
+2025-10-01 08:15:20.777 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ❌ Falha
+2025-10-01 08:15:20.777 | INFO     | __main__:main:105 -   - avaliacao_setor.csv            ❌ Falha
+2025-10-01 08:15:20.777 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ❌ Falha
+2025-10-01 08:15:20.777 | INFO     | __main__:main:105 -   - dividend_yield.csv             ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - indicadores.csv                ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - indices.csv                    ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - preco_teto.csv                 ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - precos_acoes.csv               ❌ Falha
+2025-10-01 08:15:20.778 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ❌ Falha
+2025-10-01 08:15:20.779 | INFO     | __main__:main:105 -   - rj.csv                         ❌ Falha
+2025-10-01 08:15:20.779 | INFO     | __main__:main:105 -   - scores.csv                     ❌ Falha
+2025-10-01 08:15:20.779 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ❌ Falha
+2025-10-01 08:15:20.779 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ❌ Falha
+2025-10-01 08:15:20.779 | INFO     | __main__:main:106 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 08:18:37.217 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 08:18:37.553 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-10-01 08:18:37.554 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 08:18:38.720 | INFO     | __main__:truncate_tables:33 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 08:18:38.721 | INFO     | __main__:main:76 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 08:18:38.730 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 08:18:38.843 | INFO     | __main__:main:93 -   - Processando: avaliacao_setor.csv           
+2025-10-01 08:18:38.889 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-10-01 08:18:38.953 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-10-01 08:18:38.992 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela dividend_yield: {'message': "Could not find the 'ticker_base' column of 'dividend_yield' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2025-10-01 08:18:38.996 | INFO     | __main__:main:93 -   - Processando: dividendos_ano.csv            
+2025-10-01 08:18:39.241 | INFO     | __main__:main:93 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 08:18:39.301 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-10-01 08:18:39.459 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-10-01 08:18:39.506 | INFO     | __main__:main:93 -   - Processando: preco_teto.csv                
+2025-10-01 08:18:39.560 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-10-01 08:18:39.664 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 08:18:39.996 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-10-01 08:18:40.036 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela rj: {'message': 'insert or update on table "rj" violates foreign key constraint "rj_ticker_fkey"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(BRFS3) is not present in table "acoes_e_fundos".'}
+2025-10-01 08:18:40.040 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-10-01 08:18:40.123 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 08:18:40.221 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
+2025-10-01 08:18:40.746 | INFO     | __main__:main:103 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 08:18:40.747 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 08:18:40.747 | INFO     | __main__:main:105 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 08:18:40.747 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 08:18:40.747 | INFO     | __main__:main:105 -   - dividend_yield.csv             ❌ Falha
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - rj.csv                         ❌ Falha
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 08:18:40.748 | INFO     | __main__:main:106 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 08:30:07.818 | INFO     | __main__:main:53 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 08:30:08.236 | INFO     | __main__:main:65 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+2025-10-01 08:30:08.237 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 08:30:11.003 | ERROR    | __main__:truncate_tables:35 - ❌ Erro ao limpar as seguintes tabelas:
+2025-10-01 08:30:11.004 | ERROR    | __main__:truncate_tables:37 -    - acoes_e_fundos: {'message': 'update or delete on table "acoes_e_fundos" violates foreign key constraint "todos_dividendos_ticker_fkey" on table "todos_dividendos"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(ABEV3) is still referenced from table "todos_dividendos".'}
+2025-10-01 08:30:11.004 | INFO     | __main__:truncate_tables:38 - 
+
+2025-10-01 08:30:11.005 | INFO     | __main__:main:76 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 08:30:11.015 | INFO     | __main__:main:93 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 08:30:11.106 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela acoes_e_fundos: {'message': 'duplicate key value violates unique constraint "acoes_e_fundos_pkey"', 'code': '23505', 'hint': None, 'details': 'Key (ticker)=(ABEV3) already exists.'}
+2025-10-01 08:30:11.110 | INFO     | __main__:main:93 -   - Processando: avaliacao_setor.csv           
+2025-10-01 08:30:11.212 | INFO     | __main__:main:93 -   - Processando: ciclo_mercado.csv             
+2025-10-01 08:30:11.278 | INFO     | __main__:main:93 -   - Processando: dividend_yield.csv            
+2025-10-01 08:30:11.320 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela dividend_yield: {'message': "Could not find the 'ticker_base' column of 'dividend_yield' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2025-10-01 08:30:11.325 | INFO     | __main__:main:93 -   - Processando: dividendos_ano.csv            
+2025-10-01 08:30:11.567 | INFO     | __main__:main:93 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 08:30:11.631 | INFO     | __main__:main:93 -   - Processando: indicadores.csv               
+2025-10-01 08:30:11.789 | INFO     | __main__:main:93 -   - Processando: indices.csv                   
+2025-10-01 08:30:11.830 | INFO     | __main__:main:93 -   - Processando: preco_teto.csv                
+2025-10-01 08:30:11.893 | INFO     | __main__:main:93 -   - Processando: precos_acoes.csv              
+2025-10-01 08:30:11.960 | INFO     | __main__:main:93 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 08:30:12.273 | INFO     | __main__:main:93 -   - Processando: rj.csv                        
+2025-10-01 08:30:12.315 | ERROR    | __main__:upload_to_supabase:48 -     ❌ Erro ao fazer upload para a tabela rj: {'message': 'insert or update on table "rj" violates foreign key constraint "rj_ticker_fkey"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(BRFS3) is not present in table "acoes_e_fundos".'}
+2025-10-01 08:30:12.318 | INFO     | __main__:main:93 -   - Processando: scores.csv                    
+2025-10-01 08:30:12.389 | INFO     | __main__:main:93 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 08:30:12.479 | INFO     | __main__:main:93 -   - Processando: todos_dividendos.csv          
+2025-10-01 08:30:13.058 | INFO     | __main__:main:103 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 08:30:13.059 | INFO     | __main__:main:105 -   - acoes_e_fundos.csv             ❌ Falha
+2025-10-01 08:30:13.059 | INFO     | __main__:main:105 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 08:30:13.059 | INFO     | __main__:main:105 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 08:30:13.059 | INFO     | __main__:main:105 -   - dividend_yield.csv             ❌ Falha
+2025-10-01 08:30:13.060 | INFO     | __main__:main:105 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 08:30:13.060 | INFO     | __main__:main:105 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 08:30:13.060 | INFO     | __main__:main:105 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 08:30:13.060 | INFO     | __main__:main:105 -   - indices.csv                    ✅ Sucesso
+2025-10-01 08:30:13.061 | INFO     | __main__:main:105 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 08:30:13.061 | INFO     | __main__:main:105 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 08:30:13.061 | INFO     | __main__:main:105 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 08:30:13.061 | INFO     | __main__:main:105 -   - rj.csv                         ❌ Falha
+2025-10-01 08:30:13.061 | INFO     | __main__:main:105 -   - scores.csv                     ✅ Sucesso
+2025-10-01 08:30:13.062 | INFO     | __main__:main:105 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 08:30:13.062 | INFO     | __main__:main:105 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 08:30:13.062 | INFO     | __main__:main:106 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 08:35:42.730 | INFO     | __main__:main:69 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 08:35:43.072 | INFO     | __main__:main:81 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 08:35:43.072 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 08:35:44.962 | ERROR    | __main__:truncate_tables:51 - ❌ Erro ao limpar as seguintes tabelas:
+2025-10-01 08:35:44.962 | ERROR    | __main__:truncate_tables:53 -    - todos_dividendos: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.963 | ERROR    | __main__:truncate_tables:53 -    - precos_acoes_completo: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.963 | ERROR    | __main__:truncate_tables:53 -    - dividendos_ano: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.963 | ERROR    | __main__:truncate_tables:53 -    - rj: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.963 | ERROR    | __main__:truncate_tables:53 -    - tickers_nao_mapeados: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.963 | ERROR    | __main__:truncate_tables:53 -    - avaliacao_setor: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.964 | ERROR    | __main__:truncate_tables:53 -    - indices: {'message': 'invalid input syntax for type integer: "a-dummy-value-that-will-never-exist"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 08:35:44.964 | ERROR    | __main__:truncate_tables:53 -    - acoes_e_fundos: {'message': 'update or delete on table "acoes_e_fundos" violates foreign key constraint "todos_dividendos_ticker_fkey" on table "todos_dividendos"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(ABEV3) is still referenced from table "todos_dividendos".'}
+2025-10-01 08:35:44.964 | INFO     | __main__:truncate_tables:54 - 
+
+2025-10-01 08:35:44.964 | INFO     | __main__:main:92 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 08:35:44.971 | INFO     | __main__:main:118 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 08:35:45.046 | ERROR    | __main__:upload_to_supabase:64 -     ❌ Erro ao fazer upload para a tabela acoes_e_fundos: {'message': 'duplicate key value violates unique constraint "acoes_e_fundos_pkey"', 'code': '23505', 'hint': None, 'details': 'Key (ticker)=(ABEV3) already exists.'}
+2025-10-01 08:35:45.049 | INFO     | __main__:main:118 -   - Processando: avaliacao_setor.csv           
+2025-10-01 08:35:45.100 | INFO     | __main__:main:118 -   - Processando: ciclo_mercado.csv             
+2025-10-01 08:35:45.160 | INFO     | __main__:main:118 -   - Processando: dividend_yield.csv            
+2025-10-01 08:35:45.221 | INFO     | __main__:main:118 -   - Processando: dividendos_ano.csv            
+2025-10-01 08:35:45.438 | INFO     | __main__:main:118 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 08:35:45.503 | INFO     | __main__:main:118 -   - Processando: indicadores.csv               
+2025-10-01 08:35:45.651 | INFO     | __main__:main:118 -   - Processando: indices.csv                   
+2025-10-01 08:35:45.690 | INFO     | __main__:main:118 -   - Processando: preco_teto.csv                
+2025-10-01 08:35:45.737 | INFO     | __main__:main:118 -   - Processando: precos_acoes.csv              
+2025-10-01 08:35:45.800 | INFO     | __main__:main:118 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 08:35:46.102 | INFO     | __main__:main:118 -   - Processando: rj.csv                        
+2025-10-01 08:35:46.143 | ERROR    | __main__:upload_to_supabase:64 -     ❌ Erro ao fazer upload para a tabela rj: {'message': 'insert or update on table "rj" violates foreign key constraint "rj_ticker_fkey"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(BRFS3) is not present in table "acoes_e_fundos".'}
+2025-10-01 08:35:46.148 | INFO     | __main__:main:118 -   - Processando: scores.csv                    
+2025-10-01 08:35:46.226 | INFO     | __main__:main:118 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 08:35:46.308 | INFO     | __main__:main:118 -   - Processando: todos_dividendos.csv          
+2025-10-01 08:35:46.758 | INFO     | __main__:main:128 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 08:35:46.759 | INFO     | __main__:main:130 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 08:35:46.759 | INFO     | __main__:main:130 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - indices.csv                    ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - scores.csv                     ✅ Sucesso
+2025-10-01 08:35:46.760 | INFO     | __main__:main:130 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 08:35:46.761 | INFO     | __main__:main:130 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 08:35:46.761 | INFO     | __main__:main:130 -   - acoes_e_fundos.csv             ❌ Falha
+2025-10-01 08:35:46.761 | INFO     | __main__:main:130 -   - rj.csv                         ❌ Falha
+2025-10-01 08:35:46.761 | INFO     | __main__:main:131 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 08:56:47.061 | INFO     | __main__:main:85 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 08:56:47.477 | INFO     | __main__:main:97 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 08:56:47.477 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 08:56:49.942 | INFO     | __main__:truncate_tables:65 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 08:56:49.943 | INFO     | __main__:main:108 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 08:56:49.953 | INFO     | __main__:main:134 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 08:56:50.055 | INFO     | __main__:main:134 -   - Processando: avaliacao_setor.csv           
+2025-10-01 08:56:50.150 | INFO     | __main__:main:134 -   - Processando: ciclo_mercado.csv             
+2025-10-01 08:56:50.219 | INFO     | __main__:main:134 -   - Processando: dividend_yield.csv            
+2025-10-01 08:56:50.288 | INFO     | __main__:main:134 -   - Processando: dividendos_ano.csv            
+2025-10-01 08:56:50.551 | INFO     | __main__:main:134 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 08:56:50.605 | INFO     | __main__:main:134 -   - Processando: indicadores.csv               
+2025-10-01 08:56:50.713 | INFO     | __main__:main:134 -   - Processando: indices.csv                   
+2025-10-01 08:56:50.753 | INFO     | __main__:main:134 -   - Processando: preco_teto.csv                
+2025-10-01 08:56:50.801 | INFO     | __main__:main:134 -   - Processando: precos_acoes.csv              
+2025-10-01 08:56:50.872 | INFO     | __main__:main:134 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 08:56:51.159 | INFO     | __main__:main:134 -   - Processando: rj.csv                        
+2025-10-01 08:56:51.203 | ERROR    | __main__:upload_to_supabase:80 -     ❌ Erro ao fazer upload para a tabela rj: {'message': 'insert or update on table "rj" violates foreign key constraint "rj_ticker_fkey"', 'code': '23503', 'hint': None, 'details': 'Key (ticker)=(BRFS3) is not present in table "acoes_e_fundos".'}
+2025-10-01 08:56:51.208 | INFO     | __main__:main:134 -   - Processando: scores.csv                    
+2025-10-01 08:56:51.279 | INFO     | __main__:main:134 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 08:56:51.363 | INFO     | __main__:main:134 -   - Processando: todos_dividendos.csv          
+2025-10-01 08:56:51.843 | INFO     | __main__:main:144 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 08:56:51.843 | INFO     | __main__:main:146 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 08:56:51.843 | INFO     | __main__:main:146 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - indices.csv                    ✅ Sucesso
+2025-10-01 08:56:51.844 | INFO     | __main__:main:146 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - scores.csv                     ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 08:56:51.845 | INFO     | __main__:main:146 -   - rj.csv                         ❌ Falha
+2025-10-01 08:56:51.845 | INFO     | __main__:main:147 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 09:03:39.458 | INFO     | __main__:main:85 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 09:03:39.980 | INFO     | __main__:main:97 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 09:03:39.980 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 09:03:41.343 | INFO     | __main__:truncate_tables:65 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 09:03:41.343 | INFO     | __main__:main:109 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 09:03:41.353 | INFO     | __main__:main:149 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 09:03:41.420 | INFO     | __main__:main:149 -   - Processando: avaliacao_setor.csv           
+2025-10-01 09:03:41.455 | INFO     | __main__:main:149 -   - Processando: ciclo_mercado.csv             
+2025-10-01 09:03:41.499 | INFO     | __main__:main:149 -   - Processando: dividend_yield.csv            
+2025-10-01 09:03:41.546 | INFO     | __main__:main:149 -   - Processando: dividendos_ano.csv            
+2025-10-01 09:03:41.735 | INFO     | __main__:main:149 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 09:03:41.786 | INFO     | __main__:main:149 -   - Processando: indicadores.csv               
+2025-10-01 09:03:41.893 | INFO     | __main__:main:149 -   - Processando: indices.csv                   
+2025-10-01 09:03:41.927 | INFO     | __main__:main:149 -   - Processando: preco_teto.csv                
+2025-10-01 09:03:41.969 | INFO     | __main__:main:149 -   - Processando: precos_acoes.csv              
+2025-10-01 09:03:42.025 | INFO     | __main__:main:149 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 09:03:42.447 | WARNING  | __main__:main:137 - 
+    ⚠️  72 registros de 'rj.csv' foram removidos por não terem um ticker correspondente em 'acoes_e_fundos.csv'.
+2025-10-01 09:03:42.448 | INFO     | __main__:main:149 -   - Processando: rj.csv                        
+2025-10-01 09:03:42.490 | INFO     | __main__:main:149 -   - Processando: scores.csv                    
+2025-10-01 09:03:42.558 | INFO     | __main__:main:149 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 09:03:42.644 | INFO     | __main__:main:149 -   - Processando: todos_dividendos.csv          
+2025-10-01 09:03:43.065 | INFO     | __main__:main:159 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 09:03:43.065 | INFO     | __main__:main:161 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 09:03:43.065 | INFO     | __main__:main:161 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 09:03:43.065 | INFO     | __main__:main:161 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 09:03:43.065 | INFO     | __main__:main:161 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - indices.csv                    ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 09:03:43.066 | INFO     | __main__:main:161 -   - rj.csv                         ✅ Sucesso
+2025-10-01 09:03:43.067 | INFO     | __main__:main:161 -   - scores.csv                     ✅ Sucesso
+2025-10-01 09:03:43.067 | INFO     | __main__:main:161 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 09:03:43.067 | INFO     | __main__:main:161 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 09:03:43.067 | INFO     | __main__:main:162 - ==============================
+
+✨ Script concluído!
+
+2025-10-01 09:10:33.064 | INFO     | __main__:main:85 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 09:10:33.476 | INFO     | __main__:main:97 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 09:10:33.476 | INFO     | __main__:truncate_tables:17 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 09:10:34.662 | INFO     | __main__:truncate_tables:65 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 09:10:34.662 | INFO     | __main__:main:108 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 09:10:34.668 | INFO     | __main__:main:134 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 09:10:34.745 | INFO     | __main__:main:134 -   - Processando: avaliacao_setor.csv           
+2025-10-01 09:10:34.786 | INFO     | __main__:main:134 -   - Processando: ciclo_mercado.csv             
+2025-10-01 09:10:34.837 | INFO     | __main__:main:134 -   - Processando: dividend_yield.csv            
+2025-10-01 09:10:34.884 | INFO     | __main__:main:134 -   - Processando: dividendos_ano.csv            
+2025-10-01 09:10:35.089 | INFO     | __main__:main:134 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 09:10:35.144 | INFO     | __main__:main:134 -   - Processando: indicadores.csv               
+2025-10-01 09:10:35.276 | INFO     | __main__:main:134 -   - Processando: indices.csv                   
+2025-10-01 09:10:35.319 | INFO     | __main__:main:134 -   - Processando: preco_teto.csv                
+2025-10-01 09:10:35.368 | INFO     | __main__:main:134 -   - Processando: precos_acoes.csv              
+2025-10-01 09:10:35.433 | INFO     | __main__:main:134 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 09:10:35.736 | INFO     | __main__:main:134 -   - Processando: rj.csv                        
+2025-10-01 09:10:35.780 | INFO     | __main__:main:134 -   - Processando: scores.csv                    
+2025-10-01 09:10:35.840 | INFO     | __main__:main:134 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 09:10:35.924 | INFO     | __main__:main:134 -   - Processando: todos_dividendos.csv          
+2025-10-01 09:10:36.477 | INFO     | __main__:main:144 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 09:10:36.477 | INFO     | __main__:main:146 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 09:10:36.477 | INFO     | __main__:main:146 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - indices.csv                    ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - rj.csv                         ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - scores.csv                     ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 09:10:36.478 | INFO     | __main__:main:146 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 09:10:36.479 | INFO     | __main__:main:147 - ==============================
 
 ✨ Script concluído!
 

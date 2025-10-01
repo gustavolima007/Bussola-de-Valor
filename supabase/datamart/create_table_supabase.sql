@@ -1,12 +1,24 @@
 -- Schema land_dw
 CREATE SCHEMA IF NOT EXISTS land_dw;
 
--- Tabelas ajustadas
+-- Tabela Central de Ativos
+CREATE TABLE land_dw.acoes_e_fundos (
+    ticker TEXT PRIMARY KEY,
+    empresa TEXT,
+    volume INTEGER,
+    logo TEXT,
+    setor_brapi TEXT,
+    tipo TEXT,
+    setor_b3 TEXT,
+    subsetor_b3 TEXT
+);
+
+-- Tabelas com relacionamento
 CREATE TABLE land_dw.todos_dividendos (
     id SERIAL PRIMARY KEY,
     data DATE,
     valor REAL,
-    ticker TEXT
+    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker)
 );
 
 CREATE TABLE land_dw.tickers_nao_mapeados (
@@ -15,8 +27,7 @@ CREATE TABLE land_dw.tickers_nao_mapeados (
 );
 
 CREATE TABLE land_dw.scores (
-    id SERIAL PRIMARY KEY,
-    ticker_base TEXT,
+    ticker_base TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     score_dy INTEGER,
     score_payout INTEGER,
     score_roe INTEGER,
@@ -34,29 +45,26 @@ CREATE TABLE land_dw.scores (
 
 CREATE TABLE land_dw.precos_acoes_completo (
     id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker),
     ano INTEGER,
     fechamento REAL
 );
 
 CREATE TABLE land_dw.precos_acoes (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     fechamento_atual REAL,
     fechamento_1m_atras REAL,
     fechamento_6m_atras REAL
 );
 
 CREATE TABLE land_dw.preco_teto (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     preco_teto_5anos REAL,
     diferenca_percentual REAL
 );
 
 CREATE TABLE land_dw.indicadores (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     empresa TEXT,
     subsetor_b3 TEXT,
     tipo TEXT,
@@ -94,8 +102,7 @@ CREATE TABLE land_dw.indicadores (
 );
 
 CREATE TABLE land_dw.dividendos_ano_resumo (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     valor_5anos REAL,
     valor_12m REAL
 );
@@ -103,13 +110,12 @@ CREATE TABLE land_dw.dividendos_ano_resumo (
 CREATE TABLE land_dw.dividendos_ano (
     id SERIAL PRIMARY KEY,
     ano INTEGER,
-    ticker TEXT,
+    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker),
     dividendo REAL
 );
 
 CREATE TABLE land_dw.dividend_yield (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     dy5anos REAL,
     dy12m REAL
 );
@@ -139,21 +145,8 @@ CREATE TABLE land_dw.avaliacao_setor (
     ocorrencias_rj REAL
 );
 
-CREATE TABLE land_dw.acoes_e_fundos (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
-    empresa TEXT,
-    volume INTEGER,
-    logo TEXT,
-    setor_brapi TEXT,
-    tipo TEXT,
-    setor_b3 TEXT,
-    subsetor_b3 TEXT
-);
-
 CREATE TABLE land_dw.ciclo_mercado (
-    id SERIAL PRIMARY KEY,
-    ticker TEXT,
+    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
     status_ciclo TEXT
 );
 

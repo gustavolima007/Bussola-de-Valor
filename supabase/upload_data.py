@@ -15,19 +15,51 @@ def get_csv_files(data_path='data'):
 
 def truncate_tables(supabase: Client):
     logger.info("🗑️  Iniciando limpeza das tabelas (truncate)...\n")
+    
+    # Mapa de tabelas com uma coluna chave e um valor dummy do tipo correto.
     table_key_map = {
-        "acoes_e_fundos": "ticker", "ciclo_mercado": "ticker", "dividendos_ano": "ticker",
-        "dividendos_ano_resumo": "ticker", "dividend_yield": "ticker", "indicadores": "ticker",
-        "indices": "index", "precos_acoes": "ticker", "precos_acoes_completo": "ticker",
-        "preco_teto": "ticker", "rj": "nome", "scores": "ticker_base",
-        "tickers_nao_mapeados": "ticker", "todos_dividendos": "ticker", "avaliacao_setor": "setor_b3",
+        # Tabelas com chave primária/referência de texto
+        "scores": ("ticker_base", "dummy_text"),
+        "precos_acoes": ("ticker", "dummy_text"),
+        "preco_teto": ("ticker", "dummy_text"),
+        "indicadores": ("ticker", "dummy_text"),
+        "dividendos_ano_resumo": ("ticker", "dummy_text"),
+        "dividend_yield": ("ticker", "dummy_text"),
+        "ciclo_mercado": ("ticker", "dummy_text"),
+        "acoes_e_fundos": ("ticker", "dummy_text"),
+
+        # Tabelas com chave primária/referência numérica (SERIAL)
+        "todos_dividendos": ("id", -1),
+        "precos_acoes_completo": ("id", -1),
+        "dividendos_ano": ("id", -1),
+        "rj": ("id", -1),
+        "tickers_nao_mapeados": ("id", -1),
+        "avaliacao_setor": ("id", -1),
+        "indices": ("id", -1),
     }
+
+    # A ordem de deleção é definida aqui para respeitar as foreign keys
+    ordered_tables = [
+        "todos_dividendos", "scores", "precos_acoes_completo", "precos_acoes",
+        "preco_teto", "indicadores", "dividendos_ano_resumo", "dividendos_ano",
+        "dividend_yield", "ciclo_mercado", "rj", "tickers_nao_mapeados",
+        "avaliacao_setor", "indices",
+        # 'acoes_e_fundos' deve ser a última
+        "acoes_e_fundos"
+    ]
+
     errors = []
-    for table, key_column in table_key_map.items():
+    for table in ordered_tables:
         try:
-            supabase.table(table).delete().neq(key_column, 'a-dummy-value-that-will-never-exist').execute()
+            # Checa se a tabela existe no mapa antes de usar
+            if table in table_key_map:
+                key_column, dummy_value = table_key_map[table]
+                supabase.table(table).delete().neq(key_column, dummy_value).execute()
+            else:
+                logger.warning(f"   - Tabela '{table}' não encontrada no mapa de chaves para truncate. Pulando.")
+
         except Exception as e:
-            errors.append((table, e))
+            errors.append((table, e.response.json() if hasattr(e, 'response') else str(e)))
 
     if not errors:
         logger.info("✅ Todas as tabelas foram limpas com sucesso.\n")
@@ -45,7 +77,7 @@ def upload_to_supabase(supabase: Client, table_name: str, data: list) -> bool:
             supabase.table(table_name).insert(batch).execute()
         return True
     except Exception as e:
-        logger.error(f"    ❌ Erro ao fazer upload para a tabela {table_name}: {e}")
+        logger.error(f"    ❌ Erro ao fazer upload para a tabela {table_name}: {e.response.json() if hasattr(e, 'response') else str(e)}")
         return False
 
 def main():
@@ -62,7 +94,7 @@ def main():
     try:
         options = ClientOptions(schema="land_dw")
         supabase = create_client(url, key, options=options)
-        logger.info("🔗 Conexão com o Supabase estabelecida com sucesso.")
+        logger.info("🔗 Conexão com o Supabase estabelecida com sucesso.\n")
     except Exception as e:
         logger.error(f"❌ Falha ao conectar com o Supabase: {e}")
         return
@@ -74,7 +106,10 @@ def main():
     results = []
 
     logger.info("\n📤 Iniciando upload dos arquivos CSV...\n")
-    for file_name in sorted(csv_files):
+    # Garante que acoes_e_fundos seja processado primeiro para satisfazer as FKs
+    ordered_files = sorted(csv_files, key=lambda x: (x != 'acoes_e_fundos.csv', x))
+
+    for file_name in ordered_files:
         table_name = os.path.splitext(file_name)[0]
         file_path = os.path.join(data_path, file_name)
         
@@ -85,6 +120,12 @@ def main():
                 df = pd.read_csv(file_path)
 
             df.columns = [c.lower().replace(' ', '_') for c in df.columns]
+
+            # Adicionado para corrigir o problema da coluna ticker_base
+            if table_name == 'dividend_yield':
+                if 'ticker_base' in df.columns:
+                    df = df.drop(columns=['ticker_base'])
+            
             df = df.replace({np.nan: None, np.inf: None, -np.inf: None})
             
             data_to_upload = df.to_dict(orient='records')
@@ -101,7 +142,7 @@ def main():
             results.append({'file': file_name, 'status': '❌ Erro no processamento'})
 
     logger.info("\n\n📋 Resumo do Upload:\n" + "="*30)
-    for res in results:
+    for res in sorted(results, key=lambda x: (x['status'] == '❌ Falha', x['status'] == '⚠️ Vazio')):
         logger.info(f"  - {res['file']:<30} {res['status']}")
     logger.info("="*30 + "\n\n✨ Script concluído!\n")
 
