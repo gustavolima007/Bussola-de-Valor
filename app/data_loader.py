@@ -185,21 +185,14 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
         st.warning(f"Erro ao processar 'avaliacao_setor.csv': {e}")
         df['pontuacao_final'] = 0
 
-    # --- Merge com Ciclo de Mercado ---
-    try:
-        df_ciclo = read_csv_cached(base_path / 'ciclo_mercado.csv')
-        if not df_ciclo.empty:
-            # A coluna 'status_ciclo' é lida do CSV e depois renomeada para 'Status Ciclo'
-            if 'status_ciclo' in df_ciclo.columns:
-                df_ciclo_to_merge = df_ciclo[['ticker', 'status_ciclo']]
-                df_ciclo_to_merge['ticker_base'] = df_ciclo_to_merge['ticker'].str.strip().str.upper()
-                df_ciclo_to_merge.set_index('ticker_base', inplace=True)
-                
-                df = df.merge(df_ciclo_to_merge[['status_ciclo']], left_on='Ticker', right_index=True, how='left')
-                df.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
-                df['Status Ciclo'].fillna('N/A', inplace=True)
-    except Exception as e:
-        st.warning(f"Não foi possível fazer o merge com os dados de ciclo de mercado: {e}")
+    # --- Processa Coluna Ciclo de Mercado ---
+    # A coluna 'status_ciclo' já vem do 'indicadores.csv', apenas renomeamos e tratamos NAs.
+    if 'status_ciclo' in df.columns:
+        df.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
+        df['Status Ciclo'].fillna('N/A', inplace=True)
+    else:
+        # Caso a coluna não exista por algum motivo, cria uma com valor padrão.
+        df['Status Ciclo'] = 'N/A'
 
     # Limpa colunas auxiliares de merge
     df.drop(columns=[col for col in df.columns if 'ticker_base' in str(col)], inplace=True, errors='ignore')
