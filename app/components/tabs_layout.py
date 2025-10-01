@@ -580,8 +580,8 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     if not todos_dividendos.empty and ticker_foco:
         serie_foco = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
         if not serie_foco.empty:
-            serie_foco['Data'] = pd.to_datetime(serie_foco['Data'], errors='coerce')
-            serie_foco['Mes'] = serie_foco['Data'].dt.month
+            serie_foco['data'] = pd.to_datetime(serie_foco['data'], errors='coerce')
+            serie_foco['Mes'] = serie_foco['data'].dt.month
 
             # Contar a frequência de dividendos por mês
             dividendos_por_mes = serie_foco['Mes'].value_counts().sort_index()
@@ -619,8 +619,8 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     if not todos_dividendos.empty and ticker_foco:
         serie = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
         if not serie.empty:
-            serie['Data'] = pd.to_datetime(serie['Data'], errors='coerce')
-            fig_div = px.line(serie.sort_values('Data'), x='Data', y='Valor', title=f"Dividendos ao longo do tempo - {ticker_foco}")
+            serie['data'] = pd.to_datetime(serie['data'], errors='coerce')
+            fig_div = px.line(serie.sort_values('data'), x='data', y='valor', title=f"Dividendos ao longo do tempo - {ticker_foco}")
             fig_div.update_layout(margin=dict(l=20, r=20, t=50, b=20))
             st.plotly_chart(fig_div, use_container_width=True)
         else:

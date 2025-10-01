@@ -4,11 +4,15 @@ from dotenv import load_dotenv
 from supabase import create_client, Client, ClientOptions
 from loguru import logger
 import numpy as np
+from pathlib import Path
 
 # Configure logger for a summarized output
+LOG_DIR = Path(__file__).resolve().parent.parent / 'supabase'
+LOG_FILE = LOG_DIR / 'upload.log'
+LOG_DIR.mkdir(parents=True, exist_ok=True)
 logger.remove()
 logger.add(lambda msg: print(msg, end=""), format="{message}", level="INFO")
-logger.add("supabase/upload.log", rotation="500 MB", level="DEBUG") # Detailed log file
+logger.add(LOG_FILE, rotation="500 MB", level="DEBUG") # Detailed log file
 
 def get_csv_files(data_path='data'):
     return [f for f in os.listdir(data_path) if f.endswith('.csv')]

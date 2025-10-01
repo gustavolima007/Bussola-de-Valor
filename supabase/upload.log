@@ -531,3 +531,53 @@
 
 ✨ Script concluído!
 
+2025-10-01 13:33:18.365 | INFO     | __main__:main:89 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 13:33:18.741 | INFO     | __main__:main:101 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 13:33:18.742 | INFO     | __main__:truncate_tables:21 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 13:33:21.749 | INFO     | __main__:truncate_tables:69 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 13:33:21.749 | INFO     | __main__:main:112 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 13:33:21.749 | INFO     | __main__:main:138 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 13:33:21.865 | INFO     | __main__:main:138 -   - Processando: avaliacao_setor.csv           
+2025-10-01 13:33:21.941 | ERROR    | __main__:upload_to_supabase:84 -     ❌ Erro ao fazer upload para a tabela avaliacao_setor: {'message': 'invalid input syntax for type integer: "5.0"', 'code': '22P02', 'hint': None, 'details': None}
+2025-10-01 13:33:21.955 | INFO     | __main__:main:138 -   - Processando: ciclo_mercado.csv             
+2025-10-01 13:33:22.019 | INFO     | __main__:main:138 -   - Processando: dividend_yield.csv            
+2025-10-01 13:33:22.106 | INFO     | __main__:main:138 -   - Processando: dividendos_ano.csv            
+2025-10-01 13:33:22.297 | INFO     | __main__:main:138 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 13:33:22.391 | INFO     | __main__:main:138 -   - Processando: indicadores.csv               
+2025-10-01 13:33:22.530 | INFO     | __main__:main:138 -   - Processando: indices.csv                   
+2025-10-01 13:33:22.615 | INFO     | __main__:main:138 -   - Processando: preco_teto.csv                
+2025-10-01 13:33:22.668 | INFO     | __main__:main:138 -   - Processando: precos_acoes.csv              
+2025-10-01 13:33:22.803 | INFO     | __main__:main:138 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 13:33:23.223 | INFO     | __main__:main:138 -   - Processando: rj.csv                        
+2025-10-01 13:33:23.277 | INFO     | __main__:main:138 -   - Processando: scores.csv                    
+2025-10-01 13:33:23.363 | INFO     | __main__:main:138 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 13:33:23.430 | INFO     | __main__:main:138 -   - Processando: todos_dividendos.csv          
+2025-10-01 13:33:24.040 | INFO     | __main__:main:148 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - indices.csv                    ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - rj.csv                         ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - scores.csv                     ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 13:33:24.040 | INFO     | __main__:main:150 -   - avaliacao_setor.csv            ❌ Falha
+2025-10-01 13:33:24.040 | INFO     | __main__:main:151 - ==============================
+
+✨ Script concluído!
+

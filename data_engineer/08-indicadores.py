@@ -16,6 +16,7 @@ import pandas as pd
 import yfinance as yf
 from tqdm.auto import tqdm
 import random
+import time
 from pathlib import Path
 from common import DATA_DIR, tratar_dados_para_json
 
@@ -53,6 +54,24 @@ frases_por_ciclo = {
 }
 
 # --- Funções de Classificação e Cálculo ---
+
+def get_pl_ratio(ticker: str) -> str:
+    """
+    Obtém o índice P/L (Preço/Lucro) via yfinance (TTM).
+    """
+    try:
+        # Adiciona o sufixo .SA para ações da B3 e busca os dados
+        stock = yf.Ticker(f"{ticker}.SA")
+        info = stock.info
+        
+        # P/L = Preço da ação / Lucro por ação (EPS, TTM)
+        pl_ratio = info.get('trailingPE')
+        
+        if pl_ratio is not None and pl_ratio > 0:
+            return f"{pl_ratio:.2f}"
+        return "N/A"
+    except Exception:
+        return "N/A"
 
 
 def classify_stock_profile(price: float, market_cap: float) -> str:
@@ -181,10 +200,18 @@ NOME_EMPRESA_MANUAL = {
     "BRST3": "Brisanet Serviços de Telecomunicações S.A"
 }
 
-def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict | None:
+def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float, p_l_externo: str | None) -> dict | None:
     ticker_yf = f"{ticker_base}.SA"
     stock = yf.Ticker(ticker_yf)
-    info = stock.info
+    
+    try:
+        info = stock.info
+    except Exception:
+        # If yfinance fails, we can't get any indicators.
+        return None
+
+    if not info:
+        return None
 
     # Crescimento em 5 anos (mantido)
     hist_5y = stock.history(period="5y")
@@ -242,7 +269,7 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float) -> dict 
         "market_cap": market_cap,
         "logo": metadata.get("logo"),
         "preco_atual": current_price,
-        "p_l": info.get("trailingPE"),
+        "p_l": p_l_externo,
         "p_vp": info.get("priceToBook"),
         "payout_ratio": payout_ratio * 100 if payout_ratio else None,
         "crescimento_preco_5a": growth_price,
@@ -292,7 +319,17 @@ def main():
     total_tickers = len(metadata_map)
     print(f"[+] {total_tickers} tickers encontrados.")
 
-    # 2. Pré-cálculo do volume (saída simplificada)
+    # 2. Coletar P/L para todos os tickers
+    print("\n[>] Coletando P/L para todos os tickers...")
+    pl_map = {}
+    with tqdm(total=total_tickers, desc="Coletando P/L", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
+        for ticker_base in metadata_map.keys():
+            pl_map[ticker_base] = get_pl_ratio(ticker_base)
+            pbar.update(1)
+            time.sleep(0.1) # Pausa para evitar rate limiting
+    print("[+] P/L coletado para todos os tickers.")
+
+    # 3. Pré-cálculo do volume (saída simplificada)
     print("\n[>] Pré-calculando a média de volume de todos os ativos...")
     all_volumes = []
     # Loop simples, sem tqdm para esta parte
@@ -306,21 +343,25 @@ def main():
     vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
     print("[+] Média de volume calculada.")
 
-    # 3. Loop principal com progresso limpo e tratamento de erros
+    # 4. Loop principal com progresso limpo e tratamento de erros
     print("\n[>] Coletando indicadores fundamentalistas e técnicos...")
     resultados = []
     erros = []
     with tqdm(total=total_tickers, desc="Coletando Indicadores", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
         for ticker_base, meta in metadata_map.items():
             try:
-                dados = fetch_stock_data(ticker_base, meta, vol_mean)
+                # Busca o P/L do mapa pré-carregado
+                p_l_externo = pl_map.get(ticker_base)
+                dados = fetch_stock_data(ticker_base, meta, vol_mean, p_l_externo)
                 if dados:
                     resultados.append(dados)
                 else:
                     erros.append((ticker_base, "Dados não retornados pelo fetcher"))
             except Exception as e:
                 erros.append((ticker_base, str(e).replace('\n', ' ')))
-            pbar.update(1)
+            finally:
+                pbar.update(1)
+                time.sleep(0.2)  # Pausa para evitar rate limiting
 
     # 4. Resumo Final
     print("\n" + "="*80)
