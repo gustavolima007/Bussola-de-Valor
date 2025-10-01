@@ -8,14 +8,15 @@ from pathlib import Path
 
 # Configure logger for a summarized output
 LOG_DIR = Path(__file__).resolve().parent.parent / 'supabase'
+DATA_DIR = Path(__file__).resolve().parent.parent / 'data'
 LOG_FILE = LOG_DIR / 'upload.log'
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 logger.remove()
 logger.add(lambda msg: print(msg, end=""), format="{message}", level="INFO")
 logger.add(LOG_FILE, rotation="500 MB", level="DEBUG") # Detailed log file
 
-def get_csv_files(data_path='data'):
-    return [f for f in os.listdir(data_path) if f.endswith('.csv')]
+def get_csv_files():
+    return [f for f in os.listdir(DATA_DIR) if f.endswith('.csv')]
 
 def truncate_tables(supabase: Client):
     logger.info("🗑️  Iniciando limpeza das tabelas (truncate)...\n")
@@ -106,7 +107,6 @@ def main():
     truncate_tables(supabase)
 
     csv_files = get_csv_files()
-    data_path = 'data'
     results = []
 
     logger.info("\n📤 Iniciando upload dos arquivos CSV...\n")
@@ -115,7 +115,7 @@ def main():
 
     for file_name in ordered_files:
         table_name = os.path.splitext(file_name)[0]
-        file_path = os.path.join(data_path, file_name)
+        file_path = os.path.join(DATA_DIR, file_name)
         
         try:
             if table_name == 'tickers_nao_mapeados':

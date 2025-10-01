@@ -248,7 +248,7 @@ def main():
     
     scores_data = []
     for _, row in tqdm(df.iterrows(), total=df.shape[0], desc="Calculando Scores"):
-        setor = row.get('setor_brapi', 'N/A')
+        setor = row.get('subsetor_b3', 'N/A')
         div_mc = row['divida_total'] / row['market_cap'] if pd.notna(row['market_cap']) and row['market_cap'] > 0 else None
 
         s_dy = score_dy(row.get('DY12M'), row.get('DY5anos'))
