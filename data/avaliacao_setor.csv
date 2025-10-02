@@ -1,0 +1,30 @@
+setor_b3,pontuacao_setor,subsetor_b3,pontuacao_final,score_dy,score_roe,score_beta,score_payout,score_empresas_boas,penalidade_empresas_ruins,score_graham,penalidade_rj,dy_5a_medio,roe_medio,beta_medio,payout_medio,margem_graham_media,score_original,empresas_boas_contagem,empresas_ruins_contagem,ocorrencias_rj
+"Petróleo, Gás e Biocombustíveis",514.74,"Petróleo, Gás e Biocombustíveis",514.74,120,75,35,35,35,0,0,-8.89,9.58,25.90,0.35,43.39,33.94,223.63,5,0.00,1.00
+Utilidade Pública,439.36,Distribuição de Energia,582.63,120,55,35,35,75,0,20,-8.89,9.94,23.68,0.33,57.18,75.33,251.52,15,0.00,1.00
+Utilidade Pública,439.36,Transmissão de Energia,546.50,90,35,35,35,55,0,20,-0.00,6.10,19.34,0.25,31.98,81.57,276.50,7,0.00,0.00
+Utilidade Pública,439.36,Saneamento,351.17,-30,55,35,20,35,0,0,-0.00,3.55,21.93,0.30,25.92,37.78,236.17,4,0.00,0.00
+Utilidade Pública,439.36,Geração de Energia,277.12,60,0,35,0,55,-20,0,-0.00,4.01,8.81,0.38,175.20,-21.72,147.12,7,2.00,0.00
+Materiais Básicos,420.23,Mineração e Siderurgia,482.46,120,0,20,0,75,-20,35,-8.89,9.72,6.04,0.93,779.22,125.83,261.35,10,1.00,1.00
+Materiais Básicos,420.23,Papel e Celulose,399.59,60,35,35,35,35,0,0,-0.00,4.18,17.56,0.40,36.94,40.19,199.59,4,0.00,0.00
+Materiais Básicos,420.23,Química e Petroquímica,378.64,120,0,35,0,55,-20,0,-0.00,9.08,9.30,0.62,15.18,22.71,188.64,6,1.00,0.00
+Financeiro e Outros,414.54,Seguros,489.23,90,75,35,35,35,0,0,-0.00,6.88,30.63,0.62,40.15,9.02,219.23,5,0.00,0.00
+Financeiro e Outros,414.54,Bancos,488.92,60,35,35,35,75,0,20,-0.00,4.90,17.22,0.41,36.64,85.32,228.92,21,0.00,0.00
+Financeiro e Outros,414.54,Holdings e Outros Serviços Financeiros,476.56,90,20,35,35,55,0,20,-0.00,6.67,12.59,0.59,34.29,89.36,221.56,6,0.00,0.00
+Financeiro e Outros,414.54,Propriedades e Locação,449.80,120,0,35,20,75,-20,20,-0.00,8.23,9.29,0.16,70.32,55.97,199.80,8,2.00,0.00
+Financeiro e Outros,414.54,Incorporação e Construção,168.18,-30,0,35,20,75,-20,0,-80.00,2.35,6.88,0.52,67.29,31.00,168.18,12,2.00,9.00
+Consumo Não Cíclico,355.22,Comércio e Distribuição,368.95,60,0,35,35,55,0,0,-8.89,5.37,-6.23,0.28,41.84,48.55,192.84,6,0.00,1.00
+Consumo Não Cíclico,355.22,Alimentos e Bebidas,341.49,60,0,35,35,75,-20,0,-26.67,4.21,2.60,0.23,34.98,18.81,183.16,10,2.00,3.00
+Consumo Cíclico,320.08,Comércio Varejista,389.84,150,0,35,0,55,-20,55,-53.33,13.10,-9.86,0.59,881.92,326.66,168.17,7,1.00,6.00
+Consumo Cíclico,320.08,Calçados e Vestuário,325.55,-30,20,35,35,55,0,0,-0.00,3.16,13.41,0.60,35.62,20.22,210.55,6,0.00,0.00
+Consumo Cíclico,320.08,Consumo Diverso,244.84,-30,0,35,35,75,-20,20,-62.22,3.48,8.83,0.27,37.28,74.82,192.06,9,1.00,7.00
+Tecnologia da Informação,253.74,Hardware e Equipamentos,318.25,90,0,35,0,20,0,0,-0.00,6.61,-2.61,0.65,516.68,32.82,173.25,2,0.00,0.00
+Tecnologia da Informação,253.74,Software e Serviços de TI,189.22,-60,0,35,35,35,-20,0,-0.00,1.51,-4.09,0.40,30.69,12.96,164.22,5,1.00,0.00
+Bens Industriais,253.02,Transporte e Componentes,391.62,60,20,35,35,75,0,0,-26.67,5.34,10.80,0.47,57.90,44.95,193.28,8,0.00,3.00
+Bens Industriais,253.02,Máquinas e Motores,262.61,-30,0,35,20,75,-20,0,-8.89,3.42,-2.14,0.28,24.45,48.08,191.49,9,2.00,1.00
+Bens Industriais,253.02,Serviços Industriais,226.32,60,0,35,35,20,-20,0,-8.89,4.87,-4.03,0.51,43.48,-5.12,105.21,2,2.00,1.00
+Bens Industriais,253.02,Logística e Mobilidade,131.55,-30,20,35,35,35,-40,0,-53.33,2.79,10.81,0.45,45.14,6.47,129.89,3,3.00,6.00
+Saúde,193.92,Produtos e Equipamentos Médicos,205.47,-30,0,35,35,20,0,0,-0.00,2.31,1.13,0.44,37.70,14.82,145.47,2,0.00,0.00
+Saúde,193.92,Hospitais e Análises Clínicas,182.38,-30,0,35,20,20,0,0,-0.00,2.61,-4.32,0.61,21.88,-8.12,137.38,1,0.00,0.00
+Educação,162.16,Educação,162.16,-60,0,35,35,35,-20,0,-0.00,1.44,5.71,0.52,40.17,44.49,137.16,3,2.00,0.00
+Serviços Diversos,97.42,Serviços Diversos,97.42,-60,0,35,0,20,0,0,-17.78,0.73,-29.51,0.58,3.08,16.96,120.20,1,0.00,2.00
+Comunicações,92.12,Telecomunicações,92.12,-60,0,35,20,35,-40,0,-8.89,1.48,5.21,0.59,26.04,2.61,111.00,4,3.00,1.00
