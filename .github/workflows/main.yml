@@ -2,7 +2,7 @@ name: Run loader.py daily at 7PM UTC-3
 
 on:
   schedule:
-    - cron: "0 22 * * 1-5"  # Monday to Friday at 22:00 UTC (7 PM UTC-3)
+    - cron: "30 21 * * 1-5"  # Segunda a sexta às 18:30 UTC-3 (21:30 UTC)
   workflow_dispatch:
 
 permissions:
