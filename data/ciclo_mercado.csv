@@ -200,8 +200,8 @@ PNVL3,Compra
 SAPR3,Compra
 FRAS3,Compra
 AGRO3,Compra
-TAEE4,Observação
 BRST3,Compra
+TAEE4,Observação
 AERI3,Compra
 TOKY3,Compra
 UNIP6,Compra
@@ -221,13 +221,8 @@ ITSA3,Compra
 TAEE3,Observação
 RNEW4,Compra
 LPSB3,Compra
-<<<<<<< HEAD
-SANB4,Compra
-VITT3,Compra
-=======
 VITT3,Compra
 SANB4,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 SCAR3,Compra
 VIVR3,Compra
 CSUD3,Compra
@@ -259,13 +254,8 @@ LAND3,Compra
 BEES3,Compra
 MEAL3,Compra
 BALM4,Observação
-<<<<<<< HEAD
-NGRD3,Compra
-AGXY3,Compra
-=======
 AGXY3,Compra
 NGRD3,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 CEBR6,Compra
 OFSA3,Compra
 CAMB3,Compra
@@ -273,20 +263,15 @@ BAZA3,Compra
 ALUP4,Compra
 WHRL4,Compra
 RSID3,Compra
-INEP3,Compra
 WHRL3,Compra
+INEP3,Compra
 TASA3,Compra
 BRSR3,Observação
 INEP4,Compra
 UNIP3,Compra
 ENGI4,Compra
-<<<<<<< HEAD
 RPMG3,Compra
 BEES4,Compra
-=======
-BEES4,Compra
-RPMG3,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 CEEB3,Compra
 CEBR3,Compra
 BPAC5,Compra
@@ -300,13 +285,8 @@ PTNT3,Compra
 HOOT4,Compra
 CLSC4,Compra
 EMAE4,Observação
-<<<<<<< HEAD
 CRPG5,Compra
 PINE3,Observação
-=======
-PINE3,Observação
-CRPG5,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 BPAC3,Compra
 ALUP3,Compra
 CTSA4,Compra
@@ -314,86 +294,46 @@ BOBR4,Compra
 MGEL4,Compra
 OSXB3,Compra
 BSLI4,Compra
-<<<<<<< HEAD
-VSTE3,Compra
-DOHL4,Compra
-MNDL3,Compra
-=======
 DOHL4,Compra
 MNDL3,Compra
 VSTE3,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 NEXP3,Compra
 EALT3,Compra
 ALPA3,Compra
 EQPA3,Compra
-<<<<<<< HEAD
-CTAX3,Compra
-BIED3,Compra
-TELB3,Compra
-EPAR3,Compra
-=======
 BIED3,Compra
 CTAX3,Compra
-EPAR3,Compra
 TELB3,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
+EPAR3,Compra
 RDNI3,Compra
 REAG3,Compra
 PEAB4,Compra
 ISAE3,Compra
-<<<<<<< HEAD
 NUTR3,Compra
-ATED3,Compra
-=======
-ATED3,Compra
-NUTR3,Compra
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 DEXP4,Compra
+ATED3,Compra
 CEBR5,Compra
 MTSA4,Compra
 HAGA4,Compra
 TELB4,Compra
 BSLI3,Compra
-<<<<<<< HEAD
 GEPA3,Compra
 CGAS5,Compra
-CCTY3,Compra
 CGRA3,Compra
-EKTR4,Compra
+CCTY3,Compra
 RSUL4,Compra
 WLMM4,Compra
-EUCA3,Observação
+EKTR4,Compra
 CTKA4,Compra
 HAGA3,Compra
 JFEN3,Compra
-CEDO3,Compra
-BRKM6,Compra
-BNBR3,Compra
-CEDO4,Compra
-GSHP3,Compra
-BMIN4,Compra
-BDLL3,Observação
-GEPA4,Compra
-=======
-CGAS5,Compra
-GEPA3,Compra
-CCTY3,Compra
-CGRA3,Compra
-EKTR4,Compra
-WLMM4,Compra
-RSUL4,Compra
-HAGA3,Compra
-CTKA4,Compra
-JFEN3,Compra
 EUCA3,Observação
 CEDO4,Compra
-BNBR3,Compra
 CEDO3,Compra
 BRKM6,Compra
+BNBR3,Compra
+BDLL3,Observação
+GSHP3,Compra
 GEPA4,Compra
 BMIN4,Compra
-GSHP3,Compra
-BDLL3,Observação
->>>>>>> 2cbfc3f2b24450f0e698ec6ab1ae24a713559b73
 BMKS3,Compra

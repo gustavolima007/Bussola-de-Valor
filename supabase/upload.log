@@ -1,0 +1,49 @@
+2025-10-01 21:28:48.424 | INFO     | __main__:main:90 - 🚀 Iniciando script de upload para o Supabase...
+
+2025-10-01 21:28:48.589 | INFO     | __main__:main:102 - 🔗 Conexão com o Supabase estabelecida com sucesso.
+
+2025-10-01 21:28:48.590 | INFO     | __main__:truncate_tables:22 - 🗑️  Iniciando limpeza das tabelas (truncate)...
+
+2025-10-01 21:28:50.927 | INFO     | __main__:truncate_tables:70 - ✅ Todas as tabelas foram limpas com sucesso.
+
+2025-10-01 21:28:50.927 | INFO     | __main__:main:112 - 
+📤 Iniciando upload dos arquivos CSV...
+
+2025-10-01 21:28:50.932 | INFO     | __main__:main:138 -   - Processando: acoes_e_fundos.csv            
+2025-10-01 21:28:51.069 | INFO     | __main__:main:138 -   - Processando: avaliacao_setor.csv           
+2025-10-01 21:28:51.171 | INFO     | __main__:main:138 -   - Processando: ciclo_mercado.csv             
+2025-10-01 21:28:51.274 | INFO     | __main__:main:138 -   - Processando: dividend_yield.csv            
+2025-10-01 21:28:51.361 | INFO     | __main__:main:138 -   - Processando: dividendos_ano.csv            
+2025-10-01 21:28:51.696 | INFO     | __main__:main:138 -   - Processando: dividendos_ano_resumo.csv     
+2025-10-01 21:28:51.794 | INFO     | __main__:main:138 -   - Processando: indicadores.csv               
+2025-10-01 21:28:51.960 | INFO     | __main__:main:138 -   - Processando: indices.csv                   
+2025-10-01 21:28:52.001 | INFO     | __main__:main:138 -   - Processando: preco_teto.csv                
+2025-10-01 21:28:52.053 | INFO     | __main__:main:138 -   - Processando: precos_acoes.csv              
+2025-10-01 21:28:52.129 | INFO     | __main__:main:138 -   - Processando: precos_acoes_completo.csv     
+2025-10-01 21:28:52.519 | INFO     | __main__:main:138 -   - Processando: rj.csv                        
+2025-10-01 21:28:52.563 | INFO     | __main__:main:138 -   - Processando: scores.csv                    
+2025-10-01 21:28:52.651 | INFO     | __main__:main:138 -   - Processando: tickers_nao_mapeados.csv      
+2025-10-01 21:28:52.763 | INFO     | __main__:main:138 -   - Processando: todos_dividendos.csv          
+2025-10-01 21:28:53.394 | INFO     | __main__:main:148 - 
+
+📋 Resumo do Upload:
+==============================
+2025-10-01 21:28:53.394 | INFO     | __main__:main:150 -   - acoes_e_fundos.csv             ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - avaliacao_setor.csv            ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - ciclo_mercado.csv              ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - dividend_yield.csv             ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - dividendos_ano.csv             ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - dividendos_ano_resumo.csv      ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - indicadores.csv                ✅ Sucesso
+2025-10-01 21:28:53.395 | INFO     | __main__:main:150 -   - indices.csv                    ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - preco_teto.csv                 ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - precos_acoes.csv               ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - precos_acoes_completo.csv      ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - rj.csv                         ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - scores.csv                     ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - tickers_nao_mapeados.csv       ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:150 -   - todos_dividendos.csv           ✅ Sucesso
+2025-10-01 21:28:53.396 | INFO     | __main__:main:151 - ==============================
+
+✨ Script concluído!
+
