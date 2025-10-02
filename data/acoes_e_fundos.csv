@@ -1,339 +1,330 @@
 ﻿ticker,empresa,volume,logo,setor_brapi,tipo,setor_b3,subsetor_b3
-MGLU3,Magazine Luiza S.A.,43927100,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-BBDC4,Banco Bradesco SA Pfd,39717600,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock,Financeiro e Outros,Bancos
-BBAS3,Banco do Brasil S.A.,33351400,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock,Financeiro e Outros,Bancos
-POMO4,Marcopolo SA Pfd,32830400,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-B3SA3,"B3 SA - Brasil, Bolsa, Balcao",32626800,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-ABEV3,Ambev SA,28764000,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
-AZUL4,Azul SA Pfd Registered Shs,27543400,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-COGN3,Cogna Educacao S.A.,26118300,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock,Educação,Educação
-PETR4,Petroleo Brasileiro SA Pfd,24817000,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-ITUB4,Itau Unibanco Holding SA Pfd,24775900,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock,Financeiro e Outros,Bancos
-UGPA3,Ultrapar Participacoes S.A.,24597300,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock,Consumo Não Cíclico,Comércio e Distribuição
-RAIL3,Rumo SA,23967300,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-BEEF3,Minerva S.A.,23830400,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock,Consumo Não Cíclico,Alimentos e Bebidas
-CMIG4,Companhia Energetica de Minas Gerais SA Pfd,22647900,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-OIBR3,Oi S.A.,20286900,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock,Comunicações,Telecomunicações
-RAIZ4,Raizen SA Non-Cum Perp Pfd Registered Shs,19965500,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock,Consumo Não Cíclico,Comércio e Distribuição
-ITSA4,Itausa SA Non-Cum Perp Pfd Registered Shs,19673600,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-VAMO3,"Vamos Locacao de Caminhoes, Maquinas e Equipamentos SA",19067300,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
-MBRF3,MBRF Global Foods Company S.A.,18340200,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Materiais Básicos,Mineração e Siderurgia
-VALE3,Vale S.A.,18278300,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-CSAN3,Cosan S.A.,14990600,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-NATU3,Natura Cosmeticos SA,14680600,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
-CPLE6,Companhia Paranaense de Energia - COPEL Pfd Registered B,14379800,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-PCAR3,Companhia Brasileira de Distribuicao,14114700,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-GGBR4,Gerdau S.A. Pfd,12948700,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-ENEV3,Eneva S.A.,12604300,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-USIM5,Usinas Siderurgicas de Minas Gerais SA-Usiminas Pfd A,12177700,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-VBBR3,Vibra Energia SA,11672600,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-WEGE3,WEG SA,11275700,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-LREN3,Lojas Renner S.A.,11004100,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
-CVCB3,CVC Brasil Operadora e Agencia de Viagens SA,10964500,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
-ASAI3,Sendas Distribuidora SA,10736300,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-CSNA3,Companhia Siderurgica Nacional,10169100,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-PETR3,Petroleo Brasileiro SA,9510100,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-SRNA3,Serena Energia SA,9266100,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-GOAU4,Metalurgica Gerdau SA Pfd,8866200,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-LWSA3,LWSA S.A.,7779200,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-BHIA3,Grupo Casas Bahia S.A.,7740700,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-ONCO3,Oncoclinicas do Brasil Servicos Medicos SA,6757000,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-BRKM5,Braskem S.A. Pfd A,6632400,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-RADL3,Raia Drogasil S.A.,6612900,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-PRIO3,Prio SA,6612300,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-EQTL3,Equatorial S.A.,6579000,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-CPLE3,Companhia Paranaense de Energia,6576500,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-TIMS3,TIM S.A.,6517800,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock,Comunicações,Telecomunicações
-PGMN3,Empreendimentos Pague Menos SA,6510800,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RENT3,Localiza Rent A Car SA,6426400,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
-BPAC11,Banco BTG Pactual SA Units Cons of 1 Sh + 2 Pfd Shs A,6326700,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund,Financeiro e Outros,Bancos
-BBDC3,Banco Bradesco SA,6033400,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock,Financeiro e Outros,Bancos
-MOTV3,Motiva Infraestrutura de Mobilidade SA,6019600,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-CXSE3,Caixa Seguridade Participacoes SA,5835400,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock,Financeiro e Outros,Seguros
-CMIN3,CSN Mineracao SA,5800800,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-AURE3,Auren Energia SA,5712500,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-ELET3,Centrais Eletricas Brasileiras SA-Eletrobras,5548500,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-MRVE3,MRV Engenharia e Participacoes S.A.,5219500,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-AMBP3,Ambipar Participacoes e Empreendimentos SA,4964700,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-DIRR3,Direcional Engenharia S.A.,4794400,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-GGPS3,GPS Participacoes e Empreendimentos SA,4604500,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-SIMH3,Simpar SA,4582300,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-CYRE3,Cyrela Brazil Realty SA Empreendimentos e Participacoes,4514300,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-ANIM3,Anima Holding SA,4440200,https://icons.brapi.dev/icons/ANIM3.svg,Miscellaneous,stock,Educação,Educação
-JHSF3,JHSF Participacoes S.A.,4423400,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-ISAE4,Isa Energia Brasil SA Non-Cum Perp Pfd Registered Shs,4365900,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
-KLBN11,Klabin SA Ctf de Deposito de Acoes Cons of 1 Sh + 4 Pfd Shs,4275100,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund,Materiais Básicos,Papel e Celulose
-AMER3,Americanas SA,4206200,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-ECOR3,EcoRodovias Infraestrutura e Logistica S.A.,4084100,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-GMAT3,Grupo Mateus SA,4020100,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-SMFT3,Smartfit Escola de Ginastica e Danca SA,3997700,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock,Educação,Educação
-BBSE3,BB Seguridade Participacoes SA,3936600,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock,Financeiro e Outros,Seguros
-CASH3,Meliuz SA,3839700,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
-RCSL4,Recrusul SA Pfd,3837400,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-AZTE3,Azevedo & Travassos Energia S.A,3837100,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock,Consumo Cíclico,Consumo Diverso
-DASA3,Diagnosticos da America S.A.,3741500,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-YDUQ3,YDUQS Participacoes SA,3649000,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock,Educação,Educação
-SBSP3,Companhia de Saneamento Basico do Estado de Sao Paulo SABESP,3623100,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock,Utilidade Pública,Saneamento
-SANB11,Banco Santander (Brasil) S.A. Units Cons of 1 Sh + 1 Pfd Sh,3475100,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund,Financeiro e Outros,Bancos
-CBAV3,Companhia Brasileira de Aluminio,3467100,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-HBSA3,Hidrovias do Brasil SA,3411200,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-MULT3,Multiplan Empreendimentos Imobiliarios SA,3408500,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-MOVI3,Movida Participacoes SA,3240300,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
-LJQQ3,Lojas Quero-Quero SA,3184500,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RDOR3,Rede D'Or Sao Luiz SA,3153500,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-ENGI11,Energisa SA Units Cons of 1 Sh + 4 Pfd Shs,3140700,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund,Utilidade Pública,Geração de Energia
-FLRY3,Fleury SA,3132700,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-HBOR3,Helbor Empreendimentos S.A.,3063400,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-EMBR3,Embraer S.A.,3052500,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
-SUZB3,Suzano S.A.,2888900,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock,Materiais Básicos,Papel e Celulose
-PETZ3,Pet Center Comercio e Participacoes,2856500,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock,Consumo Cíclico,Comércio Varejista
-HBRE3,HBR Realty Empreendimentos Imobiliarios SA,2817000,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-VIVT3,Telefonica Brasil S.A.,2655300,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock,Comunicações,Telecomunicações
-ALOS3,Allos S.A.,2655200,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-BRAP4,Bradespar SA Pfd,2504900,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-IFCM3,Infracommerce CXAAS SA,2406000,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-TOTS3,TOTVS S.A.,2370300,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-RAPT4,Randoncorp S.A.,2346000,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-CEAB3,C&A Modas SA,2295000,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
-INTB3,Intelbras SA Industria de Telecomunicacao Eletronica Brasileir,2269200,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-QUAL3,Qualicorp Consultoria e Corretora de Seguros S.A.,2226500,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock,Financeiro e Outros,Seguros
-HAPV3,Hapvida Participacoes e Investimentos SA,2173200,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-SMTO3,Sao Martinho S.A.,2146200,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-KLBN4,Klabin SA Non-Cum Perp Pfd Registered Shs,2070000,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
-CSMG3,Companhia de Saneamento de Minas Gerais,1974200,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock,Utilidade Pública,Saneamento
-AZEV4,Azevedo & Travassos SA Pfd,1908000,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-STBP3,Santos Brasil Participacoes SA,1881000,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-HYPE3,Hypera S.A.,1839200,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
-GRND3,Grendene S.A.,1837800,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
-NEOE3,Neoenergia SA,1827100,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-RECV3,Petroreconcavo SA,1809700,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-SLCE3,SLC Agricola S.A.,1800400,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-SYNE3,Syn Prop e Tech SA,1733000,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-DXCO3,Dexco SA,1693200,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-TEND3,Construtora Tenda SA,1672200,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-TAEE11,Transmissora Alianca De Energia Eletrica S.A. Unit,1666800,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund,Utilidade Pública,Transmissão de Energia
-MLAS3,Multi Group S.A,1652400,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-SBFG3,Grupo SBF S.A.,1635900,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
-VIVA3,Vivara Participacoes SA,1579500,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock,Consumo Cíclico,Comércio Varejista
-RANI3,Irani Papel e Embalagem SA,1505600,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock,Materiais Básicos,Papel e Celulose
-MYPK3,Iochpe Maxion S.A.,1434000,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-CURY3,Cury Construtora e Incorporadora SA,1361100,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-ODPV3,OdontoPrev S.A.,1317300,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock,Saúde,Produtos e Equipamentos Médicos
-ALPA4,Alpargatas SA Pfd,1297900,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
-ELET6,Centrais Eletricas Brasileiras SA-Eletrobras Pfd B,1277800,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-TFCO4,Track & Field Co SA Pfd Registered Shs,1276700,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-BPAN4,Banco Pan S.A. Pfd Shs,1257400,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock,Financeiro e Outros,Bancos
-PSSA3,Porto Seguro S.A.,1239400,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock,Financeiro e Outros,Seguros
-MDNE3,Moura Dubeux Engenharia SA,1228000,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-AZEV3,Azevedo & Travassos SA,1223300,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-CPFE3,CPFL Energia S.A.,1128000,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-CAML3,Camil Alimentos SA,1114200,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-SHUL4,Schulz S.A.Non-Cum Perp Pfd Registered Shs,1102000,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-GUAR3,Guararapes Confeccoes S.A.,1046000,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock,Consumo Cíclico,Calçados e Vestuário
-JALL3,Jalles Machado SA,1015500,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-PDGR3,PDG Realty SA Empreendimentos e Participacoes,1006100,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-TUPY3,Tupy S.A.,1005500,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-KEPL3,Kepler Weber SA,981900,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-SEER3,Grupo Ser Educacional SA,977600,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock,Educação,Educação
-VVEO3,CM Hospitalar SA,968400,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-EGIE3,ENGIE Brasil Energia S.A.,939600,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-MILS3,Mills Locacao Servicos e Logistica S.A.,923000,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock,Bens Industriais,Serviços Industriais
-EZTC3,EZ TEC Empreendimentos e Participacoes SA,886300,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-BRSR6,Banco do Estado do Rio Grande do Sul SA Pfd Series B,870600,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock,Financeiro e Outros,Bancos
-VULC3,Vulcabras SA,864100,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
-LAVV3,LAVVI Empreendimentos Imobiliarios SA,856600,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-PLPL3,Plano & Plano Desenvolvimento Imobiliario Ltda,821400,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-TTEN3,Tres Tentos Agroindustrial SA,816000,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock,Consumo Não Cíclico,Alimentos e Bebidas
-IRBR3,IRB Brasil Resseguros SA,803000,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock,Financeiro e Outros,Seguros
-SAPR4,Companhia de Saneamento do Parana - Sanepar Non-Cum Perp Pfd Registered Shs,788300,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock,Utilidade Pública,Saneamento
-MDIA3,M. Dias Branco SA Industria e Comercio de Alimentos,784800,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
-ITUB3,Itau Unibanco Holding S.A.,780300,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock,Financeiro e Outros,Bancos
-DESK3,Desktop SA,780000,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock,Comunicações,Telecomunicações
-GFSA3,Gafisa S.A.,751000,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-ARML3,Armac Locacao Logistica e Servicos SA,706000,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock,Bens Industriais,Máquinas e Motores
-LIGT3,Light S.A.,693300,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-SEQL3,Sequoia Logistica e Transportes SA,691600,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-POSI3,Positivo Tecnologia SA,688100,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-ORVR3,Orizon Valorizacao de Residuos SA,671600,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-SAPR11,Companhia de Saneamento do Parana - Sanepar Units Cons of 1 Sh + 4 Pfd Shs,613200,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund,Utilidade Pública,Saneamento
-EVEN3,Even Construtora E Incorporadora S.A.,602400,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-MTRE3,Mitre Realty Empreendimentos e Participacoes SA,601400,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-JSLG3,JSL S.A.,593300,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-PORT3,Wilson Sons Holdings Brasil SA,585500,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-FESA4,Cia de Ferro Ligas da Bahia-Ferbasa Pfd,584900,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-KLBN3,Klabin SA,565600,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
-USIM3,Usinas Siderurgicas de Minas Gerais SA-Usiminas,549000,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-PRNR3,Priner Servicos Industriais SA,548400,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-PMAM3,Paranapanema S.A.,526600,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-ABCB4,Banco ABC Brasil SA Conv Pfd,525000,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock,Financeiro e Outros,Bancos
-CSED3,Cruzeiro do Sul Educacional SA,520700,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock,Educação,Educação
-PFRM3,Profarma Distribuidora de Produtos Farmaceuticos SA,518700,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-MELK3,Melnick Desenvolvimento Imobiliario SA,501500,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock,Financeiro e Outros,Propriedades e Locação
-BMGB4,Banco Bmg SA BMG Pfd Registered Shs -144A- Reg S,494400,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock,Financeiro e Outros,Bancos
-WIZC3,WIZ Co Participacoes e Corretagem de Seguros SA,483400,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock,Financeiro e Outros,Seguros
-ENJU3,Enjoei SA,482800,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-TGMA3,Tegma Gestao Logistica S.A.,468100,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-ALUP11,Alupar Investimento SA Unit Cons of 1 Sh + 2 Pfd Shs,454200,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund,Utilidade Pública,Transmissão de Energia
-AMAR3,Marisa Lojas S.A.,432400,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-PTBL3,PBG S.A.Registered Shs,427200,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-SOJA3,Boa Safra Sementes SA,409700,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-POMO3,Marcopolo SA,387600,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-TRIS3,Trisul S.A.,351400,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-LUPA3,Lupatech S.A.,346800,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-PINE4,Banco PINE S.A. Pfd,344700,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock,Financeiro e Outros,Bancos
-ALLD3,Allied Tecnologia SA,331700,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock,Tecnologia da Informação,Hardware e Equipamentos
-ZAMP3,ZAMP SA,331600,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock,Educação,Educação
-VTRU3,"Vitru Brasil Empreendimentos, Participacoes e Comercio S.A.",315300,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-BMOB3,Bemobi Mobile Tech SA,306800,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-ESPA3,MPM Corporeos SA,306700,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
-FIQE3,Unifique Telecomunicacoes SA,297100,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock,Comunicações,Telecomunicações
-LEVE3,Mahle-Metal Leve S.A.,286900,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-BLAU3,Blau Farmaceutica SA,281500,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
-DMVF3,D1000 Varejo Farma Participacoes SA,279000,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-OPCT3,OceanPact Servicos Maritimos SA,271700,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-TASA4,Taurus Armas S.A. Pfd,262700,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
-ALPK3,Allpark Empreendimentos Participacoes e Servicos S.A.,246600,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock,Educação,Educação
-VLID3,Valid Solucoes SA,224600,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
-BRBI11,BRBI BR Partners S.A. Units Cons of 1 Sh and 2 Pfd Shs,223200,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-CMIG3,Companhia Energetica de Minas Gerais SA,195600,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-PNVL3,Dimed S.A. Distribuidora de Medicamentos,194100,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-SAPR3,Companhia de Saneamento do Parana - Sanepar,190900,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock,Utilidade Pública,Saneamento
-FRAS3,Fras-Le S.A.,172700,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-AGRO3,BrasilAgro Cia Brasileira de Propriedades Agricolas,161200,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock,Consumo Não Cíclico,Alimentos e Bebidas
-TAEE4,Transmissora Alianca De Energia Eletrica S.A. Pfd,159500,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock,Utilidade Pública,Transmissão de Energia
-BRST3,Brisanet Servicos de Telecomunicacoes S.A.,159500,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock,Comunicações,Telecomunicações
-AERI3,Aeris Industria e Comercio de Equipamentos para Geracao deEnergia S.A.,149800,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-TOKY3,Grupo Toky SA,147600,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-UNIP6,Unipar Carbocloro SA Pfd Class B,146900,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-EUCA4,Eucatex S.A. Industria E Comercio Non-Cum Perp Pfd Registered Shs,143500,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
-LOGG3,Log Commercial Properties e Participacoes SA,137400,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock,Financeiro e Outros,Propriedades e Locação
-MATD3,Hospital Mater Dei SA,116800,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock,Saúde,Produtos e Equipamentos Médicos
-GOAU3,Metalurgica Gerdau S.A.,114300,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-TECN3,Technos S.A.,103700,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
-AMOB3,Automob Participacoes S.A,102100,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-RCSL3,Recrusul SA,101500,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-ROMI3,Romi SA,97500,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-BRKM3,Braskem S.A.,95000,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-AALR3,Allianca Saude e Participacoes SA - ALLIAR,92600,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
-COCE5,Companhia Energetica do Ceara-COELCE Pfd A,90900,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-DEXP3,Dexxos Participacoes SA,71100,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-ITSA3,Itausa SA,70600,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-TAEE3,Transmissora Alianca De Energia Eletrica S.A.,67600,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock,Utilidade Pública,Transmissão de Energia
-RNEW4,Renova Energia S.A. Pfd,65100,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-LPSB3,LPS Brasil-Consultoria de Imoveis SA,54700,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock,Financeiro e Outros,Incorporação e Construção
-SANB4,Banco Santander (Brasil) SA Pfd,53100,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock,Financeiro e Outros,Bancos
-VITT3,Vittia S.A.,53100,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-SCAR3,Sao Carlos Empreendimentos e Participacoes SA,51800,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-VIVR3,Viver Incorporadora e Construtora S.A.,51500,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-CSUD3,CSU Digital SA,50300,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
-SANB3,Banco Santander (Brasil) S.A.,46400,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock,Financeiro e Outros,Bancos
-WEST3,Westwing Comercio Varejista SA,45000,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-TRAD3,TC S.A.,39800,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-OIBR4,Oi S.A.Non-Cum Perp Pfd Registered Shs,37500,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock,Comunicações,Telecomunicações
-LOGN3,Log-In Logistica Intermodal SA,35100,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-FHER3,Fertilizantes Heringer S.A.,34100,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-TCSA3,Tecnisa S.A.,31700,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-RAPT3,Randoncorp S.A.,30300,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
-IGTI3,Iguatemi SA,28900,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-BGIP4,Banco do Estado de Sergipe SA - Banese Non-Cum Perp Pfd Registered Shs,28300,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos
-BIOM3,Biomm SA,26800,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
-LUXM4,Trevisa Investimentos SA Pfd,25200,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
-PDTC3,Padtec Holding SA,24200,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
-UCAS3,Unicasa Industria de Moveis S.A.,23600,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
-RNEW3,Renova Energia S.A.,23100,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-BRAP3,Bradespar S.A.,22200,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-TPIS3,TPI - Triunfo Participacoes e Investimentos SA,21900,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock,Financeiro e Outros,Incorporação e Construção
-SHOW3,T4F Entretenimento S.A.,21800,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
-BMEB4,BCO Mercantil do Brasil SA Pfd,21500,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock,Financeiro e Outros,Bancos
-FICT3,Fictor Alimentos SA,21200,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-AVLL3,Alphaville SA,20700,https://icons.brapi.dev/icons/AVLL3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-EALT4,Electro Aco Altona SA Pfd,19200,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-CGRA4,Grazziotin S.A. Pfd,19000,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-GGBR3,Gerdau S.A.,18300,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
-LAND3,Terra Santa Propriedades Agricolas SA,16400,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-BEES3,Banestes S.A. - Banco do Estado do Espirito Santo,14600,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock,Financeiro e Outros,Bancos
-MEAL3,International Meal Company Alimentacao SA,14400,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
-BALM4,Baumer SA BALM Non-Cum Perp Pfd Registered Shs,14200,https://icons.brapi.dev/icons/BALM4.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
-NGRD3,Neogrid Participacoes SA,14100,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-AGXY3,Agrogalaxy Participacoes SA,14100,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-CEBR6,Companhia Energetica de Brasilia - CEB Pfd B,12800,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-OFSA3,Ourofino S.A.,12300,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
-CAMB3,Cambuci SA,11600,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
-BAZA3,Banco da Amazonia S.A.,10700,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock,Financeiro e Outros,Bancos
-ALUP4,Alupar Investimento SA Pfd Shs,10600,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
-WHRL4,Whirlpool SA Pfd,10500,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
-RSID3,Rossi Residencial S.A.,10300,https://icons.brapi.dev/icons/RSID3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-INEP3,Inepar SA Industria e Construcoes,9900,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-WHRL3,Whirlpool S.A.,9900,https://icons.brapi.dev/icons/WHRL3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
-TASA3,Taurus Armas S.A.,9700,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
-BRSR3,Banco do Estado do Rio Grande do Sul SA,9500,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock,Financeiro e Outros,Bancos
-INEP4,Inepar SA Industria e Construcoes Pfd,8200,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-UNIP3,Unipar Carbocloro SA,7500,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-ENGI4,Energisa SA Pfd Shs Non-Voting,7400,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-RPMG3,Refinaria de Petroleos Manguinhos S.A.,7300,https://icons.brapi.dev/icons/RPMG3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-BEES4,Banestes SA Banco do Estado do Espirito Santo Pfd,7300,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock,Financeiro e Outros,Bancos
-CEEB3,Companhia de Electricidade do Estado da Bahia - COELBA,7200,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-CEBR3,Companhia Energetica de Brasilia - CEB,7000,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-BPAC5,Banco BTG Pactual SA Pfd A,6700,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock,Financeiro e Outros,Bancos
-SNSY5,Sansuy SA Industria de Plasticos Pfd A,6400,https://icons.brapi.dev/icons/SNSY5.svg,Producer Manufacturing,stock,Materiais Básicos,Química e Petroquímica
-DOTZ3,Dotz SA,6200,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-PTNT4,Pettenati SA Industria Textil Pfd,6100,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-MNPR3,Minupar Participacoes S.A.,6000,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-ENGI3,Energisa SA,5600,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-REDE3,Rede Energia S.A.,5500,https://icons.brapi.dev/icons/REDE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-PTNT3,Pettenati S.A. Industria Textil,5400,https://icons.brapi.dev/icons/PTNT3.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-HOOT4,Hoteis Othon SA Pfd,5300,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
-CLSC4,Centrais Eletricas de Santa Catarina SA Pfd,5200,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-EMAE4,EMAE-Empresa Metropolitana de Aguas e Energia SA Pfd Registered,4500,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-CRPG5,Tronox Pigmentos do Brasil SA Pfd Registered Shs A,4400,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-PINE3,Banco PINE S.A.,4400,https://icons.brapi.dev/icons/PINE3.svg,Finance,stock,Financeiro e Outros,Bancos
-ALUP3,Alupar Investimento SA,4200,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
-BPAC3,Banco BTG Pactual SA,4200,https://icons.brapi.dev/icons/BPAC3.svg,Finance,stock,Financeiro e Outros,Bancos
-CTSA4,Cia Tecidos Santanense SA Non-Cum Perp Pfd Registered Shs,3900,https://icons.brapi.dev/icons/CTSA4.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-BOBR4,Bombril S.A.Non-Cum Perp Pfd Registered Shs,3700,https://icons.brapi.dev/icons/BOBR4.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
-MGEL4,Mangels Industrial SA Pfd Shs,3600,https://icons.brapi.dev/icons/MGEL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-OSXB3,OSX Brasil S.A.,3300,https://icons.brapi.dev/icons/OSXB3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
-BSLI4,BRB Banco de Brasilia SA Pfd,3100,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock,Financeiro e Outros,Bancos
-VSTE3,Veste S.A. Estilo,3000,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
-MNDL3,Mundial S.A.- Produtos de Consumo,3000,https://icons.brapi.dev/icons/MNDL3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
-DOHL4,Dohler SA Comercio e Industria Pfd,3000,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-NEXP3,Nexpe Participacoes SA,2800,https://icons.brapi.dev/icons/NEXP3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-EALT3,Electro Aco Altona SA,2700,https://icons.brapi.dev/icons/EALT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-ALPA3,Alpargatas SA,2600,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
-EQPA3,Equatorial Para Distribuidora de Energia SA,2500,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-BIED3,Bioma Educacao SA,2200,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Services,stock,Saúde,Produtos e Equipamentos Médicos
-CTAX3,Contax Participacoes SA,2200,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
-TELB3,Telecomunicacoes Brasileiras SA,2100,https://icons.brapi.dev/icons/TELB3.svg,Communications,stock,Comunicações,Telecomunicações
-EPAR3,Embpar Participacoes SA,2100,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock,Bens Industriais,Serviços Industriais
-RDNI3,Rodobens Negocios Imobiliarios S.A.,1800,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
-REAG3,REAG Investimentos SA,1700,https://icons.brapi.dev/icons/REAG3.svg,Commercial Services,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
-PEAB4,Cia de Participacoes Alianca da Bahia Non-Cum Perp Pfd Registered Shs,1500,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-ISAE3,Isa Energia Brasil SA,1500,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
-ATED3,Atom Educacao e Editora S.A.,1400,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
-NUTR3,Nutriplant Industria E Comercio S.A.,1400,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
-DEXP4,Dexxos Participacoes SA Pref,1400,https://icons.brapi.dev/icons/DEXP4.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-CEBR5,Companhia Energetica de Brasilia - CEB Pfd A,1100,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-MTSA4,Metisa Metalurgica Timboense SA Pfd,1000,https://icons.brapi.dev/icons/MTSA4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-HAGA4,Haga SA Industria e Comercio Pfd,900,https://icons.brapi.dev/icons/HAGA4.svg,Consumer Durables,stock,Bens Industriais,Máquinas e Motores
+BBAS3,Banco do Brasil S.A.,21815900,https://icons.brapi.dev/icons/BBAS3.svg,Finance,stock,Financeiro e Outros,Bancos
+COGN3,Cogna Educacao S.A.,17391900,https://icons.brapi.dev/icons/COGN3.svg,Commercial Services,stock,Educação,Educação
+CSAN3,Cosan S.A.,16946100,https://icons.brapi.dev/icons/CSAN3.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+RAIZ4,Raizen SA Non-Cum Perp Pfd Registered Shs,16512200,https://icons.brapi.dev/icons/RAIZ4.svg,Retail Trade,stock,Consumo Não Cíclico,Comércio e Distribuição
+ABEV3,Ambev SA,15986200,https://icons.brapi.dev/icons/ABEV3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
+B3SA3,"B3 SA - Brasil, Bolsa, Balcao",15800600,https://icons.brapi.dev/icons/B3SA3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+MGLU3,Magazine Luiza S.A.,14080400,https://icons.brapi.dev/icons/MGLU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+RAIL3,Rumo SA,13998500,https://icons.brapi.dev/icons/RAIL3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+BBDC4,Banco Bradesco SA Pfd,13102200,https://icons.brapi.dev/icons/BBDC4.svg,Finance,stock,Financeiro e Outros,Bancos
+PETR4,Petroleo Brasileiro SA Pfd,12816300,https://icons.brapi.dev/icons/PETR4.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+AZUL4,Azul SA Pfd Registered Shs,12137300,https://icons.brapi.dev/icons/AZUL4.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+RENT3,Localiza Rent A Car SA,11570900,https://icons.brapi.dev/icons/RENT3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
+VAMO3,"Vamos Locacao de Caminhoes, Maquinas e Equipamentos SA",10318900,https://icons.brapi.dev/icons/VAMO3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
+AMBP3,Ambipar Participacoes e Empreendimentos SA,9825600,https://icons.brapi.dev/icons/AMBP3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+VALE3,Vale S.A.,8582400,https://icons.brapi.dev/icons/VALE3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+AZTE3,Azevedo & Travassos Energia S.A,8169300,https://icons.brapi.dev/icons/AZTE3.svg,Industrial Services,stock,Consumo Cíclico,Consumo Diverso
+CVCB3,CVC Brasil Operadora e Agencia de Viagens SA,8025600,https://icons.brapi.dev/icons/CVCB3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
+ITUB4,Itau Unibanco Holding SA Pfd,7883200,https://icons.brapi.dev/icons/ITUB4.svg,Finance,stock,Financeiro e Outros,Bancos
+PCAR3,Companhia Brasileira de Distribuicao,7697100,https://icons.brapi.dev/icons/PCAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+OIBR3,Oi S.A.,7602700,https://icons.brapi.dev/icons/OIBR3.svg,Communications,stock,Comunicações,Telecomunicações
+ITSA4,Itausa SA Non-Cum Perp Pfd Registered Shs,7574600,https://icons.brapi.dev/icons/ITSA4.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+ASAI3,Sendas Distribuidora SA,7444000,https://icons.brapi.dev/icons/ASAI3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+AZEV4,Azevedo & Travassos SA Pfd,6912600,https://icons.brapi.dev/icons/AZEV4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+STBP3,Santos Brasil Participacoes SA,6355600,https://icons.brapi.dev/icons/STBP3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+BEEF3,Minerva S.A.,6337800,https://icons.brapi.dev/icons/BEEF3.svg,Distribution Services,stock,Consumo Não Cíclico,Alimentos e Bebidas
+MBRF3,MBRF Global Foods Company S.A.,5862700,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Materiais Básicos,Mineração e Siderurgia
+CMIG4,Companhia Energetica de Minas Gerais SA Pfd,5824100,https://icons.brapi.dev/icons/CMIG4.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+UGPA3,Ultrapar Participacoes S.A.,5665900,https://icons.brapi.dev/icons/UGPA3.svg,Retail Trade,stock,Consumo Não Cíclico,Comércio e Distribuição
+POMO4,Marcopolo SA Pfd,5457800,https://icons.brapi.dev/icons/POMO4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+EQTL3,Equatorial S.A.,4845700,https://icons.brapi.dev/icons/EQTL3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+EMBR3,Embraer S.A.,4762200,https://icons.brapi.dev/icons/EMBR3.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
+GGBR4,Gerdau S.A. Pfd,4723100,https://icons.brapi.dev/icons/GGBR4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+LREN3,Lojas Renner S.A.,4541600,https://icons.brapi.dev/icons/LREN3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
+ONCO3,Oncoclinicas do Brasil Servicos Medicos SA,4502200,https://icons.brapi.dev/icons/ONCO3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+ENEV3,Eneva S.A.,4497900,https://icons.brapi.dev/icons/ENEV3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+RAPT4,Randoncorp S.A.,4459600,https://icons.brapi.dev/icons/RAPT4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+CSNA3,Companhia Siderurgica Nacional,4442900,https://icons.brapi.dev/icons/CSNA3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+SIMH3,Simpar SA,4371300,https://icons.brapi.dev/icons/SIMH3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+WEGE3,WEG SA,4334700,https://icons.brapi.dev/icons/WEGE3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+LJQQ3,Lojas Quero-Quero SA,4331400,https://icons.brapi.dev/icons/LJQQ3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+NATU3,Natura Cosmeticos SA,4228100,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
+MRVE3,MRV Engenharia e Participacoes S.A.,4103800,https://icons.brapi.dev/icons/MRVE3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
+CASH3,Meliuz SA,4000600,https://icons.brapi.dev/icons/CASH3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
+MOTV3,Motiva Infraestrutura de Mobilidade SA,3982700,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+CPLE6,Companhia Paranaense de Energia - COPEL Pfd Registered B,3981100,https://icons.brapi.dev/icons/CPLE6.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+TRIS3,Trisul S.A.,3848000,https://icons.brapi.dev/icons/TRIS3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
+AZEV3,Azevedo & Travassos SA,3447700,https://icons.brapi.dev/icons/AZEV3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+PETR3,Petroleo Brasileiro SA,3439300,https://icons.brapi.dev/icons/PETR3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+USIM5,Usinas Siderurgicas de Minas Gerais SA-Usiminas Pfd A,3205200,https://icons.brapi.dev/icons/USIM5.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+DIRR3,Direcional Engenharia S.A.,3064100,https://icons.brapi.dev/icons/DIRR3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+VBBR3,Vibra Energia SA,2847200,https://icons.brapi.dev/icons/VBBR3.svg,Retail Trade,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+RADL3,Raia Drogasil S.A.,2839400,https://icons.brapi.dev/icons/RADL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+YDUQ3,YDUQS Participacoes SA,2770800,https://icons.brapi.dev/icons/YDUQ3.svg,Commercial Services,stock,Educação,Educação
+BPAC11,Banco BTG Pactual SA Units Cons of 1 Sh + 2 Pfd Shs A,2747700,https://icons.brapi.dev/icons/BPAC11.svg,Finance,fund,Financeiro e Outros,Bancos
+CPLE3,Companhia Paranaense de Energia,2669400,https://icons.brapi.dev/icons/CPLE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+BRKM5,Braskem S.A. Pfd A,2584400,https://icons.brapi.dev/icons/BRKM5.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+CYRE3,Cyrela Brazil Realty SA Empreendimentos e Participacoes,2530600,https://icons.brapi.dev/icons/CYRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+BBDC3,Banco Bradesco SA,2497600,https://icons.brapi.dev/icons/BBDC3.svg,Finance,stock,Financeiro e Outros,Bancos
+PGMN3,Empreendimentos Pague Menos SA,2461400,https://icons.brapi.dev/icons/PGMN3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+MULT3,Multiplan Empreendimentos Imobiliarios SA,2460900,https://icons.brapi.dev/icons/MULT3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+PRIO3,Prio SA,2455200,https://icons.brapi.dev/icons/PRIO3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+BBSE3,BB Seguridade Participacoes SA,2325200,https://icons.brapi.dev/icons/BBSE3.svg,Finance,stock,Financeiro e Outros,Seguros
+CEAB3,C&A Modas SA,2287300,https://icons.brapi.dev/icons/CEAB3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
+JHSF3,JHSF Participacoes S.A.,2257900,https://icons.brapi.dev/icons/JHSF3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+GOAU4,Metalurgica Gerdau SA Pfd,2229200,https://icons.brapi.dev/icons/GOAU4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+PETZ3,Pet Center Comercio e Participacoes,2224700,https://icons.brapi.dev/icons/PETZ3.svg,Process Industries,stock,Consumo Cíclico,Comércio Varejista
+BHIA3,Grupo Casas Bahia S.A.,2223400,https://icons.brapi.dev/icons/BHIA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+AMER3,Americanas SA,2212200,https://icons.brapi.dev/icons/AMER3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+SUZB3,Suzano S.A.,2146400,https://icons.brapi.dev/icons/SUZB3.svg,Process Industries,stock,Materiais Básicos,Papel e Celulose
+AURE3,Auren Energia SA,2079100,https://icons.brapi.dev/icons/AURE3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+VIVA3,Vivara Participacoes SA,2067500,https://icons.brapi.dev/icons/VIVA3.svg,Consumer Durables,stock,Consumo Cíclico,Comércio Varejista
+RCSL4,Recrusul SA Pfd,2065700,https://icons.brapi.dev/icons/RCSL4.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+HAPV3,Hapvida Participacoes e Investimentos SA,2047600,https://icons.brapi.dev/icons/HAPV3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+LWSA3,LWSA S.A.,1990400,https://icons.brapi.dev/icons/LWSA3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+ANIM3,Anima Holding SA,1963700,https://icons.brapi.dev/icons/ANIM3.svg,Miscellaneous,stock,Educação,Educação
+TIMS3,TIM S.A.,1950500,https://icons.brapi.dev/icons/TIMS3.svg,Communications,stock,Comunicações,Telecomunicações
+ECOR3,EcoRodovias Infraestrutura e Logistica S.A.,1935400,https://icons.brapi.dev/icons/ECOR3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+KLBN4,Klabin SA Non-Cum Perp Pfd Registered Shs,1928600,https://icons.brapi.dev/icons/KLBN4.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
+GGPS3,GPS Participacoes e Empreendimentos SA,1922700,https://icons.brapi.dev/icons/GGPS3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+KLBN11,Klabin SA Ctf de Deposito de Acoes Cons of 1 Sh + 4 Pfd Shs,1877400,https://icons.brapi.dev/icons/KLBN11.svg,Non-Energy Minerals,fund,Materiais Básicos,Papel e Celulose
+ELET3,Centrais Eletricas Brasileiras SA-Eletrobras,1875700,https://icons.brapi.dev/icons/ELET3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+CXSE3,Caixa Seguridade Participacoes SA,1725500,https://icons.brapi.dev/icons/CXSE3.svg,Finance,stock,Financeiro e Outros,Seguros
+CMIN3,CSN Mineracao SA,1711100,https://icons.brapi.dev/icons/CMIN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+SMFT3,Smartfit Escola de Ginastica e Danca SA,1676000,https://icons.brapi.dev/icons/SMFT3.svg,Consumer Services,stock,Educação,Educação
+RDOR3,Rede D'Or Sao Luiz SA,1607600,https://icons.brapi.dev/icons/RDOR3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+HBOR3,Helbor Empreendimentos S.A.,1587400,https://icons.brapi.dev/icons/HBOR3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
+INTB3,Intelbras SA Industria de Telecomunicacao Eletronica Brasileir,1565200,https://icons.brapi.dev/icons/INTB3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+ALPA4,Alpargatas SA Pfd,1468700,https://icons.brapi.dev/icons/ALPA4.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
+SBSP3,Companhia de Saneamento Basico do Estado de Sao Paulo SABESP,1465500,https://icons.brapi.dev/icons/SBSP3.svg,Utilities,stock,Utilidade Pública,Saneamento
+CBAV3,Companhia Brasileira de Aluminio,1457400,https://icons.brapi.dev/icons/CBAV3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+MOVI3,Movida Participacoes SA,1440900,https://icons.brapi.dev/icons/MOVI3.svg,Finance,stock,Bens Industriais,Logística e Mobilidade
+GRND3,Grendene S.A.,1398100,https://icons.brapi.dev/icons/GRND3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
+ENGI11,Energisa SA Units Cons of 1 Sh + 4 Pfd Shs,1363700,https://icons.brapi.dev/icons/ENGI11.svg,Utilities,fund,Utilidade Pública,Geração de Energia
+IFCM3,Infracommerce CXAAS SA,1352300,https://icons.brapi.dev/icons/IFCM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+ALOS3,Allos S.A.,1289900,https://icons.brapi.dev/icons/ALOS3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+GMAT3,Grupo Mateus SA,1173200,https://icons.brapi.dev/icons/GMAT3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+FLRY3,Fleury SA,1147400,https://icons.brapi.dev/icons/FLRY3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+HYPE3,Hypera S.A.,1126500,https://icons.brapi.dev/icons/HYPE3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
+SRNA3,Serena Energia SA,1083500,https://icons.brapi.dev/icons/SRNA3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+CURY3,Cury Construtora e Incorporadora SA,1075800,https://icons.brapi.dev/icons/CURY3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+EZTC3,EZ TEC Empreendimentos e Participacoes SA,1053500,https://icons.brapi.dev/icons/EZTC3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+DXCO3,Dexco SA,1023000,https://icons.brapi.dev/icons/DXCO3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+NEOE3,Neoenergia SA,1007000,https://icons.brapi.dev/icons/NEOE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+RANI3,Irani Papel e Embalagem SA,1004200,https://icons.brapi.dev/icons/RANI3.svg,Process Industries,stock,Materiais Básicos,Papel e Celulose
+SBFG3,Grupo SBF S.A.,985200,https://icons.brapi.dev/icons/SBFG3.svg,Retail Trade,stock,Consumo Cíclico,Calçados e Vestuário
+ARML3,Armac Locacao Logistica e Servicos SA,971400,https://icons.brapi.dev/icons/ARML3.svg,Finance,stock,Bens Industriais,Máquinas e Motores
+RECV3,Petroreconcavo SA,932400,https://icons.brapi.dev/icons/RECV3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+ISAE4,Isa Energia Brasil SA Non-Cum Perp Pfd Registered Shs,929800,https://icons.brapi.dev/icons/ISAE4.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
+QUAL3,Qualicorp Consultoria e Corretora de Seguros S.A.,926400,https://icons.brapi.dev/icons/QUAL3.svg,Health Services,stock,Financeiro e Outros,Seguros
+MYPK3,Iochpe Maxion S.A.,913000,https://icons.brapi.dev/icons/MYPK3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+MLAS3,Multi Group S.A,899300,https://icons.brapi.dev/icons/MLAS3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+SYNE3,Syn Prop e Tech SA,883500,https://icons.brapi.dev/icons/SYNE3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+ODPV3,OdontoPrev S.A.,875700,https://icons.brapi.dev/icons/ODPV3.svg,Health Services,stock,Saúde,Produtos e Equipamentos Médicos
+DASA3,Diagnosticos da America S.A.,869100,https://icons.brapi.dev/icons/DASA3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+PDGR3,PDG Realty SA Empreendimentos e Participacoes,859300,https://icons.brapi.dev/icons/PDGR3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+SANB11,Banco Santander (Brasil) S.A. Units Cons of 1 Sh + 1 Pfd Sh,855500,https://icons.brapi.dev/icons/SANB11.svg,Finance,fund,Financeiro e Outros,Bancos
+VIVT3,Telefonica Brasil S.A.,854300,https://icons.brapi.dev/icons/VIVT3.svg,Communications,stock,Comunicações,Telecomunicações
+HBSA3,Hidrovias do Brasil SA,842100,https://icons.brapi.dev/icons/HBSA3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+SHUL4,Schulz S.A.Non-Cum Perp Pfd Registered Shs,838000,https://icons.brapi.dev/icons/SHUL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+JALL3,Jalles Machado SA,797900,https://icons.brapi.dev/icons/JALL3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+TOKY3,Grupo Toky SA,772200,https://icons.brapi.dev/icons/BRAPI.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+BRAP4,Bradespar SA Pfd,751900,https://icons.brapi.dev/icons/BRAP4.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+SMTO3,Sao Martinho S.A.,751400,https://icons.brapi.dev/icons/SMTO3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+TOTS3,TOTVS S.A.,740500,https://icons.brapi.dev/icons/TOTS3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+TAEE11,Transmissora Alianca De Energia Eletrica S.A. Unit,735400,https://icons.brapi.dev/icons/TAEE11.svg,Industrial Services,fund,Utilidade Pública,Transmissão de Energia
+BPAN4,Banco Pan S.A. Pfd Shs,727600,https://icons.brapi.dev/icons/BPAN4.svg,Finance,stock,Financeiro e Outros,Bancos
+CSMG3,Companhia de Saneamento de Minas Gerais,726000,https://icons.brapi.dev/icons/CSMG3.svg,Utilities,stock,Utilidade Pública,Saneamento
+ZAMP3,ZAMP SA,702200,https://icons.brapi.dev/icons/ZAMP3.svg,Consumer Services,stock,Educação,Educação
+KEPL3,Kepler Weber SA,702000,https://icons.brapi.dev/icons/KEPL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+VVEO3,CM Hospitalar SA,698200,https://icons.brapi.dev/icons/VVEO3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+GUAR3,Guararapes Confeccoes S.A.,690300,https://icons.brapi.dev/icons/GUAR3.svg,Distribution Services,stock,Consumo Cíclico,Calçados e Vestuário
+MDNE3,Moura Dubeux Engenharia SA,680400,https://icons.brapi.dev/icons/MDNE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+TEND3,Construtora Tenda SA,679400,https://icons.brapi.dev/icons/TEND3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+ALUP11,Alupar Investimento SA Unit Cons of 1 Sh + 2 Pfd Shs,672900,https://icons.brapi.dev/icons/ALUP11.svg,Utilities,fund,Utilidade Pública,Transmissão de Energia
+LIGT3,Light S.A.,664500,https://icons.brapi.dev/icons/LIGT3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+SAPR4,Companhia de Saneamento do Parana - Sanepar Non-Cum Perp Pfd Registered Shs,662000,https://icons.brapi.dev/icons/SAPR4.svg,Utilities,stock,Utilidade Pública,Saneamento
+TUPY3,Tupy S.A.,599500,https://icons.brapi.dev/icons/TUPY3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+BRSR6,Banco do Estado do Rio Grande do Sul SA Pfd Series B,586300,https://icons.brapi.dev/icons/BRSR6.svg,Finance,stock,Financeiro e Outros,Bancos
+ORVR3,Orizon Valorizacao de Residuos SA,536500,https://icons.brapi.dev/icons/ORVR3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+SLCE3,SLC Agricola S.A.,533700,https://icons.brapi.dev/icons/SLCE3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+MILS3,Mills Locacao Servicos e Logistica S.A.,533500,https://icons.brapi.dev/icons/MILS3.svg,Finance,stock,Bens Industriais,Serviços Industriais
+POSI3,Positivo Tecnologia SA,523800,https://icons.brapi.dev/icons/POSI3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+MELK3,Melnick Desenvolvimento Imobiliario SA,523300,https://icons.brapi.dev/icons/MELK3.svg,Industrial Services,stock,Financeiro e Outros,Propriedades e Locação
+PSSA3,Porto Seguro S.A.,503200,https://icons.brapi.dev/icons/PSSA3.svg,Finance,stock,Financeiro e Outros,Seguros
+SEER3,Grupo Ser Educacional SA,502700,https://icons.brapi.dev/icons/SEER3.svg,Consumer Services,stock,Educação,Educação
+IRBR3,IRB Brasil Resseguros SA,490800,https://icons.brapi.dev/icons/IRBR3.svg,Finance,stock,Financeiro e Outros,Seguros
+JSLG3,JSL S.A.,475900,https://icons.brapi.dev/icons/JSLG3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+PLPL3,Plano & Plano Desenvolvimento Imobiliario Ltda,444400,https://icons.brapi.dev/icons/PLPL3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+BMGB4,Banco Bmg SA BMG Pfd Registered Shs -144A- Reg S,441100,https://icons.brapi.dev/icons/BMGB4.svg,Finance,stock,Financeiro e Outros,Bancos
+CSED3,Cruzeiro do Sul Educacional SA,418800,https://icons.brapi.dev/icons/CSED3.svg,Consumer Services,stock,Educação,Educação
+CAML3,Camil Alimentos SA,412100,https://icons.brapi.dev/icons/CAML3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+VULC3,Vulcabras SA,411400,https://icons.brapi.dev/icons/VULC3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
+TFCO4,Track & Field Co SA Pfd Registered Shs,402000,https://icons.brapi.dev/icons/TFCO4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+SAPR11,Companhia de Saneamento do Parana - Sanepar Units Cons of 1 Sh + 4 Pfd Shs,383800,https://icons.brapi.dev/icons/SAPR11.svg,Utilities,fund,Utilidade Pública,Saneamento
+EVEN3,Even Construtora E Incorporadora S.A.,356700,https://icons.brapi.dev/icons/EVEN3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+TTEN3,Tres Tentos Agroindustrial SA,344300,https://icons.brapi.dev/icons/TTEN3.svg,Commercial Services,stock,Consumo Não Cíclico,Alimentos e Bebidas
+GFSA3,Gafisa S.A.,340500,https://icons.brapi.dev/icons/GFSA3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+ITUB3,Itau Unibanco Holding S.A.,336500,https://icons.brapi.dev/icons/ITUB3.svg,Finance,stock,Financeiro e Outros,Bancos
+HBRE3,HBR Realty Empreendimentos Imobiliarios SA,331800,https://icons.brapi.dev/icons/HBRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+ESPA3,MPM Corporeos SA,319100,https://icons.brapi.dev/icons/ESPA3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
+ELET6,Centrais Eletricas Brasileiras SA-Eletrobras Pfd B,319000,https://icons.brapi.dev/icons/ELET6.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+KLBN3,Klabin SA,307000,https://icons.brapi.dev/icons/KLBN3.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
+MTRE3,Mitre Realty Empreendimentos e Participacoes SA,304100,https://icons.brapi.dev/icons/MTRE3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+EGIE3,ENGIE Brasil Energia S.A.,290400,https://icons.brapi.dev/icons/EGIE3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+SOJA3,Boa Safra Sementes SA,279400,https://icons.brapi.dev/icons/SOJA3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+ENJU3,Enjoei SA,271400,https://icons.brapi.dev/icons/ENJU3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+USIM3,Usinas Siderurgicas de Minas Gerais SA-Usiminas,270900,https://icons.brapi.dev/icons/USIM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+CPFE3,CPFL Energia S.A.,241700,https://icons.brapi.dev/icons/CPFE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+MDIA3,M. Dias Branco SA Industria e Comercio de Alimentos,241500,https://icons.brapi.dev/icons/MDIA3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
+LAVV3,LAVVI Empreendimentos Imobiliarios SA,238500,https://icons.brapi.dev/icons/LAVV3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+DESK3,Desktop SA,229200,https://icons.brapi.dev/icons/DESK3.svg,Communications,stock,Comunicações,Telecomunicações
+FESA4,Cia de Ferro Ligas da Bahia-Ferbasa Pfd,226600,https://icons.brapi.dev/icons/FESA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+PMAM3,Paranapanema S.A.,220200,https://icons.brapi.dev/icons/PMAM3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+VTRU3,"Vitru Brasil Empreendimentos, Participacoes e Comercio S.A.",218600,https://icons.brapi.dev/icons/VTRU3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+FIQE3,Unifique Telecomunicacoes SA,203000,https://icons.brapi.dev/icons/FIQE3.svg,Communications,stock,Comunicações,Telecomunicações
+SEQL3,Sequoia Logistica e Transportes SA,199000,https://icons.brapi.dev/icons/SEQL3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+WIZC3,WIZ Co Participacoes e Corretagem de Seguros SA,192300,https://icons.brapi.dev/icons/WIZC3.svg,Finance,stock,Financeiro e Outros,Seguros
+ALPK3,Allpark Empreendimentos Participacoes e Servicos S.A.,180800,https://icons.brapi.dev/icons/ALPK3.svg,Consumer Services,stock,Educação,Educação
+ABCB4,Banco ABC Brasil SA Conv Pfd,179900,https://icons.brapi.dev/icons/ABCB4.svg,Finance,stock,Financeiro e Outros,Bancos
+LEVE3,Mahle-Metal Leve S.A.,171100,https://icons.brapi.dev/icons/LEVE3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+PRNR3,Priner Servicos Industriais SA,170500,https://icons.brapi.dev/icons/PRNR3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+OPCT3,OceanPact Servicos Maritimos SA,170200,https://icons.brapi.dev/icons/OPCT3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+POMO3,Marcopolo SA,167300,https://icons.brapi.dev/icons/POMO3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+BRBI11,BRBI BR Partners S.A. Units Cons of 1 Sh and 2 Pfd Shs,166300,https://icons.brapi.dev/icons/BRBI11.svg,Finance,fund,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+LPSB3,LPS Brasil-Consultoria de Imoveis SA,158800,https://icons.brapi.dev/icons/LPSB3.svg,Commercial Services,stock,Financeiro e Outros,Incorporação e Construção
+PINE4,Banco PINE S.A. Pfd,155000,https://icons.brapi.dev/icons/PINE4.svg,Finance,stock,Financeiro e Outros,Bancos
+TRAD3,TC S.A.,151900,https://icons.brapi.dev/icons/TRAD3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+TASA4,Taurus Armas S.A. Pfd,151500,https://icons.brapi.dev/icons/TASA4.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
+PORT3,Wilson Sons Holdings Brasil SA,145800,https://icons.brapi.dev/icons/PORT3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+LOGG3,Log Commercial Properties e Participacoes SA,129900,https://icons.brapi.dev/icons/LOGG3.svg,Industrial Services,stock,Financeiro e Outros,Propriedades e Locação
+MEAL3,International Meal Company Alimentacao SA,127600,https://icons.brapi.dev/icons/MEAL3.svg,Consumer Non-Durables,stock,Consumo Não Cíclico,Alimentos e Bebidas
+AGRO3,BrasilAgro Cia Brasileira de Propriedades Agricolas,127500,https://icons.brapi.dev/icons/AGRO3.svg,Finance,stock,Consumo Não Cíclico,Alimentos e Bebidas
+BMOB3,Bemobi Mobile Tech SA,123800,https://icons.brapi.dev/icons/BMOB3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+SAPR3,Companhia de Saneamento do Parana - Sanepar,120600,https://icons.brapi.dev/icons/SAPR3.svg,Utilities,stock,Utilidade Pública,Saneamento
+ALLD3,Allied Tecnologia SA,110800,https://icons.brapi.dev/icons/ALLD3.svg,Technology Services,stock,Tecnologia da Informação,Hardware e Equipamentos
+TGMA3,Tegma Gestao Logistica S.A.,105000,https://icons.brapi.dev/icons/TGMA3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+TAEE4,Transmissora Alianca De Energia Eletrica S.A. Pfd,97700,https://icons.brapi.dev/icons/TAEE4.svg,Industrial Services,stock,Utilidade Pública,Transmissão de Energia
+FRAS3,Fras-Le S.A.,97200,https://icons.brapi.dev/icons/FRAS3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+BLAU3,Blau Farmaceutica SA,92300,https://icons.brapi.dev/icons/BLAU3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
+UNIP6,Unipar Carbocloro SA Pfd Class B,88200,https://icons.brapi.dev/icons/UNIP6.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+VLID3,Valid Solucoes SA,87900,https://icons.brapi.dev/icons/VLID3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
+DEXP3,Dexxos Participacoes SA,81900,https://icons.brapi.dev/icons/DEXP3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+LUPA3,Lupatech S.A.,81000,https://icons.brapi.dev/icons/LUPA3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+SCAR3,Sao Carlos Empreendimentos e Participacoes SA,80400,https://icons.brapi.dev/icons/SCAR3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+PNVL3,Dimed S.A. Distribuidora de Medicamentos,76900,https://icons.brapi.dev/icons/PNVL3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+AMAR3,Marisa Lojas S.A.,75000,https://icons.brapi.dev/icons/AMAR3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+PTBL3,PBG S.A.Registered Shs,75000,https://icons.brapi.dev/icons/PTBL3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+BRST3,Brisanet Servicos de Telecomunicacoes S.A.,74800,https://icons.brapi.dev/icons/BRST3.svg,Communications,stock,Comunicações,Telecomunicações
+PFRM3,Profarma Distribuidora de Produtos Farmaceuticos SA,70400,https://icons.brapi.dev/icons/PFRM3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+OIBR4,Oi S.A.Non-Cum Perp Pfd Registered Shs,68700,https://icons.brapi.dev/icons/OIBR4.svg,Communications,stock,Comunicações,Telecomunicações
+CMIG3,Companhia Energetica de Minas Gerais SA,63600,https://icons.brapi.dev/icons/CMIG3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+SHOW3,T4F Entretenimento S.A.,63500,https://icons.brapi.dev/icons/SHOW3.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
+MATD3,Hospital Mater Dei SA,60700,https://icons.brapi.dev/icons/MATD3.svg,Health Services,stock,Saúde,Produtos e Equipamentos Médicos
+ROMI3,Romi SA,56200,https://icons.brapi.dev/icons/ROMI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+RNEW3,Renova Energia S.A.,49700,https://icons.brapi.dev/icons/RNEW3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+ITSA3,Itausa SA,40400,https://icons.brapi.dev/icons/ITSA3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+AERI3,Aeris Industria e Comercio de Equipamentos para Geracao deEnergia S.A.,39700,https://icons.brapi.dev/icons/AERI3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+TAEE3,Transmissora Alianca De Energia Eletrica S.A.,38700,https://icons.brapi.dev/icons/TAEE3.svg,Industrial Services,stock,Utilidade Pública,Transmissão de Energia
+SANB4,Banco Santander (Brasil) SA Pfd,36100,https://icons.brapi.dev/icons/SANB4.svg,Finance,stock,Financeiro e Outros,Bancos
+TCSA3,Tecnisa S.A.,35600,https://icons.brapi.dev/icons/TCSA3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+WEST3,Westwing Comercio Varejista SA,35200,https://icons.brapi.dev/icons/WEST3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+VITT3,Vittia S.A.,34900,https://icons.brapi.dev/icons/VITT3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+TECN3,Technos S.A.,34200,https://icons.brapi.dev/icons/TECN3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
+DMVF3,D1000 Varejo Farma Participacoes SA,34000,https://icons.brapi.dev/icons/DMVF3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+BRKM3,Braskem S.A.,32900,https://icons.brapi.dev/icons/BRKM3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+RNEW4,Renova Energia S.A. Pfd,32200,https://icons.brapi.dev/icons/RNEW4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+VIVR3,Viver Incorporadora e Construtora S.A.,30600,https://icons.brapi.dev/icons/VIVR3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
+SANB3,Banco Santander (Brasil) S.A.,29900,https://icons.brapi.dev/icons/SANB3.svg,Finance,stock,Financeiro e Outros,Bancos
+INEP4,Inepar SA Industria e Construcoes Pfd,28200,https://icons.brapi.dev/icons/INEP4.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+CSUD3,CSU Digital SA,27800,https://icons.brapi.dev/icons/CSUD3.svg,Commercial Services,stock,Tecnologia da Informação,Software e Serviços de TI
+LOGN3,Log-In Logistica Intermodal SA,23900,https://icons.brapi.dev/icons/LOGN3.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+BRAP3,Bradespar S.A.,22000,https://icons.brapi.dev/icons/BRAP3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+UCAS3,Unicasa Industria de Moveis S.A.,21700,https://icons.brapi.dev/icons/UCAS3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
+EUCA4,Eucatex S.A. Industria E Comercio Non-Cum Perp Pfd Registered Shs,21100,https://icons.brapi.dev/icons/EUCA4.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
+LAND3,Terra Santa Propriedades Agricolas SA,21000,https://icons.brapi.dev/icons/LAND3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+EQPA3,Equatorial Para Distribuidora de Energia SA,20800,https://icons.brapi.dev/icons/EQPA3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+EALT4,Electro Aco Altona SA Pfd,19700,https://icons.brapi.dev/icons/EALT4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+AALR3,Allianca Saude e Participacoes SA - ALLIAR,18400,https://icons.brapi.dev/icons/AALR3.svg,Health Services,stock,Saúde,Hospitais e Análises Clínicas
+AMOB3,Automob Participacoes S.A,17900,https://icons.brapi.dev/icons/AMOB3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+FHER3,Fertilizantes Heringer S.A.,17700,https://icons.brapi.dev/icons/FHER3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+CAMB3,Cambuci SA,15300,https://icons.brapi.dev/icons/CAMB3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
+IGTI3,Iguatemi SA,14700,https://icons.brapi.dev/icons/IGTI3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+BEES3,Banestes S.A. - Banco do Estado do Espirito Santo,14000,https://icons.brapi.dev/icons/BEES3.svg,Finance,stock,Financeiro e Outros,Bancos
+BIOM3,Biomm SA,13800,https://icons.brapi.dev/icons/BIOM3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
+RCSL3,Recrusul SA,13700,https://icons.brapi.dev/icons/RCSL3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+RAPT3,Randoncorp S.A.,13400,https://icons.brapi.dev/icons/RAPT3.svg,Producer Manufacturing,stock,Bens Industriais,Transporte e Componentes
+BALM4,Baumer SA BALM Non-Cum Perp Pfd Registered Shs,12800,https://icons.brapi.dev/icons/BALM4.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
+CGRA4,Grazziotin S.A. Pfd,12400,https://icons.brapi.dev/icons/CGRA4.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+BMEB4,BCO Mercantil do Brasil SA Pfd,11700,https://icons.brapi.dev/icons/BMEB4.svg,Finance,stock,Financeiro e Outros,Bancos
+BRSR3,Banco do Estado do Rio Grande do Sul SA,9600,https://icons.brapi.dev/icons/BRSR3.svg,Finance,stock,Financeiro e Outros,Bancos
+GGBR3,Gerdau S.A.,9000,https://icons.brapi.dev/icons/GGBR3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+CRPG5,Tronox Pigmentos do Brasil SA Pfd Registered Shs A,9000,https://icons.brapi.dev/icons/CRPG5.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+ALPA3,Alpargatas SA,8700,https://icons.brapi.dev/icons/ALPA3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Calçados e Vestuário
+TPIS3,TPI - Triunfo Participacoes e Investimentos SA,8300,https://icons.brapi.dev/icons/TPIS3.svg,Transportation,stock,Financeiro e Outros,Incorporação e Construção
+AGXY3,Agrogalaxy Participacoes SA,8200,https://icons.brapi.dev/icons/AGXY3.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+PDTC3,Padtec Holding SA,7800,https://icons.brapi.dev/icons/PDTC3.svg,Electronic Technology,stock,Tecnologia da Informação,Hardware e Equipamentos
+ENGI4,Energisa SA Pfd Shs Non-Voting,7600,https://icons.brapi.dev/icons/ENGI4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+WHRL4,Whirlpool SA Pfd,7600,https://icons.brapi.dev/icons/WHRL4.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
+GOAU3,Metalurgica Gerdau S.A.,7000,https://icons.brapi.dev/icons/GOAU3.svg,Non-Energy Minerals,stock,Materiais Básicos,Mineração e Siderurgia
+CEBR6,Companhia Energetica de Brasilia - CEB Pfd B,6800,https://icons.brapi.dev/icons/CEBR6.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+ALUP4,Alupar Investimento SA Pfd Shs,6100,https://icons.brapi.dev/icons/ALUP4.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
+OSXB3,OSX Brasil S.A.,5900,https://icons.brapi.dev/icons/OSXB3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+CEBR3,Companhia Energetica de Brasilia - CEB,5400,https://icons.brapi.dev/icons/CEBR3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+EMAE4,EMAE-Empresa Metropolitana de Aguas e Energia SA Pfd Registered,5200,https://icons.brapi.dev/icons/EMAE4.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+CLSC4,Centrais Eletricas de Santa Catarina SA Pfd,4900,https://icons.brapi.dev/icons/CLSC4.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+LUXM4,Trevisa Investimentos SA Pfd,4800,https://icons.brapi.dev/icons/BRAPI.svg,Transportation,stock,Bens Industriais,Logística e Mobilidade
+SNSY5,Sansuy SA Industria de Plasticos Pfd A,4500,https://icons.brapi.dev/icons/SNSY5.svg,Producer Manufacturing,stock,Materiais Básicos,Química e Petroquímica
+COCE5,Companhia Energetica do Ceara-COELCE Pfd A,4000,https://icons.brapi.dev/icons/COCE5.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+EPAR3,Embpar Participacoes SA,4000,https://icons.brapi.dev/icons/EPAR3.svg,Producer Manufacturing,stock,Bens Industriais,Serviços Industriais
+MOAR3,Monteiro Aranha S.A.,3700,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Consumo Não Cíclico,Alimentos e Bebidas
+NGRD3,Neogrid Participacoes SA,3500,https://icons.brapi.dev/icons/NGRD3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+RPMG3,Refinaria de Petroleos Manguinhos S.A.,3300,https://icons.brapi.dev/icons/RPMG3.svg,Energy Minerals,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+DEXP4,Dexxos Participacoes SA Pref,3000,https://icons.brapi.dev/icons/DEXP4.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+UNIP3,Unipar Carbocloro SA,2900,https://icons.brapi.dev/icons/UNIP3.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+DOTZ3,Dotz SA,2800,https://icons.brapi.dev/icons/DOTZ3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+HOOT4,Hoteis Othon SA Pfd,2700,https://icons.brapi.dev/icons/HOOT4.svg,Consumer Services,stock,Serviços Diversos,Serviços Diversos
+BSLI4,BRB Banco de Brasilia SA Pfd,2600,https://icons.brapi.dev/icons/BSLI4.svg,Finance,stock,Financeiro e Outros,Bancos
+ALUP3,Alupar Investimento SA,2300,https://icons.brapi.dev/icons/ALUP3.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
+WLMM4,WLM Participacoes e Comercio de Maquinas e Veiculos SA Pfd,2300,https://icons.brapi.dev/icons/WLMM4.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
+BGIP4,Banco do Estado de Sergipe SA - Banese Non-Cum Perp Pfd Registered Shs,2200,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos
+NUTR3,Nutriplant Industria E Comercio S.A.,2200,https://icons.brapi.dev/icons/NUTR3.svg,Process Industries,stock,Consumo Não Cíclico,Alimentos e Bebidas
+ATED3,Atom Educacao e Editora S.A.,2100,https://icons.brapi.dev/icons/ATED3.svg,Technology Services,stock,Tecnologia da Informação,Software e Serviços de TI
+CEEB3,Companhia de Electricidade do Estado da Bahia - COELBA,2000,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+PINE3,Banco PINE S.A.,1900,https://icons.brapi.dev/icons/PINE3.svg,Finance,stock,Financeiro e Outros,Bancos
+CGRA3,Grazziotin S.A.,1800,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
+BPAC5,Banco BTG Pactual SA Pfd A,1800,https://icons.brapi.dev/icons/BPAC5.svg,Finance,stock,Financeiro e Outros,Bancos
+BAZA3,Banco da Amazonia S.A.,1700,https://icons.brapi.dev/icons/BAZA3.svg,Finance,stock,Financeiro e Outros,Bancos
+TASA3,Taurus Armas S.A.,1500,https://icons.brapi.dev/icons/TASA3.svg,Electronic Technology,stock,Bens Industriais,Transporte e Componentes
+FICT3,Fictor Alimentos SA,1400,https://icons.brapi.dev/icons/FICT3.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+ISAE3,Isa Energia Brasil SA,1400,https://icons.brapi.dev/icons/ISAE3.svg,Utilities,stock,Utilidade Pública,Transmissão de Energia
+PTNT3,Pettenati S.A. Industria Textil,1300,https://icons.brapi.dev/icons/PTNT3.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
+BPAC3,Banco BTG Pactual SA,1300,https://icons.brapi.dev/icons/BPAC3.svg,Finance,stock,Financeiro e Outros,Bancos
+PEAB4,Cia de Participacoes Alianca da Bahia Non-Cum Perp Pfd Registered Shs,1000,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+BEES4,Banestes SA Banco do Estado do Espirito Santo Pfd,1000,https://icons.brapi.dev/icons/BEES4.svg,Finance,stock,Financeiro e Outros,Bancos
+MNPR3,Minupar Participacoes S.A.,1000,https://icons.brapi.dev/icons/MNPR3.svg,Process Industries,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
+ENGI3,Energisa SA,900,https://icons.brapi.dev/icons/ENGI3.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+PTNT4,Pettenati SA Industria Textil Pfd,900,https://icons.brapi.dev/icons/PTNT4.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
+INEP3,Inepar SA Industria e Construcoes,800,https://icons.brapi.dev/icons/INEP3.svg,Industrial Services,stock,Bens Industriais,Serviços Industriais
+EALT3,Electro Aco Altona SA,800,https://icons.brapi.dev/icons/EALT3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
 TELB4,Telecomunicacoes Brasileiras SA - TELEBRAS Pref.,800,https://icons.brapi.dev/icons/TELB4.svg,Communications,stock,Comunicações,Telecomunicações
-BSLI3,BRB Banco de Brasilia SA,700,https://icons.brapi.dev/icons/BSLI3.svg,Finance,stock,Financeiro e Outros,Bancos
-GEPA3,Rio Paranapanema Energia SA,600,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Geração de Energia
-CGAS5,Companhia de Gas de Sao Paulo - COMGAS Pfd Registered A,600,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
-CCTY3,Belora RDVC City Desenvolvimento Imobiliario S.A.,500,https://icons.brapi.dev/icons/BRAPI.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-CGRA3,Grazziotin S.A.,500,https://icons.brapi.dev/icons/CGRA3.svg,Retail Trade,stock,Consumo Cíclico,Comércio Varejista
-EKTR4,Elektro Redes S.A. Pfd Shs,400,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
-RSUL4,Metalurgica Riosulense SA Pfd,400,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
-WLMM4,WLM Participacoes e Comercio de Maquinas e Veiculos SA Pfd,400,https://icons.brapi.dev/icons/WLMM4.svg,Distribution Services,stock,Consumo Não Cíclico,Comércio e Distribuição
-EUCA3,Eucatex S.A. Industria e Comercio,300,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
-CTKA4,Karsten S.A.Non-Cum Perp Pfd Registered Shs,300,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-JFEN3,Joao Fortes Engenharia S.A.,300,https://icons.brapi.dev/icons/JFEN3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
-HAGA3,Haga SA Industria e Comercio,300,https://icons.brapi.dev/icons/HAGA3.svg,Consumer Durables,stock,Bens Industriais,Máquinas e Motores
-CEDO4,Cia. de Fiacao e Tecidos Cedro e Cachoeira Pfd,200,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-BNBR3,Banco do Nordeste do Brasil S.A.,200,https://icons.brapi.dev/icons/BNBR3.svg,Finance,stock,Financeiro e Outros,Bancos
-BRKM6,Braskem S.A. Conv Pfd B,200,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
-CEDO3,Cia. de Fiacao e Tecidos Cedro e Cachoeira,200,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
-BDLL3,Bardella SA Industrias Mecanicas,100,https://icons.brapi.dev/icons/BDLL3.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+UNIP5,Unipar Carbocloro SA Pfd Class A,600,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Materiais Básicos,Química e Petroquímica
+HAGA4,Haga SA Industria e Comercio Pfd,600,https://icons.brapi.dev/icons/HAGA4.svg,Consumer Durables,stock,Bens Industriais,Máquinas e Motores
+WHRL3,Whirlpool S.A.,600,https://icons.brapi.dev/icons/WHRL3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
+AVLL3,Alphaville SA,500,https://icons.brapi.dev/icons/AVLL3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+REDE3,Rede Energia S.A.,500,https://icons.brapi.dev/icons/REDE3.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+PEAB3,Cia de Participacoes Alianca da Bahia Registered,500,https://icons.brapi.dev/icons/PEAB3.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
+MTSA4,Metisa Metalurgica Timboense SA Pfd,500,https://icons.brapi.dev/icons/MTSA4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+BSLI3,BRB Banco de Brasilia SA,500,https://icons.brapi.dev/icons/BSLI3.svg,Finance,stock,Financeiro e Outros,Bancos
+VSTE3,Veste S.A. Estilo,400,https://icons.brapi.dev/icons/VSTE3.svg,Consumer Non-Durables,stock,Consumo Cíclico,Consumo Diverso
+CTAX3,Contax Participacoes SA,400,https://icons.brapi.dev/icons/BRAPI.svg,Commercial Services,stock,Serviços Diversos,Serviços Diversos
+CEBR5,Companhia Energetica de Brasilia - CEB Pfd A,400,https://icons.brapi.dev/icons/CEBR5.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+RDNI3,Rodobens Negocios Imobiliarios S.A.,300,https://icons.brapi.dev/icons/RDNI3.svg,Finance,stock,Financeiro e Outros,Incorporação e Construção
+MGEL4,Mangels Industrial SA Pfd Shs,300,https://icons.brapi.dev/icons/MGEL4.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+BNBR3,Banco do Nordeste do Brasil S.A.,300,https://icons.brapi.dev/icons/BNBR3.svg,Finance,stock,Financeiro e Outros,Bancos
+RSUL4,Metalurgica Riosulense SA Pfd,300,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+BDLL4,Bardella SA Industrias Mecanicas Pfd,300,https://icons.brapi.dev/icons/BRAPI.svg,Producer Manufacturing,stock,Bens Industriais,Máquinas e Motores
+JFEN3,Joao Fortes Engenharia S.A.,200,https://icons.brapi.dev/icons/JFEN3.svg,Consumer Durables,stock,Financeiro e Outros,Incorporação e Construção
+BMEB3,BCO Mercantil do Brasil SA,200,https://icons.brapi.dev/icons/BMEB3.svg,Finance,stock,Financeiro e Outros,Bancos
+DOHL4,Dohler SA Comercio e Industria Pfd,100,https://icons.brapi.dev/icons/BRAPI.svg,Process Industries,stock,Consumo Cíclico,Consumo Diverso
+CBEE3,Ampla Energia e Servicos SA,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Distribuição de Energia
+NEXP3,Nexpe Participacoes SA,100,https://icons.brapi.dev/icons/NEXP3.svg,Finance,stock,Financeiro e Outros,Holdings e Outros Serviços Financeiros
 GEPA4,Rio Paranapanema Energia SA Pfd Registered,100,https://icons.brapi.dev/icons/BRAPI.svg,Utilities,stock,Utilidade Pública,Geração de Energia
+BGIP3,Banco do Estado de Sergipe SA - Banese,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos
 BMIN4,Banco Mercantil de Investimentos SA Pfd,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Bancos
-GSHP3,General Shopping e Outlets do Brasil S.A.,100,https://icons.brapi.dev/icons/BRAPI.svg,Finance,stock,Financeiro e Outros,Propriedades e Locação
-BMKS3,Bicicletas Monark S.A.,43,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
+CGAS3,Companhia de Gas de Sao Paulo - COMGAS,100,https://icons.brapi.dev/icons/CGAS3.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+EUCA3,Eucatex S.A. Industria e Comercio,100,https://icons.brapi.dev/icons/BRAPI.svg,Non-Energy Minerals,stock,Materiais Básicos,Papel e Celulose
+OFSA3,Ourofino S.A.,100,https://icons.brapi.dev/icons/OFSA3.svg,Health Technology,stock,Saúde,Produtos e Equipamentos Médicos
+CGAS5,Companhia de Gas de Sao Paulo - COMGAS Pfd Registered A,100,https://icons.brapi.dev/icons/CGAS5.svg,Utilities,stock,"Petróleo, Gás e Biocombustíveis","Petróleo, Gás e Biocombustíveis"
+BMKS3,Bicicletas Monark S.A.,7,https://icons.brapi.dev/icons/BMKS3.svg,Consumer Durables,stock,Consumo Cíclico,Consumo Diverso
