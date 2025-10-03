@@ -1,8 +1,8 @@
--- Schema land_dw
-CREATE SCHEMA IF NOT EXISTS land_dw;
+-- Schema trusted_dw
+CREATE SCHEMA IF NOT EXISTS trusted_dw;
 
 -- Tabela Central de Ativos
-CREATE TABLE land_dw.acoes_e_fundos (
+CREATE TABLE trusted_dw.acoes_e_fundos (
     ticker TEXT PRIMARY KEY,
     empresa TEXT,
     volume INTEGER,
@@ -10,24 +10,27 @@ CREATE TABLE land_dw.acoes_e_fundos (
     setor_brapi TEXT,
     tipo TEXT,
     setor_b3 TEXT,
-    subsetor_b3 TEXT
+    subsetor_b3 TEXT,
+    data_atualizacao TIMESTAMP
 );
 
 -- Tabelas com relacionamento
-CREATE TABLE land_dw.todos_dividendos (
+CREATE TABLE trusted_dw.todos_dividendos (
     id SERIAL PRIMARY KEY,
     data DATE,
     valor REAL,
-    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker)
+    ticker TEXT REFERENCES trusted_dw.acoes_e_fundos(ticker),
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.tickers_nao_mapeados (
+CREATE TABLE trusted_dw.tickers_nao_mapeados (
     id SERIAL PRIMARY KEY,
-    ticker TEXT
+    ticker TEXT,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.scores (
-    ticker_base TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.scores (
+    ticker_base TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     score_dy INTEGER,
     score_payout INTEGER,
     score_roe INTEGER,
@@ -40,31 +43,35 @@ CREATE TABLE land_dw.scores (
     score_market_cap INTEGER,
     score_liquidez INTEGER,
     score_fcf_yield INTEGER,
-    score_total REAL
+    score_total REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.precos_acoes_completo (
+CREATE TABLE trusted_dw.precos_acoes_completo (
     id SERIAL PRIMARY KEY,
-    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker),
+    ticker TEXT REFERENCES trusted_dw.acoes_e_fundos(ticker),
     ano INTEGER,
-    fechamento REAL
+    fechamento REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.precos_acoes (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.precos_acoes (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     fechamento_atual REAL,
     fechamento_1m_atras REAL,
-    fechamento_6m_atras REAL
+    fechamento_6m_atras REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.preco_teto (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.preco_teto (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     preco_teto_5anos REAL,
-    diferenca_percentual REAL
+    diferenca_percentual REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.indicadores (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.indicadores (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     empresa TEXT,
     subsetor_b3 TEXT,
     tipo TEXT,
@@ -98,29 +105,33 @@ CREATE TABLE land_dw.indicadores (
     volume_1y REAL,
     ciclo_de_mercado TEXT,
     status_ciclo TEXT,
-    frase_ciclo TEXT
+    frase_ciclo TEXT,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.dividendos_ano_resumo (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.dividendos_ano_resumo (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     valor_5anos REAL,
-    valor_12m REAL
+    valor_12m REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.dividendos_ano (
+CREATE TABLE trusted_dw.dividendos_ano (
     id SERIAL PRIMARY KEY,
     ano INTEGER,
-    ticker TEXT REFERENCES land_dw.acoes_e_fundos(ticker),
-    dividendo REAL
+    ticker TEXT REFERENCES trusted_dw.acoes_e_fundos(ticker),
+    dividendo REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.dividend_yield (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
+CREATE TABLE trusted_dw.dividend_yield (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
     dy5anos REAL,
-    dy12m REAL
+    dy12m REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.avaliacao_setor (
+CREATE TABLE trusted_dw.avaliacao_setor (
     id SERIAL PRIMARY KEY,
     setor_b3 TEXT,
     pontuacao_setor REAL,
@@ -142,15 +153,17 @@ CREATE TABLE land_dw.avaliacao_setor (
     score_original REAL,
     empresas_boas_contagem INTEGER,
     empresas_ruins_contagem REAL,
-    ocorrencias_rj REAL
+    ocorrencias_rj REAL,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.ciclo_mercado (
-    ticker TEXT PRIMARY KEY REFERENCES land_dw.acoes_e_fundos(ticker),
-    status_ciclo TEXT
+CREATE TABLE trusted_dw.ciclo_mercado (
+    ticker TEXT PRIMARY KEY REFERENCES trusted_dw.acoes_e_fundos(ticker),
+    status_ciclo TEXT,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.rj (
+CREATE TABLE trusted_dw.rj (
     id SERIAL PRIMARY KEY,
     nome TEXT,
     ticker TEXT,
@@ -158,15 +171,17 @@ CREATE TABLE land_dw.rj (
     data_entrada_rj DATE,
     data_saida_rj DATE,
     data_falencia DATE,
-    duracao_rj TEXT
+    duracao_rj TEXT,
+    data_atualizacao TIMESTAMP
 );
 
-CREATE TABLE land_dw.indices (
+CREATE TABLE trusted_dw.indices (
     id SERIAL PRIMARY KEY,
     year INTEGER,
     index TEXT,
     close REAL,
     rsi REAL,
     macd REAL,
-    volume INTEGER
+    volume INTEGER,
+    data_atualizacao TIMESTAMP
 );
