@@ -21,15 +21,16 @@ Algumas tabelas são consideradas de cadastro e, por isso, o comportamento do sc
 - `ciclo_mercado`
 - `avaliacao_setor`
 - `acoes_e_fundos`
+- dividendos_ano_resumo
 
 Para essas tabelas o script faz INSERT ... SELECT sem a cláusula WHERE que limita pela janela de 30 dias (ou seja, insere/atualiza todos os registros presentes em `land_dw`).
 
-## Fluxo de execução
+Tabelas Incrementais
+Com base no seu contexto inicial, as tabelas incrementais (ou seja, aquelas que não são consideradas de cadastro e, portanto, devem ser atualizadas incrementalmente) são:
 
-1. Execute (ou cole) o conteúdo de `trusted_dw_carga_incremental.sql` no editor SQL do Supabase ou rode via psql.
-2. O script executará uma sequência de blocos INSERT ... SELECT ... ON CONFLICT DO UPDATE para cada tabela alvo em `trusted_dw`.
-3. Para tabelas de dados históricos e transacionais (por exemplo, `todos_dividendos`, `dividendos_ano`, `precos_acoes_completo`, etc.) o script usa um filtro `WHERE src.data_atualizacao >= NOW() - INTERVAL '30 days'` para limitar a janela.
-4. Para as tabelas de cadastro listadas acima, o SELECT copia 100% dos registros do `land_dw` para o `trusted_dw` (UPSERT total).
+todos_dividendos
+precos_acoes_completo
+dividendos_ano
 
 ## Perguntas frequentes / Observações
 
