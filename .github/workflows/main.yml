@@ -2,7 +2,7 @@ name: Run loader.py daily at 7PM UTC-3
 
 on:
   schedule:
-    - cron: "30 21 * * 1-5"  # Segunda a sexta às 18:30 UTC-3 (21:30 UTC)
+    - cron: "45 21 * * 1-5"  # Segunda a sexta às 18:45 UTC-3 (21:45 UTC)
   workflow_dispatch:
 
 permissions:
@@ -28,8 +28,8 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run loader.py
-        run: python data_engineer/loader.py
+      - name: Run run.py
+        run: python run.py
 
       - name: Commit and push if it changed
         uses: stefanzweifel/git-auto-commit-action@v4

@@ -5,19 +5,40 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from scoring import calculate_score_and_details, build_score_details_from_row, calculate_scores_in_parallel
+import duckdb
+
+# --- Configuração do Banco de Dados ---
+DB_PATH = "e:/Github/Unicamp/Bussola-de-Valor/duckdb/banco_dw/dw.duckdb"
+
+@st.cache_resource
+def get_db_connection():
+    """Cria e gerencia uma conexão com o banco de dados DuckDB."""
+    try:
+        return duckdb.connect(database=DB_PATH, read_only=True)
+    except Exception as e:
+        st.error(f"Falha ao conectar ao banco de dados DuckDB: {e}")
+        return None
 
 @st.cache_data
-def read_csv_cached(path, **kwargs):
-    """Lê um CSV com cache para acelerar recarregamentos."""
-    return pd.read_csv(path, **kwargs)
+def read_table_cached(table_name: str, **kwargs) -> pd.DataFrame:
+    """Lê uma tabela do DuckDB com cache para acelerar recarregamentos."""
+    conn = get_db_connection()
+    if conn:
+        try:
+            return conn.table(table_name).to_df()
+        except Exception as e:
+            st.error(f"Erro ao ler a tabela '{table_name}': {e}")
+            return pd.DataFrame()
+    return pd.DataFrame()
 
-def load_main_data(path: str) -> pd.DataFrame:
-    """Carrega o dataset consolidado, tratando tipos numéricos e datas."""
-    if not os.path.exists(path):
-        st.error(f"Arquivo de dados principal não encontrado em '{path}'. Verifique o caminho.")
+
+def load_main_data() -> pd.DataFrame:
+    """Carrega o dataset consolidado do DuckDB, tratando tipos numéricos e datas."""
+    df = read_table_cached("indicadores") # Assumindo que 'indicadores' é a tabela principal
+    if df.empty:
+        st.error("A tabela 'indicadores' não foi encontrada ou está vazia.")
         return pd.DataFrame()
     try:
-        df = pd.read_csv(path, index_col=0)
         numeric_cols = [
             'Preço Atual', 'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)',
             'Payout Ratio (%)', 'Crescimento Preço (%)', 'ROE (%)', 'Dívida Total',
@@ -30,7 +51,7 @@ def load_main_data(path: str) -> pd.DataFrame:
         for col in ["Data Últ. Div.", "Data Ex-Div."]:
             if col in df.columns:
                 df[col] = pd.to_datetime(df[col], errors='coerce')
-        # Renomear colunas de recomendação para maiúsculo
+        
         rename_dict = {
             'strong_buy': 'Strong Buy',
             'buy': 'Buy',
@@ -39,100 +60,92 @@ def load_main_data(path: str) -> pd.DataFrame:
             'strong_sell': 'Strong Sell'
         }
         df.rename(columns={k: v for k, v in rename_dict.items() if k in df.columns}, inplace=True)
-        df['Ticker'] = df.index.str.replace('.SA', '')
+        df['Ticker'] = df['ticker'].str.replace('.SA', '')
         return df
     except Exception as e:
-        st.error(f"Ocorreu um erro ao carregar ou processar o arquivo CSV principal: {e}")
+        st.error(f"Ocorreu um erro ao processar os dados da tabela 'indicadores': {e}")
         return pd.DataFrame()
 
-def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
+def load_and_merge_data() -> tuple[pd.DataFrame, dict]:
     """
-    Orquestra o carregamento de todos os CSVs, realiza os merges,
+    Orquestra o carregamento de todas as tabelas do DuckDB, realiza os merges,
     calcula o score e retorna o DataFrame final e um dicionário com dados de apoio.
     """
-    load_dotenv()
-    data_path_env = os.getenv('B3_REPORT_PATH')
-
     # --- Carrega DataFrame Principal ---
-    if data_path_env:
-        df = load_main_data(data_path_env)
-    else:
-        # Fallback para carregar e montar a partir de CSVs individuais
-        try:
-            indic = read_csv_cached(base_path / 'indicadores.csv')
-            dy = read_csv_cached(base_path / 'dividend_yield.csv')
-            indic['ticker_base'] = indic['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
-            dy['ticker_base'] = dy['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
-            df = indic.merge(dy[['ticker_base','DY12m','DY5anos']], on='ticker_base', how='left')
-            df.rename(columns={
-                'empresa':'Empresa','setor_brapi':'Setor (brapi)','logo':'Logo','perfil_acao':'Perfil da Ação',
-                'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
-                'payout_ratio':'Payout Ratio (%)','crescimento_preco_5a':'Crescimento Preço (%)','roe':'ROE (%)',
-                'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
-                'DY12m':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)',
-                'strong_buy': 'Strong Buy', 'buy': 'Buy', 'hold': 'Hold', 'sell': 'Sell', 'strong_sell': 'Strong Sell'
-            }, inplace=True)
+    indic = read_table_cached('indicadores')
+    if indic.empty:
+        st.error("Tabela 'indicadores' não encontrada ou vazia. A aplicação não pode continuar.")
+        return pd.DataFrame(), {}
 
-            # Garante que colunas de DY e recomendação sejam numéricas e preenche NaNs com 0
-            numeric_cols = [
-                'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 'Strong Buy', 'Buy', 'Hold', 'Sell', 'Strong Sell'
-            ]
-            for col in numeric_cols:
-                if col in df.columns:
-                    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
-            
-            df['Ticker'] = df['ticker_base']
-        except Exception as e:
-            st.error(f"Falha ao montar dados base de '{base_path}': {e}")
-            return pd.DataFrame(), {}
+    dy = read_table_cached('dividend_yield')
+    indic['ticker_base'] = indic['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+    dy['ticker_base'] = dy['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
+    df = indic.merge(dy[['ticker_base','DY12m','DY5anos']], on='ticker_base', how='left')
+    df.rename(columns={
+        'empresa':'Empresa','logo':'Logo','perfil_acao':'Perfil da Ação',
+        'market_cap':'Market Cap','preco_atual':'Preço Atual','p_l':'P/L','p_vp':'P/VP',
+        'payout_ratio':'Payout Ratio (%)','crescimento_preco_5a':'Crescimento Preço (%)','roe':'ROE (%)',
+        'divida_total':'Dívida Total','divida_ebitda':'Dívida/EBITDA','sentimento_gauge':'Sentimento Gauge',
+        'DY12m':'DY (Taxa 12m, %)','DY5anos':'DY 5 Anos Média (%)',
+        'strong_buy': 'Strong Buy', 'buy': 'Buy', 'hold': 'Hold', 'sell': 'Sell', 'strong_sell': 'Strong Sell',
+        'beta':'Beta','current_ratio':'Current Ratio','liquidez_media_diaria':'Volume Médio Diário','fcf_yield':'FCF Yield'
+    }, inplace=True)
+    
+    # Cria coluna 'Setor (brapi)' a partir de 'subsetor_b3' mantendo ambas
+    if 'subsetor_b3' in df.columns:
+        df['Setor (brapi)'] = df['subsetor_b3']
+
+    # Converte todas as colunas numéricas necessárias
+    numeric_cols = [
+        'Preço Atual', 'P/L', 'P/VP', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)', 
+        'Payout Ratio (%)', 'Crescimento Preço (%)', 'ROE (%)', 'Dívida Total', 
+        'Market Cap', 'Dívida/EBITDA', 'Sentimento Gauge', 'Strong Buy', 'Buy', 
+        'Hold', 'Sell', 'Strong Sell', 'Beta', 'Current Ratio', 'Volume Médio Diário', 
+        'FCF Yield', 'margem_seguranca_percent'
+    ]
+    for col in numeric_cols:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+    
+    df['Ticker'] = df['ticker_base']
 
     if df.empty:
         return pd.DataFrame(), {}
 
     # --- Cálculo de Dívida/Market Cap ---
     if 'Dívida Total' in df.columns and 'Market Cap' in df.columns:
-        # Garante que as colunas são numéricas antes da divisão
         df['Dívida Total'] = pd.to_numeric(df['Dívida Total'], errors='coerce')
         df['Market Cap'] = pd.to_numeric(df['Market Cap'], errors='coerce')
-        # Evita divisão por zero
         df['Dívida/Market Cap'] = df.apply(
             lambda row: row['Dívida Total'] / row['Market Cap'] if row['Market Cap'] != 0 else 0,
             axis=1
         )
 
     # --- Merge com Scores Externos ---
-    try:
-        scores_df = read_csv_cached(base_path / 'scores.csv')
+    scores_df = read_table_cached('scores')
+    if not scores_df.empty:
+        # Normaliza o ticker da tabela scores
+        scores_df['ticker_base'] = scores_df['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
         df = df.merge(scores_df, left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_scores'))
         df['Score Total'] = pd.to_numeric(df['score_total'], errors='coerce').fillna(0)
         df['Score Details'] = df.apply(build_score_details_from_row, axis=1)
-    except FileNotFoundError:
-        st.info("Arquivo 'scores.csv' não encontrado. Calculando score em tempo real.")
-        # Chamada para a função de cálculo em paralelo
+    else:
+        st.info("Tabela 'scores' não encontrada. Calculando score em tempo real.")
         score_results = calculate_scores_in_parallel(df)
-        # Desempacota os resultados para as colunas do DataFrame
-        df['Score Total'] = [result[0] for result in score_results]
-        df['Score Details'] = [result[1] for result in score_results]
-    except Exception as e:
-        st.warning(f"Não foi possível carregar 'scores.csv': {e}. Calculando score em tempo real.")
-        # Chamada para a função de cálculo em paralelo
-        score_results = calculate_scores_in_parallel(df)
-        # Desempacota os resultados para as colunas do DataFrame
         df['Score Total'] = [result[0] for result in score_results]
         df['Score Details'] = [result[1] for result in score_results]
 
 
     # --- Merge com Dados de Apoio ---
-    try:
-        pt = read_csv_cached(base_path / 'preco_teto.csv')
+    pt = read_table_cached('preco_teto')
+    if not pt.empty:
         pt['ticker_base'] = pt['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
         df = df.merge(pt[['ticker_base', 'preco_teto_5anos', 'diferenca_percentual']], left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_pt'))
         df.rename(columns={'preco_teto_5anos': 'Preço Teto 5A', 'diferenca_percentual': 'Alvo'}, inplace=True)
-    except Exception: pass
 
     # --- Merge com Preços de Ações (1M e 6M) ---
-    try:
-        pa = read_csv_cached(base_path / 'precos_acoes.csv')
+    pa = read_table_cached('precos_acoes')
+    if not pa.empty:
         if 'ticker' in pa.columns and 'Ticker' in df.columns:
             pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
             
@@ -155,104 +168,79 @@ def load_and_merge_data(base_path: Path) -> tuple[pd.DataFrame, dict]:
                 price_col = f'Preço {period}'
                 val_col = f'Val {period}'
                 if price_col in df.columns and 'Preço Atual' in df.columns:
-                    # Garante que as colunas são numéricas
                     df[price_col] = pd.to_numeric(df[price_col], errors='coerce')
                     df['Preço Atual'] = pd.to_numeric(df['Preço Atual'], errors='coerce')
-                    # Calcula a valorização, tratando divisão por zero
                     df[val_col] = df.apply(
                         lambda row: ((row['Preço Atual'] - row[price_col]) / row[price_col]) * 100 if row[price_col] and row[price_col] != 0 else 0,
                         axis=1
                     )
-    except FileNotFoundError:
-        st.warning("Arquivo 'precos_acoes.csv' não encontrado. As colunas 'Preço 1M' e 'Preço 6M' não serão exibidas.")
-    except Exception as e:
-        st.error(f"Erro ao processar 'precos_acoes.csv': {e}")
+    else:
+        st.warning("Tabela 'precos_acoes' não encontrada. As colunas 'Preço 1M' e 'Preço 6M' não serão exibidas.")
     
     # --- Merge com Avaliação de Setor ---
-    try:
-        df_setor = read_csv_cached(base_path / 'avaliacao_setor.csv')
-        # Ambas as tabelas usam 'subsetor_b3' para a junção.
+    df_setor = read_table_cached('avaliacao_setor')
+    if not df_setor.empty:
         if 'subsetor_b3' in df.columns and 'subsetor_b3' in df_setor.columns:
-            # Seleciona apenas as colunas necessárias para o merge para evitar duplicatas.
             df_setor_scores = df_setor[['subsetor_b3', 'pontuacao_final']].drop_duplicates(subset=['subsetor_b3'])
             df = df.merge(df_setor_scores, on='subsetor_b3', how='left')
         else:
             st.warning("Não foi possível fazer o merge da pontuação de subsetor. Coluna 'subsetor_b3' não encontrada.")
-    except FileNotFoundError:
-        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado. A pontuação por subsetor não será carregada.")
-        df['pontuacao_final'] = 0
-    except Exception as e:
-        st.warning(f"Erro ao processar 'avaliacao_setor.csv': {e}")
+    else:
+        st.warning("Tabela 'avaliacao_setor' não encontrada. A pontuação por subsetor não será carregada.")
         df['pontuacao_final'] = 0
 
     # --- Processa Coluna Ciclo de Mercado ---
-    # A coluna 'status_ciclo' já vem do 'indicadores.csv', apenas renomeamos e tratamos NAs.
     if 'status_ciclo' in df.columns:
         df.rename(columns={'status_ciclo': 'Status Ciclo'}, inplace=True)
         df['Status Ciclo'].fillna('N/A', inplace=True)
     else:
-        # Caso a coluna não exista por algum motivo, cria uma com valor padrão.
         df['Status Ciclo'] = 'N/A'
 
     # Limpa colunas auxiliares de merge
     df.drop(columns=[col for col in df.columns if 'ticker_base' in str(col)], inplace=True, errors='ignore')
 
-    
-
     # --- Carrega datasets para gráficos ---
     all_data = {}
-    optional_files = [
+    optional_tables = [
         'dividendos_ano', 'dividendos_ano_resumo', 'todos_dividendos',
         'dividend_yield', 'avaliacao_setor', 'precos_acoes', 'ciclo_mercado', 'rj'
     ]
-    for filename in optional_files:
-        try:
-            data = read_csv_cached(base_path / f'{filename}.csv')
+    for table_name in optional_tables:
+        data = read_table_cached(table_name)
+        if not data.empty:
             if 'ticker' in data.columns:
                 data['ticker_base'] = data['ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
             if 'Ticker' in data.columns:
                  data['ticker_base'] = data['Ticker'].astype(str).str.upper().str.replace('.SA','', regex=False).str.strip()
-            all_data[filename] = data
-        except Exception:
-            all_data[filename] = pd.DataFrame()
+        all_data[table_name] = data
 
     return df, all_data
 
-def load_indices_scores(data_path: Path) -> dict:
+def load_indices_scores() -> dict:
     """
     Carrega os valores de fechamento mais recentes dos índices e a variação percentual
-    em relação ao ano anterior.
-
-    Args:
-        data_path (Path): Caminho para a pasta de dados.
-
-    Returns:
-        dict: Dicionário com os dados de cada índice.
-              Ex: {'iShares Ibovespa': {'score': 142.79, 'delta': 9.51}}
+    em relação ao ano anterior a partir do DuckDB.
     """
-    file_path = data_path / "indices.csv"
     indices_data = {}
-    try:
-        df = pd.read_csv(file_path)
-        
-        for index_name in df['index'].unique():
-            index_df = df[df['index'] == index_name].sort_values('year', ascending=False)
-            
-            if len(index_df) < 2:
-                latest_close = index_df['close'].iloc[0] if not index_df.empty else float('nan')
-                delta = float('nan')
-            else:
-                latest_close = index_df['close'].iloc[0]
-                previous_close = index_df['close'].iloc[1]
-                
-                if previous_close == 0:
-                    delta = float('inf') if latest_close > 0 else 0.0
-                else:
-                    delta = ((latest_close - previous_close) / previous_close) * 100
-            
-            indices_data[index_name] = {'score': latest_close, 'delta': delta}
-            
-        return indices_data
-
-    except (FileNotFoundError, KeyError, IndexError):
+    df = read_table_cached("indices")
+    if df.empty:
         return {}
+        
+    for index_name in df['index'].unique():
+        index_df = df[df['index'] == index_name].sort_values('year', ascending=False)
+        
+        if len(index_df) < 2:
+            latest_close = index_df['close'].iloc[0] if not index_df.empty else float('nan')
+            delta = float('nan')
+        else:
+            latest_close = index_df['close'].iloc[0]
+            previous_close = index_df['close'].iloc[1]
+            
+            if previous_close == 0:
+                delta = float('inf') if latest_close > 0 else 0.0
+            else:
+                delta = ((latest_close - previous_close) / previous_close) * 100
+        
+        indices_data[index_name] = {'score': latest_close, 'delta': delta}
+        
+    return indices_data

@@ -569,7 +569,7 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     dividend_yield_extra = all_data.get('dividend_yield', pd.DataFrame())
 
     if dividend_yield_extra.empty:
-        st.warning("Arquivo 'dividend_yield.csv' não encontrado ou vazio.")
+        st.warning("Tabela 'dividend_yield' não encontrada ou vazia.")
         return
 
     # Filtra os dados de dividend yield com base nos tickers do dataframe filtrado principal
@@ -613,7 +613,7 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     elif not ticker_foco:
         st.info("Selecione um ticker na barra lateral para ver a frequência de dividendos por mês.")
     else:
-        st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+        st.warning("Dados da tabela 'todos_dividendos' não encontrados.")
 
     st.subheader("Série Temporal de Dividendos")
     if not todos_dividendos.empty and ticker_foco:
@@ -628,7 +628,7 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
     elif not ticker_foco:
         st.info("Selecione um ticker na barra lateral para ver a série temporal de dividendos.")
     else:
-        st.warning("Dados de 'todos_dividendos.csv' não encontrados.")
+        st.warning("Dados da tabela 'todos_dividendos' não encontrados.")
 
     st.divider() 
     
@@ -762,13 +762,16 @@ def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFra
             column_config=column_config
         )
         
-        fig = px.bar(av_display, x='Pont. Final', y='Setor', orientation='h', title='<b>Desempenho Relativo dos Setores</b>')
+        st.subheader("Desempenho Relativo dos Setores")
+        # Inverte a ordem para mostrar maiores pontuações no topo do gráfico
+        av_display_grafico = av_display.sort_values(by='Pont. Final', ascending=True)
+        fig = px.bar(av_display_grafico, x='Pont. Final', y='Setor', orientation='h')
         fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
         st.plotly_chart(fig, use_container_width=True)
         st.divider()
 
     else:
-        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado para gerar o ranking.")
+        st.warning("Tabela 'avaliacao_setor' não encontrada para gerar o ranking.")
 
     # Adicionado Top 15 por Score
     if not df_filtrado.empty:
@@ -887,7 +890,7 @@ Abaixo, apresentamos uma análise qualitativa de cada setor, com motivos para in
                     st.markdown(f"❌ **Por que não investir?**")
                     st.markdown(f"<p style='font-size: 0.9rem;'>{desc['Por que não investir?']}</p>", unsafe_allow_html=True)
     else:
-        st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados no arquivo 'avaliacao_setor.csv'.")
+        st.warning("Não foi possível carregar as análises setoriais devido à ausência de dados na tabela 'avaliacao_setor'.")
     
 
 def render_tab_recuperacao_judicial(all_data: dict):
@@ -899,7 +902,7 @@ def render_tab_recuperacao_judicial(all_data: dict):
     if not setores_df.empty and 'subsetor_b3' in setores_df.columns:
         all_setores = pd.DataFrame(setores_df['subsetor_b3'].unique(), columns=['Setor'])
     else:
-        st.warning("Arquivo 'avaliacao_setor.csv' não encontrado. A lista de setores pode estar incompleta.")
+        st.warning("Tabela 'avaliacao_setor' não encontrada. A lista de setores pode estar incompleta.")
         all_setores = pd.DataFrame(rj_df['setor'].unique(), columns=['Setor']) if not rj_df.empty else pd.DataFrame(columns=['Setor'])
 
     if rj_df.empty:

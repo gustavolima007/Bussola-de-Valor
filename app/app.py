@@ -60,9 +60,8 @@ def main():
     )
     
     # --- Carregamento e Processamento de Dados ---
-    data_path = Path(__file__).resolve().parent.parent / 'data'
-    df, all_data = load_and_merge_data(data_path)
-    indices_scores = load_indices_scores(data_path)
+    df, all_data = load_and_merge_data()
+    indices_scores = load_indices_scores()
 
     if df.empty:
         st.warning("O DataFrame principal está vazio. A aplicação não pode continuar.")

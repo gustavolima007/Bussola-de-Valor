@@ -1,19 +1,16 @@
-dash
-dash-ag-grid
-dash-bootstrap-components
-deep_translator
-joblib
-loguru
-numpy
-pandas
-plotly
-python-dateutil
-python-dotenv
-requests
-streamlit
-ta
-tqdm
-urllib3
-yfinance
-supabase
-duckdb
+deep_translator  # Use latest stable version (check PyPI for current version)
+joblib==1.5.2  # Stable version as specified
+loguru==0.7.3  # Stable version as specified
+numpy==2.3.0  # Stable version as specified
+pandas==2.2.3  # Stable version as specified
+plotly  # Use latest stable version (check PyPI for current version)
+python-dateutil==2.9.0  # Stable version as specified
+python-dotenv==1.1.0  # Stable version as specified
+requests  # Use latest stable version (check PyPI for current version)
+scikit-learn==1.7.2  # Stable version as specified
+streamlit  # Use latest stable version (check PyPI for current version)
+ta  # Use latest stable version (check PyPI for current version)
+tqdm==4.67.1  # Stable version as specified
+urllib3==2.4.0  # Stable version as specified
+yfinance==0.2.66  # Stable version as specified
+duckdb  # Use latest stable version (check PyPI for current version)

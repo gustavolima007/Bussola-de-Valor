@@ -8,7 +8,7 @@ def render_tab_calculadora(all_data: dict, ticker_foco: str = None):
     dividendos_ano = all_data.get('dividendos_ano', pd.DataFrame())
 
     if dividendos_ano.empty:
-        st.warning("Não foram encontrados dados de dividendos ('dividendos_ano.csv').")
+        st.warning("Não foram encontrados dados de dividendos na tabela 'dividendos_ano'.")
         return
 
     st.subheader("Calcule seus dividendos recebidos")

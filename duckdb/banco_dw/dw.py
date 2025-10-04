@@ -33,10 +33,11 @@ def list_tables(db_path: Path) -> List[str]:
         List[str]: Lista com nomes das tabelas disponíveis.
     """
     try:
-        with duckdb.connect(str(db_path)) as conn:
+        with duckdb.connect(str(db_path), read_only=True) as conn:
             result = conn.execute("SHOW TABLES").fetchall()
         return [row[0] for row in result]
-    except Exception:
+    except Exception as exc:
+        st.error(f"Erro ao listar tabelas: {exc}")
         return []
 
 
@@ -52,7 +53,7 @@ def load_table(db_path: Path, table_name: str) -> pd.DataFrame:
         pd.DataFrame: Dados carregados da tabela.
     """
     try:
-        with duckdb.connect(str(db_path)) as conn:
+        with duckdb.connect(str(db_path), read_only=True) as conn:
             df = conn.execute(f"SELECT * FROM \"{table_name}\"").df()
         return df
     except Exception as exc:
@@ -72,7 +73,7 @@ def execute_sql(db_path: Path, sql: str) -> pd.DataFrame:
         pd.DataFrame: Resultado da consulta.
     """
     try:
-        with duckdb.connect(str(db_path)) as conn:
+        with duckdb.connect(str(db_path), read_only=True) as conn:
             df = conn.execute(sql).df()
         return df
     except Exception as exc:
@@ -90,10 +91,33 @@ def set_sql_for_table(table_name: str, limit: int) -> None:
     st.session_state["sql"] = f'SELECT * FROM "{table_name}" LIMIT {limit}'
 
 
+def load_custom_css() -> None:
+    """Carrega o CSS customizado da Bússola de Valor."""
+    css_path = Path(__file__).parent.parent.parent / "app" / "styles" / "styles.css"
+    if css_path.exists():
+        with open(css_path, "r", encoding="utf-8") as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
 def main() -> None:
     """Ponto de entrada do app Streamlit: exibe um DataFrame do DuckDB e permite executar SQL."""
-    st.set_page_config(page_title="Preview DuckDB", layout="wide")
-    st.title("Visualizador de tabela - dw.duckdb")
+    st.set_page_config(
+        page_title="DW Explorer - Bússola de Valor",
+        page_icon="🧭",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+    
+    # Carrega CSS customizado
+    load_custom_css()
+    
+    # Cabeçalho
+    st.markdown("""
+        <div style='text-align: center; padding: 1rem 0 2rem 0;'>
+            <h1 style='color: #36b37e; margin-bottom: 0.5rem;'>🧭 DW Explorer</h1>
+            <p style='color: #9CA3AF; font-size: 1.1rem;'>Explorador de Data Warehouse - Bússola de Valor</p>
+        </div>
+    """, unsafe_allow_html=True)
 
     try:
         db_path = get_db_path()
@@ -110,60 +134,131 @@ def main() -> None:
     if "sql" not in st.session_state:
         st.session_state["sql"] = ""
 
-    selected_table = st.selectbox("Selecione a tabela", tables)
-    max_rows = st.number_input(
-        "Número máximo de linhas a mostrar",
-        min_value=10,
-        max_value=10000,
-        value=500,
-        step=10,
-    )
+    # --- Sidebar: Configurações ---
+    with st.sidebar:
+        st.markdown("### ⚙️ Configurações")
+        
+        selected_table = st.selectbox(
+            "📊 Selecione a tabela",
+            tables,
+            help="Escolha uma tabela para visualizar seus dados"
+        )
+        
+        max_rows = st.number_input(
+            "📏 Linhas máximas",
+            min_value=10,
+            max_value=10000,
+            value=500,
+            step=10,
+            help="Número máximo de linhas a exibir na prévia"
+        )
+        
+        st.markdown("---")
+        st.markdown(f"**📁 Banco:** `{db_path.name}`")
+        st.markdown(f"**📋 Tabelas:** {len(tables)}")
 
-    # layout: duas colunas — preview à esquerda, área SQL à direita
-    col_preview, col_sql = st.columns([2, 1])
+    # --- Seção 1: Preview da Tabela ---
+    st.markdown("### 📋 Preview da Tabela")
+    
+    df = load_table(db_path, selected_table)
+    if df.empty:
+        st.info("Tabela vazia ou erro ao carregar.")
+    else:
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("📊 Tabela", selected_table)
+        with col2:
+            st.metric("📏 Linhas", f"{df.shape[0]:,}")
+        with col3:
+            st.metric("📐 Colunas", df.shape[1])
+        
+        st.dataframe(
+            df.head(int(max_rows)),
+            use_container_width=True,
+            height=400
+        )
 
-    with col_preview:
-        df = load_table(db_path, selected_table)
-        if df.empty:
-            st.info("Tabela vazia ou erro ao carregar.")
-        else:
-            st.write(f"Tabela: {selected_table} — {df.shape[0]} linhas x {df.shape[1]} colunas")
-            st.dataframe(df.head(int(max_rows)), use_container_width=True)
+    # --- Seção 2: Executor SQL ---
+    st.markdown("---")
+    st.markdown("### 💻 Executor SQL")
+    st.caption("Execute consultas SQL personalizadas no Data Warehouse")
+
+    # Layout: SQL à esquerda, Resultado à direita
+    col_sql, col_result = st.columns([1, 1])
 
     with col_sql:
-        st.subheader("Executar SQL")
-        st.caption("Escreva uma query SQL para consultar o arquivo dw.duckdb")
-
-        # botão para gerar SELECT padrão para a tabela selecionada
-        if st.button("Gerar SELECT para tabela"):
+        st.markdown("#### 📝 Query SQL")
+        
+        # Botão para gerar SELECT padrão
+        if st.button("🔄 Gerar SELECT para tabela selecionada", use_container_width=True):
             set_sql_for_table(selected_table, int(max_rows))
+            st.rerun()
 
         sql_input = st.text_area(
-            "SQL",
+            "Digite sua consulta SQL:",
             value=st.session_state["sql"],
-            height=200,
-            placeholder='Ex: SELECT * FROM "minha_tabela" LIMIT 100',
+            height=300,
+            placeholder='Ex: SELECT * FROM "indicadores" WHERE ticker LIKE \'%PETR%\' LIMIT 100',
             key="sql_text_area",
+            help="Escreva uma query SQL válida para o DuckDB"
         )
-        # atualiza session_state com o conteúdo do text_area (evita perda ao rerun)
+        
+        # Atualiza session_state com o conteúdo do text_area
         st.session_state["sql"] = sql_input
 
-        if st.button("Executar SQL"):
+        execute_button = st.button("▶️ Executar SQL", type="primary", use_container_width=True)
+
+    with col_result:
+        st.markdown("#### 📊 Resultado")
+        
+        if execute_button:
             sql_to_run = st.session_state.get("sql", "").strip()
             if not sql_to_run:
-                st.error("SQL vazio — escreva uma consulta antes de executar.")
+                st.error("❌ SQL vazio — escreva uma consulta antes de executar.")
             else:
                 try:
-                    start = time.time()
-                    result_df = execute_sql(db_path, sql_to_run)
-                    elapsed = time.time() - start
-                    st.success(f"Consulta executada em {elapsed:.2f}s — {result_df.shape[0]} linhas")
-                    st.dataframe(result_df, use_container_width=True)
-                    # opção de exportar CSV
+                    with st.spinner("⏳ Executando consulta..."):
+                        start = time.time()
+                        result_df = execute_sql(db_path, sql_to_run)
+                        elapsed = time.time() - start
+                    
+                    st.success(f"✅ Consulta executada em {elapsed:.2f}s")
+                    
+                    # Métricas do resultado
+                    res_col1, res_col2 = st.columns(2)
+                    with res_col1:
+                        st.metric("📏 Linhas retornadas", f"{result_df.shape[0]:,}")
+                    with res_col2:
+                        st.metric("📐 Colunas", result_df.shape[1])
+                    
+                    # Exibe o resultado
+                    st.dataframe(
+                        result_df,
+                        use_container_width=True,
+                        height=400
+                    )
+                    
+                    # Botão de download
                     csv = result_df.to_csv(index=False).encode("utf-8")
-                    st.download_button("Baixar CSV", csv, file_name="consulta.csv", mime="text/csv")
+                    st.download_button(
+                        "⬇️ Baixar resultado (CSV)",
+                        csv,
+                        file_name=f"consulta_{int(time.time())}.csv",
+                        mime="text/csv",
+                        use_container_width=True
+                    )
                 except Exception as exc:
-                    st.error(str(exc))
+                    st.error(f"❌ {str(exc)}")
+        else:
+            st.info("👈 Digite uma consulta SQL e clique em 'Executar SQL' para ver os resultados aqui.")
+
+    # --- Footer ---
+    st.markdown("---")
+    st.markdown("""
+        <div style='text-align: center; color: #9CA3AF; padding: 1rem 0;'>
+            <p>🧭 <strong>Bússola de Valor</strong> | Data Warehouse Explorer</p>
+        </div>
+    """, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
