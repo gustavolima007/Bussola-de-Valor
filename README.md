@@ -12,10 +12,11 @@ Este projeto utiliza um stack tecnológico moderno e integrado para coleta, arma
 
 - **Python**: Linguagem principal para extração, transformação e análise de dados financeiros, utilizando bibliotecas como `pandas` para manipulação de dados e `plotly` para visualizações interativas.
 - **yfinance e brapi**: APIs para obtenção de dados de mercado em tempo real e históricos da B3, incluindo preços de ações, dividendos e indicadores fundamentalistas.
-- **Supabase**: Banco de dados relacional SQL (baseado em PostgreSQL) para armazenamento estruturado de dados de ações, métricas financeiras e resultados de scoring.
-- **Streamlit**: Framework Python para criação do dashboard interativo, hospedado no **Streamlit Community Cloud** para acesso público via link.
-- **GitHub Repository**: Repositório para versionamento do código-fonte, garantindo controle e colaboração no desenvolvimento.
-- **GitHub Projects**: Ferramenta de Kanban para gerenciamento do projeto, organizando tarefas como coleta de dados, modelagem do banco e desenvolvimento do dashboard.
+ - **Supabase**: Banco de dados relacional SQL (baseado em PostgreSQL) para armazenamento estruturado de dados de ações, métricas financeiras e resultados de scoring (opção futura).
+ - **DuckDB**: Data warehouse embutido (arquivo local `.duckdb`) usado neste projeto para armazenar o `trusted_dw`. Integração nativa com Parquet e consultas SQL locais rápidas sem servidor.
+ - **Streamlit**: Framework Python para criação do dashboard interativo, hospedado no **Streamlit Community Cloud** para acesso público via link.
+ - **GitHub Repository**: Repositório para versionamento do código-fonte, garantindo controle e colaboração no desenvolvimento.
+ - **GitHub Projects**: Ferramenta de Kanban para gerenciamento do projeto, organizando tarefas como coleta de dados, modelagem do banco e desenvolvimento do dashboard.
 
 ---
 
@@ -98,6 +99,7 @@ Small Cap: +15 pts
 ---
 
 ### Pontuação de Setores (Máximo 1000 pontos)
+
 1. Pontuação do Subsetor
 
 Componentes Positivos (Máximo 1000 pontos):
@@ -166,8 +168,8 @@ Penalidade por Recuperação Judicial (penalidade_rj) – até -80 pts (8%): Pen
 
 
 Fórmula e Pontuação Máxima:
-A soma dos componentes positivos é limitada a 1000 pontos. A pontuação final é calculada como:
-pontuacao_final = min(Soma dos Componentes Positivos, 1000) + penalidade_empresas_ruins + penalidade_rj
+A pontuação final é calculada como:
+pontuacao_final = Soma dos Componentes Positivos + penalidade_empresas_ruins + penalidade_rj
 2. Pontuação do Setor
 A pontuação do setor principal é a média das pontuacao_final de todos os seus subsetores.
 
@@ -214,6 +216,12 @@ Classificação por porte e preço:
     - "Implementar extração de dados com yfinance e brapi".
     - "Desenvolver gráficos de scores no Streamlit com Plotly".
 
+  **Decisão de modelagem**: adotamos DuckDB para o DW local (arquivo `data/bussola.duckdb`) em vez de MySQL/SQL Server por não exigir servidor dedicado e por reduzir custos. O DW é atualizado automaticamente por um workflow GitHub Actions agendado diariamente às 07:00.
+
+  ### Por que DuckDB (resumo)
+  - Integração nativa com Parquet e alta performance para consultas analíticas locais.
+  - Opera como arquivo local sem necessidade de infraestrutura e integra-se bem ao Streamlit.
+
 ## 🛠️ Estrutura de Diretórios
 
 ```bash
@@ -228,7 +236,9 @@ Classificação por porte e preço:
 │   ├── data_loader.py    # Funções para carregar e unificar os dados para o app.
 │   └── app.py            # Ponto de entrada principal da aplicação Streamlit.
 │
-├── data/                 # Armazena os arquivos .csv gerados e consumidos pelo pipeline.
+├── data/                 # Armazena arquivos Parquet/CSV gerados e o DW local `data/bussola.duckdb`.
+│   ├── parquet/
+│   ├── bussola.duckdb
 │   ├── acoes_e_fundos.csv
 │   ├── indicadores.csv
 │   ├── scores.csv

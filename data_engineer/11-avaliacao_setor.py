@@ -143,7 +143,7 @@ def main() -> None:
     subsetor_stats = subsetor_stats.fillna(0)
 
     # --- Cálculo das Pontuações por Critério ---
-    subsetor_stats['score_original'] = (subsetor_stats['score_original'] / 1000) * 550 # Ajusta o score original para o peso de 55%
+    score_original_scaled = subsetor_stats['score_original'] # Remove o peso de 55%
     subsetor_stats['score_dy'] = subsetor_stats['dy_5a_medio'].apply(calcular_score_dy)
     subsetor_stats['score_roe'] = subsetor_stats['roe_medio'].apply(calcular_score_roe)
     subsetor_stats['score_beta'] = subsetor_stats['beta_medio'].apply(calcular_score_beta)
@@ -161,11 +161,10 @@ def main() -> None:
 
     # --- Pontuação Final ---
     positive_score_cols = [
-        'score_original', 'score_dy', 'score_roe', 'score_beta', 'score_payout', 
+        'score_dy', 'score_roe', 'score_beta', 'score_payout', 
         'score_empresas_boas', 'score_graham'
     ]
-    subsetor_stats['pontuacao_positiva'] = subsetor_stats[positive_score_cols].sum(axis=1)
-    subsetor_stats['pontuacao_positiva'] = subsetor_stats['pontuacao_positiva'].apply(lambda x: min(x, 1000))
+    subsetor_stats['pontuacao_positiva'] = subsetor_stats[positive_score_cols].sum(axis=1) + score_original_scaled
 
     penalty_cols = ['penalidade_empresas_ruins', 'penalidade_rj']
     subsetor_stats['pontuacao_final'] = subsetor_stats['pontuacao_positiva'] + subsetor_stats[penalty_cols].sum(axis=1)

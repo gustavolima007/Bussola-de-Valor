@@ -17,7 +17,7 @@ def render_tab_calculadora(all_data: dict, ticker_foco: str = None):
 
     with col1:
         # Input para a quantidade de ações
-        quantidade_acoes = st.number_input("Quantidade de Ações", min_value=1, value=100, step=1)
+        quantidade_acoes = st.number_input("Quantidade de Ações", min_value=1, value=100, step=100)
 
         # Seleção do ticker
         tickers_disponiveis = sorted(dividendos_ano['ticker'].unique())

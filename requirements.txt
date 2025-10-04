@@ -16,3 +16,4 @@ tqdm
 urllib3
 yfinance
 supabase
+duckdb

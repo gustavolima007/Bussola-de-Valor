@@ -1,5 +1,13 @@
 # Trabalho de Conclusão de Curso (TCC)
 
+RESUMO
+
+Este relatório apresenta a implementação da "Bússola de Valor", uma ferramenta de apoio à decisão para investidores focados em renda por dividendos. Descreve a coleta e padronização de dados, a modelagem do Data Warehouse local em DuckDB, o cálculo de scores fundamentados e o desenvolvimento de um dashboard interativo em Streamlit. Foram gerados artefatos reproducíveis (ETL, datasets e tabelas materializadas) e validada a operação local com baixo custo operacional; o DW é atualizado automaticamente via workflow do GitHub Actions.
+
+Palavras‑chave
+
+dividendos, duckdb, streamlit
+
 ## I. Introdução
 
 ### 1. Contexto
@@ -23,6 +31,8 @@ Este trabalho foi realizado utilizando os seguintes recursos tecnológicos e bib
 - Bibliotecas principais: pandas, numpy, plotly, streamlit, yfinance, joblib, python-dotenv, ta, tqdm, deep_translator.
 - Infraestrutura de dados: arquivos CSV na pasta `data/` e possibilidade de armazenamento em Supabase (Postgres) para cargas futuras.
 - Ferramentas de desenvolvimento: Git/GitHub para versionamento e Streamlit Community Cloud para publicação do dashboard.
+ - Infraestrutura de dados: arquivos Parquet/CSV em `data/` e Data Warehouse local em `data/bussola.duckdb` (DuckDB).
+ - Ferramentas de desenvolvimento: Git/GitHub para versionamento. O dashboard continua em Streamlit (sem uso de Power BI) e o arquivo DuckDB será atualizado automaticamente via GitHub Actions diariamente às 07:00.
 - Scripts de ETL: presentes em `data_engineer/` (ex.: `01-acoes_e_fundos.py`, `09-score.py`, `loader.py`).
 
 ### 5. Metodologia do Trabalho
@@ -45,6 +55,7 @@ O trabalho seguiu as etapas listadas abaixo:
 ### 2. ETL e Armazenamento
 - Os scripts em `data_engineer/` seguem uma ordem numérica que garante dependências corretas entre passos (extração → transformação → indicadores → scoring).
 - Formato de persistência: CSVs em `data/` para facilidade de reprodutibilidade e debug; opção de migrar para Supabase (Postgres) para produção.
+ - Formato de persistência: arquivos Parquet e um DW local em DuckDB (`data/bussola.duckdb`). A escolha por DuckDB dispensa servidor próprio e reduz custos operacionais. Não foi escolhida modelagem em MySQL/SQL Server por custos de hospedagem e necessidade de servidor dedicado.
 
 ### 3. Análise e Modelagem
 - A modelagem de score é uma combinação de regras financeiras consagradas e heurísticas pragmáticas. A pontuação é modular e compreende componentes para dividendos, valuation, rentabilidade, saúde financeira, crescimento, volatilidade e liquidez.
@@ -113,6 +124,7 @@ Recomenda-se para trabalhos futuros:
 - Validar e calibrar os pesos do score com séries históricas e análise de performance (backtest de carteiras geradas pelo ranking).
 - Migrar os artefatos para um banco relacional (Supabase/Postgres) para permitir consultas mais rápidas e integrações contínuas.
 - Complementar com alertas automáticos e testes automatizados do pipeline de ETL.
+ - Manter o DW em DuckDB para operações locais e sem custo; avaliar migração para um banco gerenciado apenas se houver necessidade de escrita concorrente ou escalabilidade muito além do ambiente local.
 
 ### 1. Dificuldades Encontradas
 - Normalização dos diversos formatos de entrada e tratamento de valores faltantes.
@@ -145,40 +157,3 @@ Artigos e documentação técnica:
 - yfinance e bibliotecas de mercado: documentação e exemplos.
 
 ---
-
-## VII. Como executar o projeto (resumo prático)
-
-1. Requisitos básicos
-- Python 3.11+ (o repositório recomenda 3.13.7 em instruções internas).
-- Instalar dependências listadas em `requirements.txt`.
-
-2. Comandos principais (PowerShell/Windows):
-
-```powershell
-# Criar ambiente (opcional)
-python -m venv .venv; .\.venv\Scripts\Activate.ps1
-
-# Instalar dependências
-pip install -r requirements.txt
-
-# Executar o dashboard
-streamlit run app/app.py
-```
-
-3. Observações
-- Os dados consolidados estão em `data/`. Se preferir rodar o pipeline completo, execute os scripts em `data_engineer/` seguindo a ordem numérica ou utilize `data_engineer/loader.py` se disponível.
-- Para melhorar performance em produção, considere gerar `scores.csv` via os scripts de ETL e apontar `B3_REPORT_PATH` em um `.env` para o arquivo consolidado.
-
----
-
-## VIII. Sumário de mudanças e verificação
-- Arquivos analisados: `README.md`, `app/app.py`, `app/data_loader.py`, `app/scoring.py`, `requirements.txt`.
-- O TCC foi preenchido com base no código-fonte e artefatos do repositório; não foram gerados novos artefatos de código.
-
-
----
-
-## IX. Trabalho futuro (pistas rápidas)
-- Implementar backtest para avaliar performance histórica de carteiras construídas pelo ranking.
-- Adicionar testes unitários para as funções de scoring e de carregamento de dados.
-- Automatizar CI (GitHub Actions) para rodar checks de lint, testes e geração periódica de `scores.csv`.

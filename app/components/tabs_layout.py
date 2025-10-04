@@ -699,18 +699,8 @@ def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data
 def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Análise de Setores")
 
-    # --- CÁLCULO DA PONTUAÇÃO ORIGINAL ---
-    pontuacao_original_setor = pd.DataFrame()
-    if not df_unfiltered.empty and 'subsetor_b3' in df_unfiltered.columns and 'Score Total' in df_unfiltered.columns:
-        pontuacao_original_setor = df_unfiltered.groupby('subsetor_b3')['Score Total'].mean().reset_index()
-        pontuacao_original_setor.rename(columns={'Score Total': 'Pontuacao Original'}, inplace=True)
-
     av_setor = all_data.get('avaliacao_setor', pd.DataFrame())
     if not av_setor.empty:
-        # --- MERGE DA PONTUAÇÃO ORIGINAL ---
-        if not pontuacao_original_setor.empty:
-            av_setor = pd.merge(av_setor, pontuacao_original_setor, on='subsetor_b3', how='left')
-
         st.subheader("Ranking de Setores por Pontuação Média")
         st.markdown("Esta tabela classifica os subsetores com base em uma pontuação final que considera o desempenho médio de suas ações, a penalidade por recuperação judicial e o dividend yield médio dos últimos 5 anos.")
 
@@ -718,7 +708,7 @@ def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFra
         rename_map = {
             'subsetor_b3': 'Setor',
             'pontuacao_final': 'Pont. Final',
-            'Pontuacao Original': 'Pont. Inicial',
+            'score_original': 'Pont. Inicial',
             'score_dy': 'DY',
             'score_roe': 'ROE',
             'score_beta': 'Beta',
@@ -1001,11 +991,6 @@ def render_tab_recuperacao_judicial(all_data: dict):
     df_display.fillna('-', inplace=True)
     df_display['Ticker'] = df_display['Ticker'].replace({None: '-'})
 
-    st.dataframe(
-        df_display.sort_values(by='Início RJ', ascending=False),
-        use_container_width=True,
-        hide_index=True
-    )
     st.dataframe(
         df_display.sort_values(by='Início RJ', ascending=False),
         use_container_width=True,
