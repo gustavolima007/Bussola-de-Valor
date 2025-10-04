@@ -8,7 +8,7 @@ from scoring import calculate_score_and_details, build_score_details_from_row, c
 import duckdb
 
 # --- Configuração do Banco de Dados ---
-DB_PATH = "e:/Github/Unicamp/Bussola-de-Valor/duckdb/banco_dw/dw.duckdb"
+DB_PATH = "duckdb/banco_dw/dw.duckdb"
 
 @st.cache_resource
 def get_db_connection():
