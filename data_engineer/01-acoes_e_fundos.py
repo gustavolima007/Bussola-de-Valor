@@ -1,21 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 📄 Script para extrair e processar dados de ações e fundos da B3.
-    Versão 4.2 com reclassificação de tickers e log de não mapeados.
+    Versão 5.0 com salvamento em Parquet e output aprimorado.
 """
 
 import requests
 import pandas as pd
 from pathlib import Path
 import time
-import logging
 from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-from common import tratar_dados_para_json
-
-# Configuração de logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+from urllib3.util.retry import Retry 
+from common import save_to_parquet
 
 # --- MAPEAMENTO DE TICKERS REFINADO (VERSÃO FINAL) ---
 MAPEAMENTO_COMPLETO_TICKERS = {
@@ -279,7 +274,6 @@ MAPEAMENTO_COMPLETO_TICKERS = {
     "VTRU3": ("Serviços Diversos", "Serviços Diversos"), "HBTS5": ("Serviços Diversos", "Serviços Diversos"),
 }
 
-
 # Lista de tickers a serem removidos
 TICKERS_A_REMOVER = [
     "SNCI11", "WSEC11", "IRIM11", "RBIF11", "EGYR11", "RENV11", "RNR9L", "PPLA11",
@@ -308,11 +302,8 @@ def extrair_dados_brapi():
     Extrai, filtra e processa dados de ativos da B3 usando a API Brapi.
     """
     api_url = "https://brapi.dev/api/quote/list"
-    base_dir = Path(__file__).resolve().parent.parent / 'data'
-    csv_output = base_dir / "acoes_e_fundos.csv"
-    log_nao_mapeados = base_dir / "tickers_nao_mapeados.csv"
 
-    logger.info("Iniciando extração de dados via Brapi...")
+    print("🔎 Iniciando extração de dados via Brapi...")
     start_time = time.time()
 
     try:
@@ -327,7 +318,7 @@ def extrair_dados_brapi():
         ativos = data.get('stocks', [])
 
         if not ativos:
-            logger.error("Nenhum ativo encontrado na resposta da API.")
+            print("❌ Nenhum ativo encontrado na resposta da API.")
             return None
 
         df_ativos = pd.DataFrame(ativos)
@@ -345,12 +336,8 @@ def extrair_dados_brapi():
         # --- NOVO: Bloco para salvar tickers não mapeados ---
         df_nao_mapeados = df_ativos[df_ativos['setor_b3'] == 'Indefinido']
         if not df_nao_mapeados.empty:
-            tickers_para_log = df_nao_mapeados['ticker'].tolist()
-            base_dir.mkdir(parents=True, exist_ok=True)
-            with open(log_nao_mapeados, 'w', encoding='utf-8') as f:
-                for ticker in tickers_para_log:
-                    f.write(f"{ticker}\n")
-            logger.warning(f"{len(tickers_para_log)} tickers não mapeados foram salvos em: {log_nao_mapeados}")
+            save_to_parquet(df_nao_mapeados[['ticker']], "tickers_nao_mapeados")
+            print(f"⚠️ {len(df_nao_mapeados)} tickers não mapeados foram salvos.")
         # --- FIM DO NOVO BLOCO ---
 
         df_ativos = df_ativos[df_ativos['setor_b3'] != 'Indefinido']
@@ -370,25 +357,22 @@ def extrair_dados_brapi():
             'ticker', 'empresa', 'volume', 'logo', 'setor_brapi', 'tipo', 'setor_b3', 'subsetor_b3'
         ]
         df_ativos = df_ativos[colunas_manter]
-
-        # Preparar dados para JSON e CSV
-        df_ativos = tratar_dados_para_json(df_ativos)
         
         assert len(df_ativos) > 0, "DataFrame vazio após filtros!"
         
-        base_dir.mkdir(parents=True, exist_ok=True)
-        df_ativos.to_csv(csv_output, index=False, encoding='utf-8-sig')
-        logger.info(f"Arquivo CSV salvo: {csv_output}")
+        # Salva o DataFrame no formato Parquet
+        save_to_parquet(df_ativos, "acoes_e_fundos")
 
         elapsed_time = time.time() - start_time
-        logger.info(f"Concluído em {elapsed_time:.2f} segundos. Total de ativos mapeados: {len(df_ativos)}")
+        print(f"✅ Processamento de Ações e Fundos concluído em {elapsed_time:.2f}s.")
+        
         return df_ativos
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Erro na requisição à API: {e}")
+        print(f"❌ Erro na requisição à API: {e}")
         return None
     except Exception as e:
-        logger.error(f"Ocorreu um erro inesperado: {e}")
+        print(f"❌ Ocorreu um erro inesperado: {e}")
         return None
 
 if __name__ == "__main__":

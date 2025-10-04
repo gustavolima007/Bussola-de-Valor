@@ -1,0 +1,10 @@
+# Normalize line endings and file types
+# Tratamento por padrão: detectar arquivos de texto e normalizá-los
+* text=auto
+
+# Forçar LF para arquivos de código (útil em projetos multiplataforma)
+*.py text eol=lf
+*.sh text eol=lf
+
+# Não tratar arquivos .duckdb como texto
+*.duckdb -text

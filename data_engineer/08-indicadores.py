@@ -8,8 +8,6 @@ Indicadores Coletados:
 - Sentimento de Mercado (recomendações)
 - Técnicos (somente 1 ano, via ta): RSI(14), MACD(hist) e Volume (último)
 
-Requisitos:
-    pip install yfinance ta pandas tqdm
 """
 
 import pandas as pd
@@ -18,17 +16,14 @@ from tqdm.auto import tqdm
 import random
 import time
 from pathlib import Path
-from common import DATA_DIR, tratar_dados_para_json
+from common import LAND_DW_DIR, save_to_parquet
 
 # Indicadores técnicos via ta
 from ta.momentum import RSIIndicator
 from ta.trend import MACD
 
 # --- Configurações ---
-CAMINHO_ARQUIVO_ENTRADA = DATA_DIR / "acoes_e_fundos.csv"
-CAMINHO_ARQUIVO_SAIDA = DATA_DIR / "indicadores.csv"
-
-# período base para técnicos
+CAMINHO_ARQUIVO_ENTRADA = LAND_DW_DIR / "acoes_e_fundos.parquet"
 PERIODO_PADRAO_HIST = "1y"
 
 # --- Frases por ciclo de mercado ---
@@ -60,19 +55,14 @@ def get_pl_ratio(ticker: str) -> str:
     Obtém o índice P/L (Preço/Lucro) via yfinance (TTM).
     """
     try:
-        # Adiciona o sufixo .SA para ações da B3 e busca os dados
         stock = yf.Ticker(f"{ticker}.SA")
         info = stock.info
-        
-        # P/L = Preço da ação / Lucro por ação (EPS, TTM)
         pl_ratio = info.get('trailingPE')
-        
         if pl_ratio is not None and pl_ratio > 0:
             return f"{pl_ratio:.2f}"
         return "N/A"
     except Exception:
         return "N/A"
-
 
 def classify_stock_profile(price: float, market_cap: float) -> str:
     if price is not None and price < 1.0:
@@ -86,7 +76,6 @@ def classify_stock_profile(price: float, market_cap: float) -> str:
     if market_cap > 2_000_000_000:
         return "Small Cap"
     return "Micro Cap"
-
 
 def get_market_sentiment(ticker_obj: yf.Ticker) -> dict:
     sentiment_data = {'sentimento_gauge': 50.0, 'strong_buy': 0, 'buy': 0, 'hold': 0, 'sell': 0, 'strong_sell': 0}
@@ -109,18 +98,12 @@ def get_market_sentiment(ticker_obj: yf.Ticker) -> dict:
         pass
     return sentiment_data
 
-
-# ===== Indicadores Técnicos (1y) com ta =====
 def compute_indicadores_ta(hist: pd.DataFrame) -> dict:
-    """Retorna apenas 3 colunas técnicas (1y): rsi_14_1y, macd_diff_1y, volume_1y."""
     out = {"rsi_14_1y": None, "macd_diff_1y": None, "volume_1y": None}
     if hist is None or hist.empty:
         return out
-
     close = hist.get("Close")
     volume = hist.get("Volume")
-
-    # RSI(14)
     try:
         if close is not None and not close.dropna().empty and len(close.dropna()) >= 15:
             rsi_series = RSIIndicator(close=close, window=14, fillna=False).rsi()
@@ -128,8 +111,6 @@ def compute_indicadores_ta(hist: pd.DataFrame) -> dict:
             out["rsi_14_1y"] = float(val) if pd.notna(val) else None
     except Exception:
         pass
-
-    # MACD diff (histograma)
     try:
         if close is not None and not close.dropna().empty and len(close.dropna()) >= (26 + 9):
             macd = MACD(close=close, window_slow=26, window_fast=12, window_sign=9, fillna=False)
@@ -137,19 +118,14 @@ def compute_indicadores_ta(hist: pd.DataFrame) -> dict:
             out["macd_diff_1y"] = float(diff) if pd.notna(diff) else None
     except Exception:
         pass
-
-    # Volume (último)
     try:
         if volume is not None and not volume.dropna().empty:
             out["volume_1y"] = float(volume.iloc[-1]) if pd.notna(volume.iloc[-1]) else None
     except Exception:
         pass
-
     return out
 
-
 def classificar_indicador_tecnico(valor: float, lim_baixo: float, lim_alto: float, tipo: str) -> str:
-    """Classifica um valor conforme o tipo do indicador."""
     if pd.isna(valor):
         return "N/A"
     v = float(valor)
@@ -168,28 +144,23 @@ def classificar_indicador_tecnico(valor: float, lim_baixo: float, lim_alto: floa
     return "N/A"
 
 def classificar_ciclo_mercado(score: float) -> str:
-    """Classifica o ciclo de mercado com base no score técnico."""
     if pd.isna(score): return "Neutro / Transição"
     if score <= 30: return "Pânico / Fundo"
     elif score <= 60: return "Neutro / Transição"
     else: return "Euforia / Topo"
 
 def calcular_dados_ciclo(rsi_val, macd_val, vol_val, vol_mean) -> dict:
-    """Calcula o score e classifica o ciclo de mercado a partir dos indicadores."""
     rsi_status = classificar_indicador_tecnico(rsi_val, 30, 70, "RSI")
     macd_status = classificar_indicador_tecnico(macd_val, -0.5, 0.5, "MACD")
     vol_status = classificar_indicador_tecnico(vol_val, vol_mean * 0.8, vol_mean * 1.2, "Volume")
-
     score_total = 0
     for cls in (rsi_status, macd_status, vol_status):
         if any(key in str(cls) for key in ["Baixo", "Fraco"]): score_total += 10
         elif any(key in str(cls) for key in ["Medio", "Normal"]): score_total += 33
         elif any(key in str(cls) for key in ["Alto", "Forte"]): score_total += 100
-    
     score_medio = round(score_total / 3)
     ciclo = classificar_ciclo_mercado(score_medio)
     frase = random.choice(frases_por_ciclo[ciclo])
-
     return {
         "ciclo_de_mercado": ciclo,
         "status_ciclo": frase["status"],
@@ -203,29 +174,18 @@ NOME_EMPRESA_MANUAL = {
 def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float, p_l_externo: str | None) -> dict | None:
     ticker_yf = f"{ticker_base}.SA"
     stock = yf.Ticker(ticker_yf)
-    
     try:
         info = stock.info
     except Exception:
-        # If yfinance fails, we can't get any indicators.
         return None
-
     if not info:
         return None
-
-    # Crescimento em 5 anos (mantido)
     hist_5y = stock.history(period="5y")
     growth_price = None
     if not hist_5y.empty and len(hist_5y["Close"]) > 1 and hist_5y["Close"].iloc[0] > 0:
         growth_price = ((hist_5y["Close"].iloc[-1] / hist_5y["Close"].iloc[0]) - 1) * 100
-
-    # Histórico base para técnicos: 1 ano
     hist_1y = stock.history(period=PERIODO_PADRAO_HIST)
-
-    # Técnicos (1y) com ta
     tecnicos = compute_indicadores_ta(hist_1y)
-
-    # Fundamentais
     current_price = info.get("currentPrice")
     market_cap = info.get("marketCap", metadata.get("market_cap", 0))
     roe = info.get("returnOnEquity")
@@ -240,27 +200,17 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float, p_l_exte
     fcf_yield = (free_cash_flow / market_cap) * 100 if free_cash_flow and market_cap else None
     current_ratio = info.get("currentRatio")
     empresa = NOME_EMPRESA_MANUAL.get(ticker_base, info.get("longName", metadata.get("empresa")))
-
-    # Adição para Fórmula de Graham
-    # Coleta os dados e já calcula a margem de segurança percentual.
     lpa = info.get('trailingEps')
     vpa = info.get('bookValue')
     margem_seguranca_percent = None
-    
-    # Validação dos dados: LPA, VPA e Preço devem ser positivos para a fórmula
     if lpa and vpa and current_price and lpa > 0 and vpa > 0 and current_price > 0:
         try:
-            # Fórmula de Graham: Valor Intrínseco = Raiz(22.5 * LPA * VPA)
             numero_graham = (22.5 * lpa * vpa) ** 0.5
-            # Margem de Segurança = (Valor Intrínseco / Preço Atual) - 1
             margem_seguranca = (numero_graham / current_price) - 1
             margem_seguranca_percent = round(margem_seguranca * 100, 2)
         except (ValueError, TypeError):
-            pass # Mantém margem_seguranca_percent como None
-
-    # Adição para Ciclo de Mercado
+            pass
     dados_ciclo = calcular_dados_ciclo(tecnicos.get('rsi_14_1y'), tecnicos.get('macd_diff_1y'), tecnicos.get('volume_1y'), vol_mean)
-
     resultado = {
         "ticker": ticker_base,
         "empresa": empresa,
@@ -282,57 +232,46 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float, p_l_exte
         "liquidez_media_diaria": liquidez_media_diaria,
         "fcf_yield": fcf_yield,
         "perfil_acao": classify_stock_profile(current_price, market_cap),
-        # Campos para Fórmula de Graham
         "lpa": lpa,
         "vpa": vpa,
         "margem_seguranca_percent": margem_seguranca_percent,
-
-        # Sentimento de Mercado (analistas)
         **get_market_sentiment(stock),
-
-        # Técnicos via ta (1y, 3 colunas)
         **tecnicos,
     }
-    # Adiciona os dados do ciclo ao dicionário principal
     resultado.update(dados_ciclo)
     return resultado
-
-
 
 def main():
     """
     Função principal para orquestrar a coleta de indicadores e dados de ciclo de mercado.
     """
-    # 1. Setup e Impressão Inicial
     print("="*80)
-    print("--- Coleta de Indicadores Financeiros (08-indicadores) ---")
+    print("🔩 Coleta de Indicadores Financeiros")
     print("="*80)
 
     if not CAMINHO_ARQUIVO_ENTRADA.exists():
-        print(f"[X] ERRO: Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
+        print(f"❌ Erro: Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
+        print("➡️ Execute '01-acoes_e_fundos.py' antes de continuar.")
         return
 
-    print(f"[>] Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA}")
-    df_input = pd.read_csv(CAMINHO_ARQUIVO_ENTRADA)
+    print(f"ℹ️ Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA.name}")
+    df_input = pd.read_parquet(CAMINHO_ARQUIVO_ENTRADA)
     df_input["ticker_norm"] = df_input["ticker"].str.strip().str.upper()
     metadata_map = df_input.set_index("ticker_norm").to_dict(orient="index")
     total_tickers = len(metadata_map)
-    print(f"[+] {total_tickers} tickers encontrados.")
+    print(f"✅ {total_tickers} tickers encontrados.")
 
-    # 2. Coletar P/L para todos os tickers
-    print("\n[>] Coletando P/L para todos os tickers...")
+    print("\nℹ️ Coletando P/L para todos os tickers...")
     pl_map = {}
-    with tqdm(total=total_tickers, desc="Coletando P/L", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
+    with tqdm(total=total_tickers, desc="P/L", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
         for ticker_base in metadata_map.keys():
             pl_map[ticker_base] = get_pl_ratio(ticker_base)
             pbar.update(1)
-            time.sleep(0.1) # Pausa para evitar rate limiting
-    print("[+] P/L coletado para todos os tickers.")
+            time.sleep(0.1)
+    print("✅ P/L coletado.")
 
-    # 3. Pré-cálculo do volume (saída simplificada)
-    print("\n[>] Pré-calculando a média de volume de todos os ativos...")
+    print("\nℹ️ Calculando média de volume...")
     all_volumes = []
-    # Loop simples, sem tqdm para esta parte
     for ticker_base in metadata_map.keys():
         try:
             hist_1y = yf.Ticker(f"{ticker_base}.SA").history(period=PERIODO_PADRAO_HIST)
@@ -341,16 +280,14 @@ def main():
         except Exception:
             continue
     vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
-    print("[+] Média de volume calculada.")
+    print("✅ Média de volume calculada.")
 
-    # 4. Loop principal com progresso limpo e tratamento de erros
-    print("\n[>] Coletando indicadores fundamentalistas e técnicos...")
+    print("\nℹ️ Coletando indicadores fundamentalistas e técnicos...")
     resultados = []
     erros = []
-    with tqdm(total=total_tickers, desc="Coletando Indicadores", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
+    with tqdm(total=total_tickers, desc="Indicadores", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
         for ticker_base, meta in metadata_map.items():
             try:
-                # Busca o P/L do mapa pré-carregado
                 p_l_externo = pl_map.get(ticker_base)
                 dados = fetch_stock_data(ticker_base, meta, vol_mean, p_l_externo)
                 if dados:
@@ -361,49 +298,37 @@ def main():
                 erros.append((ticker_base, str(e).replace('\n', ' ')))
             finally:
                 pbar.update(1)
-                time.sleep(0.2)  # Pausa para evitar rate limiting
+                time.sleep(0.2)
 
-    # 4. Resumo Final
     print("\n" + "="*80)
-    print("--- Resumo da Execução ---")
+    print("📊 Resumo da Execução")
 
     if not resultados:
-        print("[X] ERRO: Nenhum dado foi coletado com sucesso.")
+        print("❌ Erro: Nenhum dado foi coletado.")
         if erros:
-            print(f"    - {len(erros)} tickers falharam durante a coleta.")
+            print(f"    - Falhas: {len(erros)} tickers.")
         print("="*80)
         return
 
-    # Salvar indicadores.csv
     df_output = pd.DataFrame(resultados)
     df_output.columns = [c.strip().lower().replace(" ", "_") for c in df_output.columns]
-    df_output = tratar_dados_para_json(df_output)
-    CAMINHO_ARQUIVO_SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    df_output.to_csv(CAMINHO_ARQUIVO_SAIDA, index=False, encoding='utf-8-sig')
+    save_to_parquet(df_output, "indicadores")
     
-    print(f"[+] {len(df_output)} tickers processados com sucesso.")
-    print(f"    - Arquivo de indicadores salvo em: {CAMINHO_ARQUIVO_SAIDA}")
+    print(f"✅ {len(df_output)} tickers processados.")
 
-    # Salvar ciclo_mercado.csv
-    CAMINHO_CICLO_MERCADO = DATA_DIR / "ciclo_mercado.csv"
     if 'ticker' in df_output.columns and 'status_ciclo' in df_output.columns:
         df_ciclo = df_output[['ticker', 'status_ciclo']].copy()
-        df_ciclo.rename(columns={'status_ciclo': 'status_ciclo'}, inplace=True)
-        df_ciclo = tratar_dados_para_json(df_ciclo)
-        df_ciclo.to_csv(CAMINHO_CICLO_MERCADO, index=False, encoding='utf-8-sig')
-        print(f"    - Arquivo de ciclo de mercado salvo em: {CAMINHO_CICLO_MERCADO}")
+        save_to_parquet(df_ciclo, "ciclo_mercado")
 
-    # Imprimir erros, se houver
     if erros:
-        print(f"\n[!] {len(erros)} tickers falharam:")
-        for ticker, erro in erros[:5]:  # Imprime os 5 primeiros erros para amostragem
+        print(f"\n⚠️ {len(erros)} tickers com falha:")
+        for ticker, erro in erros[:5]:
              print(f"    - {ticker}: {erro}")
         if len(erros) > 5:
             print("    - ... (e outros)")
 
-    print("\n[+] Processo concluído.")
+    print("\n✅ Processo concluído.")
     print("="*80)
-
 
 if __name__ == "__main__":
     main()

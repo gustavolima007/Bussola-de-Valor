@@ -3,18 +3,18 @@
 📈 Script para Coleta de Preços Históricos de Ações
 
 Este script busca os preços de fechamento ajustados de uma lista de tickers
-da B3, utilizando a biblioteca yfinance, e gera dois arquivos de saída:
+da B3, utilizando a biblioteca yfinance, e gera dois arquivos de saída em Parquet:
 
-1.  `precos_acoes_completo.csv`: Contém o preço de fechamento do último dia
+1.  `precos_acoes_completo.parquet`: Contém o preço de fechamento do último dia
     de cada ano para os últimos 7 anos.
-2.  `precos_acoes.csv`: Um resumo com o preço atual e de 1 e 6 meses atrás.
+2.  `precos_acoes.parquet`: Um resumo com o preço atual e de 1 e 6 meses atrás.
 
 Etapas do Processo:
-- Lê a lista de tickers de 'data/acoes_e_fundos.csv'.
+- Lê a lista de tickers do arquivo Parquet.
 - Adiciona o sufixo '.SA' aos tickers para consulta no yfinance.
 - Baixa o histórico de preços dos últimos 7 anos.
 - Processa os dados para extrair os preços de fechamento anuais e o atual/mensal.
-- Salva os dois DataFrames resultantes em arquivos CSV.
+- Salva os dois DataFrames resultantes em arquivos Parquet.
 """
 
 import pandas as pd
@@ -23,12 +23,10 @@ from datetime import date
 import warnings
 from pathlib import Path
 from tqdm.auto import tqdm
-from common import DATA_DIR, get_tickers, tratar_dados_para_json
+from common import get_tickers, save_to_parquet
 
 # Ignora avisos de FutureWarning para manter o output limpo
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
-
 
 def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 7) -> tuple[pd.DataFrame, pd.DataFrame] | tuple[None, None]:
     """
@@ -53,29 +51,28 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
         data_1_mes_atras = pd.to_datetime(hoje) - pd.DateOffset(months=1)
         data_6_meses_atras = pd.to_datetime(hoje) - pd.DateOffset(months=6)
 
-        print(f"Baixando dados históricos para {len(tickers_sa)} ativos...")
+        print(f"ℹ️ Baixando dados para {len(tickers_sa)} ativos...")
         # Baixa os dados de uma vez para otimizar as requisições
         hist = yf.download(tickers_sa, start=f"{ano_inicio}-01-01", end=hoje, auto_adjust=True, progress=False)
 
         if hist.empty:
-            print("Nenhum dado histórico foi retornado pelo yfinance.")
+            print("⚠️ Nenhum dado histórico retornado pelo yfinance.")
             return None, None
 
         df_closes = hist['Close']
         lista_completa, lista_resumida = [], []
 
         # Itera sobre os tickers para processar os preços
-        for ticker, ticker_sa in tqdm(list(zip(lista_tickers, tickers_sa)), desc="Processando preços por ticker"):
+        for ticker, ticker_sa in tqdm(list(zip(lista_tickers, tickers_sa)), desc="📈 Processando preços por ticker"):
             col = df_closes.get(ticker_sa)
             if col is None or col.dropna().empty:
-                print(f"Aviso: Nenhum dado encontrado para o ticker {ticker}. Pulando.")
+                print(f"⚠️ Nenhum dado para {ticker}. Pulando.")
                 continue
 
             # Preço de fechamento mais recente
             fechamento_atual = col.dropna().iloc[-1]
 
             # Busca os preços de 1 e 6 meses atrás usando .asof()
-            # O .asof() encontra o último valor válido na data ou antes dela (lida com fins de semana/feriados)
             fechamento_1M_atras = col.asof(data_1_mes_atras)
             fechamento_6M_atras = col.asof(data_6_meses_atras)
 
@@ -89,7 +86,7 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
             
             lista_completa.append({'ticker': ticker, 'ano': hoje.year, 'fechamento': fechamento_atual})
 
-            # Preços de fechamento dos anos anteriores (lógica original mantida)
+            # Preços de fechamento dos anos anteriores
             for j in range(anos_anteriores):
                 ano_alvo = hoje.year - (j + 1)
                 try:
@@ -99,48 +96,46 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
                 lista_completa.append({'ticker': ticker, 'ano': ano_alvo, 'fechamento': fechamento_ano})
 
         if not lista_completa:
-            print("Nenhum resultado foi processado com sucesso.")
+            print("❌ Nenhum resultado processado.")
             return None, None
 
         # Cria os DataFrames a partir das listas
         df_completo = pd.DataFrame(lista_completa)
-        df_resumido = pd.DataFrame(lista_resumida).set_index('ticker')
+        df_resumido = pd.DataFrame(lista_resumida) # Não setar o index aqui
         return df_completo, df_resumido
 
     except Exception as e:
-        print(f"Ocorreu um erro inesperado durante o processamento: {e}")
+        print(f"❌ Erro inesperado: {e}")
         return None, None
 
 # --- Bloco de Execução Principal ---
 if __name__ == "__main__":
-    print(f"Iniciando o script de coleta de preços...")
+    print("Iniciando coleta de preços...")
     ativos_alvo = get_tickers()
 
     if ativos_alvo:
-        print(f"Processando {len(ativos_alvo)} ativos. Amostra: {ativos_alvo[:5]}...")
+        print(f"ℹ️ Processando {len(ativos_alvo)} ativos. Amostra: {ativos_alvo[:5]}...")
         anos_para_analise = 7
         tabela_completa, tabela_resumida = gerar_tabela_comparativa_precos(ativos_alvo, anos_anteriores=anos_para_analise)
 
         if tabela_completa is not None and tabela_resumida is not None:
-            DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-            output_path_completo = DATA_DIR / "precos_acoes_completo.csv"
+            
+            # Salva a tabela completa
             tabela_completa['fechamento'] = tabela_completa['fechamento'].round(2)
-            tabela_completa = tratar_dados_para_json(tabela_completa)
-            tabela_completa.to_csv(output_path_completo, index=False, encoding='utf-8-sig')
-            print(f"\nTabela completa salva em: {output_path_completo}")
+            save_to_parquet(tabela_completa, "precos_acoes_completo")
 
-            output_path_resumido = DATA_DIR / "precos_acoes.csv"
-            tabela_resumida = tratar_dados_para_json(tabela_resumida)
-            tabela_resumida.round(2).to_csv(output_path_resumido, encoding='utf-8-sig')
-            print(f"Tabela resumida salva em: {output_path_resumido}")
+            # Salva a tabela resumida
+            tabela_resumida['fechamento_atual'] = tabela_resumida['fechamento_atual'].round(2)
+            tabela_resumida['fechamento_1m_atras'] = tabela_resumida['fechamento_1m_atras'].round(2)
+            tabela_resumida['fechamento_6m_atras'] = tabela_resumida['fechamento_6m_atras'].round(2)
+            save_to_parquet(tabela_resumida, "precos_acoes")
 
-            print(f"\nEstatísticas da Execução:")
-            print(f"   - Total de ativos processados com sucesso: {len(tabela_resumida)}")
-            print(f"   - Período de análise: {anos_para_analise} anos")
-            print(f"   - Total de registros na tabela completa: {len(tabela_completa)}")
-            print(f"   - Data da execução: {date.today().strftime('%d/%m/%Y')}")
+            print(f"\n✅ Coleta de preços concluída:")
+            print(f"   - Ativos: {len(tabela_resumida)}")
+            print(f"   - Período: {anos_para_analise} anos")
+            print(f"   - Registros: {len(tabela_completa)}")
+            print(f"   - Data: {date.today().strftime('%d/%m/%Y')}")
         else:
-            print("\n❌ Não foi possível gerar as tabelas de preços.")
+            print("\n❌ Falha ao gerar tabelas de preços.")
     else:
-        print("\n⚠️ Nenhum ativo para processar. Verifique o arquivo CSV de entrada.")
+        print("\n⚠️ Nenhum ativo para processar. Verifique a execução de '01-acoes_e_fundos.py'.")

@@ -1,5 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+⚖️ Script para Processar Dados de Recuperação Judicial
+
+Este script cria um DataFrame com um histórico de empresas que passaram
+por recuperação judicial ou falência, calcula a duração desses processos
+e salva o resultado em formato Parquet.
+"""
+
 import pandas as pd
 from pathlib import Path
+from common import save_to_parquet
 
 # Critérios de inclusão:
 # - A empresa entrou em recuperação judicial ou extrajudicial formalmente reconhecida.
@@ -128,7 +138,6 @@ def calcular_duracao(row):
     if pd.isna(data_inicio):
         return 'Data de Início Inválida'
     
-    # Define a data final: prioriza a saída da RJ, senão, a falência.
     data_fim = data_fim_sucesso if pd.notna(data_fim_sucesso) else data_fim_falencia
     
     if pd.notna(data_fim):
@@ -142,12 +151,10 @@ def calcular_duracao(row):
         if anos > 0:
             resultado.append(f"{anos} ano{'s' if anos > 1 else ''}")
         if meses > 0 or anos == 0:
-            # Correção para plural de "mês"
             resultado.append(f"{meses} {'meses' if meses > 1 or meses == 0 else 'mês'}")
             
         return " e ".join(resultado) if resultado else "Menos de 1 mês"
     else:
-        # Se não há data de saída nem de falência, o processo está em andamento.
         return 'Em Andamento'
 
 # Aplica a função para criar a nova coluna 'duracao_rj'
@@ -155,19 +162,11 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 
 # --- FIM DA SEÇÃO DE CÁLCULO ---
 
-from common import DATA_DIR, tratar_dados_para_json
+# --- Salvamento ---
+save_to_parquet(df_rj, "rj")
 
-# --- Configuração de Caminhos e Salvamento ---
-OUTPUT_PATH = DATA_DIR / "rj.csv"
+print(f"✅ Dados de recuperação judicial processados.")
 
-# Garante que o diretório de saída exista
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-df_rj = tratar_dados_para_json(df_rj)
-df_rj.to_csv(OUTPUT_PATH, index=False, encoding='utf-8-sig')
-
-print(f"Dados de recuperação judicial e falência salvos em {OUTPUT_PATH}")
-
-# Imprime as 5 primeiras linhas com as colunas relevantes para verificação
-print("\nVisualização do DataFrame com setores atualizados:")
+# Imprime as 5 primeiras linhas para verificação
+print("\n🔍 Amostra dos dados:")
 print(df_rj[['nome', 'setor', 'data_entrada_rj', 'duracao_rj']].head().to_string())

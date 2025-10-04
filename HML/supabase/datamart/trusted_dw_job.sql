@@ -1,0 +1,1 @@
+SELECT cron.schedule('daily-trusted-dw-update', '0 22 * * *', 'SELECT trusted_dw.update_trusted_dw()');
