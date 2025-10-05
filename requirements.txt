@@ -7,7 +7,6 @@ plotly  # Use latest stable version (check PyPI for current version)
 python-dateutil==2.9.0  # Stable version as specified
 python-dotenv==1.1.0  # Stable version as specified
 requests  # Use latest stable version (check PyPI for current version)
-scikit-learn==1.7.2  # Stable version as specified
 streamlit  # Use latest stable version (check PyPI for current version)
 ta  # Use latest stable version (check PyPI for current version)
 tqdm==4.67.1  # Stable version as specified

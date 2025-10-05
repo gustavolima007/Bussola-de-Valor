@@ -1,4 +1,4 @@
-name: Run loader.py daily at 7PM UTC-3
+name: Run run.py daily at 6:45PM UTC-3
 
 on:
   schedule:

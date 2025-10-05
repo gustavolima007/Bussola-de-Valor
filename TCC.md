@@ -17,7 +17,7 @@ A Bússola de Valor é um dashboard interativo desenvolvido em Python com Stream
 
 ### 2. Objetivo
 
-- Desenvolver uma aplicação de apoio à decisão que: (i) colete e consolide dados financeiros de múltiplas fontes; (ii) calcule um score fundamentado por critérios econômicos e de investimento; (iii) apresente visualmente rankings, detalhes por ativo e avaliações por setor/subsetor; e (iv) seja reprodutível e de fácil execução para usuários com conhecimentos básicos em Python.
+- Desenvolver uma aplicação de apoio à decisão que: (i) colete e consolide dados financeiros de múltiplas fontes; (ii) calcule um score fundamentado por critérios econômicos e de investimento; (iii) apresente visualmente rankings, detalhes por ativo e avaliações por setor/subsetor.
 
 ### 3. Motivação
 
@@ -29,10 +29,8 @@ A Bússola de Valor é um dashboard interativo desenvolvido em Python com Stream
 Este trabalho foi realizado utilizando os seguintes recursos tecnológicos e bibliotecas:
 - Linguagem: Python 3.11+ (o repositório recomenda 3.13.7 em instruções internas).
 - Bibliotecas principais: pandas, numpy, plotly, streamlit, yfinance, joblib, python-dotenv, ta, tqdm, deep_translator.
-- Infraestrutura de dados: arquivos CSV na pasta `data/` e possibilidade de armazenamento em Supabase (Postgres) para cargas futuras.
-- Ferramentas de desenvolvimento: Git/GitHub para versionamento e Streamlit Community Cloud para publicação do dashboard.
- - Infraestrutura de dados: arquivos Parquet/CSV em `data/` e Data Warehouse local em `data/bussola.duckdb` (DuckDB).
- - Ferramentas de desenvolvimento: Git/GitHub para versionamento. O dashboard continua em Streamlit (sem uso de Power BI) e o arquivo DuckDB será atualizado automaticamente via GitHub Actions diariamente às 07:00.
+- Infraestrutura de dados: arquivos Parquet/CSV em `data/` e Data Warehouse local em `data/bussola.duckdb` (DuckDB).
+- Ferramentas de desenvolvimento: Git/GitHub para versionamento. O dashboard continua em Streamlit (sem uso de Power BI) e o arquivo DuckDB será atualizado automaticamente via GitHub Actions diariamente às 07:00.
 - Scripts de ETL: presentes em `data_engineer/` (ex.: `01-acoes_e_fundos.py`, `09-score.py`, `loader.py`).
 
 ### 5. Metodologia do Trabalho
@@ -54,8 +52,7 @@ O trabalho seguiu as etapas listadas abaixo:
 
 ### 2. ETL e Armazenamento
 - Os scripts em `data_engineer/` seguem uma ordem numérica que garante dependências corretas entre passos (extração → transformação → indicadores → scoring).
-- Formato de persistência: CSVs em `data/` para facilidade de reprodutibilidade e debug; opção de migrar para Supabase (Postgres) para produção.
- - Formato de persistência: arquivos Parquet e um DW local em DuckDB (`data/bussola.duckdb`). A escolha por DuckDB dispensa servidor próprio e reduz custos operacionais. Não foi escolhida modelagem em MySQL/SQL Server por custos de hospedagem e necessidade de servidor dedicado.
+- Formato de persistência: arquivos Parquet e um DW local em DuckDB (`data/bussola.duckdb`). A escolha por DuckDB dispensa servidor próprio e reduz custos operacionais. Não foi escolhida modelagem em MySQL/SQL Server por custos de hospedagem e necessidade de servidor dedicado.
 
 ### 3. Análise e Modelagem
 - A modelagem de score é uma combinação de regras financeiras consagradas e heurísticas pragmáticas. A pontuação é modular e compreende componentes para dividendos, valuation, rentabilidade, saúde financeira, crescimento, volatilidade e liquidez.
@@ -122,9 +119,8 @@ O projeto "Bússola de Valor" entrega uma ferramenta operacional que combina pr�
 
 Recomenda-se para trabalhos futuros:
 - Validar e calibrar os pesos do score com séries históricas e análise de performance (backtest de carteiras geradas pelo ranking).
-- Migrar os artefatos para um banco relacional (Supabase/Postgres) para permitir consultas mais rápidas e integrações contínuas.
+- Manter o DW em DuckDB para operações locais e sem custo; avaliar migração para um banco gerenciado apenas se houver necessidade de escrita concorrente ou escalabilidade muito além do ambiente local.
 - Complementar com alertas automáticos e testes automatizados do pipeline de ETL.
- - Manter o DW em DuckDB para operações locais e sem custo; avaliar migração para um banco gerenciado apenas se houver necessidade de escrita concorrente ou escalabilidade muito além do ambiente local.
 
 ### 1. Dificuldades Encontradas
 - Normalização dos diversos formatos de entrada e tratamento de valores faltantes.
