@@ -24,36 +24,36 @@ from common import LAND_DW_DIR, save_to_parquet
 input_path = LAND_DW_DIR / 'dividendos_ano.parquet'
 
 # --- Leitura dos Dados ---
-print(f"ℹ️ Lendo: {input_path.name}")
+print(f"Lendo: {input_path.name}")
 try:
     df = pd.read_parquet(input_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{input_path}'.")
-    print("➡️ Execute '03-dividendos_por_ano.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{input_path}'.")
+    print("Execute '03-dividendos_por_ano.py' antes de continuar.")
     exit()
 
 if df.empty:
-    print("⚠️ Arquivo de entrada vazio. Nenhum dado a processar.")
+    print("Arquivo de entrada vazio. Nenhum dado a processar.")
     exit()
 
 # --- Cálculos de Janelas de Tempo ---
 # Encontra o ano mais recente no conjunto de dados
 ultimo_ano = df['ano'].max()
-print(f"🗓️ Ano de referência: {ultimo_ano}")
+print(f"Ano de referência: {ultimo_ano}")
 
 # 1. Soma de dividendos nos últimos 5 anos
-print("🔄 Calculando dividendos (5 anos)...")
+print("Calculando dividendos (5 anos)...")
 div_5anos = df[df['ano'] >= ultimo_ano - 4]
 soma_5anos = div_5anos.groupby('ticker')['dividendo'].sum().reset_index()
 soma_5anos = soma_5anos.rename(columns={'dividendo': 'valor_5anos'})
 
 # 2. Soma de dividendos nos últimos 12 meses (equivalente ao último ano completo)
-print("🔄 Calculando dividendos (12 meses)...")
+print("Calculando dividendos (12 meses)...")
 div_12m = df[df['ano'] == ultimo_ano]
 soma_12m = div_12m[['ticker', 'dividendo']].rename(columns={'dividendo': 'valor_12m'})
 
 # --- Consolidação e Salvamento ---
-print("📊 Consolidando resultados...")
+print("Consolidando resultados...")
 # Junta os dois DataFrames (5 anos e 12 meses) usando o ticker como chave
 resumo = pd.merge(soma_5anos, soma_12m, on='ticker', how='outer').fillna(0)
 
@@ -63,4 +63,4 @@ resumo = resumo[['ticker', 'valor_5anos', 'valor_12m']]
 # Salva o DataFrame de resumo em um novo arquivo Parquet
 save_to_parquet(resumo, 'dividendos_ano_resumo')
 
-print(f"✅ Resumo de dividendos concluído.")
+print(f"Resumo de dividendos concluído.")

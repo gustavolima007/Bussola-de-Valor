@@ -303,7 +303,7 @@ def extrair_dados_brapi():
     """
     api_url = "https://brapi.dev/api/quote/list"
 
-    print("🔎 Iniciando extração de dados via Brapi...")
+    print("Iniciando extração de dados via Brapi...")
     start_time = time.time()
 
     try:
@@ -318,7 +318,7 @@ def extrair_dados_brapi():
         ativos = data.get('stocks', [])
 
         if not ativos:
-            print("❌ Nenhum ativo encontrado na resposta da API.")
+            print("Nenhum ativo encontrado na resposta da API.")
             return None
 
         df_ativos = pd.DataFrame(ativos)
@@ -337,7 +337,7 @@ def extrair_dados_brapi():
         df_nao_mapeados = df_ativos[df_ativos['setor_b3'] == 'Indefinido']
         if not df_nao_mapeados.empty:
             save_to_parquet(df_nao_mapeados[['ticker']], "tickers_nao_mapeados")
-            print(f"⚠️ {len(df_nao_mapeados)} tickers não mapeados foram salvos.")
+            print(f"{len(df_nao_mapeados)} tickers não mapeados foram salvos.")
         # --- FIM DO NOVO BLOCO ---
 
         df_ativos = df_ativos[df_ativos['setor_b3'] != 'Indefinido']
@@ -364,15 +364,15 @@ def extrair_dados_brapi():
         save_to_parquet(df_ativos, "acoes_e_fundos")
 
         elapsed_time = time.time() - start_time
-        print(f"✅ Processamento de Ações e Fundos concluído em {elapsed_time:.2f}s.")
+        print(f"Processamento de Ações e Fundos concluído em {elapsed_time:.2f}s.")
         
         return df_ativos
 
     except requests.exceptions.RequestException as e:
-        print(f"❌ Erro na requisição à API: {e}")
+        print(f"Erro na requisição à API: {e}")
         return None
     except Exception as e:
-        print(f"❌ Ocorreu um erro inesperado: {e}")
+        print(f"Ocorreu um erro inesperado: {e}")
         return None
 
 if __name__ == "__main__":

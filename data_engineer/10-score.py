@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-⭐ Script para Geração de Score de Qualidade de Ativos
+>> Script para Geração de Score de Qualidade de Ativos
 
 Este script consolida múltiplos indicadores financeiros para calcular um score
 quantitativo que avalia a "qualidade" de cada ativo.
@@ -19,13 +19,13 @@ FN_PRECO_TETO = LAND_DW_DIR / "preco_teto.parquet"
 # --- Funções de Carregamento e Preparação ---
 def load_and_prepare_data() -> pd.DataFrame:
     """Carrega, normaliza e junta os arquivos de dados necessários."""
-    print("ℹ️ Carregando e preparando dados...")
+    print("i Carregando e preparando dados...")
     try:
         indicadores = pd.read_parquet(FN_INDICADORES)
         dy = pd.read_parquet(FN_DY)
         preco_teto = pd.read_parquet(FN_PRECO_TETO)
     except FileNotFoundError as e:
-        print(f"❌ Erro: Arquivo não encontrado - {e}. Verifique as execuções anteriores.")
+        print(f"ERRO: Arquivo não encontrado - {e}. Verifique as execuções anteriores.")
         exit()
 
     # Junta os DataFrames
@@ -180,7 +180,7 @@ def main():
     df = load_and_prepare_data()
 
     scores_data = []
-    for _, row in tqdm(df.iterrows(), total=df.shape[0], desc="⭐ Calculando Scores"):
+    for _, row in tqdm(df.iterrows(), total=df.shape[0], desc="Calculando Scores"):
         setor = row.get('subsetor_b3', 'N/A')
         div_mc = row['divida_total'] / row['market_cap'] if pd.notna(row['market_cap']) and row['market_cap'] > 0 else None
 
@@ -221,7 +221,7 @@ def main():
     
     save_to_parquet(scores_df, "scores")
     
-    print(f"\n✅ Cálculo de scores concluído.")
+    print(f"\nCálculo de scores concluído.")
 
 if __name__ == '__main__':
     main()

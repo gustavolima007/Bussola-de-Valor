@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-📈 Script para Coleta de Preços Históricos de Ações
+>> Script para Coleta de Preços Históricos de Ações
 
 Este script busca os preços de fechamento ajustados de uma lista de tickers
 da B3, utilizando a biblioteca yfinance, e gera dois arquivos de saída em Parquet:
@@ -51,22 +51,22 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
         data_1_mes_atras = pd.to_datetime(hoje) - pd.DateOffset(months=1)
         data_6_meses_atras = pd.to_datetime(hoje) - pd.DateOffset(months=6)
 
-        print(f"ℹ️ Baixando dados para {len(tickers_sa)} ativos...")
+        print(f"Baixando dados para {len(tickers_sa)} ativos...")
         # Baixa os dados de uma vez para otimizar as requisições
         hist = yf.download(tickers_sa, start=f"{ano_inicio}-01-01", end=hoje, auto_adjust=True, progress=False)
 
         if hist.empty:
-            print("⚠️ Nenhum dado histórico retornado pelo yfinance.")
+            print("Nenhum dado histórico retornado pelo yfinance.")
             return None, None
 
         df_closes = hist['Close']
         lista_completa, lista_resumida = [], []
 
         # Itera sobre os tickers para processar os preços
-        for ticker, ticker_sa in tqdm(list(zip(lista_tickers, tickers_sa)), desc="📈 Processando preços por ticker"):
+        for ticker, ticker_sa in tqdm(list(zip(lista_tickers, tickers_sa)), desc="Processando preços por ticker"):
             col = df_closes.get(ticker_sa)
             if col is None or col.dropna().empty:
-                print(f"⚠️ Nenhum dado para {ticker}. Pulando.")
+                print(f"Nenhum dado para {ticker}. Pulando.")
                 continue
 
             # Preço de fechamento mais recente
@@ -96,7 +96,7 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
                 lista_completa.append({'ticker': ticker, 'ano': ano_alvo, 'fechamento': fechamento_ano})
 
         if not lista_completa:
-            print("❌ Nenhum resultado processado.")
+            print("Nenhum resultado processado.")
             return None, None
 
         # Cria os DataFrames a partir das listas
@@ -105,7 +105,7 @@ def gerar_tabela_comparativa_precos(lista_tickers: list, anos_anteriores: int = 
         return df_completo, df_resumido
 
     except Exception as e:
-        print(f"❌ Erro inesperado: {e}")
+        print(f"Erro inesperado: {e}")
         return None, None
 
 # --- Bloco de Execução Principal ---
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     ativos_alvo = get_tickers()
 
     if ativos_alvo:
-        print(f"ℹ️ Processando {len(ativos_alvo)} ativos. Amostra: {ativos_alvo[:5]}...")
+        print(f"i Processando {len(ativos_alvo)} ativos. Amostra: {ativos_alvo[:5]}...")
         anos_para_analise = 7
         tabela_completa, tabela_resumida = gerar_tabela_comparativa_precos(ativos_alvo, anos_anteriores=anos_para_analise)
 
@@ -130,12 +130,12 @@ if __name__ == "__main__":
             tabela_resumida['fechamento_6m_atras'] = tabela_resumida['fechamento_6m_atras'].round(2)
             save_to_parquet(tabela_resumida, "precos_acoes")
 
-            print(f"\n✅ Coleta de preços concluída:")
+            print(f"\nOK Coleta de preços concluída:")
             print(f"   - Ativos: {len(tabela_resumida)}")
             print(f"   - Período: {anos_para_analise} anos")
             print(f"   - Registros: {len(tabela_completa)}")
             print(f"   - Data: {date.today().strftime('%d/%m/%Y')}")
         else:
-            print("\n❌ Falha ao gerar tabelas de preços.")
+            print("\nERRO Falha ao gerar tabelas de preços.")
     else:
-        print("\n⚠️ Nenhum ativo para processar. Verifique a execução de '01-acoes_e_fundos.py'.")
+        print("\nAVISO Nenhum ativo para processar. Verifique a execução de '01-acoes_e_fundos.py'.")

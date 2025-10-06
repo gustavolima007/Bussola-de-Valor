@@ -33,14 +33,14 @@ tickers = get_tickers()
 # Define o intervalo de 7 anos a partir da data atual
 start_date = (pd.Timestamp.now() - pd.DateOffset(years=7)).strftime('%Y-%m-%d')
 end_date = pd.Timestamp.now().strftime('%Y-%m-%d')
-print(f"ℹ️ Buscando dividendos de {start_date} a {end_date}.")
+print(f"Buscando dividendos de {start_date} a {end_date}.")
 
 # Lista para armazenar os dataframes de dividendos de cada ativo
 todos_dividendos = []
 erros = []
 
 # Itera sobre a lista de tickers com uma barra de progresso
-for ticker in tqdm(tickers, desc="💰 Coletando dividendos (7 anos)"):
+for ticker in tqdm(tickers, desc="Coletando dividendos (7 anos)"):
     ticker_yf = f"{ticker}.SA"
     try:
         # Obtém a série temporal de dividendos diretamente para o período
@@ -53,7 +53,7 @@ for ticker in tqdm(tickers, desc="💰 Coletando dividendos (7 anos)"):
             if len(df_div.columns) == 2:
                 df_div.columns = ['data', 'valor']
             else:
-                print(f"⚠️ Formato inesperado de dividendos para {ticker_yf}: {df_div.columns}")
+                print(f"Formato inesperado de dividendos para {ticker_yf}: {df_div.columns}")
                 continue
 
             df_div['data'] = pd.to_datetime(df_div['data']).dt.tz_localize(None)
@@ -70,18 +70,18 @@ for ticker in tqdm(tickers, desc="💰 Coletando dividendos (7 anos)"):
 
 # --- Consolidação e Salvamento dos Dados ---
 if todos_dividendos:
-    print("\n📊 Consolidando dados...")
+    print("\nConsolidando dados...")
     # Concatena a lista de dataframes em um único dataframe final
     df_final = pd.concat(todos_dividendos, ignore_index=True)
     
     # Salva o resultado em um arquivo Parquet
     save_to_parquet(df_final, "todos_dividendos")
     
-    print(f"✅ {len(df_final)} registros de dividendos processados.")
+    print(f"{len(df_final)} registros de dividendos processados.")
 else:
-    print("⚠️ Nenhum dividendo encontrado para os tickers e período informados.")
+    print("Nenhum dividendo encontrado para os tickers e período informados.")
     
 if erros:
     print("\n--- Tickers com Erro ---")
     for ticker_err, erro_msg in erros:
-        print(f"❌ {ticker_err}: {erro_msg}")
+        print(f"{ticker_err}: {erro_msg}")

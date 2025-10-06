@@ -66,7 +66,7 @@ def main() -> None:
     rj_path = LAND_DW_DIR / "rj.parquet"
     acoes_path = LAND_DW_DIR / "acoes_e_fundos.parquet"
 
-    print("📊 Iniciando avaliação de setores...")
+    print("Iniciando avaliação de setores...")
     try:
         indicadores_df = pd.read_parquet(indicadores_path)
         dy_df = pd.read_parquet(dy_path)
@@ -74,7 +74,7 @@ def main() -> None:
         rj_df = pd.read_parquet(rj_path)
         acoes_df = pd.read_parquet(acoes_path)
     except FileNotFoundError as e:
-        print(f"❌ Erro: Arquivo não encontrado - {e}. Verifique as execuções anteriores. Abortando.")
+        print(f"Erro: Arquivo não encontrado - {e}. Verifique as execuções anteriores. Abortando.")
         return
 
     # --- Preparação e Merge ---
@@ -160,7 +160,7 @@ def main() -> None:
             resultado_final[col] = resultado_final[col].round(2)
 
     save_to_parquet(resultado_final, "avaliacao_setor")
-    print(f"✅ Avaliação de setores concluída.")
+    print(f"Avaliação de setores concluída.")
 
 
 if __name__ == "__main__":

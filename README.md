@@ -130,9 +130,8 @@ A pontuação das ações e setores é baseada em uma combinação de métricas 
 | **Capitalização**         | Market Cap                 | 35 pts           | 3.5%  |
 | **Liquidez**              | Volume Médio Diário        | 35 pts           | 3.5%  |
 | **Geração de Caixa**      | FCF Yield                  | 35 pts           | 3.5%  |
+| **Penalidades**           | Recuperação Judicial       | -100 pts         | N/A   |
 
-### Pontuação de Setores (Máximo 1000 pontos)
-A pontuação de um setor é calculada a partir da média dos scores de suas empresas, com bônus e penalidades aplicados com base em métricas agregadas como DY médio, ROE, volatilidade (Beta) e saúde geral das empresas do setor (ex: quantidade de empresas em recuperação judicial).
 
 ---
 

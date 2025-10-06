@@ -29,24 +29,24 @@ resumo_dividendos_path = LAND_DW_DIR / "dividendos_ano_resumo.parquet"
 precos_path = LAND_DW_DIR / "precos_acoes.parquet"
 
 # --- Leitura dos Dados ---
-print(f"ℹ️ Lendo dividendos: {resumo_dividendos_path.name}")
+print(f"Lendo dividendos: {resumo_dividendos_path.name}")
 try:
     resumo_df = pd.read_parquet(resumo_dividendos_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{resumo_dividendos_path}'.")
-    print("➡️ Execute '04-dividendos_ano_resumo.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{resumo_dividendos_path}'.")
+    print("Execute '04-dividendos_ano_resumo.py' antes de continuar.")
     exit()
 
-print(f"ℹ️ Lendo preços: {precos_path.name}")
+print(f"Lendo preços: {precos_path.name}")
 try:
     precos_df = pd.read_parquet(precos_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{precos_path}'.")
-    print("➡️ Execute '05-preco_acoes.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{precos_path}'.")
+    print("Execute '05-preco_acoes.py' antes de continuar.")
     exit()
 
 # --- Preparação dos Dados ---
-print("🔄 Preparando dados...")
+print("Preparando dados...")
 resumo_df['valor_5anos'] = pd.to_numeric(resumo_df['valor_5anos'], errors='coerce')
 precos_df['fechamento_atual'] = pd.to_numeric(precos_df['fechamento_atual'], errors='coerce')
 
@@ -54,7 +54,7 @@ precos_df['fechamento_atual'] = pd.to_numeric(precos_df['fechamento_atual'], err
 dados_consolidados = pd.merge(resumo_df, precos_df, on='ticker', how='left')
 
 # --- Cálculo do Preço Teto e da Margem de Segurança ---
-print("🎯 Calculando Preço Teto e margem de segurança...")
+print("Calculando Preço Teto e margem de segurança...")
 media_dividendos_5a = dados_consolidados['valor_5anos'] / 5
 dados_consolidados['preco_teto_5anos'] = (media_dividendos_5a / RENTABILIDADE_ALVO).round(2)
 
@@ -70,4 +70,4 @@ resultado_final = dados_consolidados[['ticker', 'preco_teto_5anos', 'diferenca_p
 
 save_to_parquet(resultado_final, 'preco_teto')
 
-print("✅ Cálculo de Preço Teto concluído.")
+print("Cálculo de Preço Teto concluído.")

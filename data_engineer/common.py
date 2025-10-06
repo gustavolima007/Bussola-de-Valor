@@ -25,7 +25,7 @@ def get_tickers() -> list:
     try:
         df = pd.read_parquet(parquet_path)
         if 'ticker' not in df.columns:
-            print(f"❌ Erro: A coluna 'ticker' não foi encontrada em {parquet_path}.")
+            print(f"Erro: A coluna 'ticker' não foi encontrada em {parquet_path}.")
             return []
         
         tickers = (
@@ -37,11 +37,11 @@ def get_tickers() -> list:
             .unique()
             .tolist()
         )
-        print(f"ℹ️ Encontrados {len(tickers)} tickers únicos em {parquet_path.name}.")
+        print(f"Encontrados {len(tickers)} tickers únicos em {parquet_path.name}.")
         return tickers
         
     except FileNotFoundError:
-        print(f"❌ Erro: O arquivo {parquet_path} não foi encontrado.")
+        print(f"Erro: O arquivo {parquet_path} não foi encontrado.")
         return []
     except Exception as e:
         print(f"Ocorreu um erro inesperado ao ler o arquivo de tickers: {e}")
@@ -62,9 +62,9 @@ def save_to_parquet(df: pd.DataFrame, file_name: str):
     
     try:
         df.to_parquet(output_path, index=False)
-        print(f"✅ Arquivo salvo: {output_path.name}")
+        print(f"Arquivo salvo: {output_path.name}")
     except Exception as e:
-        print(f"❌ Erro ao salvar {output_path.name}: {e}")
+        print(f"Erro ao salvar {output_path.name}: {e}")
 
 def tratar_dados_para_json(df):
     """

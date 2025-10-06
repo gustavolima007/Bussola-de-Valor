@@ -165,8 +165,8 @@ df_rj['duracao_rj'] = df_rj.apply(calcular_duracao, axis=1)
 # --- Salvamento ---
 save_to_parquet(df_rj, "rj")
 
-print(f"✅ Dados de recuperação judicial processados.")
+print(f"Dados de recuperação judicial processados.")
 
 # Imprime as 5 primeiras linhas para verificação
-print("\n🔍 Amostra dos dados:")
+print("\nAmostra dos dados:")
 print(df_rj[['nome', 'setor', 'data_entrada_rj', 'duracao_rj']].head().to_string())

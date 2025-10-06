@@ -371,16 +371,56 @@ def render_tab_analise_individual(df: pd.DataFrame):
     with c1:
         st.subheader("Composição do Score")
         with st.container():
-            details_html = ""
-            for detail in acao.get('Score Details', []):
-                details_html += f"<p style='margin-bottom: 0.5rem;'>• {detail}</p>"
+            positive_html = "<h5 style='color: #3dd56d; border-bottom: 1px solid #3dd56d; padding-bottom: 5px;'>✅ Pontos Adicionados</h5>"
+            negative_html = "<h5 style='color: #ff4b4b; border-bottom: 1px solid #ff4b4b; padding-bottom: 5px;'>❌ Penalidades</h5>"
+            
+            score_details = acao.get('Score Details', [])
+            
+            gains = 0
+            losses = 0
+
+            if not score_details:
+                positive_html += "<p style='font-style: italic; color: #888;'>Nenhum detalhe de pontuação disponível.</p>"
+            else:
+                for detail in score_details:
+                    try:
+                        # Extrai a parte da string que contém os pontos, ex: `**+45**`
+                        points_part = detail.split(':')[-1].strip()
+                        points_str = ''.join(filter(lambda char: char in '+-0123456789.', points_part))
+                        points = float(points_str)
+                        
+                        # Remove a parte dos pontos da string principal para formatação limpa
+                        clean_detail = detail.split(':')[0] + ':'
+
+                        if points > 0:
+                            positive_html += f"<p style='margin-bottom: 0.5rem; font-size: 0.9rem;'>{clean_detail} <strong style='color: #3dd56d;'>+{points:.0f}</strong></p>"
+                            gains += points
+                        elif points < 0:
+                            negative_html += f"<p style='margin-bottom: 0.5rem; font-size: 0.9rem;'>{clean_detail} <strong style='color: #ff4b4b;'>{points:.0f}</strong></p>"
+                            losses += points
+                        else:
+                            positive_html += f"<p style='margin-bottom: 0.5rem; font-size: 0.9rem;'>{clean_detail} <strong>{points:.0f}</strong></p>"
+                    except (IndexError, ValueError):
+                        positive_html += f"<p style='margin-bottom: 0.5rem; font-size: 0.9rem;'>• {detail}</p>"
+
+            # Adiciona o total de ganhos e perdas
+            positive_html += f"<p style='margin-top: 1rem; font-size: 1rem; color: #3dd56d; border-top: 1px solid #3dd56d; padding-top: 5px;'><strong>Total Ganhos: +{gains:.0f}</strong></p>"
+            negative_html += f"<p style='margin-top: 1rem; font-size: 1rem; color: #ff4b4b; border-top: 1px solid #ff4b4b; padding-top: 5px;'><strong>Total Penalidades: {losses:.0f}</strong></p>"
+
+            details_html = f'''
+            <div style='display: flex; justify-content: space-between; gap: 20px;'>
+                <div style='flex: 1;'>{positive_html}</div>
+                <div style='flex: 1;'>{negative_html}</div>
+            </div>
+            '''
 
             card_content = f'''
             <div class="analise-individual-container">
                 <div data-testid="stMetric" style="background-color: transparent; border: none; padding: 0; box-shadow: none;">
-                    <label data-testid="stMetricLabel" style="color: var(--text-light-color);">Score Total</label>
-                    <div data-testid="stMetricValue" style="font-size: 2rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 1000</div>
+                    <label data-testid="stMetricLabel" style="color: var(--text-light-color); font-size: 1.2rem;">Score Total</label>
+                    <div data-testid="stMetricValue" style="font-size: 2.5rem; font-weight: 700; color: var(--secondary-color);">{acao.get('Score Total', 0):.0f} / 1000</div>
                 </div>
+                <hr style="margin-top: 0.5rem; margin-bottom: 1rem;">
                 {details_html}
             </div>
             '''
@@ -612,6 +652,68 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
             st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
     elif not ticker_foco:
         st.info("Selecione um ticker na barra lateral para ver a frequência de dividendos por mês.")
+    else:
+        st.warning("Dados da tabela 'todos_dividendos' não encontrados.")
+
+    # Novo gráfico: Valor total pago por mês nos últimos anos
+    if not todos_dividendos.empty and ticker_foco:
+        serie_foco_valor = todos_dividendos[todos_dividendos['ticker_base'] == ticker_foco].copy()
+        if not serie_foco_valor.empty:
+            serie_foco_valor['data'] = pd.to_datetime(serie_foco_valor['data'], errors='coerce')
+            serie_foco_valor = serie_foco_valor.dropna(subset=['data'])
+
+            # Filtro de período
+            periodo_opcoes = ["1 ano", "5 anos"]
+            periodo_selecionado = st.selectbox(
+                "Período para análise de valor pago por mês:",
+                periodo_opcoes,
+                index=1,  # Default para 5 anos
+                key="periodo_dividendos_mes"
+            )
+
+            anos_atras = 1 if periodo_selecionado == "1 ano" else 5
+            data_limite = pd.Timestamp.now() - pd.DateOffset(years=anos_atras)
+            serie_filtrada = serie_foco_valor[serie_foco_valor['data'] >= data_limite].copy()
+
+            if not serie_filtrada.empty:
+                # Agrupa por mês (ignorando o ano) e soma os valores
+                serie_filtrada['Mes'] = serie_filtrada['data'].dt.month
+                valor_por_mes = serie_filtrada.groupby('Mes')['valor'].sum().reset_index()
+
+                # Mapeia números dos meses para nomes abreviados
+                nomes_meses = {
+                    1: 'Jan', 2: 'Fev', 3: 'Mar', 4: 'Abr', 5: 'Mai', 6: 'Jun',
+                    7: 'Jul', 8: 'Ago', 9: 'Set', 10: 'Out', 11: 'Nov', 12: 'Dez'
+                }
+                valor_por_mes['Nome_Mes'] = valor_por_mes['Mes'].map(nomes_meses)
+
+                # Ordena os meses na ordem correta
+                valor_por_mes = valor_por_mes.sort_values('Mes')
+
+                # Cria gráfico de barras
+                fig_valor_mes = px.bar(
+                    valor_por_mes,
+                    x='Nome_Mes',
+                    y='valor',
+                    title=f"Valor Total de Dividendos por Mês - {ticker_foco} (Últimos {anos_atras} anos)",
+                    labels={'Nome_Mes': 'Mês', 'valor': 'Valor Total (R$)'},
+                    text='valor',
+                    color_discrete_sequence=['#36b37e']  # Verde para combinar com o tema
+                )
+                fig_valor_mes.update_traces(texttemplate='R$ %{text:.2f}', textposition='outside')
+                fig_valor_mes.update_layout(
+                    margin=dict(l=20, r=20, t=50, b=20),
+                    xaxis_title="Mês",
+                    yaxis_title="Valor Total Pago (R$)",
+                    showlegend=False
+                )
+                st.plotly_chart(fig_valor_mes, use_container_width=True)
+            else:
+                st.info(f"Não há dados de dividendos para o ticker {ticker_foco} nos últimos {anos_atras} anos.")
+        else:
+            st.info(f"Não há dados de dividendos para o ticker {ticker_foco}.")
+    elif not ticker_foco:
+        st.info("Selecione um ticker na barra lateral para ver o valor de dividendos por mês.")
     else:
         st.warning("Dados da tabela 'todos_dividendos' não encontrados.")
 

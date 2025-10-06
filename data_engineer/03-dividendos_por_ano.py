@@ -24,17 +24,17 @@ from common import LAND_DW_DIR, save_to_parquet
 input_path = LAND_DW_DIR / 'todos_dividendos.parquet'
 
 # --- Leitura e Processamento dos Dados ---
-print(f"ℹ️ Lendo: {input_path.name}")
+print(f"Lendo: {input_path.name}")
 try:
     df = pd.read_parquet(input_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{input_path}'.")
-    print("➡️ Execute '02-dividendos.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{input_path}'.")
+    print("Execute '02-dividendos.py' antes de continuar.")
     exit()
 
 
 # Converte a coluna 'data' para o formato datetime e extrai o ano
-print("🔄 Agregando dividendos por ano...")
+print("Agregando dividendos por ano...")
 df['data'] = pd.to_datetime(df['data'])
 df['ano'] = df['data'].dt.year
 
@@ -46,4 +46,4 @@ soma_por_ano_ticker = df.groupby(['ano', 'ticker'])['dividendo'].sum().reset_ind
 
 # --- Salvamento do Resultado ---
 save_to_parquet(soma_por_ano_ticker, 'dividendos_ano')
-print(f"✅ Agregação anual concluída.")
+print(f"Agregação anual concluída.")

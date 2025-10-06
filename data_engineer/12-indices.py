@@ -65,30 +65,30 @@ def get_annual_closing(index_code, index_name):
 def get_and_save_indices():
     try:
         all_data = pd.DataFrame()
-        print("📈 Coletando dados dos índices da B3...\n")
+        print("Coletando dados dos índices da B3...\n")
         for code, name in indices.items():
             print(f"  - {name} ({code})...")
             df = get_annual_closing(code, name)
             if df.empty:
-                print(f"    ⚠️ Dados não encontrados para {name}.")
+                print(f"    Dados não encontrados para {name}.")
             else:
                 anos = df['year'].nunique()
                 if anos < 5:
-                    print(f"    ⚠️ Apenas {anos} anos disponíveis para {name}.")
+                    print(f"    Apenas {anos} anos disponíveis para {name}.")
                 else:
-                    print(f"    ✅ Dados de {name} coletados.")
+                    print(f"    Dados de {name} coletados.")
                 all_data = pd.concat([all_data, df], ignore_index=True)
                 
         if not all_data.empty:
             all_data.columns = [col.lower() for col in all_data.columns]
             all_data['close'] = all_data['close'].round(2)
             save_to_parquet(all_data, "indices")
-            print(f"\n✅ Coleta de dados de índices concluída.")
+            print(f"\nColeta de dados de índices concluída.")
         else:
-            print("\n❌ Nenhum dado retornado para os índices.")
+            print("\nNenhum dado retornado para os índices.")
    
     except Exception as e:
-        print(f"\n❌ Erro inesperado: {e}")
+        print(f"\nErro inesperado: {e}")
 
 if __name__ == "__main__":
     get_and_save_indices()

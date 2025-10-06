@@ -188,6 +188,11 @@ def fetch_stock_data(ticker_base: str, metadata: dict, vol_mean: float, p_l_exte
     tecnicos = compute_indicadores_ta(hist_1y)
     current_price = info.get("currentPrice")
     market_cap = info.get("marketCap", metadata.get("market_cap", 0))
+
+    # Lógica para BRBI11
+    if ticker_base == "BRBI11" and (market_cap is None or market_cap == 0):
+        market_cap = 1_880_000_000
+
     roe = info.get("returnOnEquity")
     payout_ratio = info.get("payoutRatio")
     total_debt = info.get("totalDebt")
@@ -246,31 +251,31 @@ def main():
     Função principal para orquestrar a coleta de indicadores e dados de ciclo de mercado.
     """
     print("="*80)
-    print("🔩 Coleta de Indicadores Financeiros")
+    print("Coleta de Indicadores Financeiros")
     print("="*80)
 
     if not CAMINHO_ARQUIVO_ENTRADA.exists():
-        print(f"❌ Erro: Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
-        print("➡️ Execute '01-acoes_e_fundos.py' antes de continuar.")
+        print(f"Erro: Arquivo de entrada não encontrado: {CAMINHO_ARQUIVO_ENTRADA}")
+        print("Execute '01-acoes_e_fundos.py' antes de continuar.")
         return
 
-    print(f"ℹ️ Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA.name}")
+    print(f"Lendo tickers de: {CAMINHO_ARQUIVO_ENTRADA.name}")
     df_input = pd.read_parquet(CAMINHO_ARQUIVO_ENTRADA)
     df_input["ticker_norm"] = df_input["ticker"].str.strip().str.upper()
     metadata_map = df_input.set_index("ticker_norm").to_dict(orient="index")
     total_tickers = len(metadata_map)
-    print(f"✅ {total_tickers} tickers encontrados.")
+    print(f"{total_tickers} tickers encontrados.")
 
-    print("\nℹ️ Coletando P/L para todos os tickers...")
+    print("\nColetando P/L para todos os tickers...")
     pl_map = {}
     with tqdm(total=total_tickers, desc="P/L", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
         for ticker_base in metadata_map.keys():
             pl_map[ticker_base] = get_pl_ratio(ticker_base)
             pbar.update(1)
             time.sleep(0.1)
-    print("✅ P/L coletado.")
+    print("P/L coletado.")
 
-    print("\nℹ️ Calculando média de volume...")
+    print("\nCalculando média de volume...")
     all_volumes = []
     for ticker_base in metadata_map.keys():
         try:
@@ -280,9 +285,9 @@ def main():
         except Exception:
             continue
     vol_mean = pd.Series(all_volumes).mean() if all_volumes else 0
-    print("✅ Média de volume calculada.")
+    print("Média de volume calculada.")
 
-    print("\nℹ️ Coletando indicadores fundamentalistas e técnicos...")
+    print("\nColetando indicadores fundamentalistas e técnicos...")
     resultados = []
     erros = []
     with tqdm(total=total_tickers, desc="Indicadores", bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]") as pbar:
@@ -301,10 +306,10 @@ def main():
                 time.sleep(0.2)
 
     print("\n" + "="*80)
-    print("📊 Resumo da Execução")
+    print("Resumo da Execução")
 
     if not resultados:
-        print("❌ Erro: Nenhum dado foi coletado.")
+        print("Erro: Nenhum dado foi coletado.")
         if erros:
             print(f"    - Falhas: {len(erros)} tickers.")
         print("="*80)
@@ -314,20 +319,20 @@ def main():
     df_output.columns = [c.strip().lower().replace(" ", "_") for c in df_output.columns]
     save_to_parquet(df_output, "indicadores")
     
-    print(f"✅ {len(df_output)} tickers processados.")
+    print(f"{len(df_output)} tickers processados.")
 
     if 'ticker' in df_output.columns and 'status_ciclo' in df_output.columns:
         df_ciclo = df_output[['ticker', 'status_ciclo']].copy()
         save_to_parquet(df_ciclo, "ciclo_mercado")
 
     if erros:
-        print(f"\n⚠️ {len(erros)} tickers com falha:")
+        print(f"\n{len(erros)} tickers com falha:")
         for ticker, erro in erros[:5]:
              print(f"    - {ticker}: {erro}")
         if len(erros) > 5:
             print("    - ... (e outros)")
 
-    print("\n✅ Processo concluído.")
+    print("\nProcesso concluído.")
     print("="*80)
 
 if __name__ == "__main__":

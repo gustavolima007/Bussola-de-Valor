@@ -27,24 +27,24 @@ precos_path = LAND_DW_DIR / "precos_acoes.parquet"
 dividendos_path = LAND_DW_DIR / "dividendos_ano_resumo.parquet"
 
 # --- Leitura dos Dados ---
-print(f"ℹ️ Lendo preços: {precos_path.name}")
+print(f"Lendo preços: {precos_path.name}")
 try:
     precos = pd.read_parquet(precos_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{precos_path}'.")
-    print("➡️ Execute '05-preco_acoes.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{precos_path}'.")
+    print("Execute '05-preco_acoes.py' antes de continuar.")
     exit()
 
-print(f"ℹ️ Lendo dividendos: {dividendos_path.name}")
+print(f"Lendo dividendos: {dividendos_path.name}")
 try:
     div = pd.read_parquet(dividendos_path)
 except FileNotFoundError:
-    print(f"❌ Erro: Arquivo não encontrado: '{dividendos_path}'.")
-    print("➡️ Execute '04-dividendos_ano_resumo.py' antes de continuar.")
+    print(f"Erro: Arquivo não encontrado: '{dividendos_path}'.")
+    print("Execute '04-dividendos_ano_resumo.py' antes de continuar.")
     exit()
 
 # --- Preparação e Limpeza dos Dados ---
-print("🔄 Normalizando dados...")
+print("Normalizando dados...")
 
 # Converte as colunas para tipo numérico, tratando erros
 precos["fechamento_atual"] = pd.to_numeric(precos["fechamento_atual"], errors="coerce")
@@ -56,7 +56,7 @@ div["valor_12m"] = pd.to_numeric(div["valor_12m"], errors="coerce")
 df = pd.merge(precos, div, on="ticker", how="left")
 
 # --- Cálculo do Dividend Yield ---
-print("💸 Calculando Dividend Yield (5a e 12m)...")
+print("Calculando Dividend Yield (5a e 12m)...")
 # Calcula o DY dos últimos 5 anos (média anual)
 df["DY5anos"] = (((df["valor_5anos"] / 5) / df["fechamento_atual"]) * 100).where(df["fechamento_atual"] > 0)
 
@@ -74,4 +74,4 @@ df_final = df[["ticker", "DY5anos", "DY12m"]]
 # Salva o resultado em um arquivo Parquet
 save_to_parquet(df_final, "dividend_yield")
 
-print(f"✅ Cálculo de Dividend Yield concluído.")
+print(f"Cálculo de Dividend Yield concluído.")

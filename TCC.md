@@ -117,21 +117,23 @@ O fluxo de dados segue um padrão ELT (Extract, Load, Transform) moderno e robus
 
 ### 2. Lógica de Scoring
 
-O sistema de pontuação foi desenhado para refletir uma filosofia de investimento balanceada, traduzindo critérios fundamentalistas em um modelo quantitativo. A pontuação máxima é de 1000 pontos, distribuídos em categorias que avaliam diferentes dimensões da saúde financeira e do potencial de uma empresa.
+O sistema de pontuação foi desenhado para refletir uma filosofia de investimento balanceada, traduzindo critérios fundamentalistas em um modelo quantitativo. A pontuação máxima teórica é de **1000 pontos**, distribuídos em categorias que avaliam diferentes dimensões da saúde financeira e do potencial de uma empresa. A soma dos pontos máximos de cada categoria totaliza exatamente 1000, conforme detalhado abaixo:
 
-*   **Dividendos (até 200 pts):** Critério com maior peso, focado na consistência da distribuição de proventos. A pontuação é uma média ponderada, onde o Dividend Yield (DY) médio dos últimos 5 anos tem maior relevância que o DY dos últimos 12 meses.
+*   **Dividendos (200 pts):** Critério com maior peso, focado na consistência da distribuição de proventos. A pontuação é uma média ponderada, onde o Dividend Yield (DY) médio dos últimos 5 anos tem maior relevância que o DY dos últimos 12 meses.
 
-*   **Valuation (até 180 pts):** Avalia se o preço atual da ação está descontado em relação aos seus fundamentos. A pontuação é baseada nos indicadores Preço/Lucro (P/L) e Preço/Valor Patrimonial (P/VP), favorecendo empresas com múltiplos baixos.
+*   **Valuation (180 pts):** Avalia se o preço atual da ação está descontado em relação aos seus fundamentos. A pontuação é baseada nos indicadores Preço/Lucro (P/L) e Preço/Valor Patrimonial (P/VP), favorecendo empresas com múltiplos baixos.
 
-*   **Saúde Financeira (até 130 pts):** Mede a solidez financeira da companhia. Utiliza indicadores como Dívida Líquida/EBITDA e Liquidez Corrente para premiar empresas com baixo endividamento e boa capacidade de honrar suas obrigações de curto prazo.
+*   **Critérios de Mercado (180 pts):** Engloba fatores de liquidez, volatilidade e percepção de mercado. A pontuação considera a Liquidez Média Diária, o Beta (volatilidade em relação ao mercado) e o Free Cash Flow Yield (FCF Yield), premiando ativos líquidos, menos voláteis e com forte geração de caixa.
 
-*   **Rentabilidade (até 110 pts):** Analisa a eficiência da gestão em gerar valor para o acionista. A pontuação é derivada do Retorno sobre o Patrimônio Líquido (ROE) e da política de Payout, com regras de pontuação ajustadas para as particularidades do setor financeiro.
+*   **Saúde Financeira (130 pts):** Mede a solidez financeira da companhia. Utiliza indicadores como Dívida Líquida/EBITDA e Liquidez Corrente para premiar empresas com baixo endividamento e boa capacidade de honrar suas obrigações de curto prazo.
 
-*   **Crescimento (até 100 pts):** Avalia a capacidade da empresa de expandir suas receitas e lucros ao longo do tempo, um indicador de sua vitalidade e potencial de valorização futura.
+*   **Rentabilidade (110 pts):** Analisa a eficiência da gestão em gerar valor para o acionista. A pontuação é derivada do Retorno sobre o Patrimônio Líquido (ROE) e da política de Payout, com regras de pontuação ajustadas para as particularidades do setor financeiro.
 
-*   **Critérios de Graham (até 100 pts):** Incorpora a filosofia de Benjamin Graham, atribuindo pontos para empresas que atendem a critérios de estabilidade, tamanho, saúde financeira e histórico de dividendos, buscando uma "margem de segurança".
+*   **Crescimento (100 pts):** Avalia a capacidade da empresa de expandir suas receitas e lucros ao longo do tempo, um indicador de sua vitalidade e potencial de valorização futura.
 
-*   **Critérios de Mercado (até 180 pts):** Engloba fatores de liquidez, volatilidade e percepção de mercado. A pontuação considera a Liquidez Média Diária, o Beta (volatilidade em relação ao mercado) e o Free Cash Flow Yield (FCF Yield), premiando ativos líquidos, menos voláteis e com forte geração de caixa.
+*   **Critérios de Graham (100 pts):** Incorpora a filosofia de Benjamin Graham, atribuindo pontos para empresas que atendem a critérios de estabilidade, tamanho, saúde financeira e histórico de dividendos, buscando uma "margem de segurança".
+
+A distribuição (200 + 180 + 180 + 130 + 110 + 100 + 100) soma 1000 pontos, fornecendo uma base clara e equilibrada para a avaliação dos ativos.
 
 #### Penalidades
 
