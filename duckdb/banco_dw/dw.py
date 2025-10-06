@@ -23,14 +23,14 @@ def get_db_path() -> Path:
     raise FileNotFoundError("Arquivo .duckdb não encontrado na pasta do script.")
 
 
-def list_tables(db_path: Path) -> List[str]:
+def list_tables(db_path: Path) -> List[str] | None:
     """Lista tabelas do banco DuckDB.
 
     Args:
         db_path (Path): Caminho do arquivo DuckDB.
 
     Returns:
-        List[str]: Lista com nomes das tabelas disponíveis.
+        List[str] | None: Lista com nomes das tabelas disponíveis, ou None se erro.
     """
     try:
         with duckdb.connect(str(db_path), read_only=True) as conn:
@@ -38,7 +38,7 @@ def list_tables(db_path: Path) -> List[str]:
         return [row[0] for row in result]
     except Exception as exc:
         st.error(f"Erro ao listar tabelas: {exc}")
-        return []
+        return None
 
 
 @st.cache_data(ttl=60)
@@ -126,6 +126,8 @@ def main() -> None:
         return
 
     tables = list_tables(db_path)
+    if tables is None:
+        return
     if not tables:
         st.warning("Nenhuma tabela encontrada no banco.")
         return
