@@ -37,7 +37,7 @@ A motivação para o desenvolvimento da "Bússola de Valor" é dupla, combinando
 
 Este trabalho foi realizado utilizando os seguintes recursos tecnológicos e bibliotecas de software:
 
-- **Linguagem:** Python 3.11+
+- **Linguagem:** Python 3.13+
 - **Bibliotecas principais:** pandas, numpy, plotly, streamlit, yfinance, joblib, python-dotenv, ta, tqdm, deep_translator.
 - **Infraestrutura de dados:** Arquitetura de dados em camadas com arquivos Parquet para as zonas Land (`duckdb/land_dw/`) e Trusted (`duckdb/trusted_dw/`), e um Data Warehouse local (`duckdb/banco_dw/dw.duckdb`) em DuckDB.
 - **Ferramentas de desenvolvimento:** Git/GitHub para versionamento de código e automação.
@@ -115,18 +115,35 @@ O fluxo de dados segue um padrão ELT (Extract, Load, Transform) moderno e robus
 3.  **Materialização do DW:** Os dados da camada `trusted_dw` são carregados e consolidados no Data Warehouse analítico, o arquivo `dw.duckdb`.
 4.  **Visualização:** O usuário interage com a aplicação Streamlit. O `app/data_loader.py` submete consultas SQL ao `dw.duckdb` para buscar os dados necessários, que são então exibidos nos gráficos e tabelas da interface. Este processo é automatizado e executado diariamente através de um workflow do GitHub Actions.
 
-### 2. Lógica de Scoring (resumo)
+### 2. Lógica de Scoring
 
-O sistema de pontuação foi desenhado para refletir uma filosofia de investimento balanceada, ponderando diferentes aspectos da saúde e do potencial de uma empresa:
+O sistema de pontuação foi desenhado para refletir uma filosofia de investimento balanceada, traduzindo critérios fundamentalistas em um modelo quantitativo. A pontuação máxima é de 1000 pontos, distribuídos em categorias que avaliam diferentes dimensões da saúde financeira e do potencial de uma empresa.
 
-- **Dividend Yield (DY):** Possui um peso elevado (até 200 pts), com o DY médio dos últimos 5 anos tendo um impacto maior que o DY de 12 meses, valorizando a consistência.
-- **Valuation (P/L e P/VP):** Com até 180 pts, favorece empresas com baixo P/VP e P/L moderado, buscando ativos subavaliados pelo mercado.
-- **Rentabilidade/Gestão (ROE e Payout):** Contribui com até 110 pts, com regras de pontuação diferenciadas para o setor financeiro, reconhecendo suas particularidades.
-- **Saúde Financeira (Dívida/MarketCap, Dívida/EBITDA, Current Ratio):** Com até 130 pts, penaliza empresas excessivamente alavancadas e premia aquelas com sólida posição de caixa.
-- **Crescimento, Sentimento e Graham:** Componentes adicionais que ajustam a pontuação final, incorporando o potencial de valorização e a margem de segurança.
-- **Outros:** Fatores como Beta (volatilidade), liquidez média diária, FCF Yield e capitalização de mercado adicionam ajustes finos à pontuação.
+*   **Dividendos (até 200 pts):** Critério com maior peso, focado na consistência da distribuição de proventos. A pontuação é uma média ponderada, onde o Dividend Yield (DY) médio dos últimos 5 anos tem maior relevância que o DY dos últimos 12 meses.
 
-A soma de todas as pontuações possíveis, incluindo bônus e excluindo penalidades, é consolidada em um score final com pontuação máxima de 1000 pontos, facilitando a comparação direta entre os ativos.
+*   **Valuation (até 180 pts):** Avalia se o preço atual da ação está descontado em relação aos seus fundamentos. A pontuação é baseada nos indicadores Preço/Lucro (P/L) e Preço/Valor Patrimonial (P/VP), favorecendo empresas com múltiplos baixos.
+
+*   **Saúde Financeira (até 130 pts):** Mede a solidez financeira da companhia. Utiliza indicadores como Dívida Líquida/EBITDA e Liquidez Corrente para premiar empresas com baixo endividamento e boa capacidade de honrar suas obrigações de curto prazo.
+
+*   **Rentabilidade (até 110 pts):** Analisa a eficiência da gestão em gerar valor para o acionista. A pontuação é derivada do Retorno sobre o Patrimônio Líquido (ROE) e da política de Payout, com regras de pontuação ajustadas para as particularidades do setor financeiro.
+
+*   **Crescimento (até 100 pts):** Avalia a capacidade da empresa de expandir suas receitas e lucros ao longo do tempo, um indicador de sua vitalidade e potencial de valorização futura.
+
+*   **Critérios de Graham (até 100 pts):** Incorpora a filosofia de Benjamin Graham, atribuindo pontos para empresas que atendem a critérios de estabilidade, tamanho, saúde financeira e histórico de dividendos, buscando uma "margem de segurança".
+
+*   **Critérios de Mercado (até 180 pts):** Engloba fatores de liquidez, volatilidade e percepção de mercado. A pontuação considera a Liquidez Média Diária, o Beta (volatilidade em relação ao mercado) e o Free Cash Flow Yield (FCF Yield), premiando ativos líquidos, menos voláteis e com forte geração de caixa.
+
+#### Penalidades
+
+Para garantir que o score reflita riscos críticos, o modelo aplica penalidades que podem reduzir significativamente a pontuação final de um ativo:
+
+*   **Recuperação Judicial (Duplo Impacto):** Este critério aplica uma penalidade em dois níveis, refletindo o alto risco associado a empresas em dificuldades financeiras.
+    *   **Nível do Ativo (Penalidade Máxima: Score Total):** Empresas que se encontram em processo de recuperação judicial têm seu score individual **automaticamente zerado**. Esta é a penalidade mais severa, pois indica um risco existencial que invalida a maior parte das métricas fundamentalistas convencionais.
+    *   **Nível do Setor:** O score agregado de um setor também é penalizado com base na **quantidade de empresas em recuperação judicial** que ele contém. Um setor com um histórico de RJs é percebido como mais arriscado, e essa penalidade ajusta a avaliação coletiva para baixo, alertando o investidor sobre uma possível fragilidade estrutural ou cíclica daquele segmento.
+
+*   **Prejuízo Recorrente (Penalidade Máxima: -150 pts):** Empresas que apresentam prejuízo líquido nos últimos 12 meses ou na média dos últimos 5 anos sofrem deduções na pontuação. A penalidade é progressiva, podendo chegar a 150 pontos, sinalizando ineficiência operacional ou desafios setoriais.
+
+*   **Endividamento Elevado (Penalidade Máxima: -100 pts):** Níveis de alavancagem considerados excessivos, medidos pela relação Dívida Líquida/Patrimônio Líquido, resultam em penalidades. A dedução pode chegar a 100 pontos, refletindo um maior risco financeiro e menor flexibilidade da companhia.
 
 ### 3. Boas práticas implementadas
 
@@ -172,7 +189,7 @@ O desenvolvimento de um projeto de engenharia de dados com múltiplas integraç�
 - **Tratamento de Valores Faltantes:** A ausência de dados em algumas fontes para determinados tickers demandou a implementação de lógicas de tratamento para evitar erros e garantir que a pontuação não fosse indevidamente prejudicada.
 - **Definição do Modelo de Scoring:** A definição consensual dos limites e pesos de cada critério do score foi um processo iterativo, que exigiu uma combinação de pesquisa em literatura financeira e testes empíricos para alcançar um modelo balanceado e representativo.
 
-### 10. Aplicabilidade do Trabalho
+### 2. Aplicabilidade do Trabalho
 
 Além de sua contribuição acadêmica, o projeto "Bússola de Valor" demonstra um notável potencial de aplicabilidade prática para diferentes perfis no mercado financeiro:
 
