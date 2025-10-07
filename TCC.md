@@ -189,10 +189,15 @@ A execução do pipeline de dados resulta em um conjunto de artefatos coesos e p
 
 ### 2. Validação e Verificação
 
-A confiabilidade dos dados e dos resultados apresentados é assegurada por meio de uma abordagem estruturada de validação:
+A garantia da acurácia, consistência e confiabilidade dos dados é um pilar fundamental da "Bússola de Valor". Para assegurar a integridade do sistema, desde a coleta inicial até a visualização final, foi implementado um processo de validação multifacetado que abrange a qualidade dos dados, a lógica de negócio e a robustez do pipeline.
 
-- **Validação por Pipeline:** A consistência dos dados é garantida pela execução sequencial e ordenada dos scripts no pipeline de ETL. Cada etapa consome os artefatos da camada anterior, assegurando que apenas dados processados e validados cheguem ao Data Warehouse final.
-- **Integridade na Transformação:** A coerência de tipos de dados e a integridade das informações são tratadas durante a etapa de transformação (camada Trusted), antes da carga no DW. Esta abordagem simplifica a camada de aplicação, que pode consumir os dados com a confiança de que já estão limpos e no formato correto.
+- **Validação da Integridade dos Dados:** A primeira linha de defesa é a validação no nível dos dados. Durante a fase de transformação (camada *Trusted*), são aplicadas rotinas de limpeza e normalização. Isso inclui a coerção de tipos de dados para garantir consistência numérica e textual, o tratamento de valores ausentes (`NaN`) para evitar erros de cálculo, e a padronização de tickers entre as diferentes fontes de API (`yfinance`, `brapi`), assegurando que os dados se refiram inequivocamente ao mesmo ativo.
+
+- **Verificação da Lógica de Negócio e Cálculos:** A correção das métricas financeiras e do modelo de scoring foi verificada através de um processo de auditoria manual e benchmarking. Para um conjunto de ativos de alta liquidez e ampla cobertura de mercado (ex: PETR4, VALE3, ITUB4), os indicadores calculados pelo pipeline (como P/L, Dividend Yield, ROE) foram comparados com os valores reportados por plataformas financeiras de referência. Adicionalmente, a pontuação de score para esses mesmos ativos foi recalculada manualmente para certificar que a lógica de pontuação e as penalidades estavam sendo aplicadas conforme especificado no modelo.
+
+- **Validação da Arquitetura e do Pipeline:** A robustez do fluxo de dados é garantida pela arquitetura do pipeline. A execução sequencial e numerada dos scripts (`data_engineer/`) assegura que as dependências sejam respeitadas, prevenindo a execução de uma etapa antes que seus pré-requisitos sejam concluídos. A natureza idempotente da carga de dados, que utiliza a abordagem `CREATE OR REPLACE TABLE` para a maioria das tabelas, garante que re-execuções do pipeline resultem em um estado final consistente, eliminando riscos de duplicação de dados ou corrupção.
+
+- **Verificação End-to-End:** Para validar a jornada completa do dado, foi conduzida uma auditoria de rastreabilidade. O processo de ETL inicia-se com o `loader` que deposita os dados brutos na camada de pouso (`land_dw`). Em seguida, os dados são tratados e enriquecidos, sendo persistidos na camada `trusted_dw`. Finalmente, são consolidados no Data Warehouse `dw.duckdb` para consumo pela aplicação. A verificação consistiu em selecionar um indicador específico no dashboard (e.g., o P/L de um ativo) e rastreá-lo no sentido inverso: do componente visual no Streamlit, passando pela consulta SQL no `data_loader.py`, pelo dado no `dw.duckdb`, pelo arquivo Parquet correspondente na `trusted_dw`, até chegar ao dado bruto original na `land_dw`. Essa auditoria de ponta a ponta confirma que cada etapa do pipeline (extração, tratamento e carga) opera como esperado, garantindo que a informação exibida ao usuário final é um reflexo fiel e acurado do dado de origem após todas as transformações aplicadas.
 
 ---
 
@@ -210,11 +215,9 @@ O desenvolvimento de um projeto de engenharia de dados com múltiplas integraç�
 
 ### 2. Aplicabilidade do Trabalho
 
-Além de sua contribuição acadêmica, o projeto "Bússola de Valor" demonstra um notável potencial de aplicabilidade prática para diferentes perfis no mercado financeiro:
+O projeto "Bússola de Valor" possui uma dupla aplicabilidade. Primeiramente, representa uma significativa contribuição acadêmica ao documentar de ponta a ponta a construção de uma solução de engenharia de dados aplicada ao mercado financeiro, desde a coleta e estruturação de dados até a criação de um modelo de scoring e sua disponibilização em um dashboard interativo. O trabalho serve como um estudo de caso prático sobre a aplicação de tecnologias como DuckDB e Streamlit para resolver problemas complexos de análise de investimentos.
 
-- **Investidor Individual:** Oferece uma ferramenta poderosa e de baixo custo para a composição e o monitoramento de carteiras de dividendos.
-- **Pesquisa Acadêmica:** Serve como uma base robusta para projetos que estudem a eficácia de estratégias de investimento fundamentadas em regras (rule-based).
-- **Gestores e Assessorias:** Pode ser adaptada como uma ferramenta de triagem inicial (screening) de ativos, otimizando o tempo de analistas e permitindo a customização do ranking de acordo com estratégias específicas.
+Em segundo lugar, a ferramenta foi concebida para ser uma solução robusta e acessível a todos os investidores, e não um produto comercial. Seu propósito é democratizar o acesso à análise fundamentalista de qualidade, oferecendo uma plataforma que automatiza a coleta de dados e a aplicação de critérios de avaliação consagrados. Dessa forma, a "Bússola de Valor" se posiciona como um recurso educacional e de apoio à decisão, capacitando o investidor a aprimorar suas próprias análises e a construir portfólios de forma mais informada e sistemática.
 
 ---
 
@@ -226,15 +229,19 @@ A fundamentação teórica e técnica do projeto foi embasada em um conjunto de 
 
 A base conceitual para a criação do modelo de scoring foi inspirada em obras clássicas de grandes investidores:
 
+- Barsi, L. - *O Rei dos Dividendos: A saga do filho de imigrantes pobres que se tornou o maior investidor pessoa física da bolsa de valores brasileira*.
 - Bazin, D. (Décio) — *Faça fortuna com ações antes que seja tarde*.
 - Fisher, P. — *Ações Comuns, Lucros Extraordinários*.
 - Graham, B. — *O Investidor Inteligente*.
 - Kiyosaki, R. T. — *Pai Rico, Pai Pobre*.
+- Knaflic, C. N. - *Storytelling com Dados: um Guia Sobre Visualização de Dados Para Profissionais de Negócios*.
+- Lueders, A. & Pora, I. - *Investindo em Small Caps: um Roteiro Completo Para se Tornar um Investidor de Sucesso*.
 
 #### Livros de Banco de Dados e Engenharia:
 
 Para o aprofundamento em conceitos de banco de dados e engenharia, foram consultadas as seguintes obras de referência:
 
+- Nield, T. - *Introdução à Linguagem SQL*.
 - Loney, K. — *Oracle Database 12c: The Complete Reference*.
 - Feuerstein, S. — *Oracle PL/SQL Programming*.
 - Kyte, T. — *Expert Oracle Database Architecture*.
@@ -248,3 +255,5 @@ A implementação técnica foi suportada pela documentação oficial das princip
 - Documentação do Plotly: https://plotly.com/python/
 - Documentação do Streamlit: https://docs.streamlit.io
 - Documentação do yfinance: Disponível no repositório PyPI e GitHub do projeto.
+- Napkin.ai: https://www.napkin.ai/
+- Visual Studio Code: https://code.visualstudio.com/docs
