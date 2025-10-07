@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from scoring import calculate_score_and_details, build_score_details_from_row, calculate_scores_in_parallel
+from datetime import datetime
 import duckdb
 
 # --- Configuração do Banco de Dados ---
@@ -31,6 +32,20 @@ def read_table_cached(table_name: str, **kwargs) -> pd.DataFrame:
             return pd.DataFrame()
     return pd.DataFrame()
 
+@st.cache_data(ttl=60)
+def get_last_update_time() -> str | None:
+    """
+    Retorna a data e hora da última modificação do banco de dados DuckDB.
+    """
+    db_file = Path(DB_PATH)
+    if db_file.exists():
+        try:
+            last_mod_timestamp = db_file.stat().st_mtime
+            last_mod_datetime = datetime.fromtimestamp(last_mod_timestamp)
+            return last_mod_datetime.strftime("%d/%m/%Y às %H:%M:%S")
+        except Exception:
+            return None
+    return None
 
 def load_main_data() -> pd.DataFrame:
     """Carrega o dataset consolidado do DuckDB, tratando tipos numéricos e datas."""

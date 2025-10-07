@@ -8,11 +8,39 @@ Executa em ordem:
 2. Pipeline de Carga DuckDB (duckdb/carga/loader.py)
 """
 
+import logging
 import sys
 import time
 import subprocess
 from pathlib import Path
 from typing import Tuple
+
+
+def setup_logging(base_dir: Path) -> None:
+    """
+    Configura o logging para salvar em arquivo e exibir no console.
+    
+    Args:
+        base_dir: Diretório base do projeto para criar a pasta de logs.
+    """
+    log_dir = base_dir / "logs"
+    log_dir.mkdir(exist_ok=True)
+    
+    log_filename = f"pipeline_run_{time.strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    log_filepath = log_dir / log_filename
+    
+    # Configuração do logger
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] - %(message)s",
+        handlers=[
+            logging.FileHandler(log_filepath, encoding='utf-8'),
+            logging.StreamHandler(sys.stdout) # Continua exibindo no console
+        ]
+    )
+    
+    # Reduz o log de bibliotecas muito verbosas, se necessário
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
 def formatar_tempo(segundos: float) -> str:
@@ -42,9 +70,9 @@ def executar_loader(caminho_loader: Path, nome_pipeline: str) -> Tuple[int, floa
     Returns:
         Tupla com (código_retorno, duração_em_segundos)
     """
-    print("\n" + "=" * 80)
-    print(f"🚀 Iniciando: {nome_pipeline}")
-    print("=" * 80)
+    logging.info("=" * 80)
+    logging.info(f"🚀 Iniciando: {nome_pipeline}")
+    logging.info("=" * 80)
     
     tempo_inicio = time.perf_counter()
     
@@ -58,31 +86,32 @@ def executar_loader(caminho_loader: Path, nome_pipeline: str) -> Tuple[int, floa
         )
         
         # Imprime a saída do script
+        logging.info(f"--- Início da Saída de {caminho_loader.name} ---")
         if processo.stdout:
-            print(processo.stdout.strip())
+            logging.info(processo.stdout.strip())
         if processo.stderr:
-            print(processo.stderr.strip(), file=sys.stderr)
+            logging.error(processo.stderr.strip())
+        logging.info(f"--- Fim da Saída de {caminho_loader.name} ---")
             
         tempo_fim = time.perf_counter()
         duracao = tempo_fim - tempo_inicio
         
         if processo.returncode == 0:
-            print(f"\n✅ {nome_pipeline} concluído com sucesso!")
+            logging.info(f"✅ {nome_pipeline} concluído com sucesso!")
         else:
-            print(f"\n❌ {nome_pipeline} falhou com código: {processo.returncode}")
+            logging.error(f"❌ {nome_pipeline} falhou com código: {processo.returncode}")
             
         return processo.returncode, duracao
         
     except KeyboardInterrupt:
         tempo_fim = time.perf_counter()
         duracao = tempo_fim - tempo_inicio
-        print(f"\n⚠️ {nome_pipeline} interrompido pelo usuário.")
+        logging.warning(f"⚠️ {nome_pipeline} interrompido pelo usuário.")
         return 130, duracao
-        
     except Exception as e:
         tempo_fim = time.perf_counter()
         duracao = tempo_fim - tempo_inicio
-        print(f"\n🔥 Erro inesperado ao executar {nome_pipeline}: {e}", file=sys.stderr)
+        logging.critical(f"🔥 Erro inesperado ao executar {nome_pipeline}: {e}", exc_info=True)
         return 1, duracao
 
 
@@ -95,6 +124,9 @@ def main() -> int:
     """
     base_dir = Path(__file__).resolve().parent
     
+    # Configura o logging no início da execução
+    setup_logging(base_dir)
+    
     # Define os loaders a serem executados
     pipelines = [
         (base_dir / "data_engineer" / "loader.py", "Pipeline de Engenharia de Dados"),
@@ -104,15 +136,15 @@ def main() -> int:
     # Verifica se os loaders existem
     for caminho, nome in pipelines:
         if not caminho.exists():
-            print(f"❌ ERRO: Arquivo não encontrado: {caminho}")
+            logging.error(f"❌ ERRO: Arquivo não encontrado: {caminho}")
             return 1
     
-    print("=" * 80)
-    print("🎯 EXECUÇÃO COMPLETA DO PIPELINE DE DADOS")
-    print("=" * 80)
-    print(f"📂 Diretório base: {base_dir}")
-    print(f"🐍 Python: {sys.executable}")
-    print("=" * 80)
+    logging.info("=" * 80)
+    logging.info("🎯 EXECUÇÃO COMPLETA DO PIPELINE DE DADOS")
+    logging.info("=" * 80)
+    logging.info(f"📂 Diretório base: {base_dir}")
+    logging.info(f"🐍 Python: {sys.executable}")
+    logging.info("=" * 80)
     
     tempo_inicio_total = time.perf_counter()
     resultados = []
@@ -124,16 +156,16 @@ def main() -> int:
         
         # Se houver erro, interrompe a execução
         if codigo_retorno != 0:
-            print(f"\n⚠️ Pipeline interrompido devido a erro em: {nome_pipeline}")
+            logging.warning(f"Pipeline interrompido devido a erro em: {nome_pipeline}")
             break
     
     tempo_fim_total = time.perf_counter()
     duracao_total = tempo_fim_total - tempo_inicio_total
     
     # --- Resumo Final ---
-    print("\n" + "=" * 80)
-    print("📊 RESUMO GERAL DA EXECUÇÃO")
-    print("-" * 80)
+    logging.info("=" * 80)
+    logging.info("📊 RESUMO GERAL DA EXECUÇÃO")
+    logging.info("-" * 80)
     
     for nome, codigo, duracao in resultados:
         if codigo == 0:
@@ -143,29 +175,30 @@ def main() -> int:
         else:
             status = f"❌ Erro ({codigo})"
         
-        print(f"  {nome:<40} | {status:<20} | {formatar_tempo(duracao)}")
+        logging.info(f"  {nome:<40} | {status:<20} | {formatar_tempo(duracao)}")
     
-    print("-" * 80)
-    print(f"⏱️ Tempo total de execução: {formatar_tempo(duracao_total)}")
-    print("=" * 80)
+    logging.info("-" * 80)
+    logging.info(f"⏱️ Tempo total de execução: {formatar_tempo(duracao_total)}")
+    logging.info("=" * 80)
     
     # Retorna o código de erro do último pipeline com falha, ou 0 se todos tiveram sucesso
     codigo_saida_final = next((rc for _, rc, _ in reversed(resultados) if rc != 0), 0)
     
     if codigo_saida_final == 0:
-        print("\n🎉 TODOS OS PIPELINES FORAM EXECUTADOS COM SUCESSO! 🎉\n")
+        logging.info("🎉 TODOS OS PIPELINES FORAM EXECUTADOS COM SUCESSO! 🎉")
     else:
-        print("\n⚠️ Execução finalizada com erros. Verifique os logs acima.\n")
+        logging.warning("⚠️ Execução finalizada com erros. Verifique os logs.")
     
     return codigo_saida_final
 
 
 if __name__ == "__main__":
     try:
-        sys.exit(main())
+        exit_code = main()
+        sys.exit(exit_code)
     except KeyboardInterrupt:
-        print("\n\n⚠️ Execução interrompida pelo usuário.")
+        logging.warning("Execução principal interrompida pelo usuário.")
         sys.exit(130)
     except Exception as e:
-        print(f"\n🔥 Falha crítica no orquestrador principal: {e}", file=sys.stderr)
+        logging.critical(f"🔥 Falha crítica no orquestrador principal: {e}", exc_info=True)
         sys.exit(1)

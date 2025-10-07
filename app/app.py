@@ -3,7 +3,7 @@ import streamlit as st
 from pathlib import Path
 
 # Importando os módulos refatorados
-from data_loader import load_and_merge_data, load_indices_scores
+from data_loader import load_and_merge_data, load_indices_scores, get_last_update_time
 from components.filters import render_sidebar_filters
 from components.tabs_layout import render_tabs
 
@@ -53,10 +53,14 @@ def main():
     
     apply_external_css()
 
+    # --- Carregamento da data de atualização ---
+    last_update = get_last_update_time()
+    update_string = f"Última atualização: **{last_update}**" if last_update else ""
+
     # --- Título e Subtítulo ---
     st.title("🧭 Bússola de Valor")
     st.markdown(
-        "Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**."
+        f"Plataforma de análise e ranking de ações baseada nos princípios de **Barsi, Bazin, Buffett, Lynch e Graham**.  \n{update_string}"
     )
     
     # --- Carregamento e Processamento de Dados ---
