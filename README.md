@@ -9,8 +9,12 @@ Dashboard interativo em **Python + Streamlit** para análise fundamentalista de 
 ## 🚀 Como Utilizar
 
 ### Pré-requisitos
-- Python 3.10+
+- Python 3.12+
 - Git
+- Streamlit
+- DuckDB
+- Pandas
+- brapi & yfinance
 
 ### Instalação
 1. Clone o repositório:

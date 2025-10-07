@@ -28,10 +28,13 @@ O objetivo central deste trabalho é desenvolver uma aplicação de apoio à dec
 
 ### 3. Motivação
 
-A motivação para o desenvolvimento da "Bússola de Valor" é dupla, combinando um propósito prático com um desafio técnico:
+A motivação para o desenvolvimento da "Bússola de Valor" é multifacetada, combinando um propósito prático com um desafio técnico e uma filosofia de preservação de capital:
 
-- Auxiliar investidores pessoa física a identificar ações que combinam boa geração de dividendos com fundamentos robustos, apoiando a alocação de portfólios orientados à renda de forma sistemática e eficiente.
-- Integrar conceitos de investidores clássicos, como Décio Bazin, Benjamin Graham, Warren Buffett e Luiz Barsi, com práticas modernas de engenharia de dados, como pipelines de ETL, data warehousing e dashboards interativos.
+- **Auxiliar investidores pessoa física:** O objetivo é identificar ações que combinam boa geração de dividendos com fundamentos robustos, apoiando a alocação de portfólios orientados à renda de forma sistemática e eficiente.
+- **Evitar perdas de capital:** Uma motivação central é criar um "filtro de qualidade" que ajude o investidor a evitar empresas com indicadores péssimos, minimizando ao máximo o risco de perda de capital, um princípio fundamental do *value investing*.
+- **Integrar conhecimento clássico e tecnologia:** O projeto busca unir os conceitos de investidores consagrados, como Décio Bazin, Benjamin Graham, Warren Buffett e Luiz Barsi, com práticas modernas de engenharia de dados, como pipelines de ETL, data warehousing e dashboards interativos.
+
+É crucial ressaltar que a "Bússola de Valor" **não é uma recomendação de compra ou venda**. Ela funciona como uma ferramenta de apoio para análise e estudo, projetada para otimizar o tempo do investidor e fornecer uma base quantitativa sólida para que ele possa tomar suas próprias decisões de investimento com mais segurança e informação.
 
 ### 4. Materiais
 
@@ -123,17 +126,17 @@ O sistema de pontuação foi desenhado para refletir uma filosofia de investimen
 
 *   **Valuation (180 pts):** Avalia se o preço atual da ação está descontado em relação aos seus fundamentos. A pontuação é baseada nos indicadores Preço/Lucro (P/L) e Preço/Valor Patrimonial (P/VP), favorecendo empresas com múltiplos baixos.
 
-*   **Critérios de Mercado (180 pts):** Engloba fatores de liquidez, volatilidade e percepção de mercado. A pontuação considera a Liquidez Média Diária, o Beta (volatilidade em relação ao mercado) e o Free Cash Flow Yield (FCF Yield), premiando ativos líquidos, menos voláteis e com forte geração de caixa.
+*   **Critérios de Mercado (140 pts):** Engloba fatores de liquidez, volatilidade, capitalização e geração de caixa. A pontuação é distribuída entre a Liquidez Média Diária (até 35 pts), o Beta (volatilidade, até 35 pts), o Market Cap (até 35 pts) e o Free Cash Flow Yield (FCF Yield, até 35 pts).
 
 *   **Saúde Financeira (130 pts):** Mede a solidez financeira da companhia. Utiliza indicadores como Dívida Líquida/EBITDA e Liquidez Corrente para premiar empresas com baixo endividamento e boa capacidade de honrar suas obrigações de curto prazo.
 
 *   **Rentabilidade (110 pts):** Analisa a eficiência da gestão em gerar valor para o acionista. A pontuação é derivada do Retorno sobre o Patrimônio Líquido (ROE) e da política de Payout, com regras de pontuação ajustadas para as particularidades do setor financeiro.
 
-*   **Crescimento (100 pts):** Avalia a capacidade da empresa de expandir suas receitas e lucros ao longo do tempo, um indicador de sua vitalidade e potencial de valorização futura.
+*   **Crescimento, Sentimento e Timing (180 pts):** Avalia a capacidade da empresa de expandir suas receitas (até 50 pts), o sentimento de analistas (até 60 pts) e o ciclo de mercado para identificar o *timing* de compra ou venda (até 70 pts).
 
-*   **Critérios de Graham (100 pts):** Incorpora a filosofia de Benjamin Graham, atribuindo pontos para empresas que atendem a critérios de estabilidade, tamanho, saúde financeira e histórico de dividendos, buscando uma "margem de segurança".
+*   **Critérios de Graham (150 pts):** Incorpora a filosofia de Benjamin Graham, calculando a "margem de segurança" com base no preço justo. A pontuação pode chegar a 150 pontos para ativos com grande desconto.
 
-A distribuição (200 + 180 + 180 + 130 + 110 + 100 + 100) soma 1000 pontos, fornecendo uma base clara e equilibrada para a avaliação dos ativos.
+A distribuição (180 + 180 + 140 + 130 + 110 + 180 + 150) soma **1000 pontos**, fornecendo uma base clara e equilibrada para a avaliação dos ativos.
 
 #### Penalidades
 
@@ -149,11 +152,23 @@ Para garantir que o score reflita riscos críticos, o modelo aplica penalidades 
 
 ### 3. Boas práticas implementadas
 
-Visando a qualidade, performance e manutenibilidade do código, diversas boas práticas de desenvolvimento de software foram aplicadas ao longo do projeto:
+Visando a qualidade, performance e manutenibilidade do código, diversas boas práticas de engenharia de software, banco de dados e desenvolvimento Python foram aplicadas ao longo do projeto:
 
-- **Carga com cache (`@st.cache_data`):** Utilização do mecanismo de cache do Streamlit para acelerar recarregamentos da aplicação e evitar a re-execução de consultas pesadas a cada interação do usuário.
-- **Tratamento de Dados:** Implementação de rotinas para o tratamento de tipos numéricos, datas e proteção contra divisão por zero no `data_loader`, garantindo a robustez da aplicação.
-- **Abstração de Acesso a Dados:** Centralização de todo o acesso a dados no módulo `data_loader`, que abstrai as consultas SQL ao Data Warehouse, desacoplando a camada de visualização da camada de dados.
+#### Boas Práticas em Banco de Dados e Arquitetura de Dados
+
+*   **Arquitetura em Camadas (Land, Trusted, DW):** A estruturação do data lake em camadas distintas (`land_dw`, `trusted_dw`) antes da carga no Data Warehouse (`banco_dw`) é uma prática de mercado consolidada. Ela garante a rastreabilidade, permite o reprocessamento de dados de forma isolada e desacopla as etapas de extração, transformação e consumo.
+*   **Uso Estratégico de DuckDB e Parquet:** A escolha do DuckDB como Data Warehouse analítico local, combinada com o uso do formato Parquet para as camadas intermediárias, otimiza a performance e reduz custos. O Parquet oferece compressão e leitura colunar eficiente, enquanto o DuckDB proporciona consultas analíticas de alta velocidade sem a necessidade de um servidor de banco de dados tradicional.
+*   **Estratégia de Carga Híbrida (Completa e Incremental):** O pipeline adota uma abordagem de carga mista. A maioria das tabelas é recriada a cada execução (`CREATE OR REPLACE TABLE`), garantindo um estado final consistente e idempotente. No entanto, para tabelas de histórico volumosas (como `todos_dividendos`), é utilizada uma carga incremental, onde apenas os novos registros são adicionados, otimizando significativamente o tempo de processamento e o uso de recursos.
+*   **Abstração de Acesso a Dados:** A centralização de todo o acesso a dados no módulo `app/data_loader.py` abstrai as consultas SQL do restante da aplicação. Isso desacopla a camada de visualização da camada de dados, facilitando a manutenção e futuras migrações de banco de dados.
+
+#### Boas Práticas em Desenvolvimento Python
+
+*   **Modularidade e Separação de Responsabilidades:** O código foi organizado em módulos com responsabilidades bem definidas. Por exemplo, o pipeline de ETL está em `data_engineer/`, a lógica da aplicação em `app/`, e os componentes de UI em `app/components/`. Essa estrutura facilita a manutenção, o teste e a evolução do sistema.
+*   **Tratamento Robusto de Erros:** Os scripts de coleta de dados (`data_engineer/08-indicadores.py`) implementam blocos `try...except` para capturar falhas durante as chamadas de API e o processamento de dados. Isso torna o pipeline mais resiliente, permitindo que ele continue a execução mesmo que um ativo específico falhe.
+*   **Código Limpo e Legível:** O uso de docstrings para explicar o propósito de funções e módulos, nomes de variáveis descritivos e a utilização de `pathlib` para manipulação de caminhos de arquivos contribuem para um código mais limpo e de fácil compreensão.
+*   **Otimização de Performance na Aplicação:**
+    *   **Cache do Streamlit (`@st.cache_data`):** O uso do decorador de cache do Streamlit acelera o recarregamento da aplicação, evitando a re-execução de consultas pesadas a cada interação do usuário.
+    *   **Processamento Paralelo:** A implementação de `joblib` para o cálculo de scores em paralelo (`app/scoring.py`) demonstra uma preocupação com a otimização de performance em tarefas computacionalmente intensivas, embora a abordagem principal seja a carga de scores pré-calculados.
 
 ---
 
@@ -166,9 +181,11 @@ A execução do pipeline de dados resulta em um conjunto de artefatos coesos e p
 - **O Data Warehouse (`dw.duckdb`):** Artefato principal do projeto, que consolida todos os dados tratados e serve como fonte única e performática para a aplicação.
 - **Camadas de Dados Intermediárias:** Os arquivos Parquet nas camadas Land e Trusted garantem a reprodutibilidade e a rastreabilidade de todo o pipeline de transformação.
 - **Dashboard Interativo:** A aplicação Streamlit, executável via `streamlit run app/app.py`, que apresenta os resultados de forma clara e interativa, contendo:
-	- Tabela com ranking de ativos por `Score Total` e detalhes por critério (coluna `Score Details`).
-	- Gráficos de DY histórico, distribuição de scores por setor e painéis de evolução de preço.
-	- Painel de avaliação por subsetor, com a pontuação final calculada para cada agrupamento.
+	- **Ranking Geral e Detalhado:** Tabelas interativas que classificam os ativos pelo `Score Total` (exibido como barra de progresso) e permitem a visualização de dezenas de indicadores fundamentalistas e técnicos.
+	- **Análise Individual:** Uma seção dedicada que detalha a composição do `Score Total` de cada ativo, separando os pontos positivos das penalidades aplicadas.
+	- **Análise de Dividendos:** Gráficos de série temporal dos proventos, frequência de pagamento por mês e rankings dos maiores pagadores de dividendos.
+	- **Análise Setorial:** Um ranking que avalia o desempenho agregado de cada subsetor da bolsa, com sua pontuação final e gráficos comparativos.
+	- **Variação de Preços:** Colunas no ranking que exibem a valorização percentual dos ativos nos últimos 1 e 6 meses.
 
 ### 2. Validação e Verificação
 
