@@ -39,7 +39,7 @@ def run_step(module_name: str) -> bool:
         duration = time.perf_counter() - start_time
         print('\r' + ' ' * 80 + '\r', end='')
         print(f"❌ {module_name:<45} | ⏱️  Duração: {formatar_tempo(duration)}")
-        print(f"   (Erro fatal: {e})", file=sys.stderr)
+        print(f"   (Erro fatal: {e})")
         # Em um cenário real, aqui poderia ser logado o traceback completo.
         return False  # Falha
 

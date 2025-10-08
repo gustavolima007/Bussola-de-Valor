@@ -1,0 +1,120 @@
+2025-10-08 09:57:05,789 [INFO] - ================================================================================
+2025-10-08 09:57:05,789 [INFO] - 🎯 EXECUÇÃO COMPLETA DO PIPELINE DE DADOS
+2025-10-08 09:57:05,789 [INFO] - ================================================================================
+2025-10-08 09:57:05,789 [INFO] - 📂 Diretório base: E:\Github\Unicamp\Bussola-de-Valor
+2025-10-08 09:57:05,789 [INFO] - 🐍 Python: E:\Github\Unicamp\Bussola-de-Valor\.venv\Scripts\python.exe
+2025-10-08 09:57:05,790 [INFO] - ================================================================================
+2025-10-08 09:57:05,790 [INFO] - ================================================================================
+2025-10-08 09:57:05,790 [INFO] - 🚀 Iniciando: Pipeline de Engenharia de Dados
+2025-10-08 09:57:05,790 [INFO] - ================================================================================
+2025-10-08 10:12:48,618 [INFO] - --- Início da Saída de loader.py ---
+2025-10-08 10:12:48,618 [INFO] - ============================================================
+>> Iniciando Pipeline de Dados de Engenharia
+============================================================
+>> Executando: 01-acoes_e_fundos.py...
+                                                                                
+OK 01-acoes_e_fundos.py                          | Duração: 2s
+>> Executando: 02-dividendos.py...
+                                                                                
+OK 02-dividendos.py                              | Duração: 2m 01s
+>> Executando: 03-dividendos_por_ano.py...
+                                                                                
+OK 03-dividendos_por_ano.py                      | Duração: 0s
+>> Executando: 04-dividendos_ano_resumo.py...
+                                                                                
+OK 04-dividendos_ano_resumo.py                   | Duração: 0s
+>> Executando: 05-preco_acoes.py...
+                                                                                
+OK 05-preco_acoes.py                             | Duração: 12s
+>> Executando: 06-dividend_yield.py...
+                                                                                
+OK 06-dividend_yield.py                          | Duração: 0s
+>> Executando: 07-preco_teto.py...
+                                                                                
+OK 07-preco_teto.py                              | Duração: 0s
+>> Executando: 08-indicadores.py...
+                                                                                
+OK 08-indicadores.py                             | Duração: 13m 21s
+>> Executando: 09-recuperacao_judicial.py...
+                                                                                
+OK 09-recuperacao_judicial.py                    | Duração: 0s
+>> Executando: 10-score.py...
+                                                                                
+OK 10-score.py                                   | Duração: 0s
+>> Executando: 11-avaliacao_setor.py...
+                                                                                
+OK 11-avaliacao_setor.py                         | Duração: 0s
+>> Executando: 12-indices.py...
+                                                                                
+OK 12-indices.py                                 | Duração: 2s
+------------------------------------------------------------
+SUCESSO Pipeline concluído com sucesso em 15m 42s!
+============================================================
+2025-10-08 10:12:48,619 [INFO] - --- Fim da Saída de loader.py ---
+2025-10-08 10:12:48,619 [INFO] - ✅ Pipeline de Engenharia de Dados concluído com sucesso!
+2025-10-08 10:12:48,619 [INFO] - ================================================================================
+2025-10-08 10:12:48,619 [INFO] - 🚀 Iniciando: Pipeline de Carga DuckDB
+2025-10-08 10:12:48,619 [INFO] - ================================================================================
+2025-10-08 10:12:49,034 [INFO] - --- Início da Saída de loader.py ---
+2025-10-08 10:12:49,034 [INFO] - ============================================================
+🚀 Iniciando Carga para o Data Warehouse
+============================================================
+⏳ Executando: 01-carga_completa...📦 Iniciando Carga Completa...
+  ✅  Sucesso: Tabela 'acoes_e_fundos' carregada.
+  ✅  Sucesso: Tabela 'avaliacao_setor' carregada.
+  ✅  Sucesso: Tabela 'ciclo_mercado' carregada.
+  ✅  Sucesso: Tabela 'dividend_yield' carregada.
+  ✅  Sucesso: Tabela 'dividendos_ano_resumo' carregada.
+  ✅  Sucesso: Tabela 'indicadores' carregada.
+  ✅  Sucesso: Tabela 'indices' carregada.
+  ✅  Sucesso: Tabela 'preco_teto' carregada.
+  ✅  Sucesso: Tabela 'precos_acoes' carregada.
+  ✅  Sucesso: Tabela 'rj' carregada.
+  ✅  Sucesso: Tabela 'scores' carregada.
+  ✅  Sucesso: Tabela 'tickers_nao_mapeados' carregada.
+
+✨ Processo de Carga Completa finalizado! ✨
+
+                                                                                
+✅ 01-carga_completa                             | ⏱️  Duração: 0s
+⏳ Executando: 02-carga_incremental...📈 Iniciando Carga Incremental (Estratégia: Substituir Ano Corrente)...
+  🔄  Processando tabela: 'dividendos_ano'
+  ✅  Sucesso: Tabela 'dividendos_ano' atualizada para o ano de 2025.
+  🔄  Processando tabela: 'precos_acoes_completo'
+  ✅  Sucesso: Tabela 'precos_acoes_completo' atualizada para o ano de 2025.
+  🔄  Processando tabela: 'todos_dividendos'
+  ✅  Sucesso: Tabela 'todos_dividendos' atualizada para o ano de 2025.
+
+✨ Processo de Carga Incremental finalizado! ✨
+
+                                                                                
+✅ 02-carga_incremental                          | ⏱️  Duração: 0s
+⏳ Executando: 03-duckdb_dw...🗄️  Iniciando a carga do Data Warehouse DuckDB em 'E:\Github\Unicamp\Bussola-de-Valor\duckdb\banco_dw\dw.duckdb'...
+❌  Erro fatal ao conectar ou operar o banco de dados DuckDB: IO Error: Cannot open file "e:\github\unicamp\bussola-de-valor\duckdb\banco_dw\dw.duckdb": The process cannot access the file because it is being used by another process.
+
+
+File is already open in 
+C:\Program Files\Python313\python.exe (PID 27880)
+
+                                                                                
+❌ 03-duckdb_dw                                  | ⏱️  Duração: 0s
+   (Erro fatal: IO Error: Cannot open file "e:\github\unicamp\bussola-de-valor\duckdb\banco_dw\dw.duckdb": The process cannot access the file because it is being used by another process.
+
+
+File is already open in 
+C:\Program Files\Python313\python.exe (PID 27880))
+------------------------------------------------------------
+🔥 Carga interrompida por erro após 0s.
+============================================================
+2025-10-08 10:12:49,035 [INFO] - --- Fim da Saída de loader.py ---
+2025-10-08 10:12:49,035 [ERROR] - ❌ Pipeline de Carga DuckDB falhou com código: 1
+2025-10-08 10:12:49,035 [ERROR] - Pipeline interrompido devido a erro em: Pipeline de Carga DuckDB
+2025-10-08 10:12:49,035 [INFO] - ================================================================================
+2025-10-08 10:12:49,035 [INFO] - 📊 RESUMO GERAL DA EXECUÇÃO
+2025-10-08 10:12:49,035 [INFO] - --------------------------------------------------------------------------------
+2025-10-08 10:12:49,035 [INFO] -   Pipeline de Engenharia de Dados          | ✅ Sucesso            | 15m 42s
+2025-10-08 10:12:49,035 [INFO] -   Pipeline de Carga DuckDB                 | ❌ Erro (1)           | 0s
+2025-10-08 10:12:49,035 [INFO] - --------------------------------------------------------------------------------
+2025-10-08 10:12:49,035 [INFO] - ⏱️ Tempo total de execução: 15m 43s
+2025-10-08 10:12:49,035 [INFO] - ================================================================================
+2025-10-08 10:12:49,035 [WARNING] - ⚠️ Execução finalizada com erros. Verifique os logs.

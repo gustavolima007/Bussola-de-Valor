@@ -156,7 +156,7 @@ def main() -> int:
         
         # Se houver erro, interrompe a execução
         if codigo_retorno != 0:
-            logging.warning(f"Pipeline interrompido devido a erro em: {nome_pipeline}")
+            logging.error(f"Pipeline interrompido devido a erro em: {nome_pipeline}")
             break
     
     tempo_fim_total = time.perf_counter()
