@@ -1,0 +1,5 @@
+Removi brapi.
+
+padronizei setores
+
+melhorei quantidade de ações usando yfinance
