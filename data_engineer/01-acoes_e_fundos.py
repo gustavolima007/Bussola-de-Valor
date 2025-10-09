@@ -303,6 +303,13 @@ def extrair_dados_yfinance():
         "CEDO3": "CEDO4",
         "CTSA3": "CTSA4",
         "TELB3": "TELB4",
+        "EQPA3": "EQMA3B",
+        "ALPA3": "ALPA4",
+        "BMIN4": "BMEB3",
+        "PINE3": "PINE4",
+        "BRKM6": "BRKM3",
+        "FESA3": "FESA4",
+        "UNIP5": "UNIP3"
     }
 
     print("Verificando e atribuindo logos ausentes...")

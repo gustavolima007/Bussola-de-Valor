@@ -35,7 +35,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
     # --- Inicialização do Session State ---
     if 'filters_initialized' not in st.session_state:
         st.session_state.perfil_filtro = perfis_default
-        st.session_state.score_range = (200, 1000)
+        st.session_state.score_range = (350, 1000)
         st.session_state.subsetor_score_min = 350
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
@@ -56,7 +56,7 @@ def render_sidebar_filters(df: pd.DataFrame, indices_scores: dict, all_data: dic
         Define os filtros recomendados ao clicar no botão correspondente.
         """
         st.session_state.perfil_filtro = perfis_recomendados
-        st.session_state.score_range = (200, 1000)
+        st.session_state.score_range = (350, 1000)
         st.session_state.subsetor_score_min = 350
         st.session_state.dy_min = 6.0
         st.session_state.dy_5y_min = 6.0
