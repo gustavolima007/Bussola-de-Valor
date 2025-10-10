@@ -163,19 +163,19 @@ def load_and_merge_data() -> tuple[pd.DataFrame, dict]:
     if not pa.empty:
         if 'ticker' in pa.columns and 'Ticker' in df.columns:
             pa['ticker_base'] = pa['ticker'].astype(str).str.upper().str.replace('.SA', '', regex=False).str.strip()
-            
-            cols_to_merge = ['ticker_base', 'fechamento_atual', 'fechamento_1M_atras', 'fechamento_6M_atras']
+
+            cols_to_merge = ['ticker_base', 'fechamento_atual', 'fechamento_1m_atras', 'fechamento_6m_atras']
             pa_cols = [col for col in cols_to_merge if col in pa.columns]
-            
+
             df = df.merge(pa[pa_cols], left_on='Ticker', right_on='ticker_base', how='left', suffixes=('', '_pa'))
 
             if 'fechamento_atual' in df.columns:
                 df['Preço Atual'] = df['fechamento_atual'].combine_first(df['Preço Atual'])
                 df.drop(columns=['fechamento_atual'], inplace=True)
-            
+
             df.rename(columns={
-                'fechamento_1M_atras': 'Preço 1M',
-                'fechamento_6M_atras': 'Preço 6M'
+                'fechamento_1m_atras': 'Preço 1M',
+                'fechamento_6m_atras': 'Preço 6M'
             }, inplace=True)
 
             # --- Cálculo da Valorização (1M e 6M) ---

@@ -273,7 +273,7 @@ def render_tab_rank_geral(df: pd.DataFrame):
 def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
     st.header(f"📊 Indicadores ({len(df)} ações encontradas)")
     cols = [
-        'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço Teto 5A', 'Alvo',
+        'Logo', 'Ticker', 'Empresa', 'subsetor_b3', 'Perfil da Ação', 'Preço Atual', 'Preço 1M', 'Val 1M', 'Preço 6M', 'Val 6M', 'Preço Teto 5A', 'Alvo',
         'P/L', 'P/VP', 'margem_seguranca_percent', 'DY (Taxa 12m, %)', 'DY 5 Anos Média (%)',
         'Payout Ratio (%)', 'ROE (%)', 'Dívida/Market Cap', 'Dívida/EBITDA', 'Crescimento Preço (%)',
         'Sentimento Gauge', 'rsi_14_1y', 'macd_diff_1y', 'volume_1y', 'Score Total'
@@ -292,6 +292,10 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
 
     if 'Margem de Segurança %' in df_cols:
         styler.map(style_graham, subset=['Margem de Segurança %'])
+
+    val_cols_to_style = [c for c in ['Val 1M', 'Val 6M'] if c in df_cols]
+    if val_cols_to_style:
+        styler.map(style_valorizacao, subset=val_cols_to_style)
     
     if 'P/L' in df_cols:
         styler.map(style_pl, subset=['P/L'])
@@ -324,6 +328,10 @@ def render_tab_rank_detalhado(df: pd.DataFrame, df_unfiltered: pd.DataFrame):
         column_config={
             "Logo": st.column_config.ImageColumn("Logo"),
             "Preço Atual": st.column_config.NumberColumn("Preço Atual", format="R$ %.2f"),
+            "Preço 1M": st.column_config.NumberColumn("Preço 1M", format="R$ %.2f"),
+            "Val 1M": st.column_config.NumberColumn("Val 1M", format="%.2f%%"),
+            "Preço 6M": st.column_config.NumberColumn("Preço 6M", format="R$ %.2f"),
+            "Val 6M": st.column_config.NumberColumn("Val 6M", format="%.2f%%"),
             "Preço Teto 5A": st.column_config.NumberColumn("Preço Teto 5A", format="R$ %.2f"),
             "Alvo": st.column_config.NumberColumn("Alvo %", format="%.2f%% "),
             "Margem de Segurança %": st.column_config.NumberColumn("Margem Segurança %", format="%.2f%%",),
