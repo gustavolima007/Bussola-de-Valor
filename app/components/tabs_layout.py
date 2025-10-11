@@ -162,38 +162,43 @@ def style_ciclo_mercado(row: pd.Series, cols_to_style: list) -> list:
     return [f'color: {color}' if col in cols_to_style else '' for col in row.index]
 
 def style_pontuacao_final_setor(val):
-    if pd.isna(val): return ''
+    if pd.isna(val): 
+        return ''
     if val >= 415:
-        return 'color: #15803d'  # Verde Escuro (Excelente)
-    if 365 <= val < 415:
-        return 'color: #3dd56d'  # Verde Claro (Muito bom)
-    if 300 <= val < 365:
+        return 'color: #3dd56d'  # Verde (Excelente)
+    elif 300 <= val < 415:
         return 'color: #ffaa00'  # Amarelo (Razoável)
-    if 200 <= val < 300:
-        return 'color: #ff7f50'  # Laranja (Fraco)
-    return 'color: #ff4b4b'      # Vermelho (Ruim)
+    else:
+        return 'color: #ff4b4b'  # Vermelho (Ruim)
 
 def style_score_dy_setor(val):
-    if pd.isna(val): return ''
-    if val >= 40: return 'color: #3dd56d'
-    if 30 <= val < 40: return 'color: #58d68d'
-    if 20 <= val < 30: return 'color: #ffaa00'
-    if 0 <= val < 20: return 'color: #ff7f50'
-    return 'color: #ff4b4b'
+    if pd.isna(val): 
+        return ''
+    if val >= 30:
+        return 'color: #3dd56d'  # Verde
+    elif 20 <= val < 30:
+        return 'color: #ffaa00'  # Amarelo
+    else:
+        return 'color: #ff4b4b'  # Vermelho
 
 def style_score_roe_setor(val):
-    if pd.isna(val): return ''
-    if val >= 30: return 'color: #3dd56d'
-    if 20 <= val < 30: return 'color: #58d68d'
-    if 10 <= val < 20: return 'color: #ffaa00'
-    return 'color: #ff4b4b'
+    if pd.isna(val): 
+        return ''
+    if val >= 20:
+        return 'color: #3dd56d'  # Verde
+    elif 10 <= val < 20:
+        return 'color: #ffaa00'  # Amarelo
+    else:
+        return 'color: #ff4b4b'  # Vermelho
 
 def style_score_beta_setor(val):
     if pd.isna(val): return ''
-    if val >= 20: return 'color: #3dd56d'
-    if 10 <= val < 20: return 'color: #58d68d'
-    if 0 <= val < 10: return 'color: #ffaa00'
-    return 'color: #ff4b4b'
+    if val >= 20:
+        return 'color: #3dd56d'  # Verde
+    elif 10 <= val < 20:
+        return 'color: #ffaa00'  # Amarelo
+    else:
+        return 'color: #ff4b4b'  # Vermelho
 
 def style_score_payout_setor(val):
     if pd.isna(val): return ''
