@@ -51,6 +51,7 @@ O projeto utiliza uma arquitetura de dados moderna em três camadas (Land, Trust
 1.  **Extração e Camada Land (Raw Data)**:
     *   Os scripts em `data_engineer/` (orquestrados por `data_engineer/loader.py`) extraem dados brutos de fontes como **brapi** e **yfinance**.
     *   Os dados são salvos em formato **Parquet** no diretório `duckdb/land_dw/`. Esta camada armazena os dados em seu estado original.
+    *   **Otimização:** A busca pela lista de ativos (`01-acoes_e_fundos.py`) ocorre apenas às segundas-feiras, enquanto os dados restantes são coletados diariamente para garantir performance.
 
 2.  **Transformação e Camada Trusted (Processed Data)**:
     *   O script `duckdb/carga/01-carga_completa.py` lê os dados da camada Land.

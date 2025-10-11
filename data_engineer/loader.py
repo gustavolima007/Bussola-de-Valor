@@ -10,6 +10,7 @@ import sys
 import time
 import subprocess
 from pathlib import Path
+from datetime import datetime
 from typing import List
 
 
@@ -34,12 +35,19 @@ def main() -> int:
     scripts_para_executar = encontrar_scripts_ordenados(base_dir)
 
     if not scripts_para_executar:
-        print("AVISO Nenhum script no formato 'NN-arquivo.py' foi encontrado.")
+        print("AVISO: Nenhum script no formato 'NN-arquivo.py' foi encontrado.")
         return 1
 
     print("=" * 60)
     print(">> Iniciando Pipeline de Dados de Engenharia")
     print("=" * 60)
+
+    # Obtém o dia da semana atual (0 = Segunda-feira, 1 = Terça, ..., 6 = Domingo)
+    hoje_dia_semana = datetime.today().weekday()
+    dias_semana = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo"]
+    print(f"INFO: Hoje é {dias_semana[hoje_dia_semana]}.")
+    print("-" * 60)
+
 
     tempo_inicio_total = time.perf_counter()
     falha = False
@@ -47,6 +55,13 @@ def main() -> int:
 
     for script in scripts_para_executar:
         print(f">> Executando: {script.name}...", end='', flush=True)
+
+        # Condição: Executar '01-acoes_e_fundos.py' apenas na segunda-feira (weekday() == 0)
+        if script.name == "01-acoes_e_fundos.py" and hoje_dia_semana != 0:
+            print('\r' + ' ' * 80 + '\r', end='') # Limpa a linha
+            print(f"INFO {script.name:<45} | Status: Ignorado (não é segunda-feira)")
+            continue
+
         tempo_inicio_script = time.perf_counter()
 
         try:

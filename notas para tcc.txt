@@ -3,3 +3,5 @@ Removi brapi.
 padronizei setores
 
 melhorei quantidade de ações usando yfinance
+
+altereado o readme e pipeline (01-acoes_e_fundos.py irá rodar somente segunda feira, para melhorar a performance)
