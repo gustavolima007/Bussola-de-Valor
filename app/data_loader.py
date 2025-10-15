@@ -35,8 +35,36 @@ def read_table_cached(table_name: str, **kwargs) -> pd.DataFrame:
 @st.cache_data(ttl=60)
 def get_last_update_time() -> str | None:
     """
-    Retorna a data e hora da última modificação do banco de dados DuckDB.
+    Lê os timestamps de atualização da pipeline e do loader, e retorna o mais recente.
     """
+    pipeline_time_path = Path('duckdb/land_dw/pipeline_datetime.parquet')
+    loader_time_path = Path('duckdb/land_dw/loader_datetime.parquet')
+    
+    latest_time = None
+
+    try:
+        if pipeline_time_path.exists():
+            df_pipeline = pd.read_parquet(pipeline_time_path)
+            if not df_pipeline.empty and 'pipeline_datetime' in df_pipeline.columns:
+                pipeline_time = pd.to_datetime(df_pipeline['pipeline_datetime'].iloc[0])
+                latest_time = pipeline_time
+    except Exception as e:
+        st.warning(f"Não foi possível ler o timestamp da pipeline: {e}")
+
+    try:
+        if loader_time_path.exists():
+            df_loader = pd.read_parquet(loader_time_path)
+            if not df_loader.empty and 'loader_datetime' in df_loader.columns:
+                loader_time = pd.to_datetime(df_loader['loader_datetime'].iloc[0])
+                if latest_time is None or loader_time > latest_time:
+                    latest_time = loader_time
+    except Exception as e:
+        st.warning(f"Não foi possível ler o timestamp do loader: {e}")
+
+    if latest_time:
+        return latest_time.strftime("%d/%m/%Y às %H:%M:%S")
+    
+    # Fallback para o método antigo se os arquivos novos não existirem
     db_file = Path(DB_PATH)
     if db_file.exists():
         try:
@@ -45,6 +73,7 @@ def get_last_update_time() -> str | None:
             return last_mod_datetime.strftime("%d/%m/%Y às %H:%M:%S")
         except Exception:
             return None
+            
     return None
 
 def load_main_data() -> pd.DataFrame:
