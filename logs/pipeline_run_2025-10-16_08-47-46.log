@@ -1,0 +1,135 @@
+2025-10-16 08:47:46,345 [INFO] - ================================================================================
+2025-10-16 08:47:46,345 [INFO] - 🎯 EXECUÇÃO COMPLETA DO PIPELINE DE DADOS
+2025-10-16 08:47:46,346 [INFO] - ================================================================================
+2025-10-16 08:47:46,346 [INFO] - 📂 Diretório base: C:\Git\Github\Bussola-de-Valor
+2025-10-16 08:47:46,346 [INFO] - 🐍 Python: C:\Program Files (x86)\Python\python-3.12.0\python.exe
+2025-10-16 08:47:46,346 [INFO] - ================================================================================
+2025-10-16 08:47:46,347 [INFO] - ================================================================================
+2025-10-16 08:47:46,347 [INFO] - 🚀 Iniciando: Pipeline de Engenharia de Dados
+2025-10-16 08:47:46,347 [INFO] - ================================================================================
+2025-10-16 09:04:20,603 [INFO] - --- Início da Saída de loader.py ---
+2025-10-16 09:04:20,604 [INFO] - ============================================================
+>> Iniciando Pipeline de Dados de Engenharia
+============================================================
+INFO: Hoje é Quinta-feira.
+------------------------------------------------------------
+>> Executando: 01-acoes_e_fundos.py...
+                                                                                
+INFO 01-acoes_e_fundos.py                          | Status: Ignorado (não é segunda-feira)
+>> Executando: 02-dividendos.py...
+                                                                                
+OK 02-dividendos.py                              | Duração: 2m 07s
+>> Executando: 03-dividendos_por_ano.py...
+                                                                                
+OK 03-dividendos_por_ano.py                      | Duração: 0s
+>> Executando: 04-dividendos_ano_resumo.py...
+                                                                                
+OK 04-dividendos_ano_resumo.py                   | Duração: 0s
+>> Executando: 05-preco_acoes.py...
+                                                                                
+OK 05-preco_acoes.py                             | Duração: 26s
+>> Executando: 06-dividend_yield.py...
+                                                                                
+OK 06-dividend_yield.py                          | Duração: 0s
+>> Executando: 07-preco_teto.py...
+                                                                                
+OK 07-preco_teto.py                              | Duração: 0s
+>> Executando: 08-indicadores.py...
+                                                                                
+OK 08-indicadores.py                             | Duração: 13m 52s
+>> Executando: 09-recuperacao_judicial.py...
+                                                                                
+OK 09-recuperacao_judicial.py                    | Duração: 0s
+>> Executando: 10-score.py...
+                                                                                
+OK 10-score.py                                   | Duração: 0s
+>> Executando: 11-avaliacao_setor.py...
+                                                                                
+OK 11-avaliacao_setor.py                         | Duração: 0s
+>> Executando: 12-indices.py...
+                                                                                
+OK 12-indices.py                                 | Duração: 2s
+>> Executando: 13-pipeline_datetime.py...
+                                                                                
+OK 13-pipeline_datetime.py                       | Duração: 0s
+------------------------------------------------------------
+SUCESSO Pipeline concluído com sucesso em 16m 34s!
+============================================================
+2025-10-16 09:04:20,604 [INFO] - --- Fim da Saída de loader.py ---
+2025-10-16 09:04:20,604 [INFO] - ✅ Pipeline de Engenharia de Dados concluído com sucesso!
+2025-10-16 09:04:20,605 [INFO] - ================================================================================
+2025-10-16 09:04:20,605 [INFO] - 🚀 Iniciando: Pipeline de Carga DuckDB
+2025-10-16 09:04:20,605 [INFO] - ================================================================================
+2025-10-16 09:04:21,734 [INFO] - --- Início da Saída de loader.py ---
+2025-10-16 09:04:21,735 [INFO] - ============================================================
+🚀 Iniciando Carga para o Data Warehouse
+============================================================
+⏳ Executando: 01-carga_completa...📦 Iniciando Carga Completa...
+  ✅  Sucesso: Tabela 'acoes_e_fundos' carregada.
+  ✅  Sucesso: Tabela 'avaliacao_setor' carregada.
+  ✅  Sucesso: Tabela 'ciclo_mercado' carregada.
+  ✅  Sucesso: Tabela 'dividend_yield' carregada.
+  ✅  Sucesso: Tabela 'dividendos_ano_resumo' carregada.
+  ✅  Sucesso: Tabela 'indicadores' carregada.
+  ✅  Sucesso: Tabela 'indices' carregada.
+  ✅  Sucesso: Tabela 'preco_teto' carregada.
+  ✅  Sucesso: Tabela 'precos_acoes' carregada.
+  ✅  Sucesso: Tabela 'rj' carregada.
+  ✅  Sucesso: Tabela 'scores' carregada.
+  ✅  Sucesso: Tabela 'tickers_nao_mapeados' carregada.
+
+✨ Processo de Carga Completa finalizado! ✨
+
+                                                                                
+✅ 01-carga_completa                             | ⏱️  Duração: 0s
+⏳ Executando: 02-carga_incremental...📈 Iniciando Carga Incremental (Estratégia: Substituir Ano Corrente)...
+  🔄  Processando tabela: 'dividendos_ano'
+  ✅  Sucesso: Tabela 'dividendos_ano' atualizada para o ano de 2025.
+  🔄  Processando tabela: 'precos_acoes_completo'
+  ✅  Sucesso: Tabela 'precos_acoes_completo' atualizada para o ano de 2025.
+  🔄  Processando tabela: 'todos_dividendos'
+  ✅  Sucesso: Tabela 'todos_dividendos' atualizada para o ano de 2025.
+
+✨ Processo de Carga Incremental finalizado! ✨
+
+                                                                                
+✅ 02-carga_incremental                          | ⏱️  Duração: 0s
+⏳ Executando: 03-duckdb_dw...🗄️  Iniciando a carga do Data Warehouse DuckDB em 'C:\Git\Github\Bussola-de-Valor\duckdb\banco_dw\dw.duckdb'...
+  ✅  Sucesso: Tabela 'acoes_e_fundos' carregada no DW.
+  ✅  Sucesso: Tabela 'avaliacao_setor' carregada no DW.
+  ✅  Sucesso: Tabela 'ciclo_mercado' carregada no DW.
+  ✅  Sucesso: Tabela 'dividendos_ano' carregada no DW.
+  ✅  Sucesso: Tabela 'dividendos_ano_resumo' carregada no DW.
+  ✅  Sucesso: Tabela 'dividend_yield' carregada no DW.
+  ✅  Sucesso: Tabela 'indicadores' carregada no DW.
+  ✅  Sucesso: Tabela 'indices' carregada no DW.
+  ✅  Sucesso: Tabela 'precos_acoes' carregada no DW.
+  ✅  Sucesso: Tabela 'precos_acoes_completo' carregada no DW.
+  ✅  Sucesso: Tabela 'preco_teto' carregada no DW.
+  ✅  Sucesso: Tabela 'rj' carregada no DW.
+  ✅  Sucesso: Tabela 'scores' carregada no DW.
+  ✅  Sucesso: Tabela 'tickers_nao_mapeados' carregada no DW.
+  ✅  Sucesso: Tabela 'todos_dividendos' carregada no DW.
+
+✨ Processo de carga do DW finalizado! ✨
+
+                                                                                
+✅ 03-duckdb_dw                                  | ⏱️  Duração: 0s
+⏳ Executando: 05-loader_datetime...Arquivo de data de atualização do loader salvo em: duckdb\land_dw\loader_datetime.parquet
+
+                                                                                
+✅ 05-loader_datetime                            | ⏱️  Duração: 0s
+------------------------------------------------------------
+🎉 Carga finalizada com sucesso em 1s!
+============================================================
+2025-10-16 09:04:21,736 [INFO] - --- Fim da Saída de loader.py ---
+2025-10-16 09:04:21,736 [INFO] - ✅ Pipeline de Carga DuckDB concluído com sucesso!
+2025-10-16 09:04:21,736 [INFO] - ================================================================================
+2025-10-16 09:04:21,736 [INFO] - 📊 RESUMO GERAL DA EXECUÇÃO
+2025-10-16 09:04:21,736 [INFO] - --------------------------------------------------------------------------------
+2025-10-16 09:04:21,736 [INFO] -   Pipeline de Engenharia de Dados          | ✅ Sucesso            | 16m 34s
+2025-10-16 09:04:21,737 [INFO] -   Pipeline de Carga DuckDB                 | ✅ Sucesso            | 1s
+2025-10-16 09:04:21,737 [INFO] - --------------------------------------------------------------------------------
+2025-10-16 09:04:21,737 [INFO] - ⏱️ Tempo total de execução: 16m 35s
+2025-10-16 09:04:21,737 [INFO] - ================================================================================
+2025-10-16 09:04:21,737 [INFO] - 🎉 TODOS OS PIPELINES FORAM EXECUTADOS COM SUCESSO! 🎉

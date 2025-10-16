@@ -55,7 +55,8 @@ def main():
     steps = [
         '01-carga_completa',
         '02-carga_incremental',
-        '03-duckdb_dw'
+        '03-duckdb_dw',
+        '05-loader_datetime' # Adicionado para registrar o timestamp final
     ]
 
     tempo_inicio_total = time.perf_counter()

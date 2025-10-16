@@ -785,31 +785,31 @@ def render_tab_dividendos(df: pd.DataFrame, all_data: dict, ticker_foco: str = N
 def render_tabs(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict, ticker_foco: str = None):
     """Cria e gerencia o conteúdo de todas as abas da aplicação."""
     from .calculadora import render_tab_calculadora
-    tab_titles = [
-        "🏆 Ranking", "🔬 Análise",
-        "🔍 Dividendos", "🏗️ Setores", "⚖️ Recuperação Judicial",
-        "🧭 Guia da Bússola", "💰 Calculadora"
-    ]
-    tab1, tab_analise, tab_dividendos, tab_setores, tab_rj, tab_guia, tab_calculadora = st.tabs(tab_titles)
 
-    with tab1:
+    tab_titles = [
+        "🧭 Guia da Bússola", "🏆 Ranking", "🔬 Análise",
+        "🔍 Dividendos", "💰 Calculadora", "🏗️ Setores", "⚖️ Recuperação Judicial"
+    ]
+    tab_guia, tab_ranking, tab_analise, tab_dividendos, tab_calculadora, tab_setores, tab_rj = st.tabs(tab_titles)
+
+    with tab_guia:
+        render_tab_guia()
+
+    with tab_ranking:
         render_tab_rank_geral(df_filtrado)
         st.divider()
         render_tab_rank_detalhado(df_filtrado, df_unfiltered)
+
     with tab_analise:
         render_tab_analise_individual(df_filtrado)
     with tab_dividendos:
         render_tab_dividendos(df_filtrado, all_data, ticker_foco)
+    with tab_calculadora:
+        render_tab_calculadora(all_data, ticker_foco)
     with tab_setores:
         render_tab_rank_setores(df_unfiltered, df_filtrado, all_data)
     with tab_rj:
         render_tab_recuperacao_judicial(all_data)
-    with tab_guia:
-        render_tab_guia()
-    with tab_calculadora:
-        render_tab_calculadora(all_data, ticker_foco)
-        
-    
 
 def render_tab_rank_setores(df_unfiltered: pd.DataFrame, df_filtrado: pd.DataFrame, all_data: dict):
     st.header("🏗️ Análise de Setores")
